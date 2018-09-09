@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+
+  ui-dev:
+    image: kedge/kedge-ui-dev
+    volumes:
+      - ./:/site
+    working_dir: /site
