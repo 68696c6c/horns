@@ -20,7 +20,6 @@ const GridEqual = (props) => {
 }
 
 GridEqual.propTypes = {
-  gap: PropTypes.bool,
   breakpoint: PropTypes.string.isRequired,
   gap: PropTypes.string.isRequired,
 }
