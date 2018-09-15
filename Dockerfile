@@ -7,8 +7,6 @@ RUN apk update && \
     apk add bash && \
     rm -rf /var/cache/apk/*
 
-RUN npm install http-server -g
-
 RUN mkdir -p /site
 WORKDIR /site
 VOLUME /site

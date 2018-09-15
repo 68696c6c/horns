@@ -12,6 +12,7 @@ const Button = ({ href, className, children, ...others }) => {
 
 Button.propTypes = {
   href: PropTypes.string,
+  children: PropTypes.string.isRequired,
 }
 
 export default Button

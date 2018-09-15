@@ -6,8 +6,11 @@
     "@babel/polyfill": "^7.0.0",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "color": "^3.0.0",
+    "detect-port": "^1.2.3",
+    "docz": "^0.11.1",
     "emotion": "^9.1.3",
     "emotion-server": "^9.1.3",
+    "emotion-theming": "^9.2.6",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.4.0",
@@ -24,11 +27,16 @@
     "@babel/core": "^7.0.0",
     "@babel/plugin-transform-react-jsx": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/babel src --out-dir dist"
+    "build": "./node_modules/.bin/babel src --out-dir dist",
+    "docker-docz": "docz dev --protocol=http --host=0.0.0.0 --port=80",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
   },
   "repository": {
     "type": "git",

@@ -3,7 +3,12 @@ version: "3"
 services:
 
   ui-dev:
-    image: kedge/kedge-ui-dev
+    command: yarn docker-docz
+    build: .
     volumes:
-      - ./:/site
+    - ./:/site
     working_dir: /site
+    ports:
+    - "80:80"
+    environment:
+      VIRTUAL_HOST: ui.kedge.local
