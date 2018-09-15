@@ -1,4 +1,5 @@
 export default {
+  title: 'Kedge UI',
   wrapper: 'src/app.js',
   themeConfig: {
     src: './src/components',
