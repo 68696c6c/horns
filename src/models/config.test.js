@@ -1,5 +1,6 @@
 import React from 'react'
-import { expectValidThemeConfig, randomString } from '../../test/utils'
+import { expectValidThemeConfig } from '../../test/utils'
+import { randomString } from '../utils/utils'
 import { ThemeConfig } from './config'
 
 describe('ThemeConfig class', () => {

@@ -1,15 +1,6 @@
 import { Theme } from '../src/models/theme'
 import { ThemeConfig } from '../src/models/config'
 
-export const randomString = () => {
-  let text = ''
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  for (let i = 0; i < 5; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length))
-  }
-  return text
-}
-
 const configKeys = [
   'headingMargin',
   'gap',
