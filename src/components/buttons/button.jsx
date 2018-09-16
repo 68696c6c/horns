@@ -32,7 +32,18 @@ const Button = ({ variant, className, children, ...others }) => {
 }
 
 Button.propTypes = {
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+  ]),
   children: PropTypes.string.isRequired,
 }
 
