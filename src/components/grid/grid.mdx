@@ -1,0 +1,49 @@
+---
+name: 'Grid'
+menu: Components
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Grid from './grid'
+import Area from './area'
+
+# Grid
+
+<Playground>
+  <Grid style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
+    <Area style={{ backgroundColor: 'teal', }}>The Grid is orange</Area>
+    <Area style={{ backgroundColor: 'teal', }}>The columns are teal</Area>
+  </Grid>
+</Playground>
+
+## Props
+
+<PropsTable of={Grid} />
+
+## Variants
+
+<Playground>
+  <Grid variant="equal" style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
+    <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
+    <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
+    <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
+    <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
+  </Grid>
+  <Grid variant="thirds" style={{ backgroundColor: 'magenta', margin: '1rem 0', }}>
+    <Area area="left" style={{ backgroundColor: 'rebeccapurple', }}>
+      Thirds Grid - Left
+    </Area>
+    <Area area="right" style={{ backgroundColor: 'rebeccapurple', }}>
+      Thirds Grid - Right
+    </Area>
+  </Grid>
+  <Grid variant="thirds" side="right" style={{ backgroundColor: 'lime', margin: '1rem 0', }}>
+    <Area area="left" style={{ backgroundColor: 'dodgerblue', }}>
+      Thirds Grid - Left
+    </Area>
+    <Area area="right" style={{ backgroundColor: 'dodgerblue', }}>
+      Thirds Grid - Right
+    </Area>
+  </Grid>
+</Playground>
