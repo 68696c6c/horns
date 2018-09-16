@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
-import { HeadingCopy } from '../typography/headings/copy'
+import { HeadingCopy } from '../typography'
 
 const StyledFieldset = styled('div')`
   .fieldset-legend {
