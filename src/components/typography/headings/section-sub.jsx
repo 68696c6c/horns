@@ -10,8 +10,8 @@ ${({ theme }) => {
 }}
 `
 
-const HeadingSectionSub = ({ variant, className, children }) => {
-  return <Styled className={cx(className, 'heading', 'heading-section-sub', variant)}>{children}</Styled>
+const HeadingSectionSub = ({ variant, className, children, ...others }) => {
+  return <Styled className={cx(className, 'heading', 'heading-section-sub', variant)} {...others}>{children}</Styled>
 }
 
 HeadingSectionSub.propTypes = {

@@ -10,8 +10,8 @@ ${({ theme }) => {
 }}
 `
 
-const HeadingHero = ({ variant, className, children }) => {
-  return <Styled className={cx(className, 'heading', 'heading-hero', variant)}>{children}</Styled>
+const HeadingHero = ({ variant, className, children, ...others }) => {
+  return <Styled className={cx(className, 'heading', 'heading-hero', variant)} {...others}>{children}</Styled>
 }
 
 HeadingHero.propTypes = {

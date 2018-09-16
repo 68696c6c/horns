@@ -10,8 +10,8 @@ ${({ theme }) => {
 }}
 `
 
-const HeadingCopy = ({ variant, className, children }) => {
-  return <Styled className={cx(className, 'heading', 'heading-copy', variant)}>{children}</Styled>
+const HeadingCopy = ({ variant, className, children, ...others }) => {
+  return <Styled className={cx(className, 'heading', 'heading-copy', variant)} {...others}>{children}</Styled>
 }
 
 HeadingCopy.propTypes = {
