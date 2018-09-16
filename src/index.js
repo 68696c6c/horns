@@ -12,3 +12,11 @@ export {
 } from './components/forms'
 
 export { Area, Grid } from './components/grids'
+
+export {
+  Disclaimer,
+  HeadingCopy,
+  HeadingHero,
+  HeadingSection,
+  HeadingSectionSub,
+} from './components/typography'
