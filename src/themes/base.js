@@ -1,3 +1,3 @@
-import themeBuilder from './builder'
+import { Theme } from '../models/theme'
 
-export default themeBuilder()
+export default new Theme()
