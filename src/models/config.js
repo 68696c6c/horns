@@ -1,4 +1,4 @@
-import pallet from '../themes/pallet'
+import { pallet } from '../themes/utils'
 
 const safeGetValue = (config, key, defaultValue) => {
   return typeof config[key] === 'undefined' ? defaultValue : config[key]
@@ -11,7 +11,7 @@ export class ThemeConfig {
     this.headingMargin = safeGetValue(config, 'headingMargin', '.75rem 0')
     this.gap = safeGetValue(config, 'gap', '15px')
     this.radius = safeGetValue(config, 'radius', '3px')
-    
+
     const configBreakpoints = safeGetValue(config, 'breakpoints', {})
     this.breakpoints = {
       min: safeGetValue(configBreakpoints, 'min', '320px'),

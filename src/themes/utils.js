@@ -1,6 +1,6 @@
 import Color from 'color'
 
-export default {
+export const pallet = {
   violet: Color('#7f00ff'),
   indigo: Color('#3f00ff'),
   blue: Color('#1a99ff'),
@@ -17,4 +17,13 @@ export default {
     darkest: Color('#231f20'),
   },
   black: Color('#000000'),
+}
+
+/**
+ * Return a Color object as an RGB string.
+ * @param {Object} c - Color from 'color'
+ * @returns {string}
+ */
+export const rgb = (c) => {
+  return c.rgb().string()
 }
