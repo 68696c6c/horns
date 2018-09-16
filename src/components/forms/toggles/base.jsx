@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { rgb } from '../../themes/utils'
-import { baseLabel } from './utils'
+import { rgb } from '../../../themes/utils'
+import { baseLabel } from '../label'
 
 export const ToggleControl = styled('label')`
   content: ' ';

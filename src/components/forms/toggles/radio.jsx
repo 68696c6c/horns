@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
 import { cx } from 'react-emotion'
-import { randomString } from '../../utils/utils'
-import { Toggle, ToggleControl, ToggleLabel } from './toggle'
+import { Toggle, ToggleControl, ToggleLabel } from './base'
 
-const Checkbox = ({ label, id, name, value, required, hasError, className, ...others }) => {
+const Radio = ({ label, id, name, value, required, hasError, className, ...others }) => {
   const errorClass = hasError ? 'error' : ''
-  const idValue = id === '' ? randomString() : id
+  const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
       <Toggle
@@ -18,13 +18,13 @@ const Checkbox = ({ label, id, name, value, required, hasError, className, ...ot
         required={required ? 'required' : ''}
         {...others}
       />
-      <ToggleControl htmlFor={idValue} className="toggle-control"/>
+      <ToggleControl htmlFor={idValue} className="toggle-control" round={true}/>
       {label && <ToggleLabel htmlFor={idValue} className={cx('toggle-label', errorClass)}>{label}</ToggleLabel>}
     </React.Fragment>
   )
 }
 
-Checkbox.propTypes = {
+Radio.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,
@@ -33,11 +33,11 @@ Checkbox.propTypes = {
   hasError: PropTypes.bool,
 }
 
-Checkbox.defaultProps = {
+Radio.defaultProps = {
   id: '',
   label: '',
   required: false,
   hasError: false,
 }
 
-export default Checkbox
+export default Radio

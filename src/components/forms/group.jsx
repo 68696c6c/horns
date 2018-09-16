@@ -36,7 +36,7 @@ Styled.propTypes = {
 const FormGroup = ({ heading, breakpoint, className, children, ...others }) => {
   const min = 100 / children.length
   return (
-    <Styled min={min} className={cx(className, 'form-group')}>
+    <Styled min={min} className={cx(className, 'form-group')} {...others}>
       {heading === '' ? '' : <FormGroupHeading text={heading} end={children.length}/>}
       {children.map(child => <Field key={uuid()}>{child}</Field>)}
     </Styled>

@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
-import Label from './label'
-import { baseInput } from './utils'
+import Label from '../label'
+import { baseInput } from './base'
 
 const Styled = styled('textarea')`
   ${({ theme }) => baseInput(theme)}

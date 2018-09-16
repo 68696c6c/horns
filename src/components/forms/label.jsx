@@ -1,7 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
-import { baseLabel } from './utils'
+import styled, { css } from 'react-emotion'
+import { rgb } from '../../themes/utils'
+
+export const baseLabel = (theme) => {
+  return css`
+    font-size: 1em;
+    color: ${rgb(theme.colors.copy.default)};
+    &.error {
+      color: ${rgb(theme.colors.danger.default)};
+    }
+  `
+}
 
 const Label = styled('label')`
   display: block;

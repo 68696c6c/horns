@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const InputHidden = ({ id, name, value, required }) => (
-  <input type="hidden" id={id} name={name} value={value} required={required ? 'required' : ''}/>
+const InputHidden = ({ id, name, value, required, ...others }) => (
+  <input type="hidden" id={id} name={name} value={value} required={required ? 'required' : ''} {...others} />
 )
 
 InputHidden.propTypes = {

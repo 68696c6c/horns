@@ -27,8 +27,8 @@ Legend.propTypes = {
   text: PropTypes.string,
 }
 
-const Fieldset = ({ legend, className, children }) => (
-  <StyledFieldset className={cx(className, 'fieldset')}>
+const Fieldset = ({ legend, className, children, ...others }) => (
+  <StyledFieldset className={cx(className, 'fieldset')} {...others}>
     {legend === '' ? '' : <Legend text={legend}/>}
     {children}
   </StyledFieldset>

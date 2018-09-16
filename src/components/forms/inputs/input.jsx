@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import InputMask from 'react-input-mask'
+import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
-import { randomString } from '../../utils/utils'
-import Label from './label'
-import { baseInput } from './utils'
+import Label from '../label'
+import { baseInput } from './base'
 
 const StyledInput = styled('input')`
   ${({ theme }) => baseInput(theme)}
@@ -15,7 +15,7 @@ const StyledMask = styled(InputMask)`
 
 const Input = ({ type, name, value, id, label, placeholder, required, hasError, className, ...others }) => {
   const errorClass = hasError ? 'error' : ''
-  const idValue = id === '' ? randomString() : id
+  const idValue = id === '' ? uuid() : id
   let Tag = StyledInput
   // @TODO add more masks for other types and use props for the mask format.
   if (type === 'tel') {
@@ -46,9 +46,6 @@ Input.propTypes = {
     'date',
     'datetime-local',
     'email',
-    'file',
-    'hidden',
-    'image',
     'month',
     'number',
     'password',

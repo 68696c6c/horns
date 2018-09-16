@@ -1,15 +1,5 @@
-import { css } from 'react-emotion'
-import { rgb } from '../../themes/utils'
-
-export const baseLabel = (theme) => {
-  return css`
-    font-size: 1em;
-    color: ${rgb(theme.colors.copy.default)};
-    &.error {
-      color: ${rgb(theme.colors.danger.default)};
-    }
-  `
-}
+import { css } from 'emotion'
+import { rgb } from '../../../themes/utils'
 
 export const baseInput = (theme) => {
   return css`
