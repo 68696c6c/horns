@@ -1,6 +1,6 @@
 {
   "name": "kedge-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "UI components for Kedge projects.",
   "dependencies": {
     "color": "^3.0.0",
