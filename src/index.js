@@ -11,4 +11,4 @@ export {
   Textarea,
 } from './components/forms'
 
-export { Area, Grid, } from './components/grid'
+export { Area, Grid } from './components/grids'
