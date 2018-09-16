@@ -1,3 +1,3 @@
-import { Theme } from '../models/theme'
+import Theme from '../models/theme'
 
 export default new Theme()

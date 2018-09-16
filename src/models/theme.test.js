@@ -1,6 +1,6 @@
 import React from 'react'
 import { expectValidTheme } from '../../test/utils'
-import { Theme } from './theme'
+import Theme from './theme'
 
 describe('Theme class', () => {
 
@@ -10,6 +10,7 @@ describe('Theme class', () => {
       result = new Theme()
     })
     it('should return a valid theme object', () => {
+      expect(result instanceof Theme).toEqual(true)
       expectValidTheme(result)
     })
   })

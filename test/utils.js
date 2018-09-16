@@ -1,6 +1,3 @@
-import { Theme } from '../src/models/theme'
-import { ThemeConfig } from '../src/models/config'
-
 export const randomString = (length = 5) => {
   let text = ''
   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -75,7 +72,6 @@ const linkDecorationsKeys = [
 ]
 
 export const expectValidThemeConfig = (result) => {
-  expect(result instanceof ThemeConfig).toEqual(true)
   expect(Object.keys(result).sort()).toEqual(configKeys.sort())
   expect(Object.keys(result.breakpoints).sort()).toEqual(breakpointKeys.sort())
   expect(Object.keys(result.colors).sort()).toEqual(colorKeys.sort())
@@ -147,8 +143,6 @@ const headingKeys = [
 ]
 
 export const expectValidTheme = (result) => {
-  expect(result instanceof Theme).toEqual(true)
-
   expectValidThemeConfig(result.config)
   expect(Object.keys(result).sort()).toEqual(themeKeys.sort())
 

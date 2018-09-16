@@ -1,6 +1,6 @@
 import React from 'react'
 import { expectValidThemeConfig, randomString } from '../../test/utils'
-import { ThemeConfig } from './config'
+import ThemeConfig from './config'
 
 describe('ThemeConfig class', () => {
 
@@ -10,6 +10,7 @@ describe('ThemeConfig class', () => {
       result = new ThemeConfig()
     })
     it('should return a valid theme config object', () => {
+      expect(result instanceof ThemeConfig).toEqual(true)
       expectValidThemeConfig(result)
     })
   })
@@ -48,6 +49,7 @@ describe('ThemeConfig class', () => {
       result = new ThemeConfig(config)
     })
     it('should return a valid theme config object', () => {
+      expect(result instanceof ThemeConfig).toEqual(true)
       expectValidThemeConfig(result)
     })
     it('should override the base config with provided values', () => {
@@ -123,6 +125,7 @@ describe('ThemeConfig class', () => {
       result = new ThemeConfig(config)
     })
     it('should return a valid theme config object', () => {
+      expect(result instanceof ThemeConfig).toEqual(true)
       expectValidThemeConfig(result)
     })
     it('should override the base config with provided values', () => {

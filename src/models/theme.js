@@ -1,6 +1,6 @@
-import { ThemeConfig } from './config'
+import ThemeConfig from './config'
 
-export class Theme {
+class Theme {
   constructor(config) {
 
     this.swatches = [
@@ -174,3 +174,5 @@ export class Theme {
     }
   }
 }
+
+export default Theme

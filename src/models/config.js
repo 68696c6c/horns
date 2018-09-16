@@ -4,7 +4,7 @@ const safeGetValue = (config, key, defaultValue) => {
   return typeof config[key] === 'undefined' ? defaultValue : config[key]
 }
 
-export class ThemeConfig {
+class ThemeConfig {
   constructor(config = {}) {
 
     // @TODO get default values from a config file.
@@ -78,3 +78,5 @@ export class ThemeConfig {
     }
   }
 }
+
+export default ThemeConfig
