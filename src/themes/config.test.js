@@ -1,8 +1,8 @@
 import React from 'react'
 import { randomString } from '../../test/utils'
-import { getConfig } from './config'
+import { ThemeConfig } from './config'
 
-describe('Theme Configuration', () => {
+describe('ThemeConfig class', () => {
 
   const configKeys = [
     'headingMargin',
@@ -79,21 +79,17 @@ describe('Theme Configuration', () => {
     expect(Object.keys(result.linkDecorations).sort()).toEqual(linkDecorationsKeys.sort())
   }
 
-  describe('when getConfig is called with no arguments', () => {
-
+  describe('when called with no arguments', () => {
     let result = {}
     beforeAll(() => {
-      result = getConfig()
+      result = new ThemeConfig()
     })
-
     it('should return a valid theme config object', () => {
       expectValidThemeConfig(result)
     })
-
   })
 
-  describe('when getConfig is called with a partial config', () => {
-
+  describe('when called with a partial config', () => {
     const expectedRadius = randomString()
     const expectedColor = randomString()
     const expectedColorFactor = randomString()
@@ -102,7 +98,6 @@ describe('Theme Configuration', () => {
     const expectedFontSize = randomString()
     const expectedLinkDecoration = randomString()
     let result = {}
-
     beforeAll(() => {
       const config = {
         radius: expectedRadius,
@@ -125,14 +120,12 @@ describe('Theme Configuration', () => {
           hover: expectedLinkDecoration,
         },
       }
-      result = getConfig(config)
+      result = new ThemeConfig(config)
     })
-
     it('should return a valid theme config object', () => {
       expectValidThemeConfig(result)
     })
-
-    it('should override the baseConfig with provided values', () => {
+    it('should override the base config with provided values', () => {
       expect(result.radius).toEqual(expectedRadius)
       expect(result.colors.primary).toEqual(expectedColor)
       expect(result.colorFactors.light).toEqual(expectedColorFactor)
@@ -141,11 +134,9 @@ describe('Theme Configuration', () => {
       expect(result.fontSizes.h4).toEqual(expectedFontSize)
       expect(result.linkDecorations.hover).toEqual(expectedLinkDecoration)
     })
-
   })
 
-  describe('when getConfig is called with a complete config', () => {
-
+  describe('when called with a complete config', () => {
     const config = {
       headingMargin: randomString(),
       gap: randomString(),
@@ -204,17 +195,14 @@ describe('Theme Configuration', () => {
     }
     let result = {}
     beforeAll(() => {
-      result = getConfig(config)
+      result = new ThemeConfig(config)
     })
-
     it('should return a valid theme config object', () => {
       expectValidThemeConfig(result)
     })
-
-    it('should override the baseConfig with provided values', () => {
+    it('should override the base config with provided values', () => {
       expect(result).toEqual(config)
     })
-
   })
 
 })
