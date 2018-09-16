@@ -1,0 +1,28 @@
+---
+name: 'Fieldset'
+menu: Form Components
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Fieldset from './fieldset'
+import Field from './field'
+import Input from './input'
+import Checkbox from './checkbox'
+
+# Fieldset
+
+<Playground>
+  <Fieldset legend="Fieldset">
+    <Field>
+      <Input label="Input inside of a Fieldset" />
+    </Field>
+    <Field>
+      <Checkbox label="Checkbox inside of a Fieldset" />
+    </Field>
+  </Fieldset>
+</Playground>
+
+## Props
+
+<PropsTable of={Fieldset} />
