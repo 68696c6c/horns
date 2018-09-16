@@ -15,5 +15,6 @@ export default App
 injectGlobal`
   .react-live > div > div > div > div:first-child {
     background: white;
+    color: black;
   }
 `
