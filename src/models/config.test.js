@@ -1,83 +1,8 @@
 import React from 'react'
-import { randomString } from '../../test/utils'
+import { expectValidThemeConfig, randomString } from '../../test/utils'
 import { ThemeConfig } from './config'
 
 describe('ThemeConfig class', () => {
-
-  const configKeys = [
-    'headingMargin',
-    'gap',
-    'radius',
-    'breakpoints',
-    'colors',
-    'colorFactors',
-    'fontFamilies',
-    'fontWeights',
-    'fontSizes',
-    'linkDecorations',
-  ]
-  const breakpointKeys = [
-    'min',
-    'small',
-    'medium',
-    'large',
-    'max',
-  ]
-  const colorKeys = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'copy',
-  ]
-  const colorFactorKeys = [
-    'light',
-    'dark',
-  ]
-  const fontFamilyKeys = [
-    'default',
-    'fallback',
-  ]
-  const fontWeightKeys = [
-    'default',
-    'lighter',
-    'light',
-    'semiBold',
-    'bold',
-  ]
-  const fontSizeKeys = [
-    'default',
-    'min',
-    'max',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-  ]
-  const linkDecorationsKeys = [
-    'default',
-    'hover',
-    'active',
-  ]
-
-  const expectValidThemeConfig = (result) => {
-    expect(Object.keys(result).sort()).toEqual(configKeys.sort())
-    expect(Object.keys(result.breakpoints).sort()).toEqual(breakpointKeys.sort())
-    expect(Object.keys(result.colors).sort()).toEqual(colorKeys.sort())
-    expect(Object.keys(result.colorFactors).sort()).toEqual(colorFactorKeys.sort())
-    expect(Object.keys(result.fontFamilies).sort()).toEqual(fontFamilyKeys.sort())
-    expect(Object.keys(result.fontWeights).sort()).toEqual(fontWeightKeys.sort())
-    expect(Object.keys(result.fontSizes).sort()).toEqual(fontSizeKeys.sort())
-    expect(Object.keys(result.linkDecorations).sort()).toEqual(linkDecorationsKeys.sort())
-  }
 
   describe('when called with no arguments', () => {
     let result = {}

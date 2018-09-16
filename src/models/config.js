@@ -1,4 +1,4 @@
-import pallet from './pallet'
+import pallet from '../themes/pallet'
 
 const safeGetValue = (config, key, defaultValue) => {
   return typeof config[key] === 'undefined' ? defaultValue : config[key]

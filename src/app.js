@@ -4,7 +4,6 @@ import { ThemeProvider } from 'emotion-theming'
 import theme from './themes/base'
 
 const App = (props) => {
-  console.log(theme)
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 
