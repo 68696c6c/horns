@@ -1,0 +1,32 @@
+---
+name: 'Link'
+menu: Links
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Link from './link'
+
+# Link
+
+<Playground>
+  <Link href="#">Link</Link>
+</Playground>
+
+## Props
+
+<PropsTable of={Link} />
+
+## Variants
+
+<Playground>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <Link href="#">Default Link</Link>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <Link href="#" variant="dark">Dark Link</Link>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', backgroundColor: 'black', }}>
+    <Link href="#" variant="light">Light Link</Link>
+  </div>
+</Playground>

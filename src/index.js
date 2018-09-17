@@ -14,6 +14,13 @@ export {
 export { Area, Grid } from './components/grids'
 
 export {
+  Link,
+  LinkButton,
+  LinkMailTo,
+  LinkTel,
+} from './components/links'
+
+export {
   Disclaimer,
   HeadingCopy,
   HeadingHero,

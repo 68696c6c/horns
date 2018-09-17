@@ -1,0 +1,53 @@
+---
+name: 'Button Link'
+menu: Links
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import LinkButton from './button'
+
+# LinkButton
+
+<Playground>
+  <LinkButton href="#">Button Link</LinkButton>
+</Playground>
+
+## Props
+
+<PropsTable of={LinkButton} />
+
+## Variants
+
+<Playground>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="primary">Primary</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="secondary">Secondary</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="tertiary">Tertiary</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="light">Light</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="neutral">Neutral</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="dark">Dark</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="success">Success</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="info">Info</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="warning">Warning</LinkButton>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkButton href="#" variant="danger">Danger</LinkButton>
+  </div>
+</Playground>

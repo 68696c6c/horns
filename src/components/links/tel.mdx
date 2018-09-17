@@ -1,0 +1,32 @@
+---
+name: 'Phone Link'
+menu: Links
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import LinkTel from './tel'
+
+# LinkTel
+
+<Playground>
+  <LinkTel phone="123.456.7890">Phone Link</LinkTel>
+</Playground>
+
+## Props
+
+<PropsTable of={LinkTel} />
+
+## Variants
+
+<Playground>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkTel phone="123.456.7890">Default Link</LinkTel>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', }}>
+    <LinkTel phone="123.456.7890" variant="dark">Dark Link</LinkTel>
+  </div>
+  <div style={{ display: 'inline-block', padding: '.5em', backgroundColor: 'black', }}>
+    <LinkTel phone="123.456.7890" variant="light">Light Link</LinkTel>
+  </div>
+</Playground>
