@@ -86,6 +86,7 @@ describe('ThemeConfig class', () => {
         info: randomString(),
         warning: randomString(),
         danger: randomString(),
+        background: randomString(),
         copy: randomString(),
       },
       colorFactors: {

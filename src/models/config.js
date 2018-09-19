@@ -33,6 +33,7 @@ class ThemeConfig {
       info: safeGetValue(configColors, 'info', pallet.blue),
       warning: safeGetValue(configColors, 'warning', pallet.orange),
       danger: safeGetValue(configColors, 'danger', pallet.red),
+      background: safeGetValue(configColors, 'background', pallet.white),
       copy: safeGetValue(configColors, 'copy', pallet.black),
     }
 

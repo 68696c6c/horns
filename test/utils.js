@@ -37,6 +37,7 @@ const colorKeys = [
   'info',
   'warning',
   'danger',
+  'background',
   'copy',
 ]
 const colorFactorKeys = [
@@ -71,7 +72,7 @@ const linkDecorationsKeys = [
   'active',
 ]
 
-export const expectValidThemeConfig = (result) => {
+export const expectValidThemeConfig = result => {
   expect(Object.keys(result).sort()).toEqual(configKeys.sort())
   expect(Object.keys(result.breakpoints).sort()).toEqual(breakpointKeys.sort())
   expect(Object.keys(result.colors).sort()).toEqual(colorKeys.sort())

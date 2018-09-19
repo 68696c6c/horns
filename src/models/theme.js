@@ -37,13 +37,10 @@ class Theme {
       if (colors.hasOwnProperty(swatch)) {
         // @TODO use a color config class
         const color = colors[swatch]
-        result[swatch] = {
-          default: color,
-          light: color.lighten(colorFactors.light),
-          dark: color.darken(colorFactors.dark),
-        }
+        result[swatch] = this.makeColor(color, colorFactors)
       }
     })
+    result.background = this.makeColor(colors.background, colorFactors)
     const copyDefault = colors.copy
     let copyLight, copyDark = null
     if (copyDefault.isDark()) {
@@ -59,6 +56,14 @@ class Theme {
       dark: copyDark,
     }
     return result
+  }
+
+  makeColor(color, colorFactors) {
+    return {
+      default: color,
+      light: color.lighten(colorFactors.light),
+      dark: color.darken(colorFactors.dark),
+    }
   }
 
   getGrid() {
