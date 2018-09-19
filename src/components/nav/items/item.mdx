@@ -1,0 +1,27 @@
+---
+name: 'Nav Item'
+menu: Navs
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import NavItem from './item'
+
+# Nav Item
+
+<Playground>
+  <NavItem href="#">Nav Item</NavItem>
+</Playground>
+
+## Props
+
+<PropsTable of={NavItem} />
+
+## Variants
+
+<Playground>
+  <NavItem href="#">Default Nav Item</NavItem>
+  <NavItem href="#" active={true}>Active Nav Item</NavItem>
+  <NavItem href="#" variant="dark">Dark Nav Item</NavItem>
+  <NavItem href="#" variant="light" style={{ background: 'black', }}>Light Nav Item</NavItem>
+</Playground>
