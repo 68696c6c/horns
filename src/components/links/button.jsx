@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
+import styled, { cx } from 'react-emotion'
 import baseButton from '../buttons/base'
 
+// @TODO use link text-decoration settings.
 const Styled = styled('a')`
   ${({ variant, theme }) => baseButton(theme.buttons[variant], theme.config.fontWeights.bold)}
 `

@@ -1,7 +1,8 @@
 import styled, { css } from 'react-emotion'
 import { rgb } from '../../themes/utils'
 
-const baseLink = (variant) => {
+const baseLink = variant => {
+  const { hover, active } = variant
   return css`
     color: ${rgb(variant.color)};
     text-decoration: ${variant.decoration};
@@ -9,12 +10,12 @@ const baseLink = (variant) => {
       outline: none; 
     }
     &:hover {
-      color: ${rgb(variant.hover.color)};
-      text-decoration: ${variant.hover.decoration};
+      color: ${rgb(hover.color)};
+      text-decoration: ${hover.decoration};
     }
     &:active {
-      color: ${rgb(variant.active.color)};
-      text-decoration: ${variant.active.decoration};
+      color: ${rgb(active.color)};
+      text-decoration: ${active.decoration};
     }
   `
 }

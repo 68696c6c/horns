@@ -12,4 +12,8 @@ Link.propTypes = {
   variant: PropTypes.string,
 }
 
+Link.defaultProps = {
+  variant: 'default',
+}
+
 export default Link
