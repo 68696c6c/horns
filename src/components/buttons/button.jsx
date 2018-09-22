@@ -7,9 +7,9 @@ const Styled = styled('button')`
   ${({ variant, theme }) => baseButton(theme.buttons[variant], theme.config.fontWeights.bold)}
 `
 
-const Button = ({ variant, className, children, ...others }) => {
-  return <Styled variant={variant} className={cx(className, 'button')} {...others}>{children}</Styled>
-}
+const Button = ({ variant, className, children, ...others }) => (
+  <Styled variant={variant} className={cx(className, 'button')} {...others}>{children}</Styled>
+)
 
 Button.propTypes = {
   variant: PropTypes.oneOf([
