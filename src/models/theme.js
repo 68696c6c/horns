@@ -120,17 +120,22 @@ class Theme {
   }
 
   getLinks() {
-    const { primary, secondary, copy } = this.colors
-    return {
-      default: this.makeLink(copy.default, primary.default, secondary.default),
-      dark: this.makeLink(copy.dark, primary.default, secondary.default),
-      light: this.makeLink(copy.light, primary.default, secondary.default),
-    }
+    const { linkDecorations } = this.config
+    const colors = this.colors
+    let result = {}
+    this.swatches.forEach(swatch => {
+      if (swatch !== 'copy' && swatch !== 'background' && colors.hasOwnProperty(swatch)) {
+        const color = colors[swatch]
+        const shade = color.default.isDark() ? 'light' : 'dark'
+        result[swatch] = this.makeLink(color.default, color[shade], color[shade], linkDecorations)
+      }
+    })
+    result.copy = this.makeLink(colors.copy.default, colors.primary.default, colors.secondary.default, linkDecorations)
+    return result
   }
 
   // @TODO use a link config class
-  makeLink(color, hover, active) {
-    const { linkDecorations } = this.config
+  makeLink(color, hover, active, linkDecorations) {
     return {
       color: color,
       decoration: linkDecorations.default,
@@ -149,7 +154,7 @@ class Theme {
     const colors = this.colors
     let result = {}
     this.swatches.forEach(swatch => {
-      if (colors.hasOwnProperty(swatch)) {
+      if (swatch !== 'copy' && swatch !== 'background' && colors.hasOwnProperty(swatch)) {
         const color = colors[swatch]
         const shade = color.default.isDark() ? 'light' : 'dark'
         result[swatch] = this.makeButton(color.default, color[shade], color[shade])

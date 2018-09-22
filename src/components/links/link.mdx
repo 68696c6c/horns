@@ -6,6 +6,7 @@ menu: Links
 import { Playground, PropsTable } from 'docz'
 
 import Link from './link'
+import WrapperInline from '../_demo/wrappers/inline'
 
 # Link
 
@@ -20,13 +21,37 @@ import Link from './link'
 ## Variants
 
 <Playground>
-  <div style={{ display: 'inline-block', padding: '.5em', }}>
-    <Link href="#">Default Link</Link>
-  </div>
-  <div style={{ display: 'inline-block', padding: '.5em', }}>
-    <Link href="#" variant="dark">Dark Link</Link>
-  </div>
-  <div style={{ display: 'inline-block', padding: '.5em', backgroundColor: 'black', }}>
-    <Link href="#" variant="light">Light Link</Link>
-  </div>
+  <WrapperInline>
+    <Link href="#">Default</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="primary">Primary</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="secondary">Secondary</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="tertiary">Tertiary</Link>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <Link href="#" variant="light">Light</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="neutral">Neutral</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="dark">Dark</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="success">Success</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="info">Info</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="warning">Warning</Link>
+  </WrapperInline>
+  <WrapperInline>
+    <Link href="#" variant="danger">Danger</Link>
+  </WrapperInline>
 </Playground>

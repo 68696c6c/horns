@@ -13,7 +13,7 @@ Link.propTypes = {
 }
 
 Link.defaultProps = {
-  variant: 'default',
+  variant: 'copy',
 }
 
 export default Link

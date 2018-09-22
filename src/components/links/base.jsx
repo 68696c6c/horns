@@ -1,5 +1,6 @@
 import styled, { css } from 'react-emotion'
 import { rgb } from '../../themes/utils'
+import baseButton from '../buttons/base'
 
 const baseLink = variant => {
   const { hover, active } = variant
@@ -20,12 +21,13 @@ const baseLink = variant => {
   `
 }
 
+// @TODO use link text-decoration settings.
+export const StyledLinkButton = styled('a')`
+  ${({ variant, theme }) => baseButton(theme.buttons[variant], theme.config.fontWeights.bold)}
+`
+
 const StyledLink = styled('a')`
   ${({ variant, theme }) => baseLink(theme.links[variant])}
 `
-
-StyledLink.defaultProps = {
-  variant: 'default',
-}
 
 export default StyledLink
