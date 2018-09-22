@@ -5,18 +5,20 @@ import { wrapperStyle } from './base'
 
 const Styled = styled('div')`
   ${({ variant, theme }) => wrapperStyle(theme.colors[variant].default, theme)};
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   padding: 1rem;
 `
 
-const WrapperInline = ({ variant, children }) => <Styled variant={variant} className="wrapper-inline">{children}</Styled>
+const WrapperBlock = ({ variant, children }) => <Styled variant={variant} className="wrapper-columns">{children}</Styled>
 
-WrapperInline.propTypes = {
+WrapperBlock.propTypes = {
   variant: PropTypes.string,
 }
 
-WrapperInline.defaultProps = {
+WrapperBlock.defaultProps = {
   variant: 'background',
 }
 
-export default WrapperInline
+export default WrapperBlock
