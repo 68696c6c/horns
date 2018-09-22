@@ -1,0 +1,64 @@
+---
+name: 'Unordered List'
+menu: Lists
+---
+
+import { Playground, PropsTable } from 'docz'
+import { FaBeer, FaArrowCircleUp } from 'react-icons/fa'
+
+import ListUnordered from './unordered'
+
+# Unordered List
+
+<Playground>
+  <ListUnordered>
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+  </ListUnordered>
+</Playground>
+
+## Props
+
+<PropsTable of={ListUnordered} />
+
+## Types
+
+<Playground>
+  <ul>
+    <li>Default UL</li>
+  </ul>
+  <ListUnordered type="none">
+    <li>No Symbols</li>
+  </ListUnordered>
+  <ListUnordered type="disc">
+    <li>Disc</li>
+  </ListUnordered>
+  <ListUnordered type="circle">
+    <li>Circle</li>
+  </ListUnordered>
+  <ListUnordered type="square">
+    <li>Square</li>
+  </ListUnordered>
+  <ListUnordered type="icon" icon={<FaBeer/>}>
+    <li>This Item uses the list's default icon</li>
+    <li icon={<FaArrowCircleUp/>}>This Item uses it's own icon</li>
+  </ListUnordered>
+</Playground>
+
+## Variants
+
+<Playground>
+  <ListUnordered type="none">
+    <li>No Symbols</li>
+  </ListUnordered>
+  <ListUnordered type="disc" variant="primary">
+    <li>Primary</li>
+  </ListUnordered>
+  <ListUnordered type="circle" variant="secondary">
+    <li>Circle</li>
+  </ListUnordered>
+  <ListUnordered type="square" variant="tertiary">
+    <li>Square</li>
+  </ListUnordered>
+</Playground>
