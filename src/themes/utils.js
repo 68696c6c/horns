@@ -27,3 +27,12 @@ export const pallet = {
 export const rgb = (c) => {
   return c.rgb().string()
 }
+
+/**
+ * Return a CSS property value as a unit-less integer.
+ * @param cssVal
+ * @returns {*}
+ */
+export const valueToInt = (cssVal) => {
+  return cssVal.replace('px', '').replace('rem', '').replace('em', '').replace('vw', '').replace('vh', '')
+}
