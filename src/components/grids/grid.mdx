@@ -7,23 +7,15 @@ import { Playground, PropsTable } from 'docz'
 
 import Grid from './grid'
 import Area from './area'
+import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Grid
 
-<Playground>
+<FullscreenDemo variant="dark" of={Grid} title="Grid">
   <Grid style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
     <Area style={{ backgroundColor: 'teal', }}>The Grid is orange</Area>
     <Area style={{ backgroundColor: 'teal', }}>The columns are teal</Area>
   </Grid>
-</Playground>
-
-## Props
-
-<PropsTable of={Grid} />
-
-## Variants
-
-<Playground>
   <Grid variant="equal" style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
     <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
     <Area style={{ backgroundColor: 'teal', }}>Equal Grid Column</Area>
@@ -46,4 +38,8 @@ import Area from './area'
       Thirds Grid - Right
     </Area>
   </Grid>
-</Playground>
+</FullscreenDemo>
+
+## Props
+
+<PropsTable of={Grid} />
