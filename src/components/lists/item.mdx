@@ -1,0 +1,60 @@
+---
+name: 'List Item'
+menu: Lists
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import ListItem from './item'
+import ListUnordered from './unordered'
+import ListOrdered from './ordered'
+
+# ListItem
+
+<Playground>
+  <ListUnordered>
+    <ListItem>List Item</ListItem>
+  </ListUnordered>
+</Playground>
+
+## Props
+
+<PropsTable of={ListItem} />
+
+## Types
+
+<Playground>
+  <ListUnordered>
+    <ListItem type="none">Unordered Types</ListItem>
+    <ListItem type="disc">disc</ListItem>
+    <ListItem type="circle">circle</ListItem>
+    <ListItem type="square">square</ListItem>
+  </ListUnordered>
+  <hr/>
+  <ListOrdered>
+    <ListItem type="none">Ordered Types</ListItem>
+    <ListItem type="armenian">armenian</ListItem>
+    <ListItem type="cjk-ideographic">cjk-ideographic</ListItem>
+    <ListItem type="decimal-leading-zero">decimal-leading-zero</ListItem>
+    <ListItem type="georgian">georgian</ListItem>
+    <ListItem type="hebrew">hebrew</ListItem>
+    <ListItem type="hiragana">hiragana</ListItem>
+    <ListItem type="hiragana-iroha">hiragana-iroha</ListItem>
+    <ListItem type="katakana">katakana</ListItem>
+    <ListItem type="katakana-iroha">katakana-iroha</ListItem>
+    <ListItem type="lower-alpha">lower-alpha</ListItem>
+    <ListItem type="lower-greek">lower-greek</ListItem>
+    <ListItem type="lower-latin">lower-latin</ListItem>
+    <ListItem type="lower-roman">lower-roman</ListItem>
+    <ListItem type="none">none</ListItem>
+    <ListItem type="upper-alpha">upper-alpha</ListItem>
+    <ListItem type="upper-greek">upper-greek</ListItem>
+    <ListItem type="upper-latin">upper-latin</ListItem>
+    <ListItem type="upper-roman">upper-roman</ListItem>
+  </ListOrdered>
+</Playground>
+
+## Variants
+
+<Playground>
+</Playground>
