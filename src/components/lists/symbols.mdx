@@ -1,72 +1,56 @@
 ---
-name: 'Unordered List'
+name: 'Symbol List'
 menu: Lists
 ---
 
 import { Playground, PropsTable } from 'docz'
-import { FaBeer, FaArrowCircleUp } from 'react-icons/fa'
+import { FaArrowRight, FaArrowUp } from 'react-icons/fa'
 
-import ListUnordered from './unordered'
+import ListSymbols from './symbols'
 import ListItem from './item'
 
-# Unordered List
+# Symbol List
 
 <Playground>
-  <ListUnordered>
+  <ListSymbols icon={<FaArrowRight/>}>
     <li>One</li>
     <li>Two</li>
     <li>Three</li>
-  </ListUnordered>
+  </ListSymbols>
 </Playground>
 
 ## Props
 
-<PropsTable of={ListUnordered} />
+<PropsTable of={ListSymbols} />
 
-## Types
+## Icons
 
 <Playground>
-  <ul>
-    <li>Default UL</li>
-  </ul>
-  <hr/>
-  <ListUnordered>
+  <ListSymbols icon={<FaArrowRight/>}>
     <li>Can use plain li's or ListItem components.</li>
-    <li type="square" variant="primary">Plain li's will be converted to ListItem components, allowing them to accept props.</li>
-  </ListUnordered>
+    <li variant="primary">Plain li's will be converted to ListItem components, allowing them to accept props.</li>
+  </ListSymbols>
   <hr/>
-  <ListUnordered type="none">
-    <ListItem>None</ListItem>
-  </ListUnordered>
-  <hr/>
-  <ListUnordered type="disc">
-    <ListItem>Disc</ListItem>
-  </ListUnordered>
-  <hr/>
-  <ListUnordered type="circle">
-    <ListItem>Circle</ListItem>
-  </ListUnordered>
-  <hr/>
-  <ListUnordered type="square">
-    <ListItem>Square</ListItem>
-    <ListItem type="disc">This item overrides the list's type.</ListItem>
-  </ListUnordered>
+  <ListSymbols icon={<FaArrowRight/>}>
+    <li>This item uses the list's default icon.</li>
+    <li icon={<FaArrowUp/>}>This item uses it's own icon.</li>
+  </ListSymbols>
 </Playground>
 
 ## Variants
 
 <Playground>
-  <ListUnordered type="circle" variant="primary">
+  <ListSymbols icon={<FaArrowRight/>} variant="primary">
     <ListItem>This list uses the list's variant.</ListItem>
     <ListItem>All symbols are the theme's primary color.</ListItem>
-  </ListUnordered>
+  </ListSymbols>
   <hr/>
-  <ListUnordered type="disc" variant="primary">
+  <ListSymbols icon={<FaArrowRight/>} variant="primary">
     <ListItem>This item has no variant and uses the list's variant.</ListItem>
     <ListItem variant="danger">This item overrides the list's variant.</ListItem>
-  </ListUnordered>
+  </ListSymbols>
   <hr/>
-  <ListUnordered type="square">
+  <ListSymbols icon={<FaArrowRight/>}>
     <ListItem variant="primary">Primary</ListItem>
     <ListItem variant="secondary">Secondary</ListItem>
     <ListItem variant="tertiary">Tertiary</ListItem>
@@ -78,5 +62,5 @@ import ListItem from './item'
     <ListItem variant="warning">Warning</ListItem>
     <ListItem variant="danger">Danger</ListItem>
     <ListItem variant="copy">Copy</ListItem>
-  </ListUnordered>
+  </ListSymbols>
 </Playground>

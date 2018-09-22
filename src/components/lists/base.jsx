@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
-import { rgb } from '../../themes/utils'
+import { isUndefined } from '../../utils/utils'
+import ListItem from './item'
 
 export const COUNTER = 'li'
 
@@ -31,33 +32,32 @@ export const TYPES_UNORDERED = [
   'circle',
   'none',
   'square',
-  'icon',
 ]
 
-const liStyle = (content, width, color) => {
-  return css`
-    padding-left: ${width};
-    &::before {
-      content: ${content};
-      counter-increment: ${COUNTER};
-      display: inline-block;
-      width: ${width};
-      margin-left: -${width};
-      color: ${rgb(color)};
-      text-align: right;
-      margin-right: .5rem;
+export const renderItems = (children, variant, type = undefined, icon = undefined) => {
+  const childrenArray = children.constructor === Array ? children : [children]
+  return childrenArray.map(child => {
+    let props = {
+      ...child.props
     }
-  `
+    if (isUndefined(props.variant)) {
+      props.variant = variant
+    }
+    if (isUndefined(props.type) && !isUndefined(type)) {
+      props.type = type
+    }
+    if (isUndefined(props.icon) && !isUndefined(icon)) {
+      props.icon = icon
+    }
+    return <ListItem {...props}>{child.props.children}</ListItem>
+  })
 }
 
-const baseList = (content, width, color) => {
+const baseList = () => {
   return css`
     list-style: none inside;
     padding: 0;
     margin: .5rem 0;
-    > li {
-      ${liStyle(content, width, color)};
-    }
     li {
       margin-bottom: .5rem;
     }

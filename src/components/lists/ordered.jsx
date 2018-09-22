@@ -1,20 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import baseList, { COUNTER, TYPES_ORDERED } from './base'
+import baseList, { COUNTER, renderItems, TYPES_ORDERED } from './base'
 
 const Styled = styled('ol')`
+  ${baseList()};
   counter-reset: ${COUNTER};
-  ${({ counter, itemWidth, variant, theme }) => baseList(counter, itemWidth, theme.colors[variant].default)};
+  > li {
+    padding-left: 1.5rem;
+    &::before {
+      counter-increment: ${COUNTER};
+      width: 1.5rem;
+      margin-left: -1.5rem;
+    }  
+  }
 `
 
-const ListOrdered = ({ type, variant, className, children, ...others }) => {
-  const content = `counter(${COUNTER}, ${type}) '.'`
-  const width = '1.5rem'
-  return (
-    <Styled counter={content} itemWidth={width} variant={variant} className={className} {...others}>{children}</Styled>
-  )
-}
+const ListOrdered = ({ type, variant, className, children, ...others }) => (
+  <Styled variant={variant} className={className} {...others}>{renderItems(children, variant, type)}</Styled>
+)
 
 ListOrdered.propTypes = {
   type: PropTypes.oneOf([

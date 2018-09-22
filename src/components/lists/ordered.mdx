@@ -6,6 +6,7 @@ menu: Lists
 import { Playground, PropsTable } from 'docz'
 
 import ListOrdered from './ordered'
+import ListItem from './item'
 
 # Ordered List
 
@@ -28,27 +29,71 @@ import ListOrdered from './ordered'
 
 <PropsTable of={ListOrdered} />
 
-## Variants
+## Types
 
 <Playground>
   <ol>
     <li>Default OL</li>
-    <li>Two</li>
-    <li>Three</li>
-    <li>Four</li>
-    <li>Five</li>
-    <li>Six</li>
-    <li>Seven</li>
-    <li>Eight</li>
-    <li>Nine</li>
-    <li>Ten</li>
   </ol>
-  <ListOrdered type="decimal" variant="primary">
-    <li>Decimal List</li>
-    <li>Primary color</li>
+  <hr/>
+  <ListOrdered>
+    <li>Can use plain li's or ListItem components.</li>
+    <li type="armenian" variant="primary">Plain li's will be converted to ListItem components, allowing them to accept props.</li>
   </ListOrdered>
-  <ListOrdered type="lower-alpha" variant="secondary">
-    <li>Lower Alphabetical List</li>
-    <li>Secondary color</li>
+  <hr/>
+  <ListOrdered>
+    <ListItem>Decimal counters are used by default.</ListItem>
+    <ListItem>Decimal</ListItem>
+    <ListItem type="katakana">Items can override the list's type</ListItem>
+  </ListOrdered>
+  <hr/>
+  <ListOrdered>
+    <ListItem>All CSS list-style-types are supported.</ListItem>
+    <ListItem type="armenian">armenian</ListItem>
+    <ListItem type="cjk-ideographic">cjk-ideographic</ListItem>
+    <ListItem type="decimal-leading-zero">decimal-leading-zero</ListItem>
+    <ListItem type="georgian">georgian</ListItem>
+    <ListItem type="hebrew">hebrew</ListItem>
+    <ListItem type="hiragana">hiragana</ListItem>
+    <ListItem type="hiragana-iroha">hiragana-iroha</ListItem>
+    <ListItem type="katakana">katakana</ListItem>
+    <ListItem type="katakana-iroha">katakana-iroha</ListItem>
+    <ListItem type="lower-alpha">lower-alpha</ListItem>
+    <ListItem type="lower-greek">lower-greek</ListItem>
+    <ListItem type="lower-latin">lower-latin</ListItem>
+    <ListItem type="lower-roman">lower-roman</ListItem>
+    <ListItem type="none">none</ListItem>
+    <ListItem type="upper-alpha">upper-alpha</ListItem>
+    <ListItem type="upper-greek">upper-greek</ListItem>
+    <ListItem type="upper-latin">upper-latin</ListItem>
+    <ListItem type="upper-roman">upper-roman</ListItem>
+  </ListOrdered>
+</Playground>
+
+## Variants
+
+<Playground>
+  <ListOrdered variant="primary">
+    <ListItem>This list uses the list's variant.</ListItem>
+    <ListItem>All symbols are the theme's primary color.</ListItem>
+  </ListOrdered>
+  <hr/>
+  <ListOrdered variant="primary">
+    <ListItem>This item has no variant and uses the list's variant.</ListItem>
+    <ListItem variant="danger">This item overrides the list's variant.</ListItem>
+  </ListOrdered>
+  <hr/>
+  <ListOrdered>
+    <ListItem variant="primary">Primary</ListItem>
+    <ListItem variant="secondary">Secondary</ListItem>
+    <ListItem variant="tertiary">Tertiary</ListItem>
+    <ListItem variant="light">Light</ListItem>
+    <ListItem variant="neutral">Neutral</ListItem>
+    <ListItem variant="dark">Dark</ListItem>
+    <ListItem variant="success">Success</ListItem>
+    <ListItem variant="info">Info</ListItem>
+    <ListItem variant="warning">Warning</ListItem>
+    <ListItem variant="danger">Danger</ListItem>
+    <ListItem variant="copy">Copy</ListItem>
   </ListOrdered>
 </Playground>

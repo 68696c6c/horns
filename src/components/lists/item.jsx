@@ -3,18 +3,15 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { rgb } from '../../themes/utils'
 import { COUNTER, TYPES_ORDERED, TYPES_UNORDERED } from './base'
+import { isUndefined } from '../../utils/utils'
 
 const Styled = styled('li')`
-  padding-left: ${({ itemWidth }) => itemWidth};
   &::before {
     content: ${({ symbolContent }) => symbolContent};
-    counter-increment: ${COUNTER};
     display: inline-block;
-    width: ${({ itemWidth }) => itemWidth};
-    margin-left: -${({ itemWidth }) => itemWidth};
     color: ${({ variant, theme }) => rgb(theme.colors[variant].default)};
     text-align: right;
-    margin-right: .5rem;
+    margin-right: .5em;
   }
 `
 
@@ -26,20 +23,24 @@ const typeSymbolMap = {
   icon: '',
 }
 
-const ListItem = ({ type, variant, width, className, children, ...others }) => {
-  const content = TYPES_UNORDERED.indexOf(type) > -1 ? `'${typeSymbolMap[type]}'` : type
+const ListItem = ({ type, variant, icon, width, className, children, ...others }) => {
+  let content = ''
+  if (TYPES_UNORDERED.indexOf(type) > -1) {
+    content = `'${typeSymbolMap[type]}'`
+  } else if (TYPES_ORDERED.indexOf(type) > -1) {
+    content = `counter(${COUNTER}, ${type}) '.'`
+  }
+  variant = isUndefined(variant) ? 'copy' : variant
   return (
     <Styled symbolContent={content} itemWidth={width} variant={variant} className={className} {...others}>
+      {icon}
       {children}
     </Styled>
   )
 }
 
 ListItem.propTypes = {
-  type: PropTypes.oneOf([
-    ...TYPES_ORDERED,
-    ...TYPES_UNORDERED,
-  ]),
+  type: PropTypes.string,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -53,12 +54,11 @@ ListItem.propTypes = {
     'danger',
     'copy',
   ]),
-  width: PropTypes.string,
   icon: PropTypes.element,
+  width: PropTypes.string,
 }
 
 ListItem.defaultProps = {
-  variant: 'copy',
   width: '1rem',
 }
 

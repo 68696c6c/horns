@@ -1,27 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import baseList, { TYPES_UNORDERED } from './base'
+import baseList, { renderItems, TYPES_UNORDERED } from './base'
 
 const Styled = styled('ul')`
-  ${({ counter, itemWidth, variant, theme }) => baseList(counter, itemWidth, theme.colors[variant].default)};
+  ${baseList()}
 `
 
-const typeSymbolMap = {
-  disc: '●',
-  circle: '○',
-  none: '',
-  square: '■',
-  icon: '',
-}
-
-const ListUnordered = ({ type, variant, className, children, ...others }) => {
-  const content = `'${typeSymbolMap[type]}'`
-  const width = '1rem'
-  return (
-    <Styled counter={content} itemWidth={width} variant={variant} className={className} {...others}>{children}</Styled>
-  )
-}
+const ListUnordered = ({ type, variant, className, children, ...others }) => (
+  <Styled className={className} {...others}>{renderItems(children, variant, type)}</Styled>
+)
 
 ListUnordered.propTypes = {
   type: PropTypes.oneOf([
