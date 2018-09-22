@@ -128,9 +128,17 @@ const buttonValueKeys = [
   'active',
 ]
 const linkKeys = [
-  'default',
-  'dark',
+  'primary',
+  'secondary',
+  'tertiary',
   'light',
+  'neutral',
+  'dark',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'copy',
 ]
 const linkValueKeys = [
   'color',
