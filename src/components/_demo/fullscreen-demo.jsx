@@ -50,6 +50,7 @@ const StyledWindow = styled('div')`
   height: 100vh;
   top: 0;
   left: 0;
+  overflow: scroll;
 `
 const StyledPreview = styled('div')`
   margin: 2rem 0;

@@ -16,7 +16,7 @@ const StyledThirds = styled('div')`
     display: grid;
     grid-template-rows: auto;
     grid-template-areas: "left right";
-    grid-template-columns: ${props => props.side === 'left' ? '2fr 1fr' : '1fr 2fr'};
+    grid-template-columns: ${props => props.side === 'left' ? '1fr 2fr' : '2fr 1fr'};
     grid-gap: ${props => props.gap ? props.theme.grid.gap : '0px'};
   }
   @media(min-width: ${props => props.theme.grid.container}) {
@@ -24,7 +24,7 @@ const StyledThirds = styled('div')`
       const gutter = `((100vw - ${props.theme.grid.container}) / 2)`
       const oneThird = `calc((${props.theme.grid.container} / 3) + ${gutter})`
       const twoThirds = `calc(((${props.theme.grid.container} / 3) * 2) + ${gutter})`
-      return props.side === 'left' ? `${twoThirds} ${oneThird}` : `${oneThird} ${twoThirds}`
+      return props.side === 'left' ? `${oneThird} ${twoThirds}` : `${twoThirds} ${oneThird}`
     }};
     > :nth-child(odd) {
       padding-left: calc(((100vw - ${props => props.theme.grid.container}) / 2));

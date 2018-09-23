@@ -1,0 +1,80 @@
+---
+name: 'Grid - Stacked'
+menu: Layout
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import GridStacked from './stacked'
+import Area from '../grids/area'
+import Wrapper from '../_demo/wrappers/wrapper'
+import WrapperFluid from '../_demo/wrappers/fluid'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+
+# GridStacked
+
+<FullscreenDemo variant="dark" of={GridStacked} title="GridStacked">
+  <GridStacked>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+  </GridStacked>
+  <h1 style={{ marginLeft: '2em' }}>Primary</h1>
+  <GridStacked variant="primary">
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+  </GridStacked>
+  <h1 style={{ marginLeft: '2em' }}>Secondary</h1>
+  <GridStacked variant="secondary">
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+  </GridStacked>
+  <h1 style={{ marginLeft: '2em' }}>Tertiary</h1>
+  <GridStacked variant="tertiary">
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+    <Area>Left</Area>
+    <Area>Right</Area>
+  </GridStacked>
+</FullscreenDemo>
+
+## Props
+
+<PropsTable of={GridStacked} />
