@@ -39,6 +39,7 @@ class ThemeConfig {
 
     const configColorFactors = safeGetValue(config, 'colorFactors', {})
     this.colorFactors = {
+      alpha: safeGetValue(configColorFactors, 'alpha', .3),
       light: safeGetValue(configColorFactors, 'light', .2),
       dark: safeGetValue(configColorFactors, 'dark', .2),
     }

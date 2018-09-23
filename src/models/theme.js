@@ -61,6 +61,7 @@ class Theme {
   makeColor(color, colorFactors) {
     return {
       default: color,
+      alpha: color.alpha(colorFactors.alpha),
       light: color.lighten(colorFactors.light),
       dark: color.darken(colorFactors.dark),
     }
@@ -78,11 +79,9 @@ class Theme {
       // @TODO support custom fonts
       fonts: {
         default: this.makeFont('default'),
-        // montBook: this.getFont('montRegular', 'lighter'),
-        // montLight: this.getFont('montRegular', 'light'),
-        // montRegular: this.getFont('montRegular'),
-        // montSemiBold: this.getFont('montSemiBold', 'semiBold'),
-        // montBold: this.getFont('montBold', 'bold'),
+        light: this.makeFont('default', 'light'),
+        semiBold: this.makeFont('default', 'semiBold'),
+        bold: this.makeFont('default', 'bold'),
       },
       headings: this.getHeadings(),
     }
