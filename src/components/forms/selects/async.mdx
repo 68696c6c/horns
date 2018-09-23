@@ -1,0 +1,20 @@
+---
+name: 'Select - Async'
+menu: Forms
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import SelectAsync from './async'
+import loadOptions, { loadOptionsPromise } from '../../_demo/select-async-data'
+
+# SelectAsync
+
+<Playground>
+  <SelectAsync loadOptions={loadOptions} label="Select Async" name="demo" />
+</Playground>
+
+## Props
+
+<PropsTable of={SelectAsync} />
+
