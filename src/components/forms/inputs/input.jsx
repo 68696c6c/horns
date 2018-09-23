@@ -25,7 +25,7 @@ const Input = ({ type, name, value, id, label, placeholder, required, hasError, 
   }
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={id} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
       <Tag
         type={type}
         name={name}

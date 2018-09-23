@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import Label from '../label'
 import { baseInput } from './base'
@@ -10,12 +11,13 @@ const Styled = styled('textarea')`
 
 const Textarea = ({ name, value, id, label, placeholder, required, hasError, className, ...others }) => {
   const errorClass = hasError ? 'error' : ''
+  const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={id} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
       <Styled
         name={name}
-        id={id}
+        id={idValue}
         className={cx(className, 'textarea', errorClass)}
         placeholder={placeholder}
         required={required ? 'required' : ''}
