@@ -9,6 +9,8 @@ import Table from './table'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
+import Section from '../layout/section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Table
 
@@ -37,6 +39,311 @@ import TableRow from './table-row'
   </Table>
 </Playground>
 
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={Table} title="Table">
+  <Section padded={false}>
+    <p style={{ marginTop: 0, color: 'white' }}>
+      This table will change to a stacked layout at the medium breakpoint.  Stacking is the default responsive behavior.
+    </p>
+  </Section>
+  <Table breakpoint="medium">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <Section padded={false}>
+    <p style={{ color: 'white' }}>
+      This table will scroll at the medium breakpoint.
+    </p>
+  </Section>
+  <Table breakpoint="medium" responsive="scroll">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+      <TableCell>Column 4</TableCell>
+      <TableCell>Column 5</TableCell>
+      <TableCell>Column 6</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
+      <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
+      <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
+      <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
+      <TableCell>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</TableCell>
+      <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
+      <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
+      <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
+      <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
+      <TableCell>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</TableCell>
+      <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
+      <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
+      <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
+      <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
+      <TableCell>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</TableCell>
+      <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
+    </TableRow>
+  </Table>
+</FullscreenDemo>
+
 ## Props
 
 <PropsTable of={Table} />
+
+## Variants
+
+<Playground>
+  <Table variant="primary">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="secondary">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="tertiary">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="light">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="neutral">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="dark">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="success">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="info">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="warning">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+  <br/>
+  <Table variant="danger">
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+</Playground>
