@@ -5,6 +5,7 @@ import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import Label from '../label'
 import { baseInput } from './base'
+import { ERROR_CLASS } from '../utils'
 
 const StyledInput = styled('input')`
   ${({ theme }) => baseInput(theme)}
@@ -14,7 +15,7 @@ const StyledMask = styled(InputMask)`
 `
 
 const Input = ({ type, name, value, id, label, placeholder, required, hasError, className, ...others }) => {
-  const errorClass = hasError ? 'error' : ''
+  const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   let Tag = StyledInput
   // @TODO add more masks for other types and use props for the mask format.

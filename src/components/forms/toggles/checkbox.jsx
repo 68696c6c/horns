@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { cx } from 'react-emotion'
 import { Toggle, ToggleControl, ToggleLabel } from './base'
+import { ERROR_CLASS } from '../utils'
 
 const Checkbox = ({ label, id, name, value, required, hasError, className, ...others }) => {
-  const errorClass = hasError ? 'error' : ''
+  const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
