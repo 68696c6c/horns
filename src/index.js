@@ -11,13 +11,18 @@ export {
   Textarea,
 } from './components/forms'
 
-export { Area, Grid } from './components/grids'
+export {
+  Area,
+  Grid,
+  GridStacked,
+  Section,
+} from './components/layout'
 
 export {
   Link,
   LinkButton,
-  LinkMailTo,
-  LinkTel,
+  LinkEmail,
+  LinkPhone,
 } from './components/links'
 
 export {
