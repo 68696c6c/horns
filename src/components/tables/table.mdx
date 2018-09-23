@@ -1,0 +1,42 @@
+---
+name: 'Table'
+menu: Tables
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Table from './table'
+import TableCell from './table-cell'
+import TableHead from './table-head'
+import TableRow from './table-row'
+
+# Table
+
+<Playground>
+  <Table>
+    <TableHead>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Column 1</TableCell>
+      <TableCell>Column 2</TableCell>
+      <TableCell>Column 3</TableCell>
+    </TableRow>
+  </Table>
+</Playground>
+
+## Props
+
+<PropsTable of={Table} />
