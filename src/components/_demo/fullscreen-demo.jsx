@@ -9,6 +9,7 @@ const DARK_SECONDARY = '#2D3747'
 const DARK_TERTIARY = '#1D2330'
 const DARK_ACCENT = '#1DCAD3'
 const DARK_FONT = '#CED4DE'
+const DARK_FONT_LIGHT = '#EEF1F5'
 
 const StyledButton = styled('button')`
   background: ${({ variant }) => variant === 'light' ? 'white' : DARK};
@@ -31,12 +32,16 @@ const StyledWindowBar = styled('div')`
   padding: 1em 1.5em 1em 2em;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-height: 90px;
   h1 {
     margin: 0;
     font-size: 36px;
     font-weight: 100;
     letter-spacing: -0.02em;
-    color: #EEF1F5;
+    color: ${DARK_FONT_LIGHT};
   }
   button {
     align-self: center;
@@ -50,7 +55,10 @@ const StyledWindow = styled('div')`
   height: 100vh;
   top: 0;
   left: 0;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-width: 100%;
+  padding-top: 90px;
 `
 const StyledPreview = styled('div')`
   margin: 2rem 0;
