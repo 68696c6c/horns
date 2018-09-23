@@ -1,0 +1,47 @@
+---
+name: 'Select'
+menu: Forms
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Select from './single'
+
+# Select
+
+<Playground>
+  <Select label="Select" name="demo">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+</Playground>
+
+## Props
+
+<PropsTable of={Select} />
+
+## Examples
+
+<Playground>
+  <Select label="Placeholder Example" name="placeholder" placeholder="Placeholder Text">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+  <Select label="Default Value Example" name="value" value="1">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+  <Select label="Required Example" name="required" required={true}>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+  <Select label="Error State Example" name="error" hasError={true}>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
+</Playground>
