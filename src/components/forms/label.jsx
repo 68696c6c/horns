@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'react-emotion'
 import { rgb } from '../../themes/utils'
+import { ERROR_CLASS } from './utils'
 
 export const baseLabel = (theme) => {
   return css`
     font-size: 1em;
     color: ${rgb(theme.colors.copy.default)};
-    &.error {
+    &.${ERROR_CLASS} {
       color: ${rgb(theme.colors.danger.default)};
     }
   `
