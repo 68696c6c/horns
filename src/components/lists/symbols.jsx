@@ -17,13 +17,9 @@ const Styled = styled('ul')`
   }
 `
 
-const ListSymbols = ({ icon, variant, className, children, ...others }) => {
-  return (
-    <Styled variant={variant} className={className} {...others}>
-      {renderItems(children, variant, undefined, icon)}
-    </Styled>
-  )
-}
+const ListSymbols = ({ icon, variant, className, children, ...others }) => (
+  <Styled variant={variant} className={className} {...others}>{renderItems(children, variant, undefined, icon)}</Styled>
+)
 
 ListSymbols.propTypes = {
   icon: PropTypes.element,
