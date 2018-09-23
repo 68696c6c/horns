@@ -1,5 +1,6 @@
 import { css } from 'emotion'
 import { rgb } from '../../../themes/utils'
+import { ERROR_CLASS } from '../utils'
 
 export const baseInput = (theme) => {
   return css`
@@ -11,7 +12,7 @@ export const baseInput = (theme) => {
     margin: 0 0 1em 0;
     padding: .5rem;
     font-size: 1em;
-    &.error {
+    &.${ERROR_CLASS} {
       border: 2px solid ${rgb(theme.colors.danger.default)};
       &::placeholder {
         color: ${rgb(theme.colors.danger.default)};
