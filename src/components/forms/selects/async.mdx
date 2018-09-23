@@ -6,7 +6,7 @@ menu: Forms
 import { Playground, PropsTable } from 'docz'
 
 import SelectAsync from './async'
-import loadOptions, { loadOptionsPromise } from '../../_demo/select-async-data'
+import loadOptions from '../../_demo/select-async-data'
 
 # SelectAsync
 
@@ -18,3 +18,13 @@ import loadOptions, { loadOptionsPromise } from '../../_demo/select-async-data'
 
 <PropsTable of={SelectAsync} />
 
+## Examples
+
+<Playground>
+  <SelectAsync loadOptions={loadOptions} id="select-async" label="Callback Example" name="callback" />
+  <SelectAsync loadOptions={loadOptions} id="select-async-filter" label="Filter Example - @TODO" name="filter" />
+  <SelectAsync loadOptions={loadOptions} id="select-async-placeholder" label="Placeholder Example" name="callback_placeholder" placeholder="Placeholder Text" />
+  <SelectAsync loadOptions={loadOptions} id="select-async-default" label="Default Value Example" name="callback_value" value="1"/>
+  <SelectAsync loadOptions={loadOptions} id="select-async-required" label="Required Example" name="callback_required" required={true} />
+  <SelectAsync loadOptions={loadOptions} id="select-async-error" label="Error State Example" name="callback_error" hasError={true} />
+</Playground>

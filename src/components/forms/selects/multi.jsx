@@ -6,7 +6,7 @@ import Label from '../label'
 import { ERROR_CLASS } from '../utils'
 import StyledSelect from './base'
 
-const SelectMulti = ({ name, value, id, label, placeholder, required, hasError, className, children }) => {
+const SelectMulti = ({ name, value, id, label, required, hasError, className, children, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
@@ -15,11 +15,11 @@ const SelectMulti = ({ name, value, id, label, placeholder, required, hasError, 
       <StyledSelect
         multiple
         name={name}
-        value={value}
+        defaultValue={value}
         id={idValue}
         className={cx(className, 'select', errorClass)}
-        placeholder={placeholder}
         required={required}
+        {...others}
       >
         {children}
       </StyledSelect>
@@ -35,7 +35,6 @@ SelectMulti.propTypes = {
   ]),
   id: PropTypes.string,
   label: PropTypes.string,
-  placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
 }
@@ -43,7 +42,6 @@ SelectMulti.propTypes = {
 SelectMulti.defaultProps = {
   id: '',
   label: '',
-  placeholder: '',
   required: false,
   hasError: false,
 }
