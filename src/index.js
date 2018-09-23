@@ -26,6 +26,21 @@ export {
 } from './components/links'
 
 export {
+  ListItem,
+  ListOrdered,
+  ListSymbols,
+  ListUnordered,
+} from './components/lists'
+
+export {
+  DataTable,
+  Table,
+  TableCell,
+  TableHead,
+  TableRow,
+} from './components/tables'
+
+export {
   Disclaimer,
   HeadingCopy,
   HeadingHero,
