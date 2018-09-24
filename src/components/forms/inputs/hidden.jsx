@@ -18,7 +18,6 @@ const InputHidden = ({ id, name, value, required, hasError, className, ...others
 InputHidden.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
 }

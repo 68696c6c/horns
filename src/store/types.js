@@ -1,0 +1,5 @@
+const SET_ACTIVE_SELECT = 'SET_ACTIVE_SELECT'
+
+export default {
+  SET_ACTIVE_SELECT,
+}

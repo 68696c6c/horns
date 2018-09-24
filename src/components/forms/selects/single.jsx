@@ -7,12 +7,11 @@ import { ERROR_CLASS } from '../utils'
 import StyledSelect from './base'
 import { isUndefined } from '../../../utils/utils'
 
-const Select = ({ async, name, value, id, label, placeholder, required, hasError, className, children, ...others }) => {
+const Select = ({ name, value, id, label, placeholder, required, hasError, className, children, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   const selected = isUndefined(value)
-  const isAsync = isUndefined(async) ? false : async
-  const valueProp = !isAsync ? { defaultValue: value } : { value }
+  const valueProp = !selected ? { defaultValue: value } : { value }
   return (
     <React.Fragment>
       {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
