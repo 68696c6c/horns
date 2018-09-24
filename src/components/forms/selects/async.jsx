@@ -1,9 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
-import { mapDispatchToProps, mapStateToProps } from '../../../store/utils'
 import { baseInput } from '../inputs/base'
 import Label from '../label'
 import { ERROR_CLASS } from '../utils'
@@ -56,7 +54,6 @@ const StyledOption = styled('li')`
   }
 `
 
-// @TODO how to manage dropdowns without redux?
 class SelectAsync extends React.Component {
   constructor(props) {
     super(props)
@@ -75,12 +72,19 @@ class SelectAsync extends React.Component {
     this.cancelled = false
     this.selectID = uuid()
     this.filterRef = React.createRef()
+    this.dropDownRef = React.createRef()
+    this.openEvent = new CustomEvent('select-open', { bubbles: true, detail: { selectID: this.selectID } })
 
     this.filterOptions()
   }
 
   componentDidMount() {
     window.addEventListener('click', this.closeDropDown)
+    window.addEventListener('select-open', (event) => {
+      if (event.detail.selectID !== this.selectID) {
+        this.closeDropDown()
+      }
+    })
   }
 
   componentWillUnmount() {
@@ -119,13 +123,14 @@ class SelectAsync extends React.Component {
 
   closeDropDown() {
     if (!this.cancelled) {
-      this.props.setActiveSelect('')
+      this.setState(() => ({ open: false }))
     }
   }
 
   openDropDown() {
     if (!this.cancelled) {
-      this.props.setActiveSelect(this.selectID)
+      this.setState(() => ({ open: true }))
+      this.dropDownRef.current.dispatchEvent(this.openEvent)
     }
   }
 
@@ -133,7 +138,7 @@ class SelectAsync extends React.Component {
     event.preventDefault()
     event.stopPropagation()
     if (!this.cancelled) {
-      if (this.props.activeSelect === this.selectID) {
+      if (this.state.open) {
         this.closeDropDown()
       } else {
         this.openDropDown()
@@ -145,7 +150,7 @@ class SelectAsync extends React.Component {
     const { name, id, label, placeholder, required, hasError, className, ...others } = this.props
     const errorClass = hasError ? ERROR_CLASS : ''
     const idValue = id === '' ? uuid() : id
-    const open = this.props.activeSelect === this.selectID
+    const open = this.state.open
     const text = isUndefined(this.state.text) ? placeholder : this.state.text
     return (
       <div>
@@ -155,12 +160,15 @@ class SelectAsync extends React.Component {
           className={cx(className, 'select', errorClass)}
           {...others}
           onClick={this.toggleDropDown}
+          innerRef={this.dropDownRef}
         >
           {text}
         </StyledSelect>
         <StyledDropDownContainer>
           <StyledDropDown open={open}>
-            <StyledFilter innerRef={this.filterRef} onClick={event => { event.stopPropagation() }} onKeyUp={this.filterOptions}/>
+            <StyledFilter innerRef={this.filterRef} onClick={event => {
+              event.stopPropagation()
+            }} onKeyUp={this.filterOptions}/>
             {this.state.options.map(option => {
               return (
                 <StyledOption key={uuid()} value={option.value} label={option.label} onClick={this.handleChange}>
@@ -186,8 +194,6 @@ SelectAsync.propTypes = {
   filter: PropTypes.bool,
   filterOptions: PropTypes.func.isRequired,
   onChange: PropTypes.func,
-  activeSelect: PropTypes.string,
-  setActiveSelect: PropTypes.func.isRequired,
 }
 
 SelectAsync.defaultProps = {
@@ -201,4 +207,4 @@ SelectAsync.defaultProps = {
   },
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SelectAsync)
+export default SelectAsync
