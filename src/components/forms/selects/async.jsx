@@ -51,6 +51,7 @@ const StyledOption = styled('li')`
   }
 `
 
+// @TODO how to manage dropdowns without redux?
 class SelectAsync extends React.Component {
   constructor(props) {
     super(props)
