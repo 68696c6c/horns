@@ -19,19 +19,24 @@ const StyledDropDownContainer = styled('div')`
 `
 const StyledSelect = styled('div')`
   ${({ theme }) => baseInput(theme)};
-  min-height: 1.6em;
+  display: ${({ open }) => open ? 'none' : 'block'};  min-height: 1.6em;
   box-sizing: content-box;
   cursor: pointer;
+`
+const StyledFilter = styled('input')`
+  ${({ theme }) => baseInput(theme)};
+  margin: 5px;
+  width: calc(100% - 10px);
 `
 const StyledDropDown = styled('ul')`
   display: ${({ open }) => open ? 'block' : 'none'};
   position: absolute;
   background: ${({ theme }) => rgb(theme.colors.copy.light)};
-  color: ${({ theme }) => rgb(theme.colors.copy.dark)};
   border-left: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
   border-right: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
   border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  border-radius: 0 ${({ theme }) => theme.config.radius} ${({ theme }) => theme.config.radius} 0;
+  color: ${({ theme }) => rgb(theme.colors.copy.dark)};
+  border-radius: 0 0 ${({ theme }) => theme.config.radius} ${({ theme }) => theme.config.radius};
   margin: -2px 0 0 0;
   padding: 0;
   width: 100%;
@@ -62,14 +67,16 @@ class SelectAsync extends React.Component {
       options: [],
     }
 
-    this.setOptions = this.setOptions.bind(this)
+    this.filterOptions = this.filterOptions.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.closeDropDown = this.closeDropDown.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.openDropDown = this.openDropDown.bind(this)
+    this.toggleDropDown = this.toggleDropDown.bind(this)
     this.cancelled = false
     this.selectID = uuid()
+    this.filterRef = React.createRef()
 
-    this.setOptions()
+    this.filterOptions()
   }
 
   componentDidMount() {
@@ -81,9 +88,14 @@ class SelectAsync extends React.Component {
     window.removeEventListener('click', {})
   }
 
-  setOptions() {
+  componentDidUpdate() {
+    this.filterRef.current.focus()
+  }
+
+  filterOptions() {
     const value = this.state.value
-    this.props.filterOptions(this.state.value, options => {
+    const term = this.filterRef.current === null ? '' : this.filterRef.current.value
+    this.props.filterOptions(term, options => {
       if (!this.cancelled) {
         const selectedOption = options.filter(option => {
           return option.value === value
@@ -98,7 +110,10 @@ class SelectAsync extends React.Component {
     if (!this.cancelled) {
       const value = event.target.value
       const text = event.target.getAttribute('label')
-      this.setState(() => ({ value, text }), () => this.props.onChange(event))
+      this.setState(() => ({ value, text }), () => {
+        this.closeDropDown()
+        this.props.onChange(event)
+      })
     }
   }
 
@@ -108,12 +123,21 @@ class SelectAsync extends React.Component {
     }
   }
 
-  handleClick(event) {
+  openDropDown() {
+    if (!this.cancelled) {
+      this.props.setActiveSelect(this.selectID)
+    }
+  }
+
+  toggleDropDown(event) {
     event.preventDefault()
     event.stopPropagation()
     if (!this.cancelled) {
-      const activeSelect = this.props.activeSelect === this.selectID ? '' : this.selectID
-      this.props.setActiveSelect(activeSelect)
+      if (this.props.activeSelect === this.selectID) {
+        this.closeDropDown()
+      } else {
+        this.openDropDown()
+      }
     }
   }
 
@@ -124,18 +148,19 @@ class SelectAsync extends React.Component {
     const open = this.props.activeSelect === this.selectID
     const text = isUndefined(this.state.text) ? placeholder : this.state.text
     return (
-      <React.Fragment>
+      <div>
         <InputHidden id={idValue} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
         <StyledSelect
           className={cx(className, 'select', errorClass)}
           {...others}
-          onClick={this.handleClick}
+          onClick={this.toggleDropDown}
         >
           {text}
         </StyledSelect>
         <StyledDropDownContainer>
           <StyledDropDown open={open}>
+            <StyledFilter innerRef={this.filterRef} onClick={event => { event.stopPropagation() }} onKeyUp={this.filterOptions}/>
             {this.state.options.map(option => {
               return (
                 <StyledOption key={uuid()} value={option.value} label={option.label} onClick={this.handleChange}>
@@ -145,7 +170,7 @@ class SelectAsync extends React.Component {
             })}
           </StyledDropDown>
         </StyledDropDownContainer>
-      </React.Fragment>
+      </div>
     )
   }
 }
@@ -158,6 +183,7 @@ SelectAsync.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  filter: PropTypes.bool,
   filterOptions: PropTypes.func.isRequired,
   onChange: PropTypes.func,
   activeSelect: PropTypes.string,
@@ -170,6 +196,7 @@ SelectAsync.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
+  filter: false,
   onChange: () => {
   },
 }

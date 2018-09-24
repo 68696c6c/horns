@@ -13,10 +13,17 @@ const OPTIONS = [
   },
 ]
 
-export const filterOptions = value => {
-  OPTIONS.filter(option => {
-    return option.value === value
-  })
+export const filterOptions = (value, callback) => {
+  setTimeout(() => {
+    if (value === '') {
+      return callback(OPTIONS)
+    } else {
+      const result = OPTIONS.filter(option => {
+        return option.label.toLowerCase().includes(value.toLowerCase())
+      })
+      callback(result)
+    }
+  }, 1000)
 }
 
 const loadOptions = (value, callback) => {
