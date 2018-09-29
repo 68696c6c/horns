@@ -54,8 +54,7 @@ const Option = styled('li')`
     padding-bottom: 1em;
   }
 `
-
-const Styled = styled(`div`)``
+const StyledSelectContainer = styled(`div`)``
 
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
@@ -202,19 +201,21 @@ class Select extends React.Component {
     const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
     const htmlID = id === '' ? uuid() : id
     return (
-      <Styled className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}>
+      <React.Fragment>
         <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID}>{label}</Label> : ''}
-        <StyledSelect innerRef={this.selectRef} onClick={this.fireOpen}>
-          {this.state.text}
-        </StyledSelect>
-        <StyledDropDownContainer>
-          <StyledDropDown open={this.state.open}>
-            {filter}
-            {this.options}
-          </StyledDropDown>
-        </StyledDropDownContainer>
-      </Styled>
+        <StyledSelectContainer>
+          <StyledSelect innerRef={this.selectRef} className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')} onClick={this.fireOpen} contentEditable={true}>
+            {this.state.text}
+          </StyledSelect>
+          <StyledDropDownContainer>
+            <StyledDropDown open={this.state.open}>
+              {filter}
+              {this.options}
+            </StyledDropDown>
+          </StyledDropDownContainer>
+        </StyledSelectContainer>
+      </React.Fragment>
     )
   }
 }
