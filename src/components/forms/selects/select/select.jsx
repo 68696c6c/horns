@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
-import { isUndefined } from '../../../../utils/utils'
+import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
 import InputHidden from '../../inputs/hidden'
 import Label from '../../label'
@@ -102,7 +102,7 @@ class Select extends React.Component {
     const { children, options, value } = this.props
     let optionArray = options
     if (!isUndefined(children) && isUndefined(options)) {
-      optionArray = children.constructor === Array ? children : [children]
+      optionArray = isArray(children) ? children : [children]
     }
     this.setOptions(optionArray, value)
   }
@@ -222,7 +222,10 @@ class Select extends React.Component {
 
 Select.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,

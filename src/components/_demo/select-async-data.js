@@ -1,15 +1,15 @@
 const OPTIONS = [
   {
     label: 'One',
-    value: '1',
+    value: 1,
   },
   {
     label: 'Two',
-    value: '2',
+    value: 2,
   },
   {
     label: 'Three',
-    value: '3',
+    value: 3,
   },
 ]
 

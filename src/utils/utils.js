@@ -14,3 +14,15 @@ export const formatDate = dateString => {
   }
   return date.toLocaleDateString('en-US', options)
 }
+
+export const isArray = arr => {
+  return arr.constructor === Array
+}
+
+export const arrayRemoveByValue = (arr, value) => {
+  const index = arr.indexOf(value)
+  if (index > -1) {
+    arr.splice(index, 1)
+  }
+  return arr
+}

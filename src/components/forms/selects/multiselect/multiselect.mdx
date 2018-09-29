@@ -5,43 +5,54 @@ menu: Forms
 
 import { Playground, PropsTable } from 'docz'
 
-import MultiselectNative from './native'
+import Multiselect from './multiselect'
 
-# MultiselectNative
+# Multiselect
 
 <Playground>
-  <MultiselectNative label="Multi-Select" name="demo">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </MultiselectNative>
+  <Multiselect label="Multiselect" name="demo">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
 </Playground>
 
 ## Props
 
-<PropsTable of={MultiselectNative} />
+<PropsTable of={Multiselect} />
 
 ## Examples
 
 <Playground>
-  <MultiselectNative label="Default Value Example" name="value" value="1">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </MultiselectNative>
-  <MultiselectNative label="Multiple Default Values Example" name="multi_value" value={['1', '2']}>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </MultiselectNative>
-  <MultiselectNative label="Required Example" name="required" required={true}>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </MultiselectNative>
-  <MultiselectNative label="Error State Example" name="error" hasError={true}>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </MultiselectNative>
+  <Multiselect label="Options prop" name="options_prop" options={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }, { value: 3, label: 'Three' }]}/>
+  <Multiselect label="Options HTML" name="options_html">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
+  <Multiselect label="Placeholder Example" name="placeholder" placeholder="Placeholder Text">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
+  <Multiselect label="Default Value Example" name="value" value={1}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
+  <Multiselect label="Multiple Default Values Example" name="multi_value" value={[1, 2]}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
+  <Multiselect label="Required Example" name="required" required={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
+  <Multiselect label="Error State Example" name="error" hasError={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Multiselect>
 </Playground>
