@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { cx } from 'react-emotion'
-import Label from '../label'
-import { ERROR_CLASS } from '../utils'
-import StyledSelect from './base'
+import Label from '../../label'
+import { ERROR_CLASS } from '../../utils'
+import StyledSelect from '../base'
 
 const SelectMulti = ({ name, value, id, label, required, hasError, className, children, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''

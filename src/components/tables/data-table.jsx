@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table } from './table'
-import { css, cx } from 'react-emotion'
+import styled, { css, cx } from 'react-emotion'
+import Table from './table'
 
 // This component is for content that slides out under/between rows in a DataTable.
 export const DataTableRowData = ({ children, className, ...others }) => {
@@ -16,26 +16,46 @@ export const DataTableRowData = ({ children, className, ...others }) => {
   )
 }
 
-export const DataTable = ({ headerText, content, className, children, ...others }) => {
-  const style = css``
-  return (
-    <div className={cx('data-table', className, style)} {...others}>
-      <header className={cx('data-table-header')}>
-        {headerText}
-      </header>
-      <div className="data-table-content">
-        {content}
-      </div>
-      <Table className="data-table-table">
-        {children}
-      </Table>
-    </div>
-  )
+const StyledDataTable = styled('div')`
+  
+`
+
+const StyledDataTableHeader = styled('header')`
+  
+`
+
+const StyledDataTableToolBar = styled('div')`
+  
+`
+
+const StyledPagination = styled('div')`
+  
+`
+
+class DataTable extends React.Component{
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    const { headerContent, content, className, children, ...others } = this.props
+    return (
+      <StyledDataTable className={cx(className, 'data-table')} {...others}>
+        <StyledDataTableHeader className="data-table-header">{headerContent}</StyledDataTableHeader>
+        <StyledDataTableToolBar className="data-table-header">
+
+        </StyledDataTableToolBar>
+        <Table className="data-table-table">{children}</Table>
+        <StyledPagination/>
+      </StyledDataTable>
+    )
+  }
 }
 
 DataTable.propTypes = {
-  headerText: PropTypes.string,
-  content: PropTypes.object,
+  headerContent: PropTypes.string,
+  content: PropTypes.element,
+  source: PropTypes.string,
 }
 
 DataTable.defaultProps = {}

@@ -1,0 +1,26 @@
+---
+name: 'Select - Async'
+menu: Forms
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import SelectAsync from './async.jsx'
+import loadOptions from '../../../_demo/select-async-data'
+
+# SelectAsync
+
+<Playground>
+  <SelectAsync filterOptions={loadOptions} label="Select Async" name="demo" />
+</Playground>
+
+## Examples
+
+<Playground>
+  <SelectAsync filterOptions={loadOptions} label="Placeholder Example" placeholder="Placeholder Text" name="demo" />
+  <SelectAsync filterOptions={loadOptions} label="Default Value Example" name="demo" value="1"/>
+  <SelectAsync filterOptions={loadOptions} label="Required Example" name="demo" required={true} />
+  <SelectAsync filterOptions={loadOptions} label="Error State Example" name="demo" hasError={true} />
+</Playground>
+
+
