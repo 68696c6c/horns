@@ -5,15 +5,15 @@ menu: Tables
 
 import { Playground, PropsTable } from 'docz'
 
-import Table from './table'
+import DataTable from './data-table'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
 
-# Area
+# DataTable
 
 <Playground>
-  <Table>
+  <DataTable>
     <TableHead>
       <TableCell>Column 1</TableCell>
       <TableCell>Column 2</TableCell>
@@ -24,9 +24,9 @@ import TableRow from './table-row'
       <TableCell>Column 2</TableCell>
       <TableCell>Column 3</TableCell>
     </TableRow>
-  </Table>
+  </DataTable>
 </Playground>
 
 ## Props
 
-<PropsTable of={Table} />
+<PropsTable of={DataTable} />
