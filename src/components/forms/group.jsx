@@ -33,7 +33,7 @@ Styled.propTypes = {
   min: PropTypes.number.isRequired,
 }
 
-const FormGroup = ({ heading, breakpoint, className, children, ...others }) => {
+const Group = ({ heading, breakpoint, className, children, ...others }) => {
   const min = 100 / children.length
   return (
     <Styled min={min} className={cx(className, 'form-group')} {...others}>
@@ -43,14 +43,14 @@ const FormGroup = ({ heading, breakpoint, className, children, ...others }) => {
   )
 }
 
-FormGroup.propTypes = {
+Group.propTypes = {
   heading: PropTypes.string,
   breakpoint: PropTypes.string,
 }
 
-FormGroup.defaultProps = {
+Group.defaultProps = {
   heading: '',
   breakpoint: 'medium',
 }
 
-export default FormGroup
+export default Group
