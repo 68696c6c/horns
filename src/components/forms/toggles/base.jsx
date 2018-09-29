@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
+import styled, { cx } from 'react-emotion'
 import { rgb } from '../../../themes/utils'
 import { baseLabel } from '../label'
+import { ERROR_CLASS } from '../utils'
 
 export const ToggleControl = styled('label')`
   content: ' ';
@@ -14,7 +15,7 @@ export const ToggleControl = styled('label')`
   margin-right: .5em;
   border: 2px solid ${({ theme }) => rgb(theme.colors.dark.default)};
   cursor: pointer;
-  ${({ round }) => round ? 'border-radius: 50%;' : ''}
+  ${({ round }) => round ? 'border-radius: 50%;' : ''};
 `
 
 ToggleControl.propTypes = {
@@ -25,12 +26,35 @@ ToggleControl.defaultProps = {
   round: false,
 }
 
-export const ToggleLabel = styled('label')`
+const StyledToggleLabel = styled('label')`
   display: inline-block;
   cursor: pointer;
   margin: 1em 1em 0 0;
   ${({ theme }) => baseLabel(theme)}
 `
+
+export const ToggleLabel = ({ htmlFor, required, hasError, className, children, ...others }) => {
+  const reqClass = required ? 'required' : ''
+  const errorClass = hasError ? ERROR_CLASS : ''
+  return (
+    <StyledToggleLabel htmlFor={htmlFor} className={cx(className, reqClass, errorClass)} {...others}>
+      {children}
+    </StyledToggleLabel>
+  )
+}
+
+ToggleLabel.propTypes = {
+  htmlFor: PropTypes.string,
+  required: PropTypes.bool,
+  hasError: PropTypes.bool,
+  children: PropTypes.string,
+}
+
+ToggleLabel.defaultProps = {
+  htmlFor: '',
+  required: false,
+  hasError: false,
+}
 
 export const Toggle = styled('input')`
   display: none;
@@ -47,5 +71,12 @@ export const Toggle = styled('input')`
   }
   &.error + label.toggle-control {
     border: 2px solid ${({ theme }) => rgb(theme.colors.danger.default)};
+  }
+  &:disabled + label.toggle-control {
+    background: ${({ theme }) => rgb(theme.colors.neutral.light)};
+    cursor: not-allowed;
+  }
+  &:disabled + label.toggle-control + label.toggle-label {
+    cursor: not-allowed;
   }
 `

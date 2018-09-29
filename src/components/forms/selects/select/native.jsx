@@ -14,7 +14,7 @@ const SelectNative = ({ name, value, id, label, placeholder, required, hasError,
   const valueProp = !selected ? { defaultValue: value } : { value }
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
       <StyledSelect
         name={name}
         {...valueProp}

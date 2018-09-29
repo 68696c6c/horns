@@ -20,7 +20,7 @@ const Checkbox = ({ label, id, name, value, required, hasError, className, ...ot
         {...others}
       />
       <ToggleControl htmlFor={idValue} className="toggle-control"/>
-      {label && <ToggleLabel htmlFor={idValue} className={cx('toggle-label', errorClass)}>{label}</ToggleLabel>}
+      {label ? <ToggleLabel htmlFor={idValue} className="toggle-label" required={required} hasError={hasError}>{label}</ToggleLabel> : ''}
     </React.Fragment>
   )
 }

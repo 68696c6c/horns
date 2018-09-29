@@ -43,6 +43,9 @@ const StyledDropDown = styled('ul')`
   padding: 0;
   width: 100%;
   list-style: none inside;
+  &.${ERROR_CLASS} {
+    border-color: ${({ theme }) => rgb(theme.colors.danger.default)};;
+  }
 `
 const Option = styled('li')`
   padding: .5em 1em;
@@ -152,8 +155,10 @@ class Multiselect extends React.Component {
   }
 
   fireOpen(event) {
-    this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
-    this.props.onClick(event)
+    if (!this.props.disabled) {
+      this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
+      this.props.onClick(event)
+    }
   }
 
   fireChange(event) {
@@ -219,25 +224,24 @@ class Multiselect extends React.Component {
   }
 
   render() {
-    const { filterRef, onKeyUp, name, id, label, required, hasError, className } = this.props
+    const { filterRef, onKeyUp, name, id, label, required, disabled, hasError, className } = this.props
     const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
     const htmlID = id === '' ? uuid() : id
     return (
       <React.Fragment>
         <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
-        {label ? <Label htmlFor={htmlID}>{label}</Label> : ''}
+        {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
         <StyledSelectContainer>
           <StyledSelect
             innerRef={this.selectRef}
             className={cx(className, 'multiselect-custom', hasError ? ERROR_CLASS : '')}
             onClick={this.fireOpen}
-            contentEditable={true}
-            suppressContentEditableWarning
+            disabled={disabled}
           >
             {this.state.text}
           </StyledSelect>
           <StyledDropDownContainer>
-            <StyledDropDown open={this.state.open}>
+            <StyledDropDown open={this.state.open} className={hasError ? ERROR_CLASS : ''}>
               {filter}
               {this.options}
             </StyledDropDown>
@@ -260,6 +264,7 @@ Multiselect.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  disabled: PropTypes.bool,
   filterRef: PropTypes.object,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
@@ -272,6 +277,7 @@ Multiselect.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
+  disabled: false,
   onClick: () => {
   },
   onChange: () => {

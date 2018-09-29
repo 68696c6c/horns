@@ -18,5 +18,9 @@ export const baseInput = (theme) => {
         color: ${rgb(theme.colors.danger.default)};
       }
     }
+    &[disabled] {
+      background: ${rgb(theme.colors.neutral.light)};
+      cursor: not-allowed;
+    }
   `
 }

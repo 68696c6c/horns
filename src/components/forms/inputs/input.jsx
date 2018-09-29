@@ -6,6 +6,7 @@ import styled, { cx } from 'react-emotion'
 import Label from '../label'
 import { baseInput } from './base'
 import { ERROR_CLASS } from '../utils'
+import InputHidden from './hidden'
 
 const StyledInput = styled('input')`
   ${({ theme }) => baseInput(theme)}
@@ -26,7 +27,7 @@ const Input = ({ type, name, value, id, label, placeholder, required, hasError, 
   }
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
       <Tag
         type={type}
         name={name}

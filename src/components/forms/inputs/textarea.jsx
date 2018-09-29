@@ -15,7 +15,7 @@ const Textarea = ({ name, value, id, label, placeholder, required, hasError, cla
   const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
       <Styled
         name={name}
         id={idValue}

@@ -25,23 +25,28 @@ import SelectNative from './native'
 
 <Playground>
   <SelectNative id="select-placeholder" label="Placeholder Example" name="placeholder" placeholder="Placeholder Text">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
   </SelectNative>
-  <SelectNative id="select-default" label="Default Value Example" name="value" value="1">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+  <SelectNative id="select-default" label="Default Value Example" name="value" value={1}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
   </SelectNative>
   <SelectNative id="select-required" label="Required Example" name="required" required={true}>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
   </SelectNative>
-  <SelectNative id="select-error" label="Error State Example" name="error" hasError={true}>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+  <SelectNative label="Error State Example" name="error" hasError={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </SelectNative>
+  <SelectNative label="Disabled Example" name="disabled" disabled>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
   </SelectNative>
 </Playground>

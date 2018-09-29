@@ -11,7 +11,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, className, ch
   const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={idValue} className={errorClass}>{label}</Label> : ''}
+      {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
       <StyledSelect
         multiple
         name={name}

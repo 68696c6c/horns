@@ -20,7 +20,7 @@ const Radio = ({ label, id, name, value, required, hasError, className, ...other
         {...others}
       />
       <ToggleControl htmlFor={idValue} className="toggle-control" round={true}/>
-      {label && <ToggleLabel htmlFor={idValue} className={cx('toggle-label', errorClass)}>{label}</ToggleLabel>}
+      {label ? <ToggleLabel htmlFor={idValue} className="toggle-label" required={required} hasError={hasError}>{label}</ToggleLabel> : ''}
     </React.Fragment>
   )
 }
