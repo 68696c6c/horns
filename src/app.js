@@ -1,8 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+// const path = require('path')
 import { ThemeProvider } from 'emotion-theming'
 import { injectGlobal } from 'emotion'
 import theme from './themes/base'
+
+// let location = process.env.LOCATION || 'dev'
+// let processEnv = path.resolve(__dirname, 'environment', location + '.js')
 
 const App = ({ children }) => <ThemeProvider theme={theme}>{children}</ThemeProvider>
 

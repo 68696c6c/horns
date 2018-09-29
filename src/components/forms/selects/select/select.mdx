@@ -10,7 +10,7 @@ import Select from './select'
 # Select
 
 <Playground>
-  <Select label="Select" name="demo">
+  <Select label="Select" name="demo" debug={true}>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
@@ -24,6 +24,12 @@ import Select from './select'
 ## Examples
 
 <Playground>
+  <Select id="select-options-prop" label="Options prop" name="options_prop" options={[{ value: 1, label: "One" }, { value: 2, label: "Two" }, { value: 3, label: "Three" }]}/>
+  <Select id="select-options-html" label="Options HTML" name="options_html">
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </Select>
   <Select id="select-placeholder" label="Placeholder Example" name="placeholder" placeholder="Placeholder Text">
     <option value="1">One</option>
     <option value="2">Two</option>

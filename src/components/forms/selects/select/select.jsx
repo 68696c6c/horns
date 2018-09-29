@@ -9,6 +9,7 @@ import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import { baseInput } from '../../inputs/base'
 import { rgb } from '../../../../themes/utils'
+import { getLogger } from '../../../../utils/logger'
 
 // @TODO need to use a global config value for input margins and borders.
 const StyledDropDownContainer = styled('div')`
@@ -65,34 +66,29 @@ class Select extends React.Component {
   constructor(props) {
     super(props)
 
+    this.logger = new getLogger('Select', 'violet', props.debug)
+    this.logger.log('props', props)
+
+    this.state = {
+      open: false,
+      value: '',
+      text: '',
+    }
+
+    this.setOptions = this.setOptions.bind(this)
     this.getEventData = this.getEventData.bind(this)
     this.fireOpen = this.fireOpen.bind(this)
     this.fireChange = this.fireChange.bind(this)
     this.fireKeyUp = this.fireKeyUp.bind(this)
-
     this.handleChange = this.handleChange.bind(this)
     this.closeDropDown = this.closeDropDown.bind(this)
     this.openDropDown = this.openDropDown.bind(this)
     this.toggleDropDown = this.toggleDropDown.bind(this)
 
-    this.setOptions = this.setOptions.bind(this)
-
     this.cancelled = false
     this.selectID = uuid()
 
     this.selectRef = React.createRef()
-
-    const childArray = props.children.constructor === Array ? props.children : [props.children]
-    const optionArray = isUndefined(props.options) ? childArray : props.options
-
-    const value = isUndefined(props) || isUndefined(props.value) ? '' : props.value
-    const text = this.setOptions(optionArray, value)
-
-    this.state = {
-      open: false,
-      value,
-      text: isUndefined(text) ? props.placeholder : text,
-    }
   }
 
   componentDidMount() {
@@ -108,11 +104,44 @@ class Select extends React.Component {
         this.closeDropDown()
       }
     })
+
+    const { children, options, value } = this.props
+    let optionArray = options
+    if (!isUndefined(children) && isUndefined(options)) {
+      optionArray = children.constructor === Array ? children : [children]
+    }
+    this.setOptions(optionArray, value)
   }
 
   componentWillUnmount() {
     this.cancelled = true
     window.removeEventListener('click', {})
+  }
+
+  componentWillReceiveProps(props) {
+    const { options } = this.props
+    if (props.options !== options) {
+      this.setOptions(props.options, props.value)
+    }
+  }
+
+  setOptions(options, value) {
+    const placeholder = this.props.placeholder
+    let optionText = undefined
+    if (isUndefined(options)) {
+      return
+    }
+    this.options = options.map(o => {
+      const isComponent = !isUndefined(o.props)
+      const optionValue = isComponent ? o.props.value : o.value
+      const label = isComponent ? o.props.children : o.label
+      if (optionValue === value) {
+        optionText = label
+      }
+      return <Option key={uuid()} value={optionValue} label={label} onClick={this.fireChange}>{label}</Option>
+    })
+    const text = isUndefined(optionText) ? placeholder : optionText
+    this.setState(() => ({ value, text }))
   }
 
   getEventData() {
@@ -174,20 +203,6 @@ class Select extends React.Component {
     }
   }
 
-  setOptions(options, currentValue) {
-    let text = undefined
-    this.options = options.map(o => {
-      const isComponent = !isUndefined(o.props)
-      const value = isComponent ? o.props.value : o.value
-      const label = isComponent ? o.props.children : o.label
-      if (value === currentValue) {
-        text = label
-      }
-      return <Option key={uuid()} value={value} label={label} onClick={this.fireChange}>{label}</Option>
-    })
-    return text
-  }
-
   render() {
     const props = this.props
     const { className } = props
@@ -195,7 +210,7 @@ class Select extends React.Component {
     const { filterRef } = props
     const htmlID = id === '' ? uuid() : id
     return (
-      <Styled className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}>
+      <Styled innerRef={this.props.onRef} className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}>
         <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID}>{label}</Label> : ''}
         <StyledSelect innerRef={this.selectRef} onClick={this.fireOpen}>
@@ -213,12 +228,14 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
+  debug: PropTypes.bool,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
 }
 
 Select.defaultProps = {
+  debug: false,
   onClick: () => {},
   onChange: () => {},
   onKeyUp: () => {},

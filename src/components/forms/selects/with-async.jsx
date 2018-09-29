@@ -1,16 +1,23 @@
 import React from 'react'
+import { getLogger } from '../../../utils/logger'
 
 function withAsync(Component) {
   return class Async extends React.Component {
     constructor(props) {
       super(props)
+
+      this.logger = new getLogger('SelectAsync', 'cyan', props.debug)
+      this.logger.log('props', props)
+
       this.state = {
+        value: props.value,
+        text: '',
         options: [],
       }
 
       this.filterOptions = this.filterOptions.bind(this)
       this.filterRef = React.createRef()
-      this.selectRef = React.createRef()
+      this.onRef = React.createRef()
 
       this.filterOptions()
     }
@@ -20,7 +27,7 @@ function withAsync(Component) {
     }
 
     filterOptions() {
-      const value = this.state.value
+      const value = this.props.value
       const term = this.filterRef.current === null ? '' : this.filterRef.current.value
       this.props.filterOptions(term, options => {
         if (!this.cancelled) {
@@ -35,13 +42,9 @@ function withAsync(Component) {
 
     render() {
       return <Component
-        open={this.state.open}
-        options={this.state.options}
-        value={this.state.value}
         text={this.state.text}
-        selectRef={this.selectRef}
+        options={this.state.options}
         filterRef={this.filterRef}
-        onChange={this.handleChange}
         onKeyUp={this.filterOptions}
         {...this.props}
       />
