@@ -10,6 +10,7 @@ import { ERROR_CLASS } from '../../utils'
 import { baseInput } from '../../inputs/base'
 import { rgb } from '../../../../themes/utils'
 
+// @TODO currently doesn't work.
 // @TODO DRY out shared code with Select.
 // @TODO highlight selected options.
 // @TODO use badges for selected values instead of comma string.
@@ -130,7 +131,8 @@ class Multiselect extends React.Component {
     if (isUndefined(options)) {
       return
     }
-    const valueArray = isArray(value) ? value : [value]
+    const initialValue = isUndefined(value) ? [] : value
+    const valueArray = isArray(initialValue) ? initialValue : [initialValue]
     const { placeholder } = this.props
     let optionText = []
     this.options = options.map(o => {

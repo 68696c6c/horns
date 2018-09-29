@@ -1,15 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withAsync from '../with-async'
-import Select from './select'
+import Multiselect from './multiselect'
 
-const SelectAsync = withAsync(Select)
+const MultiselectAsync = withAsync(Multiselect)
 
-SelectAsync.propTypes = {
+MultiselectAsync.propTypes = {
   name: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
+    PropTypes.array,
   ]),
   id: PropTypes.string,
   label: PropTypes.string,
@@ -21,7 +22,7 @@ SelectAsync.propTypes = {
   onChange: PropTypes.func,
 }
 
-SelectAsync.defaultProps = {
+MultiselectAsync.defaultProps = {
   id: '',
   label: '',
   placeholder: '',
@@ -32,4 +33,4 @@ SelectAsync.defaultProps = {
   },
 }
 
-export default SelectAsync
+export default MultiselectAsync

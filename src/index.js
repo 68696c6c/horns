@@ -11,7 +11,10 @@ export {
   Textarea,
   Select,
   SelectAsync,
-  SelectMulti,
+  SelectNative,
+  Multiselect,
+  MultiselectAsync,
+  MultiselectNative,
 } from './components/forms'
 
 export {
