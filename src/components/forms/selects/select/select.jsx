@@ -9,7 +9,6 @@ import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import { baseInput } from '../../inputs/base'
 import { rgb } from '../../../../themes/utils'
-import { getLogger } from '../../../../utils/logger'
 
 // @TODO need to use a global config value for input margins and borders.
 const StyledDropDownContainer = styled('div')`
@@ -60,14 +59,10 @@ const Styled = styled(`div`)``
 
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
-const EVENT_KEY_UP = getEventName('select:keyUp')
 
 class Select extends React.Component {
   constructor(props) {
     super(props)
-
-    this.logger = new getLogger('Select', 'violet', props.debug)
-    this.logger.log('props', props)
 
     this.state = {
       open: false,
@@ -79,7 +74,6 @@ class Select extends React.Component {
     this.getEventData = this.getEventData.bind(this)
     this.fireOpen = this.fireOpen.bind(this)
     this.fireChange = this.fireChange.bind(this)
-    this.fireKeyUp = this.fireKeyUp.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.closeDropDown = this.closeDropDown.bind(this)
     this.openDropDown = this.openDropDown.bind(this)
@@ -87,6 +81,7 @@ class Select extends React.Component {
 
     this.cancelled = false
     this.selectID = uuid()
+    this.showFilter = !isUndefined(props.filterRef)
 
     this.selectRef = React.createRef()
   }
@@ -126,11 +121,11 @@ class Select extends React.Component {
   }
 
   setOptions(options, value) {
-    const placeholder = this.props.placeholder
-    let optionText = undefined
     if (isUndefined(options)) {
       return
     }
+    const { placeholder } = this.props
+    let optionText = this.state.text
     this.options = options.map(o => {
       const isComponent = !isUndefined(o.props)
       const optionValue = isComponent ? o.props.value : o.value
@@ -140,7 +135,7 @@ class Select extends React.Component {
       }
       return <Option key={uuid()} value={optionValue} label={label} onClick={this.fireChange}>{label}</Option>
     })
-    const text = isUndefined(optionText) ? placeholder : optionText
+    const text = optionText === '' ? placeholder : optionText
     this.setState(() => ({ value, text }))
   }
 
@@ -163,11 +158,6 @@ class Select extends React.Component {
     this.props.onChange(event)
   }
 
-  fireKeyUp(event) {
-    this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_KEY_UP, this.getEventData()))
-    this.props.onKeyUp(event)
-  }
-
   handleChange(event) {
     if (!this.cancelled) {
       const value = event.target.value
@@ -187,7 +177,11 @@ class Select extends React.Component {
 
   openDropDown() {
     if (!this.cancelled) {
-      this.setState(() => ({ open: true }))
+      this.setState(() => ({ open: true }), () => {
+        if (this.showFilter) {
+          this.props.filterRef.current.focus()
+        }
+      })
     }
   }
 
@@ -204,13 +198,11 @@ class Select extends React.Component {
   }
 
   render() {
-    const props = this.props
-    const { className } = props
-    const { name, id, label, required, hasError } = props
-    const { filterRef } = props
+    const { filterRef, onKeyUp, name, id, label, required, hasError, className } = this.props
+    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
     const htmlID = id === '' ? uuid() : id
     return (
-      <Styled innerRef={this.props.onRef} className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}>
+      <Styled className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}>
         <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID}>{label}</Label> : ''}
         <StyledSelect innerRef={this.selectRef} onClick={this.fireOpen}>
@@ -218,7 +210,7 @@ class Select extends React.Component {
         </StyledSelect>
         <StyledDropDownContainer>
           <StyledDropDown open={this.state.open}>
-            <StyledFilter innerRef={filterRef} onKeyUp={this.fireKeyUp}/>
+            {filter}
             {this.options}
           </StyledDropDown>
         </StyledDropDownContainer>
@@ -228,17 +220,31 @@ class Select extends React.Component {
 }
 
 Select.propTypes = {
-  debug: PropTypes.bool,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  required: PropTypes.bool,
+  hasError: PropTypes.bool,
+  filterRef: PropTypes.object,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
 }
 
 Select.defaultProps = {
-  debug: false,
-  onClick: () => {},
-  onChange: () => {},
-  onKeyUp: () => {},
+  id: '',
+  label: '',
+  placeholder: '',
+  required: false,
+  hasError: false,
+  onClick: () => {
+  },
+  onChange: () => {
+  },
+  onKeyUp: () => {
+  },
 }
 
 export default Select

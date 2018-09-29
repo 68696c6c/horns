@@ -6,7 +6,6 @@ import Select from './select'
 const SelectAsync = withAsync(Select)
 
 SelectAsync.propTypes = {
-  debug: PropTypes.bool,
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,
@@ -20,7 +19,6 @@ SelectAsync.propTypes = {
 }
 
 SelectAsync.defaultProps = {
-  debug: false,
   id: '',
   label: '',
   placeholder: '',

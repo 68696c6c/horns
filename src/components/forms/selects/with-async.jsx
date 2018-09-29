@@ -1,13 +1,9 @@
 import React from 'react'
-import { getLogger } from '../../../utils/logger'
 
 function withAsync(Component) {
   return class Async extends React.Component {
     constructor(props) {
       super(props)
-
-      this.logger = new getLogger('SelectAsync', 'cyan', props.debug)
-      this.logger.log('props', props)
 
       this.state = {
         value: props.value,
@@ -17,17 +13,12 @@ function withAsync(Component) {
 
       this.filterOptions = this.filterOptions.bind(this)
       this.filterRef = React.createRef()
-      this.onRef = React.createRef()
 
       this.filterOptions()
     }
 
-    componentDidUpdate() {
-      this.filterRef.current.focus()
-    }
-
     filterOptions() {
-      const value = this.props.value
+      const value = this.state.value
       const term = this.filterRef.current === null ? '' : this.filterRef.current.value
       this.props.filterOptions(term, options => {
         if (!this.cancelled) {

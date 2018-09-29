@@ -13,7 +13,7 @@ const OPTIONS = [
   },
 ]
 
-export const filterOptions = (value, callback) => {
+const filterOptions = (value, callback) => {
   setTimeout(() => {
     if (value === '') {
       return callback(OPTIONS)
@@ -26,10 +26,4 @@ export const filterOptions = (value, callback) => {
   }, 1000)
 }
 
-const loadOptions = (value, callback) => {
-  setTimeout(() => {
-    callback(OPTIONS)
-  }, 1000)
-}
-
-export default loadOptions
+export default filterOptions
