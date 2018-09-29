@@ -21,12 +21,25 @@ FormGroupHeading.defaultProps = {
 }
 
 const Styled = styled('div')`
-  @media(min-width: ${({ breakpoint }) => breakpoint}) {
-    display: grid;
-    grid-auto-columns: max-content;
-    grid-template-columns: repeat(auto-fill, calc(${({ min }) => min}% - 1em));
-    justify-content: space-between;
-    column-gap: 1em;
+  display: flex;
+  justify-content: space-between;
+  .field {
+    display: flex;
+    align-items: center;
+    label {
+      margin-top: 0;
+      margin-right: .5em;
+    }
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
+      width: auto;
+      margin-bottom: 0;
+    }
+    .select-custom-container {
+      margin-bottom: 1em;
+      .select-custom, .select-custom-dropdown-container {
+        margin-bottom: 0;
+      }
+    }
   }
 `
 
@@ -34,7 +47,7 @@ Styled.propTypes = {
   min: PropTypes.number.isRequired,
 }
 
-const Group = ({ heading, breakpoint, className, children, ...others }) => {
+const GroupInline = ({ heading, breakpoint, className, children, ...others }) => {
   const childArray = isArray(children) ? children : [children]
   const min = 100 / childArray.length
   return (
@@ -45,14 +58,14 @@ const Group = ({ heading, breakpoint, className, children, ...others }) => {
   )
 }
 
-Group.propTypes = {
+GroupInline.propTypes = {
   heading: PropTypes.string,
   breakpoint: PropTypes.string,
 }
 
-Group.defaultProps = {
+GroupInline.defaultProps = {
   heading: '',
   breakpoint: 'medium',
 }
 
-export default Group
+export default GroupInline

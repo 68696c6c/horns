@@ -233,16 +233,16 @@ class Multiselect extends React.Component {
       <React.Fragment>
         <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
-        <StyledSelectContainer>
+        <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
-            className={cx(className, 'multiselect-custom', hasError ? ERROR_CLASS : '')}
+            className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}
             onClick={this.fireOpen}
             disabled={disabled}
           >
             {this.state.text}
           </StyledSelect>
-          <StyledDropDownContainer>
+          <StyledDropDownContainer className="select-custom-dropdown-container">
             <StyledDropDown open={this.state.open} className={hasError ? ERROR_CLASS : ''}>
               {filter}
               {this.options}

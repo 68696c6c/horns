@@ -1,0 +1,23 @@
+---
+name: 'Group - Inline'
+menu: Forms
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import GroupInline from './group-inline'
+import { Input } from './inputs'
+import { Checkbox } from './toggles'
+
+# GroupInline
+
+<Playground>
+  <GroupInline>
+    <Input label="Input inside of a Group" />
+    <Checkbox label="Checkbox inside of a Group" />
+  </GroupInline>
+</Playground>
+
+## Props
+
+<PropsTable of={GroupInline} />
