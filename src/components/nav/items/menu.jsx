@@ -4,6 +4,10 @@ import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import NavItem from './item'
 import { rgb } from '../../../themes/utils'
+import { getEventName } from '../../../events'
+
+const EVENT_OPEN = getEventName('menu:open')
+const EVENT_CLOSE = getEventName('menu:close')
 
 const StyledMenu = styled('nav')`
   display: ${({ open }) => open ? 'block' : 'none'};
@@ -32,16 +36,31 @@ class NavItemMenu extends React.Component {
     this.closeMenu = this.closeMenu.bind(this)
     this.openMenu = this.openMenu.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.getEventData = this.getEventData.bind(this)
+    this.fireOpen = this.fireOpen.bind(this)
     this.cancelled = false
     this.menuID = uuid()
 
     this.hrefs = props.children.map(child => {
       return child.props.href
     })
+
+    this.menuRef = React.createRef()
   }
 
   componentDidMount() {
-    window.addEventListener('click', this.closeMenu)
+    window.addEventListener('click', event => {
+      if (this.menuRef.current !== event.target) {
+        this.closeMenu()
+      }
+    })
+    this.menuRef.current.addEventListener(EVENT_OPEN, event => {
+      if (!this.state.open && event.detail.menuID === this.menuID) {
+        this.openMenu()
+      } else {
+        this.closeMenu()
+      }
+    })
     if (!this.cancelled) {
       const active = this.hasActiveItem(window.location.pathname)
       this.setState(() => ({ active }))
@@ -53,19 +72,26 @@ class NavItemMenu extends React.Component {
     window.removeEventListener('click', {})
   }
 
+  getEventData() {
+    const menuID = this.menuID
+    return {
+      bubbles: true,
+      detail: { menuID }
+    }
+  }
+
+  fireOpen(event) {
+    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
+    this.props.onClick(event)
+  }
+
   hasActiveItem(pathname) {
     return this.hrefs.indexOf(pathname) >= 0
   }
 
   setMenuState(open) {
     if (!this.cancelled) {
-      this.setState(() => ({ open }), () => {
-        if (open) {
-          this.props.setOpenMenu(this.menuID)
-        } else {
-          this.props.clearOpenMenu()
-        }
-      })
+      this.setState(() => ({ open }))
     }
   }
 
@@ -95,7 +121,7 @@ class NavItemMenu extends React.Component {
         <NavItem href="#" variant={variant} className={cx(className, activeClass)} onClick={this.handleClick}>
           {content}
         </NavItem>
-        <StyledMenu open={this.state.open} className="nav-item-menu-items">{children}</StyledMenu>
+        <StyledMenu open={this.state.open} innerRef={this.menuRef} className="nav-item-menu-items">{children}</StyledMenu>
       </React.Fragment>
     )
   }
@@ -106,8 +132,14 @@ NavItemMenu.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]).isRequired,
-  setOpenMenu: PropTypes.func.isRequired,
-  clearOpenMenu: PropTypes.func.isRequired,
+  variant: PropTypes.string,
+  onClick: PropTypes.func,
+}
+
+NavItemMenu.defaultProps = {
+  variant: 'copy',
+  onClick: () => {
+  },
 }
 
 export default NavItemMenu

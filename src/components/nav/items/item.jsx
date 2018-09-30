@@ -21,7 +21,7 @@ NavItem.propTypes = {
 
 NavItem.defaultProps = {
   active: false,
-  variant: 'default',
+  variant: 'copy',
 }
 
 export default NavItem
