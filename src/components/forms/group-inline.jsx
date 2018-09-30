@@ -35,8 +35,8 @@ const Styled = styled('div')`
       margin-bottom: 0;
     }
     .select-custom-container {
-      margin-bottom: 1em;
       .select-custom, .select-custom-dropdown-container {
+        margin-top: 0;
         margin-bottom: 0;
       }
     }

@@ -1,63 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
+import { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
 import InputHidden from '../../inputs/hidden'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
-import { baseInput } from '../../inputs/base'
-import { rgb } from '../../../../themes/utils'
-
-// @TODO need to use a global config value for input margins and borders.
-const StyledDropDownContainer = styled('div')`
-  position: relative;
-  margin-top: -1em;
-  margin-bottom: 2em;
-`
-const StyledSelect = styled('div')`
-  ${({ theme }) => baseInput(theme)};
-  display: ${({ open }) => open ? 'none' : 'block'};  min-height: 1.6em;
-  box-sizing: content-box;
-  cursor: pointer;
-`
-const StyledFilter = styled('input')`
-  ${({ theme }) => baseInput(theme)};
-  margin: 5px;
-  width: calc(100% - 10px);
-`
-const StyledDropDown = styled('ul')`
-  display: ${({ open }) => open ? 'block' : 'none'};
-  position: absolute;
-  background: ${({ theme }) => rgb(theme.colors.copy.light)};
-  border-left: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  border-right: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  color: ${({ theme }) => rgb(theme.colors.copy.dark)};
-  border-radius: 0 0 ${({ theme }) => theme.config.radius} ${({ theme }) => theme.config.radius};
-  margin: -2px 0 0 0;
-  padding: 0;
-  width: 100%;
-  list-style: none inside;
-  &.${ERROR_CLASS} {
-    border-color: ${({ theme }) => rgb(theme.colors.danger.default)};;
-  }
-`
-const Option = styled('li')`
-  padding: .5em 1em;
-  cursor: pointer;
-  &:hover {
-    background: ${({ theme }) => rgb(theme.colors.neutral.alpha)};
-  }
-  &:first-child {
-    padding-top: 1em;
-  }
-  &:last-child {
-    padding-bottom: 1em;
-  }
-`
-const StyledSelectContainer = styled(`div`)``
+import {
+  Option,
+  StyledDropDown,
+  StyledDropDownContainer,
+  StyledFilter,
+  StyledSelect,
+  StyledSelectContainer
+} from '../base'
 
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')

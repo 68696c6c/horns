@@ -4,7 +4,7 @@ import uuid from 'uuid/v4'
 import { cx } from 'react-emotion'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
-import StyledSelect from '../base'
+import { StyledNativeSelect } from '../base'
 
 const SelectMulti = ({ name, value, id, label, required, hasError, className, children, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
@@ -12,7 +12,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, className, ch
   return (
     <React.Fragment>
       {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
-      <StyledSelect
+      <StyledNativeSelect
         multiple
         name={name}
         defaultValue={value}
@@ -22,7 +22,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, className, ch
         {...others}
       >
         {children}
-      </StyledSelect>
+      </StyledNativeSelect>
     </React.Fragment>
   )
 }

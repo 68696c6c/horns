@@ -4,7 +4,7 @@ import uuid from 'uuid/v4'
 import { cx } from 'react-emotion'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
-import StyledSelect from '../base'
+import { StyledNativeSelect } from '../base'
 import { isUndefined } from '../../../../utils/utils'
 
 const SelectNative = ({ name, value, id, label, placeholder, required, hasError, className, children, ...others }) => {
@@ -15,7 +15,7 @@ const SelectNative = ({ name, value, id, label, placeholder, required, hasError,
   return (
     <React.Fragment>
       {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
-      <StyledSelect
+      <StyledNativeSelect
         name={name}
         {...valueProp}
         id={idValue}
@@ -26,7 +26,7 @@ const SelectNative = ({ name, value, id, label, placeholder, required, hasError,
       >
         <option disabled selected={selected}>{placeholder}</option>
         {children}
-      </StyledSelect>
+      </StyledNativeSelect>
     </React.Fragment>
   )
 }
