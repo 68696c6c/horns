@@ -4,16 +4,18 @@ import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { rgb } from '../../themes/utils'
 
-const StyledControl = styled('a')`
-  padding: .5em;
-  cursor: pointer;
-`
 const StyledItem = styled('a')`
-  padding: .5em;
+  padding: .1em .5em;
   cursor: pointer;
-  background: ${({ active, theme }) => active ? rgb(theme.colors.neutral.light) : 'none'};
+  border: 1px solid ${({ active, theme, variant }) => active ? rgb(theme.colors[variant].light) : 'transparent'};
+  border-radius: ${({ theme }) => theme.config.radius};
+  margin: 0 .1em;
+  &:hover {
+    background: ${({ theme, variant }) => rgb(theme.colors[variant].alpha)};
+  }
 `
 const Styled = styled('nav')`
+  display: flex;
 `
 
 class Pagination extends React.Component {
@@ -64,7 +66,7 @@ class Pagination extends React.Component {
   }
 
   getLinks(page, pages) {
-    const { items } = this.props
+    const { items, variant } = this.props
     let links = []
     const half = Math.floor(items / 2)
     let start = 1
@@ -78,7 +80,7 @@ class Pagination extends React.Component {
     }
     for (let i = start; i <= end; i++) {
       const active = i === page
-      links.push(<StyledItem key={uuid()} data-page={i} active={active} onClick={this.setPage}>{i}</StyledItem>)
+      links.push(<StyledItem key={uuid()} data-page={i} active={active} variant={variant} onClick={this.setPage}>{i}</StyledItem>)
     }
     return links
   }
@@ -94,18 +96,30 @@ class Pagination extends React.Component {
   }
 
   render() {
-    const { className, ...others } = this.props
+    const { variant, className, ...others } = this.props
     return (
       <Styled className={cx(className, 'pagination')} {...others}>
-        <StyledControl onClick={this.previous}>Previous</StyledControl>
+        <StyledItem onClick={this.previous} variant={variant}>Previous</StyledItem>
         {this.state.links}
-        <StyledControl onClick={this.next}>Next</StyledControl>
+        <StyledItem onClick={this.next} variant={variant}>Next</StyledItem>
       </Styled>
     )
   }
 }
 
 Pagination.propTypes = {
+  variant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+  ]),
   pages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   items: PropTypes.number,
@@ -114,6 +128,7 @@ Pagination.propTypes = {
 
 Pagination.defaultProps = {
   items: 6,
+  variant: 'neutral',
 }
 
 export default Pagination
