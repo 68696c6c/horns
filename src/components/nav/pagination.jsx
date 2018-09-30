@@ -29,6 +29,7 @@ class Pagination extends React.Component {
     this.previous = this.previous.bind(this)
     this.next = this.next.bind(this)
     this.getLinks = this.getLinks.bind(this)
+    this.setPage = this.setPage.bind(this)
   }
 
   componentDidMount() {
@@ -77,9 +78,19 @@ class Pagination extends React.Component {
     }
     for (let i = start; i <= end; i++) {
       const active = i === page
-      links.push(<StyledItem key={uuid()} page={i} active={active}>{i}</StyledItem>)
+      links.push(<StyledItem key={uuid()} data-page={i} active={active} onClick={this.setPage}>{i}</StyledItem>)
     }
     return links
+  }
+
+  setPage(event) {
+    const page = parseInt(event.target.dataset.page)
+    this.setState(prevState => {
+      return {
+        page,
+        links: this.getLinks(page, prevState.pages),
+      }
+    }, () => this.props.onChange(this.state.page))
   }
 
   render() {
