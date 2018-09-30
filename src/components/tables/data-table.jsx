@@ -5,7 +5,7 @@ import uuid from 'uuid/v4'
 import Table from './table'
 import { GroupInline, Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
-import { isArray, isUndefined } from '../../utils/utils'
+import { debounce, isArray, isUndefined } from '../../utils/utils'
 import TableHead from './table-head'
 import TableCell from './table-cell'
 import TableRow from './table-row'
@@ -45,55 +45,78 @@ class DataTable extends React.Component {
       pages: 10,
       head: [],
       body: [],
+      rows: [],
+      term: '',
     }
 
-    this.filterOptions = this.filterOptions.bind(this)
+    this.filterRows = this.filterRows.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.getRows = this.getRows.bind(this)
+
+    this.filterRef = React.createRef()
+  }
+
+  componentWillMount() {
+    this.filterRowsDebounced = debounce(function () {
+      this.filterRows.apply(this, [this.state.term]);
+    }, 300)
   }
 
   componentDidMount() {
     this.getRows()
   }
 
-  filterOptions() {
+  componentDidUpdate() {
+    this.filterRef.current.focus()
+  }
 
+  handleChange(event) {
+    const term = this.filterRef.current.value
+    this.setState(() => ({ term }))
+    this.filterRowsDebounced()
+  }
+
+  filterRows() {
+    const term = this.state.term
+    const value = term.toLowerCase()
+    const body = this.state.body.filter(row => {
+      let match = false
+      for (let i = 0; i < row.length; i++) {
+        if (row[i].toLowerCase().includes(value)) {
+          match = true
+          break
+        }
+      }
+      return match
+    })
+    this.setState(() => ({ rows: body }))
   }
 
   getRows() {
     const { children } = this.props
-    let headData = []
-    let bodyData = []
+    let head = []
+    let body = []
     if (!isUndefined(children)) {
       const childArray = isArray(children) ? children : [children]
       childArray.map((child, index) => {
         const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
         if (child.type.displayName === 'TableHead') {
           columns.map(column => {
-            headData.push(column.props.children)
+            head.push(column.props.children)
           })
         } else {
-          bodyData[index] = []
+          body[index] = []
           columns.map(column => {
-            bodyData[index].push(column.props.children)
+            body[index].push(column.props.children)
           })
         }
       })
     }
-    const head = headData.map(column => <TableCell key={uuid()}>{column}</TableCell>)
-    const body = bodyData.map(row => {
-      return (
-        <TableRow key={uuid()}>
-          {row.map(column => {
-            return <TableCell key={uuid()}>{column}</TableCell>
-          })}
-        </TableRow>
-      )
-    })
-    this.setState(() => ({ head, body }))
+    this.setState(() => ({ head, body, rows: body }))
   }
 
   render() {
-    const { className, children, ...others } = this.props
+    const { className, ...others } = this.props
     const start = (this.state.page - 1) * this.state.per_page + 1
     const end = start + this.state.per_page - 1
     const entries = this.state.pages * this.state.per_page
@@ -107,12 +130,20 @@ class DataTable extends React.Component {
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Input label="Search" name="term"/>
+            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleChange} defaultValue={this.state.term} />
           </GroupInline>
         </StyledDataTableHeader>
         <Table className="data-table-table">
-          <TableHead>{this.state.head}</TableHead>
-          {this.state.body}
+          <TableHead>{this.state.head.map(column => <TableCell key={uuid()}>{column}</TableCell>)}</TableHead>
+          {this.state.rows.map(row => {
+            return (
+              <TableRow key={uuid()}>
+                {row.map(column => {
+                  return <TableCell key={uuid()}>{column}</TableCell>
+                })}
+              </TableRow>
+            )
+          })}
         </Table>
         <StyledDataTableFooter>
           <GroupInline>
