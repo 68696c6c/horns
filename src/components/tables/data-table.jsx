@@ -35,6 +35,8 @@ const StyledDataTableFooter = styled('footer')`
   padding: .5em 0;
 `
 
+// @TODO add support for sorting by columns
+// @TODO add better theming and variants
 class DataTable extends React.Component {
   constructor(props) {
     super(props)
