@@ -79,7 +79,8 @@ class DataTable extends React.Component {
   handlePageSize(event) {
     const perPage = event.target.value
     const rows = this.getPageRows(this.state.body, this.state.page, perPage)
-    this.setState(() => ({ perPage, rows }))
+    const pages = Math.ceil(this.state.body.length / perPage)
+    this.setState(() => ({ perPage, rows, pages }))
   }
 
   handlePaginate(page) {
@@ -144,7 +145,6 @@ class DataTable extends React.Component {
     let body = []
     for (let i = 0; i < data.length; i++) {
       const child = data[i]
-      console.log(child)
       if (i === 0) {
         const columns = Object.keys(child)
         columns.forEach(column => {
@@ -167,7 +167,6 @@ class DataTable extends React.Component {
     if (!isUndefined(children)) {
       const data = isArray(children) ? children : [children]
       result = this.getRowHTMLData(data)
-      console.log(result)
       const { count, head, body } = result
       const pages = Math.ceil(count / this.state.perPage)
       const rows = this.getPageRows(body, 1, this.state.perPage)
@@ -175,7 +174,6 @@ class DataTable extends React.Component {
     } else if (!isUndefined(this.props.filterRows)) {
       this.props.filterRows(this.state.term, rowData => {
         result = this.getAsyncRowData(rowData)
-        console.log(result)
         const { count, head, body } = result
         const pages = Math.ceil(count / this.state.perPage)
         const rows = this.getPageRows(body, 1, this.state.perPage)
