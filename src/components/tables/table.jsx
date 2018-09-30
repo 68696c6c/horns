@@ -6,63 +6,78 @@ import { rgb } from '../../themes/utils'
 const rowStyle = (extra = '') => {
   return css`
     .table-row, .table-head {
-      display: flex;
-      flex-direction: row;
-      flex-flow: row wrap;
+      display: table-row;
       ${extra};
     }
   `
 }
-
-const styleStack = (breakpoint) => {
+const styleStack = breakpoint => {
+  const extra = css`
+    .table-cell {
+      display: table-cell;
+    }
+  `
   return css`
     @media(min-width: ${breakpoint}) {
-      ${rowStyle()};
+      ${rowStyle(extra)};
     }
   `
 }
-const styleScroll = (minWidth) => {
+const styleScroll = minWidth => {
+  const extra = css`
+    .table-cell {
+      display: table-cell;
+    }
+  `
   return css`
-    overflow-x: scroll;
-    ${rowStyle(`min-width: ${minWidth}`)};
+    min-width: ${minWidth};
+    ${rowStyle(extra)};
   `
 }
 
 const StyledTable = styled('div')`
   background: ${({ theme }) => rgb(theme.colors.background.light)};
-  ${({ breakpoint, responsive, minWidth, theme }) => responsive === 'stack' ? styleStack(theme.breakpoints[breakpoint]) : styleScroll(theme.breakpoints[minWidth])};
-  .table-head {
+  display: table;
+  width: 100%;
+  ${({ breakpoint, responsive, minWidth, theme }) => responsive === 'scroll' ? styleScroll(theme.breakpoints[minWidth]) : styleStack(theme.breakpoints[breakpoint])};
+  .table-head .table-cell {
     color: ${({ variant, theme }) => theme.colors.background.light.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)};
     border-top: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
     border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
   }
   .table-row {
     color: ${({ variant, theme }) => theme.colors.background.light.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)};
-    &:nth-child(even) {
+    &:nth-child(even) .table-cell {
     }
-    &:nth-child(odd) {
+    &:nth-child(odd) .table-cell {
       background: ${({ variant, theme }) => rgb(theme.colors[variant].alpha)};
     }
-    &:not(:last-of-type) {
+    &:not(:last-of-type) .table-cell {
       border-bottom: 1px solid ${({ variant, theme }) => rgb(theme.colors[variant].light)};
     }
-    &:last-child {
+    &:last-child .table-cell {
       border-bottom: 4px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
     }
   }
 `
+const StyledTabledContainer = styled('div')`
+  overflow-x: scroll;
+`
 
-const Table = ({ breakpoint, responsive, minWidth, variant, className, children, ...others }) => (
-  <StyledTable
-    breakpoint={breakpoint}
-    responsive={responsive}
-    minWidth={minWidth}
-    variant={variant}
-    className={cx(className, 'table')} {...others}
-  >
-    {children}
-  </StyledTable>
-)
+const Table = ({ breakpoint, responsive, minWidth, variant, className, children, ...others }) => {
+  const table = (
+    <StyledTable
+      breakpoint={breakpoint}
+      responsive={responsive}
+      minWidth={minWidth}
+      variant={variant}
+      className={cx(className, 'table')} {...others}
+    >
+      {children}
+    </StyledTable>
+  )
+  return responsive === 'scroll' ? <StyledTabledContainer>{table}</StyledTabledContainer> : table
+}
 
 Table.propTypes = {
   breakpoint: PropTypes.oneOf([

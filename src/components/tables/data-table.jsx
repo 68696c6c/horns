@@ -11,6 +11,7 @@ import TableCell from './table-cell'
 import TableRow from './table-row'
 
 // This component is for content that slides out under/between rows in a DataTable.
+// @TODO implement this.
 export const DataTableRowData = ({ children, className, ...others }) => {
   const style = css`
     padding: 1em;
@@ -22,15 +23,11 @@ export const DataTableRowData = ({ children, className, ...others }) => {
     </div>
   )
 }
-
 const StyledDataTable = styled('div')`
-  
 `
-
 const StyledDataTableHeader = styled('header')`
   padding: .5em 0;
 `
-
 const StyledDataTableFooter = styled('footer')`
   padding: .5em 0;
 `
@@ -75,7 +72,6 @@ class DataTable extends React.Component {
   }
 
   componentDidUpdate() {
-    this.filterRef.current.focus()
   }
 
   handlePageSize(event) {
@@ -116,7 +112,7 @@ class DataTable extends React.Component {
     })
     const page = 1
     const rows = this.getPageRows(body, page, this.state.perPage)
-    this.setState(() => ({ page, rows }))
+    this.setState(() => ({ page, rows }), () => this.filterRef.current.focus())
   }
 
   getRowHTMLData(data) {
@@ -201,7 +197,7 @@ class DataTable extends React.Component {
             <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleFilter} defaultValue={this.state.term} />
           </GroupInline>
         </StyledDataTableHeader>
-        <Table className="data-table-table">
+        <Table className="data-table-table" responsive="scroll">
           <TableHead>{this.state.head.map(column => <TableCell key={uuid()}>{column}</TableCell>)}</TableHead>
           {this.state.rows.map(row => {
             return (
