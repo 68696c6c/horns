@@ -41,8 +41,8 @@ class DataTable extends React.Component {
 
     this.state = {
       page: 1,
-      per_page: 10,
-      pages: 10,
+      perPage: 10,
+      pages: 0,
       head: [],
       body: [],
       rows: [],
@@ -50,10 +50,14 @@ class DataTable extends React.Component {
     }
 
     this.filterRows = this.filterRows.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    this.handlePageSize = this.handlePageSize.bind(this)
+    this.handlePaginate = this.handlePaginate.bind(this)
+    this.handleFilter = this.handleFilter.bind(this)
     this.getRows = this.getRows.bind(this)
+    this.getPageRows = this.getPageRows.bind(this)
 
     this.filterRef = React.createRef()
+    this.perPageRef = React.createRef()
   }
 
   componentWillMount() {
@@ -70,10 +74,26 @@ class DataTable extends React.Component {
     this.filterRef.current.focus()
   }
 
-  handleChange(event) {
+  handlePageSize(event) {
+    const perPage = event.target.value
+    const rows = this.getPageRows(this.state.body, this.state.page, perPage)
+    this.setState(() => ({ perPage, rows }))
+  }
+
+  handlePaginate(page) {
+    const rows = this.getPageRows(this.state.body, page, this.state.perPage)
+    this.setState(() => ({ page, rows }))
+  }
+
+  handleFilter(event) {
     const term = this.filterRef.current.value
     this.setState(() => ({ term }))
     this.filterRowsDebounced()
+  }
+
+  getPageRows(body, page, perPage) {
+    const start = page === 1 ? 0 : perPage * (page - 1)
+    return body.slice(start, start + perPage)
   }
 
   filterRows() {
@@ -94,43 +114,47 @@ class DataTable extends React.Component {
 
   getRows() {
     const { children } = this.props
+    let count = 0
     let head = []
     let body = []
     if (!isUndefined(children)) {
       const childArray = isArray(children) ? children : [children]
-      childArray.map((child, index) => {
+      for (let i = 0; i < childArray.length; i++) {
+        const child = childArray[i]
         const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
         if (child.type.displayName === 'TableHead') {
-          columns.map(column => {
+          columns.forEach(column => {
             head.push(column.props.children)
           })
         } else {
-          body[index] = []
-          columns.map(column => {
-            body[index].push(column.props.children)
+          count++
+          body[i] = []
+          columns.forEach(column => {
+            body[i].push(column.props.children)
           })
         }
-      })
+      }
     }
-    this.setState(() => ({ head, body, rows: body }))
+    const pages = Math.ceil(count / this.state.perPage)
+    const rows = this.getPageRows(body, 1, this.state.perPage)
+    this.setState(() => ({ pages, head, body, rows }))
   }
 
   render() {
     const { className, ...others } = this.props
-    const start = (this.state.page - 1) * this.state.per_page + 1
-    const end = start + this.state.per_page - 1
-    const entries = this.state.pages * this.state.per_page
+    const start = (this.state.page - 1) * this.state.perPage + 1
+    const end = start + this.state.perPage - 1
     return (
       <StyledDataTable className={cx(className, 'data-table')} {...others}>
         <StyledDataTableHeader>
           <GroupInline>
-            <Select label="Items per page" name="per_page" value={this.state.per_page} className={css`width: 40px;`}>
+            <Select label="Items per page" name="per_page" innerRef={this.perPageRef} onChange={this.handlePageSize} value={this.state.perPage} className={css`width: 40px;`}>
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleChange} defaultValue={this.state.term} />
+            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleFilter} defaultValue={this.state.term} />
           </GroupInline>
         </StyledDataTableHeader>
         <Table className="data-table-table">
@@ -147,8 +171,8 @@ class DataTable extends React.Component {
         </Table>
         <StyledDataTableFooter>
           <GroupInline>
-            <span>Showing {start} through {end} of {entries} entries</span>
-            <Pagination pages={this.state.pages} page={this.state.page}/>
+            <span>Showing {start} through {end} of {this.state.body.length} entries</span>
+            <Pagination pages={this.state.pages} page={this.state.page} onChange={this.handlePaginate}/>
           </GroupInline>
         </StyledDataTableFooter>
       </StyledDataTable>

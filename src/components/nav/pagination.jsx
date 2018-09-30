@@ -46,7 +46,7 @@ class Pagination extends React.Component {
         page,
         links: this.getLinks(page, prevState.pages),
       }
-    })
+    }, () => this.props.onChange(this.state.page))
   }
 
   next() {
@@ -59,7 +59,7 @@ class Pagination extends React.Component {
         page,
         links: this.getLinks(page, prevState.pages),
       }
-    })
+    }, () => this.props.onChange(this.state.page))
   }
 
   getLinks(page, pages) {
@@ -69,10 +69,10 @@ class Pagination extends React.Component {
     let start = 1
     let end = items
     if (page >= pages - half) {
-      start = pages - items
+      start = pages - items <= 0 ? 1 : pages - items
       end = pages
     } else if (page > half) {
-      start = page - half
+      start = page - half <= 0 ? 1 : page - half
       end = page + half
     }
     for (let i = start; i <= end; i++) {
@@ -98,6 +98,7 @@ Pagination.propTypes = {
   pages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   items: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
 }
 
 Pagination.defaultProps = {
