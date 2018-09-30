@@ -54,6 +54,8 @@ class DataTable extends React.Component {
     this.handlePaginate = this.handlePaginate.bind(this)
     this.handleFilter = this.handleFilter.bind(this)
     this.getRows = this.getRows.bind(this)
+    this.getRowHTMLData = this.getRowHTMLData.bind(this)
+    this.getAsyncRowData = this.getAsyncRowData.bind(this)
     this.getPageRows = this.getPageRows.bind(this)
 
     this.filterRef = React.createRef()
@@ -114,32 +116,72 @@ class DataTable extends React.Component {
     this.setState(() => ({ page, rows }))
   }
 
-  getRows() {
-    const { children } = this.props
+  getRowHTMLData(data) {
     let count = 0
     let head = []
     let body = []
-    if (!isUndefined(children)) {
-      const childArray = isArray(children) ? children : [children]
-      for (let i = 0; i < childArray.length; i++) {
-        const child = childArray[i]
-        const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
-        if (child.type.displayName === 'TableHead') {
-          columns.forEach(column => {
-            head.push(column.props.children)
-          })
-        } else {
-          count++
-          body[i] = []
-          columns.forEach(column => {
-            body[i].push(column.props.children)
-          })
-        }
+    for (let i = 0; i < data.length; i++) {
+      const child = data[i]
+      const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
+      if (child.type.displayName === 'TableHead') {
+        columns.forEach(column => {
+          head.push(column.props.children)
+        })
+      } else {
+        count++
+        body[i] = []
+        columns.forEach(column => {
+          body[i].push(column.props.children)
+        })
       }
     }
-    const pages = Math.ceil(count / this.state.perPage)
-    const rows = this.getPageRows(body, 1, this.state.perPage)
-    this.setState(() => ({ pages, head, body, rows }))
+    return { count, head, body }
+  }
+
+  getAsyncRowData(data) {
+    let count = 0
+    let head = []
+    let body = []
+    for (let i = 0; i < data.length; i++) {
+      const child = data[i]
+      console.log(child)
+      if (i === 0) {
+        const columns = Object.keys(child)
+        columns.forEach(column => {
+          head.push(column)
+        })
+      }
+      count++
+      body[i] = []
+      for (const field in child) {
+        const column = child[field]
+        body[i].push(column)
+      }
+    }
+    return { count, head, body }
+  }
+
+  getRows() {
+    const { children } = this.props
+    let result = {}
+    if (!isUndefined(children)) {
+      const data = isArray(children) ? children : [children]
+      result = this.getRowHTMLData(data)
+      console.log(result)
+      const { count, head, body } = result
+      const pages = Math.ceil(count / this.state.perPage)
+      const rows = this.getPageRows(body, 1, this.state.perPage)
+      this.setState(() => ({ pages, head, body, rows }))
+    } else if (!isUndefined(this.props.filterRows)) {
+      this.props.filterRows(this.state.term, rowData => {
+        result = this.getAsyncRowData(rowData)
+        console.log(result)
+        const { count, head, body } = result
+        const pages = Math.ceil(count / this.state.perPage)
+        const rows = this.getPageRows(body, 1, this.state.perPage)
+        this.setState(() => ({ pages, head, body, rows }))
+      })
+    }
   }
 
   render() {
@@ -183,7 +225,7 @@ class DataTable extends React.Component {
 }
 
 DataTable.propTypes = {
-  filterOptions: PropTypes.func,
+  filterRows: PropTypes.func,
 }
 
 DataTable.defaultProps = {}
