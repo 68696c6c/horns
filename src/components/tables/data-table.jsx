@@ -109,7 +109,9 @@ class DataTable extends React.Component {
       }
       return match
     })
-    this.setState(() => ({ rows: body }))
+    const page = 1
+    const rows = this.getPageRows(body, page, this.state.perPage)
+    this.setState(() => ({ page, rows }))
   }
 
   getRows() {
