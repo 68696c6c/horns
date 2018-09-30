@@ -9,20 +9,35 @@ import DataTable from './data-table'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
+import filterRows from '../_demo/data-table-async-data'
 
 # DataTable
 
 <Playground>
   <DataTable>
     <TableHead>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell>First Name</TableCell>
+      <TableCell>Last Name</TableCell>
+      <TableCell>Email</TableCell>
+      <TableCell>Created At</TableCell>
     </TableHead>
     <TableRow>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell>Testy</TableCell>
+      <TableCell>McGee</TableCell>
+      <TableCell>testy.mcgee@example.com</TableCell>
+      <TableCell>2007-12-15</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Bob</TableCell>
+      <TableCell>Guff</TableCell>
+      <TableCell>bob.guff@example.com</TableCell>
+      <TableCell>2015-06-30</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Alison</TableCell>
+      <TableCell>Chains</TableCell>
+      <TableCell>alison.chains@example.com</TableCell>
+      <TableCell>2018-01-01</TableCell>
     </TableRow>
   </DataTable>
 </Playground>

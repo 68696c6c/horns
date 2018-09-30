@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css, cx } from 'react-emotion'
+import uuid from 'uuid/v4'
 import Table from './table'
 import { GroupInline, Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
+import { isArray, isUndefined } from '../../utils/utils'
+import TableHead from './table-head'
+import TableCell from './table-cell'
+import TableRow from './table-row'
 
 // This component is for content that slides out under/between rows in a DataTable.
 export const DataTableRowData = ({ children, className, ...others }) => {
@@ -38,7 +43,53 @@ class DataTable extends React.Component {
       page: 1,
       per_page: 10,
       pages: 10,
+      head: [],
+      body: [],
     }
+
+    this.filterOptions = this.filterOptions.bind(this)
+    this.getRows = this.getRows.bind(this)
+  }
+
+  componentDidMount() {
+    this.getRows()
+  }
+
+  filterOptions() {
+
+  }
+
+  getRows() {
+    const { children } = this.props
+    let headData = []
+    let bodyData = []
+    if (!isUndefined(children)) {
+      const childArray = isArray(children) ? children : [children]
+      childArray.map((child, index) => {
+        const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
+        if (child.type.displayName === 'TableHead') {
+          columns.map(column => {
+            headData.push(column.props.children)
+          })
+        } else {
+          bodyData[index] = []
+          columns.map(column => {
+            bodyData[index].push(column.props.children)
+          })
+        }
+      })
+    }
+    const head = headData.map(column => <TableCell key={uuid()}>{column}</TableCell>)
+    const body = bodyData.map(row => {
+      return (
+        <TableRow key={uuid()}>
+          {row.map(column => {
+            return <TableCell key={uuid()}>{column}</TableCell>
+          })}
+        </TableRow>
+      )
+    })
+    this.setState(() => ({ head, body }))
   }
 
   render() {
@@ -59,7 +110,10 @@ class DataTable extends React.Component {
             <Input label="Search" name="term"/>
           </GroupInline>
         </StyledDataTableHeader>
-        <Table className="data-table-table">{children}</Table>
+        <Table className="data-table-table">
+          <TableHead>{this.state.head}</TableHead>
+          {this.state.body}
+        </Table>
         <StyledDataTableFooter>
           <GroupInline>
             <span>Showing {start} through {end} of {entries} entries</span>
@@ -72,7 +126,7 @@ class DataTable extends React.Component {
 }
 
 DataTable.propTypes = {
-  source: PropTypes.string,
+  filterOptions: PropTypes.func,
 }
 
 DataTable.defaultProps = {}
