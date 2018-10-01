@@ -22,6 +22,7 @@ export {
   Grid,
   GridStacked,
   Section,
+  TitleBar,
 } from './components/layout'
 
 export {

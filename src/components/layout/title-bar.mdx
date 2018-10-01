@@ -1,0 +1,35 @@
+---
+name: 'Title Bar'
+menu: Layout
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import TitleBar from './title-bar'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+
+# TitleBar
+
+<FullscreenDemo variant="dark" of={TitleBar} title="TitleBar"> 
+  <TitleBar variant="dark">Title Bar</TitleBar>
+</FullscreenDemo>
+
+## Props
+
+<PropsTable of={TitleBar} />
+
+## Variants
+
+<Playground>
+  <TitleBar fluid={true} variant="background" style={{ textAlign: 'center' }}>Default</TitleBar>
+  <TitleBar fluid={true} variant="primary" style={{ textAlign: 'center' }}>Primary</TitleBar>
+  <TitleBar fluid={true} variant="secondary" style={{ textAlign: 'center' }}>Secondary</TitleBar>
+  <TitleBar fluid={true} variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</TitleBar>
+  <TitleBar fluid={true} variant="light" style={{ textAlign: 'center' }}>Light</TitleBar>
+  <TitleBar fluid={true} variant="neutral" style={{ textAlign: 'center' }}>Neutral</TitleBar>
+  <TitleBar fluid={true} variant="dark" style={{ textAlign: 'center' }}>Dark</TitleBar>
+  <TitleBar fluid={true} variant="success" style={{ textAlign: 'center' }}>Success</TitleBar>
+  <TitleBar fluid={true} variant="info" style={{ textAlign: 'center' }}>Info</TitleBar>
+  <TitleBar fluid={true} variant="warning" style={{ textAlign: 'center' }}>Warning</TitleBar>
+  <TitleBar fluid={true} variant="danger" style={{ textAlign: 'center' }}>Danger</TitleBar>
+</Playground>
