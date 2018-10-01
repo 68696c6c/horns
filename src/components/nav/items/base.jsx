@@ -7,9 +7,7 @@ const baseNavItem = variant => {
   return css`
     display: inline-block;
     color: ${rgb(variant.color)};
-    padding: 1rem .5rem calc(1rem - 2px) .5rem;
     text-decoration: ${variant.decoration};
-    border-bottom: 2px solid transparent;
     &:focus { 
       outline: none; 
     }
@@ -22,8 +20,33 @@ const baseNavItem = variant => {
       text-decoration: ${active.decoration};
     }
     &.active {
-      border-bottom-color: ${rgb(active.color)};
+      border-color: ${rgb(active.color)};
     }
+  `
+}
+
+export const navItemInline = () => {
+  return css`
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    padding: 1em .5em calc(1em - 2px) .5em;
+  `
+}
+
+export const navItemStacked = () => {
+  return css`
+    display: block;
+    border-left: 2px solid transparent;
+    padding: .5em 1em .5em calc(1em - 2px);
+  `
+}
+
+export const navMenuItem = () => {
+  return css`
+    display: block;
+    border: none;
+    padding: .5em 1em;
+    white-space: nowrap;
   `
 }
 

@@ -5,17 +5,20 @@ import styled, { cx } from 'react-emotion'
 import NavItem from './item'
 import { rgb } from '../../../themes/utils'
 import { getEventName } from '../../../events'
+import { navMenuItem } from './base'
 
 const EVENT_OPEN = getEventName('menu:open')
 const EVENT_CLOSE = getEventName('menu:close')
 
+const StyledMenuContainer = styled('span')`
+  position: relative;
+`
 const StyledMenu = styled('nav')`
   display: ${({ open }) => open ? 'block' : 'none'};
+  background: ${({ theme }) => rgb(theme.colors.background.dark)};
+  padding-left: .5em;
   .nav-item {
-    display: block;
-    background: ${({ theme }) => rgb(theme.colors.background.dark)};
-    border: none;
-    padding: .5rem 1rem;
+    ${navMenuItem()};
   }
 `
 StyledMenu.propTypes = {
@@ -114,15 +117,22 @@ class NavItemMenu extends React.Component {
   }
 
   render() {
-    const activeClass = this.state.active ? 'active' : ''
     const { content, variant, className, children } = this.props
     return (
-      <React.Fragment>
-        <NavItem href="#" variant={variant} className={cx(className, activeClass)} onClick={this.handleClick}>
+      <StyledMenuContainer className="nav-item-menu">
+        <NavItem
+          href="#"
+          variant={variant}
+          className={className}
+          active={this.state.active}
+          onClick={this.handleClick}
+        >
           {content}
         </NavItem>
-        <StyledMenu open={this.state.open} innerRef={this.menuRef} className="nav-item-menu-items">{children}</StyledMenu>
-      </React.Fragment>
+        <StyledMenu open={this.state.open} innerRef={this.menuRef} className="nav-item-menu-items">
+          {children}
+          </StyledMenu>
+      </StyledMenuContainer>
     )
   }
 }
@@ -132,12 +142,14 @@ NavItemMenu.propTypes = {
     PropTypes.string,
     PropTypes.object,
   ]).isRequired,
+  active: PropTypes.bool,
   variant: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 NavItemMenu.defaultProps = {
   variant: 'copy',
+  active: false,
   onClick: () => {
   },
 }

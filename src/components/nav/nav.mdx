@@ -1,0 +1,54 @@
+---
+name: 'Nav'
+menu: Navs
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Nav from './nav'
+import { NavItem } from './items'
+import { NavItemMenu } from './items'
+
+# Nav
+
+<Playground style={{ height: '350px' }}>
+  <Nav>
+    <NavItem href="#" active>Item One</NavItem>
+    <NavItem href="#">Item Two</NavItem>
+    <NavItem href="#">Item Three</NavItem>
+    <NavItemMenu content="Nav Menu">
+      <NavItem href="#">Menu Item One</NavItem>
+      <NavItem href="#">Menu Item Two</NavItem>
+      <NavItem href="#">Menu Item Three</NavItem>
+      <NavItemMenu content="Sub Menu">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#">Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+    </NavItemMenu>
+  </Nav>
+</Playground>
+
+## Props
+
+<PropsTable of={Nav} />
+
+## Mobile
+
+<Playground>
+  <Nav mobile={true}>
+    <NavItem href="#">Item One</NavItem>
+    <NavItem href="#">Item Two</NavItem>
+    <NavItem href="#">Item Three</NavItem>
+    <NavItemMenu content="Nav Menu" active>
+      <NavItem href="#">Menu Item One</NavItem>
+      <NavItem href="#">Menu Item Two</NavItem>
+      <NavItem href="#">Menu Item Three</NavItem>
+      <NavItemMenu content="Sub Menu" active>
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#">Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+    </NavItemMenu>
+  </Nav>
+</Playground>

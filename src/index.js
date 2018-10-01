@@ -39,6 +39,14 @@ export {
 } from './components/lists'
 
 export {
+  Nav,
+  NavStacked,
+  NavItem,
+  NavItemMenu,
+  Pagination,
+} from './components/nav'
+
+export {
   DataTable,
   Table,
   TableCell,

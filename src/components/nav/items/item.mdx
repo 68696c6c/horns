@@ -6,6 +6,7 @@ menu: Navs
 import { Playground, PropsTable } from 'docz'
 
 import NavItem from './item'
+import WrapperInline from '../../_demo/wrappers/inline'
 
 # Nav Item
 
@@ -20,8 +21,16 @@ import NavItem from './item'
 ## Variants
 
 <Playground>
-  <NavItem href="#">Default Nav Item</NavItem>
-  <NavItem href="#" active={true}>Active Nav Item</NavItem>
-  <NavItem href="#" variant="dark">Dark Nav Item</NavItem>
-  <NavItem href="#" variant="light" style={{ background: 'black', }}>Light Nav Item</NavItem>
+  <WrapperInline>
+    <NavItem href="#">Default Nav Item</NavItem>
+  </WrapperInline>
+  <WrapperInline>
+    <NavItem href="#" active={true}>Active Nav Item</NavItem>
+  </WrapperInline>
+  <WrapperInline>
+    <NavItem href="#" variant="dark">Dark Nav Item</NavItem>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <NavItem href="#" variant="light">Light Nav Item</NavItem>
+  </WrapperInline>
 </Playground>
