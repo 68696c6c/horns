@@ -1,0 +1,54 @@
+---
+name: 'Alert'
+menu: Notifications
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Alert from './alert'
+import WrapperInline from '../_demo/wrappers/inline'
+
+# Alert
+
+<Playground>
+  <Alert>Default Alert</Alert>
+</Playground>
+
+## Props
+
+<PropsTable of={Alert} />
+
+## Variants
+
+<Playground>
+  <WrapperInline>
+    <Alert variant="primary">Primary Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="secondary">Secondary Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="tertiary">Tertiary Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="light">Light Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="neutral">Neutral Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="dark">Dark Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="success">Success Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="info">Info Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="warning">Warning Alert</Alert>
+  </WrapperInline>
+  <WrapperInline>
+    <Alert variant="danger">Danger Alert</Alert>
+  </WrapperInline>
+</Playground>
