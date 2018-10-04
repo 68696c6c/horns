@@ -1,0 +1,42 @@
+---
+name: 'Parallax'
+menu: Layout
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Parallax from './parallax'
+import Section from './section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+import parallax1 from '../../images/parallax-1.jpg'
+import parallax2 from '../../images/parallax-2.jpg'
+
+# Parallax
+
+<FullscreenDemo variant="dark" of={Parallax} title="Parallax">
+  <div style={{ height: '100vh', overflow: 'scroll' }}>
+    <Section variant="dark">
+      <p>Top content.</p>
+    </Section>
+    <Parallax background={parallax1}>
+      <h1 style={{ color: 'white', textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000', textAlign: 'center' }}>
+        Demo text 1
+      </h1>
+    </Parallax>
+    <Section variant="dark">
+      <p>Interstitial content.</p>
+    </Section>
+    <Parallax background={parallax2}>
+      <h1 style={{ color: 'white', textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000', textAlign: 'center' }}>
+        Demo text 2
+      </h1>
+    </Parallax>
+    <Section variant="dark">
+      <p>Bottom content.</p>
+    </Section>
+  </div>
+</FullscreenDemo>
+
+## Props
+
+<PropsTable of={Parallax} />

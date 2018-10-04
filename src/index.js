@@ -21,6 +21,7 @@ export {
   Area,
   Grid,
   GridStacked,
+  Parallax,
   Section,
   TitleBar,
 } from './components/layout'

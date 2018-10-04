@@ -1,5 +1,6 @@
 export { default as Area } from './area'
 export { default as Grid } from './grid'
 export { default as GridStacked } from './stacked'
+export { default as Parallax } from './parallax'
 export { default as Section } from './section'
 export { default as TitleBar } from './title-bar'
