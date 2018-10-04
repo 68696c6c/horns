@@ -22,6 +22,7 @@ export {
   Grid,
   GridStacked,
   Parallax,
+  ScrollLock,
   Section,
   TitleBar,
 } from './components/layout'

@@ -1,0 +1,28 @@
+---
+name: 'Scroll Lock'
+menu: Layout
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import ScrollLock from './scroll-lock'
+import Section from './section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+
+# ScrollLock
+
+<ScrollLock speed={.7}>
+  <Section variant="background">
+    <p>Top content.</p>
+  </Section>
+  <Section variant="dark">
+    <p>Middle content.</p>
+  </Section>
+  <Section variant="background">
+    <p>Bottom content.</p>
+  </Section>
+</ScrollLock>
+
+## Props
+
+<PropsTable of={ScrollLock} />
