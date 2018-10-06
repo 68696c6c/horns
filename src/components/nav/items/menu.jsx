@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled, { cx } from 'react-emotion'
+import styled from 'react-emotion'
 import NavItem from './item'
 import { rgb } from '../../../themes/utils'
 import { getEventName } from '../../../events'
@@ -131,7 +131,7 @@ class NavItemMenu extends React.Component {
         </NavItem>
         <StyledMenu open={this.state.open} innerRef={this.menuRef} className="nav-item-menu-items">
           {children}
-          </StyledMenu>
+        </StyledMenu>
       </StyledMenuContainer>
     )
   }
