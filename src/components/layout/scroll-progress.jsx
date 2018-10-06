@@ -4,7 +4,7 @@ import OverScroll from 'gatsby-over-scroll'
 import styled, { css, cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
 
-const ScrollProgress = styled('div')`
+const ScrollProgressBarContainer = styled('div')`
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -28,7 +28,7 @@ const ScrollContent = styled('div')`
   }
 `
 
-export const ScrollLock = ({ speed, children, ...others }) => {
+export const ScrollProgress = ({ speed, children, ...others }) => {
   const length = children.length
   const factor = speed || 1
   return (
@@ -42,11 +42,11 @@ export const ScrollLock = ({ speed, children, ...others }) => {
             <ScrollContent>
               {children[page]}
             </ScrollContent>
-            <ScrollProgress visible={!hidden}>
+            <ScrollProgressBarContainer visible={!hidden}>
               <ScrollProgressBar>
                 <ScrollProgressBarFill style={{ width: `${progress}%` }}/>
               </ScrollProgressBar>
-            </ScrollProgress>
+            </ScrollProgressBarContainer>
           </div>
         )
       }}
@@ -54,8 +54,8 @@ export const ScrollLock = ({ speed, children, ...others }) => {
   )
 }
 
-ScrollLock.propTypes = {
+ScrollProgress.propTypes = {
   speed: PropTypes.number,
 }
 
-export default ScrollLock
+export default ScrollProgress

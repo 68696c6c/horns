@@ -1,3 +1,5 @@
+import ScrollProgress from './components/layout/scroll-progress'
+
 export { Button } from './components/buttons'
 
 export {
@@ -22,7 +24,7 @@ export {
   Grid,
   GridStacked,
   Parallax,
-  ScrollLock,
+  ScrollProgress,
   Section,
   TitleBar,
 } from './components/layout'
