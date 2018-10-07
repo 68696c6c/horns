@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import uuid from 'uuid/v4'
 import styled from 'react-emotion'
 
 const debounce = (fn, delay) => {
@@ -102,7 +103,7 @@ class ScrollPages extends React.Component {
       <StyledScrollPages className="scroll-pages" speed={speed} offset={this.state.offset}>
         {children.map((child, index) => {
           const { children, ...others } = child.props
-          return <ScrollPage key={index} data-index={index} innerRef={this.pagesRefs[index]} {...others}>{children}</ScrollPage>
+          return <ScrollPage key={uuid()} data-index={index} innerRef={this.pagesRefs[index]} {...others}>{children}</ScrollPage>
         })}
       </StyledScrollPages>
     )

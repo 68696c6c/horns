@@ -1,0 +1,36 @@
+---
+name: 'Slider'
+menu: Sliders
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Slider from './slider'
+import Slide from './slide'
+import { Area } from '../layout'
+import parallax1 from '../../images/parallax-1.jpg'
+import parallax2 from '../../images/parallax-2.jpg'
+
+# Slider
+
+<Playground>
+  <Slider style={{ height: '400px' }} speed={3}>
+    <Slide variant="primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h1>Slide 1</h1>
+    </Slide>
+    <Slide variant="secondary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h1>Slide 2</h1>
+    </Slide>
+    <Slide variant="tertiary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h1>Slide 3</h1>
+    </Slide>
+    <Slide variant="dark" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <h1>Slide 4</h1>
+    </Slide>
+  </Slider>
+</Playground>
+
+
+## Props
+
+<PropsTable of={Slider} />
