@@ -10,6 +10,8 @@ import Area from './area'
 
 # Area
 
+An Area is a generic container that supports color variants and can be assigned to a CSS grid-area.
+
 <Playground>
   <Grid>
     <Area>
@@ -21,3 +23,20 @@ import Area from './area'
 ## Props
 
 <PropsTable of={Area} />
+
+## Variants
+
+<Playground>
+  <Area style={{ textAlign: 'center' }}>None</Area>
+  <Area variant="background" style={{ textAlign: 'center' }}>Background</Area>
+  <Area variant="primary" style={{ textAlign: 'center' }}>Primary</Area>
+  <Area variant="secondary" style={{ textAlign: 'center' }}>Secondary</Area>
+  <Area variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</Area>
+  <Area variant="light" style={{ textAlign: 'center' }}>Light</Area>
+  <Area variant="neutral" style={{ textAlign: 'center' }}>Neutral</Area>
+  <Area variant="dark" style={{ textAlign: 'center' }}>Dark</Area>
+  <Area variant="success" style={{ textAlign: 'center' }}>Success</Area>
+  <Area variant="info" style={{ textAlign: 'center' }}>Info</Area>
+  <Area variant="warning" style={{ textAlign: 'center' }}>Warning</Area>
+  <Area variant="danger" style={{ textAlign: 'center' }}>Danger</Area>
+</Playground>

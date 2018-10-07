@@ -1,6 +1,35 @@
 import React from 'react'
 import { css } from 'react-emotion'
-import { valueToInt } from '../themes/utils'
+import { rgb, valueToInt } from '../themes/utils'
+
+export const COLOR_VARIANT_NONE = 'none'
+
+// @TODO this can't be used with component prop types because it breaks the PropsTable Docz component.
+export const COLOR_VARIANTS = [
+  'primary',
+  'secondary',
+  'tertiary',
+  'light',
+  'neutral',
+  'dark',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'background',
+  COLOR_VARIANT_NONE,
+]
+
+export const colorVariantCSS = (theme, variant) => {
+  let color = theme.colors.copy.default
+  if (variant !== COLOR_VARIANT_NONE) {
+    color = theme.colors[variant].default.isLight() ? theme.colors.copy.dark : theme.colors.copy.light
+  }
+  return css`
+    background: ${variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant].default)};
+    color: ${rgb(color)};
+  `
+}
 
 export const containerStyle = (breakpoints, fluid = false, padded = true) => {
   const min = fluid ? 0 : 20

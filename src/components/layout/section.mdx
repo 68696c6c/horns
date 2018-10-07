@@ -12,6 +12,8 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Section
 
+A Section is a semantic content area that confines it's contents to the page content area and supports color variants.
+
 <FullscreenDemo variant="dark" of={Section} title="Section">
   <Section padded={false}>
     <p style={{ marginTop: 0, color: 'white' }}>These Sections have had their padding highlighted to illustrate how the padding works.</p>
@@ -42,7 +44,8 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 ## Variants
 
 <Playground>
-  <Section fluid={true} variant="background" style={{ textAlign: 'center' }}>Default</Section>
+  <Section fluid={true} style={{ textAlign: 'center' }}>None</Section>
+  <Section fluid={true} variant="background" style={{ textAlign: 'center' }}>Background</Section>
   <Section fluid={true} variant="primary" style={{ textAlign: 'center' }}>Primary</Section>
   <Section fluid={true} variant="secondary" style={{ textAlign: 'center' }}>Secondary</Section>
   <Section fluid={true} variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</Section>

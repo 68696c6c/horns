@@ -10,7 +10,9 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # TitleBar
 
-<FullscreenDemo variant="dark" of={TitleBar} title="TitleBar"> 
+A TitleBar is a header element that supports color variants and can confine it's contents to the page content area.
+
+<FullscreenDemo variant="dark" of={TitleBar} title="TitleBar with centered content"> 
   <TitleBar variant="dark">Title Bar</TitleBar>
 </FullscreenDemo>
 
@@ -21,7 +23,8 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 ## Variants
 
 <Playground>
-  <TitleBar fluid={true} variant="background" style={{ textAlign: 'center' }}>Default</TitleBar>
+  <TitleBar fluid={true} style={{ textAlign: 'center' }}>None</TitleBar>
+  <TitleBar fluid={true} variant="background" style={{ textAlign: 'center' }}>Background</TitleBar>
   <TitleBar fluid={true} variant="primary" style={{ textAlign: 'center' }}>Primary</TitleBar>
   <TitleBar fluid={true} variant="secondary" style={{ textAlign: 'center' }}>Secondary</TitleBar>
   <TitleBar fluid={true} variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</TitleBar>

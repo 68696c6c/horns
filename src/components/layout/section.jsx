@@ -1,19 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { rgb } from '../../themes/utils'
-import { containerStyle } from '../utils'
-
-const VARIANT_NONE = 'none'
+import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyle } from '../utils'
 
 const Styled = styled('section')`
-  background: ${({ variant, theme }) => variant === VARIANT_NONE ? 'none' : rgb(theme.colors[variant].default)};
-  color: ${({ variant, theme }) => {
-    if (variant === VARIANT_NONE) {
-      return rgb(theme.colors.copy.default)
-    }
-    return theme.colors[variant].default.isLight() ? rgb(theme.colors.copy.dark) : rgb(theme.colors.copy.light)
-  }};
+  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   overflow: auto;
   ${({ fluid, padded, theme }) => containerStyle(theme.breakpoints, fluid, padded)};
 `
@@ -37,14 +28,14 @@ Section.propTypes = {
     'warning',
     'danger',
     'background',
-    VARIANT_NONE,
+    COLOR_VARIANT_NONE,
   ]),
 }
 
 Section.defaultProps = {
   fluid: false,
   padded: true,
-  variant: VARIANT_NONE,
+  variant: COLOR_VARIANT_NONE,
 }
 
 export default Section
