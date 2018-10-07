@@ -111,7 +111,7 @@ class FullscreenDemo extends React.Component {
 }
 
 FullscreenDemo.propTypes = {
-  of: PropTypes.element.isRequired,
+  of: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   variant: PropTypes.oneOf([
     'light',

@@ -1,0 +1,31 @@
+---
+name: 'ImageFrame'
+menu: Images
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import ImageFrame from './image-frame'
+import { Section } from '../layout'
+import Picture from './picture'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+import parallax1 from '../../images/parallax-1.jpg'
+import parallax2 from '../../images/parallax-2.jpg'
+
+# ImageFrame
+
+<FullscreenDemo variant="dark" of={ImageFrame} title="ImageFrame">
+  <Section padded={false}>
+    <p style={{ marginTop: 0, color: 'white' }}>
+      The ImageFrame can be used as a layout wrapper for Picture components.  It will align and space the images evenly.
+    </p>
+  </Section>
+  <ImageFrame>
+    <Picture srcMin={parallax1} srcMax={parallax2} />
+    <Picture srcMin={parallax1} srcMax={parallax2} />
+  </ImageFrame>
+</FullscreenDemo>
+
+## Props
+
+<PropsTable of={ImageFrame} />

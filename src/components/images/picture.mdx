@@ -1,0 +1,33 @@
+---
+name: 'Picture'
+menu: Images
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Picture, { PictureBase } from './picture'
+import { Section } from '../layout'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+import parallax1 from '../../images/parallax-1.jpg'
+import parallax2 from '../../images/parallax-2.jpg'
+
+# Picture
+
+<FullscreenDemo variant="dark" of={PictureBase} title="Picture">
+  <Section padded={false}>
+    <p style={{ marginTop: 0, color: 'white' }}>
+      The Picture component can be used to render responsive images that use a different source depending on the size of
+      the screen.
+    </p>
+    <p style={{ marginTop: 0, color: 'white' }}>
+      The Picture below will display a different image above the medium breakpoint.  A real world use case would use two
+      different resolutions of the same image to avoid loading a massively over-sized image on a mobile device. 
+    </p>
+  </Section>
+  <Picture srcMin={parallax1} srcMax={parallax2} />
+</FullscreenDemo>
+
+
+## Props
+
+<PropsTable of={PictureBase} />

@@ -18,6 +18,11 @@ export {
 } from './components/forms'
 
 export {
+  ImageFrame,
+  Picture,
+} from './components/images'
+
+export {
   Area,
   Grid,
   GridGuide,
