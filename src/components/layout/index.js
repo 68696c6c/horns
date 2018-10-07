@@ -1,5 +1,6 @@
 export { default as Area } from './area'
 export { default as Grid } from './grid'
+export { default as GridGuide } from './grid-guide'
 export { default as GridStacked } from './stacked'
 export { default as Parallax } from './parallax'
 export { default as ScrollPages } from './scroll-pages'
