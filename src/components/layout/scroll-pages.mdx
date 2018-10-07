@@ -10,11 +10,27 @@ import Section from './section'
 import LayoutDemo from '../_demo/layout-demo'
 
 # ScrollPages
-When using this component with Gatsby, you will need to use the following CSS rules.
+This component is intended to be a page layout directly inside the body and will not work correctly if nested inside of 
+other markup.  The following CSS rules will need to be used.
 ```
   html {
     height: 100%;
   }
+
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+```
+When using this component with Gatsby.js, you will need to use this CSS instead since Gatsby wraps all content inside 
+additional divs by default.
+```
+  html {
+    height: 100%;
+  }
+
   body {
     height: 100%;
     margin: 0;
