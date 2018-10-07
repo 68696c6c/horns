@@ -32,7 +32,7 @@ export const ScrollProgress = ({ speed, children, ...others }) => {
   const length = children.length
   const factor = speed || 1
   return (
-    <OverScroll className="scroll-lock" slides={length} factor={factor} {...others}>
+    <OverScroll className="scroll-progress" slides={length} factor={factor} {...others}>
       {(page, progress) => {
         const beforeStart = page === 0 && progress === 0
         const afterEnd = (page + 1) === length && progress >= 100

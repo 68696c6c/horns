@@ -24,6 +24,7 @@ export {
   Grid,
   GridStacked,
   Parallax,
+  ScrollPages,
   ScrollProgress,
   Section,
   TitleBar,

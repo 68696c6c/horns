@@ -1,0 +1,71 @@
+---
+name: 'Scroll Pages'
+menu: Layout
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import ScrollPages, { ScrollPage } from './scroll-pages'
+import Section from './section'
+import LayoutDemo from '../_demo/layout-demo'
+
+# ScrollPages
+When using this component with Gatsby, you will need to use the following CSS rules.
+```
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #___gatsby {
+    height: 100%;
+  }
+  
+  #___gatsby > div {
+    height: 100%;
+    overflow: hidden;
+  }
+```
+
+<LayoutDemo variant="dark">
+  <ScrollPages>
+    <ScrollPage>
+      <Section variant="warning">
+        <h1>Page 1</h1>
+      </Section>
+    </ScrollPage>
+    <ScrollPage>
+      <Section variant="dark">
+        <h1>Page 2</h1>
+      </Section>
+    </ScrollPage>
+    <ScrollPage>
+      <Section variant="success">
+        <h1>Page 3</h1>
+      </Section>
+    </ScrollPage>
+    <ScrollPage>
+      <Section variant="danger">
+        <h1>Page 4</h1>
+      </Section>
+    </ScrollPage>
+    <ScrollPage>
+      <Section variant="info">
+        <h1>Page 5</h1>
+      </Section>
+    </ScrollPage>
+    <ScrollPage>
+      <Section variant="primary">
+        <h1>Page 6</h1>
+      </Section>
+    </ScrollPage>
+  </ScrollPages>
+</LayoutDemo>
+
+## Props
+
+<PropsTable of={ScrollPages} />
