@@ -24,6 +24,7 @@ export {
 
 export {
   Area,
+  Box,
   Grid,
   GridGuide,
   GridStacked,

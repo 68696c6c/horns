@@ -1,4 +1,5 @@
 export { default as Area } from './area'
+export { default as Box } from './box'
 export { default as Grid } from './grid'
 export { default as GridGuide } from './grid-guide'
 export { default as GridStacked } from './stacked'
