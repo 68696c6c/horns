@@ -4,6 +4,7 @@ import styled, { cx } from 'react-emotion'
 import { debounce, isUndefined } from '../../utils/utils'
 
 const StyledSlider = styled('div')`
+  height: ${({ height }) => height};
 `
 const StyledSlides = styled('div')`
   height: 100%;
@@ -105,11 +106,13 @@ Slider.propTypes = {
     'left',
     'right',
   ]),
+  height: PropTypes.string,
 }
 
 Slider.defaultProps = {
   speed: 5,
   direction: 'left',
+  height: '400px',
 }
 
 export default Slider

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
+import styled, { cx, css } from 'react-emotion'
 
 // @TODO hardcoded 280px on grid-template-columns property
 const StyledEqual = styled('div')`
@@ -10,7 +10,18 @@ const StyledEqual = styled('div')`
     grid-gap: ${props => props.gap ? props.theme.grid.gap : '0px'};
   }
 `
-
+const getChildPadding = (fluid, container) => {
+  return fluid ? '' : css`
+    > :nth-child(odd) {
+      padding-left: calc(((100vw - ${container}) / 2));
+      padding-right: 0;
+    }
+    > :nth-child(even) {
+      padding-left: 0;
+      padding-right: calc(((100vw - ${container}) / 2));
+    }
+  `
+}
 const StyledThirds = styled('div')`
   @media(min-width: ${props => props.theme.breakpoints[props.breakpoint]}) {
     display: grid;
@@ -26,14 +37,7 @@ const StyledThirds = styled('div')`
       const twoThirds = `calc(((${props.theme.grid.container} / 3) * 2) + ${gutter})`
       return props.side === 'left' ? `${oneThird} ${twoThirds}` : `${twoThirds} ${oneThird}`
     }};
-    > :nth-child(odd) {
-      padding-left: calc(((100vw - ${props => props.theme.grid.container}) / 2));
-      padding-right: 0;
-    }
-    > :nth-child(even) {
-      padding-left: 0;
-      padding-right: calc(((100vw - ${props => props.theme.grid.container}) / 2));
-    }
+    ${({ fluid, theme }) => getChildPadding(fluid, theme.grid.container)};
   }
 `
 

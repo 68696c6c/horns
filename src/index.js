@@ -60,6 +60,7 @@ export {
 export {
   Slide,
   Slider,
+  SliderDouble,
 } from './components/sliders'
 
 export {

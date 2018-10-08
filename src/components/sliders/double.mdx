@@ -1,0 +1,70 @@
+---
+name: 'Slider - Double'
+menu: Sliders
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import SliderDouble from './double'
+import Slide from './slide'
+import { Box } from '../layout'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+import uuid from 'uuid/v4'
+
+# SliderDouble
+
+<FullscreenDemo variant="dark" of={SliderDouble} title="SliderDouble Responsiveness">
+  Resize the window to start animating the slider.
+  <SliderDouble height="200px" speed={3} leftSlides={[
+    <Slide key={uuid()}>
+      <Box variant="primary" height="100%" width="100%"><h1>Left Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="dark" height="100%" width="100%"><h1>Left Slide 2</h1></Box>
+    </Slide>,
+  ]} rightSlides={[
+    <Slide key={uuid()}>
+      <Box variant="tertiary" height="100%" width="100%"><h1>Right Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="warning" height="100%" width="100%"><h1>Right Slide 2</h1></Box>
+    </Slide>,
+  ]} />
+  
+  <SliderDouble height="200px" speed={3} variant="thirds" leftSlides={[
+    <Slide key={uuid()}>
+      <Box variant="primary" height="100%" width="100%"><h1>Left Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="dark" height="100%" width="100%"><h1>Left Slide 2</h1></Box>
+    </Slide>,
+  ]} rightSlides={[
+    <Slide key={uuid()}>
+      <Box variant="tertiary" height="100%" width="100%"><h1>Right Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="warning" height="100%" width="100%"><h1>Right Slide 2</h1></Box>
+    </Slide>,
+  ]} />
+  
+  <SliderDouble height="200px" speed={3} variant="thirds" side="right" leftSlides={[
+    <Slide key={uuid()}>
+      <Box variant="primary" height="100%" width="100%"><h1>Left Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="dark" height="100%" width="100%"><h1>Left Slide 2</h1></Box>
+    </Slide>,
+  ]} rightSlides={[
+    <Slide key={uuid()}>
+      <Box variant="tertiary" height="100%" width="100%"><h1>Right Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="warning" height="100%" width="100%"><h1>Right Slide 2</h1></Box>
+    </Slide>,
+  ]} />
+</FullscreenDemo>
+
+
+## Props
+
+<PropsTable of={SliderDouble} />
