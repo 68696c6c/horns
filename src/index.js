@@ -58,6 +58,11 @@ export {
 } from './components/nav'
 
 export {
+  Slide,
+  Slider,
+} from './components/sliders'
+
+export {
   DataTable,
   Table,
   TableCell,
