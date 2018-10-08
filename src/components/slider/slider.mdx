@@ -7,30 +7,92 @@ import { Playground, PropsTable } from 'docz'
 
 import Slider from './slider'
 import Slide from './slide'
-import { Area } from '../layout'
+import { Box } from '../layout'
+import FullscreenDemo from '../_demo/fullscreen-demo'
 import parallax1 from '../../images/parallax-1.jpg'
 import parallax2 from '../../images/parallax-2.jpg'
 
 # Slider
 
-<Playground>
+<FullscreenDemo variant="dark" of={Slider} title="Slider Responsiveness">
   <Slider style={{ height: '400px' }} speed={3}>
-    <Slide variant="primary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <h1>Slide 1</h1>
+    <Slide>
+      <Box variant="primary" height="100%" width="100%"><h1>Slide 1</h1></Box>
     </Slide>
-    <Slide variant="secondary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <h1>Slide 2</h1>
+    <Slide>
+      <Box variant="dark" height="100%" width="100%"><h1>Slide 2</h1></Box>
     </Slide>
-    <Slide variant="tertiary" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <h1>Slide 3</h1>
+    <Slide>
+      <Box variant="tertiary" height="100%" width="100%"><h1>Slide 3</h1></Box>
     </Slide>
-    <Slide variant="dark" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <h1>Slide 4</h1>
+    <Slide>
+      <Box variant="warning" height="100%" width="100%"><h1>Slide 4</h1></Box>
     </Slide>
   </Slider>
-</Playground>
+</FullscreenDemo>
 
 
 ## Props
 
 <PropsTable of={Slider} />
+
+## Examples
+
+<Playground>
+  <Slider style={{ height: '200px' }} speed={3} direction="up">
+    <Slide>
+      <Box variant="primary" height="100%" width="100%"><h1>Slide Up 1</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="dark" height="100%" width="100%"><h1>Slide Up 2</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="success" height="100%" width="100%"><h1>Slide Up 3</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="warning" height="100%" width="100%"><h1>Slide Up 4</h1></Box>
+    </Slide>
+  </Slider>
+  <Slider style={{ height: '200px' }} speed={3} direction="down">
+    <Slide>
+      <Box variant="secondary" height="100%" width="100%"><h1>Slide Down 1</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="neutral" height="100%" width="100%"><h1>Slide Down 2</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="info" height="100%" width="100%"><h1>Slide Down 3</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="danger" height="100%" width="100%"><h1>Slide Down 4</h1></Box>
+    </Slide>
+  </Slider>
+  <Slider style={{ height: '200px' }} speed={3} direction="right">
+    <Slide>
+      <Box variant="primary" height="100%" width="100%"><h1>Slide Right 1</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="dark" height="100%" width="100%"><h1>Slide Right 2</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="success" height="100%" width="100%"><h1>Slide Right 3</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="warning" height="100%" width="100%"><h1>Slide Right 4</h1></Box>
+    </Slide>
+  </Slider>
+  <Slider style={{ height: '200px' }} speed={3} animationSpeed={2000}>
+    <Slide>
+      <Box variant="secondary" height="100%" width="100%"><h1>Slow Slide 1</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="neutral" height="100%" width="100%"><h1>Slow Slide 2</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="info" height="100%" width="100%"><h1>Slow Slide 3</h1></Box>
+    </Slide>
+    <Slide>
+      <Box variant="danger" height="100%" width="100%"><h1>Slow Slide 4</h1></Box>
+    </Slide>
+  </Slider>
+</Playground>

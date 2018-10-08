@@ -27,6 +27,7 @@ export const arrayRemoveByValue = (arr, value) => {
   return arr
 }
 
+// Debounce a function call.
 export const debounce = (fn, delay) => {
   let timer = null
   return function () {
@@ -35,5 +36,17 @@ export const debounce = (fn, delay) => {
     timer = setTimeout(function () {
       fn.apply(context, args)
     }, delay)
+  }
+}
+
+// Run a function first before debouncing any additional calls.
+export const debounceFirst = (fn, delay) => {
+  let timer = 0
+  return function () {
+    let context = this, args = arguments
+    if ((timer + delay - Date.now()) < 0) {
+      fn.apply(context, args)
+      timer = Date.now();
+    }
   }
 }

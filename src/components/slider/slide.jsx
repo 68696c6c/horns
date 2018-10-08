@@ -6,6 +6,7 @@ import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
 const Styled = styled('div')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   height: 100%;
+  width: 100%;
 `
 
 const Slide = ({ className, children, ...others }) => (
@@ -13,6 +14,7 @@ const Slide = ({ className, children, ...others }) => (
 )
 
 Slide.propTypes = {
+  vertical: PropTypes.bool,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -30,6 +32,7 @@ Slide.propTypes = {
 }
 
 Slide.defaultProps = {
+  vertical: false,
   variant: COLOR_VARIANT_NONE,
 }
 

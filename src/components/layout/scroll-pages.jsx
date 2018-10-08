@@ -2,17 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled from 'react-emotion'
-
-const debounce = (fn, delay) => {
-  let timer = 0
-  return function debouncedFn() {
-    let context = this, args = arguments
-    if ((timer + delay - Date.now()) < 0) {
-      fn.apply(context, args)
-      timer = Date.now();
-    }
-  }
-}
+import { debounceFirst } from '../../utils/utils'
 
 const StyledScrollPages = styled('div')`
   height: 100%; 
@@ -48,6 +38,7 @@ class ScrollPages extends React.Component {
     this.pagesRefs = props.children.map(child => {
       return React.createRef()
     })
+    this.speed = props.speed * 700
   }
 
   shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -56,7 +47,7 @@ class ScrollPages extends React.Component {
 
   componentWillMount() {
     const delay = this.props.speed * 1000
-    this.detectScrollDebounced = debounce(function (down) {
+    this.detectScrollDebounced = debounceFirst(down => {
       this.handleScroll.apply(this, [down])
     }, delay)
   }
@@ -98,12 +89,15 @@ class ScrollPages extends React.Component {
 
   render() {
     const { children } = this.props
-    const speed = this.props.speed * 700
     return (
-      <StyledScrollPages className="scroll-pages" speed={speed} offset={this.state.offset}>
+      <StyledScrollPages speed={this.speed} offset={this.state.offset}>
         {children.map((child, index) => {
           const { children, ...others } = child.props
-          return <ScrollPage key={uuid()} data-index={index} innerRef={this.pagesRefs[index]} {...others}>{children}</ScrollPage>
+          return (
+            <ScrollPage key={uuid()} data-index={index} innerRef={this.pagesRefs[index]} {...others}>
+              {children}
+            </ScrollPage>
+          )
         })}
       </StyledScrollPages>
     )
