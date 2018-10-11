@@ -16,7 +16,6 @@ NavItem.propTypes = {
   href: PropTypes.string.isRequired,
   active: PropTypes.bool,
   variant: PropTypes.string,
-  children: PropTypes.string.isRequired,
 }
 
 NavItem.defaultProps = {

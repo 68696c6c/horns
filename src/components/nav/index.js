@@ -1,5 +1,9 @@
+export { default as Header } from './header'
 export { default as Nav } from './nav'
 export { default as NavStacked } from './stacked'
-export { NavItem } from './items'
-export { NavItemMenu } from './items'
 export { default as Pagination } from './pagination'
+export {
+  NavItem,
+  NavItemMenu,
+  NavItemSticky
+} from './items'

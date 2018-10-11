@@ -51,10 +51,12 @@ export {
 } from './components/lists'
 
 export {
+  Header,
   Nav,
   NavStacked,
   NavItem,
   NavItemMenu,
+  NavItemSticky,
   Pagination,
 } from './components/nav'
 

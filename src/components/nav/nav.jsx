@@ -4,6 +4,7 @@ import { FaBars } from 'react-icons/fa'
 import styled, { cx } from 'react-emotion'
 import NavMenu from './items/menu'
 import { navItemInline } from './items/base'
+import { isArray } from '../../utils/utils'
 
 const Styled = styled('nav')`
   .nav-item {
@@ -17,20 +18,21 @@ const Styled = styled('nav')`
 `
 
 const Nav = ({ mobile, children, className, ...others }) => {
+  let content = children
   if (mobile) {
-    return (
-      <NavMenu content={<FaBars/>} className={cx('nav', 'mobile', className)} {...others}>{children}</NavMenu>
+    const items = isArray(children) ? children : [children]
+    content = (
+      <NavMenu content={<FaBars/>} className={cx('nav', 'mobile', className)} {...others}>{items}</NavMenu>
     )
-  } else {
-    return <Styled className={cx('nav', className)} {...others}>{children}</Styled>
   }
+  return <Styled className={cx('nav', className)} {...others}>{content}</Styled>
 }
 
 Nav.propTypes = {
   mobile: PropTypes.bool,
 }
 
-Nav.propTypes = {
+Nav.defaultProps = {
   mobile: false,
 }
 

@@ -1,0 +1,21 @@
+---
+name: 'Nav Item Sticky'
+menu: Navs
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import NavItemSticky from './sticky'
+import WrapperInline from '../../_demo/wrappers/inline'
+
+# NavItemSticky
+
+<Playground>
+  <WrapperInline>
+    <NavItemSticky href="#" content={<span>Default Content</span>} stuckContent={<span>Stuck Content</span>}/>
+  </WrapperInline>
+</Playground>
+
+## Props
+
+<PropsTable of={NavItemSticky} />

@@ -1,8 +1,42 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
-import { PropsTable } from 'docz'
-import { rgb } from '../../themes/utils'
+import styled from 'react-emotion'
+import theme from '../../themes/base'
+import { ThemeProvider } from 'emotion-theming'
+
+class RenderInBody extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.container = document.createElement('div')
+    document.body.appendChild(this.container)
+    this._renderLayer()
+  }
+
+  componentDidUpdate() {
+    this._renderLayer()
+  }
+
+  componentWillUnmount() {
+    ReactDOM.unmountComponentAtNode(this.container)
+    document.body.removeChild(this.container)
+  }
+
+  _renderLayer() {
+    const children = <ThemeProvider theme={theme}>{this.props.children}</ThemeProvider>
+    ReactDOM.render(children, this.container)
+  }
+
+  render() {
+    // Render a placeholder
+    return <ThemeProvider theme={theme}>
+      <div {...this.props}/>
+    </ThemeProvider>
+  }
+}
 
 const DARK = '#13161F'
 const DARK_SECONDARY = '#2D3747'
@@ -26,11 +60,10 @@ const StyledButton = styled('button')`
   }
 `
 const StyledWindow = styled('div')`
+  ${({ open }) => open ? '' : 'display: none'};
   background: ${({ variant }) => variant === 'light' ? 'white' : DARK_TERTIARY};
   z-index: 9999999999999999;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
   top: 0;
   left: 0;
   overflow-x: hidden;
@@ -60,13 +93,14 @@ class LayoutDemo extends React.Component {
 
   render() {
     const { variant, children } = this.props
-    const windowStyle = this.state.open ? '' : css`display: none;`
     return (
       <React.Fragment>
         <StyledButton variant={variant} onClick={this.openPreview}>Show Layout Playground</StyledButton>
-        <StyledWindow variant={variant} className={windowStyle}>
-          {children}
-        </StyledWindow>
+        <RenderInBody>
+          <StyledWindow id="layout-window" variant={variant} open={this.state.open}>
+            {children}
+          </StyledWindow>
+        </RenderInBody>
       </React.Fragment>
     )
   }
