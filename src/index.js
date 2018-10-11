@@ -20,6 +20,7 @@ export {
 export {
   ImageFrame,
   Picture,
+  SVG,
 } from './components/images'
 
 export {
