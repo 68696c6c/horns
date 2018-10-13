@@ -52,6 +52,7 @@ class Theme {
     }
     result.copy = {
       default: copyDefault,
+      alpha: copyDefault.alpha(colorFactors.alpha),
       light: copyLight,
       dark: copyDark,
     }

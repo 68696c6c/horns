@@ -1,0 +1,164 @@
+---
+name: 'Progress'
+menu: Visuals
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Progress from './progress'
+import { Label } from '../forms'
+import WrapperInline from '../_demo/wrappers/inline'
+import Wrapper from '../_demo/wrappers/wrapper'
+
+# Progress
+
+<Playground>
+  <WrapperInline>
+    <Label>Indeterminate</Label>
+    <Progress />
+  </WrapperInline>
+  <WrapperInline>
+    <Label>Set Value</Label>
+    <Progress value={50} />
+  </WrapperInline>
+</Playground>
+
+## Props
+
+<PropsTable of={Progress} />
+
+## Variants
+
+<Playground>
+  <Wrapper>
+    <WrapperInline>
+      <Label>Not Rounded - Indeterminate</Label>
+      <Progress rounded={false} />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Not Rounded - Set Value</Label>
+      <Progress value={50} rounded={false} />
+    </WrapperInline>
+  </Wrapper>
+  
+  <Wrapper>
+    <WrapperInline>
+      <Label>Primary - Indeterminate</Label>
+      <Progress variant="primary" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Primary - Set Value</Label>
+      <Progress value={50} variant="primary" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Secondary - Indeterminate</Label>
+      <Progress variant="secondary" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Secondary - Set Value</Label>
+      <Progress value={50} variant="secondary" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Tertiary - Indeterminate</Label>
+      <Progress variant="tertiary" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Tertiary - Set Value</Label>
+      <Progress value={50} variant="tertiary" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Light - Indeterminate</Label>
+      <Progress variant="light" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Light - Set Value</Label>
+      <Progress value={50} variant="light" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Neutral - Indeterminate</Label>
+      <Progress variant="neutral" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Neutral - Set Value</Label>
+      <Progress value={50} variant="neutral" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Dark - Indeterminate</Label>
+      <Progress variant="dark" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Dark - Set Value</Label>
+      <Progress value={50} variant="dark" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Success - Indeterminate</Label>
+      <Progress variant="success" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Success - Set Value</Label>
+      <Progress value={50} variant="success" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Info - Indeterminate</Label>
+      <Progress variant="info" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Info - Set Value</Label>
+      <Progress value={50} variant="info" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Warning - Indeterminate</Label>
+      <Progress variant="warning" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Warning - Set Value</Label>
+      <Progress value={50} variant="warning" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Danger - Indeterminate</Label>
+      <Progress variant="danger" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Danger - Set Value</Label>
+      <Progress value={50} variant="danger" />
+    </WrapperInline>
+  </Wrapper>
+
+  <Wrapper>
+    <WrapperInline>
+      <Label>Background - Indeterminate</Label>
+      <Progress variant="background" />
+    </WrapperInline>
+    <WrapperInline>
+      <Label>Background - Set Value</Label>
+      <Progress value={50} variant="background" />
+    </WrapperInline>
+  </Wrapper>
+</Playground>

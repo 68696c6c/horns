@@ -83,3 +83,15 @@ export const containerStyleHorizontal = (breakpoints, fluid = false) => {
     }
   `
 }
+
+export const diagonalLinesCSS = color => {
+  return css`linear-gradient(-45deg, transparent 25%, ${rgb(color)} 33%, ${rgb(color)} 66%, transparent 66%)`
+}
+
+export const gradientHorizontalCSS = (color1, color2) => {
+  return css`linear-gradient(to right, ${rgb(color1)} 0%, ${rgb(color2)} 100%)`
+}
+
+export const gradientVerticalCSS = (color1, color2) => {
+  return css`linear-gradient(to bottom, ${rgb(color1)} 0%, ${rgb(color2)} 100%)`
+}
