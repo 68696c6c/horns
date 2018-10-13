@@ -95,3 +95,7 @@ export const gradientHorizontalCSS = (color1, color2) => {
 export const gradientVerticalCSS = (color1, color2) => {
   return css`linear-gradient(to bottom, ${rgb(color1)} 0%, ${rgb(color2)} 100%)`
 }
+
+export const gradientRadialCSS = (color1, color2) => {
+  return css`radial-gradient(${rgb(color1)}, ${rgb(color2)})`
+}

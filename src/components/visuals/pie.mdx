@@ -1,0 +1,35 @@
+---
+name: 'Pie Chart'
+menu: Visuals
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import PieChart, { PieChartBase, Region } from './pie'
+import WrapperInline from '../_demo/wrappers/inline'
+
+# PieChart
+
+<Playground>
+  <PieChart width="200px">
+    <Region percent={38} variant="primary" />
+  </PieChart>
+  <PieChart width="150px" variant="dark">
+    <Region percent={25} variant="primary" />
+    <Region percent={50} variant="secondary" />
+  </PieChart>
+  <PieChart width="250px" variant="background">
+    <Region percent={25} variant="success" />
+    <Region percent={25} variant="info" />
+    <Region percent={30} variant="warning" />
+    <Region percent={20} variant="danger" />
+  </PieChart>
+</Playground>
+
+## PieChart Props
+
+<PropsTable of={PieChartBase} />
+
+## Region Props
+
+<PropsTable of={Region} />
