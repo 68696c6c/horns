@@ -46,6 +46,7 @@ export {
 export {
   ListItem,
   ListOrdered,
+  ListSteps,
   ListSymbols,
   ListUnordered,
 } from './components/lists'

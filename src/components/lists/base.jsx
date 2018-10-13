@@ -1,6 +1,7 @@
 import React from 'react'
 import { css } from 'react-emotion'
-import { isUndefined } from '../../utils/utils'
+import uuid from 'uuid/v4'
+import { isArray, isUndefined } from '../../utils/utils'
 import ListItem from './item'
 
 export const COUNTER = 'li'
@@ -35,7 +36,7 @@ export const TYPES_UNORDERED = [
 ]
 
 export const renderItems = (children, variant, type = undefined, icon = undefined) => {
-  const childrenArray = children.constructor === Array ? children : [children]
+  const childrenArray = isArray(children) ? children : [children]
   return childrenArray.map(child => {
     let props = {
       ...child.props
@@ -49,7 +50,7 @@ export const renderItems = (children, variant, type = undefined, icon = undefine
     if (isUndefined(props.icon) && !isUndefined(icon)) {
       props.icon = icon
     }
-    return <ListItem {...props}>{child.props.children}</ListItem>
+    return <ListItem {...props} key={uuid()}>{child.props.children}</ListItem>
   })
 }
 
