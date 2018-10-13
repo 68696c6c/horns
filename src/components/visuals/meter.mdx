@@ -1,0 +1,93 @@
+---
+name: 'Meter'
+menu: Visuals
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import Meter from './meter'
+import { Label } from '../forms'
+import Wrapper from '../_demo/wrappers/wrapper'
+
+# Meter
+
+Needs additional work and cross-browser testing.
+
+<Playground>
+  <Wrapper>
+    <Label>Default</Label>
+    <Meter />
+  </Wrapper>
+  <Wrapper>
+    <Label>value less than max</Label>
+    <Meter min={0} max={10} value={5} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value equal to max</Label>
+    <Meter min={0} max={10} value={10} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value greater than max</Label>
+    <Meter min={0} max={10} value={12} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value less than min</Label>
+    <Meter min={0} max={10} value={-1} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value equal to min</Label>
+    <Meter min={0} max={10} value={0} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value greater than min</Label>
+    <Meter min={0} max={10} value={5} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value less than high</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={6} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value equal to high</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={7} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value greater than high</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={8} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value less than low</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={2} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value equal to low</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={3} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value greater than low</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={4} />
+  </Wrapper>
+  <Wrapper>
+    <Label>optimum less than low less than high</Label>
+    <Meter min={0} max={10} low={4} high={7} optimum={2} value={5} />
+  </Wrapper>
+  <Wrapper>
+    <Label>low less than optimum less than high</Label>
+    <Meter min={0} max={10} low={3} high={7} optimum={5} value={5} />
+  </Wrapper>
+  <Wrapper>
+    <Label>low less than high less than optimum</Label>
+    <Meter min={0} max={10} low={3} high={6} optimum={8} value={5} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value less than low less than high less than optimum</Label>
+    <Meter min={0} max={10} low={4} high={6} optimum={8} value={2} />
+  </Wrapper>
+  <Wrapper>
+    <Label>value greater than low greater than high greater than optimum</Label>
+    <Meter min={0} max={10} low={6} high={4} optimum={1} value={8} />
+  </Wrapper>
+</Playground>
+
+## Props
+
+<PropsTable of={Meter} />
