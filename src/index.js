@@ -5,6 +5,7 @@ export {
   Field,
   Fieldset,
   Group,
+  Label,
   InputHidden,
   Input,
   Radio,
