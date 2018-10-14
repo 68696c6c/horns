@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { withTheme } from 'emotion-theming'
 import uuid from 'uuid/v4'
-import { colorVariantCSS, gradientRadialCSS, gradientVerticalCSS } from '../utils'
-import { rgb } from '../../themes/utils'
-import { isArray } from '../../utils/utils'
+import { colorVariantCSS, gradientRadialCSS, gradientVerticalCSS } from '../../../utils'
+import { rgb } from '../../../../themes/utils'
+import { isArray } from '../../../../utils/utils'
 
 // https://www.smashingmagazine.com/2015/07/designing-simple-pie-charts-with-css/
 
