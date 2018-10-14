@@ -5,13 +5,13 @@ menu: Visuals
 
 import { Playground, PropsTable } from 'docz'
 
-import LineChart from './line'
+import LineChart, { Line } from './line'
 import WrapperInline from '../_demo/wrappers/inline'
 
 # Line Graph
 
 <Playground>
-  <LineChart y={['0', '5', '10']} x={['2017-05-13', '2017-05-14']}>
-    <Line data={{'2017-05-13': 2, '2017-05-14': 5}}/>
+  <LineChart y={[0, 5, 10]} x={['2017-05-01', '2017-06-01', '2017-07-01', '2017-08-01']}>
+    <Line label="Line 1" data={[0, 2, 7, 5]}/>
   </LineChart>
 </Playground>
