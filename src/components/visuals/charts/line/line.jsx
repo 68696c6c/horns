@@ -25,8 +25,8 @@ const ChartLine = ({ theme, variant, xScale, yInc, yStart, data }) => {
   const fillColor = theme.colors[variant].alpha
   return (
     <g className="line">
-      {points.map(point => <circle fill={rgb(pointColor)} r={linePointWidth * 2} cx={point.x} cy={point.y} key={uuid()}/>)}
       <path stroke={rgb(lineColor)} fill={rgb(fillColor)} strokeWidth={linePointWidth} d={path} />
+      {points.map(point => <circle fill={rgb(pointColor)} r={linePointWidth * 2} cx={point.x} cy={point.y} key={uuid()}/>)}
     </g>
   )
 }
