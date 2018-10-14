@@ -48,7 +48,7 @@ export const LineChartBase = ({ theme, y, x, width, height, fontSize, children, 
     <StyledChart width={chartWidth} height={chartHeight} {...others}>
       <defs>{defs}</defs>
       <SVGRect className="background" fill="light" x={chartPaddingX} y={chartPaddingY} width={width} height={height} />
-      <AxisY labels={y} chartPaddingX={chartPaddingX} chartPaddingY={chartPaddingY} fontSize={fontSize} height={height} />
+      <AxisY labels={y} chartPaddingX={chartPaddingX} chartPaddingY={chartPaddingY} fontSize={fontSize} height={height} width={width} />
       <AxisX increment={xInc} scale={xScale} labels={x} chartPaddingX={chartPaddingX} chartPaddingY={chartPaddingY} fontSize={fontSize} height={height} width={width} />
       {content}
     </StyledChart>

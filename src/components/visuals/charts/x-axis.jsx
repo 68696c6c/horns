@@ -8,10 +8,10 @@ const ScaleX = ({ x, y, xMax, marks }) => {
   const half = AXIS_MARK_WIDTH / 2
   const pStart = y - half
   const pEnd = y + half
-  const points = marks.map(mX => <SVGLine className="mark" stroke="copy" x1={mX} y1={pStart} x2={mX} y2={pEnd} key={uuid()}/>)
+  const points = marks.map(mX => <SVGLine className="mark" strokeWidth={2} stroke="copy" x1={mX} y1={pStart} x2={mX} y2={pEnd} key={uuid()}/>)
   return (
     <g className="x-scale">
-      <SVGLine className="axis" stroke="copy" x1={x} y1={y} x2={xMax} y2={y} key={uuid()} />
+      <SVGLine className="axis" stroke="copy" strokeWidth={2} x1={x} y1={y} x2={xMax} y2={y} key={uuid()} />
       {points}
     </g>
   )
