@@ -22,11 +22,18 @@ const StyledRegion = styled('circle')`
   stroke-dashoffset: -${({ offset }) => offset};
 `
 
-export const Region = ({ variant, children, ...others }) => (
-  <StyledRegion variant={variant} {...others} />
-)
+const SVGRegion = ({ theme, variant, r, percent, children, ...others }) => {
+  return <StyledRegion variant={variant} r={r} percent={percent} {...others} />
+  // const fillPath = `M 0 0 L ${r} ${r}`
+  // return (
+  //   <React.Fragment>
+  //     <StyledRegion variant={variant} r={r} percent={percent} {...others} />
+  //     <path stroke={rgb(theme.colors[variant].default)} fill="none" d={fillPath} />
+  //   </React.Fragment>
+  // )
+}
 
-Region.propTypes = {
+SVGRegion.propTypes = {
   percent: PropTypes.number.isRequired,
   variant: PropTypes.oneOf([
     'primary',
@@ -43,24 +50,25 @@ Region.propTypes = {
   ]),
 }
 
-Region.defaultProps = {
+SVGRegion.defaultProps = {
   variant: 'neutral',
 }
 
-const GradientDef = ({ name, color1, color2 }) => (
-  <linearGradient id={`${name}-stroke`}>
-    <stop offset="0%" stopColor={rgb(color1)} />
-    <stop offset="100%" stopColor={rgb(color2)} />
-  </linearGradient>
+export const Region = withTheme(SVGRegion)
+
+const GradientDef = ({ name, color }) => (
+  <radialGradient id={`${name}-stroke`}>
+    <stop offset="0%" stopColor={rgb(color.default)} />
+    <stop offset="100%" stopColor={rgb(color.light)} />
+  </radialGradient>
 )
 
 export const PieChartBase = ({ theme, width, variant, children, ...others }) => {
   let defs = []
   for (let name in theme.colors) {
     const color = theme.colors[name]
-    defs.push(<GradientDef name={name} color1={color.light} color2={color.default} key={uuid()} />)
+    defs.push(<GradientDef name={name} color={color} key={uuid()} />)
   }
-  // const radius = 15.915494309
   const radius = 100 / (2 * Math.PI)
   const diameter = radius * 2
   const rProps = { strokeWidth: diameter, r: radius, cx: radius, cy: radius }
@@ -71,7 +79,7 @@ export const PieChartBase = ({ theme, width, variant, children, ...others }) => 
       <defs>{defs}</defs>
       {childArray.map(region => {
         const { percent: p, variant: rv, ...others } = region.props
-        const slice = <StyledRegion offset={offset} percent={p} variant={rv} {...others} {...rProps} key={uuid()} />
+        const slice = <Region offset={offset} percent={p} variant={rv} {...others} {...rProps} key={uuid()} />
         offset += p
         return slice
       })}
@@ -98,7 +106,7 @@ PieChartBase.propTypes = {
 
 PieChartBase.defaultProps = {
   width: '100px',
-  variant: 'neutral',
+  variant: 'light',
 }
 
 export default withTheme(PieChartBase)
