@@ -19,19 +19,27 @@ export const LineChartBase = ({ theme, y, x, width, height, fontSize, children, 
   //   const color = theme.colors[name]
   //   defs.push(<GradientDef name={name} color1={color.light} color2={color.default} key={uuid()} />)
   // }
-  const chartPadding = fontSize * 1.5
-  const chartWidth = width + (chartPadding * 2)
-  const chartHeight = height + (chartPadding * 2)
-  const childArray = isArray(children) ? children : [children]
+
+
+  const xMax = x.length - 1
+  const xInc = width / xMax
 
   const yMax = y[y.length - 1]
-  const yStart = height + chartPadding
   const yInc = height / yMax
 
-  const xInc = width / x.length
+  const chartPaddingX = xInc / 4
+  const chartPaddingY = fontSize * 3
+
+  const xStart = chartPaddingX
+  const yStart = height + chartPaddingY
+
   const xScale = x.map((text, index) => {
-    return chartPadding + (xInc * index)
+    return xStart + (xInc * index)
   })
+
+  const chartWidth = width + (chartPaddingX * 2)
+  const chartHeight = height + (chartPaddingY * 2)
+  const childArray = isArray(children) ? children : [children]
 
   const content = childArray.map(line => {
     return <ChartLine xScale={xScale} yInc={yInc} yStart={yStart} data={line.props.data} />
@@ -39,9 +47,9 @@ export const LineChartBase = ({ theme, y, x, width, height, fontSize, children, 
   return (
     <StyledChart width={chartWidth} height={chartHeight} {...others}>
       <defs>{defs}</defs>
-      <SVGRect className="background" fill="light" x={chartPadding} y={chartPadding} width={width} height={height} />
-      <AxisY labels={y} chartPadding={chartPadding} fontSize={fontSize} height={height} />
-      <AxisX scale={xScale} labels={x} chartPadding={chartPadding} fontSize={fontSize} height={height} width={width} />
+      <SVGRect className="background" fill="light" x={chartPaddingX} y={chartPaddingY} width={width} height={height} />
+      <AxisY labels={y} chartPaddingX={chartPaddingX} chartPaddingY={chartPaddingY} fontSize={fontSize} height={height} />
+      <AxisX increment={xInc} scale={xScale} labels={x} chartPaddingX={chartPaddingX} chartPaddingY={chartPaddingY} fontSize={fontSize} height={height} width={width} />
       {content}
     </StyledChart>
   )

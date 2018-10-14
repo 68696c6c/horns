@@ -4,32 +4,31 @@ import { SVGLine } from './svg'
 import { AXIS_MARK_WIDTH } from './utils'
 import ChartLabel from './chart-label'
 
-const ScaleX = ({ x, y, width, increment }) => {
-  const x2 = x + width
+const ScaleX = ({ x, y, xMax, marks }) => {
   const half = AXIS_MARK_WIDTH / 2
   const pStart = y - half
   const pEnd = y + half
-  let points = []
-  for (let i = x; i < x2; i += increment) {
-    points.push(<SVGLine className="mark" stroke="copy" x1={i} y1={pStart} x2={i} y2={pEnd} key={uuid()} />)
-  }
+  const points = marks.map(mX => <SVGLine className="mark" stroke="copy" x1={mX} y1={pStart} x2={mX} y2={pEnd} key={uuid()}/>)
   return (
     <g className="x-scale">
-      <SVGLine className="axis" stroke="copy" x1={x} y1={y} x2={x2} y2={y} key={uuid()} />
+      <SVGLine className="axis" stroke="copy" x1={x} y1={y} x2={xMax} y2={y} key={uuid()} />
       {points}
     </g>
   )
 }
 
-const AxisX = ({ scale, labels, chartPadding, fontSize, height, width }) => {
-  const increment = width / labels.length
-  const y = height + chartPadding + ((chartPadding - fontSize) / 2)
+const AxisX = ({ increment, scale, labels, chartPaddingX, chartPaddingY, fontSize, height, width }) => {
+  const labelOffset = chartPaddingX * 2
+  const xMin = chartPaddingX
+  const xMax = width + chartPaddingX
+  const marks = scale.map(x => x)
+  const y = height + chartPaddingY + ((chartPaddingY - fontSize) / 2)
   const scaleLabels = labels.map((text, index) => {
-    return <ChartLabel x={scale[index]} y={y} width={increment} height={fontSize} align="left" key={uuid()}>{text}</ChartLabel>
+    return <ChartLabel x={marks[index] - labelOffset} y={y} width={increment} height={fontSize} align="center" key={uuid()}>{text}</ChartLabel>
   })
   return (
     <g className="x-axis">
-      <ScaleX x={chartPadding} y={height + chartPadding} width={width} increment={increment} key={uuid()} />
+      <ScaleX x={xMin} y={height + chartPaddingY} xMax={xMax} marks={marks} key={uuid()} />
       {scaleLabels}
     </g>
   )

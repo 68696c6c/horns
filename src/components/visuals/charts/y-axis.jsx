@@ -18,20 +18,20 @@ const ScaleY = ({ x, y, height, marks }) => {
   )
 }
 
-const AxisY = ({ labels, chartPadding, fontSize, height }) => {
+const AxisY = ({ labels, chartPaddingX, chartPaddingY, fontSize, height }) => {
   const increment = height / (labels.length - 1)
   const labelOffset = fontSize / 2
   let marks = []
-  const y2 = height + chartPadding
-  for (let i = y2; i >= chartPadding; i -= increment) {
+  const y2 = height + chartPaddingY
+  for (let i = y2; i >= chartPaddingY; i -= increment) {
     marks.push(i)
   }
   const scaleLabels = labels.map((text, index) => {
-    return <ChartLabel x={0} y={marks[index] - labelOffset} width={chartPadding} height={fontSize} align="center" key={uuid()}>{text}</ChartLabel>
+    return <ChartLabel x={0} y={marks[index] - labelOffset} width={chartPaddingX} height={fontSize} align="center" key={uuid()}>{text}</ChartLabel>
   })
   return (
     <g className="y-axis">
-      <ScaleY x={chartPadding} y={chartPadding} height={height} marks={marks} key={uuid()} />
+      <ScaleY x={chartPaddingX} y={chartPaddingY} height={height} marks={marks} key={uuid()} />
       {scaleLabels}
     </g>
   )
