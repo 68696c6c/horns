@@ -9,23 +9,35 @@ const linePointWidth = 2
 
 const ChartLine = ({ theme, variant, xScale, yInc, yStart, data }) => {
   let points = []
+  let originX = 0
+  let endX = 0
+  const originY = yStart
   let path = ''
+  let fillPath = ''
   for (let i = 0; i < data.length; i++) {
     const y = yStart - (yInc * data[i])
     const x = xScale[i]
     if (i === 0) {
       path += `M ${x} ${y} `
+      originX = x
+      fillPath += `M ${originX} ${originY} L ${x} ${y} `
     } else {
       path += `L ${x} ${y} `
+      fillPath += `L ${x} ${y} `
+    }
+    if (i === data.length - 1) {
+      endX = x
     }
     points.push({ x, y })
   }
+  fillPath += ` L ${endX} ${originY} L ${originX} ${originY}`
   const pointColor = theme.colors[variant].dark
   const lineColor = theme.colors[variant].default
   const fillColor = theme.colors[variant].alpha
   return (
     <g className="line">
-      <path stroke={rgb(lineColor)} fill={rgb(fillColor)} strokeWidth={linePointWidth} d={path} />
+      <path stroke="none" fill={rgb(fillColor)} d={fillPath} />
+      <path stroke={rgb(lineColor)} fill="none" strokeWidth={linePointWidth} d={path} />
       {points.map(point => <circle fill={rgb(pointColor)} r={linePointWidth * 2} cx={point.x} cy={point.y} key={uuid()}/>)}
     </g>
   )
