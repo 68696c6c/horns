@@ -42,7 +42,7 @@ export const LineChartBase = ({ theme, y, x, width, height, fontSize, children, 
   const childArray = isArray(children) ? children : [children]
 
   const content = childArray.map(line => {
-    return <ChartLine xScale={xScale} yInc={yInc} yStart={yStart} data={line.props.data} />
+    return <ChartLine xScale={xScale} yInc={yInc} yStart={yStart} {...line.props} />
   })
   return (
     <StyledChart width={chartWidth} height={chartHeight} {...others}>
