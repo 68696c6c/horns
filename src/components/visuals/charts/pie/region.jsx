@@ -14,17 +14,26 @@ const percentToCartesian = (centerX, centerY, radius, percent) => {
   }
 }
 
-const PieRegionBase = ({ theme, radius, center, percent, offset, stroke, fill, ...others }) => {
+const PieRegionBase = ({ theme, label, radius, center, percent, offset, strokeWidth, stroke, fill, ...others }) => {
   const start = percentToCartesian(center, center, radius, offset)
   const end = percentToCartesian(center, center, radius, percent + offset)
   const f = percent - offset <= 180 ? '0' : '1'
   const fillPath = `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${f} 1 ${end.x} ${end.y} L ${center} ${center} L ${start.x} ${start.y}`
   const strokeValue = stroke === VARIANT_NONE ? VARIANT_NONE : rgb(theme.colors[stroke].dark)
-  const fillValue = fill === VARIANT_NONE ? VARIANT_NONE : rgb(theme.colors[fill].default)
-  return <path d={fillPath} {...others} stroke={strokeValue} strokeWidth={2} fill={fillValue}/>
+  const fillValue = fill === 'transparent' ? 'transparent' : rgb(theme.colors[fill].default)
+  return (
+    <path d={fillPath} {...others} stroke={strokeValue} strokeWidth={strokeWidth} fill={fillValue}>
+      <title>{label} {percent}%</title>
+    </path>
+  )
 }
 
 PieRegionBase.propTypes = {
+  label: PropTypes.string,
+  radius: PropTypes.number.isRequired,
+  center: PropTypes.number.isRequired,
+  percent: PropTypes.number.isRequired,
+  offset: PropTypes.number.isRequired,
   strokeWidth: PropTypes.number,
   stroke: PropTypes.oneOf([
     'primary',
@@ -54,14 +63,14 @@ PieRegionBase.propTypes = {
     'danger',
     'background',
     'copy',
-    VARIANT_NONE,
+    'transparent',
   ]),
 }
 
 PieRegionBase.defaultProps = {
   strokeWidth: 0,
   stroke: VARIANT_NONE,
-  fill: VARIANT_NONE,
+  fill: 'transparent',
 }
 
 export default withTheme(PieRegionBase)

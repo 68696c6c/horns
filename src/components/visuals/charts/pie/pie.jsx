@@ -51,11 +51,11 @@ export const PieChartBase = ({ theme, width, variant, children, ...others }) => 
   let regions = []
   let outlines = []
   for (let i = 0; i < childArray.length; i++) {
-    const { percent, variant: rv, ...others } = childArray[i].props
-    regions.push(<PieRegion radius={radius} center={c} offset={offset} percent={percent} stroke="none"
-                            fill={rv} {...others} key={uuid()}/>)
-    outlines.push(<PieRegion radius={radius} center={c} offset={offset} percent={percent} stroke={variant}
-                             fill="none" {...others} key={uuid()}/>)
+    const { label, percent, variant: rv, ...others } = childArray[i].props
+    regions.push(<PieRegion label={label} radius={radius} center={c} offset={offset} percent={percent} fill={rv}
+                            {...others} key={uuid()}/>)
+    outlines.push(<PieRegion label={label} radius={radius} center={c} offset={offset} percent={percent} stroke={variant}
+                             strokeWidth={2} {...others} key={uuid()}/>)
     offset += percent
   }
 

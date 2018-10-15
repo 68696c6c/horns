@@ -11,17 +11,17 @@ import PieChart, { PieChartBase, Region } from './pie'
 
 <Playground>
   <PieChart width={200}>
-    <Region percent={38} variant="primary" />
+    <Region label="primary" percent={38} variant="primary" />
   </PieChart>
   <PieChart width={150} variant="neutral">
-    <Region percent={25} variant="dark" />
-    <Region percent={40} variant="tertiary" />
+    <Region label="dark" percent={25} variant="dark" />
+    <Region label="tertiary" percent={40} variant="tertiary" />
   </PieChart>
   <PieChart width={250} variant="dark">
-    <Region percent={25} variant="success" />
-    <Region percent={25} variant="info" />
-    <Region percent={30} variant="warning" />
-    <Region percent={20} variant="danger" />
+    <Region label="success" percent={25} variant="success" />
+    <Region label="info" percent={25} variant="info" />
+    <Region label="warning" percent={30} variant="warning" />
+    <Region label="danger" percent={20} variant="danger" />
   </PieChart>
 </Playground>
 
