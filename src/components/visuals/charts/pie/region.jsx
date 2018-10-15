@@ -22,7 +22,7 @@ const PieRegionBase = ({ theme, label, radius, center, percent, offset, strokeWi
   const strokeValue = stroke === VARIANT_NONE ? VARIANT_NONE : rgb(theme.colors[stroke].dark)
   const fillValue = fill === 'transparent' ? 'transparent' : rgb(theme.colors[fill].default)
   return (
-    <path d={fillPath} {...others} stroke={strokeValue} strokeWidth={strokeWidth} fill={fillValue}>
+    <path cursor="help" d={fillPath} {...others} stroke={strokeValue} strokeWidth={strokeWidth} fill={fillValue}>
       <title>{label} {percent}%</title>
     </path>
   )

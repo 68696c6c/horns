@@ -79,7 +79,7 @@ export const PieChartBase = ({ theme, width, variant, children, ...others }) => 
 }
 
 PieChartBase.propTypes = {
-  width: PropTypes.string,
+  width: PropTypes.number,
   variant: PropTypes.oneOf([
     'primary',
     'secondary',

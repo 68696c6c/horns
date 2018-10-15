@@ -37,11 +37,11 @@ const ChartLine = ({ theme, label, variant, xScale, yInc, yStart, data }) => {
   return (
     <g className="line">
       <path stroke="none" fill={rgb(fillColor)} d={fillPath} />
-      <path stroke={rgb(lineColor)} fill="none" strokeWidth={linePointWidth} d={path}>
+      <path cursor="help" stroke={rgb(lineColor)} fill="none" strokeWidth={linePointWidth} d={path}>
         <title>{label}</title>
       </path>
       {points.map(point => (
-        <circle fill={rgb(pointColor)} r={linePointWidth * 2} cx={point.x} cy={point.y} key={uuid()}>
+        <circle cursor="help" fill={rgb(pointColor)} r={linePointWidth * 2} cx={point.x} cy={point.y} key={uuid()}>
           <title>{point.y}</title>
         </circle>
       ))}
