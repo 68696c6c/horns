@@ -3,17 +3,10 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { withTheme } from 'emotion-theming'
 import uuid from 'uuid/v4'
-import { colorVariantCSS, gradientRadialCSS, gradientVerticalCSS } from '../../../utils'
 import { rgb } from '../../../../themes/utils'
 import { isArray } from '../../../../utils/utils'
+import PieRegion from './region'
 
-// https://www.smashingmagazine.com/2015/07/designing-simple-pie-charts-with-css/
-
-const StyledChart = styled('svg')`
-  background: ${({ theme, variant }) => gradientRadialCSS(theme.colors[variant].default, theme.colors[variant].dark)};
-  transform: rotate(-90deg);
-  border-radius: 50%;
-`
 const StyledRegion = styled('circle')`
   fill: transparent;
   stroke: url(#${({ variant }) => variant}-stroke);
@@ -22,18 +15,11 @@ const StyledRegion = styled('circle')`
   stroke-dashoffset: -${({ offset }) => offset};
 `
 
-const SVGRegion = ({ theme, variant, r, percent, children, ...others }) => {
-  return <StyledRegion variant={variant} r={r} percent={percent} {...others} />
-  // const fillPath = `M 0 0 L ${r} ${r}`
-  // return (
-  //   <React.Fragment>
-  //     <StyledRegion variant={variant} r={r} percent={percent} {...others} />
-  //     <path stroke={rgb(theme.colors[variant].default)} fill="none" d={fillPath} />
-  //   </React.Fragment>
-  // )
-}
+export const Region = ({ theme, variant, r, percent, children, ...others }) => (
+  <StyledRegion variant={variant} r={r} percent={percent} {...others} />
+)
 
-SVGRegion.propTypes = {
+Region.propTypes = {
   percent: PropTypes.number.isRequired,
   variant: PropTypes.oneOf([
     'primary',
@@ -50,40 +36,45 @@ SVGRegion.propTypes = {
   ]),
 }
 
-SVGRegion.defaultProps = {
+Region.defaultProps = {
   variant: 'neutral',
 }
 
-export const Region = withTheme(SVGRegion)
-
-const GradientDef = ({ name, color }) => (
-  <radialGradient id={`${name}-stroke`}>
-    <stop offset="0%" stopColor={rgb(color.default)} />
-    <stop offset="100%" stopColor={rgb(color.light)} />
-  </radialGradient>
-)
-
 export const PieChartBase = ({ theme, width, variant, children, ...others }) => {
-  let defs = []
-  for (let name in theme.colors) {
-    const color = theme.colors[name]
-    defs.push(<GradientDef name={name} color={color} key={uuid()} />)
-  }
-  const radius = 100 / (2 * Math.PI)
-  const diameter = radius * 2
-  const rProps = { strokeWidth: diameter, r: radius, cx: radius, cy: radius }
+  const padding = 4
+  const chartWidth = width + padding
+  const radius = width / 2
+  const c = radius + (padding / 2)
   const childArray = isArray(children) ? children : [children]
+
   let offset = 0
+  let regions = []
+  let outlines = []
+  for (let i = 0; i < childArray.length; i++) {
+    const { percent, variant: rv, ...others } = childArray[i].props
+    regions.push(<PieRegion radius={radius} center={c} offset={offset} percent={percent} stroke="none"
+                            fill={rv} {...others} key={uuid()}/>)
+    outlines.push(<PieRegion radius={radius} center={c} offset={offset} percent={percent} stroke={variant}
+                             fill="none" {...others} key={uuid()}/>)
+    offset += percent
+  }
+
+  const gID = uuid()
+
   return (
-    <StyledChart viewBox={`0 0 ${diameter} ${diameter}`} width={width} height={width} variant={variant} {...others}>
-      <defs>{defs}</defs>
-      {childArray.map(region => {
-        const { percent: p, variant: rv, ...others } = region.props
-        const slice = <Region offset={offset} percent={p} variant={rv} {...others} {...rProps} key={uuid()} />
-        offset += p
-        return slice
-      })}
-    </StyledChart>
+    <svg width={chartWidth} height={chartWidth} {...others}>
+      <defs>
+        <radialGradient id={gID} cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+          <stop offset="0%" stopColor={rgb(theme.colors.light.alpha)}/>
+          <stop offset="100%" stopColor="transparent"/>
+        </radialGradient>
+      </defs>
+      <circle fill={rgb(theme.colors[variant].default)} stroke={rgb(theme.colors[variant].dark)} strokeWidth={2}
+              r={radius} cx={c} cy={c}/>
+      {regions}
+      <circle fill={`url(#${gID})`} stroke="none" strokeWidth={0} r={radius} cx={c} cy={c}/>
+      {outlines}
+    </svg>
   )
 }
 
@@ -105,7 +96,7 @@ PieChartBase.propTypes = {
 }
 
 PieChartBase.defaultProps = {
-  width: '100px',
+  width: 100,
   variant: 'light',
 }
 
