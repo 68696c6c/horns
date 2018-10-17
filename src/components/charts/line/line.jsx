@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { SVGCircle, SVGPath } from '../svg'
 import { withTheme } from 'emotion-theming'
-import { rgb } from '../../../../themes/utils'
+import { rgb } from '../../../themes/utils'
 
 const linePointWidth = 2
 

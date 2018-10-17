@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withTheme } from 'emotion-theming'
-import { rgb } from '../../../../themes/utils'
+import { rgb } from '../../../themes/utils'
 
 const VARIANT_NONE = 'none'
 

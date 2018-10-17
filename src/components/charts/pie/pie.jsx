@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { withTheme } from 'emotion-theming'
 import uuid from 'uuid/v4'
-import { rgb } from '../../../../themes/utils'
-import { isArray } from '../../../../utils/utils'
+import { rgb } from '../../../themes/utils'
+import { isArray } from '../../../utils/utils'
 import PieRegion from './region'
 
 const StyledRegion = styled('circle')`

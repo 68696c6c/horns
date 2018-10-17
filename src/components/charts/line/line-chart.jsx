@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTheme } from 'emotion-theming'
 import styled from 'react-emotion'
-import { isArray } from '../../../../utils/utils'
 import ChartLine from './line'
 import AxisY from '../y-axis'
 import AxisX from '../x-axis'
-import { rgb } from '../../../../themes/utils'
 import { SVGRect } from '../svg'
+import { rgb } from '../../../themes/utils'
+import { isArray } from '../../../utils/utils'
 
 const StyledChart = styled('svg')`
   border: 1px solid ${({ theme }) => rgb(theme.colors.copy.default)};

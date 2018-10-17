@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { rgb } from '../../../../themes/utils'
+import { rgb } from '../../../themes/utils'
 
 const VARIANT_NONE = 'none'
 
-const SVGCircle = styled('circle')`
+const SVGRect = styled('rect')`
   stroke-width: ${({ strokeWidth }) => strokeWidth};
   stroke: ${({ theme, stroke }) => stroke === VARIANT_NONE ? stroke : rgb(theme.colors[stroke].default)};
   fill: ${({ theme, fill }) => fill === VARIANT_NONE ? fill : rgb(theme.colors[fill].default)};
 `
 
-SVGCircle.propTypes = {
+SVGRect.propTypes = {
   strokeWidth: PropTypes.number,
   stroke: PropTypes.oneOf([
     'primary',
@@ -44,10 +44,10 @@ SVGCircle.propTypes = {
   ]),
 }
 
-SVGCircle.defaultProps = {
+SVGRect.defaultProps = {
   strokeWidth: 0,
   stroke: VARIANT_NONE,
   fill: VARIANT_NONE,
 }
 
-export default SVGCircle
+export default SVGRect
