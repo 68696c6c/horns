@@ -1,6 +1,13 @@
 export { Button } from './components/buttons'
 
 export {
+  LineChart,
+  Line,
+  PieChart,
+  Region,
+} from './components/charts'
+
+export {
   Checkbox,
   Field,
   Fieldset,
