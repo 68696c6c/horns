@@ -2,7 +2,7 @@ import styled from 'react-emotion'
 
 export const StyledSliderNav = styled('nav')`
   position: absolute;
-  bottom: 1em;
+  bottom: .75em;
   width: 100%;
   display: flex;
   flex-direction: row;

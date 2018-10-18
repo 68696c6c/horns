@@ -62,6 +62,23 @@ import uuid from 'uuid/v4'
       <Box variant="warning" height="100%" width="100%"><h1>Right Slide 2</h1></Box>
     </Slide>,
   ]} />
+  
+  <SliderDouble height="200px" speed={3} leftSlides={[
+    <Slide key={uuid()}>
+      <Box variant="primary" height="100%" width="100%"><h1>Left Slide 1</h1></Box>
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="dark" height="100%" width="100%"><h1>Left Slide 2</h1></Box>
+    </Slide>,
+  ]} rightSlides={[
+    <Slide key={uuid()}>
+      <Box variant="tertiary" height="100%" width="100%" />
+    </Slide>,
+    <Slide key={uuid()}>
+      <Box variant="warning" height="100%" width="100%" />
+    </Slide>,
+  ]} bannerRight={<Box variant="background"><strong>Banner Text</strong></Box>} />
+  
 </FullscreenDemo>
 
 

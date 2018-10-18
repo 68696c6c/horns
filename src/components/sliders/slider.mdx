@@ -39,6 +39,24 @@ import parallax2 from '../../images/parallax-2.jpg'
 ## Examples
 
 <Playground>
+  <Slider height="200px" speed={3} direction="up" banner={<Box variant="background"><strong>Top Banner Text</strong></Box>} bannerPosition="top">
+    <Slide><Box variant="primary" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="dark" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="success" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="warning" height="100%" width="100%" /></Slide>
+  </Slider>
+  <Slider height="200px" speed={3} direction="up" banner={<Box variant="background"><strong>Center Banner Text</strong></Box>}>
+    <Slide><Box variant="secondary" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="neutral" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="info" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="danger" height="100%" width="100%" /></Slide>
+  </Slider>
+  <Slider height="200px" speed={3} direction="up" banner={<Box variant="background"><strong>Bottom Banner Text</strong></Box>} bannerPosition="bottom">
+    <Slide><Box variant="primary" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="dark" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="success" height="100%" width="100%" /></Slide>
+    <Slide><Box variant="warning" height="100%" width="100%" /></Slide>
+  </Slider>
   <Slider height="200px" speed={3} nav={false}>
     <Slide>
       <Box variant="secondary" height="100%" width="100%"><h1>No Nav Slide 1</h1></Box>

@@ -5,6 +5,17 @@ import uuid from 'uuid/v4'
 import { StyledSliderNav, StyledSliderNavItem } from './nav'
 import { debounce, isUndefined } from '../../utils/utils'
 
+const getBannerPositionCSS = position => {
+  switch(position) {
+    case 'top':
+      return 'top: 1em;'
+    case 'center':
+      return 'margin: auto; top: 0; left: 0; bottom: 0; right: 0;'
+    case 'bottom':
+      return 'bottom: 2em;'
+  }
+}
+
 const StyledSlider = styled('div')`
   height: ${({ height }) => height};
   position: relative;
@@ -19,6 +30,11 @@ const StyledSlides = styled('div')`
     transform: ${({ transform }) => transform};
     transition: all ${({ speed }) => speed}ms ease 0s;
   }
+`
+const StyledBanner = styled('div')`
+  position: absolute;
+  width: 100%;
+  ${({ position }) => getBannerPositionCSS(position)};
 `
 
 class Slider extends React.Component {
@@ -38,6 +54,7 @@ class Slider extends React.Component {
     this.setActiveSlide = this.setActiveSlide.bind(this)
 
     this.sliderRef = React.createRef()
+    this.bannerRef = React.createRef()
     this.vertical = props.direction === 'up' || props.direction === 'down'
     this.reverse = props.direction === 'down' || props.direction === 'right'
     this.animationSpeed = isUndefined(props.animationSpeed) ? props.speed * 233 : props.animationSpeed
@@ -71,6 +88,10 @@ class Slider extends React.Component {
   }
 
   setDimensions() {
+    if (this.bannerRef.current !== null) {
+      const bannerHeight = this.bannerRef.current.children[0].clientHeight
+      this.bannerRef.current.style.height = `${bannerHeight}px`
+    }
     const height = this.sliderRef.current.clientHeight
     const width = this.sliderRef.current.clientWidth
     this.setState(() => ({ height, width }))
@@ -96,7 +117,7 @@ class Slider extends React.Component {
   }
 
   render() {
-    const { nav, className, children, ...others } = this.props
+    const { banner, bannerPosition, nav, className, children, ...others } = this.props
     const { activeSlide } = this.state
     return (
       <StyledSlider innerRef={this.sliderRef} className={cx('slider', className)} {...others}>
@@ -120,6 +141,7 @@ class Slider extends React.Component {
             ))}
           </StyledSliderNav>
         }
+        {banner && <StyledBanner innerRef={this.bannerRef} position={bannerPosition}>{banner}</StyledBanner>}
       </StyledSlider>
     )
   }
@@ -136,6 +158,12 @@ Slider.propTypes = {
   ]),
   height: PropTypes.string,
   nav: PropTypes.bool,
+  banner: PropTypes.element,
+  bannerPosition: PropTypes.oneOf([
+    'top',
+    'center',
+    'bottom',
+  ]),
 }
 
 Slider.defaultProps = {
@@ -143,6 +171,7 @@ Slider.defaultProps = {
   direction: 'left',
   height: '400px',
   nav: true,
+  bannerPosition: 'center',
 }
 
 export default Slider
