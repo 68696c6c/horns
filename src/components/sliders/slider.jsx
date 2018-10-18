@@ -1,10 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
+import uuid from 'uuid/v4'
+import { StyledSliderNav, StyledSliderNavItem } from './nav'
 import { debounce, isUndefined } from '../../utils/utils'
 
 const StyledSlider = styled('div')`
   height: ${({ height }) => height};
+  position: relative;
 `
 const StyledSlides = styled('div')`
   height: 100%;
@@ -28,9 +31,11 @@ class Slider extends React.Component {
       width: 0,
     }
 
+    this.setInterval = this.setInterval.bind(this)
     this.changeSlide = this.changeSlide.bind(this)
     this.setDimensions = this.setDimensions.bind(this)
     this.getTransform = this.getTransform.bind(this)
+    this.setActiveSlide = this.setActiveSlide.bind(this)
 
     this.sliderRef = React.createRef()
     this.vertical = props.direction === 'up' || props.direction === 'down'
@@ -45,14 +50,18 @@ class Slider extends React.Component {
   }
 
   componentDidMount() {
-    const delay = this.props.speed * 1000
-    this.interval = setInterval(() => this.changeSlide(), delay)
+    this.setInterval()
     window.addEventListener('resize', this.setDimensionsDebounced)
     this.setDimensions()
   }
 
   componentWillUnmount() {
     clearInterval(this.interval)
+  }
+
+  setInterval() {
+    const delay = this.props.speed * 1000
+    this.interval = setInterval(() => this.changeSlide(), delay)
   }
 
   changeSlide() {
@@ -80,8 +89,15 @@ class Slider extends React.Component {
     }
   }
 
+  setActiveSlide(event) {
+    const activeSlide = parseInt(event.target.dataset.index)
+    clearInterval(this.interval)
+    this.setState(() => ({ activeSlide }), this.setInterval)
+  }
+
   render() {
-    const { className, children, ...others } = this.props
+    const { nav, className, children, ...others } = this.props
+    const { activeSlide } = this.state
     return (
       <StyledSlider innerRef={this.sliderRef} className={cx('slider', className)} {...others}>
         <StyledSlides
@@ -92,6 +108,18 @@ class Slider extends React.Component {
         >
           {children}
         </StyledSlides>
+        {nav &&
+          <StyledSliderNav>
+            {children.map((child, index) => (
+              <StyledSliderNavItem
+                data-index={index}
+                onClick={this.setActiveSlide}
+                active={index === activeSlide}
+                key={uuid()}
+              />
+            ))}
+          </StyledSliderNav>
+        }
       </StyledSlider>
     )
   }
@@ -107,12 +135,14 @@ Slider.propTypes = {
     'right',
   ]),
   height: PropTypes.string,
+  nav: PropTypes.bool,
 }
 
 Slider.defaultProps = {
   speed: 5,
   direction: 'left',
   height: '400px',
+  nav: true,
 }
 
 export default Slider

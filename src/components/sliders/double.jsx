@@ -11,6 +11,7 @@ const SliderDouble = ({ height, leftSlides, rightSlides, speed, animationSpeed, 
       animationSpeed={animationSpeed}
       direction={leftDirection}
       height={height}
+      nav={false}
     >
       {leftSlides}
     </Slider>
@@ -20,6 +21,7 @@ const SliderDouble = ({ height, leftSlides, rightSlides, speed, animationSpeed, 
       animationSpeed={animationSpeed}
       direction={rightDirection}
       height={height}
+      nav={false}
     >
       {rightSlides}
     </Slider>
