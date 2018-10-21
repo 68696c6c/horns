@@ -27,6 +27,7 @@ const SliderDouble = ({
       nav={false}
       banner={bannerLeft}
       bannerPosition={bannerLeftPosition}
+      arrows={false}
     >
       {leftSlides}
     </Slider>
@@ -39,6 +40,7 @@ const SliderDouble = ({
       nav={false}
       banner={bannerRight}
       bannerPosition={bannerRightPosition}
+      arrows={false}
     >
       {rightSlides}
     </Slider>

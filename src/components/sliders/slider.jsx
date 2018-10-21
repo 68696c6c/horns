@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
-import { StyledSliderNav, StyledSliderNavItem } from './nav'
+import { SliderArrowBack, SliderArrowNext, StyledSliderNav, StyledSliderNavItem } from './nav'
 import { debounce, isUndefined } from '../../utils/utils'
 
 const getBannerPositionCSS = position => {
-  switch(position) {
+  switch (position) {
     case 'top':
       return 'top: 1em;'
     case 'center':
@@ -52,7 +52,10 @@ class Slider extends React.Component {
     this.setDimensions = this.setDimensions.bind(this)
     this.getTransform = this.getTransform.bind(this)
     this.setActiveSlide = this.setActiveSlide.bind(this)
+    this.previousSlide = this.previousSlide.bind(this)
+    this.nextSlide = this.nextSlide.bind(this)
 
+    this.slideCount = props.children.length
     this.sliderRef = React.createRef()
     this.bannerRef = React.createRef()
     this.vertical = props.direction === 'up' || props.direction === 'down'
@@ -116,8 +119,22 @@ class Slider extends React.Component {
     this.setState(() => ({ activeSlide }), this.setInterval)
   }
 
+  previousSlide() {
+    const { activeSlide: currentSlide } = this.state
+    const activeSlide = currentSlide === 0 ? this.slideCount - 1 : currentSlide - 1
+    clearInterval(this.interval)
+    this.setState(() => ({ activeSlide }), this.setInterval)
+  }
+
+  nextSlide() {
+    const { activeSlide: currentSlide } = this.state
+    const activeSlide = currentSlide === this.slideCount - 1 ? 0 : currentSlide + 1
+    clearInterval(this.interval)
+    this.setState(() => ({ activeSlide }), this.setInterval)
+  }
+
   render() {
-    const { banner, bannerPosition, nav, className, children, ...others } = this.props
+    const { arrows, banner, bannerPosition, nav, className, children, ...others } = this.props
     const { activeSlide } = this.state
     return (
       <StyledSlider innerRef={this.sliderRef} className={cx('slider', className)} {...others}>
@@ -130,18 +147,24 @@ class Slider extends React.Component {
           {children}
         </StyledSlides>
         {nav &&
-          <StyledSliderNav>
-            {children.map((child, index) => (
-              <StyledSliderNavItem
-                data-index={index}
-                onClick={this.setActiveSlide}
-                active={index === activeSlide}
-                key={uuid()}
-              />
-            ))}
-          </StyledSliderNav>
+        <StyledSliderNav>
+          {children.map((child, index) => (
+            <StyledSliderNavItem
+              data-index={index}
+              onClick={this.setActiveSlide}
+              active={index === activeSlide}
+              key={uuid()}
+            />
+          ))}
+        </StyledSliderNav>
         }
         {banner && <StyledBanner innerRef={this.bannerRef} position={bannerPosition}>{banner}</StyledBanner>}
+        {arrows &&
+        <React.Fragment>
+          <SliderArrowBack onClick={this.previousSlide}/>
+          <SliderArrowNext onClick={this.nextSlide}/>
+        </React.Fragment>
+        }
       </StyledSlider>
     )
   }
@@ -164,6 +187,7 @@ Slider.propTypes = {
     'center',
     'bottom',
   ]),
+  arrows: PropTypes.bool,
 }
 
 Slider.defaultProps = {
@@ -172,6 +196,7 @@ Slider.defaultProps = {
   height: '400px',
   nav: true,
   bannerPosition: 'center',
+  arrows: true,
 }
 
 export default Slider
