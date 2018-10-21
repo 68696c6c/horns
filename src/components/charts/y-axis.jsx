@@ -10,7 +10,7 @@ const ScaleY = ({ x, y, height, width, marks }) => {
   const pStart = x - half
   const pEnd = x + half
   const points = marks.map(mY => (
-    <React.Fragment>
+    <React.Fragment key={uuid()}>
       <SVGLine className="mark" stroke="copy" strokeWidth={2} x1={pStart} y1={mY} x2={pEnd} y2={mY} key={uuid()}/>
       <SVGLine className="mark" stroke="neutral" x1={x} y1={mY} x2={width + x} y2={mY} key={uuid()}/>
     </React.Fragment>
