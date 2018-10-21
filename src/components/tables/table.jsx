@@ -44,6 +44,16 @@ const StyledTable = styled('div')`
     color: ${({ variant, theme }) => theme.colors.background.light.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)};
     border-top: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
     border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
+    .sort {
+      svg {
+        fill: ${({ theme }) => rgb(theme.colors.copy.alpha)}; 
+      }
+      &.active {
+        svg {
+          fill: ${({ variant, theme }) => theme.colors.background.light.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)}; 
+        }
+      }
+    }
   }
   .table-row {
     color: ${({ variant, theme }) => theme.colors.background.light.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)};
