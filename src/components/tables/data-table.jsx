@@ -83,8 +83,8 @@ class DataTable extends React.Component {
   }
 
   componentWillMount() {
-    this.filterRowsDebounced = debounce(function () {
-      this.filterRows.apply(this, [this.state.term, this.state.body, 1])
+    this.filterRowsDebounced = debounce(function (term) {
+      this.filterRows.apply(this, [term])
     }, 300)
   }
 
@@ -109,8 +109,7 @@ class DataTable extends React.Component {
 
   handleFilter() {
     const term = this.filterRef.current.value
-    this.setState(() => ({ term }))
-    this.filterRowsDebounced()
+    this.filterRowsDebounced(term)
   }
 
   handleSort(event) {
@@ -152,13 +151,13 @@ class DataTable extends React.Component {
     })
   }
 
-  filterRows() {
-    const term = this.state.term
+  filterRows(term) {
     const value = term.toLowerCase()
     const body = this.getFilteredRows(this.state.body, value)
     const page = 1
     const rows = this.getPageRows(body, page, this.state.perPage)
-    this.setState(() => ({ page, rows }), () => this.filterRef.current.focus())
+    const pages = Math.ceil(body.length / this.state.perPage)
+    this.setState(() => ({ term, page, rows, pages }), () => this.filterRef.current.focus())
   }
 
   getRowHTMLData(data) {
