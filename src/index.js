@@ -1,3 +1,5 @@
+import Progress from './components/visuals/progress'
+
 export { Button } from './components/buttons'
 
 export {
@@ -90,3 +92,7 @@ export {
   HeadingSection,
   HeadingSectionSub,
 } from './components/typography'
+
+export {
+  Progress,
+} from './components/visuals'
