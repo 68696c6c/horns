@@ -12,3 +12,10 @@ services:
     - "80:80"
     environment:
       VIRTUAL_HOST: ui.kedge.local
+
+  ui-test:
+    command: yarn test
+    build: .
+    volumes:
+    - ./:/site
+    working_dir: /site

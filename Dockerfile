@@ -1,7 +1,8 @@
-FROM node:9.5-alpine
+FROM node:10-alpine
 
-RUN apk update && \
-    apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/testing vips-tools vips-dev fftw-dev gcc g++ make libc6-compat && \
+RUN apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/main --update-cache fftw-dev && \
+    apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/testing --update-cache \
+	vips-dev vips-tools gcc g++ make libc6-compat && \
     apk add git && \
     apk add python && \
     apk add bash && \
