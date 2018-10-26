@@ -81,6 +81,7 @@ class Theme {
       fonts: {
         default: this.makeFont('default'),
         light: this.makeFont('default', 'light'),
+        lighter: this.makeFont('default', 'lighter'),
         semiBold: this.makeFont('default', 'semiBold'),
         bold: this.makeFont('default', 'bold'),
       },

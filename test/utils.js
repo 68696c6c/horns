@@ -41,6 +41,7 @@ const colorKeys = [
   'copy',
 ]
 const colorFactorKeys = [
+  'alpha',
   'light',
   'dark',
 ]
@@ -103,6 +104,7 @@ const typographyKeys = [
   'headings',
 ]
 const colorValueKeys = [
+  'alpha',
   'default',
   'dark',
   'light',
@@ -168,7 +170,7 @@ export const expectValidTheme = (result) => {
   expect(Object.keys(result.grid).sort()).toEqual(gridKeys.sort())
 
   expect(Object.keys(result.typography).sort()).toEqual(typographyKeys.sort())
-  expect(Object.keys(result.typography.fonts)).toEqual(['default'])
+  expect(Object.keys(result.typography.fonts).sort()).toEqual(fontWeightKeys.sort())
   for (const name in result.typography.headings) {
     const heading = result.typography.headings[name]
     expect(Object.keys(heading).sort()).toEqual(headingKeys.sort())

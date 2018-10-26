@@ -90,6 +90,7 @@ describe('ThemeConfig class', () => {
         copy: randomString(),
       },
       colorFactors: {
+        alpha: randomString(),
         light: randomString(),
         dark: randomString(),
       },
