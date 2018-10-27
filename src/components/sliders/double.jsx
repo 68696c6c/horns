@@ -48,8 +48,8 @@ const SliderDouble = ({
 )
 
 SliderDouble.propTypes = {
-  leftSlides: PropTypes.array,
-  rightSlides: PropTypes.array,
+  leftSlides: PropTypes.array.isRequired,
+  rightSlides: PropTypes.array.isRequired,
   speed: PropTypes.number,
   animationSpeed: PropTypes.number,
   leftDirection: PropTypes.oneOf([
