@@ -1,2 +1,2 @@
-import { default as Meter } from './meter'
-import { default as Progress } from './progress'
+export { default as Meter } from './meter'
+export { default as Progress } from './progress'

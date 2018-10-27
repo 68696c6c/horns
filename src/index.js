@@ -1,5 +1,3 @@
-import Progress from './components/visuals/progress'
-
 export { Button } from './components/buttons'
 
 export {
