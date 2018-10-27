@@ -14,7 +14,7 @@ services:
       VIRTUAL_HOST: ui.kedge.local
 
   ui-test:
-    command: yarn test
+    command: yarn test:watch
     build: .
     volumes:
     - ./:/site
