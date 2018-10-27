@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { getValidator } from '../src/utils/validation'
-// import Input from './inputs/input'
-// import Button from '../buttons/button'
-// import Field from './field'
 import { Button, Input, Field } from '../src'
 
 class LoginForm extends React.Component {

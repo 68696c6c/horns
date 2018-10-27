@@ -3,10 +3,6 @@ import React from 'react'
 import { mount } from 'enzyme'
 import LoginForm from './login-form'
 
-// jest.mock('./inputs/input')
-// jest.mock('../buttons/button')
-// jest.mock('./field')
-
 jest.mock('../src', () => {
   return {
     Button: 'button',
