@@ -9,6 +9,7 @@ function withAsync(Component) {
         value: props.value,
         text: '',
         options: [],
+        term: '',
       }
 
       this.filterOptions = this.filterOptions.bind(this)
@@ -26,7 +27,7 @@ function withAsync(Component) {
             return option.value === value
           })
           const text = selectedOption.length > 0 ? selectedOption[0].label : undefined
-          this.setState(() => ({ options, text }))
+          this.setState(() => ({ options, text, term }))
         }
       })
     }
@@ -36,6 +37,7 @@ function withAsync(Component) {
       return <Component
         forwardedRef={forwardedRef}
         text={this.state.text}
+        term={this.state.term}
         options={this.state.options}
         filterRef={this.filterRef}
         onKeyUp={this.filterOptions}

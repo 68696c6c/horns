@@ -38,6 +38,7 @@ export class Select extends React.Component {
       open: false,
       value: '',
       text: '',
+      term: props.term,
     }
 
     this.setOptions = this.setOptions.bind(this)
@@ -54,6 +55,14 @@ export class Select extends React.Component {
     this.showFilter = !isUndefined(props.filterRef)
 
     this.selectRef = React.createRef()
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    let should = false
+    if (nextState.open !== this.state.open || nextState.value !== this.state.value || nextState.text !== this.state.text || nextProps.term !== this.props.term) {
+      should = true
+    }
+    return should
   }
 
   componentDidMount() {
@@ -131,7 +140,7 @@ export class Select extends React.Component {
 
   handleChange(event) {
     if (!this.cancelled) {
-      const value = `${event.target.value}`
+      const value = `${event.target.getAttribute('value')}`
       const text = event.target.getAttribute('label')
       this.setState(() => ({ value, text }), () => {
         this.closeDropDown()

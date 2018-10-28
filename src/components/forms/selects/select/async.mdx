@@ -7,7 +7,7 @@ import { Playground, PropsTable } from 'docz'
 
 import SelectAsync, { SelectAsyncDocz } from './async.jsx'
 import { AsyncRefExample } from './ref-example.jsx'
-import filterOptions from '../../../_demo/select-async-data'
+import filterOptions, { filterStringOptions } from '../../../_demo/select-async-data'
 
 # SelectAsync
 
@@ -23,6 +23,7 @@ import filterOptions from '../../../_demo/select-async-data'
 
 <Playground>
   <AsyncRefExample filterOptions={filterOptions} />
+  <SelectAsync filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
   <SelectAsync filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
   <SelectAsync filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
   <SelectAsync filterOptions={filterOptions} label="Required Example" name="required" required={true} />

@@ -60,4 +60,4 @@ export const Option = styled('li')`
     padding-bottom: .5em;
   }
 `
-export const StyledSelectContainer = styled(`div`)``
+export const StyledSelectContainer = styled('div')``
