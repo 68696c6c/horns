@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withAsync from '../with-async'
-import Select from './select'
+import { Select } from './select'
 
 // Docz's PropsTable doesn't recognize props defined on higher-order components, so this dummy component here
 // exists just for use in the PropsTable on the docs page.  This component should NOT be exported for use outside this

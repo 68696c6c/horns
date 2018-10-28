@@ -4,7 +4,6 @@ import { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
-import InputHidden from '../../inputs/hidden'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import {
@@ -19,7 +18,22 @@ import {
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
 
-class Select extends React.Component {
+const SelectInput = React.forwardRef((props, ref) => (
+  <input type="hidden" ref={ref} {...props}/>
+))
+
+SelectInput.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+}
+
+SelectInput.defaultProps = {
+  value: '',
+}
+
+export class Select extends React.Component {
   constructor(props) {
     super(props)
 
@@ -116,7 +130,6 @@ class Select extends React.Component {
   fireChange(event) {
     this.handleChange(event)
     this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_CHANGE, this.getEventData()))
-    this.props.onChange(event)
   }
 
   handleChange(event) {
@@ -159,12 +172,12 @@ class Select extends React.Component {
   }
 
   render() {
-    const { filterRef, onKeyUp, name, id, label, required, disabled, hasError, className } = this.props
+    const { forwardedRef, filterRef, onKeyUp, name, id, label, required, disabled, hasError, className } = this.props
     const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
     const htmlID = id === '' ? uuid() : id
     return (
       <React.Fragment>
-        <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
+        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
@@ -220,4 +233,6 @@ Select.defaultProps = {
   },
 }
 
-export default Select
+export default React.forwardRef((props, ref) => {
+  return <Select {...props} forwardedRef={ref} />
+})

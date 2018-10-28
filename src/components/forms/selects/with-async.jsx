@@ -1,7 +1,7 @@
 import React from 'react'
 
 function withAsync(Component) {
-  return class Async extends React.Component {
+  class Async extends React.Component {
     constructor(props) {
       super(props)
 
@@ -32,15 +32,21 @@ function withAsync(Component) {
     }
 
     render() {
+      const { forwardedRef, ...others } = this.props
       return <Component
+        forwardedRef={forwardedRef}
         text={this.state.text}
         options={this.state.options}
         filterRef={this.filterRef}
         onKeyUp={this.filterOptions}
-        {...this.props}
+        {...others}
       />
     }
   }
+
+  return React.forwardRef((props, ref) => {
+    return <Async {...props} forwardedRef={ref} />
+  })
 }
 
 export default withAsync
