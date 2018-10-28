@@ -97,7 +97,8 @@ class DataTable extends React.Component {
 
   handlePageSize() {
     const perPage = parseInt(this.perPageRef.current.value)
-    const rows = this.getPageRows(this.state.body, this.state.page, perPage)
+    const body = this.getPageRows(this.state.body, this.state.page, perPage)
+    const rows = this.getFilteredRows(body, this.state.term)
     const pages = Math.ceil(this.state.body.length / perPage)
     this.setState(() => ({ perPage, rows, pages }))
   }
