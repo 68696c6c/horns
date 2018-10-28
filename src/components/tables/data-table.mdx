@@ -6,6 +6,7 @@ menu: Tables
 import { Playground, PropsTable } from 'docz'
 
 import DataTable from './data-table'
+import RefExample from './ref-example'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
@@ -109,5 +110,11 @@ import filterRows from '../_demo/data-table-async-data'
 ## Remote Data Source
 
 <Playground>
-  <DataTable filterRows={filterRows} />
+  <DataTable perPage={25} filterRows={filterRows} />
+</Playground>
+
+## Ref Example
+
+<Playground>
+  <RefExample filterRows={filterRows} />
 </Playground>

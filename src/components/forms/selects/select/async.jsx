@@ -10,10 +10,7 @@ export const SelectAsyncDocz = () => <React.Fragment/>
 
 SelectAsyncDocz.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,

@@ -57,7 +57,7 @@ class DataTable extends React.Component {
 
     this.state = {
       page: 1,
-      perPage: 10,
+      perPage: props.perPage,
       pages: 0,
       head: [],
       body: [],
@@ -95,8 +95,8 @@ class DataTable extends React.Component {
   componentDidUpdate() {
   }
 
-  handlePageSize(event) {
-    const perPage = event.target.value
+  handlePageSize() {
+    const perPage = parseInt(this.perPageRef.current.value)
     const rows = this.getPageRows(this.state.body, this.state.page, perPage)
     const pages = Math.ceil(this.state.body.length / perPage)
     this.setState(() => ({ perPage, rows, pages }))
@@ -234,7 +234,14 @@ class DataTable extends React.Component {
       <StyledDataTable className={cx(className, 'data-table')} {...others}>
         <StyledDataTableHeader>
           <GroupInline>
-            <Select label="Items per page" name="per_page" innerRef={this.perPageRef} onChange={this.handlePageSize} value={perPage} className={css`width: 40px;`}>
+            <Select
+              label="Items per page"
+              name="per_page"
+              ref={this.perPageRef}
+              onChange={this.handlePageSize}
+              value={perPage}
+              className={css`width: 40px;`}
+            >
               <option value={10}>10</option>
               <option value={25}>25</option>
               <option value={50}>50</option>
@@ -275,8 +282,11 @@ class DataTable extends React.Component {
 
 DataTable.propTypes = {
   filterRows: PropTypes.func,
+  perPage: PropTypes.number,
 }
 
-DataTable.defaultProps = {}
+DataTable.defaultProps = {
+  perPage: 10,
+}
 
 export default DataTable

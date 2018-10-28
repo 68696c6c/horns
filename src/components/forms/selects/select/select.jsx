@@ -98,7 +98,7 @@ export class Select extends React.Component {
     let optionText = this.state.text
     this.options = options.map(o => {
       const isComponent = !isUndefined(o.props)
-      const optionValue = isComponent ? o.props.value : o.value
+      const optionValue = isComponent ? `${o.props.value}` : `${o.value}`
       const label = isComponent ? o.props.children : o.label
       if (optionValue === value) {
         optionText = label
@@ -131,7 +131,7 @@ export class Select extends React.Component {
 
   handleChange(event) {
     if (!this.cancelled) {
-      const value = event.target.value
+      const value = `${event.target.value}`
       const text = event.target.getAttribute('label')
       this.setState(() => ({ value, text }), () => {
         this.closeDropDown()
@@ -174,7 +174,7 @@ export class Select extends React.Component {
     const htmlID = id === '' ? uuid() : id
     return (
       <React.Fragment>
-        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={`${this.state.value}`} required={required}/>
+        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={this.state.value} required={required}/>
         {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
@@ -199,10 +199,7 @@ export class Select extends React.Component {
 
 Select.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
@@ -231,5 +228,6 @@ Select.defaultProps = {
 }
 
 export default React.forwardRef((props, ref) => {
-  return <Select {...props} forwardedRef={ref} />
+  const { value, ...others } = props
+  return <Select value={`${value}`} {...others} forwardedRef={ref} />
 })

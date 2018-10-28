@@ -45,7 +45,8 @@ function withAsync(Component) {
   }
 
   return React.forwardRef((props, ref) => {
-    return <Async {...props} forwardedRef={ref} />
+    const { value, ...others } = props
+    return <Async value={`${value}`} {...others} forwardedRef={ref} />
   })
 }
 
