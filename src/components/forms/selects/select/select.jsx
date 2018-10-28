@@ -23,10 +23,7 @@ const SelectInput = React.forwardRef((props, ref) => (
 ))
 
 SelectInput.propTypes = {
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  value: PropTypes.string,
 }
 
 SelectInput.defaultProps = {
@@ -177,7 +174,7 @@ export class Select extends React.Component {
     const htmlID = id === '' ? uuid() : id
     return (
       <React.Fragment>
-        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={this.state.value} required={required}/>
+        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={`${this.state.value}`} required={required}/>
         {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
