@@ -3,10 +3,8 @@ import styled from 'react-emotion'
 import { navItemStacked } from './items/base'
 
 const Styled = styled('nav')`
-  .nav-item {
+  .nav-item, a {
     ${navItemStacked()};
-  }
-  .nav-item-menu-items {
   }
 `
 

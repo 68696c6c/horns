@@ -1,0 +1,21 @@
+---
+name: 'Header Sticky Content'
+menu: Navs
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import HeaderStickyContent from './header-sticky-content'
+import WrapperInline from '../_demo/wrappers/inline'
+
+# NavItemSticky
+
+<Playground>
+  <WrapperInline>
+    <HeaderStickyContent content={<span>Default Content</span>} stuckContent={<span>Stuck Content</span>}/>
+  </WrapperInline>
+</Playground>
+
+## Props
+
+<PropsTable of={HeaderStickyContent} />

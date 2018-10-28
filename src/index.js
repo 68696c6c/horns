@@ -66,6 +66,7 @@ export {
 
 export {
   Header,
+  HeaderStickyContent,
   Nav,
   NavStacked,
   NavItem,

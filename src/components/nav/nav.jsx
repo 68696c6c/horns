@@ -7,10 +7,10 @@ import { navItemInline } from './items/base'
 import { isArray } from '../../utils/utils'
 
 const Styled = styled('nav')`
-  .nav-item {
+  .nav-item, a {
     ${navItemInline()};
   }
-  > .nav-item-menu > .nav-item-menu-items {
+  .nav-item-menu > .nav-item-menu-items {
     position: absolute;
     left: 0;
     padding-left: 0;

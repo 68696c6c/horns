@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx, css } from 'react-emotion'
+import styled, { css } from 'react-emotion'
 
 // @TODO hardcoded 280px on grid-template-columns property
 const StyledEqual = styled('div')`
@@ -41,10 +41,10 @@ const StyledThirds = styled('div')`
   }
 `
 
-const Grid = ({ breakpoint, gap, variant, className, children, ...others }) => {
+const Grid = ({ breakpoint, gap, variant, children, ...others }) => {
   const Tag = variant === 'equal' ? StyledEqual : StyledThirds
   return (
-    <Tag breakpoint={breakpoint} gap={gap} className={cx(className, 'grid')} {...others}>
+    <Tag breakpoint={breakpoint} gap={gap} {...others}>
       {children}
     </Tag>
   )

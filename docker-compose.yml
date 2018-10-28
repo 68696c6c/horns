@@ -9,7 +9,7 @@ services:
     - ./:/site
     working_dir: /site
     ports:
-    - "8000:80"
+    - "8000:8000"
     environment:
       VIRTUAL_HOST: ui.kedge.local
 

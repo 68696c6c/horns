@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
+import styled from 'react-emotion'
 import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
 
 const Styled = styled('div')`
@@ -8,8 +8,8 @@ const Styled = styled('div')`
   ${({ area }) => area === '' ? '' : `grid-area: ${area};`}
 `
 
-const Area = ({ className, children, ...others }) => {
-  return <Styled className={cx(className, 'area')} {...others}>{children}</Styled>
+const Area = ({ children, ...others }) => {
+  return <Styled {...others}>{children}</Styled>
 }
 
 Area.propTypes = {

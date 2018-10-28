@@ -1,6 +1,6 @@
 {
   "name": "kedge-ui",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "main": "dist/index.js",
   "description": "UI components for Kedge projects.",
   "dependencies": {
@@ -47,7 +47,7 @@
     "test": "jest --config=jest-config.js",
     "test:watch": "jest --watch --config=jest-config.js",
     "build": "./node_modules/.bin/babel src --out-dir dist",
-    "docker-docz": "docz dev --protocol=http --host=0.0.0.0 --port=80",
+    "docker-docz": "docz dev --protocol=http --host=0.0.0.0 --port=8000",
     "docz:dev": "docz dev",
     "docz:build": "docz build"
   },
