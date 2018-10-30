@@ -32,7 +32,7 @@ HeadingSectionSub.propTypes = {
 }
 
 HeadingSectionSub.defaultProps = {
-  variant: 'copy',
+  variant: 'inherit',
 }
 
 export default HeadingSectionSub

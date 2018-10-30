@@ -32,7 +32,7 @@ HeadingHero.propTypes = {
 }
 
 HeadingHero.defaultProps = {
-  variant: 'copy',
+  variant: 'inherit',
 }
 
 export default HeadingHero

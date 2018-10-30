@@ -32,7 +32,7 @@ HeadingCopy.propTypes = {
 }
 
 HeadingCopy.defaultProps = {
-  variant: 'copy',
+  variant: 'inherit',
 }
 
 export default HeadingCopy

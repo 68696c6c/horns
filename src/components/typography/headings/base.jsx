@@ -3,8 +3,6 @@ import { rgb } from '../../../themes/utils'
 
 export const baseHeading = (size, margin, theme, variant) => {
   let color
-  console.log('theme', theme)
-  console.log('variant', variant)
   if (variant === 'copy-dark') {
     color = theme.colors.copy.dark
   } else if (variant === 'copy-light') {
