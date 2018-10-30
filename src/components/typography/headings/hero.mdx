@@ -6,8 +6,9 @@ menu: Typography
 import { Playground, PropsTable } from 'docz'
 
 import HeadingHero from './hero'
+import WrapperInline from '../../_demo/wrappers/inline'
 
-# HeadingCopy
+# HeadingHero
 
 <Playground>
   <HeadingHero>Hero Heading</HeadingHero>
@@ -20,7 +21,49 @@ import HeadingHero from './hero'
 ## Variants
 
 <Playground>
-  <HeadingHero variant="primary">Primary Hero Heading</HeadingHero>
-  <HeadingHero variant="secondary">Secondary Hero Heading</HeadingHero>
-  <HeadingHero variant="tertiary">Tertiary Hero Heading</HeadingHero>
+  <WrapperInline>
+    <HeadingHero>Default Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="primary">Primary Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="secondary">Secondary Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="tertiary">Tertiary Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingHero variant="light">Light Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="neutral">Neutral Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="dark">Dark Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="success">Success Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="info">Info Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="warning">Warning Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="danger">Danger Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingHero variant="background">Background Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="copy">Copy Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingHero variant="copy-light">Light Copy Hero Heading</HeadingHero>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingHero variant="copy-dark">Dark Copy Hero Heading</HeadingHero>
+  </WrapperInline>
 </Playground>

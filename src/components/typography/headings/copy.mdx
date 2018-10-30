@@ -6,6 +6,7 @@ menu: Typography
 import { Playground, PropsTable } from 'docz'
 
 import HeadingCopy from './copy'
+import WrapperInline from '../../_demo/wrappers/inline'
 
 # HeadingCopy
 
@@ -20,7 +21,49 @@ import HeadingCopy from './copy'
 ## Variants
 
 <Playground>
-  <HeadingCopy variant="primary">Primary Copy Heading</HeadingCopy>
-  <HeadingCopy variant="secondary">Secondary Copy Heading</HeadingCopy>
-  <HeadingCopy variant="tertiary">Tertiary Copy Heading</HeadingCopy>
+  <WrapperInline>
+    <HeadingCopy>Default Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="primary">Primary Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="secondary">Secondary Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="tertiary">Tertiary Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingCopy variant="light">Light Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="neutral">Neutral Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="dark">Dark Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="success">Success Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="info">Info Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="warning">Warning Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="danger">Danger Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingCopy variant="background">Background Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="copy">Copy Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <HeadingCopy variant="copy-light">Light Copy Copy Heading</HeadingCopy>
+  </WrapperInline>
+  <WrapperInline>
+    <HeadingCopy variant="copy-dark">Dark Copy Copy Heading</HeadingCopy>
+  </WrapperInline>
 </Playground>

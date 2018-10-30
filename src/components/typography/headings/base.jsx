@@ -1,19 +1,20 @@
 import { css } from 'emotion'
 import { rgb } from '../../../themes/utils'
 
-export const baseHeading = (size, margin, theme) => {
+export const baseHeading = (size, margin, theme, variant) => {
+  let color
+  console.log('theme', theme)
+  console.log('variant', variant)
+  if (variant === 'copy-dark') {
+    color = theme.colors.copy.dark
+  } else if (variant === 'copy-light') {
+    color = theme.colors.copy.light
+  } else {
+    color = theme.colors[variant].default
+  }
   return css`
     font-size: ${size};
     margin: ${margin};
-    color: ${rgb(theme.colors.copy.default)};
-    &.primary {
-      color: ${rgb(theme.colors.primary.default)};
-    }
-    &.secondary {
-      color: ${rgb(theme.colors.secondary.default)};
-    }
-    &.tertiary {
-      color: ${rgb(theme.colors.tertiary.default)};
-    }
+    color: ${rgb(color)};
   `
 }
