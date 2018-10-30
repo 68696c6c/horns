@@ -39,9 +39,12 @@ export {
 export {
   Area,
   Box,
+  Footer,
   Grid,
   GridGuide,
   GridStacked,
+  Header,
+  HeaderStickyContent,
   Parallax,
   ScrollPages,
   ScrollProgress,
@@ -65,8 +68,6 @@ export {
 } from './components/lists'
 
 export {
-  Header,
-  HeaderStickyContent,
   Nav,
   NavStacked,
   NavItem,
