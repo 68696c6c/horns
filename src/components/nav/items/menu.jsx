@@ -17,8 +17,8 @@ const StyledMenu = styled('nav')`
   display: ${({ open }) => open ? 'block' : 'none'};
   background: ${({ theme }) => rgb(theme.colors.background.dark)};
   padding-left: .5em;
-  .nav-item {
-    ${navMenuItem()};
+  .nav-item, a {
+    ${({ theme }) => navMenuItem(theme)};
   }
 `
 StyledMenu.propTypes = {
@@ -148,7 +148,7 @@ NavItemMenu.propTypes = {
 }
 
 NavItemMenu.defaultProps = {
-  variant: 'copy',
+  variant: 'none',
   active: false,
   onClick: () => {
   },

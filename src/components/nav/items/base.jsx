@@ -1,51 +1,49 @@
 import { css } from 'emotion'
-import { rgb } from '../../../themes/utils'
+import { colorVariantCSS } from '../../utils'
 
-// @TODO need better configuration options.
-const baseNavItem = variant => {
-  const { hover, active } = variant
+const baseNavItem = (theme, variant) => {
   return css`
-    display: inline-block;
-    color: ${rgb(variant.color)};
-    text-decoration: ${variant.decoration};
-    &:focus { 
+    ${colorVariantCSS(theme, variant)};
+    text-decoration: ${theme.config.linkDecorations.default};
+    &:focus {
       outline: none; 
     }
     &:hover {
-      color: ${rgb(hover.color)};
-      text-decoration: ${hover.decoration};
+      text-decoration: ${theme.config.linkDecorations.hover};
     }
     &:active {
-      color: ${rgb(active.color)};
-      text-decoration: ${active.decoration};
-    }
-    &.active {
-      border-color: ${rgb(active.color)};
+      text-decoration: ${theme.config.linkDecorations.active};
     }
   `
 }
 
-export const navItemInline = () => {
+export const navItemInline = theme => {
   return css`
     display: inline-block;
-    border-bottom: 2px solid transparent;
-    padding: 1em .5em calc(1em - 2px) .5em;
+    ${theme.navItems.inline.border};
+    padding: ${theme.navItems.inline.padding};
+    &.active {
+      ${theme.navItems.inline.active.border};
+    }
   `
 }
 
-export const navItemStacked = () => {
+export const navItemStacked = theme => {
   return css`
     display: block;
-    border-left: 2px solid transparent;
-    padding: .5em 1em .5em calc(1em - 2px);
+    ${theme.navItems.stacked.border};
+    padding: ${theme.navItems.stacked.padding};
+    &.active {
+      ${theme.navItems.stacked.active.border};
+    }
   `
 }
 
-export const navMenuItem = () => {
+export const navMenuItem = theme => {
   return css`
     display: block;
     border: none;
-    padding: .5em 1em;
+    padding: ${theme.navItems.stacked.padding};
     white-space: nowrap;
   `
 }

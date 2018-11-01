@@ -5,7 +5,7 @@ import { withTheme } from 'emotion-theming'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
 import { isUndefined } from '../../utils/utils'
 import { valueToInt } from '../../themes/utils'
-import Nav from './nav'
+import { Nav } from '../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from './events'
 
 const fixedCSS = () => {

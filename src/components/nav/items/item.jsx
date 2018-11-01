@@ -4,7 +4,7 @@ import styled, { cx } from 'react-emotion'
 import baseNavItem from './base'
 
 const Styled = styled('a')`
-  ${({ variant, theme }) => baseNavItem(theme.links[variant])}
+  ${({ variant, theme }) => baseNavItem(theme, variant)}
 `
 
 const NavItem = ({ href, active, variant, className, children, ...others }) => {
@@ -20,7 +20,7 @@ NavItem.propTypes = {
 
 NavItem.defaultProps = {
   active: false,
-  variant: 'copy',
+  variant: 'none',
 }
 
 export default NavItem

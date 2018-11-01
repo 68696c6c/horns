@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import NavItem from './item'
-import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
+import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../../layout/events'
 
 class NavItemSticky extends React.Component {
   constructor(props) {

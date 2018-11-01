@@ -78,6 +78,15 @@ class ThemeConfig {
       hover: safeGetValue(configLinkDecorations, 'hover', 'none'),
       active: safeGetValue(configLinkDecorations, 'active', 'none'),
     }
+
+    const configNavItems = safeGetValue(config, 'navItems', {})
+    this.navItems = {
+      padding: safeGetValue(configNavItems, 'padding', '1em'),
+      hover: safeGetValue(configNavItems, 'hover', 'none'),
+      activeEffect: safeGetValue(configNavItems, 'activeEffect', 'border'),
+      activeBorderWidth: safeGetValue(configNavItems, 'activeBorderWidth', '2px'),
+      activeBorderColor: safeGetValue(configNavItems, 'activeBorderColor', 'primary'),
+    }
   }
 }
 

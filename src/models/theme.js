@@ -1,4 +1,5 @@
 import ThemeConfig from './config'
+import { rgb } from '..'
 
 class Theme {
   constructor(config) {
@@ -28,6 +29,7 @@ class Theme {
     // These use values set above and must be called last.
     this.buttons = this.getButtons()
     this.links = this.getLinks()
+    this.navItems = this.getNavItems()
   }
 
   getColors() {
@@ -182,6 +184,38 @@ class Theme {
         color: activeBG.isDark() ? copy.light : copy.dark,
         border: 'none',
       },
+    }
+  }
+
+  getNavItems() {
+    const { padding, activeEffect, activeBorderWidth, activeBorderColor } = this.config.navItems
+    let inline = { padding, border: 'border: none', active: { border: 'border: none' } }
+    let stacked = { padding, border: 'border: none', active: { border: 'border: none' } }
+    // @TODO add support for more active effects
+    switch (activeEffect) {
+      case 'border':
+        if (padding !== 'none') {
+          inline = {
+            padding: `${padding} ${padding} calc(${padding} - ${activeBorderWidth})`,
+            border: `border-bottom: ${activeBorderWidth} solid transparent;`,
+            active: {
+              border: `border-color: ${rgb(this.colors[activeBorderColor].default)};`,
+            },
+          }
+          stacked = {
+            padding: `${padding} ${padding} ${padding} calc(${padding} - ${activeBorderWidth})`,
+            border: `border-left: ${activeBorderWidth} solid transparent;`,
+            active: {
+              border: `border-color: ${rgb(this.colors[activeBorderColor].default)};`,
+            },
+          }
+        }
+        break
+    }
+    // @TODO add support for hover effects
+    return {
+      inline,
+      stacked,
     }
   }
 }

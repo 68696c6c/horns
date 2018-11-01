@@ -8,7 +8,7 @@ import { isArray } from '../../utils/utils'
 
 const Styled = styled('nav')`
   .nav-item, a {
-    ${navItemInline()};
+    ${({ theme }) => navItemInline(theme)};
   }
   .nav-item-menu > .nav-item-menu-items {
     position: absolute;

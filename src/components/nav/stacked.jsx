@@ -4,7 +4,7 @@ import { navItemStacked } from './items/base'
 
 const Styled = styled('nav')`
   .nav-item, a {
-    ${navItemStacked()};
+    ${({ theme }) => navItemStacked(theme)};
   }
 `
 
