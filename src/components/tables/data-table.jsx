@@ -68,6 +68,7 @@ class DataTable extends React.Component {
       sortDir: '',
     }
 
+    this.getPage = this.getPage.bind(this)
     this.filterRows = this.filterRows.bind(this)
     this.getFilteredRows = this.getFilteredRows.bind(this)
     this.handlePageSize = this.handlePageSize.bind(this)
@@ -100,34 +101,20 @@ class DataTable extends React.Component {
     }
   }
 
-  getHead(data) {
-    let head = []
-    const columns = Object.keys(data[0])
-    columns.forEach(column => {
-      head.push(column)
-    })
-    return head
-  }
-
-  getRows(data) {
-    let rows = []
-    for (let i = 0; i < data.length; i++) {
-      const child = data[i]
-      rows[i] = []
-      for (const field in child) {
-        const column = child[field]
-        rows[i].push(column)
-      }
-    }
-    return rows
+  getPage(total, currentPage, currentPerPage, newPerPage) {
+    const pageMax = currentPage * currentPerPage
+    const target = pageMax > total ? total : pageMax
+    return currentPage === 1 ? 1 : Math.ceil(target / newPerPage)
   }
 
   handlePageSize() {
-    const perPage = parseInt(this.perPageRef.current.value)
-    const body = this.getPageRows(this.state.body, this.state.page, perPage)
-    const rows = this.getFilteredRows(body, this.state.term)
-    const pages = Math.ceil(this.state.body.length / perPage)
-    this.setState(() => ({ perPage, rows, pages }))
+    const { page, perPage, total, term } = this.state
+    const newPerPage = parseInt(this.perPageRef.current.value)
+    const newPage = this.getPage(total, page, perPage, newPerPage)
+    const body = this.getPageRows(this.state.body, newPage, newPerPage)
+    const rows = this.getFilteredRows(body, term)
+    const pages = Math.ceil(total / newPerPage)
+    this.setState(() => ({ perPage: newPerPage, page: newPage, rows, pages }))
   }
 
   handlePaginate(page) {
@@ -218,7 +205,7 @@ class DataTable extends React.Component {
 
   render() {
     const { className, ...others } = this.props
-    const { sortColumnIndex, sortDir, term, head, rows, body, pages, page, perPage, total } = this.state
+    const { sortColumnIndex, sortDir, term, head, rows, pages, page, perPage, total } = this.state
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
