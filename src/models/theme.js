@@ -1,5 +1,5 @@
 import ThemeConfig from './config'
-import { rgb } from '..'
+import { rgb } from '../themes/utils'
 
 class Theme {
   constructor(config) {
