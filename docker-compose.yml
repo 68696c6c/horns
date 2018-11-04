@@ -19,3 +19,12 @@ services:
     volumes:
     - ./:/site
     working_dir: /site
+
+  # For this to work, you need an .npmrc file in the project root with a valid _authToken
+  # @TODO script incrementing the version number?
+  ui-publish:
+    command: bash -c "yarn build && npm publish"
+    build: .
+    volumes:
+    - ./:/site
+    working_dir: /site
