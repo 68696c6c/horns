@@ -216,7 +216,8 @@ class DataTable extends React.Component {
       const rows = this.getPageRows(body, 1, this.state.perPage)
       this.setState(() => ({ pages, head, body, rows }))
     } else if (!isUndefined(this.props.filterRows)) {
-      this.props.filterRows(this.state.term, rowData => {
+      const { page, pages, perPage, sortColumnIndex, sortDir, term } = this.state
+      this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, rowData => {
         result = this.getAsyncRowData(rowData)
         const { count, head, body } = result
         const pages = Math.ceil(count / this.state.perPage)

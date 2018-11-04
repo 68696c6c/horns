@@ -106,15 +106,16 @@ const ROWS = [
   },
 ]
 
-const filterRows = (value, callback) => {
+const filterRows = (state, callback) => {
+  const { term } = state
   setTimeout(() => {
-    if (value === '') {
+    if (term === '') {
       return callback(ROWS)
     } else {
       const result = ROWS.filter(row => {
-        return row.first_name.toLowerCase().includes(value.toLowerCase()) ||
-          row.last_name.toLowerCase().includes(value.toLowerCase()) ||
-          row.email.toLowerCase().includes(value.toLowerCase())
+        return row.first_name.toLowerCase().includes(term.toLowerCase()) ||
+          row.last_name.toLowerCase().includes(term.toLowerCase()) ||
+          row.email.toLowerCase().includes(term.toLowerCase())
       })
       callback(result)
     }
