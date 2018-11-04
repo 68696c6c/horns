@@ -8,8 +8,18 @@ import { Playground, PropsTable } from 'docz'
 import DataTableAsync from './data-table-async'
 import filterRows from '../_demo/data-table-async-data'
 
-# DataTable
+# DataTableAsync
 
 <Playground>
-  <DataTableAsync perPage={10} filterRows={filterRows} />
+  <DataTableAsync filterRows={filterRows} />
+</Playground>
+
+## Props
+
+<PropsTable of={DataTableAsync} />
+
+## Per Page Prop
+
+<Playground>
+  <DataTableAsync perPage={25} filterRows={filterRows} />
 </Playground>

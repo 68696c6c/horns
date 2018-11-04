@@ -1,16 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css, cx } from 'react-emotion'
-import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
+import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa'
 import uuid from 'uuid/v4'
 import Table from './table'
 import { GroupInline, Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
-import { debounce, getParentByClassName, isArray, isUndefined } from '../../utils/utils'
+import { debounce, getParentByClassName } from '../../utils/utils'
 import TableHead from './table-head'
 import TableCell from './table-cell'
 import TableRow from './table-row'
-import { rgb } from '../../themes/utils'
 
 const SORT_ASC = 'asc'
 const SORT_DESC = 'desc'
@@ -40,11 +39,11 @@ const StyledSortIcon = styled('a')`
   cursor: pointer;
 `
 const SortIcon = ({ active, direction, ...others }) => {
-  let icon = <FaSort />
+  let icon = <FaSort/>
   if (active && direction === SORT_ASC) {
-    icon = <FaSortUp />
+    icon = <FaSortUp/>
   } else if (active && direction === SORT_DESC) {
-    icon = <FaSortDown />
+    icon = <FaSortDown/>
   }
   return <StyledSortIcon className={cx('sort', active ? 'active' : '')} {...others}>{icon}</StyledSortIcon>
 }
@@ -89,12 +88,10 @@ class DataTableAsync extends React.Component {
   componentDidMount() {
     const { page, pages, perPage, sortColumnIndex, sortDir, term } = this.state
     this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, response => {
-      console.log('response', response)
       const { data, pagination } = response
       const { page, perPage, pages, total } = pagination
       const head = this.getHead(data)
       const rows = this.getRows(data)
-      console.log('rows', rows)
       this.setState(() => ({ page, perPage, pages, total, head, rows }))
     })
   }
@@ -201,7 +198,8 @@ class DataTableAsync extends React.Component {
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleFilter} defaultValue={term} />
+            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleFilter}
+                   defaultValue={term}/>
           </GroupInline>
         </StyledDataTableHeader>
         <Table className="data-table-table" responsive="scroll">
