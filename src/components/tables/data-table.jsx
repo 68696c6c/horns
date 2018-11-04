@@ -59,6 +59,7 @@ class DataTable extends React.Component {
       page: 1,
       perPage: props.perPage,
       pages: 0,
+      total: 0,
       head: [],
       body: [],
       rows: [],
@@ -73,9 +74,7 @@ class DataTable extends React.Component {
     this.handlePaginate = this.handlePaginate.bind(this)
     this.handleFilter = this.handleFilter.bind(this)
     this.handleSort = this.handleSort.bind(this)
-    this.getRows = this.getRows.bind(this)
     this.getRowHTMLData = this.getRowHTMLData.bind(this)
-    this.getAsyncRowData = this.getAsyncRowData.bind(this)
     this.getPageRows = this.getPageRows.bind(this)
 
     this.filterRef = React.createRef()
@@ -89,10 +88,38 @@ class DataTable extends React.Component {
   }
 
   componentDidMount() {
-    this.getRows()
+    const { children } = this.props
+    let result = {}
+    if (!isUndefined(children)) {
+      const data = isArray(children) ? children : [children]
+      result = this.getRowHTMLData(data)
+      const { total, head, body } = result
+      const pages = Math.ceil(total / this.state.perPage)
+      const rows = this.getPageRows(body, 1, this.state.perPage)
+      this.setState(() => ({ pages, head, body, rows, total }))
+    }
   }
 
-  componentDidUpdate() {
+  getHead(data) {
+    let head = []
+    const columns = Object.keys(data[0])
+    columns.forEach(column => {
+      head.push(column)
+    })
+    return head
+  }
+
+  getRows(data) {
+    let rows = []
+    for (let i = 0; i < data.length; i++) {
+      const child = data[i]
+      rows[i] = []
+      for (const field in child) {
+        const column = child[field]
+        rows[i].push(column)
+      }
+    }
+    return rows
   }
 
   handlePageSize() {
@@ -104,18 +131,9 @@ class DataTable extends React.Component {
   }
 
   handlePaginate(page) {
-    if (!isUndefined(this.props.filterRows)) {
-      const { pages, perPage, sortColumnIndex, sortDir, term } = this.state
-      this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, rowData => {
-        const result = this.getAsyncRowData(rowData)
-        const { body } = result
-        const rows = body
-        this.setState(() => ({ page, rows }))
-      })
-    } else {
-      const rows = this.getPageRows(this.state.body, page, this.state.perPage)
-      this.setState(() => ({ page, rows }))
-    }
+    console.log('handlePaginate', page)
+    const rows = this.getPageRows(this.state.body, page, this.state.perPage)
+    this.setState(() => ({ page, rows }))
   }
 
   handleFilter() {
@@ -125,9 +143,12 @@ class DataTable extends React.Component {
 
   handleSort(event) {
     const parent = getParentByClassName(event.target, 'table-cell')
-    const columnIndex = parseInt(parent.dataset.index)
+    const sortColumnIndex = parseInt(parent.dataset.index)
+    let sortDir = SORT_ASC
+    if (sortColumnIndex === this.state.sortColumnIndex) {
+      sortDir = this.state.sortDir === SORT_ASC ? SORT_DESC : SORT_ASC
+    }
     const body = this.state.body
-    const sortDir = this.state.sortDir === SORT_ASC ? SORT_DESC : SORT_ASC
     let i1 = -1
     let i2 = 1
     if (sortDir === SORT_DESC) {
@@ -135,17 +156,18 @@ class DataTable extends React.Component {
       i2 = -1
     }
     body.sort((a, b) => {
-      const aValue = a[columnIndex]
-      const bValue = b[columnIndex]
+      const aValue = a[sortColumnIndex]
+      const bValue = b[sortColumnIndex]
       return (aValue < bValue) ? i1 : ((aValue > bValue) ? i2 : 0)
     })
     const filteredBody = this.getFilteredRows(body, this.state.term)
     const rows = this.getPageRows(filteredBody, this.state.page, this.state.perPage)
-    this.setState(() => ({ rows, sortColumnIndex: columnIndex, sortDir }))
+    this.setState(() => ({ rows, sortColumnIndex, sortDir }))
   }
 
   getPageRows(body, page, perPage) {
-    const start = page === 1 ? 0 : perPage * (page - 1)
+    const start = (page - 1) * perPage
+    console.log('getPageRows', start, start + perPage)
     return body.slice(start, start + perPage)
   }
 
@@ -172,7 +194,7 @@ class DataTable extends React.Component {
   }
 
   getRowHTMLData(data) {
-    let count = 0
+    let total = 0
     let head = []
     let body = []
     for (let i = 0; i < data.length; i++) {
@@ -183,63 +205,20 @@ class DataTable extends React.Component {
           head.push(column.props.children)
         })
       } else {
-        count++
-        body[i] = []
+        total++
+        const bodyIndex = i - 1
+        body[bodyIndex] = []
         columns.forEach(column => {
-          body[i].push(column.props.children)
+          body[bodyIndex].push(column.props.children)
         })
       }
     }
-    return { count, head, body }
-  }
-
-  getAsyncRowData(data) {
-    let count = 0
-    let head = []
-    let body = []
-    for (let i = 0; i < data.length; i++) {
-      const child = data[i]
-      if (i === 0) {
-        const columns = Object.keys(child)
-        columns.forEach(column => {
-          head.push(column)
-        })
-      }
-      count++
-      body[i] = []
-      for (const field in child) {
-        const column = child[field]
-        body[i].push(column)
-      }
-    }
-    return { count, head, body }
-  }
-
-  getRows() {
-    const { children } = this.props
-    let result = {}
-    if (!isUndefined(children)) {
-      const data = isArray(children) ? children : [children]
-      result = this.getRowHTMLData(data)
-      const { count, head, body } = result
-      const pages = Math.ceil(count / this.state.perPage)
-      const rows = this.getPageRows(body, 1, this.state.perPage)
-      this.setState(() => ({ pages, head, body, rows }))
-    } else if (!isUndefined(this.props.filterRows)) {
-      const { page, pages, perPage, sortColumnIndex, sortDir, term } = this.state
-      this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, rowData => {
-        result = this.getAsyncRowData(rowData)
-        const { count, head, body } = result
-        const pages = Math.ceil(count / this.state.perPage)
-        const rows = this.getPageRows(body, 1, this.state.perPage)
-        this.setState(() => ({ pages, head, body, rows }))
-      })
-    }
+    return { total, head, body }
   }
 
   render() {
     const { className, ...others } = this.props
-    const { sortColumnIndex, sortDir, term, head, rows, body, pages, page, perPage } = this.state
+    const { sortColumnIndex, sortDir, term, head, rows, body, pages, page, perPage, total } = this.state
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
@@ -283,7 +262,7 @@ class DataTable extends React.Component {
         </Table>
         <StyledDataTableFooter>
           <GroupInline>
-            <span>Showing {start} through {end} of {body.length} entries</span>
+            <span>Showing {start} through {end} of {total} entries</span>
             <Pagination pages={pages} page={page} onChange={this.handlePaginate}/>
           </GroupInline>
         </StyledDataTableFooter>
@@ -293,7 +272,6 @@ class DataTable extends React.Component {
 }
 
 DataTable.propTypes = {
-  filterRows: PropTypes.func,
   perPage: PropTypes.number,
 }
 
