@@ -104,8 +104,18 @@ class DataTable extends React.Component {
   }
 
   handlePaginate(page) {
-    const rows = this.getPageRows(this.state.body, page, this.state.perPage)
-    this.setState(() => ({ page, rows }))
+    if (!isUndefined(this.props.filterRows)) {
+      const { pages, perPage, sortColumnIndex, sortDir, term } = this.state
+      this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, rowData => {
+        const result = this.getAsyncRowData(rowData)
+        const { body } = result
+        const rows = body
+        this.setState(() => ({ page, rows }))
+      })
+    } else {
+      const rows = this.getPageRows(this.state.body, page, this.state.perPage)
+      this.setState(() => ({ page, rows }))
+    }
   }
 
   handleFilter() {

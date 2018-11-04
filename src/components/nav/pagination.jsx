@@ -67,12 +67,13 @@ class Pagination extends React.Component {
 
   getLinks(page, pages) {
     const { items, variant } = this.props
+    const max = items > pages ? pages : items
     let links = []
-    const half = Math.floor(items / 2)
+    const half = Math.floor(max / 2)
     let start = 1
-    let end = items
+    let end = max
     if (page >= pages - half) {
-      start = pages - items <= 0 ? 1 : pages - items
+      start = pages - max <= 0 ? 1 : pages - max
       end = pages
     } else if (page > half) {
       start = page - half <= 0 ? 1 : page - half

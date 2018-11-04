@@ -1,0 +1,15 @@
+---
+name: 'Data Table - Async'
+menu: Tables
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import DataTableAsync from './data-table-async'
+import filterRows from '../_demo/data-table-async-data'
+
+# DataTable
+
+<Playground>
+  <DataTableAsync perPage={10} filterRows={filterRows} />
+</Playground>
