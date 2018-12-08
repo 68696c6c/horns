@@ -51,6 +51,7 @@ const SortIcon = ({ active, direction, ...others }) => {
 
 // @TODO add support for sorting by columns
 // @TODO add better theming and variants
+// @TODO Has Bugs, refactor to be more like DataTableAsync
 class DataTable extends React.Component {
   constructor(props) {
     super(props)

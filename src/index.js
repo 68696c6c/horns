@@ -84,6 +84,7 @@ export {
 
 export {
   DataTable,
+  DataTableAsync,
   Table,
   TableCell,
   TableHead,

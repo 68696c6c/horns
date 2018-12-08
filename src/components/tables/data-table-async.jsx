@@ -66,6 +66,7 @@ class DataTableAsync extends React.Component {
       sortDir: '',
     }
 
+    this.refresh = this.refresh.bind(this)
     this.getPage = this.getPage.bind(this)
     this.getRows = this.getRows.bind(this)
     this.getHead = this.getHead.bind(this)
@@ -86,6 +87,10 @@ class DataTableAsync extends React.Component {
   }
 
   componentDidMount() {
+    this.refresh()
+  }
+
+  refresh() {
     const { page, pages, perPage, sortColumnIndex, sortDir, term } = this.state
     this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, response => {
       const { data, pagination } = response
