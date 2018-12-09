@@ -6,7 +6,6 @@ export class Validator {
     this.OPERATOR_NOT = 'NOT'
   }
 
-
   makeField(required, value = '') {
     return {
       required,

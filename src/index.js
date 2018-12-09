@@ -2,6 +2,7 @@ export { default as ThemeConfig } from './models/config'
 export { default as Theme } from './models/theme'
 export { default as BaseTheme } from './themes/base'
 export { pallet, rgb, valueToInt } from './themes/utils'
+export { getValidator } from './utils/validation'
 
 export { Button } from './components/buttons'
 
