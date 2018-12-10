@@ -6,12 +6,20 @@ export class Validator {
     this.OPERATOR_NOT = 'NOT'
   }
 
+  isFieldValid(field) {
+    return !(field.required && (typeof field.value === 'undefined' || field.value === ''))
+  }
+
   makeField(required, value = '') {
     return {
       required,
       value,
       hasError: false,
     }
+  }
+
+  makeFieldArray(fields) {
+    return [fields]
   }
 
   makeRule(field, value, condition) {
