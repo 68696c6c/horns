@@ -6,6 +6,7 @@ import NavItem from './item'
 import { rgb } from '../../../themes/utils'
 import { getEventName } from '../../../events'
 import { navMenuItem } from './base'
+import { isUndefined } from '../../../utils/utils'
 
 const EVENT_OPEN = getEventName('menu:open')
 const EVENT_CLOSE = getEventName('menu:close')
@@ -44,8 +45,11 @@ class NavItemMenu extends React.Component {
     this.cancelled = false
     this.menuID = uuid()
 
-    this.hrefs = props.children.map(child => {
-      return child.props.href
+    this.hrefs = []
+    props.children.forEach(child => {
+      if (!isUndefined(child.props) && !isUndefined(child.props.href)) {
+        this.hrefs.push(child.props.href)
+      }
     })
 
     this.menuRef = React.createRef()
