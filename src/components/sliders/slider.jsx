@@ -47,6 +47,7 @@ class Slider extends React.Component {
       width: 0,
     }
 
+    this.log = this.log.bind(this)
     this.setInterval = this.setInterval.bind(this)
     this.changeSlide = this.changeSlide.bind(this)
     this.setDimensions = this.setDimensions.bind(this)
@@ -79,9 +80,17 @@ class Slider extends React.Component {
     clearInterval(this.interval)
   }
 
+  log(...messages) {
+    if (this.props.debug) {
+      console.log('[SLIDER DEBUG] ', messages)
+    }
+  }
+
   setInterval() {
-    const delay = this.props.speed * 1000
-    this.interval = setInterval(() => this.changeSlide(), delay)
+    const { speed } = this.props
+    if (speed > 0) {
+      this.interval = setInterval(() => this.changeSlide(), speed * 1000)
+    }
   }
 
   changeSlide() {
@@ -97,6 +106,7 @@ class Slider extends React.Component {
     }
     const height = this.sliderRef.current.clientHeight
     const width = this.sliderRef.current.clientWidth
+    this.log('setDimensions', height, width)
     this.setState(() => ({ height, width }))
   }
 
@@ -104,6 +114,7 @@ class Slider extends React.Component {
     const { direction } = this.props
     const { activeSlide, height, width } = this.state
     const n = direction === 'up' || direction === 'left' ? -1 : 1
+    this.log('getTransform', direction, activeSlide, height, width)
     if (direction === 'up' || direction === 'down') {
       const offset = height * activeSlide * n
       return `translate3d(0px, ${offset}px, 0px)`
@@ -171,6 +182,7 @@ class Slider extends React.Component {
 }
 
 Slider.propTypes = {
+  debug: PropTypes.bool,
   speed: PropTypes.number,
   animationSpeed: PropTypes.number,
   direction: PropTypes.oneOf([
@@ -191,6 +203,7 @@ Slider.propTypes = {
 }
 
 Slider.defaultProps = {
+  debug: false,
   speed: 5,
   direction: 'left',
   height: '400px',

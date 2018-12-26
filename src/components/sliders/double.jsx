@@ -4,6 +4,7 @@ import Grid from '../layout/grid'
 import Slider from './slider'
 
 const SliderDouble = ({
+                        debug,
                         height,
                         leftSlides,
                         rightSlides,
@@ -15,10 +16,11 @@ const SliderDouble = ({
                         bannerLeftPosition,
                         bannerRight,
                         bannerRightPosition,
-                        ...others
+                        ...others,
                       }) => (
   <Grid gap={false} fluid={true} {...others}>
     <Slider
+      debug={debug}
       className="slider-left"
       speed={speed}
       animationSpeed={animationSpeed}
@@ -32,6 +34,7 @@ const SliderDouble = ({
       {leftSlides}
     </Slider>
     <Slider
+      debug={debug}
       className="slider-right"
       speed={speed}
       animationSpeed={animationSpeed}
@@ -48,6 +51,7 @@ const SliderDouble = ({
 )
 
 SliderDouble.propTypes = {
+  debug: PropTypes.bool,
   leftSlides: PropTypes.array.isRequired,
   rightSlides: PropTypes.array.isRequired,
   speed: PropTypes.number,
@@ -82,6 +86,7 @@ SliderDouble.propTypes = {
 }
 
 SliderDouble.defaultProps = {
+  debug: false,
   speed: 5,
   leftDirection: 'right',
   rightDirection: 'left',

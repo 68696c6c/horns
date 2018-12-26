@@ -15,7 +15,7 @@ import uuid from 'uuid/v4'
 
 <FullscreenDemo variant="dark" of={SliderDouble} title="SliderDouble Responsiveness">
   Resize the window to start animating the slider.
-  <SliderDouble height="200px" speed={3} leftSlides={[
+  <SliderDouble debug={true} height="200px" speed={3} leftSlides={[
     <Slide key={uuid()}>
       <Box variant="primary" height="100%" width="100%"><h1>Left Slide 1</h1></Box>
     </Slide>,
