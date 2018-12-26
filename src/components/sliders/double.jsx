@@ -6,6 +6,8 @@ import Slider from './slider'
 const SliderDouble = ({
                         debug,
                         height,
+                        leftWidthPx,
+                        rightWidthPx,
                         leftSlides,
                         rightSlides,
                         speed,
@@ -26,6 +28,7 @@ const SliderDouble = ({
       animationSpeed={animationSpeed}
       direction={leftDirection}
       height={height}
+      widthPx={leftWidthPx}
       nav={false}
       banner={bannerLeft}
       bannerPosition={bannerLeftPosition}
@@ -40,6 +43,7 @@ const SliderDouble = ({
       animationSpeed={animationSpeed}
       direction={rightDirection}
       height={height}
+      widthPx={rightWidthPx}
       nav={false}
       banner={bannerRight}
       bannerPosition={bannerRightPosition}
@@ -71,6 +75,8 @@ SliderDouble.propTypes = {
   variant: PropTypes.oneOf(['equal', 'thirds']),
   side: PropTypes.string,
   height: PropTypes.string,
+  leftWidthPx: PropTypes.number,
+  rightWidthPx: PropTypes.number,
   bannerLeft: PropTypes.element,
   bannerLeftPosition: PropTypes.oneOf([
     'top',

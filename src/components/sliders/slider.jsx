@@ -105,7 +105,7 @@ class Slider extends React.Component {
       this.bannerRef.current.style.height = `${bannerHeight}px`
     }
     const height = this.sliderRef.current.clientHeight
-    const width = this.sliderRef.current.clientWidth
+    const width = this.props.widthPx || this.sliderRef.current.clientWidth
     this.log('setDimensions', height, width)
     this.setState(() => ({ height, width }))
   }
@@ -192,6 +192,7 @@ Slider.propTypes = {
     'right',
   ]),
   height: PropTypes.string,
+  widthPx: PropTypes.number,
   nav: PropTypes.bool,
   banner: PropTypes.element,
   bannerPosition: PropTypes.oneOf([
