@@ -99,6 +99,7 @@ export {
   SVGCircle,
   SVGLine,
   SVGPath,
+  SVGPolygon,
   SVGRect,
   SVG,
 } from './components/svg'
