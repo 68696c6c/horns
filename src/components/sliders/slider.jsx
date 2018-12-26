@@ -105,7 +105,11 @@ class Slider extends React.Component {
       this.bannerRef.current.style.height = `${bannerHeight}px`
     }
     const height = this.sliderRef.current.clientHeight
-    const width = this.props.widthPx || this.sliderRef.current.clientWidth
+    let width = this.sliderRef.current.clientWidth
+    if (!this.props.padded) {
+      const ns = window.getComputedStyle(this.sliderRef.current)
+      width = width - parseFloat(ns.getPropertyValue('padding-left')) - parseFloat(ns.getPropertyValue('padding-right'))
+    }
     this.log('setDimensions', height, width)
     this.setState(() => ({ height, width }))
   }
@@ -192,7 +196,7 @@ Slider.propTypes = {
     'right',
   ]),
   height: PropTypes.string,
-  widthPx: PropTypes.number,
+  padded: PropTypes.bool,
   nav: PropTypes.bool,
   banner: PropTypes.element,
   bannerPosition: PropTypes.oneOf([
@@ -208,6 +212,7 @@ Slider.defaultProps = {
   speed: 5,
   direction: 'left',
   height: '400px',
+  padded: true,
   nav: true,
   bannerPosition: 'center',
   arrows: true,
