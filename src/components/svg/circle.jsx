@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styled from 'react-emotion'
-import { rgb } from '../../../themes/utils'
+import { rgb } from '../../themes/utils'
 
 const VARIANT_NONE = 'none'
 

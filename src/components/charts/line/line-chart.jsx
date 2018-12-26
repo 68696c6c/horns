@@ -6,7 +6,7 @@ import uuid from 'uuid/v4'
 import ChartLine from './line'
 import AxisY from '../y-axis'
 import AxisX from '../x-axis'
-import { SVGRect } from '../svg'
+import { SVGRect } from '../../svg'
 import { rgb } from '../../../themes/utils'
 import { isArray } from '../../../utils/utils'
 

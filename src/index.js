@@ -47,7 +47,6 @@ export {
 export {
   ImageFrame,
   Picture,
-  SVG,
 } from './components/images'
 
 export {
@@ -95,6 +94,14 @@ export {
   Slider,
   SliderDouble,
 } from './components/sliders'
+
+export {
+  SVGCircle,
+  SVGLine,
+  SVGPath,
+  SVGRect,
+  SVG,
+} from './components/svg'
 
 export {
   DataTable,

@@ -1,6 +1,6 @@
 import React from 'react'
 import uuid from 'uuid/v4'
-import { SVGLine } from './svg'
+import { SVGLine } from '../svg'
 import { AXIS_MARK_WIDTH } from './utils'
 import ChartLabel from './chart-label'
 
