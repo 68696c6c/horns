@@ -6,6 +6,8 @@ import Slider from './slider'
 const SliderDouble = ({
                         debug,
                         height,
+                        leftAnimation,
+                        rightAnimation,
                         leftPadded,
                         rightPadded,
                         leftSlides,
@@ -26,6 +28,7 @@ const SliderDouble = ({
       className="slider-left"
       speed={speed}
       animationSpeed={animationSpeed}
+      animation={leftAnimation}
       direction={leftDirection}
       height={height}
       padded={leftPadded}
@@ -41,6 +44,7 @@ const SliderDouble = ({
       className="slider-right"
       speed={speed}
       animationSpeed={animationSpeed}
+      animation={rightAnimation}
       direction={rightDirection}
       height={height}
       padded={rightPadded}
@@ -60,6 +64,8 @@ SliderDouble.propTypes = {
   rightSlides: PropTypes.array.isRequired,
   speed: PropTypes.number,
   animationSpeed: PropTypes.number,
+  leftAnimation: PropTypes.oneOf(['slide', 'fade']),
+  rightAnimation: PropTypes.oneOf(['slide', 'fade']),
   leftDirection: PropTypes.oneOf([
     'up',
     'down',
@@ -94,6 +100,8 @@ SliderDouble.propTypes = {
 SliderDouble.defaultProps = {
   debug: false,
   speed: 5,
+  leftAnimation: 'slide',
+  rightAnimation: 'slide',
   leftDirection: 'right',
   rightDirection: 'left',
   variant: 'equal',

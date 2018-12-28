@@ -4,6 +4,7 @@ import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { SliderArrowBack, SliderArrowNext, StyledSliderNav, StyledSliderNavItem } from './nav'
 import { debounce, isUndefined } from '../../utils/utils'
+import SlideFade from './slide-fade'
 
 const getBannerPositionCSS = position => {
   switch (position) {
@@ -20,7 +21,7 @@ const StyledSlider = styled('div')`
   height: ${({ height }) => height};
   position: relative;
 `
-const StyledSlides = styled('div')`
+const StyledSlidesTransform = styled('div')`
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -30,6 +31,12 @@ const StyledSlides = styled('div')`
     transform: ${({ transform }) => transform};
     transition: all ${({ speed }) => speed}ms ease 0s;
   }
+`
+const StyledSlidesFade = styled('div')`
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "content";
 `
 const StyledBanner = styled('div')`
   position: absolute;
@@ -62,6 +69,10 @@ class Slider extends React.Component {
     this.vertical = props.direction === 'up' || props.direction === 'down'
     this.reverse = props.direction === 'down' || props.direction === 'right'
     this.animationSpeed = isUndefined(props.animationSpeed) ? props.speed * 233 : props.animationSpeed
+
+    this.slideIDs = props.children.map(() => {
+      return uuid()
+    })
   }
 
   componentWillMount() {
@@ -149,37 +160,56 @@ class Slider extends React.Component {
   }
 
   render() {
-    const { arrows, banner, bannerPosition, nav, className, children, ...others } = this.props
+    const { arrows, animation, banner, bannerPosition, nav, speed, className, children, ...others } = this.props
     const { activeSlide } = this.state
     return (
       <StyledSlider innerRef={this.sliderRef} className={cx('slider', className)} {...others}>
-        <StyledSlides
-          transform={this.getTransform()}
-          vertical={this.vertical}
-          reverse={this.reverse}
-          speed={this.animationSpeed}
-        >
-          {children}
-        </StyledSlides>
-        {nav &&
-        <StyledSliderNav>
-          {children.map((child, index) => (
-            <StyledSliderNavItem
-              data-index={index}
-              onClick={this.setActiveSlide}
-              active={index === activeSlide}
-              key={uuid()}
-            />
-          ))}
-        </StyledSliderNav>
-        }
+        {animation === 'slide' && (
+          <StyledSlidesTransform
+            className="slides"
+            transform={this.getTransform()}
+            vertical={this.vertical}
+            reverse={this.reverse}
+            speed={this.animationSpeed}
+          >
+            {children}
+          </StyledSlidesTransform>
+        )}
+        {animation === 'fade' && (
+          <StyledSlidesFade
+            className="slides"
+            vertical={this.vertical}
+            reverse={this.reverse}
+          >
+            {children.map(({ props }, index) => (
+              <SlideFade
+                {...props}
+                speed={this.animationSpeed}
+                className={cx(props.className, activeSlide === index ? 'active' : '')}
+                key={this.slideIDs[index]}
+              />
+            ))}
+          </StyledSlidesFade>
+        )}
+        {nav && (
+          <StyledSliderNav>
+            {children.map((child, index) => (
+              <StyledSliderNavItem
+                data-index={index}
+                onClick={this.setActiveSlide}
+                active={index === activeSlide}
+                key={uuid()}
+              />
+            ))}
+          </StyledSliderNav>
+        )}
         {banner && <StyledBanner innerRef={this.bannerRef} position={bannerPosition}>{banner}</StyledBanner>}
-        {arrows &&
-        <React.Fragment>
-          <SliderArrowBack onClick={this.previousSlide}/>
-          <SliderArrowNext onClick={this.nextSlide}/>
-        </React.Fragment>
-        }
+        {arrows && (
+          <React.Fragment>
+            <SliderArrowBack onClick={this.previousSlide}/>
+            <SliderArrowNext onClick={this.nextSlide}/>
+          </React.Fragment>
+        )}
       </StyledSlider>
     )
   }
@@ -188,6 +218,7 @@ class Slider extends React.Component {
 Slider.propTypes = {
   debug: PropTypes.bool,
   speed: PropTypes.number,
+  animation: PropTypes.oneOf(['slide', 'fade']),
   animationSpeed: PropTypes.number,
   direction: PropTypes.oneOf([
     'up',
@@ -210,6 +241,7 @@ Slider.propTypes = {
 Slider.defaultProps = {
   debug: false,
   speed: 5,
+  animation: 'slide',
   direction: 'left',
   height: '400px',
   padded: true,
