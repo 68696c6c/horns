@@ -6,6 +6,7 @@ export { default as BaseTheme } from './themes/base'
 export { pallet, rgb, valueToInt } from './themes/utils'
 
 export {
+  isEmptyObject,
   isUndefined,
   formatDate,
   isArray,

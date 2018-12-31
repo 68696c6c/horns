@@ -1,5 +1,8 @@
 const ROWS = [
   {
+    dataset: {
+      key: 'value',
+    },
     first_name: 'Testy',
     last_name: 'McGee',
     email: 'testy.mcgee@example.com',

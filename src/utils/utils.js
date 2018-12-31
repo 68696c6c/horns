@@ -1,6 +1,10 @@
 export const ENV_DEV = 'DEV'
 export const ENV_PROD = 'PROD'
 
+export const isEmptyObject = obj => {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
+}
+
 export const isUndefined = val => {
   return typeof val === 'undefined'
 }

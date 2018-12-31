@@ -11,7 +11,13 @@ import filterRows from '../_demo/data-table-async-data'
 # DataTableAsync
 
 <Playground>
-  <DataTableAsync perPage={100} filterRows={apiRows} />
+  <DataTableAsync 
+    perPage={100} 
+    filterRows={filterRows} 
+    onClick={event => {
+      console.log('click', event.target, event.target.parentElement.dataset.key)
+    }} 
+  />
 </Playground>
 
 ## Props

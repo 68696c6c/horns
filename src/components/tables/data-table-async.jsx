@@ -6,7 +6,7 @@ import uuid from 'uuid/v4'
 import Table from './table'
 import { GroupInline, Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
-import { debounce, getParentByClassName } from '../../utils/utils'
+import { debounce, getParentByClassName, isEmptyObject } from '../../utils/utils'
 import TableHead from './table-head'
 import TableCell from './table-cell'
 import TableRow from './table-row'
@@ -61,6 +61,7 @@ class DataTableAsync extends React.Component {
       total: 0,
       head: [],
       rows: [],
+      rowData: [],
       term: '',
       sortColumnIndex: -1,
       sortDir: '',
@@ -96,8 +97,8 @@ class DataTableAsync extends React.Component {
       const { data, pagination } = response
       const { page, perPage, pages, total } = pagination
       const head = this.getHead(data)
-      const rows = this.getRows(data)
-      this.setState(() => ({ page, perPage, pages, total, head, rows }))
+      const { rows, rowData } = this.getRows(data)
+      this.setState(() => ({ page, perPage, pages, total, head, rows, rowData }))
     })
   }
 
@@ -105,22 +106,33 @@ class DataTableAsync extends React.Component {
     let head = []
     const columns = Object.keys(data[0])
     columns.forEach(column => {
-      head.push(column)
+      if (column !== 'dataset') {
+        head.push(column)
+      }
     })
     return head
   }
 
   getRows(data) {
     let rows = []
+    let rowData = []
     for (let i = 0; i < data.length; i++) {
       const child = data[i]
       rows[i] = []
-      for (const field in child) {
-        const column = child[field]
-        rows[i].push(column)
-      }
+      rowData[i] = {}
+      const fields = Object.keys(child)
+      fields.forEach(field => {
+        if (field === 'dataset') {
+          const dataFields = Object.keys(child[field])
+          dataFields.forEach(dataField => {
+            rowData[i][dataField] = child[field][dataField]
+          })
+        } else {
+          rows[i].push(child[field])
+        }
+      })
     }
-    return rows
+    return { rows, rowData }
   }
 
   getPage(total, currentPage, currentPerPage, newPerPage) {
@@ -136,8 +148,8 @@ class DataTableAsync extends React.Component {
     this.props.filterRows({ page: newPage, pages, perPage: newPerPage, sortColumnIndex, sortDir, term }, response => {
       const { data, pagination } = response
       const { page, perPage, pages, total } = pagination
-      const rows = this.getRows(data)
-      this.setState(() => ({ page, perPage, pages, total, rows }))
+      const { rows, rowData } = this.getRows(data)
+      this.setState(() => ({ page, perPage, pages, total, rows, rowData }))
     })
   }
 
@@ -146,8 +158,8 @@ class DataTableAsync extends React.Component {
     this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, response => {
       const { data, pagination } = response
       const { page } = pagination
-      const rows = this.getRows(data)
-      this.setState(() => ({ page, rows }))
+      const { rows, rowData } = this.getRows(data)
+      this.setState(() => ({ page, rows, rowData }))
     })
   }
 
@@ -166,8 +178,8 @@ class DataTableAsync extends React.Component {
     const { page, pages, perPage, term } = this.state
     this.props.filterRows({ page, pages, perPage, sortColumnIndex, sortDir, term }, response => {
       const { data } = response
-      const rows = this.getRows(data)
-      this.setState(() => ({ rows, sortColumnIndex, sortDir }))
+      const { rows, rowData } = this.getRows(data)
+      this.setState(() => ({ rows, rowData, sortColumnIndex, sortDir }))
     })
   }
 
@@ -176,14 +188,14 @@ class DataTableAsync extends React.Component {
     this.props.filterRows({ page: 1, pages, perPage, sortColumnIndex, sortDir, term }, response => {
       const { data, pagination } = response
       const { page, pages, perPage, total } = pagination
-      const rows = this.getRows(data)
-      this.setState(() => ({ page, pages, perPage, total, rows, term }), () => this.filterRef.current.focus())
+      const { rows, rowData } = this.getRows(data)
+      this.setState(() => ({ page, pages, perPage, total, rows, rowData, term }), () => this.filterRef.current.focus())
     })
   }
 
   render() {
-    const { className, ...others } = this.props
-    const { sortColumnIndex, sortDir, term, head, rows, pages, page, perPage, total } = this.state
+    const { onClick, className, ...others } = this.props
+    const { sortColumnIndex, sortDir, term, head, rows, rowData, pages, page, perPage, total } = this.state
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
@@ -203,8 +215,13 @@ class DataTableAsync extends React.Component {
               <option value={50}>50</option>
               <option value={100}>100</option>
             </Select>
-            <Input label="Search" name="term" innerRef={this.filterRef} onKeyUp={this.handleFilter}
-                   defaultValue={term}/>
+            <Input
+              label="Search"
+              name="term"
+              innerRef={this.filterRef}
+              onKeyUp={this.handleFilter}
+              defaultValue={term}
+            />
           </GroupInline>
         </StyledDataTableHeader>
         <Table className="data-table-table" responsive="scroll">
@@ -216,12 +233,17 @@ class DataTableAsync extends React.Component {
               </TableCell>
             ))}
           </TableHead>
-          {rows.map(row => {
+          {rows.map((row, index) => {
+            let dataset = {}
+            if (!isEmptyObject(rowData[index])) {
+              const dataFields = Object.keys(rowData[index])
+              dataFields.forEach(dataField => {
+                dataset[`data-${dataField}`] = rowData[index][dataField]
+              })
+            }
             return (
-              <TableRow key={uuid()}>
-                {row.map(column => {
-                  return <TableCell key={uuid()}>{column}</TableCell>
-                })}
+              <TableRow key={uuid()} {...dataset}>
+                {row.map(column => <TableCell key={uuid()} onClick={onClick}>{column}</TableCell>)}
               </TableRow>
             )
           })}
