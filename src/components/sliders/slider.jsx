@@ -73,6 +73,7 @@ class Slider extends React.Component {
     this.slideIDs = props.children.map(() => {
       return uuid()
     })
+    this.slidesID = uuid()
   }
 
   componentWillMount() {
@@ -171,6 +172,7 @@ class Slider extends React.Component {
             vertical={this.vertical}
             reverse={this.reverse}
             speed={this.animationSpeed}
+            key={this.slidesID}
           >
             {children}
           </StyledSlidesTransform>
@@ -180,6 +182,7 @@ class Slider extends React.Component {
             className="slides"
             vertical={this.vertical}
             reverse={this.reverse}
+            key={this.slidesID}
           >
             {children.map(({ props }, index) => (
               <SlideFade
