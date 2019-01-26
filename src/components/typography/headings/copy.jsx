@@ -14,6 +14,7 @@ const HeadingCopy = ({ children, ...others }) => <Styled {...others}>{children}<
 
 HeadingCopy.propTypes = {
   variant: PropTypes.oneOf([
+    'inherit',
     'primary',
     'secondary',
     'tertiary',

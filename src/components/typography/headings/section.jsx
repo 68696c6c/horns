@@ -14,6 +14,7 @@ const HeadingSection = ({ children, ...others }) => <Styled {...others}>{childre
 
 HeadingSection.propTypes = {
   variant: PropTypes.oneOf([
+    'inherit',
     'primary',
     'secondary',
     'tertiary',

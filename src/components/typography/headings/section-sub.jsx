@@ -14,6 +14,7 @@ const HeadingSectionSub = ({ children, ...others }) => <Styled {...others}>{chil
 
 HeadingSectionSub.propTypes = {
   variant: PropTypes.oneOf([
+    'inherit',
     'primary',
     'secondary',
     'tertiary',

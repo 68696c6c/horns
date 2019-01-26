@@ -14,6 +14,7 @@ const HeadingHero = ({ children, ...others }) => <Styled {...others}>{children}<
 
 HeadingHero.propTypes = {
   variant: PropTypes.oneOf([
+    'inherit',
     'primary',
     'secondary',
     'tertiary',
