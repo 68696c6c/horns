@@ -3,16 +3,27 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
 
-const Styled = styled('header')`
+const FluidTitleBar = styled('header')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-  ${({ fluid, theme }) => containerStyleHorizontal(theme.breakpoints, fluid)};
+  ${({ theme, fluid }) => containerStyleHorizontal(theme.breakpoints, fluid)};
   padding-top: 1em;
   padding-bottom: 1em;
 `
 
-const TitleBar = ({ fluid, variant, children, ...others }) => (
-  <Styled fluid={fluid} variant={variant} {...others}>{children}</Styled>
-)
+const PaddedTitleBar = styled('header')`
+  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
+  padding: 1em;
+`
+
+const TitleBar = ({ fluid, variant, children, ...others }) => {
+  let Tag = PaddedTitleBar
+  if (fluid) {
+    Tag = FluidTitleBar
+  }
+  return (
+    <Tag variant={variant} {...others}>{children}</Tag>
+  )
+}
 
 TitleBar.propTypes = {
   fluid: PropTypes.bool,

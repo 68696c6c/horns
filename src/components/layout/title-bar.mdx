@@ -13,7 +13,8 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 A TitleBar is a header element that supports color variants and can confine it's contents to the page content area.
 
 <FullscreenDemo variant="dark" of={TitleBar} title="TitleBar with centered content"> 
-  <TitleBar variant="dark">Title Bar</TitleBar>
+  <TitleBar variant="dark">Default Title Bar</TitleBar>
+  <TitleBar variant="primary" fluid={true}>Fluid Title Bar</TitleBar>
 </FullscreenDemo>
 
 ## Props
@@ -23,16 +24,16 @@ A TitleBar is a header element that supports color variants and can confine it's
 ## Variants
 
 <Playground>
-  <TitleBar fluid={true} style={{ textAlign: 'center' }}>None</TitleBar>
-  <TitleBar fluid={true} variant="background" style={{ textAlign: 'center' }}>Background</TitleBar>
-  <TitleBar fluid={true} variant="primary" style={{ textAlign: 'center' }}>Primary</TitleBar>
-  <TitleBar fluid={true} variant="secondary" style={{ textAlign: 'center' }}>Secondary</TitleBar>
-  <TitleBar fluid={true} variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</TitleBar>
-  <TitleBar fluid={true} variant="light" style={{ textAlign: 'center' }}>Light</TitleBar>
-  <TitleBar fluid={true} variant="neutral" style={{ textAlign: 'center' }}>Neutral</TitleBar>
-  <TitleBar fluid={true} variant="dark" style={{ textAlign: 'center' }}>Dark</TitleBar>
-  <TitleBar fluid={true} variant="success" style={{ textAlign: 'center' }}>Success</TitleBar>
-  <TitleBar fluid={true} variant="info" style={{ textAlign: 'center' }}>Info</TitleBar>
-  <TitleBar fluid={true} variant="warning" style={{ textAlign: 'center' }}>Warning</TitleBar>
-  <TitleBar fluid={true} variant="danger" style={{ textAlign: 'center' }}>Danger</TitleBar>
+  <TitleBar>None</TitleBar>
+  <TitleBar variant="background">Background</TitleBar>
+  <TitleBar variant="primary">Primary</TitleBar>
+  <TitleBar variant="secondary">Secondary</TitleBar>
+  <TitleBar variant="tertiary">Tertiary</TitleBar>
+  <TitleBar variant="light">Light</TitleBar>
+  <TitleBar variant="neutral">Neutral</TitleBar>
+  <TitleBar variant="dark">Dark</TitleBar>
+  <TitleBar variant="success">Success</TitleBar>
+  <TitleBar variant="info">Info</TitleBar>
+  <TitleBar variant="warning">Warning</TitleBar>
+  <TitleBar variant="danger">Danger</TitleBar>
 </Playground>
