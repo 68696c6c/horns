@@ -16,31 +16,21 @@ const getChildPadding = (fluid, container) => {
   `
 }
 const StyledEqual = styled('div')`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: ${({ gap, theme }) => gap ? theme.grid.gap : '0px'};
-`
-const StyledEqualCentered = styled('div')`
-  padding-left: calc(((100vw - ${({ theme }) => theme.grid.container}) / 2));
-  padding-right: calc(((100vw - ${({ theme }) => theme.grid.container}) / 2));
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: ${({ gap, theme }) => gap ? theme.grid.gap : '0px'};
   }
+`
+const StyledEqualCentered = styled(StyledEqual)`
+  padding-left: calc(((100vw - ${({ theme }) => theme.grid.container}) / 2));
+  padding-right: calc(((100vw - ${({ theme }) => theme.grid.container}) / 2));
   @media(min-width: ${({ theme }) => theme.grid.container}) {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     grid-gap: ${({ gap, theme }) => gap ? theme.grid.gap : '0px'};
   }
 `
 const StyledThirds = styled('div')`
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-areas: "left right";
-  grid-template-columns: ${({ side }) => side === 'left' ? '1fr 2fr' : '2fr 1fr'};
-  grid-gap: ${({ gap, theme }) => gap ? theme.grid.gap : '0px'};
-`
-const StyledThirdsCentered = styled('div')`
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: grid;
     grid-template-rows: auto;
@@ -48,6 +38,8 @@ const StyledThirdsCentered = styled('div')`
     grid-template-columns: ${({ side }) => side === 'left' ? '1fr 2fr' : '2fr 1fr'};
     grid-gap: ${({ gap, theme }) => gap ? theme.grid.gap : '0px'};
   }
+`
+const StyledThirdsCentered = styled(StyledThirds)`
   @media(min-width: ${({ theme }) => theme.grid.container}) {
     grid-template-columns: ${({ theme, side }) => {
   const gutter = `((100vw - ${theme.grid.container}) / 2)`
