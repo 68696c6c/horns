@@ -32,6 +32,7 @@ export {
   Field,
   Fieldset,
   Group,
+  GroupInline,
   Label,
   InputHidden,
   Input,
