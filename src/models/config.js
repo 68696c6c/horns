@@ -67,7 +67,7 @@ class ThemeConfig {
       h1: safeGetValue(configFontSizes, 'h1', '3.21rem'),
       h2: safeGetValue(configFontSizes, 'h2', '2.36rem'),
       h3: safeGetValue(configFontSizes, 'h3', '1.64rem'),
-      h4: safeGetValue(configFontSizes, 'h4', '1.29re'),
+      h4: safeGetValue(configFontSizes, 'h4', '1.29rem'),
       h5: safeGetValue(configFontSizes, 'h5', '1.15rem'),
       h6: safeGetValue(configFontSizes, 'h6', '1rem'),
     }
