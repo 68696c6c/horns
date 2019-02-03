@@ -1,8 +1,8 @@
 import { css } from 'emotion'
 import { rgb } from '../../themes/utils'
 
-const baseButton = (variant, weight) => {
-  return css`
+const baseButton = (variant, weight) => (
+  css`
     display: inline-block;
     padding: .6em 2em;
     font-weight: ${weight};
@@ -23,6 +23,6 @@ const baseButton = (variant, weight) => {
       border: ${variant.hover.border};
     }
   `
-}
+)
 
 export default baseButton
