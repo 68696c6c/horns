@@ -206,7 +206,11 @@ class Slider extends React.Component {
             ))}
           </StyledSliderNav>
         )}
-        {banner && <StyledBanner innerRef={this.bannerRef} position={bannerPosition}>{banner}</StyledBanner>}
+        {banner && (
+          <StyledBanner innerRef={this.bannerRef} position={bannerPosition} className="banner">
+            {banner}
+          </StyledBanner>
+        )}
         {arrows && (
           <React.Fragment>
             <SliderArrowBack onClick={this.previousSlide}/>

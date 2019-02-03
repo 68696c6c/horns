@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css, cx } from 'react-emotion'
+import uuid from 'uuid/v4'
 import Grid from './grid'
 import { rgb } from '../../themes/utils'
 
@@ -123,7 +124,7 @@ const GridStacked = ({ variant, className, children, ...others }) => {
   return (
     <Grid fluid={true} gap={false} variant="thirds" className={cx(className, 'section-stacked')} {...others}>
       {childrenArray.map(child => {
-        return <Block {...child.props} variant={variant}>{child.props.children}</Block>
+        return <Block {...child.props} variant={variant} key={uuid()}>{child.props.children}</Block>
       })}
     </Grid>
   )
@@ -131,6 +132,7 @@ const GridStacked = ({ variant, className, children, ...others }) => {
 
 GridStacked.propTypes = {
   variant: PropTypes.oneOf([
+    'brand',
     'primary',
     'secondary',
     'tertiary',
