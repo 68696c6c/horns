@@ -5,24 +5,34 @@ import styled, { cx } from 'react-emotion'
 import NavMenu from './items/menu'
 import { navItemInline } from './items/base'
 import { isArray } from '../../utils/utils'
+import { COLOR_VARIANT_NONE } from '../utils'
 
 const Styled = styled('nav')`
   .nav-item, a {
     ${({ theme }) => navItemInline(theme)};
   }
-  .nav-item-menu > .nav-item-menu-items {
-    position: absolute;
-    left: 0;
-    padding-left: 0;
+  > .nav-item-menu {
+    display: inline-block;
+    > .nav-item-menu-items {
+      position: absolute;
+      left: 0;
+    }
   }
 `
 
-const Nav = ({ mobile, children, className, ...others }) => {
+const Nav = ({ mobile, menuVariant, children, className, ...others }) => {
   let content = children
   if (mobile) {
     const items = isArray(children) ? children : [children]
     content = (
-      <NavMenu content={<FaBars/>} className={cx('nav', 'mobile', className)} {...others}>{items}</NavMenu>
+      <NavMenu
+        menuVariant={menuVariant}
+        content={<FaBars/>}
+        className={cx('nav', 'mobile', className)}
+        {...others}
+      >
+        {items}
+      </NavMenu>
     )
   }
   return <Styled className={cx('nav', className)} {...others}>{content}</Styled>
@@ -30,10 +40,25 @@ const Nav = ({ mobile, children, className, ...others }) => {
 
 Nav.propTypes = {
   mobile: PropTypes.bool,
+  menuVariant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+    COLOR_VARIANT_NONE,
+  ]),
 }
 
 Nav.defaultProps = {
   mobile: false,
+  menuVariant: 'light',
 }
 
 export default Nav

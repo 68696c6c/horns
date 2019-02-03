@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
+import styled, { cx, css } from 'react-emotion'
 import { withTheme } from 'emotion-theming'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
 import { isUndefined } from '../../utils/utils'
@@ -8,19 +8,35 @@ import { valueToInt } from '../../themes/utils'
 import { Nav } from '../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from './events'
 
-const fixedCSS = () => {
-  return css`
+const fixedCSS = () => (
+  css`
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 999;
   `
-}
+)
+
 const Styled = styled('header')`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   ${({ fluid, theme }) => containerStyleHorizontal(theme.breakpoints, fluid)};
   ${({ stuck }) => stuck ? fixedCSS() : ''};
+  @media(max-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
+    nav .nav-item-menu {
+      position: static;
+    }
+    .nav-item-menu-items {
+      width: 100%;
+    }
+  }
+  .nav.mobile {
+    margin-left: -1em;
+    margin-right: -1em;
+  }
 `
 
 export class HeaderBase extends React.Component {
@@ -30,6 +46,7 @@ export class HeaderBase extends React.Component {
     this.handleState = this.handleState.bind(this)
     this.fireStick = this.fireStick.bind(this)
     this.fireUnStick = this.fireUnStick.bind(this)
+    this.cancelled = false
 
     this.state = {
       set: false,
@@ -50,6 +67,7 @@ export class HeaderBase extends React.Component {
   }
 
   componentWillUnmount() {
+    this.cancelled = true
     window.removeEventListener('scroll', {})
     window.removeEventListener('resize', {})
   }
@@ -67,7 +85,9 @@ export class HeaderBase extends React.Component {
     if (!isUndefined(height) && height > 0) {
       const stuck = this.props.sticky && window.scrollY > height
       const mobile = window.innerWidth <= this.minWidth
-      this.setState(() => ({ height, set: true, mobile, stuck }))
+      if (!this.cancelled) {
+        this.setState(() => ({ height, set: true, mobile, stuck }))
+      }
       if (stuck) {
         this.fireStick()
       } else {
@@ -77,12 +97,19 @@ export class HeaderBase extends React.Component {
   }
 
   render() {
-    const { fluid, variant, children, ...others } = this.props
+    const { fluid, variant, menuVariant, children, navItems, className, ...others } = this.props
+    const { stuck, mobile } = this.state
     return (
-      <Styled innerRef={this.headerRef} fluid={fluid} stuck={this.state.stuck} variant={variant} {...others}>
-        <Nav mobile={this.state.mobile}>
-          {children}
-        </Nav>
+      <Styled
+        innerRef={this.headerRef}
+        fluid={fluid}
+        stuck={stuck}
+        variant={variant}
+        className={cx(className, stuck ? 'stuck' : '')}
+        {...others}
+      >
+        {children}
+        <Nav mobile={mobile} menuVariant={menuVariant}>{navItems}</Nav>
       </Styled>
     )
   }
@@ -107,6 +134,21 @@ HeaderBase.propTypes = {
     'background',
     COLOR_VARIANT_NONE,
   ]),
+  menuVariant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+    COLOR_VARIANT_NONE,
+  ]),
+  navItems: PropTypes.node,
 }
 
 HeaderBase.defaultProps = {
@@ -115,6 +157,7 @@ HeaderBase.defaultProps = {
   breakpoint: 'small',
   containerID: '',
   variant: COLOR_VARIANT_NONE,
+  menuVariant: 'light',
 }
 
 export default withTheme(HeaderBase)

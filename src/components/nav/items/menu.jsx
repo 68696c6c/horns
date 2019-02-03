@@ -3,21 +3,22 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled from 'react-emotion'
 import NavItem from './item'
-import { rgb } from '../../../themes/utils'
 import { getEventName } from '../../../events'
 import { navMenuItem } from './base'
 import { isUndefined } from '../../../utils/utils'
+import { colorVariantCSS } from '../../utils'
+import { getParentByClassName } from '../../..'
 
 const EVENT_OPEN = getEventName('menu:open')
 const EVENT_CLOSE = getEventName('menu:close')
+const EVENT_CLOSE_OTHERS = getEventName('menu:closeOthers')
 
 const StyledMenuContainer = styled('span')`
   position: relative;
 `
 const StyledMenu = styled('nav')`
   display: ${({ open }) => open ? 'block' : 'none'};
-  background: ${({ theme }) => rgb(theme.colors.background.dark)};
-  padding-left: .5em;
+  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   .nav-item, a {
     ${({ theme }) => navMenuItem(theme)};
   }
@@ -42,6 +43,8 @@ class NavItemMenu extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.getEventData = this.getEventData.bind(this)
     this.fireOpen = this.fireOpen.bind(this)
+    this.fireClose = this.fireClose.bind(this)
+    this.getCloseOthersEventData = this.getCloseOthersEventData.bind(this)
     this.cancelled = false
     this.menuID = uuid()
 
@@ -56,15 +59,25 @@ class NavItemMenu extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('click', event => {
-      if (this.menuRef.current !== event.target) {
+    window.removeEventListener('click', {})
+    window.addEventListener('click', () => {
+      this.closeMenu()
+    })
+    window.addEventListener(EVENT_CLOSE_OTHERS, event => {
+      if (!event.detail.menuIDs.includes(this.menuID)) {
         this.closeMenu()
       }
     })
     this.menuRef.current.addEventListener(EVENT_OPEN, event => {
-      if (!this.state.open && event.detail.menuID === this.menuID) {
+      event.stopPropagation()
+      if (event.detail.menuID === this.menuID) {
         this.openMenu()
       } else {
+        this.closeMenu()
+      }
+    })
+    this.menuRef.current.addEventListener(EVENT_CLOSE, event => {
+      if (event.detail.menuID === this.menuID) {
         this.closeMenu()
       }
     })
@@ -77,6 +90,7 @@ class NavItemMenu extends React.Component {
   componentWillUnmount() {
     this.cancelled = true
     window.removeEventListener('click', {})
+    window.removeEventListener(EVENT_CLOSE_OTHERS, {})
   }
 
   getEventData() {
@@ -87,9 +101,27 @@ class NavItemMenu extends React.Component {
     }
   }
 
+  getCloseOthersEventData(event) {
+    let menuIDs = [this.menuID]
+    let ancestor = getParentByClassName(event.target, 'nav-item-menu')
+    menuIDs.push(ancestor.dataset.menu_id)
+    while(ancestor !== null) {
+      menuIDs.push(ancestor.dataset.menu_id)
+      ancestor = getParentByClassName(ancestor, 'nav-item-menu')
+    }
+    return {
+      bubbles: true,
+      detail: { menuIDs }
+    }
+  }
+
   fireOpen(event) {
     this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
-    this.props.onClick(event)
+    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_CLOSE_OTHERS, this.getCloseOthersEventData(event)))
+  }
+
+  fireClose() {
+    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_CLOSE, this.getEventData()))
   }
 
   hasActiveItem(pathname) {
@@ -114,16 +146,17 @@ class NavItemMenu extends React.Component {
     event.preventDefault()
     event.stopPropagation()
     if (this.state.open) {
-      this.closeMenu()
+      this.fireClose()
     } else {
-      this.openMenu()
+      this.fireOpen(event)
     }
+    this.props.onClick(event)
   }
 
   render() {
-    const { content, variant, className, children } = this.props
+    const { content, variant, menuVariant, className, children } = this.props
     return (
-      <StyledMenuContainer className="nav-item-menu">
+      <StyledMenuContainer className="nav-item-menu" data-menu_id={this.menuID}>
         <NavItem
           href="#"
           variant={variant}
@@ -133,7 +166,12 @@ class NavItemMenu extends React.Component {
         >
           {content}
         </NavItem>
-        <StyledMenu open={this.state.open} innerRef={this.menuRef} className="nav-item-menu-items">
+        <StyledMenu
+          variant={menuVariant}
+          open={this.state.open}
+          innerRef={this.menuRef}
+          className="nav-item-menu-items"
+        >
           {children}
         </StyledMenu>
       </StyledMenuContainer>
@@ -148,11 +186,13 @@ NavItemMenu.propTypes = {
   ]).isRequired,
   active: PropTypes.bool,
   variant: PropTypes.string,
+  menuVariant: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 NavItemMenu.defaultProps = {
   variant: 'none',
+  menuVariant: 'light',
   active: false,
   onClick: () => {
   },

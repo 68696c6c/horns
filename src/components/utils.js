@@ -21,13 +21,13 @@ export const COLOR_VARIANTS = [
 ]
 
 export const colorVariantCSS = (theme, variant) => {
-  let color = theme.colors.copy.default
+  let color = 'inherit'
   if (variant !== COLOR_VARIANT_NONE) {
-    color = theme.colors[variant].default.isLight() ? theme.colors.copy.dark : theme.colors.copy.light
+    color = theme.colors[variant].default.isLight() ? rgb(theme.colors.copy.dark) : rgb(theme.colors.copy.light)
   }
   return css`
     background: ${variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant].default)};
-    color: ${rgb(color)};
+    color: ${color};
   `
 }
 

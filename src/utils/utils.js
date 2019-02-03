@@ -58,6 +58,6 @@ export const debounceFirst = (fn, delay) => {
 export const getParentByClassName = (element, className) => {
   do {
     element = element.parentElement
-  } while (!element.classList.contains(className))
+  } while (element !== null && !element.classList.contains(className))
   return element
 }

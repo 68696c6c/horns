@@ -8,6 +8,7 @@ class HeaderStickyContent extends React.Component {
 
     this.handleStick = this.handleStick.bind(this)
     this.handleUnStick = this.handleUnStick.bind(this)
+    this.cancelled = false
 
     this.state = {
       stuck: false,
@@ -20,21 +21,26 @@ class HeaderStickyContent extends React.Component {
   }
 
   componentWillUnmount() {
+    this.cancelled = true
     window.removeEventListener(EVENT_HEADER_STICK, {})
     window.removeEventListener(EVENT_HEADER_UNSTICK, {})
   }
 
   handleStick() {
-    this.setState(() => ({ stuck: true }))
+    if (!this.cancelled) {
+      this.setState(() => ({ stuck: true }))
+    }
   }
 
   handleUnStick() {
-    this.setState(() => ({ stuck: false }))
+    if (!this.cancelled) {
+      this.setState(() => ({ stuck: false }))
+    }
   }
 
   render() {
     const { content, stuckContent, children, ...others } = this.props
-    return <div {...others}>{this.state.stuck ? stuckContent : content}</div>
+    return <React.Fragment>{this.state.stuck ? stuckContent : content}</React.Fragment>
   }
 }
 
