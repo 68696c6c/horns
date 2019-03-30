@@ -1,29 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import InputMask from 'react-input-mask'
+import MaskedInput from 'react-text-mask'
+import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
+
 import Label from '../label'
 import { baseInput } from './base'
 import { ERROR_CLASS } from '../utils'
-import InputHidden from './hidden'
 
 const StyledInput = styled('input')`
   ${({ theme }) => baseInput(theme)}
 `
-const StyledMask = styled(InputMask)`
+const StyledMask = styled(MaskedInput)`
   ${({ theme }) => baseInput(theme)}
 `
 
-const Input = ({ type, name, value, id, label, placeholder, required, hasError, className, ...others }) => {
+const Input = ({ type, name, value, id, label, currency, placeholder, required, hasError, className, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   let Tag = StyledInput
-  // @TODO add more masks for other types and use props for the mask format.
-  if (type === 'tel') {
-    Tag = StyledMask
-    others.mask = '999.999.9999'
-    others.maskChar = '_'
+  switch (type) {
+    case 'tel':
+      Tag = StyledMask
+      others.mask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]
+      others.placeholderChar = '_'
+      break
+    case 'currency':
+      Tag = StyledMask
+      others.mask = createNumberMask({
+        prefix: currency,
+        allowDecimal: true,
+      })
+      type = 'text'
+      break
+    case 'percentage':
+      Tag = StyledMask
+      others.mask = createNumberMask({
+        prefix: '',
+        suffix: '%',
+        allowDecimal: true,
+      })
+      type = 'text'
+      break
   }
   return (
     <React.Fragment>
@@ -58,11 +77,14 @@ Input.propTypes = {
     'time',
     'url',
     'week',
+    'currency',
+    'percentage',
   ]),
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
+  currency: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
@@ -72,6 +94,7 @@ Input.defaultProps = {
   type: 'text',
   id: '',
   label: '',
+  currency: '$',
   placeholder: '',
   required: false,
   hasError: false,
