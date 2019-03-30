@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css } from 'react-emotion'
 import { PropsTable } from 'docz'
-import { rgb } from '../../themes/utils'
 
 const DARK = '#13161F'
 const DARK_SECONDARY = '#2D3747'
