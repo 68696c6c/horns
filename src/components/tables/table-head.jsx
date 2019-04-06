@@ -1,7 +1,9 @@
 import React from 'react'
 import styled, { cx } from 'react-emotion'
 
-const StyledTableHead = styled('div')`
+import StyledTableRow from './table-row'
+
+const StyledTableHead = styled(StyledTableRow)`
   .table-cell {
     font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
     text-transform: uppercase;

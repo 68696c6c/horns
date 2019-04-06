@@ -17,9 +17,9 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
 <Playground>
   <Table>
     <TableHead>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell>Head Column 1</TableCell>
+      <TableCell>Head Column 2</TableCell>
+      <TableCell>Head Column 3</TableCell>
     </TableHead>
     <TableRow>
       <TableCell>Column 1</TableCell>
@@ -27,14 +27,26 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
       <TableCell>Column 3</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell head={true}>Header</TableCell>
+      <TableCell>Text</TableCell>
+      <TableCell format="number">$100.00</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell head={true}>Header</TableCell>
+      <TableCell>Text</TableCell>
+      <TableCell format="number">$1000.00</TableCell>
+    </TableRow>
+    <TableHead indent={true}>
+      <TableCell>Indented Head Column 1</TableCell>
+      <TableCell>Head Column 2</TableCell>
+      <TableCell>Head Column 3</TableCell>
+    </TableHead>
+    <TableRow indent={true}>
+      <TableCell head={true}>
+        <p>Indented Header inside a P tag</p>
+      </TableCell>
+      <TableCell>Text</TableCell>
+      <TableCell format="number">$1000.00</TableCell>
     </TableRow>
   </Table>
 </Playground>
@@ -49,9 +61,9 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
   </Section>
   <Table breakpoint="medium">
     <TableHead>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell>Head Column 1</TableCell>
+      <TableCell>Head Column 2</TableCell>
+      <TableCell>Head Column 3</TableCell>
     </TableHead>
     <TableRow>
       <TableCell>Column 1</TableCell>
@@ -59,14 +71,21 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
       <TableCell>Column 3</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+      <TableCell head={true}>Header</TableCell>
+      <TableCell>Text</TableCell>
+      <TableCell format="number">$100.00</TableCell>
     </TableRow>
-    <TableRow>
-      <TableCell>Column 1</TableCell>
-      <TableCell>Column 2</TableCell>
-      <TableCell>Column 3</TableCell>
+    <TableHead indent={true}>
+      <TableCell>Indented Head Column 1</TableCell>
+      <TableCell>Head Column 2</TableCell>
+      <TableCell>Head Column 3</TableCell>
+    </TableHead>
+    <TableRow indent={true}>
+      <TableCell head={true}>
+        <p>Indented Header inside a P tag</p>
+      </TableCell>
+      <TableCell>Text</TableCell>
+      <TableCell format="number">$1000.00</TableCell>
     </TableRow>
   </Table>
   <Section padded={false}>
@@ -92,20 +111,30 @@ import FullscreenDemo from '../_demo/fullscreen-demo'
       <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
+      <TableCell head={true}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
       <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
       <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
       <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
       <TableCell>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</TableCell>
       <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
     </TableRow>
-    <TableRow>
+    <TableHead indent={true}>
+      <TableCell>Indented Head Column 1</TableCell>
       <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
       <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
       <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
       <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
-      <TableCell>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</TableCell>
-      <TableCell>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</TableCell>
+      <TableCell format="number">$100.00</TableCell>
+    </TableHead>
+    <TableRow indent={true}>
+      <TableCell head={true}>
+        <p>Indented Header inside a P tag</p>
+      </TableCell>
+      <TableCell>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</TableCell>
+      <TableCell>Aenean commodo ligula eget dolor. Aenean massa.</TableCell>
+      <TableCell>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</TableCell>
+      <TableCell>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</TableCell>
+      <TableCell format="number">$1000.00</TableCell>
     </TableRow>
   </Table>
 </FullscreenDemo>

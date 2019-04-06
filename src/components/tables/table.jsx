@@ -8,6 +8,13 @@ const rowStyle = (extra = '') => {
     .table-row, .table-head {
       display: table-row;
       ${extra};
+      &.indent .table-cell:first-child {
+        text-indent: 1em;
+        > * {
+          text-indent: 0;
+          margin-left: 1em;
+        }
+      }
     }
   `
 }
@@ -18,6 +25,15 @@ const styleStack = breakpoint => {
     }
   `
   return css`
+    .table-row, .table-head {
+      &.indent .table-cell {
+        text-indent: 1em;
+        > * {
+          text-indent: 0;
+          margin-left: 1em;
+        }
+      }
+    }
     @media(min-width: ${breakpoint}) {
       ${rowStyle(extra)};
     }
