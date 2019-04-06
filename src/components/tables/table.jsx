@@ -31,6 +31,7 @@ const styleStack = breakpoint => {
         > * {
           text-indent: 0;
           margin-left: 1em;
+          display: block;
         }
       }
     }
