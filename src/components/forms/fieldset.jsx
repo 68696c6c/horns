@@ -5,6 +5,9 @@ import { rgb } from '../../themes/utils'
 import { HeadingCopy } from '../typography'
 
 const StyledFieldset = styled('div')`
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
   .fieldset-legend {
     line-height: 1.2em;
     font-size: 1em;
