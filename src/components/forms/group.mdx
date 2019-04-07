@@ -6,33 +6,41 @@ menu: Forms
 import { Playground, PropsTable } from 'docz'
 
 import Group from './group'
-import { Input } from './inputs'
-import { Checkbox } from './toggles'
+import { Input, Textarea } from './inputs'
+import { Checkbox, Radio } from './toggles'
+import { Select } from './selects'
 import Section from '../layout/section'
-import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Group
 
+Groups can be used to collect form inputs into a single container for styling purposes.  Groups are especially useful
+for collecting a set of Checkboxes or Radios under a single label.  Groups automatically wrap their children in Field
+components, but do not provide any responsive behavior.
+
 <Playground>
+    <Input label="Input outside of a Group" />
+    <Textarea label="Textarea outside of a Group" />
+    <Checkbox label="Checkbox outside of a Group" />
+    <Radio label="Radio outside of a Group" />
+    <Select label="Select outside of a Group">
+      <option>Option 1</option>
+    </Select>
   <Group>
     <Input label="Input inside of a Group" />
+    <Textarea label="Textarea inside of a Group" />
     <Checkbox label="Checkbox inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+  </Group>
+  <Group heading="Optional Group header">
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
   </Group>
 </Playground>
-
-## Responsiveness
-
-<FullscreenDemo variant="dark" of={Group} title="Group">
-  <Section padded={false} variant="background">
-    <p>
-      This group will change to a stacked layout at the medium breakpoint.
-    </p>
-    <Group>
-      <Input label="Input inside of a Group" />
-      <Checkbox label="Checkbox inside of a Group" />
-    </Group>
-  </Section>
-</FullscreenDemo>
 
 ## Props
 

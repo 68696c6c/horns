@@ -6,15 +6,36 @@ menu: Forms
 import { Playground, PropsTable } from 'docz'
 
 import Field from './field'
-import { Input } from './inputs'
-import { Checkbox } from './toggles'
+import { Input, Textarea } from './inputs'
+import { Checkbox, Radio } from './toggles'
+import { Select } from './selects'
 
 # Field
 
 <Playground>
+  <Input label="Input outside of a Field" />
+  <Textarea label="Textarea outside of a Field" />
+  <Checkbox label="Checkbox outside of a Field" />
+  <Radio label="Radio outside of a Field" />
+  <Select label="Select outside of a Field">
+    <option>Option 1</option>
+  </Select>
   <Field>
     <Input label="Input inside of a Field" />
+  </Field>
+  <Field>
+    <Textarea label="Textarea inside of a Field" />
+  </Field>
+  <Field>
     <Checkbox label="Checkbox inside of a Field" />
+  </Field>
+  <Field>
+    <Radio label="Radio inside of a Field" />
+  </Field>
+  <Field>
+    <Select label="Select inside of a Field">
+      <option>Option 1</option>
+    </Select>
   </Field>
 </Playground>
 

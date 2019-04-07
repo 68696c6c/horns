@@ -10,14 +10,16 @@ const StyledFieldset = styled('div')`
     font-size: 1em;
     color: ${({ theme }) => rgb(theme.colors.copy.default)};
   }
-  > *:not(.fieldset-legend) {
-    background: ${({ theme }) => rgb(theme.colors.light.default)};
-    &:not(.form-group) {
-      padding: .5em 1em;
-    }
-    &:nth-child(2):not(.form-group) {
-      padding-top: 1em;
-    }
+`
+
+const StyledFields = styled('div')`
+  background: ${({ theme }) => rgb(theme.colors.light.default)};
+  padding: 1em 1em 1px 1em;
+  > *:first-child {
+    margin-top: 0;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
+    width: 100%;
   }
 `
 
@@ -30,7 +32,7 @@ Legend.propTypes = {
 const Fieldset = ({ legend, className, children, ...others }) => (
   <StyledFieldset className={cx(className, 'fieldset')} {...others}>
     {legend === '' ? '' : <Legend text={legend}/>}
-    {children}
+    <StyledFields>{children}</StyledFields>
   </StyledFieldset>
 )
 

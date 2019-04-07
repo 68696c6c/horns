@@ -12,7 +12,7 @@ export const ToggleControl = styled('label')`
   width: 1.2em;
   height: 1.2em;
   vertical-align: middle;
-  margin-right: .5em;
+  margin: -.25em .5em 0 .25em;
   border: 2px solid ${({ theme }) => rgb(theme.colors.dark.default)};
   cursor: pointer;
   ${({ round }) => round ? 'border-radius: 50%;' : ''};
@@ -29,7 +29,7 @@ ToggleControl.defaultProps = {
 const StyledToggleLabel = styled('label')`
   display: inline-block;
   cursor: pointer;
-  margin: 1em 1em 0 0;
+  margin: .5em 1em 0 0;
   ${({ theme }) => baseLabel(theme)}
 `
 

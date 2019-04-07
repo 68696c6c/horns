@@ -3,9 +3,15 @@ import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 
 const Styled = styled('div')`
-  grid-row-start: 2;
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
     width: 100%;
+  }
+  label:not(.toggle-label):not(.toggle-control) {
+    margin-top: 0;
+  }
+  .toggle-label {
+    margin-top: .25em;
+    margin-bottom: 1em;
   }
 `
 

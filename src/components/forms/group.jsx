@@ -1,58 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled, { css, cx } from 'react-emotion'
-import Field from './field'
+import styled, { cx } from 'react-emotion'
 import Label from './label'
 import { isArray } from '../../utils/utils'
 
-const FormGroupHeading = ({ text, end }) => {
-  const style = css`grid-column-end: span ${end};`
-  return <Label className={cx(style, 'form-group-heading')}>{text}</Label>
-}
+const StyledFormGroupHeading = styled(Label)`
+  font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
+  margin-top: 0;
+  margin-bottom: .25em;
+`
 
-FormGroupHeading.propTypes = {
-  text: PropTypes.string.isRequired,
-  end: PropTypes.number,
-}
-
-FormGroupHeading.defaultProps = {
-  end: 1,
-}
-
-const Styled = styled('div')`
-  @media(min-width: ${({ breakpoint }) => breakpoint}) {
-    display: grid;
-    grid-auto-columns: max-content;
-    grid-template-columns: repeat(auto-fill, calc(${({ min }) => min}% - 1em));
-    justify-content: space-between;
-    column-gap: 1em;
+const StyledGroupField = styled('div')`
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
+    width: 100%;
   }
 `
 
-Styled.propTypes = {
-  min: PropTypes.number.isRequired,
-}
+const StyledGroup = styled('div')`
+  margin-top: 1em;
+  .toggle-label {
+    margin-top: .25em;
+  }
+`
 
 const Group = ({ heading, breakpoint, className, children, ...others }) => {
   const childArray = isArray(children) ? children : [children]
-  const min = 100 / childArray.length
   return (
-    <Styled min={min} className={cx(className, 'form-group')} {...others}>
-      {heading === '' ? '' : <FormGroupHeading text={heading} end={childArray.length}/>}
-      {childArray.map(child => <Field key={uuid()}>{child}</Field>)}
-    </Styled>
+    <StyledGroup className={cx(className, 'form-group')} {...others}>
+      {heading && <StyledFormGroupHeading>{heading}</StyledFormGroupHeading>}
+      {childArray.map(child => <StyledGroupField key={uuid()}>{child}</StyledGroupField>)}
+    </StyledGroup>
   )
 }
 
 Group.propTypes = {
   heading: PropTypes.string,
-  breakpoint: PropTypes.string,
 }
 
 Group.defaultProps = {
   heading: '',
-  breakpoint: 'medium',
 }
 
 export default Group
