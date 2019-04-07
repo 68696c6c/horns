@@ -8,6 +8,8 @@ import { Playground, PropsTable } from 'docz'
 import Group from './group'
 import { Input } from './inputs'
 import { Checkbox } from './toggles'
+import Section from '../layout/section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Group
 
@@ -17,6 +19,20 @@ import { Checkbox } from './toggles'
     <Checkbox label="Checkbox inside of a Group" />
   </Group>
 </Playground>
+
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={Group} title="Group">
+  <Section padded={false} variant="background">
+    <p>
+      This group will change to a stacked layout at the medium breakpoint.
+    </p>
+    <Group>
+      <Input label="Input inside of a Group" />
+      <Checkbox label="Checkbox inside of a Group" />
+    </Group>
+  </Section>
+</FullscreenDemo>
 
 ## Props
 

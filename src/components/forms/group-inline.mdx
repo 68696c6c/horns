@@ -6,17 +6,89 @@ menu: Forms
 import { Playground, PropsTable } from 'docz'
 
 import GroupInline from './group-inline'
-import { Input } from './inputs'
-import { Checkbox } from './toggles'
+import { Input, Textarea } from './inputs'
+import { Checkbox, Radio } from './toggles'
+import { Select } from './selects'
+import Section from '../layout/section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # GroupInline
 
+Inline Groups can be used to collect form inputs into a single row.  The inputs will be vertically aligned to each other
+and will will switch to a stacked layout at the specified breakpoint.
+
 <Playground>
-  <GroupInline>
+  <GroupInline heading="Form Group Heading">
     <Input label="Input inside of a Group" />
     <Checkbox label="Checkbox inside of a Group" />
   </GroupInline>
+  <GroupInline>
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Input label="Input inside of a Group" />
+  </GroupInline>
+  <GroupInline heading="Form Group Heading">
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+  </GroupInline>
+  <GroupInline>
+    <Input label="Input inside of a Group" />
+    <Input label="Input inside of a Group" />
+    <Input label="Input inside of a Group" />
+  </GroupInline>
+  <GroupInline heading="Form Group Heading">
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Input label="Input inside of a Group" />
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Textarea label="Textarea inside of a Group" />
+  </GroupInline>
 </Playground>
+
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={GroupInline} title="GroupInline">
+  <Section variant="background">
+    <p>
+      These Groups will change to a stacked layout at the medium breakpoint.
+    </p>
+    <GroupInline heading="Form Group Heading">
+      <Input label="Input inside of a Group" />
+      <Checkbox label="Checkbox inside of a Group" />
+    </GroupInline>
+    <GroupInline>
+      <Select label="Select inside of a Group">
+        <option>Option 1</option>
+      </Select>
+      <Input label="Input inside of a Group" />
+    </GroupInline>
+    <GroupInline heading="Form Group Heading">
+      <Radio label="Radio inside of a Group" />
+      <Radio label="Radio inside of a Group" />
+      <Radio label="Radio inside of a Group" />
+    </GroupInline>
+    <GroupInline>
+      <Input label="Input inside of a Group" />
+      <Input label="Input inside of a Group" />
+      <Input label="Input inside of a Group" />
+    </GroupInline>
+    <GroupInline heading="Form Group Heading">
+      <Select label="Select inside of a Group">
+        <option>Option 1</option>
+      </Select>
+      <Input label="Input inside of a Group" />
+      <Select label="Select inside of a Group">
+        <option>Option 1</option>
+      </Select>
+      <Textarea label="Textarea inside of a Group" />
+    </GroupInline>
+  </Section>
+</FullscreenDemo>
 
 ## Props
 
