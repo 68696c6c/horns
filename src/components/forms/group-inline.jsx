@@ -72,24 +72,32 @@ const StyledGroupInline = styled('div')`
   }
 `
 
-const GroupInline = ({ heading, breakpoint, className, children, ...others }) => {
-  const childArray = isArray(children) ? children : [children]
-  return (
-    <StyledGroupInline breakpoint={breakpoint} className={cx(className, 'inline-group')} {...others}>
-      {heading && <FormGroupHeading text={heading} end={childArray.length}/>}
-      {childArray.map(child => {
-        if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio') {
-          return (
-            <StyledGroupField breakpoint={breakpoint} key={uuid()}>
-              <StyledToggleContainer>{child}</StyledToggleContainer>
-            </StyledGroupField>
-          )
-        } else {
-          return <StyledGroupField breakpoint={breakpoint} key={uuid()}>{child}</StyledGroupField>
-        }
-      })}
-    </StyledGroupInline>
-  )
+class GroupInline extends React.Component {
+  constructor(props) {
+    super(props)
+    const { children, breakpoint } = props
+    this.childArray = isArray(children) ? children : [children]
+    this.content = this.childArray.map(child => {
+      if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio') {
+        return (
+          <StyledGroupField breakpoint={breakpoint} key={uuid()}>
+            <StyledToggleContainer>{child}</StyledToggleContainer>
+          </StyledGroupField>
+        )
+      } else {
+        return <StyledGroupField breakpoint={breakpoint} key={uuid()}>{child}</StyledGroupField>
+      }
+    })
+  }
+  render() {
+    const { heading, breakpoint, className, ...others } = this.props
+    return (
+      <StyledGroupInline breakpoint={breakpoint} className={cx(className, 'inline-group')} {...others}>
+        {heading && <FormGroupHeading text={heading} end={this.childArray.length}/>}
+        {this.content}
+      </StyledGroupInline>
+    )
+  }
 }
 
 GroupInline.propTypes = {

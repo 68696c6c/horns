@@ -24,14 +24,22 @@ const StyledGroup = styled('div')`
   }
 `
 
-const Group = ({ heading, breakpoint, className, children, ...others }) => {
-  const childArray = isArray(children) ? children : [children]
-  return (
-    <StyledGroup className={cx(className, 'form-group')} {...others}>
-      {heading && <StyledFormGroupHeading>{heading}</StyledFormGroupHeading>}
-      {childArray.map(child => <StyledGroupField key={uuid()}>{child}</StyledGroupField>)}
-    </StyledGroup>
-  )
+class Group extends React.Component {
+  constructor(props) {
+    super(props)
+    const { children } = props
+    this.childArray = isArray(children) ? children : [children]
+    this.content = this.childArray.map(child => <StyledGroupField key={uuid()}>{child}</StyledGroupField>)
+  }
+  render() {
+    const { heading, className, ...others } = this.props
+    return (
+      <StyledGroup className={cx(className, 'form-group')} {...others}>
+        {heading && <StyledFormGroupHeading>{heading}</StyledFormGroupHeading>}
+        {this.content}
+      </StyledGroup>
+    )
+  }
 }
 
 Group.propTypes = {
