@@ -39,11 +39,9 @@ const StyledGroupField = styled('div')`
     flex-direction: column;
     justify-content: flex-start;
     input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
-      max-width: 80%;
       margin-bottom: 0;
     }
     .select-custom-container {
-      max-width: 80%;
       .select-custom, .select-custom-dropdown-container {
         margin-top: 0;
         margin-bottom: 0;
@@ -57,7 +55,6 @@ const StyledToggleContainer = styled('div')`
   display: flex;
   align-items: center;
   margin-top: .25em;
-  max-width: 80%;
   .toggle-control {
     margin-top: 0;
   }
@@ -71,6 +68,7 @@ const StyledGroupInline = styled('div')`
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: grid;
     grid-auto-columns: 1fr;
+    column-gap: 1em;
   }
 `
 
