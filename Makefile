@@ -21,8 +21,8 @@ image:
 deps:
 	docker-compose run --rm app yarn
 
-publish: image
-	docker-compose run --rm app bash -c "yarn build && npm publish"
+publish:
+	docker-compose run --rm app bash -c "./increment-version.sh && yarn build && npm publish"
 
 local: image
 	NETWORK_NAME="$(NETWORK_NAME)" docker-compose up

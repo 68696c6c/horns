@@ -1,6 +1,6 @@
 {
   "name": "kedge-ui",
-  "version": "1.0.60",
+  "version": "1.0.62",
   "main": "dist/index.js",
   "description": "UI components for Kedge projects.",
   "dependencies": {
