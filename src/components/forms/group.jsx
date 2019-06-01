@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import Label from './label'
-import { isArray } from '../../utils/utils'
+import { isArray, isUndefined } from '../../utils/utils'
 
 const StyledFormGroupHeading = styled(Label)`
   font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
@@ -31,6 +31,7 @@ class Group extends React.Component {
     this.childArray = isArray(children) ? children : [children]
     this.content = this.childArray.map(child => <StyledGroupField key={uuid()}>{child}</StyledGroupField>)
   }
+
   render() {
     const { heading, className, ...others } = this.props
     return (

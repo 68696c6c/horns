@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import Label from './label'
-import { isArray } from '../../utils/utils'
+import { isArray, isUndefined } from '../../utils/utils'
 
 const StyledFormGroupHeading = styled(Label)`
   grid-column-end: span ${({ end }) => end};
@@ -77,7 +77,7 @@ class GroupInline extends React.Component {
     super(props)
     const { children, breakpoint } = props
     this.childArray = isArray(children) ? children : [children]
-    this.content = this.childArray.map(child => {
+    this.content = this.childArray.filter(c => (!isUndefined(c.type))).map(child => {
       if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio') {
         return (
           <StyledGroupField breakpoint={breakpoint} key={uuid()}>
@@ -89,6 +89,7 @@ class GroupInline extends React.Component {
       }
     })
   }
+
   render() {
     const { heading, breakpoint, className, ...others } = this.props
     return (

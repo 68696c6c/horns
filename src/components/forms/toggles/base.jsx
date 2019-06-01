@@ -10,6 +10,7 @@ export const ToggleControl = styled('label')`
   background: ${({ theme }) => rgb(theme.colors.light.default)};
   display: inline-block;
   width: 1.2em;
+  min-width: 1.2em;
   height: 1.2em;
   vertical-align: middle;
   margin: -.25em .5em 0 .25em;
