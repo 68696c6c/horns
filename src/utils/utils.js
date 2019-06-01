@@ -23,6 +23,23 @@ export const isArray = arr => {
   return arr.constructor === Array
 }
 
+export const isNumber = v => typeof v === 'number'
+
+export const currencyToNumber = v => isNumber(v) ? v : Number(v.replace(/[^0-9.-]+/g,''))
+
+export const numberToCurrency = value => {
+  if (isUndefined(value)) {
+    return '$0.00'
+  }
+  const replace = v => v.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+  if (value < 0) {
+    value = -1 * value
+    return '-$' + replace(value)
+  } else {
+    return '$' + replace(value)
+  }
+}
+
 export const arrayRemoveByValue = (arr, value) => {
   const index = arr.indexOf(value)
   if (index > -1) {
