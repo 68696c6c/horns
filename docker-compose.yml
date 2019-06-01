@@ -2,9 +2,9 @@ version: "3"
 
 services:
 
-  ui-dev:
+  app:
+    image: kedge-ui:latest
     command: yarn docker-docz
-    build: .
     volumes:
     - ./:/site
     working_dir: /site
@@ -12,19 +12,3 @@ services:
     - "8000:8000"
     environment:
       VIRTUAL_HOST: ui.kedge.local
-
-  ui-test:
-    command: yarn test:watch
-    build: .
-    volumes:
-    - ./:/site
-    working_dir: /site
-
-  # For this to work, you need an .npmrc file in the project root with a valid _authToken
-  # @TODO script incrementing the version number?
-  ui-publish:
-    command: bash -c "yarn build && npm publish"
-    build: .
-    volumes:
-    - ./:/site
-    working_dir: /site
