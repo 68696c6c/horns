@@ -1,3 +1,3 @@
 # HORNS
 
-Fully themable React UI Kit.
+Fully themable React UI Kit.  :metal:
