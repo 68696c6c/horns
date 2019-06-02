@@ -1,11 +1,11 @@
 export default {
-  title: 'Kedge UI',
+  title: 'Horns',
   wrapper: 'src/app.js',
   themeConfig: {
     mode: 'dark',
     src: './src/components',
     colors: {
-      primary: '#1dcad3',
+      primary: '#EE9B3F',
     },
   },
 }

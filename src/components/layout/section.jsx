@@ -7,6 +7,7 @@ const Styled = styled('section')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   overflow: auto;
   ${({ fluid, padded, theme }) => containerStyle(theme.breakpoints, fluid, padded)};
+  text-align: ${({ textAlign }) => textAlign};
 `
 
 export const Section = ({ fluid, padded, variant, className, children, ...others }) => (
@@ -14,6 +15,7 @@ export const Section = ({ fluid, padded, variant, className, children, ...others
 )
 
 Section.propTypes = {
+  textAlign: PropTypes.oneOf(['left', 'right', 'center', 'justify', 'initial', 'inherit']),
   fluid: PropTypes.bool,
   padded: PropTypes.bool,
   variant: PropTypes.oneOf([
@@ -33,6 +35,7 @@ Section.propTypes = {
 }
 
 Section.defaultProps = {
+  textAlign: 'inherit',
   fluid: false,
   padded: true,
   variant: COLOR_VARIANT_NONE,

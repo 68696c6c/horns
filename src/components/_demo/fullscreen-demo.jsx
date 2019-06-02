@@ -6,7 +6,7 @@ import { PropsTable } from 'docz'
 const DARK = '#13161F'
 const DARK_SECONDARY = '#2D3747'
 const DARK_TERTIARY = '#1D2330'
-const DARK_ACCENT = '#1DCAD3'
+const DARK_ACCENT = '#EE9B3F'
 const DARK_FONT = '#CED4DE'
 const DARK_FONT_LIGHT = '#EEF1F5'
 

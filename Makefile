@@ -24,7 +24,7 @@ deps:
 publish:
 	docker-compose run --rm app bash -c "./increment-version.sh && yarn build && npm publish"
 
-local: image
+local: local-down image
 	NETWORK_NAME="$(NETWORK_NAME)" docker-compose up
 
 local-down:
