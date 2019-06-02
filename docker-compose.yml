@@ -3,7 +3,7 @@ version: "3"
 services:
 
   app:
-    image: kedge-ui:latest
+    image: horns:latest
     command: yarn docker-docz
     volumes:
     - ./:/site
@@ -11,4 +11,4 @@ services:
     ports:
     - "8000:8000"
     environment:
-      VIRTUAL_HOST: ui.kedge.local
+      VIRTUAL_HOST: horns.local

@@ -1,4 +1,4 @@
-IMAGE_NAME ?= kedge-ui
+IMAGE_NAME ?= horns
 BUILD_TAG ?= latest
 
 # @TODO push image to ECR repo.
