@@ -20,14 +20,27 @@ export const COLOR_VARIANTS = [
   COLOR_VARIANT_NONE,
 ]
 
-export const colorVariantCSS = (theme, variant) => {
+export const colorVariantCSS = (theme, variant, swatch = 'default') => {
   let color = 'inherit'
   if (variant !== COLOR_VARIANT_NONE) {
-    color = theme.colors[variant].default.isLight() ? rgb(theme.colors.copy.dark) : rgb(theme.colors.copy.light)
+    color = theme.colors[variant][swatch].isLight() ? rgb(theme.colors.copy.dark) : rgb(theme.colors.copy.light)
   }
   return css`
-    background: ${variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant].default)};
+    background: ${variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant][swatch])};
     color: ${color};
+  `
+}
+
+export const textShadow = (theme, bgColor, swatch = 'default') => {
+  let color = rgb(theme.colors.copy.light)
+  let shadow = rgb(theme.colors.copy.dark)
+  if (theme.colors[bgColor][swatch].isLight()) {
+    color = rgb(theme.colors.copy.dark)
+    shadow = rgb(theme.colors.copy.light)
+  }
+  return css`
+    color: ${color};
+    text-shadow: -1px -1px 0 ${shadow}, 1px -1px 0 ${shadow}, -1px 1px 0 ${shadow}, 1px 1px 0 ${shadow};
   `
 }
 
@@ -85,7 +98,7 @@ export const containerStyleHorizontal = (breakpoints, fluid = false) => {
 }
 
 export const diagonalLinesCSS = color => {
-  return css`linear-gradient(-45deg, transparent 25%, ${rgb(color)} 33%, ${rgb(color)} 66%, transparent 66%)`
+  return css`repeating-linear-gradient(45deg, transparent, transparent 10px, ${rgb(color)} 10px, ${rgb(color)} 20px)`
 }
 
 export const gradientHorizontalCSS = (color1, color2) => {

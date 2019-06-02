@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled, { cx } from 'react-emotion'
 import Label from './label'
-import { isArray, isUndefined } from '../../utils/utils'
+import { isArray } from '../../utils/utils'
 
 const StyledFormGroupHeading = styled(Label)`
   font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
