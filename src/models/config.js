@@ -10,7 +10,19 @@ class ThemeConfig {
     // @TODO get default values from a config file.
     this.headingMargin = safeGetValue(config, 'headingMargin', '.75rem 0')
     this.gap = safeGetValue(config, 'gap', '15px')
+    this.lineHeight = safeGetValue(config, 'lineHeight', '1.6em')
     this.radius = safeGetValue(config, 'radius', '3px')
+
+    // @TODO make this configurable
+    // To work correctly, these ratios need to be maintained exactly, e.g. xsmal must be 2x tiny etc.
+    this.spacing = {
+      tiny: '4px',
+      xsmall: '8px',
+      small: '12px',
+      medium: '16px',
+      large: '20px',
+      xlarge: '32px',
+    }
 
     const configBreakpoints = safeGetValue(config, 'breakpoints', {})
     this.breakpoints = {
@@ -61,7 +73,7 @@ class ThemeConfig {
 
     const configFontSizes = safeGetValue(config, 'fontSizes', {})
     this.fontSizes = {
-      default: safeGetValue(configFontSizes, 'default', '12px'),
+      default: safeGetValue(configFontSizes, 'default', '14px'),
       min: safeGetValue(configFontSizes, 'min', '12px'),
       max: safeGetValue(configFontSizes, 'max', '16px'),
       h1: safeGetValue(configFontSizes, 'h1', '3.21rem'),

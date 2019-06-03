@@ -24,6 +24,7 @@ class Theme {
     this.breakpoints = this.config.breakpoints
     this.colors = this.getColors()
     this.grid = this.getGrid()
+    this.spacing = this.getSpacing()
     this.typography = this.getTypography()
 
     // These use values set above and must be called last.
@@ -77,8 +78,19 @@ class Theme {
     }
   }
 
+  getSpacing() {
+    return this.config.spacing
+  }
+
   getTypography() {
+    const { lineHeight, fontSizes } = this.config
     return {
+      lineHeight,
+      sizes: {
+        min: fontSizes.min,
+        default: fontSizes.default,
+        max: fontSizes.max,
+      },
       // @TODO support custom fonts
       fonts: {
         default: this.makeFont('default'),
@@ -93,11 +105,10 @@ class Theme {
 
   // @TODO use a font config class
   makeFont(family, weight = 'default') {
-    const families = this.config.fontFamilies
-    const weights = this.config.fontWeights
+    const { fontFamilies, fontWeights } = this.config
     return {
-      family: `${families[family]}, ${families.fallback}`,
-      weight: weights[weight],
+      family: `${fontFamilies[family]}, ${fontFamilies.fallback}`,
+      weight: fontWeights[weight],
     }
   }
 

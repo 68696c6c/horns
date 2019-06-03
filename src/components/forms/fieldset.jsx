@@ -2,31 +2,35 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
-import { HeadingCopy } from '../typography'
+import { font } from '../utils'
+import Label from './label'
 
 const StyledFieldset = styled('div')`
   &:not(:first-child) {
     margin-top: 1em;
   }
   .fieldset-legend {
-    line-height: 1.2em;
-    font-size: 1em;
+    ${({ theme }) => font(theme, 'default', 'bold')};
+    margin-bottom: ${({ theme }) => theme.spacing.xsmall};
     color: ${({ theme }) => rgb(theme.colors.copy.default)};
   }
 `
 
 const StyledFields = styled('div')`
   background: ${({ theme }) => rgb(theme.colors.light.default)};
-  padding: 1em 1em 1px 1em;
+  padding: ${({ theme }) => theme.spacing.small};
   > *:first-child {
     margin-top: 0;
   }
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
     width: 100%;
   }
+  *:last-child {
+    margin-bottom: 0;
+  }
 `
 
-const Legend = ({ text, className }) => <HeadingCopy className={cx(className, 'fieldset-legend')}>{text}</HeadingCopy>
+const Legend = ({ text, className }) => <Label className={cx(className, 'fieldset-legend')}>{text}</Label>
 
 Legend.propTypes = {
   text: PropTypes.string,
@@ -35,7 +39,7 @@ Legend.propTypes = {
 const Fieldset = ({ legend, className, children, ...others }) => (
   <StyledFieldset className={cx(className, 'fieldset')} {...others}>
     {legend === '' ? '' : <Legend text={legend}/>}
-    <StyledFields>{children}</StyledFields>
+    <StyledFields className="fields">{children}</StyledFields>
   </StyledFieldset>
 )
 

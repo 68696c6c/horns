@@ -31,6 +31,15 @@ export const colorVariantCSS = (theme, variant, swatch = 'default') => {
   `
 }
 
+export const font = (theme, size = 'default', font = 'default') => {
+  return css`
+    font-size: ${theme.typography.sizes[size]};
+    line-height: ${theme.typography.lineHeight};
+    font-family: ${theme.typography.fonts[font].family};
+    font-weight: ${theme.typography.fonts[font].weight};
+  `
+}
+
 export const textShadow = (theme, bgColor, swatch = 'default') => {
   let color = rgb(theme.colors.copy.light)
   let shadow = rgb(theme.colors.copy.dark)

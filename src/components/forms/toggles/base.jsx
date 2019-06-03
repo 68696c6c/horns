@@ -13,7 +13,7 @@ export const ToggleControl = styled('label')`
   min-width: 1.2em;
   height: 1.2em;
   vertical-align: middle;
-  margin: -.25em .5em 0 .25em;
+  margin: 0 ${({ theme }) => theme.spacing.xsmall} 0 ${({ theme }) => theme.spacing.tiny};
   border: 2px solid ${({ theme }) => rgb(theme.colors.dark.default)};
   cursor: pointer;
   ${({ round }) => round ? 'border-radius: 50%;' : ''};
@@ -30,7 +30,7 @@ ToggleControl.defaultProps = {
 const StyledToggleLabel = styled('label')`
   display: inline-block;
   cursor: pointer;
-  margin: .5em 1em 0 0;
+  margin: 0 ${({ theme }) => theme.spacing.small} 0 0;
   ${({ theme }) => baseLabel(theme)}
 `
 
@@ -64,7 +64,7 @@ export const Toggle = styled('input')`
   margin: 0 1em 0 0;
   height: 1em;
   & ~ label.toggle-label {
-    vertical-align: baseline;
+    vertical-align: bottom;
     display: inline-block;
   }
   &:checked + label.toggle-control {

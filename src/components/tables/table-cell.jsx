@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { cx } from 'react-emotion'
 
 const StyledTableCell = styled('div')`
-  padding: .5em;
-  line-height: 1em;
+  padding: ${({ theme }) => theme.spacing.xsmall};
   ${({ theme, head }) => head && `font-weight: ${theme.typography.fonts.bold.weight};`};
   ${({ format }) => format === 'number' ? `text-align: right;` : ``};
 `

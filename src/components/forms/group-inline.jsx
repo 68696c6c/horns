@@ -8,8 +8,8 @@ import { isArray, isUndefined } from '../../utils/utils'
 const StyledFormGroupHeading = styled(Label)`
   grid-column-end: span ${({ end }) => end};
   font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
-  margin-top: 0;
-  margin-bottom: .25em;
+  margin-top: ${({ theme }) => theme.spacing.tiny};
+  margin-bottom: ${({ theme }) => theme.spacing.tiny};
   grid-row: 1;
 `
 
@@ -31,21 +31,15 @@ const StyledGroupField = styled('div')`
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
     width: 100%;
   }
-  label:not(.toggle-control):not(.toggle-label) {
+  label {
     margin-top: 0;
   }
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, .select-custom-container {
       margin-bottom: 0;
-    }
-    .select-custom-container {
-      .select-custom, .select-custom-dropdown-container {
-        margin-top: 0;
-        margin-bottom: 0;
-      }
     }
   }
 `
@@ -54,21 +48,15 @@ const StyledToggleContainer = styled('div')`
   height: 100%;
   display: flex;
   align-items: center;
-  margin-top: .25em;
-  .toggle-control {
-    margin-top: 0;
-  }
-  .toggle-label {
-    margin-top: 0;
-  }
+  margin-top: ${({ theme }) => theme.spacing.tiny};
 `
 
 const StyledGroupInline = styled('div')`
-  margin-top: 1.5em;
+  margin-top: ${({ theme }) => theme.spacing.small};
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: grid;
     grid-auto-columns: 1fr;
-    column-gap: 1em;
+    column-gap: ${({ theme }) => theme.spacing.small};
   }
 `
 

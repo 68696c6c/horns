@@ -38,7 +38,7 @@ const Styled = styled('div')`
   display: flex;
   height: ${({ height }) => height};
   width: ${({ width }) => width};
-  padding: 1em;
+  padding: ${({ theme }) => theme.spacing.small};
   ${({ x, y }) => getFlexCSS(x, y)};
 `
 

@@ -8,7 +8,7 @@ import { isArray } from '../../utils/utils'
 const StyledFormGroupHeading = styled(Label)`
   font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
   margin-top: 0;
-  margin-bottom: .25em;
+  margin-bottom: ${({ theme }) => theme.spacing.tiny};
 `
 
 const StyledGroupField = styled('div')`
@@ -18,10 +18,7 @@ const StyledGroupField = styled('div')`
 `
 
 const StyledGroup = styled('div')`
-  margin-top: 1em;
-  .toggle-label {
-    margin-top: .25em;
-  }
+  margin-top: ${({ theme }) => theme.spacing.small};
 `
 
 class Group extends React.Component {

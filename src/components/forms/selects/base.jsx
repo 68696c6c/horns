@@ -1,4 +1,5 @@
 import styled from 'react-emotion'
+import { font } from '../../utils'
 import { baseInput } from '../inputs/base'
 import { rgb } from '../../../themes/utils'
 import { ERROR_CLASS } from '../utils'
@@ -14,21 +15,22 @@ export const StyledNativeSelect = styled('select')`
 `
 export const StyledDropDownContainer = styled('div')`
   position: relative;
-  margin-top: -1em;
-  margin-bottom: 2em;
+  ${({ theme }) => font(theme)};
+  // Move the dropdown up the height of the input border.
+  top: -2px;
 `
 export const StyledSelect = styled('div')`
   ${({ theme }) => baseInput(theme)};
+  margin: 0;
   display: ${({ open }) => open ? 'none' : 'block'};
   box-sizing: content-box;
   cursor: pointer;
-  min-height: 1.15em;
-  line-height: 1.15em;
+  min-height: ${({ theme }) => theme.typography.lineHeight};
 `
 export const StyledFilter = styled('input')`
   ${({ theme }) => baseInput(theme)};
-  margin: 5px;
-  width: calc(100% - 10px);
+  margin: ${({ theme }) => theme.spacing.tiny};
+  width: calc(100% - ${({ theme }) => theme.spacing.xsmall});
 `
 export const StyledDropDown = styled('ul')`
   display: ${({ open }) => open ? 'block' : 'none'};
@@ -39,7 +41,7 @@ export const StyledDropDown = styled('ul')`
   border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
   color: ${({ theme }) => rgb(theme.colors.copy.dark)};
   border-radius: 0 0 ${({ theme }) => theme.config.radius} ${({ theme }) => theme.config.radius};
-  margin: -2px 0 0 0;
+  margin: 0;
   padding: 0;
   width: 100%;
   list-style: none inside;
@@ -48,16 +50,13 @@ export const StyledDropDown = styled('ul')`
   }
 `
 export const Option = styled('li')`
-  padding: .25em .5em;
+  ${({ theme }) => font(theme)};
+  padding: ${({ theme }) => theme.spacing.xsmall};
   cursor: pointer;
   &:hover {
     background: ${({ theme }) => rgb(theme.colors.neutral.alpha)};
   }
-  &:first-child {
-    padding-top: .5em;
-  }
-  &:last-child {
-    padding-bottom: .5em;
-  }
 `
-export const StyledSelectContainer = styled('div')``
+export const StyledSelectContainer = styled('div')`
+  margin: 0 0 ${({ theme }) => theme.spacing.small} 0;
+`

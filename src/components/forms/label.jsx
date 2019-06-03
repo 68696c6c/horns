@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled, { css, cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
+import { font } from '../utils'
 import { ERROR_CLASS } from './utils'
 
 export const baseLabel = (theme) => {
   return css`
-    font-size: 1em;
+    ${font(theme)};
     color: ${rgb(theme.colors.copy.default)};
     &.${ERROR_CLASS} {
       color: ${rgb(theme.colors.danger.default)};
@@ -19,7 +20,7 @@ export const baseLabel = (theme) => {
 
 const Styled = styled('label')`
   display: block;
-  margin: 1em 0 0 0;
+  margin: ${({ theme }) => theme.spacing.small} 0 0 0;
   ${({ theme }) => baseLabel(theme)}
 `
 
