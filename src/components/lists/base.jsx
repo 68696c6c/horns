@@ -2,6 +2,7 @@ import React from 'react'
 import { css } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../utils/utils'
+import { font } from '../utils'
 import ListItem from './item'
 
 export const COUNTER = 'li'
@@ -54,13 +55,14 @@ export const renderItems = (children, variant, type = undefined, icon = undefine
   })
 }
 
-const baseList = () => {
+const baseList = theme => {
   return css`
+    ${font(theme)};
     list-style: none inside;
     padding: 0;
-    margin: .5rem 0;
+    margin: ${theme.spacing.xsmall} 0;
     li {
-      margin-bottom: .5rem;
+      margin-bottom: ${theme.spacing.xsmall};
     }
     ol, ul {
       margin: 0;

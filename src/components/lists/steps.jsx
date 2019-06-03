@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled from 'react-emotion'
-import { colorVariantCSS } from '../utils'
+import { colorVariantCSS, font } from '../utils'
 import { isArray, isUndefined } from '../../utils/utils'
 import baseList from './base'
 
 const StyledStepIconWrapper = styled('span')`
   display: inline-block;
-  font-size: 1.5em;
+  ${({ theme }) => font(theme, 'large')};
   width: 2em;
   height: 2em;
   margin-bottom: .75em;
@@ -23,13 +23,13 @@ const StyledStepIcon = styled('span')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
 `
 const StyledListSteps = styled('ol')`
-  ${baseList()};
+  ${({ theme }) => baseList(theme)};
 `
 const StyledListStepItem = styled('li')`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: .5em;
+  padding-bottom: ${({ theme }) => theme.spacing.xsmall};
 `
 const StyledListStepsContent = styled('div')`
   text-align: center;

@@ -74,6 +74,7 @@ class ThemeConfig {
     const configFontSizes = safeGetValue(config, 'fontSizes', {})
     this.fontSizes = {
       default: safeGetValue(configFontSizes, 'default', '14px'),
+      large: safeGetValue(configFontSizes, 'large', '1.5em'),
       min: safeGetValue(configFontSizes, 'min', '12px'),
       max: safeGetValue(configFontSizes, 'max', '16px'),
       h1: safeGetValue(configFontSizes, 'h1', '3.21rem'),

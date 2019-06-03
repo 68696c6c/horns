@@ -10,7 +10,7 @@ const Styled = styled('li')`
     content: ${({ symbolContent }) => symbolContent};
     display: inline-block;
     color: ${({ variant, theme }) => rgb(theme.colors[variant].default)};
-    margin-right: .5em;
+    margin-right: ${({ theme }) => theme.spacing.xsmall};
   }
 `
 

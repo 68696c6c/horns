@@ -89,6 +89,7 @@ class Theme {
       sizes: {
         min: fontSizes.min,
         default: fontSizes.default,
+        large: fontSizes.large,
         max: fontSizes.max,
       },
       // @TODO support custom fonts

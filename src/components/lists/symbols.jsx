@@ -5,14 +5,14 @@ import baseList, { renderItems } from './base'
 import { rgb } from '../../themes/utils'
 
 const Styled = styled('ul')`
-  ${baseList()};
+  ${({ theme }) => baseList(theme)};
   li {
     display: flex;
     flex-direction: row;
     align-items: center;
     > svg:first-child {
       color: ${({ variant, theme }) => rgb(theme.colors[variant].default)};
-      margin-right: .5em;
+      margin-right: ${({ theme }) => theme.spacing.xsmall};
     }
   }
 `

@@ -4,7 +4,7 @@ import styled from 'react-emotion'
 import baseList, { renderItems, TYPES_UNORDERED } from './base'
 
 const Styled = styled('ul')`
-  ${baseList()}
+  ${({ theme }) => baseList(theme)};
 `
 
 const ListUnordered = ({ type, variant, className, children, ...others }) => (

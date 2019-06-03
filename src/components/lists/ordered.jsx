@@ -3,15 +3,16 @@ import PropTypes from 'prop-types'
 import styled from 'react-emotion'
 import baseList, { COUNTER, renderItems, TYPES_ORDERED } from './base'
 
+// @TODO the fixed left padding will not work with counters greater than 2 digits, need a solution that accounts for the actual width of the list counter.
 const Styled = styled('ol')`
-  ${baseList()};
+  ${({ theme }) => baseList(theme)};
   counter-reset: ${COUNTER};
   > li {
-    padding-left: 1.5rem;
+    padding-left: ${({ theme }) => theme.spacing.medium};
     &::before {
       counter-increment: ${COUNTER};
-      min-width: 1.5rem;
-      margin-left: -1.5rem;
+      min-width: ${({ theme }) => theme.spacing.medium};
+      margin-left: -${({ theme }) => theme.spacing.medium};
       text-align: right;
     }  
   }
