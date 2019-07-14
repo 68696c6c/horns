@@ -4,11 +4,11 @@ services:
 
   app:
     image: horns:latest
-    command: yarn develop --protocol=http --host=0.0.0.0 --port=8000
+    command: yarn develop
     volumes:
-    - ./:/app
-    working_dir: /app
+    - ./:/site
+    working_dir: /site
     ports:
-    - "80:8000"
+    - "8000:8000"
     environment:
       VIRTUAL_HOST: horns.local
