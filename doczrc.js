@@ -9,7 +9,8 @@ export default {
       primary: '#EE9B3F',
     },
   },
+  public: 'public',
   htmlContext: {
-    favicon: './favicon.ico',
+    favicon: 'public/favicon.ico',
   },
 }

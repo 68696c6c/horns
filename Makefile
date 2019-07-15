@@ -21,6 +21,7 @@ image:
 deps:
 	docker-compose run --rm app yarn
 
+# Increment the minor version and publish to NPM.
 publish:
 	docker-compose run --rm app bash -c "./increment-version.sh && yarn build && npm publish"
 
