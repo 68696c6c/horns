@@ -1,4 +1,4 @@
-import { css } from 'emotion'
+import { css } from '@emotion/core'
 import { rgb } from '../../../themes/utils'
 import { font } from '../../utils'
 import { ERROR_CLASS } from '../utils'
