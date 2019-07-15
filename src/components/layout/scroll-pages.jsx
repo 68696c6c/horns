@@ -1,14 +1,16 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled from 'react-emotion'
 import { debounceFirst } from '../../utils/utils'
 
 const StyledScrollPages = styled('div')`
-  height: 100%; 
-  position: relative; 
-  touch-action: none; 
-  transform: translate3d(0px, ${({ offset }) => offset}px, 0px); 
+  height: 100%;
+  position: relative;
+  touch-action: none;
+  transform: translate3d(0px, ${({ offset }) => offset}px, 0px);
   transition: all ${({ speed }) => speed}ms ease 0s;
 `
 const StyledScrollPage = styled('div')`

@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
 import { baseNotification } from './base'
 
 const Styled = styled('div')`
@@ -19,7 +21,7 @@ const Styled = styled('div')`
 `
 
 const Alert = ({ variant, visible, className, children, ...others }) => (
-  <Styled variant={variant} visible={visible} className={cx('alert', className)} {...others}>
+  <Styled variant={variant} visible={visible} className={('alert', className)} {...others}>
     {children}
   </Styled>
 )

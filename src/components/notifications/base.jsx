@@ -1,4 +1,4 @@
-import { css } from 'react-emotion'
+import { css } from '@emotion/core'
 import { rgb } from '../../themes/utils'
 
 export const baseNotification = (theme, variant) => {

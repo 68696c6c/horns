@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
 import uuid from 'uuid/v4'
 import Table from './table'
@@ -10,7 +12,6 @@ import { debounce, getParentByClassName, isArray, isUndefined } from '../../util
 import TableHead from './table-head'
 import TableCell from './table-cell'
 import TableRow from './table-row'
-import { rgb } from '../../themes/utils'
 
 const SORT_ASC = 'asc'
 const SORT_DESC = 'desc'
@@ -23,7 +24,7 @@ export const DataTableRowData = ({ children, className, ...others }) => {
     width: 100%;
   `
   return (
-    <div className={cx('row-info', className, style)} {...others}>
+    <div className={('row-info', className, style)} {...others}>
       {children}
     </div>
   )
@@ -46,7 +47,7 @@ const SortIcon = ({ active, direction, ...others }) => {
   } else if (active && direction === SORT_DESC) {
     icon = <FaSortDown />
   }
-  return <StyledSortIcon className={cx('sort', active ? 'active' : '')} {...others}>{icon}</StyledSortIcon>
+  return <StyledSortIcon className={('sort', active ? 'active' : '')} {...others}>{icon}</StyledSortIcon>
 }
 
 // @TODO add support for sorting by columns
@@ -210,7 +211,7 @@ class DataTable extends React.Component {
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
-      <StyledDataTable className={cx(className, 'data-table')} {...others}>
+      <StyledDataTable className={(className, 'data-table')} {...others}>
         <StyledDataTableHeader>
           <GroupInline>
             <Select
@@ -219,7 +220,7 @@ class DataTable extends React.Component {
               ref={this.perPageRef}
               onChange={this.handlePageSize}
               value={perPage}
-              className={css`width: 40px;`}
+              css={css`width: 40px;`}
             >
               <option value={10}>10</option>
               <option value={25}>25</option>

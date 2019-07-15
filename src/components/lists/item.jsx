@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
 import { rgb } from '../../themes/utils'
 import { COUNTER, TYPES_ORDERED, TYPES_UNORDERED } from './base'
 import { isUndefined } from '../../utils/utils'

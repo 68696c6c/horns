@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import OverScroll from 'gatsby-over-scroll'
-import styled, { css, cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
 
 const ScrollProgressBarContainer = styled('div')`

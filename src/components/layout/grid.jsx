@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
 
 // @TODO hardcoded 280px on grid-template-columns property
 const getChildPadding = (fluid, container) => {

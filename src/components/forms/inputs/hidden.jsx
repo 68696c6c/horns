@@ -1,6 +1,7 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { cx } from 'react-emotion'
 import { ERROR_CLASS } from '../utils'
 
 const InputHidden = ({ id, name, value, required, hasError, className, ...others }) => (
@@ -10,7 +11,7 @@ const InputHidden = ({ id, name, value, required, hasError, className, ...others
     name={name}
     value={value}
     required={required ? 'required' : ''}
-    className={cx(className, hasError ? ERROR_CLASS : '')}
+    className={(className, hasError ? ERROR_CLASS : '')}
     {...others}
   />
 )

@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import Grid from './grid'
 import { rgb } from '../../themes/utils'
@@ -122,7 +124,7 @@ const Block = styled('div')`
 const GridStacked = ({ variant, className, children, ...others }) => {
   const childrenArray = children.constructor === Array ? children : [children]
   return (
-    <Grid fluid={true} gap={false} variant="thirds" className={cx(className, 'section-stacked')} {...others}>
+    <Grid fluid={true} gap={false} variant="thirds" className={(className, 'section-stacked')} {...others}>
       {childrenArray.map(child => {
         return <Block {...child.props} variant={variant} key={uuid()}>{child.props.children}</Block>
       })}

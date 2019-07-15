@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled, { cx } from 'react-emotion'
 import Label from '../label'
 import { baseInput } from './base'
 import { ERROR_CLASS } from '../utils'
@@ -19,7 +21,7 @@ const Textarea = ({ name, value, id, label, placeholder, required, hasError, cla
       <Styled
         name={name}
         id={idValue}
-        className={cx(className, 'textarea', errorClass)}
+        className={(className, 'textarea', errorClass)}
         placeholder={placeholder}
         required={required ? 'required' : ''}
         value={value}

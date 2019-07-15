@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
-import styled, { cx } from 'react-emotion'
 import NavMenu from './items/menu'
 import { navItemInline } from './items/base'
 import { isArray } from '../../utils/utils'
@@ -28,14 +30,14 @@ const Nav = ({ mobile, menuVariant, children, className, ...others }) => {
       <NavMenu
         menuVariant={menuVariant}
         content={<FaBars/>}
-        className={cx('nav', 'mobile', className)}
+        className={('nav', 'mobile', className)}
         {...others}
       >
         {items}
       </NavMenu>
     )
   }
-  return <Styled className={cx('nav', className)} {...others}>{content}</Styled>
+  return <Styled className={('nav', className)} {...others}>{content}</Styled>
 }
 
 Nav.propTypes = {

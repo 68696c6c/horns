@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
-import styled from 'react-emotion'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
 import { rgb } from '../../themes/utils'
 

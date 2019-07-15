@@ -1,6 +1,7 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { css } from 'react-emotion'
 import { rgb } from '../../../themes/utils'
 
 export const wrapperStyle = (bgColor, theme) => {

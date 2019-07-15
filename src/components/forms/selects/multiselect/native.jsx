@@ -1,7 +1,8 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { cx } from 'react-emotion'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import { StyledNativeSelect } from '../base'
@@ -17,7 +18,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, className, ch
         name={name}
         defaultValue={value}
         id={idValue}
-        className={cx(className, 'select', errorClass)}
+        className={(className, 'select', errorClass)}
         required={required}
         {...others}
       >

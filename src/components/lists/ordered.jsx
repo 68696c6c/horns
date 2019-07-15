@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
 import baseList, { COUNTER, renderItems, TYPES_ORDERED } from './base'
 
 // @TODO the fixed left padding will not work with counters greater than 2 digits, need a solution that accounts for the actual width of the list counter.

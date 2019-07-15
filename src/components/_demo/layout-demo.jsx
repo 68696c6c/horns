@@ -1,9 +1,11 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
-import theme from '../../themes/base'
 import { ThemeProvider } from 'emotion-theming'
+import theme from '../../themes/base'
 
 class RenderInBody extends React.Component {
   constructor(props) {

@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import { rgb } from '../../themes/utils'
 import { font } from '../utils'
 import Label from './label'
@@ -30,14 +32,14 @@ const StyledFields = styled('div')`
   }
 `
 
-const Legend = ({ text, className }) => <Label className={cx(className, 'fieldset-legend')}>{text}</Label>
+const Legend = ({ text, className }) => <Label className={(className, 'fieldset-legend')}>{text}</Label>
 
 Legend.propTypes = {
   text: PropTypes.string,
 }
 
 const Fieldset = ({ legend, className, children, ...others }) => (
-  <StyledFieldset className={cx(className, 'fieldset')} {...others}>
+  <StyledFieldset className={(className, 'fieldset')} {...others}>
     {legend === '' ? '' : <Legend text={legend}/>}
     <StyledFields className="fields">{children}</StyledFields>
   </StyledFieldset>

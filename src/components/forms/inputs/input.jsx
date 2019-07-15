@@ -1,9 +1,11 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import MaskedInput from 'react-text-mask'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import uuid from 'uuid/v4'
-import styled, { cx } from 'react-emotion'
 
 import Label from '../label'
 import { baseInput } from './base'
@@ -52,7 +54,7 @@ const Input = ({ type, name, value, id, label, currency, placeholder, required, 
         name={name}
         value={value}
         id={idValue}
-        className={cx(className, 'input', errorClass)}
+        className={(className, 'input', errorClass)}
         placeholder={placeholder}
         required={required ? 'required' : ''}
         {...others}

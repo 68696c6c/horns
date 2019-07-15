@@ -1,5 +1,5 @@
+import { css } from '@emotion/core'
 import React from 'react'
-import { css } from 'react-emotion'
 import { rgb, valueToInt } from '../themes/utils'
 
 export const COLOR_VARIANT_NONE = 'none'

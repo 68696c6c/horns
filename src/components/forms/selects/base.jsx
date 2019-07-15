@@ -1,4 +1,4 @@
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 import { font } from '../../utils'
 import { baseInput } from '../inputs/base'
 import { rgb } from '../../../themes/utils'

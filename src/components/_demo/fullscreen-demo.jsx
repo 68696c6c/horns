@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
-import { PropsTable } from 'docz'
+import { Props } from 'docz'
 
 const DARK = '#13161F'
 const DARK_SECONDARY = '#2D3747'
@@ -101,7 +103,7 @@ class FullscreenDemo extends React.Component {
           </StyledWindowBar>
           <StyledPreview variant={variant}>{children}</StyledPreview>
           <StyledPanel variant={variant}>
-            <PropsTable of={component} />
+            <Props of={component} />
           </StyledPanel>
         </StyledWindow>
       </React.Fragment>

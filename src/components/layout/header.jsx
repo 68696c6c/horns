@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx, css } from 'react-emotion'
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
 import { isUndefined } from '../../utils/utils'
@@ -22,7 +24,7 @@ const Styled = styled('header')`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
+  ${({ theme, variant }) => console.log('styled theme: ', theme) && colorVariantCSS(theme, variant)};
   ${({ fluid, theme }) => containerStyleHorizontal(theme.breakpoints, fluid)};
   ${({ stuck }) => stuck ? fixedCSS() : ''};
   @media(max-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
@@ -105,7 +107,7 @@ export class HeaderBase extends React.Component {
         fluid={fluid}
         stuck={stuck}
         variant={variant}
-        className={cx(className, stuck ? 'stuck' : '')}
+        className={(className, stuck ? 'stuck' : '')}
         {...others}
       >
         {children}

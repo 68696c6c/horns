@@ -1,6 +1,8 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 
 const StyledTableCell = styled('div')`
   padding: ${({ theme }) => theme.spacing.xsmall};
@@ -9,7 +11,7 @@ const StyledTableCell = styled('div')`
 `
 
 const TableCell = ({ className, children, ...others }) => (
-  <StyledTableCell className={cx(className, 'table-cell')} {...others}>{children}</StyledTableCell>
+  <StyledTableCell className={(className, 'table-cell')} {...others}>{children}</StyledTableCell>
 )
 
 TableCell.propTypes = {

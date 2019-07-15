@@ -1,5 +1,6 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import React from 'react'
-import { css } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../utils/utils'
 import { font } from '../utils'

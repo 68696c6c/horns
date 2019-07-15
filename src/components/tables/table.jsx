@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
 import { rgb } from '../../themes/utils'
 
 const rowStyle = (extra = '') => {
@@ -98,7 +100,8 @@ const Table = ({ breakpoint, responsive, minWidth, variant, className, children,
       responsive={responsive}
       minWidth={minWidth}
       variant={variant}
-      className={cx(className, 'table')} {...others}
+      className={(className, 'table')}
+      {...others}
     >
       {children}
     </StyledTable>

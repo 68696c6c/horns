@@ -1,4 +1,5 @@
-import { css } from 'emotion'
+import { css } from '@emotion/core'
+
 import { colorVariantCSS } from '../../utils'
 
 const baseNavItem = (theme, variant) => {

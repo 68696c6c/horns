@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
-import styled, { cx } from 'react-emotion'
 
 import StyledTableRow from './table-row'
 
@@ -11,7 +13,7 @@ const StyledTableHead = styled(StyledTableRow)`
 `
 
 const TableHead = ({ className, children, ...others }) => (
-  <StyledTableHead className={cx(className, 'table-head')} {...others}>{children}</StyledTableHead>
+  <StyledTableHead className={(className, 'table-head')} {...others}>{children}</StyledTableHead>
 )
 
 export default TableHead

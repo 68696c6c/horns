@@ -1,7 +1,9 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled, { cx } from 'react-emotion'
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import Label from './label'
 import { isArray } from '../../utils/utils'
 
@@ -32,7 +34,7 @@ class Group extends React.Component {
   render() {
     const { heading, className, ...others } = this.props
     return (
-      <StyledGroup className={cx(className, 'form-group')} {...others}>
+      <StyledGroup className={(className, 'form-group')} {...others}>
         {heading && <StyledFormGroupHeading>{heading}</StyledFormGroupHeading>}
         {this.content}
       </StyledGroup>

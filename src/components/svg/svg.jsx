@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
-import styled, { css } from 'react-emotion'
 import { rgb } from '../../themes/utils'
 
 const getVariantFillCSS = (name, color) => (

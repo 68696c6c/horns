@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
 import { rgb } from '../../../themes/utils'
 import { baseLabel } from '../label'
 import { ERROR_CLASS } from '../utils'
@@ -38,7 +40,7 @@ export const ToggleLabel = ({ htmlFor, required, hasError, className, children, 
   const reqClass = required ? 'required' : ''
   const errorClass = hasError ? ERROR_CLASS : ''
   return (
-    <StyledToggleLabel htmlFor={htmlFor} className={cx(className, reqClass, errorClass)} {...others}>
+    <StyledToggleLabel htmlFor={htmlFor} className={(className, reqClass, errorClass)} {...others}>
       {children}
     </StyledToggleLabel>
   )

@@ -1,10 +1,11 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { cx } from 'react-emotion'
 import { StyledLinkButton } from './base'
 
 const LinkButton = ({ href, variant, className, children, ...others }) => (
-  <StyledLinkButton href={href} variant={variant} className={cx(className, 'button')} {...others}>
+  <StyledLinkButton href={href} variant={variant} className={(className, 'button')} {...others}>
     {children}
   </StyledLinkButton>
 )

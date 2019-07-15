@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
-import styled, { cx } from 'react-emotion'
 
 const Styled = styled('div')`
   display: flex;
@@ -22,7 +24,7 @@ const Styled = styled('div')`
 `
 
 const ImageFrame = ({ className, children, ...others }) => (
-  <Styled className={cx('image-frame', className)} {...others}>{children}</Styled>
+  <Styled className={('image-frame', className)} {...others}>{children}</Styled>
 )
 
 export default ImageFrame

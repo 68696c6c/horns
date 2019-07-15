@@ -1,7 +1,9 @@
+/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled, { cx } from 'react-emotion'
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import Label from './label'
 import { isArray, isUndefined } from '../../utils/utils'
 
@@ -81,7 +83,7 @@ class GroupInline extends React.Component {
   render() {
     const { heading, breakpoint, className, ...others } = this.props
     return (
-      <StyledGroupInline breakpoint={breakpoint} className={cx(className, 'inline-group')} {...others}>
+      <StyledGroupInline breakpoint={breakpoint} className={(className, 'inline-group')} {...others}>
         {heading && <FormGroupHeading text={heading} end={this.childArray.length}/>}
         {this.content}
       </StyledGroupInline>

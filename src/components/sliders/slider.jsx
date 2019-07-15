@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { SliderArrowBack, SliderArrowNext, StyledSliderNav, StyledSliderNavItem } from './nav'
 import { debounce, isUndefined } from '../../utils/utils'
@@ -164,7 +166,7 @@ class Slider extends React.Component {
     const { arrows, animation, banner, bannerPosition, nav, speed, className, children, ...others } = this.props
     const { activeSlide } = this.state
     return (
-      <StyledSlider innerRef={this.sliderRef} className={cx('slider', className)} {...others}>
+      <StyledSlider innerRef={this.sliderRef} className={('slider', className)} {...others}>
         {animation === 'slide' && (
           <StyledSlidesTransform
             className="slides"
@@ -188,7 +190,7 @@ class Slider extends React.Component {
               <SlideFade
                 {...props}
                 speed={this.animationSpeed}
-                className={cx(props.className, activeSlide === index ? 'active' : '')}
+                className={(props.className, activeSlide === index ? 'active' : '')}
                 key={this.slideIDs[index]}
               />
             ))}

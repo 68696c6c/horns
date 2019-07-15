@@ -1,7 +1,8 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { cx } from 'react-emotion'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import { StyledNativeSelect } from '../base'
@@ -19,7 +20,7 @@ const SelectNative = ({ name, value, id, label, placeholder, required, hasError,
         name={name}
         {...valueProp}
         id={idValue}
-        className={cx(className, 'select', errorClass)}
+        className={(className, 'select', errorClass)}
         placeholder={placeholder}
         required={required}
         {...others}

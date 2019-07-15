@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
 import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
 
 const Styled = styled('div')`
@@ -10,7 +12,7 @@ const Styled = styled('div')`
 `
 
 const Slide = ({ className, children, ...others }) => (
-  <Styled className={cx('slide', className)} {...others}>{children}</Styled>
+  <Styled className={('slide', className)} {...others}>{children}</Styled>
 )
 
 Slide.propTypes = {

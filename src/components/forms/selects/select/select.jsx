@@ -1,6 +1,7 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
@@ -188,7 +189,7 @@ export class Select extends React.Component {
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
-            className={cx(className, 'select-custom', hasError ? ERROR_CLASS : '')}
+            className={(className, 'select-custom', hasError ? ERROR_CLASS : '')}
             onClick={this.fireOpen}
             disabled={disabled}
           >

@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css } from 'react-emotion'
 import { baseNotification } from './base'
 
 const StyledFlash = styled('div')`

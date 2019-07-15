@@ -1,7 +1,8 @@
+/** @jsx jsx */
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { cx } from 'react-emotion'
 import { Toggle, ToggleControl, ToggleLabel } from './base'
 import { ERROR_CLASS } from '../utils'
 
@@ -14,7 +15,7 @@ const Radio = ({ label, id, name, value, required, hasError, className, ...other
         type="checkbox"
         name={name}
         id={idValue}
-        className={cx(className, 'checkbox', errorClass)}
+        className={(className, 'checkbox', errorClass)}
         value={value}
         required={required ? 'required' : ''}
         {...others}

@@ -1,7 +1,9 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import styled from 'react-emotion'
 import NavItem from './item'
 import { getEventName } from '../../../events'
 import { navMenuItem } from './base'

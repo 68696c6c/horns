@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { cx } from 'react-emotion'
 import uuid from 'uuid/v4'
 import { rgb } from '../../themes/utils'
 
@@ -99,7 +101,7 @@ class Pagination extends React.Component {
   render() {
     const { variant, className, ...others } = this.props
     return (
-      <Styled className={cx(className, 'pagination')} {...others}>
+      <Styled className={(className, 'pagination')} {...others}>
         <StyledItem onClick={this.previous} variant={variant}>Previous</StyledItem>
         {this.state.links}
         <StyledItem onClick={this.next} variant={variant}>Next</StyledItem>

@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'react-emotion'
 import { withTheme } from 'emotion-theming'
 import uuid from 'uuid/v4'
 import { rgb } from '../../../themes/utils'

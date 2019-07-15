@@ -1,6 +1,8 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled, { css, cx } from 'react-emotion'
 import { FaSort, FaSortDown, FaSortUp } from 'react-icons/fa'
 import uuid from 'uuid/v4'
 import Table from './table'
@@ -22,7 +24,7 @@ export const DataTableRowData = ({ children, className, ...others }) => {
     width: 100%;
   `
   return (
-    <div className={cx('row-info', className, style)} {...others}>
+    <div className={('row-info', className, style)} {...others}>
       {children}
     </div>
   )
@@ -45,7 +47,7 @@ const SortIcon = ({ active, direction, ...others }) => {
   } else if (active && direction === SORT_DESC) {
     icon = <FaSortDown/>
   }
-  return <StyledSortIcon className={cx('sort', active ? 'active' : '')} {...others}>{icon}</StyledSortIcon>
+  return <StyledSortIcon className={('sort', active ? 'active' : '')} {...others}>{icon}</StyledSortIcon>
 }
 
 // @TODO add support for sorting by columns
@@ -199,7 +201,7 @@ class DataTableAsync extends React.Component {
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
-      <StyledDataTable className={cx(className, 'data-table')} {...others}>
+      <StyledDataTable className={(className, 'data-table')} {...others}>
         <StyledDataTableHeader>
           <GroupInline>
             <Select

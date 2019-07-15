@@ -1,5 +1,7 @@
+/** @jsx jsx */
+import styled from '@emotion/styled'
+import { jsx } from '@emotion/core'
 import React from 'react'
-import styled from 'react-emotion'
 import { HTML_PROPS } from './utils'
 
 const StyledLabel = styled('label')`
