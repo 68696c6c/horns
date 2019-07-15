@@ -24,7 +24,7 @@ const Styled = styled('header')`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${({ theme, variant }) => console.log('styled theme: ', theme) && colorVariantCSS(theme, variant)};
+  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   ${({ fluid, theme }) => containerStyleHorizontal(theme.breakpoints, fluid)};
   ${({ stuck }) => stuck ? fixedCSS() : ''};
   @media(max-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {

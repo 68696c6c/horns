@@ -8,8 +8,8 @@ const baseLink = variant => {
   return css`
     color: ${rgb(variant.color)};
     text-decoration: ${variant.decoration};
-    &:focus { 
-      outline: none; 
+    &:focus {
+      outline: none;
     }
     &:hover {
       color: ${rgb(hover.color)};

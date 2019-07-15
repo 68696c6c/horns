@@ -1,4 +1,6 @@
 import Color from 'color'
+import { css } from '@emotion/core'
+import { isUndefined } from '../utils/utils'
 
 export const pallet = {
   violet: Color('#7f00ff'),
@@ -35,4 +37,59 @@ export const rgb = (c) => {
  */
 export const valueToInt = (cssVal) => {
   return cssVal.replace('px', '').replace('rem', '').replace('em', '').replace('vw', '').replace('vh', '')
+}
+
+/**
+ * Return an Emotion CSS snippet that applies the provided link or button config styles to an element.
+ * Supports background, color, decoration, and border properties.
+ * @param config - link or button object from the theme
+ * @returns SerializedStyles
+ */
+export const hoverStates = config => {
+  const bgDef = isUndefined(config.background) ? '' : `background-color: ${rgb(config.background)}`
+  const bgHover = isUndefined(config.hover.background) ? '' : `background-color: ${rgb(config.hover.background)}`
+  const bgActive = isUndefined(config.active.background) ? '' : `background-color: ${rgb(config.active.background)}`
+
+  const decDef = isUndefined(config.decoration) ? '' : `text-decoration: ${config.decoration}`
+  const decHover = isUndefined(config.hover.decoration) ? '' : `text-decoration: ${config.hover.decoration}`
+  const decActive = isUndefined(config.active.decoration) ? '' : `text-decoration: ${config.active.decoration}`
+
+  const borderDef = isUndefined(config.border) ? '' : `${config.border}`
+  const borderHover = isUndefined(config.hover.border) ? '' : `${config.hover.border}`
+  const borderActive = isUndefined(config.active.border) ? '' : `${config.active.border}`
+
+  return css`
+    ${bgDef};
+    color: ${rgb(config.color)};
+    ${decDef};
+    ${borderDef};
+
+    &:hover {
+      cursor: pointer;
+      color: ${rgb(config.hover.color)};
+      ${bgHover};
+      ${decHover};
+      ${borderHover};
+    }
+
+    &:active {
+      cursor: pointer;
+      color: ${rgb(config.active.color)};
+      ${bgActive};
+      ${decActive};
+      ${borderActive};
+    }
+  `
+}
+
+/**
+ * Return an Emotion CSS snippet that applies the provided button config styles to an element.
+ * @param config - button object from the theme
+ * @returns SerializedStyles
+ */
+export const buttonStates = config => {
+  return css`
+    border-radius: ${config.radius};
+    ${hoverStates(config)};
+  `
 }
