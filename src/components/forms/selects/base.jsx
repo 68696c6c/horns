@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { font } from '../../utils'
-import { baseInput } from '../inputs/base'
+import baseInput from '../inputs/base'
 import { rgb } from '../../../themes/utils'
 import { ERROR_CLASS } from '../utils'
 
@@ -9,7 +9,7 @@ export const StyledNativeSelect = styled('select')`
   ${({ theme }) => baseInput(theme)};
   appearance: none;
   cursor: pointer;
-  &::-ms-expand { 
+  &::-ms-expand {
     display: none;
   }
 `

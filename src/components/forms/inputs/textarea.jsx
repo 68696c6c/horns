@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import Label from '../label'
-import { baseInput } from './base'
+import baseInput from './base'
 import { ERROR_CLASS } from '../utils'
 
 const Styled = styled('textarea')`

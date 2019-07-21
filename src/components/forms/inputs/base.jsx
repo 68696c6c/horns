@@ -3,8 +3,8 @@ import { rgb } from '../../../themes/utils'
 import { font } from '../../utils'
 import { ERROR_CLASS } from '../utils'
 
-export const baseInput = theme => {
-  return css`
+const baseInput = theme =>
+  css`
     display: block;
     background: ${rgb(theme.colors.copy.light)};
     color: ${rgb(theme.colors.copy.dark)};
@@ -24,4 +24,5 @@ export const baseInput = theme => {
       cursor: not-allowed;
     }
   `
-}
+
+export default baseInput
