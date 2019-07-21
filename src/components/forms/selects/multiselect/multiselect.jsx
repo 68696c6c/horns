@@ -208,7 +208,7 @@ class Multiselect extends React.Component {
             </StyledDropDown>
           </StyledDropDownContainer>
         </StyledSelectContainer>
-        {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+        {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
       </React.Fragment>
     )
   }

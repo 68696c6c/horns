@@ -29,7 +29,7 @@ const SelectNative = ({ name, value, id, label, placeholder, required, hasError,
         <option disabled selected={selected}>{placeholder}</option>
         {children}
       </StyledNativeSelect>
-      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }

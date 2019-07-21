@@ -25,7 +25,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, errorMessage,
       >
         {children}
       </StyledNativeSelect>
-      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }

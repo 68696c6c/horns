@@ -20,7 +20,7 @@ const StyledMask = styled(MaskedInput)`
   ${({ theme }) => baseInput(theme)}
 `
 
-const Input = ({ type, name, value, id, label, currency, placeholder, required, hasError, errorMessage, className, ...others }) => {
+const Input = ({ type, name, id, label, currency, placeholder, required, hasError, errorMessage, className, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   let Tag
@@ -56,14 +56,13 @@ const Input = ({ type, name, value, id, label, currency, placeholder, required, 
       <Tag
         type={type}
         name={name}
-        value={value}
         id={idValue}
         className={`${className} input ${errorClass}`}
         placeholder={placeholder}
         required={required ? 'required' : ''}
         {...others}
       />
-      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }
@@ -88,7 +87,6 @@ Input.propTypes = {
     'percentage',
   ]),
   name: PropTypes.string,
-  value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   currency: PropTypes.string,

@@ -23,7 +23,7 @@ const Checkbox = ({ label, id, name, value, required, hasError, errorMessage, cl
       />
       <ToggleControl htmlFor={idValue} className="toggle-control" />
       {label && <ToggleLabel htmlFor={idValue} required={required} hasError={hasError}>{label}</ToggleLabel>}
-      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger" className="toggle-message">{errorMessage}</InputMessage>}
+      {errorMessage && <InputMessage htmlFor={idValue} variant="danger" className="toggle-message">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }

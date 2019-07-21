@@ -13,7 +13,7 @@ const Styled = styled('textarea')`
   ${({ theme }) => baseInput(theme)}
 `
 
-const Textarea = ({ name, value, id, label, placeholder, required, hasError, errorMessage, className, ...others }) => {
+const Textarea = ({ name, id, label, placeholder, required, hasError, errorMessage, className, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
@@ -25,17 +25,15 @@ const Textarea = ({ name, value, id, label, placeholder, required, hasError, err
         className={(className, 'textarea', errorClass)}
         placeholder={placeholder}
         required={required ? 'required' : ''}
-        value={value}
         {...others}
       />
-      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }
 
 Textarea.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,

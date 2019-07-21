@@ -62,12 +62,10 @@ const StyledGroupInline = styled('div')`
   }
 `
 
-class GroupInline extends React.Component {
-  constructor(props) {
-    super(props)
-    const { children, breakpoint } = props
-    this.childArray = isArray(children) ? children : [children]
-    this.content = this.childArray.filter(c => (!isUndefined(c.type))).map(child => {
+const GroupInline = ({ heading, breakpoint, className, children, ...others }) => (
+  <StyledGroupInline breakpoint={breakpoint} className={`${className} inline-group`} {...others}>
+    {heading && <FormGroupHeading text={heading} end={(isArray(children) ? children : [children]).length} />}
+    {(isArray(children) ? children : [children]).filter(c => (!isUndefined(c.type))).map(child => {
       if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio') {
         return (
           <StyledGroupField breakpoint={breakpoint} key={uuid()}>
@@ -77,28 +75,20 @@ class GroupInline extends React.Component {
       } else {
         return <StyledGroupField breakpoint={breakpoint} key={uuid()}>{child}</StyledGroupField>
       }
-    })
-  }
-
-  render() {
-    const { heading, breakpoint, className, ...others } = this.props
-    return (
-      <StyledGroupInline breakpoint={breakpoint} className={(className, 'inline-group')} {...others}>
-        {heading && <FormGroupHeading text={heading} end={this.childArray.length}/>}
-        {this.content}
-      </StyledGroupInline>
-    )
-  }
-}
+    })}
+  </StyledGroupInline>
+)
 
 GroupInline.propTypes = {
   heading: PropTypes.string,
   breakpoint: PropTypes.string,
+  className: PropTypes.string,
 }
 
 GroupInline.defaultProps = {
   heading: '',
   breakpoint: 'medium',
+  className: '',
 }
 
 export default GroupInline
