@@ -1,10 +1,10 @@
-import { css } from 'emotion'
+import { css } from '@emotion/core'
 import { rgb } from '../../themes/utils'
 
-const baseButton = (variant, weight) => (
+const baseButton = (variant, weight) =>
   css`
     display: inline-block;
-    padding: .6em 2em;
+    padding: 0.6em 2em;
     font-weight: ${weight};
     text-align: center;
     cursor: pointer;
@@ -18,11 +18,10 @@ const baseButton = (variant, weight) => (
       border: ${variant.hover.border};
     }
     &:active {
-      background: ${ rgb(variant.hover.background)};
-      color: ${ rgb(variant.hover.color)};
+      background: ${rgb(variant.hover.background)};
+      color: ${rgb(variant.hover.color)};
       border: ${variant.hover.border};
     }
   `
-)
 
 export default baseButton

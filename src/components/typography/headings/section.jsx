@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { baseHeading } from './base'
+import baseHeading from './base'
 
 const Styled = styled('h2')`
   ${({ theme, variant }) => {
