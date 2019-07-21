@@ -3,10 +3,11 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
+import InputMessage from '../input-message'
 import { Toggle, ToggleControl, ToggleLabel } from './base'
 import { ERROR_CLASS } from '../utils'
 
-const Radio = ({ label, id, name, value, required, hasError, className, ...others }) => {
+const Radio = ({ label, id, name, value, required, hasError, errorMessage, className, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
@@ -20,8 +21,9 @@ const Radio = ({ label, id, name, value, required, hasError, className, ...other
         required={required ? 'required' : ''}
         {...others}
       />
-      <ToggleControl htmlFor={idValue} className="toggle-control" round={true}/>
-      {label ? <ToggleLabel htmlFor={idValue} className="toggle-label" required={required} hasError={hasError}>{label}</ToggleLabel> : ''}
+      <ToggleControl htmlFor={idValue} className="toggle-control" round />
+      {label && <ToggleLabel htmlFor={idValue} required={required} hasError={hasError}>{label}</ToggleLabel>}
+      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger" className="toggle-message">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }
@@ -33,6 +35,7 @@ Radio.propTypes = {
   label: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  errorMessage: PropTypes.string,
 }
 
 Radio.defaultProps = {
@@ -40,6 +43,7 @@ Radio.defaultProps = {
   label: '',
   required: false,
   hasError: false,
+  errorMessage: '',
 }
 
 export default Radio

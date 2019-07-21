@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
+import InputMessage from '../../input-message'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
 import {
@@ -13,14 +14,14 @@ import {
   StyledDropDownContainer,
   StyledFilter,
   StyledSelect,
-  StyledSelectContainer
+  StyledSelectContainer,
 } from '../base'
 
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
 
 const SelectInput = React.forwardRef((props, ref) => (
-  <input type="hidden" ref={ref} {...props}/>
+  <input type="hidden" ref={ref} {...props} />
 ))
 
 SelectInput.propTypes = {
@@ -179,13 +180,13 @@ export class Select extends React.Component {
   }
 
   render() {
-    const { forwardedRef, filterRef, onKeyUp, name, id, label, required, disabled, hasError, className } = this.props
-    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
-    const htmlID = id === '' ? uuid() : id
+    const { forwardedRef, filterRef, onKeyUp, name, id, label, required, disabled, hasError, errorMessage, className } = this.props
+    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp} /> : ''
+    const idValue = id === '' ? uuid() : id
     return (
       <React.Fragment>
-        <SelectInput ref={forwardedRef} id={htmlID} name={name} value={this.state.value} required={required}/>
-        {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
+        <SelectInput ref={forwardedRef} id={idValue} name={name} value={this.state.value} required={required} />
+        {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
@@ -202,6 +203,7 @@ export class Select extends React.Component {
             </StyledDropDown>
           </StyledDropDownContainer>
         </StyledSelectContainer>
+        {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
       </React.Fragment>
     )
   }
@@ -215,6 +217,7 @@ Select.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  errorMessage: PropTypes.string,
   disabled: PropTypes.bool,
   filterRef: PropTypes.object,
   onClick: PropTypes.func,
@@ -228,13 +231,11 @@ Select.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
+  errorMessage: '',
   disabled: false,
-  onClick: () => {
-  },
-  onChange: () => {
-  },
-  onKeyUp: () => {
-  },
+  onClick: () => {},
+  onChange: () => {},
+  onKeyUp: () => {},
 }
 
 export default React.forwardRef((props, ref) => {

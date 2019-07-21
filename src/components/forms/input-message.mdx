@@ -1,0 +1,143 @@
+---
+name: 'Input Message'
+menu: Forms
+---
+
+import { Playground, Props } from 'docz'
+
+import { Input, Textarea } from './inputs'
+import { Checkbox, Radio } from './toggles'
+import { Select } from './selects'
+import InputMessage from './input-message'
+import Field from './field'
+import Group from './group'
+import GroupInline from './group-inline'
+import Fieldset from './fieldset'
+import WrapperInline from '../_demo/wrappers/inline'
+
+# InputMessage
+
+<Playground>
+  <InputMessage>Example Message Text</InputMessage>
+</Playground>
+
+## Props
+
+<Props of={InputMessage} />
+
+## Variants
+
+<Playground>
+  <WrapperInline>
+    <InputMessage variant="copy">Default Copy Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <InputMessage variant="copy-light">Light Copy Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="copy-dark">Dark Copy Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="primary">Primary Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="secondary">Secondary Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="tertiary">Tertiary Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline variant="dark">
+    <InputMessage variant="light">Light Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="neutral">Neutral Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="dark">Dark Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="success">Success Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="info">Info Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="warning">Warning Message Text</InputMessage>
+  </WrapperInline>
+  <WrapperInline>
+    <InputMessage variant="danger">Danger Message Text</InputMessage>
+  </WrapperInline>
+</Playground>
+
+## Examples
+
+<Playground>
+  <Input label="Input" hasError={true} errorMessage="example error message" />
+  <Textarea label="Textarea" hasError={true} errorMessage="example error message" />
+  <Checkbox label="Checkbox" hasError={true} errorMessage="example error message" />
+  <Radio label="Radio" hasError={true} errorMessage="example error message" />
+  <Select label="Select inside of a Fieldset" hasError={true} errorMessage="example error message">
+    <option>Option 1</option>
+  </Select>
+  <Field>
+    <Input label="Input inside of a Field" hasError={true} errorMessage="example error message" />
+  </Field>
+  <Field>
+    <Textarea label="Textarea inside of a Field" hasError={true} errorMessage="example error message" />
+  </Field>
+  <Field>
+    <Checkbox label="Checkbox inside of a Field" hasError={true} errorMessage="example error message" />
+  </Field>
+  <Field>
+    <Radio label="Radio inside of a Field" hasError={true} errorMessage="example error message" />
+  </Field>
+  <Field>
+    <Select label="Select inside of a Field" hasError={true} errorMessage="example error message">
+      <option>Option 1</option>
+    </Select>
+  </Field>
+  <Group>
+    <Input label="Input inside of a Group" hasError={true} errorMessage="example error message" />
+    <Textarea label="Textarea inside of a Group" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of a Group" hasError={true} errorMessage="example error message" />
+    <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
+    <Select label="Select inside of a Group" hasError={true} errorMessage="example error message">
+      <option>Option 1</option>
+    </Select>
+  </Group>
+  <Group heading="Group Heading">
+    <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
+    <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
+    <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
+    <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
+  </Group>
+  <GroupInline>
+    <Input label="Input inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Textarea label="Textarea inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Radio label="Radio inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Select label="Select inside of an Inline Group" hasError={true} errorMessage="example error message">
+      <option>Option 1</option>
+    </Select>
+  </GroupInline>
+  <GroupInline heading="Form Group Heading">
+    <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
+  </GroupInline>
+  <Fieldset legend="Fieldset">
+    <Input label="Input inside of a Fieldset" hasError={true} errorMessage="example error message" />
+    <Textarea label="Textarea inside of a Fieldset" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of a Fieldset" hasError={true} errorMessage="example error message" />
+    <Checkbox label="Checkbox inside of a Fieldset" hasError={true} errorMessage="example error message" />
+    <Group>
+      <Radio label="Grouped Radio inside of a Group" hasError={true} errorMessage="example error message" />
+      <Radio label="Grouped Radio inside of a Group" hasError={true} errorMessage="example error message" />
+      <Radio label="Grouped Radio inside of a Group" hasError={true} errorMessage="example error message" />
+    </Group>
+    <Select label="Select inside of a Fieldset" hasError={true} errorMessage="example error message">
+      <option>Option 1</option>
+    </Select>
+  </Fieldset>
+</Playground>

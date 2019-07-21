@@ -36,11 +36,11 @@ const StyledToggleLabel = styled('label')`
   ${({ theme }) => baseLabel(theme)}
 `
 
-export const ToggleLabel = ({ htmlFor, required, hasError, className, children, ...others }) => {
+export const ToggleLabel = ({ htmlFor, required, hasError, children, ...others }) => {
   const reqClass = required ? 'required' : ''
   const errorClass = hasError ? ERROR_CLASS : ''
   return (
-    <StyledToggleLabel htmlFor={htmlFor} className={(className, reqClass, errorClass)} {...others}>
+    <StyledToggleLabel htmlFor={htmlFor} className={`toggle-label ${reqClass} ${errorClass}`} {...others}>
       {children}
     </StyledToggleLabel>
   )
@@ -65,7 +65,8 @@ export const Toggle = styled('input')`
   vertical-align: baseline;
   margin: 0 1em 0 0;
   height: 1em;
-  & ~ label.toggle-label {
+  ~ label.toggle-label,
+  ~ label.toggle-message {
     vertical-align: bottom;
     display: inline-block;
   }

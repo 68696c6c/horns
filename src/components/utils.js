@@ -2,6 +2,10 @@ import { css } from '@emotion/core'
 import React from 'react'
 import { rgb, valueToInt } from '../themes/utils'
 
+/**
+ * Functions in this file are only intended to be used internally and should not be included in the project exports.
+ */
+
 export const COLOR_VARIANT_NONE = 'none'
 
 // @TODO this can't be used with component prop types because it breaks the PropsTable Docz component.
@@ -31,12 +35,32 @@ export const colorVariantCSS = (theme, variant, swatch = 'default') => {
   `
 }
 
-export const font = (theme, size = 'default', font = 'default') => {
+/**
+ * Return an Emotion CSS snippet that applies a CSS color property based on the provided theme variant.
+ * @returns SerializedStyles
+ */
+export const typographyColor = (theme, variant) => {
+  let color
+  if (variant === 'copy-dark') {
+    color = rgb(theme.colors.copy.dark)
+  } else if (variant === 'copy-light') {
+    color = rgb(theme.colors.copy.light)
+  } else if (variant === 'inherit') {
+    color = 'inherit'
+  } else {
+    color = rgb(theme.colors[variant].default)
+  }
+  return css`
+    color: ${color};
+  `
+}
+
+export const font = (theme, size = 'default', fontFace = 'default') => {
   return css`
     font-size: ${theme.typography.sizes[size]};
     line-height: ${theme.typography.lineHeight};
-    font-family: ${theme.typography.fonts[font].family};
-    font-weight: ${theme.typography.fonts[font].weight};
+    font-family: ${theme.typography.fonts[fontFace].family};
+    font-weight: ${theme.typography.fonts[fontFace].weight};
   `
 }
 

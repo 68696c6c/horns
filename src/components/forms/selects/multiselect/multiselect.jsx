@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { arrayRemoveByValue, isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
+import InputMessage from '../../input-message'
 import InputHidden from '../../inputs/hidden'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
@@ -14,7 +15,7 @@ import {
   StyledDropDownContainer,
   StyledFilter,
   StyledSelect,
-  StyledSelectContainer
+  StyledSelectContainer,
 } from '../base'
 
 // @TODO highlight selected options.
@@ -184,13 +185,13 @@ class Multiselect extends React.Component {
   }
 
   render() {
-    const { filterRef, onKeyUp, name, id, label, required, disabled, hasError, className } = this.props
-    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp}/> : ''
-    const htmlID = id === '' ? uuid() : id
+    const { filterRef, onKeyUp, name, id, label, required, disabled, hasError, errorMessage, className } = this.props
+    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp} /> : ''
+    const idValue = id === '' ? uuid() : id
     return (
       <React.Fragment>
-        <InputHidden id={htmlID} name={name} value={this.state.value} required={required}/>
-        {label ? <Label htmlFor={htmlID} required={required} hasError={hasError}>{label}</Label> : ''}
+        <InputHidden id={idValue} name={name} value={this.state.value} required={required} />
+        {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
@@ -207,6 +208,7 @@ class Multiselect extends React.Component {
             </StyledDropDown>
           </StyledDropDownContainer>
         </StyledSelectContainer>
+        {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
       </React.Fragment>
     )
   }
@@ -224,6 +226,7 @@ Multiselect.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  errorMessage: PropTypes.string,
   disabled: PropTypes.bool,
   filterRef: PropTypes.object,
   onClick: PropTypes.func,
@@ -237,13 +240,11 @@ Multiselect.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
+  errorMessage: '',
   disabled: false,
-  onClick: () => {
-  },
-  onChange: () => {
-  },
-  onKeyUp: () => {
-  },
+  onClick: () => {},
+  onChange: () => {},
+  onKeyUp: () => {},
 }
 
 export default Multiselect

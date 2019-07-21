@@ -2,6 +2,12 @@ import Color from 'color'
 import { css } from '@emotion/core'
 import { isUndefined } from '../utils/utils'
 
+/**
+ * Functions in this file are may be used internally and by the end-user.  Therefor, they are intended to be project
+ * exports, as opposed to the functions in components/utils, which are only used internally and not exported at the
+ * project level.
+ */
+
 export const pallet = {
   violet: Color('#7f00ff'),
   indigo: Color('#3f00ff'),

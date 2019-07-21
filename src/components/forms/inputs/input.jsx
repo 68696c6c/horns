@@ -1,4 +1,5 @@
 /** @jsx jsx */
+/* eslint-disable no-param-reassign */
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
@@ -8,6 +9,7 @@ import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import uuid from 'uuid/v4'
 
 import Label from '../label'
+import InputMessage from '../input-message'
 import baseInput from './base'
 import { ERROR_CLASS } from '../utils'
 
@@ -18,10 +20,10 @@ const StyledMask = styled(MaskedInput)`
   ${({ theme }) => baseInput(theme)}
 `
 
-const Input = ({ type, name, value, id, label, currency, placeholder, required, hasError, className, ...others }) => {
+const Input = ({ type, name, value, id, label, currency, placeholder, required, hasError, errorMessage, className, ...others }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
-  let Tag = StyledInput
+  let Tag
   switch (type) {
     case 'tel':
       Tag = StyledMask
@@ -45,20 +47,23 @@ const Input = ({ type, name, value, id, label, currency, placeholder, required, 
       })
       type = 'text'
       break
+    default:
+      Tag = StyledInput
   }
   return (
     <React.Fragment>
-      {label ? <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label> : ''}
+      {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
       <Tag
         type={type}
         name={name}
         value={value}
         id={idValue}
-        className={(className, 'input', errorClass)}
+        className={`${className} input ${errorClass}`}
         placeholder={placeholder}
         required={required ? 'required' : ''}
         {...others}
       />
+      {hasError && errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
     </React.Fragment>
   )
 }
@@ -90,6 +95,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  errorMessage: PropTypes.string,
 }
 
 Input.defaultProps = {
@@ -100,6 +106,7 @@ Input.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
+  errorMessage: '',
 }
 
 export default Input

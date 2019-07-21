@@ -7,18 +7,17 @@ import { rgb } from '../../themes/utils'
 import { font } from '../utils'
 import { ERROR_CLASS } from './utils'
 
-export const baseLabel = (theme) => {
-  return css`
+export const baseLabel = theme =>
+  css`
     ${font(theme)};
     color: ${rgb(theme.colors.copy.default)};
     &.${ERROR_CLASS} {
       color: ${rgb(theme.colors.danger.default)};
     }
     &.required::after {
-      content: "*";
+      content: '*';
     }
   `
-}
 
 const Styled = styled('label')`
   display: block;
