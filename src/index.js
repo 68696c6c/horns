@@ -1,10 +1,16 @@
-export { default as ThemeConfig } from './models/config'
-export { default as Theme } from './models/theme'
+import baseTheme from './themes/base'
 
-export { default as BaseTheme } from './themes/base'
-export { getBaseStyles } from './themes/base-styles'
+export { Theme, ThemeConfig } from './models'
 
-export { pallet, rgb, valueToInt, hoverStates, buttonStates } from './themes/utils'
+export {
+  baseTheme,
+  getBaseStyles,
+  pallet,
+  rgb,
+  valueToInt,
+  hoverStates,
+  buttonStates,
+} from './themes'
 
 export {
   isEmptyObject,

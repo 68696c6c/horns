@@ -1,3 +1,5 @@
 import Theme from '../models/theme'
 
-export default new Theme()
+const baseTheme = new Theme()
+
+export default baseTheme
