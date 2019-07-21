@@ -96,6 +96,7 @@ Input.propTypes = {
   required: PropTypes.bool,
   hasError: PropTypes.bool,
   errorMessage: PropTypes.string,
+  className: PropTypes.string,
 }
 
 Input.defaultProps = {
@@ -107,6 +108,7 @@ Input.defaultProps = {
   required: false,
   hasError: false,
   errorMessage: '',
+  className: '',
 }
 
 export default Input
