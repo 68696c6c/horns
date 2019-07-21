@@ -1,9 +1,8 @@
-import ThemeConfig from './config'
+import ThemeConfig from './theme-config'
 import { rgb } from '../themes/utils'
 
 class Theme {
   constructor(config) {
-
     this.swatches = [
       'primary',
       'secondary',
