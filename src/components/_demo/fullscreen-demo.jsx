@@ -50,6 +50,7 @@ const StyledWindowBar = styled('div')`
 `
 const StyledWindow = styled('div')`
   background: ${({ variant }) => variant === 'light' ? 'white' : DARK_TERTIARY};
+  ${({ open }) => open ? '' : css`display: none`};
   z-index: 9999999999999999;
   position: fixed;
   width: 100vw;
@@ -92,11 +93,10 @@ class FullscreenDemo extends React.Component {
 
   render() {
     const { variant, children, of: component, title } = this.props
-    const windowStyle = this.state.open ? '' : css`display: none;`
     return (
       <React.Fragment>
         <StyledButton variant={variant} onClick={this.openPreview}>Show Fullscreen Playground</StyledButton>
-        <StyledWindow variant={variant} className={windowStyle}>
+        <StyledWindow variant={variant} open={this.state.open}>
           <StyledWindowBar variant={variant}>
             <h1>{title}</h1>
             <StyledButton variant={variant} onClick={this.closePreview}>Close Playground</StyledButton>
