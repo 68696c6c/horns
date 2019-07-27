@@ -13,6 +13,8 @@ export {
 } from './themes'
 
 export {
+  currencyToNumber,
+  numberToCurrency,
   isEmptyObject,
   isUndefined,
   formatDate,

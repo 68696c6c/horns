@@ -12,6 +12,7 @@ const StyledPanelBody = styled('div')`
   margin-bottom: ${({ theme }) => theme.spacing.small};
 `
 
+// @TODO make the DataTable etc components use this.
 const Panel = ({ title, variant, children }) => (
   <React.Fragment>
     <TitleBar variant={variant}>{title}</TitleBar>
