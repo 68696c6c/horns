@@ -66,6 +66,7 @@ export {
   GridGuide,
   GridStacked,
   Header,
+  Panel,
   HeaderStickyContent,
   Parallax,
   ScrollPages,

@@ -8,13 +8,13 @@ import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '.
 const FluidTitleBar = styled('header')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
   ${({ theme, fluid }) => containerStyleHorizontal(theme.breakpoints, fluid)};
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: ${({ theme }) => theme.spacing.small};
+  padding-bottom: ${({ theme }) => theme.spacing.small};
 `
 
 const PaddedTitleBar = styled('header')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-  padding: 1em;
+  padding: ${({ theme }) => theme.spacing.small};
 `
 
 const TitleBar = ({ fluid, variant, children, ...others }) => {
