@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
+import { valueToInt } from '../../themes'
 import Label from './label'
 import { isArray, isUndefined } from '../../utils/utils'
 
@@ -40,7 +41,7 @@ const StyledGroupField = styled('div')`
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     input:not([type='checkbox']):not([type='radio']):not([type='submit']),
     textarea,
     .select-custom-container {
@@ -56,6 +57,15 @@ const StyledToggleContainer = styled('div')`
   margin-top: ${({ theme }) => theme.spacing.tiny};
 `
 
+const StyledButtonContainer = styled('div')`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: ${({ theme }) =>
+    valueToInt(theme.typography.sizes.default) *
+    valueToInt(theme.typography.lineHeight)}px;
+`
+
 const StyledGroupInline = styled('div')`
   margin-top: ${({ theme }) => theme.spacing.small};
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
@@ -68,17 +78,37 @@ const StyledGroupInline = styled('div')`
 const GroupInline = ({ heading, breakpoint, className, children, ...others }) => (
   <StyledGroupInline breakpoint={breakpoint} className={`${className} inline-group`} {...others}>
     {heading && <FormGroupHeading text={heading} end={(isArray(children) ? children : [children]).length} />}
-    {(isArray(children) ? children : [children]).filter(c => (!isUndefined(c.type))).map(child => {
-      if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio' || child.props.mdxType === 'Checkbox' || child.props.mdxType === 'Radio') {
-        return (
+    {(isArray(children) ? children : [children])
+      .filter(c => !isUndefined(c.type))
+      .map(child => {
+        let result = (
           <StyledGroupField breakpoint={breakpoint} key={uuid()}>
-            <StyledToggleContainer>{child}</StyledToggleContainer>
+            {child}
           </StyledGroupField>
         )
-      } else {
-        return <StyledGroupField breakpoint={breakpoint} key={uuid()}>{child}</StyledGroupField>
-      }
-    })}
+        if (
+          child.type.displayName === 'Checkbox' ||
+          child.props.mdxType === 'Checkbox' ||
+          child.type.displayName === 'Radio' ||
+          child.props.mdxType === 'Radio'
+        ) {
+          result = (
+            <StyledGroupField breakpoint={breakpoint} key={uuid()}>
+              <StyledToggleContainer>{child}</StyledToggleContainer>
+            </StyledGroupField>
+          )
+        } else if (
+          child.type.displayName === 'Button' ||
+          child.props.mdxType === 'Button'
+        ) {
+          result = (
+            <StyledGroupField breakpoint={breakpoint} key={uuid()}>
+              <StyledButtonContainer>{child}</StyledButtonContainer>
+            </StyledGroupField>
+          )
+        }
+        return result
+      })}
   </StyledGroupInline>
 )
 
