@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import baseButton from './base'
 
 const Styled = styled('button')`
-  ${({ variant, theme }) => baseButton(theme.buttons[variant], theme.config.fontWeights.bold)}
+  ${({ theme, variant }) => baseButton(theme, variant)}
 `
 
 const Button = ({ variant, children, ...others }) => (

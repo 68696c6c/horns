@@ -3,6 +3,7 @@ import { rgb } from '../../../themes/utils'
 import { font } from '../../utils'
 import { ERROR_CLASS } from '../utils'
 
+// @TODO make border configurable
 const baseInput = theme =>
   css`
     display: block;

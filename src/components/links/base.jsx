@@ -22,9 +22,8 @@ const baseLink = variant => {
   `
 }
 
-// @TODO use link text-decoration settings.
 export const StyledLinkButton = styled('a')`
-  ${({ variant, theme }) => baseButton(theme.buttons[variant], theme.config.fontWeights.bold)}
+  ${({ theme, variant }) => baseButton(theme, variant)};
 `
 
 const StyledLink = styled('a')`

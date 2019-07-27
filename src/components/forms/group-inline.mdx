@@ -10,6 +10,8 @@ import { Input, Textarea } from './inputs'
 import { Checkbox, Radio } from './toggles'
 import { Select } from './selects'
 import Section from '../layout/section'
+import { Button } from '../buttons'
+import { HeadingSection } from '../typography'
 import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # GroupInline
@@ -20,6 +22,7 @@ and will will switch to a stacked layout at the specified breakpoint.
 <Playground>
   <GroupInline>
     <Input label="Input inside of a Group" />
+    <Button>Button Text</Button>
   </GroupInline>
   <GroupInline heading="Form Group Heading">
     <Input label="Input inside of a Group" />
@@ -57,11 +60,12 @@ and will will switch to a stacked layout at the specified breakpoint.
 
 <FullscreenDemo variant="dark" of={GroupInline} title="GroupInline">
   <Section variant="background">
-    <p>
+    <HeadingSection>
       These Groups will change to a stacked layout at the medium breakpoint.
-    </p>
+    </HeadingSection>
     <GroupInline>
       <Input label="Input inside of a Group" />
+      <Button>Button Text</Button>
     </GroupInline>
     <GroupInline heading="Form Group Heading">
       <Input label="Input inside of a Group" />

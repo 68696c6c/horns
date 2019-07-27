@@ -30,7 +30,8 @@ FormGroupHeading.defaultProps = {
 
 const StyledGroupField = styled('div')`
   grid-row: 2;
-  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea {
+  input:not([type='checkbox']):not([type='radio']):not([type='submit']),
+  textarea {
     width: 100%;
   }
   label {
@@ -39,8 +40,10 @@ const StyledGroupField = styled('div')`
   @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, .select-custom-container {
+    justify-content: flex-end;
+    input:not([type='checkbox']):not([type='radio']):not([type='submit']),
+    textarea,
+    .select-custom-container {
       margin-bottom: 0;
     }
   }
@@ -66,7 +69,7 @@ const GroupInline = ({ heading, breakpoint, className, children, ...others }) =>
   <StyledGroupInline breakpoint={breakpoint} className={`${className} inline-group`} {...others}>
     {heading && <FormGroupHeading text={heading} end={(isArray(children) ? children : [children]).length} />}
     {(isArray(children) ? children : [children]).filter(c => (!isUndefined(c.type))).map(child => {
-      if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio') {
+      if (child.type.displayName === 'Checkbox' || child.type.displayName === 'Radio' || child.props.mdxType === 'Checkbox' || child.props.mdxType === 'Radio') {
         return (
           <StyledGroupField breakpoint={breakpoint} key={uuid()}>
             <StyledToggleContainer>{child}</StyledToggleContainer>

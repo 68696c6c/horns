@@ -178,22 +178,27 @@ class Theme {
   }
 
   // @TODO use a button config class
+  // @TODO make border size match input border for alignment in GroupInline
   makeButton(defaultBG, hoverBG, activeBG) {
     const { copy } = this.colors
     return {
       background: defaultBG,
       color: defaultBG.isDark() ? copy.light : copy.dark,
       radius: this.config.radius,
-      border: 'none',
+      font: 'bold',
+      border: '2px solid transparent',
+      decoration: 'none',
       hover: {
         background: hoverBG,
         color: hoverBG.isDark() ? copy.light : copy.dark,
-        border: 'none',
+        border: '2px solid transparent',
+        decoration: 'none',
       },
       active: {
         background: activeBG,
         color: activeBG.isDark() ? copy.light : copy.dark,
-        border: 'none',
+        border: '2px solid transparent',
+        decoration: 'none',
       },
     }
   }
