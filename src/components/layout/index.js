@@ -1,5 +1,6 @@
 export { default as Area } from './area'
 export { default as Box } from './box'
+export { default as ButtonContainer } from './button-container'
 export { default as Footer } from './footer'
 export { default as Grid } from './grid'
 export { default as GridGuide } from './grid-guide'

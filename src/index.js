@@ -63,6 +63,7 @@ export {
 export {
   Area,
   Box,
+  ButtonContainer,
   Footer,
   Grid,
   GridGuide,
