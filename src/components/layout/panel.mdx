@@ -6,7 +6,6 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Panel from './panel'
-import Section from '../layout/section'
 
 # Panel
 
@@ -19,3 +18,44 @@ import Section from '../layout/section'
 ## Props
 
 <Props of={Panel} />
+
+## Variants
+
+<Playground>
+  <Panel title="Default Panel Title">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Primary Panel Title" variant="primary">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Secondary Panel Title" variant="secondary">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Tertiary Panel Title" variant="tertiary">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Light Panel Title" variant="light">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Neutral Panel Title" variant="neutral">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Dark Panel Title" variant="dark">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Success Panel Title" variant="success">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Info Panel Title" variant="info">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Warning Panel Title" variant="warning">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Danger Panel Title" variant="danger">
+    <h1>Panel Body</h1>
+  </Panel>
+  <Panel title="Background Panel Title" variant="background">
+    <h1>Panel Body</h1>
+  </Panel>
+</Playground>

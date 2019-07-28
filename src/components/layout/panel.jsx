@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { COLOR_VARIANT_NONE, colorVariantCSS,  } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
 import TitleBar from './title-bar'
 
 const StyledPanelBody = styled('div')`

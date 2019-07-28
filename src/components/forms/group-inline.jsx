@@ -60,7 +60,7 @@ const StyledToggleContainer = styled('div')`
 const StyledButtonContainer = styled('div')`
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: ${({ theme }) =>
     valueToInt(theme.typography.sizes.default) *
     valueToInt(theme.typography.lineHeight)}px;
@@ -75,42 +75,65 @@ const StyledGroupInline = styled('div')`
   }
 `
 
-const GroupInline = ({ heading, breakpoint, className, children, ...others }) => (
-  <StyledGroupInline breakpoint={breakpoint} className={`${className} inline-group`} {...others}>
-    {heading && <FormGroupHeading text={heading} end={(isArray(children) ? children : [children]).length} />}
-    {(isArray(children) ? children : [children])
+const isComponentType = (component, type) =>
+  component.type.displayName === type ||
+  component.type.name === type ||
+  component.props.mdxType === type
+
+class GroupInline extends React.Component {
+  constructor(props) {
+    super(props)
+    this.keys = (isArray(props.children) ? props.children : [props.children])
       .filter(c => !isUndefined(c.type))
-      .map(child => {
-        let result = (
-          <StyledGroupField breakpoint={breakpoint} key={uuid()}>
-            {child}
-          </StyledGroupField>
-        )
-        if (
-          child.type.displayName === 'Checkbox' ||
-          child.props.mdxType === 'Checkbox' ||
-          child.type.displayName === 'Radio' ||
-          child.props.mdxType === 'Radio'
-        ) {
-          result = (
-            <StyledGroupField breakpoint={breakpoint} key={uuid()}>
-              <StyledToggleContainer>{child}</StyledToggleContainer>
-            </StyledGroupField>
-          )
-        } else if (
-          child.type.displayName === 'Button' ||
-          child.props.mdxType === 'Button'
-        ) {
-          result = (
-            <StyledGroupField breakpoint={breakpoint} key={uuid()}>
-              <StyledButtonContainer>{child}</StyledButtonContainer>
-            </StyledGroupField>
-          )
-        }
-        return result
-      })}
-  </StyledGroupInline>
-)
+      .map(() => {
+        return uuid()
+      })
+  }
+
+  render() {
+    const { heading, breakpoint, className, children, ...others } = this.props
+    return (
+      <StyledGroupInline
+        breakpoint={breakpoint}
+        className={`${className} inline-group`}
+        {...others}
+      >
+        {heading && (
+          <FormGroupHeading
+            text={heading}
+            end={(isArray(children) ? children : [children]).length}
+          />
+        )}
+        {(isArray(children) ? children : [children])
+          .filter(c => !isUndefined(c.type))
+          .map((child, index) => {
+            let result = (
+              <StyledGroupField breakpoint={breakpoint} key={this.keys[index]}>
+                {child}
+              </StyledGroupField>
+            )
+            if (
+              isComponentType(child, 'Checkbox') ||
+              isComponentType(child, 'Radio')
+            ) {
+              result = (
+                <StyledGroupField breakpoint={breakpoint} key={this.keys[index]}>
+                  <StyledToggleContainer>{child}</StyledToggleContainer>
+                </StyledGroupField>
+              )
+            } else if (isComponentType(child, 'Button')) {
+              result = (
+                <StyledGroupField breakpoint={breakpoint} key={this.keys[index]}>
+                  <StyledButtonContainer>{child}</StyledButtonContainer>
+                </StyledGroupField>
+              )
+            }
+            return result
+          })}
+      </StyledGroupInline>
+    )
+  }
+}
 
 GroupInline.propTypes = {
   heading: PropTypes.string,

@@ -9,6 +9,7 @@ import Group from './group'
 import { Input, Textarea } from './inputs'
 import { Checkbox, Radio } from './toggles'
 import { Select } from './selects'
+import { Button } from '../buttons'
 import Section from '../layout/section'
 
 # Group
@@ -25,6 +26,7 @@ own containers, but do not provide any responsive behavior.
   <Select label="Select outside of a Group">
     <option>Option 1</option>
   </Select>
+  <Button>Button Outside of a Group</Button>
   <Group>
     <Input label="Input inside of a Group" />
     <Textarea label="Textarea inside of a Group" />
@@ -33,6 +35,7 @@ own containers, but do not provide any responsive behavior.
     <Select label="Select inside of a Group">
       <option>Option 1</option>
     </Select>
+    <Button>Button Inside of a Group</Button>
   </Group>
   <Group heading="Optional Group header">
     <Radio label="Radio inside of a Group" />

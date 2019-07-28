@@ -1,0 +1,123 @@
+---
+name: 'Button Container'
+menu: Layout
+---
+
+import { Playground, Props } from 'docz'
+
+import ButtonContainer from './button-container'
+import Section from './section'
+import { Button } from '../buttons'
+import { HeadingSection } from '../typography'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+
+# ButtonContainer
+
+<Playground>
+  <ButtonContainer>
+    <Button variant="primary">Left Button</Button>
+    <Button variant="secondary">Center Button</Button>
+    <Button variant="tertiary">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer align="center">
+    <Button variant="primary">Left Button</Button>
+    <Button variant="secondary">Center Button</Button>
+    <Button variant="tertiary">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer align="left">
+    <Button variant="primary">Left Button</Button>
+    <Button variant="secondary">Center Button</Button>
+    <Button variant="tertiary">Right Button</Button>
+  </ButtonContainer>
+</Playground>
+
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={ButtonContainer} title="ButtonContainer">
+  <Section variant="background">
+    <ButtonContainer>
+      <Button variant="primary">Left Button</Button>
+      <Button variant="secondary">Center Button</Button>
+      <Button variant="tertiary">Right Button</Button>
+    </ButtonContainer>
+    <ButtonContainer align="center">
+      <Button variant="primary">Left Button</Button>
+      <Button variant="secondary">Center Button</Button>
+      <Button variant="tertiary">Right Button</Button>
+    </ButtonContainer>
+    <ButtonContainer align="left">
+      <Button variant="primary">Left Button</Button>
+      <Button variant="secondary">Center Button</Button>
+      <Button variant="tertiary">Right Button</Button>
+    </ButtonContainer>
+  </Section>
+</FullscreenDemo>
+
+## Props
+
+<Props of={ButtonContainer} />
+
+## Variants
+
+<Playground>
+  <ButtonContainer>
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="primary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="secondary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="tertiary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="light">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="neutral">
+    <Button variant="dark">Left Button</Button>
+    <Button variant="dark">Center Button</Button>
+    <Button variant="dark">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="dark">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="success">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="info">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="warning">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="danger">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer variant="background">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+</Playground>
