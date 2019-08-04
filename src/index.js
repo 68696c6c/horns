@@ -45,6 +45,7 @@ export {
   Label,
   InputHidden,
   Input,
+  InputMessage,
   Radio,
   Textarea,
   Select,
