@@ -25,19 +25,20 @@ export const isArray = arr => {
 
 export const isNumber = v => typeof v === 'number'
 
-export const currencyToNumber = v => isNumber(v) ? v : Number(v.replace(/[^0-9.-]+/g,''))
+export const toNumber = v =>
+  isNumber(v) ? v : Number(v.replace(/[^0-9.-]+/g, ''))
 
 export const numberToCurrency = value => {
   if (isUndefined(value)) {
     return '$0.00'
   }
+  // Round the number to a two decimal places and convert it to a string, then add commas to it.
   const replace = v => v.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
   if (value < 0) {
-    value = -1 * value
-    return '-$' + replace(value)
-  } else {
-    return '$' + replace(value)
+    const val = -1 * value
+    return `-$${replace(val)}`
   }
+  return `$${replace(value)}`
 }
 
 export const arrayRemoveByValue = (arr, value) => {

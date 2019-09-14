@@ -13,7 +13,7 @@ export {
 } from './themes'
 
 export {
-  currencyToNumber,
+  toNumber,
   numberToCurrency,
   isEmptyObject,
   isUndefined,
