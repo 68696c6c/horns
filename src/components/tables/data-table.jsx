@@ -188,7 +188,7 @@ class DataTable extends React.Component {
     for (let i = 0; i < data.length; i++) {
       const child = data[i]
       const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
-      if (child.type.displayName === 'TableHead') {
+      if (child.type.displayName === 'TableHead' || child.type.name === 'TableHead') {
         columns.forEach(column => {
           head.push(column.props.children)
         })
