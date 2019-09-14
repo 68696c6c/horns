@@ -32,10 +32,10 @@ export const DataTableRowData = ({ children, className, ...others }) => {
 const StyledDataTable = styled('div')`
 `
 const StyledDataTableHeader = styled('header')`
-  padding: .5em 0;
+  padding: 0.5em 0;
 `
 const StyledDataTableFooter = styled('footer')`
-  padding: .5em 0;
+  padding: 0.5em 0;
 `
 const StyledSortIcon = styled('a')`
   cursor: pointer;
@@ -111,7 +111,7 @@ class DataTable extends React.Component {
 
   handlePageSize() {
     const { page, perPage, total, term } = this.state
-    const newPerPage = parseInt(this.perPageRef.current.value)
+    const newPerPage = parseInt(this.perPageRef.current.value, 10)
     const newPage = this.getPage(total, page, perPage, newPerPage)
     const body = this.getPageRows(this.state.body, newPage, newPerPage)
     const rows = this.getFilteredRows(body, term)
@@ -120,7 +120,6 @@ class DataTable extends React.Component {
   }
 
   handlePaginate(page) {
-    console.log('handlePaginate', page)
     const rows = this.getPageRows(this.state.body, page, this.state.perPage)
     this.setState(() => ({ page, rows }))
   }
@@ -137,7 +136,7 @@ class DataTable extends React.Component {
     if (sortColumnIndex === this.state.sortColumnIndex) {
       sortDir = this.state.sortDir === SORT_ASC ? SORT_DESC : SORT_ASC
     }
-    const body = this.state.body
+    const { body } = this.state
     let i1 = -1
     let i2 = 1
     if (sortDir === SORT_DESC) {
@@ -156,7 +155,6 @@ class DataTable extends React.Component {
 
   getPageRows(body, page, perPage) {
     const start = (page - 1) * perPage
-    console.log('getPageRows', start, start + perPage)
     return body.slice(start, start + perPage)
   }
 

@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TableRow = ({ indent, className, children, ...others }) => (
-  <div className={(className, 'table-row', indent ? 'indent' : '')} {...others}>{children}</div>
+  <div className={[className, 'table-row', indent ? 'indent' : ''].join(' ')} {...others}>{children}</div>
 )
 
 TableRow.propTypes = {
