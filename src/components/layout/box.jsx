@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS, toClassNames } from '../utils'
 
 const getFlexCSS = (x, y) => {
   let alignItems, justifyContent
@@ -45,7 +45,7 @@ const Styled = styled('div')`
 `
 
 const Box = ({ className, children, ...others }) => {
-  return <Styled className={(className, 'box')} {...others}>{children}</Styled>
+  return <Styled className={toClassNames(className, 'box')} {...others}>{children}</Styled>
 }
 
 Box.propTypes = {

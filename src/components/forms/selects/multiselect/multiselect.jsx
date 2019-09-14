@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { arrayRemoveByValue, isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
+import { toClassNames } from '../../../utils'
 import InputMessage from '../../input-message'
 import InputHidden from '../../inputs/hidden'
 import Label from '../../label'
@@ -195,7 +196,7 @@ class Multiselect extends React.Component {
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
-            className={(className, 'select-custom', hasError ? ERROR_CLASS : '')}
+            className={toClassNames(className, 'select-custom', hasError ? ERROR_CLASS : '')}
             onClick={this.fireOpen}
             disabled={disabled}
           >

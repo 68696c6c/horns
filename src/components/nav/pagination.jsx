@@ -5,6 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { rgb } from '../../themes/utils'
+import { toClassNames } from '../utils'
 
 const StyledItem = styled('a')`
   padding: .1em .5em;
@@ -101,7 +102,7 @@ class Pagination extends React.Component {
   render() {
     const { variant, className, ...others } = this.props
     return (
-      <Styled className={(className, 'pagination')} {...others}>
+      <Styled className={toClassNames(className, 'pagination')} {...others}>
         <StyledItem onClick={this.previous} variant={variant}>Previous</StyledItem>
         {this.state.links}
         <StyledItem onClick={this.next} variant={variant}>Next</StyledItem>

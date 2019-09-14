@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { isArray, isUndefined } from '../../../../utils/utils'
 import { getEventName } from '../../../../events'
+import { toClassNames } from '../../../utils'
 import InputMessage from '../../input-message'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
@@ -190,7 +191,7 @@ export class Select extends React.Component {
         <StyledSelectContainer className="select-custom-container">
           <StyledSelect
             innerRef={this.selectRef}
-            className={(className, 'select-custom', hasError ? ERROR_CLASS : '')}
+            className={toClassNames(className, 'select-custom', hasError ? ERROR_CLASS : '')}
             onClick={this.fireOpen}
             disabled={disabled}
           >

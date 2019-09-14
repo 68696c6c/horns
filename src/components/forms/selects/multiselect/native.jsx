@@ -3,6 +3,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
+import { toClassNames } from '../../../utils'
 import InputMessage from '../../input-message'
 import Label from '../../label'
 import { ERROR_CLASS } from '../../utils'
@@ -19,7 +20,7 @@ const SelectMulti = ({ name, value, id, label, required, hasError, errorMessage,
         name={name}
         defaultValue={value}
         id={idValue}
-        className={(className, 'select', errorClass)}
+        className={toClassNames(className, 'select', errorClass)}
         required={required}
         {...others}
       >

@@ -145,3 +145,5 @@ export const gradientVerticalCSS = (color1, color2) => {
 export const gradientRadialCSS = (color1, color2) => {
   return css`radial-gradient(${rgb(color1)}, ${rgb(color2)})`
 }
+
+export const toClassNames = (...values) => values.join(' ')

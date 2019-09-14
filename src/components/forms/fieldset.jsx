@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { rgb } from '../../themes/utils'
-import { font } from '../utils'
+import { font, toClassNames } from '../utils'
 import Label from './label'
 
 const StyledFieldset = styled('div')`
@@ -32,14 +32,14 @@ const StyledFields = styled('div')`
   }
 `
 
-const Legend = ({ text, className }) => <Label className={(className, 'fieldset-legend')}>{text}</Label>
+const Legend = ({ text, className }) => <Label className={toClassNames(className, 'fieldset-legend')}>{text}</Label>
 
 Legend.propTypes = {
   text: PropTypes.string,
 }
 
 const Fieldset = ({ legend, className, children, ...others }) => (
-  <StyledFieldset className={(className, 'fieldset')} {...others}>
+  <StyledFieldset className={toClassNames(className, 'fieldset')} {...others}>
     {legend === '' ? '' : <Legend text={legend}/>}
     <StyledFields className="fields">{children}</StyledFields>
   </StyledFieldset>

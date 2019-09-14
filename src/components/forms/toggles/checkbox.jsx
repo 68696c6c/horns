@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { jsx } from '@emotion/core'
+import { toClassNames } from '../../utils'
 import InputMessage from '../input-message'
 import { Toggle, ToggleControl, ToggleLabel } from './base'
 import { ERROR_CLASS } from '../utils'
@@ -16,7 +17,7 @@ const Checkbox = ({ label, id, name, value, required, hasError, errorMessage, cl
         type="checkbox"
         name={name}
         id={idValue}
-        className={(className, 'checkbox', errorClass)}
+        className={toClassNames(className, 'checkbox', errorClass)}
         value={value}
         required={required ? 'required' : ''}
         {...others}

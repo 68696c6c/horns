@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { rgb } from '../../themes/utils'
-import { font } from '../utils'
+import { font, toClassNames } from '../utils'
 import { ERROR_CLASS } from './utils'
 
 export const baseLabel = theme =>
@@ -28,7 +28,7 @@ const Styled = styled('label')`
 const Label = ({ htmlFor, required, hasError, className, children, ...others }) => {
   const reqClass = required ? 'required' : ''
   const errorClass = hasError ? ERROR_CLASS : ''
-  return <Styled htmlFor={htmlFor} className={(className, reqClass, errorClass)} {...others}>{children}</Styled>
+  return <Styled htmlFor={htmlFor} className={toClassNames(className, reqClass, errorClass)} {...others}>{children}</Styled>
 }
 
 Label.propTypes = {

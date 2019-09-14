@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
+import { toClassNames } from '../../utils'
 import InputMessage from '../input-message'
 import Label from '../label'
 import baseInput from './base'
@@ -22,7 +23,7 @@ const Textarea = ({ name, id, label, placeholder, required, hasError, errorMessa
       <Styled
         name={name}
         id={idValue}
-        className={(className, 'textarea', errorClass)}
+        className={toClassNames(className, 'textarea', errorClass)}
         placeholder={placeholder}
         required={required ? 'required' : ''}
         {...others}

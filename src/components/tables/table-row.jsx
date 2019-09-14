@@ -2,9 +2,10 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { toClassNames } from '../utils'
 
 const TableRow = ({ indent, className, children, ...others }) => (
-  <div className={[className, 'table-row', indent ? 'indent' : ''].join(' ')} {...others}>{children}</div>
+  <div className={toClassNames(className, 'table-row', indent ? 'indent' : '')} {...others}>{children}</div>
 )
 
 TableRow.propTypes = {

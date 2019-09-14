@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../utils'
 import { isUndefined } from '../../utils/utils'
 import { valueToInt } from '../../themes/utils'
 import { Nav } from '../nav'
@@ -107,7 +107,7 @@ export class HeaderBase extends React.Component {
         fluid={fluid}
         stuck={stuck}
         variant={variant}
-        className={(className, stuck ? 'stuck' : '')}
+        className={toClassNames(className, stuck ? 'stuck' : '')}
         {...others}
       >
         {children}

@@ -4,6 +4,7 @@ import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { rgb } from '../../themes/utils'
+import { toClassNames } from '../utils'
 
 const rowStyle = (extra = '') => {
   return css`
@@ -100,7 +101,7 @@ const Table = ({ breakpoint, responsive, minWidth, variant, className, children,
       responsive={responsive}
       minWidth={minWidth}
       variant={variant}
-      className={(className, 'table')}
+      className={toClassNames(className, 'table')}
       {...others}
     >
       {children}

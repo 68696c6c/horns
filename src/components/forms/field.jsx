@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
+import { toClassNames } from '../utils'
 
 const Styled = styled('div')`
   input:not([type='checkbox']):not([type='radio']):not([type='submit']), textarea {
@@ -16,7 +17,7 @@ const Styled = styled('div')`
 `
 
 const Field = ({ className, children, ...others }) => (
-  <Styled className={(className, 'field')} {...others}>{children}</Styled>
+  <Styled className={toClassNames(className, 'field')} {...others}>{children}</Styled>
 )
 
 Field.propTypes = {

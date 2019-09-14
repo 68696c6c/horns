@@ -5,6 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
 import uuid from 'uuid/v4'
+import { toClassNames } from '../utils'
 import Table from './table'
 import { GroupInline, Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
@@ -209,7 +210,7 @@ class DataTable extends React.Component {
     const start = (page - 1) * perPage + 1
     const end = start + perPage - 1
     return (
-      <StyledDataTable className={(className, 'data-table')} {...others}>
+      <StyledDataTable className={toClassNames(className, 'data-table')} {...others}>
         <StyledDataTableHeader>
           <GroupInline>
             <Select

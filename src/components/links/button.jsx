@@ -2,10 +2,11 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { toClassNames } from '../utils'
 import { StyledLinkButton } from './base'
 
 const LinkButton = ({ href, variant, className, children, ...others }) => (
-  <StyledLinkButton href={href} variant={variant} className={(className, 'button')} {...others}>
+  <StyledLinkButton href={href} variant={variant} className={toClassNames(className, 'button')} {...others}>
     {children}
   </StyledLinkButton>
 )
