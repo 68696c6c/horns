@@ -37,6 +37,11 @@ export {
 } from './components/charts'
 
 export {
+  DataTable,
+  DataTableAsync,
+} from './components/data-tables'
+
+export {
   Checkbox,
   Field,
   Fieldset,
@@ -119,8 +124,6 @@ export {
 } from './components/svg'
 
 export {
-  DataTable,
-  DataTableAsync,
   Table,
   TableCell,
   TableHead,
