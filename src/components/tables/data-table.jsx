@@ -193,15 +193,13 @@ class DataTable extends React.Component {
         })
       } else {
         total += 1
-        const bodyIndex = i - 1
-        body[bodyIndex] = []
+        body[i] = []
         columns.forEach(column => {
-          body[bodyIndex].push(column.props.children)
+          body[i].push(column.props.children)
         })
       }
     }
-    for (let i = 0; i < data.length; i += 1) {
-      const child = data[i]
+    data.forEach((child, i) => {
       if (isArray(child)) {
         child.forEach((c, ci) => {
           handleRow(c, ci)
@@ -209,7 +207,7 @@ class DataTable extends React.Component {
       } else if (isArray(child.props.children)) {
         handleRow(child, i)
       }
-    }
+    })
     return { total, head, body }
   }
 
@@ -247,15 +245,11 @@ class DataTable extends React.Component {
               </TableCell>
             ))}
           </TableHead>
-          {rows.map(row => {
-            return (
-              <TableRow key={uuid()}>
-                {row.map(column => {
-                  return <TableCell key={uuid()}>{column}</TableCell>
-                })}
-              </TableRow>
-            )
-          })}
+          {rows.map(row => (
+            <TableRow key={uuid()}>
+              {row.map(column => <TableCell key={uuid()}>{column}</TableCell>)}
+            </TableRow>
+          ))}
         </Table>
         <StyledDataTableFooter>
           <GroupInline>
