@@ -38,8 +38,8 @@ class Pagination extends React.Component {
 
     this.previous = this.previous.bind(this)
     this.next = this.next.bind(this)
-    this.getLinks = this.getLinks.bind(this)
     this.setPage = this.setPage.bind(this)
+    this.getLinks = this.getLinks.bind(this)
   }
 
   previous() {
@@ -66,8 +66,15 @@ class Pagination extends React.Component {
     })
   }
 
+  setPage(event) {
+    const newPage = parseInt(event.target.dataset.page, 10)
+    this.props.onChange(newPage, newPages => {
+      const links = this.getLinks(newPage, newPages)
+      this.setState({ links, pages: newPages, page: newPage })
+    })
+  }
+
   getLinks(page, pages) {
-    const { variant } = this.props
     const links = []
     const half = Math.floor(pages / 2)
     let start = 1
@@ -80,38 +87,33 @@ class Pagination extends React.Component {
       end = page + half
     }
     for (let i = start; i <= end; i += 1) {
-      const active = i === page
-      links.push(
-        <StyledItem
-          key={uuid()}
-          data-page={i}
-          active={active}
-          variant={variant}
-          onClick={this.setPage}
-        >
-          {i}
-        </StyledItem>
-      )
+      links.push(i)
     }
     return links
   }
 
-  setPage(event) {
-    const newPage = parseInt(event.target.dataset.page, 10)
-    this.props.onChange(newPage, newPages => {
-      const links = this.getLinks(newPage, newPages)
-      this.setState({ links, pages: newPages, page: newPage })
-    })
-  }
-
   render() {
+    const { page, links } = this.state
     const { variant, className, ...others } = this.props
     return (
       <Styled className={toClassNames(className, 'pagination')} {...others}>
         <StyledItem onClick={this.previous} variant={variant}>
           Previous
         </StyledItem>
-        {this.state.links}
+        {links.map(i => {
+          const active = i === page
+          return (
+            <StyledItem
+              key={uuid()}
+              data-page={i}
+              active={active}
+              variant={variant}
+              onClick={this.setPage}
+            >
+              {i}
+            </StyledItem>
+          )
+        })}
         <StyledItem onClick={this.next} variant={variant}>
           Next
         </StyledItem>
