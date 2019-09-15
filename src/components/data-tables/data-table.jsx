@@ -345,6 +345,7 @@ class DataTable extends React.Component {
         <StyledDataTableControls>
           <InlineText>{`Showing ${start} through ${displayEnd} of ${total} entries`}</InlineText>
           <Pagination
+            key={uuid()}
             pages={pages}
             page={page}
             onChange={this.handlePaginate}
