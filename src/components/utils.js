@@ -146,4 +146,7 @@ export const gradientRadialCSS = (color1, color2) => {
   return css`radial-gradient(${rgb(color1)}, ${rgb(color2)})`
 }
 
-export const toClassNames = (...values) => values.join(' ')
+export const toClassNames = (...values) => values.join(' ').trim()
+
+export const isReactFragment = v =>
+  v.type ? v.type === React.Fragment : v === React.Fragment

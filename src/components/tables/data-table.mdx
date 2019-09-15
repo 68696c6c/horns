@@ -10,283 +10,68 @@ import RefExample from './ref-example'
 import TableCell from './table-cell'
 import TableHead from './table-head'
 import TableRow from './table-row'
+import getDataTableStaticData from './data-table-static-data'
 import filterRows from '../_demo/data-table-async-data'
 
 # DataTable
 
 <Playground>
+  <h3>DataTable with body as an array</h3>
   <DataTable>
     <TableHead>
       <TableCell>First Name</TableCell>
       <TableCell>Last Name</TableCell>
       <TableCell>Email</TableCell>
     </TableHead>
-    {[1, 2, 3, 4, 5].map(o => {
-      console.log('item', o)
-      return (
-        <TableRow key="example">
-          <TableCell>Testy</TableCell>
-          <TableCell>McGee</TableCell>
-          <TableCell>testy.mgee@example.com</TableCell>
-        </TableRow>
-      )
-    })}
+    {['One', 'Two', 'Three', 'Four', 'Five'].map(o => (
+      <TableRow key="example">
+        <TableCell>Example</TableCell>
+        <TableCell>{o}</TableCell>
+        <TableCell>{`${o}@example.com`}</TableCell>
+      </TableRow>
+    ))}
   </DataTable>
+  
+  <h3>DataTable with body as an array of objects.</h3>
   <DataTable>
     <TableHead>
       <TableCell>First Name</TableCell>
       <TableCell>Last Name</TableCell>
-      <TableCell>Email</TableCell>
+    </TableHead>
+    {[
+      { 'First Name': 'First1', 'Last Name': 'Last1' },
+      { 'First Name': 'First2', 'Last Name': 'Last2' },
+      { 'First Name': 'First3', 'Last Name': 'Last3' },
+    ].map(o => (
+      <TableRow key="example">
+        <TableCell>{o['First Name']}</TableCell>
+        <TableCell>{o['Last Name']}</TableCell>
+      </TableRow>
+    ))}
+  </DataTable>
+  
+  <h3>DataTable with body of components in a React.Fragment</h3>
+  <DataTable>
+    {getDataTableStaticData()}
+  </DataTable>
+  
+  <h3>DataTable with body as static components</h3>
+  <DataTable>
+    <TableHead>
+      <TableCell>First Name</TableCell>
+      <TableCell>Last Name</TableCell>
     </TableHead>
     <TableRow>
-      <TableCell>Testy</TableCell>
-      <TableCell>McGee</TableCell>
-      <TableCell>testy.mcgee@example.com</TableCell>
+      <TableCell>First</TableCell>
+      <TableCell>Example</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Bob</TableCell>
-      <TableCell>Guff</TableCell>
-      <TableCell>bob.guff@example.com</TableCell>
+      <TableCell>Second</TableCell>
+      <TableCell>Example</TableCell>
     </TableRow>
     <TableRow>
-      <TableCell>Maynard James</TableCell>
-      <TableCell>Keenan</TableCell>
-      <TableCell>maynard.keenan@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Adam</TableCell>
-      <TableCell>Jones</TableCell>
-      <TableCell>adam.jones@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Justin</TableCell>
-      <TableCell>Chancellor</TableCell>
-      <TableCell>justin.chancellor@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Danny</TableCell>
-      <TableCell>Carey</TableCell>
-      <TableCell>danny.carey@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jens</TableCell>
-      <TableCell>Kidman</TableCell>
-      <TableCell>jens.kidman@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Fredrik</TableCell>
-      <TableCell>Thordendal</TableCell>
-      <TableCell>fredrik.thordendal@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Mårten</TableCell>
-      <TableCell>Hagström</TableCell>
-      <TableCell>mårten.hagström@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dick</TableCell>
-      <TableCell>Lövgren</TableCell>
-      <TableCell>dick.lövgren@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Tomas</TableCell>
-      <TableCell>Haake</TableCell>
-      <TableCell>tomas.haake@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Randy</TableCell>
-      <TableCell>Blythe</TableCell>
-      <TableCell>randy.blythe@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Mark</TableCell>
-      <TableCell>Morton</TableCell>
-      <TableCell>mark.morton@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Willie</TableCell>
-      <TableCell>Adler</TableCell>
-      <TableCell>willie.adler@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>John</TableCell>
-      <TableCell>Campbell</TableCell>
-      <TableCell>john.campbell@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Chris</TableCell>
-      <TableCell>Adler</TableCell>
-      <TableCell>chris.adler@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Aaron</TableCell>
-      <TableCell>Turner</TableCell>
-      <TableCell>aaron.turner@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Michael</TableCell>
-      <TableCell>Gallagher</TableCell>
-      <TableCell>michael.gallagher@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bryant Clifford</TableCell>
-      <TableCell>Meyer</TableCell>
-      <TableCell>bryant.meyer@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jeff</TableCell>
-      <TableCell>Caxide</TableCell>
-      <TableCell>jeff.caxide@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Aaron</TableCell>
-      <TableCell>Harris</TableCell>
-      <TableCell>aaron.harris@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Phillip</TableCell>
-      <TableCell>Fry</TableCell>
-      <TableCell>phillip.fry@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Amy</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>amy.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Inez</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>inez.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Leo</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>leo.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hubert</TableCell>
-      <TableCell>Farnsworth</TableCell>
-      <TableCell>hubert.farnsworth@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hermes</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>hermes.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dwight</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>dwight.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>LaBarbara</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>labarbara.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Zapp</TableCell>
-      <TableCell>Brannigan</TableCell>
-      <TableCell>zapp.brannigan@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Kif</TableCell>
-      <TableCell>Kroker</TableCell>
-      <TableCell>kif.kroker@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Leela</TableCell>
-      <TableCell>turanga.leela@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Morris</TableCell>
-      <TableCell>turanga.morris@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Munda</TableCell>
-      <TableCell>turanga.munda@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bender</TableCell>
-      <TableCell>Rodriguez</TableCell>
-      <TableCell>bender.rodriguez@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>John</TableCell>
-      <TableCell>Zoidberg</TableCell>
-      <TableCell>john.zoidberg@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Lord</TableCell>
-      <TableCell>Nibbler</TableCell>
-      <TableCell>lord.nibbler@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Ogden</TableCell>
-      <TableCell>Wernstrom</TableCell>
-      <TableCell>ogden.wernstrom@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Barbados</TableCell>
-      <TableCell>Slim</TableCell>
-      <TableCell>barbados.slim@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Warden</TableCell>
-      <TableCell>Vogel</TableCell>
-      <TableCell>warden.vogel@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bubblegum</TableCell>
-      <TableCell>Tate</TableCell>
-      <TableCell>bubblegum.tate@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hank</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>hank.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Peggy</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>peggy.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bobby</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>bobby.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Cotton</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>cotton.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dale</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>dale.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Nancy</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>nancy.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Joseph</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>joseph.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jeff</TableCell>
-      <TableCell>Boomhauer</TableCell>
-      <TableCell>jeff.Boomhauer@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bill</TableCell>
-      <TableCell>Dauterive</TableCell>
-      <TableCell>bill.dauterive@kingofthehill.com</TableCell>
+      <TableCell>Third</TableCell>
+      <TableCell>Example</TableCell>
     </TableRow>
   </DataTable>
 </Playground>
@@ -299,260 +84,6 @@ import filterRows from '../_demo/data-table-async-data'
 
 <Playground>
   <DataTable perPage={25}>
-    <TableHead>
-      <TableCell>First Name</TableCell>
-      <TableCell>Last Name</TableCell>
-      <TableCell>Email</TableCell>
-    </TableHead>
-    <TableRow>
-      <TableCell>Testy</TableCell>
-      <TableCell>McGee</TableCell>
-      <TableCell>testy.mcgee@example.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bob</TableCell>
-      <TableCell>Guff</TableCell>
-      <TableCell>bob.guff@example.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Maynard James</TableCell>
-      <TableCell>Keenan</TableCell>
-      <TableCell>maynard.keenan@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Adam</TableCell>
-      <TableCell>Jones</TableCell>
-      <TableCell>adam.jones@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Justin</TableCell>
-      <TableCell>Chancellor</TableCell>
-      <TableCell>justin.chancellor@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Danny</TableCell>
-      <TableCell>Carey</TableCell>
-      <TableCell>danny.carey@tool.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jens</TableCell>
-      <TableCell>Kidman</TableCell>
-      <TableCell>jens.kidman@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Fredrik</TableCell>
-      <TableCell>Thordendal</TableCell>
-      <TableCell>fredrik.thordendal@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Mårten</TableCell>
-      <TableCell>Hagström</TableCell>
-      <TableCell>mårten.hagström@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dick</TableCell>
-      <TableCell>Lövgren</TableCell>
-      <TableCell>dick.lövgren@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Tomas</TableCell>
-      <TableCell>Haake</TableCell>
-      <TableCell>tomas.haake@meshuggah.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Randy</TableCell>
-      <TableCell>Blythe</TableCell>
-      <TableCell>randy.blythe@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Mark</TableCell>
-      <TableCell>Morton</TableCell>
-      <TableCell>mark.morton@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Willie</TableCell>
-      <TableCell>Adler</TableCell>
-      <TableCell>willie.adler@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>John</TableCell>
-      <TableCell>Campbell</TableCell>
-      <TableCell>john.campbell@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Chris</TableCell>
-      <TableCell>Adler</TableCell>
-      <TableCell>chris.adler@lambofgod.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Aaron</TableCell>
-      <TableCell>Turner</TableCell>
-      <TableCell>aaron.turner@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Michael</TableCell>
-      <TableCell>Gallagher</TableCell>
-      <TableCell>michael.gallagher@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bryant Clifford</TableCell>
-      <TableCell>Meyer</TableCell>
-      <TableCell>bryant.meyer@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jeff</TableCell>
-      <TableCell>Caxide</TableCell>
-      <TableCell>jeff.caxide@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Aaron</TableCell>
-      <TableCell>Harris</TableCell>
-      <TableCell>aaron.harris@isis.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Phillip</TableCell>
-      <TableCell>Fry</TableCell>
-      <TableCell>phillip.fry@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Amy</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>amy.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Inez</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>inez.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Leo</TableCell>
-      <TableCell>Wong</TableCell>
-      <TableCell>leo.wong@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hubert</TableCell>
-      <TableCell>Farnsworth</TableCell>
-      <TableCell>hubert.farnsworth@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hermes</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>hermes.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dwight</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>dwight.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>LaBarbara</TableCell>
-      <TableCell>Conrad</TableCell>
-      <TableCell>labarbara.conrad@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Zapp</TableCell>
-      <TableCell>Brannigan</TableCell>
-      <TableCell>zapp.brannigan@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Kif</TableCell>
-      <TableCell>Kroker</TableCell>
-      <TableCell>kif.kroker@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Leela</TableCell>
-      <TableCell>turanga.leela@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Morris</TableCell>
-      <TableCell>turanga.morris@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Turanga</TableCell>
-      <TableCell>Munda</TableCell>
-      <TableCell>turanga.munda@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bender</TableCell>
-      <TableCell>Rodriguez</TableCell>
-      <TableCell>bender.rodriguez@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>John</TableCell>
-      <TableCell>Zoidberg</TableCell>
-      <TableCell>john.zoidberg@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Lord</TableCell>
-      <TableCell>Nibbler</TableCell>
-      <TableCell>lord.nibbler@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Ogden</TableCell>
-      <TableCell>Wernstrom</TableCell>
-      <TableCell>ogden.wernstrom@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Barbados</TableCell>
-      <TableCell>Slim</TableCell>
-      <TableCell>barbados.slim@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Warden</TableCell>
-      <TableCell>Vogel</TableCell>
-      <TableCell>warden.vogel@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bubblegum</TableCell>
-      <TableCell>Tate</TableCell>
-      <TableCell>bubblegum.tate@futurama.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Hank</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>hank.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Peggy</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>peggy.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bobby</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>bobby.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Cotton</TableCell>
-      <TableCell>Hill</TableCell>
-      <TableCell>cotton.hill@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Dale</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>dale.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Nancy</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>nancy.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Joseph</TableCell>
-      <TableCell>Gribble</TableCell>
-      <TableCell>joseph.gribble@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Jeff</TableCell>
-      <TableCell>Boomhauer</TableCell>
-      <TableCell>jeff.Boomhauer@kingofthehill.com</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Bill</TableCell>
-      <TableCell>Dauterive</TableCell>
-      <TableCell>bill.dauterive@kingofthehill.com</TableCell>
-    </TableRow>
+    {getDataTableStaticData()}
   </DataTable>
 </Playground>

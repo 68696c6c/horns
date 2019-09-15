@@ -10,7 +10,10 @@ import Pagination from './pagination'
 # Pagination
 
 <Playground>
-  <Pagination pages={10} page={1} onChange={page => console.log(page)} />
+  <Pagination pages={10} page={1} onChange={(page, callback) => {
+    console.log(page)
+    callback(10)
+  }} />
 </Playground>
 
 ## Props

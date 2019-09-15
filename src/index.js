@@ -133,6 +133,7 @@ export {
   HeadingHero,
   HeadingSection,
   HeadingSectionSub,
+  InlineText,
 } from './components/typography'
 
 export {

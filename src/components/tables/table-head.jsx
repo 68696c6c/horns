@@ -2,14 +2,14 @@
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
-import { toClassNames } from '../utils'
+import { font, toClassNames } from '../utils'
 
 import StyledTableRow from './table-row'
 
 const StyledTableHead = styled(StyledTableRow)`
   .table-cell {
-    font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
     text-transform: uppercase;
+    ${({ theme }) => font(theme, 'default', 'bold')};
   }
 `
 

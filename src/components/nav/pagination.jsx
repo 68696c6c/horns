@@ -5,14 +5,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { rgb } from '../../themes/utils'
-import { toClassNames } from '../utils'
+import { font, toClassNames } from '../utils'
 
 const StyledItem = styled('a')`
-  padding: .1em .5em;
+  padding: 0.1em 0.5em;
   cursor: pointer;
-  border: 1px solid ${({ active, theme, variant }) => active ? rgb(theme.colors[variant].light) : 'transparent'};
+  border: 1px solid
+    ${({ active, theme, variant }) =>
+      active ? rgb(theme.colors[variant].light) : 'transparent'};
   border-radius: ${({ theme }) => theme.config.radius};
-  margin: 0 .1em;
+  margin: 0 0.1em;
+  ${({ theme }) => font(theme)};
   &:hover {
     background: ${({ theme, variant }) => rgb(theme.colors[variant].alpha)};
   }
@@ -25,10 +28,12 @@ class Pagination extends React.Component {
   constructor(props) {
     super(props)
 
+    const { page, pages } = props
+    const links = this.getLinks(page, pages)
     this.state = {
-      page: props.page,
-      pages: props.pages,
-      links: [],
+      page,
+      pages,
+      links,
     }
 
     this.previous = this.previous.bind(this)
@@ -37,75 +42,79 @@ class Pagination extends React.Component {
     this.setPage = this.setPage.bind(this)
   }
 
-  componentDidMount() {
-    const links = this.getLinks(this.state.page, this.state.pages)
-    this.setState(() => ({ links }))
-  }
-
   previous() {
-    if (this.state.page === 1) {
+    const { page } = this.state
+    if (page === 1) {
       return
     }
-    this.setState(prevState => {
-      const page = prevState.page - 1
-      return {
-        page,
-        links: this.getLinks(page, prevState.pages),
-      }
-    }, () => this.props.onChange(this.state.page))
+    const newPage = page - 1
+    this.props.onChange(newPage, newPages => {
+      const links = this.getLinks(newPage, newPages)
+      this.setState({ links, pages: newPages, page: newPage })
+    })
   }
 
   next() {
-    if (this.state.page === this.state.pages) {
+    const { page, pages } = this.state
+    if (page === pages) {
       return
     }
-    this.setState(prevState => {
-      const page = prevState.page + 1
-      return {
-        page,
-        links: this.getLinks(page, prevState.pages),
-      }
-    }, () => this.props.onChange(this.state.page))
+    const newPage = page + 1
+    this.props.onChange(newPage, newPages => {
+      const links = this.getLinks(newPage, newPages)
+      this.setState({ links, pages: newPages, page: newPage })
+    })
   }
 
   getLinks(page, pages) {
-    const { items, variant } = this.props
-    const max = items > pages ? pages : items
-    let links = []
-    const half = Math.floor(max / 2)
+    const { variant } = this.props
+    const links = []
+    const half = Math.floor(pages / 2)
     let start = 1
-    let end = max
+    let end = pages
     if (page >= pages - half) {
-      start = pages - max <= 0 ? 1 : pages - max
+      start = pages - pages <= 0 ? 1 : 0
       end = pages
     } else if (page > half) {
       start = page - half <= 0 ? 1 : page - half
       end = page + half
     }
-    for (let i = start; i <= end; i++) {
+    for (let i = start; i <= end; i += 1) {
       const active = i === page
-      links.push(<StyledItem key={uuid()} data-page={i} active={active} variant={variant} onClick={this.setPage}>{i}</StyledItem>)
+      links.push(
+        <StyledItem
+          key={uuid()}
+          data-page={i}
+          active={active}
+          variant={variant}
+          onClick={this.setPage}
+        >
+          {i}
+        </StyledItem>
+      )
     }
     return links
   }
 
   setPage(event) {
-    const page = parseInt(event.target.dataset.page)
-    this.setState(prevState => {
-      return {
-        page,
-        links: this.getLinks(page, prevState.pages),
-      }
-    }, () => this.props.onChange(this.state.page))
+    const newPage = parseInt(event.target.dataset.page, 10)
+    this.props.onChange(newPage, newPages => {
+      const links = this.getLinks(newPage, newPages)
+      this.setState({ links, pages: newPages, page: newPage })
+    })
   }
 
   render() {
     const { variant, className, ...others } = this.props
     return (
       <Styled className={toClassNames(className, 'pagination')} {...others}>
-        <StyledItem onClick={this.previous} variant={variant}>Previous</StyledItem>
+        <StyledItem onClick={this.previous} variant={variant}>
+          Previous
+        </StyledItem>
         {this.state.links}
-        <StyledItem onClick={this.next} variant={variant}>Next</StyledItem>
+        <StyledItem onClick={this.next} variant={variant}>
+          Next
+        </StyledItem>
       </Styled>
     )
   }
@@ -126,12 +135,10 @@ Pagination.propTypes = {
   ]),
   pages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
-  items: PropTypes.number,
   onChange: PropTypes.func.isRequired,
 }
 
 Pagination.defaultProps = {
-  items: 6,
   variant: 'neutral',
 }
 

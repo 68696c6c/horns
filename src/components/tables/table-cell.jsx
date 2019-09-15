@@ -3,12 +3,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
-import { toClassNames } from '../utils'
+import { font, toClassNames } from '../utils'
 
 const StyledTableCell = styled('div')`
   padding: ${({ theme }) => theme.spacing.xsmall};
-  ${({ theme, head }) => head && `font-weight: ${theme.typography.fonts.bold.weight};`};
   ${({ format }) => format === 'number' ? `text-align: right;` : ``};
+  ${({ theme, head }) => font(theme, 'default', head ? 'bold' : 'default')};
 `
 
 const TableCell = ({ className, children, ...others }) => (
