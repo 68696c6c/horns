@@ -6,7 +6,6 @@ const safeGetValue = (config, key, defaultValue) => {
 
 class ThemeConfig {
   constructor(config = {}) {
-
     // @TODO get default values from a config file.
     this.headingMargin = safeGetValue(config, 'headingMargin', '.75rem 0')
     this.gap = safeGetValue(config, 'gap', '15px')

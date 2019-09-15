@@ -11,8 +11,8 @@ const baseInput = theme =>
     color: ${rgb(theme.colors.copy.dark)};
     border: 2px solid ${rgb(theme.colors.neutral.dark)};
     border-radius: ${theme.config.radius};
-    margin: 0 0 ${theme.spacing.small} 0;
-    padding: ${theme.spacing.xsmall};
+    margin: 0 0 ${theme.spacing.tiny} 0;
+    padding: ${theme.spacing.tiny} ${theme.spacing.xsmall};
     ${font(theme)};
     &.${ERROR_CLASS} {
       border: 2px solid ${rgb(theme.colors.danger.default)};
