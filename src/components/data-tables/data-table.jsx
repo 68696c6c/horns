@@ -1,14 +1,8 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
 import uuid from 'uuid/v4'
 
 import { InlineText } from '../typography'
-import { Input, Select } from '../forms'
-import Pagination from '../nav/pagination'
 import { toClassNames, isReactFragment } from '../utils'
 import {
   debounce,
@@ -16,72 +10,9 @@ import {
   isArray,
   isUndefined,
 } from '../../utils/utils'
+import { TableHead, TableCell, TableRow } from '../tables'
 
-import { Table, TableHead, TableCell, TableRow } from '../tables'
-
-import DataTableBase from './base'
-
-const SORT_ASC = 'asc'
-const SORT_DESC = 'desc'
-
-// This component is for content that slides out under/between rows in a DataTable.
-// @TODO implement this.
-export const DataTableRowData = ({ children, className, ...others }) => {
-  const style = css`
-    padding: 1em;
-    width: 100%;
-  `
-  return (
-    <div className={('row-info', className, style)} {...others}>
-      {children}
-    </div>
-  )
-}
-
-const StyledDataTable = styled('div')``
-
-const StyledDataTableControls = styled('div')`
-  margin-top: ${({ theme }) => theme.spacing.small};
-  display: flex;
-  justify-content: space-between;
-`
-
-const StyledSortIcon = styled('a')`
-  cursor: pointer;
-  display: flex;
-  font-size: 1em;
-  line-height: 1em;
-  margin-right: 2px;
-`
-
-const StyledDataTableField = styled('div')``
-
-const StyledHeaderCellContent = styled('span')`
-  display: flex;
-  align-items: center;
-  strong {
-    font-size: 1em;
-    line-height: 1em;
-    display: block;
-  }
-`
-
-const SortIcon = ({ active, direction, ...others }) => {
-  let icon = <FaSort />
-  if (active && direction === SORT_ASC) {
-    icon = <FaSortUp />
-  } else if (active && direction === SORT_DESC) {
-    icon = <FaSortDown />
-  }
-  return (
-    <StyledSortIcon
-      className={toClassNames('sort', active ? 'active' : '')}
-      {...others}
-    >
-      {icon}
-    </StyledSortIcon>
-  )
-}
+import DataTableBase, { SORT_ASC, SORT_DESC, SortIcon, StyledHeaderCellContent } from './base'
 
 // @TODO add support for sorting by columns
 // @TODO add better theming and variants
@@ -322,7 +253,29 @@ function withStaticData(Component) {
           perPageRef={this.perPageRef}
           paginationKey={paginationKey}
           {...others}
-        />
+        >
+          <TableHead>
+            {head.map((column, index) => (
+              <TableCell key={uuid()} data-index={index}>
+                <StyledHeaderCellContent>
+                  <SortIcon
+                    active={sortColumnIndex === index}
+                    direction={sortDir}
+                    onClick={this.handleSort}
+                  />
+                  <InlineText weight="bold">{column}</InlineText>
+                </StyledHeaderCellContent>
+              </TableCell>
+            ))}
+          </TableHead>
+          {rows.map(row => (
+            <TableRow key={uuid()}>
+              {row.map(column => (
+                <TableCell key={uuid()}>{column}</TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </Component>
       )
     }
   }

@@ -6,14 +6,14 @@ menu: Tables
 import { Playground, Props } from 'docz'
 
 import DataTableAsync from './data-table-async'
+import { RefExampleAsync } from './ref-example'
 import filterRows from '../_demo/data-table-async-data'
 
 # DataTableAsync
 
 <Playground>
   <DataTableAsync 
-    perPage={100} 
-    filterRows={filterRows} 
+    filterRows={filterRows}
     onClick={event => {
       console.log('click', event.target, event.target.parentElement.dataset.key)
     }} 
@@ -28,4 +28,10 @@ import filterRows from '../_demo/data-table-async-data'
 
 <Playground>
   <DataTableAsync perPage={25} filterRows={filterRows} />
+</Playground>
+
+## Controlled through a ref
+
+<Playground>
+  <RefExampleAsync filterRows={filterRows} />
 </Playground>

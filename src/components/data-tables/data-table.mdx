@@ -6,7 +6,7 @@ menu: Tables
 import { Playground, Props } from 'docz'
 
 import DataTable from './data-table'
-import RefExample from './ref-example'
+import { RefExample } from './ref-example'
 import { TableHead, TableCell, TableRow } from '../tables'
 import getDataTableStaticData from './data-table-static-data'
 import filterRows from '../_demo/data-table-async-data'
@@ -84,4 +84,27 @@ import filterRows from '../_demo/data-table-async-data'
   <DataTable perPage={25}>
     {getDataTableStaticData()}
   </DataTable>
+</Playground>
+
+## Controlled through a ref
+
+<Playground>
+  <RefExample>
+    <TableHead>
+      <TableCell>First Name</TableCell>
+      <TableCell>Last Name</TableCell>
+    </TableHead>
+    <TableRow>
+      <TableCell>First</TableCell>
+      <TableCell>Example</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Second</TableCell>
+      <TableCell>Example</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell>Third</TableCell>
+      <TableCell>Example</TableCell>
+    </TableRow>
+  </RefExample>
 </Playground>

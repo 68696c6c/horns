@@ -1,7 +1,8 @@
 import React from 'react'
 import DataTable from './data-table'
+import DataTableAsync from './data-table-async'
 
-class RefExample extends React.Component {
+export class RefExample extends React.Component {
   constructor(props) {
     super(props)
     this.tableRef = React.createRef()
@@ -10,20 +11,41 @@ class RefExample extends React.Component {
 
   update() {
     console.log('ref', this.tableRef.current)
-    this.tableRef.current.getRows()
   }
 
   render() {
+    const { children } = this.props
     return (
-      <React.Fragment>
-        <button onClick={this.update}>Update Table</button>
-        <DataTable
-          ref={this.tableRef}
-          filterRows={this.props.filterRows}
-        />
-      </React.Fragment>
+      <>
+        <button type="button" onClick={this.update}>console.log ref</button>
+        <DataTable ref={this.tableRef}>{children}</DataTable>
+      </>
     )
   }
 }
 
-export default RefExample
+export class RefExampleAsync extends React.Component {
+  constructor(props) {
+    super(props)
+    this.tableRef = React.createRef()
+    this.update = this.update.bind(this)
+  }
+
+  update() {
+    console.log('ref', this.tableRef.current)
+    this.tableRef.current.refresh()
+  }
+
+  render() {
+    const { filterRows } = this.props
+    return (
+      <>
+        <button type="button" onClick={this.update}>console.log ref</button>
+        <DataTableAsync
+          ref={this.tableRef}
+          filterRows={filterRows}
+        />
+      </>
+    )
+  }
+}

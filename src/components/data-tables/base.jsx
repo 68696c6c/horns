@@ -5,17 +5,15 @@ import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
-import uuid from 'uuid/v4'
 
 import { InlineText } from '../typography'
 import { Input, Select } from '../forms'
 import Pagination from '../nav/pagination'
 import { toClassNames } from '../utils'
+import { Table } from '../tables'
 
-import { Table, TableHead, TableCell, TableRow } from '../tables'
-
-const SORT_ASC = 'asc'
-const SORT_DESC = 'desc'
+export const SORT_ASC = 'asc'
+export const SORT_DESC = 'desc'
 
 // This component is for content that slides out under/between rows in a DataTable.
 // @TODO implement this.
@@ -49,7 +47,7 @@ const StyledSortIcon = styled('a')`
 
 const StyledDataTableField = styled('div')``
 
-const StyledHeaderCellContent = styled('span')`
+export const StyledHeaderCellContent = styled('span')`
   display: flex;
   align-items: center;
   strong {
@@ -59,7 +57,7 @@ const StyledHeaderCellContent = styled('span')`
   }
 `
 
-const SortIcon = ({ active, direction, ...others }) => {
+export const SortIcon = ({ active, direction, ...others }) => {
   let icon = <FaSort />
   if (active && direction === SORT_ASC) {
     icon = <FaSortUp />
@@ -77,6 +75,7 @@ const SortIcon = ({ active, direction, ...others }) => {
 }
 
 const DataTableBase = ({
+  children,
   handlePageSize,
   handleFilter,
   handleSort,
@@ -125,27 +124,7 @@ const DataTableBase = ({
         </StyledDataTableField>
       </StyledDataTableControls>
       <Table className="data-table-table" responsive="scroll">
-        <TableHead>
-          {head.map((column, index) => (
-            <TableCell key={uuid()} data-index={index}>
-              <StyledHeaderCellContent>
-                <SortIcon
-                  active={sortColumnIndex === index}
-                  direction={sortDir}
-                  onClick={handleSort}
-                />
-                <InlineText weight="bold">{column}</InlineText>
-              </StyledHeaderCellContent>
-            </TableCell>
-          ))}
-        </TableHead>
-        {rows.map(row => (
-          <TableRow key={uuid()}>
-            {row.map(column => (
-              <TableCell key={uuid()}>{column}</TableCell>
-            ))}
-          </TableRow>
-        ))}
+        {children}
       </Table>
       <StyledDataTableControls>
         <InlineText>{`Showing ${start} through ${end} of ${total} entries`}</InlineText>

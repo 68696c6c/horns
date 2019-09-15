@@ -266,7 +266,8 @@ const filterRows = (state, callback) => {
         i1 = 1
         i2 = -1
       }
-      const sortProp = Object.keys(ROWS[0])[sortColumnIndex]
+      // The first row in the data has an example dataset key, so the column index is off by one.
+      const sortProp = Object.keys(ROWS[1])[sortColumnIndex]
       ROWS.sort((a, b) => {
         const aValue = a[sortProp]
         const bValue = b[sortProp]
@@ -290,7 +291,7 @@ const filterRows = (state, callback) => {
     const data = result.slice(start, end)
     const pagination = { page, perPage, pages, total }
     return callback({ data, pagination })
-  }, 1000)
+  }, 500)
 }
 
 export default filterRows
