@@ -21,6 +21,23 @@ import filterRows from '../_demo/data-table-async-data'
       <TableCell>Last Name</TableCell>
       <TableCell>Email</TableCell>
     </TableHead>
+    {[1, 2, 3, 4, 5].map(o => {
+      console.log('order', o)
+      return (
+        <TableRow key="example">
+          <TableCell>Testy</TableCell>
+          <TableCell>McGee</TableCell>
+          <TableCell>testy.mgee@example.com</TableCell>
+        </TableRow>
+      )
+    })}
+  </DataTable>
+  <DataTable>
+    <TableHead>
+      <TableCell>First Name</TableCell>
+      <TableCell>Last Name</TableCell>
+      <TableCell>Email</TableCell>
+    </TableHead>
     <TableRow>
       <TableCell>Testy</TableCell>
       <TableCell>McGee</TableCell>

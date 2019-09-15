@@ -183,22 +183,31 @@ class DataTable extends React.Component {
 
   getRowHTMLData(data) {
     let total = 0
-    let head = []
-    let body = []
-    for (let i = 0; i < data.length; i++) {
-      const child = data[i]
-      const columns = isArray(child.props.children) ? child.props.children : [child.props.children]
+    const head = []
+    const body = []
+    const handleRow = (child, i) => {
+      const columns = child.props.children
       if (child.type.displayName === 'TableHead' || child.type.name === 'TableHead') {
         columns.forEach(column => {
           head.push(column.props.children)
         })
       } else {
-        total++
+        total += 1
         const bodyIndex = i - 1
         body[bodyIndex] = []
         columns.forEach(column => {
           body[bodyIndex].push(column.props.children)
         })
+      }
+    }
+    for (let i = 0; i < data.length; i += 1) {
+      const child = data[i]
+      if (isArray(child)) {
+        child.forEach((c, ci) => {
+          handleRow(c, ci)
+        })
+      } else if (isArray(child.props.children)) {
+        handleRow(child, i)
       }
     }
     return { total, head, body }
