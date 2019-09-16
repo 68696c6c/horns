@@ -6,7 +6,7 @@ const baseButton = (theme, variant) => {
   const config = theme.buttons[variant]
   return css`
     display: inline-block;
-    padding: ${theme.spacing.xsmall} ${theme.spacing.small};
+    padding: ${theme.spacing.tiny} ${theme.spacing.xsmall};
     ${font(theme, 'default', config.font)};
     text-align: center;
     cursor: pointer;
