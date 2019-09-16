@@ -9,14 +9,14 @@ import { ERROR_CLASS } from '../utils'
 
 export const ToggleControl = styled('label')`
   content: ' ';
-  background: ${({ theme }) => rgb(theme.colors.light.default)};
+  background: ${({ theme }) => rgb(theme.inputs.backgroundColor)};
   display: inline-block;
   width: 1.2em;
   min-width: 1.2em;
   height: 1.2em;
   vertical-align: middle;
   margin: 0 ${({ theme }) => theme.spacing.xsmall} 0 ${({ theme }) => theme.spacing.tiny};
-  border: 2px solid ${({ theme }) => rgb(theme.colors.dark.default)};
+  border: ${({ theme }) => `${theme.inputs.borderWidth} solid ${rgb(theme.inputs.borderColor)}`};
   cursor: pointer;
   ${({ round }) => round ? 'border-radius: 50%;' : ''};
 `
@@ -71,13 +71,13 @@ export const Toggle = styled('input')`
     display: inline-block;
   }
   &:checked + label.toggle-control {
-    background: ${({ theme }) => rgb(theme.colors.primary.default)};
+    background: ${({ theme }) => rgb(theme.inputs.active)};
   }
   &.error + label.toggle-control {
-    border: 2px solid ${({ theme }) => rgb(theme.colors.danger.default)};
+    border-color: ${({ theme }) => rgb(theme.colors.danger.default)};
   }
   &:disabled + label.toggle-control {
-    background: ${({ theme }) => rgb(theme.colors.neutral.light)};
+    background: ${({ theme }) => rgb(theme.inputs.disabled)};
     cursor: not-allowed;
   }
   &:disabled + label.toggle-control + label.toggle-label {

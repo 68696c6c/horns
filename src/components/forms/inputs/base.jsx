@@ -3,19 +3,18 @@ import { rgb } from '../../../themes/utils'
 import { font } from '../../utils'
 import { ERROR_CLASS } from '../utils'
 
-// @TODO make border configurable
 const baseInput = theme =>
   css`
     display: block;
-    background: ${rgb(theme.colors.copy.light)};
-    color: ${rgb(theme.colors.copy.dark)};
-    border: 2px solid ${rgb(theme.colors.neutral.dark)};
+    background: ${rgb(theme.inputs.backgroundColor)};
+    color: ${rgb(theme.inputs.color)};
+    border: ${theme.inputs.borderWidth} solid ${rgb(theme.inputs.borderColor)};
     border-radius: ${theme.config.radius};
     margin: 0 0 ${theme.spacing.tiny} 0;
     padding: ${theme.spacing.tiny} ${theme.spacing.xsmall};
     ${font(theme)};
     &.${ERROR_CLASS} {
-      border: 2px solid ${rgb(theme.colors.danger.default)};
+      border: ${theme.inputs.borderWidth} solid ${rgb(theme.colors.danger.default)};
       &::placeholder {
         color: ${rgb(theme.colors.danger.default)};
       }

@@ -99,6 +99,17 @@ class ThemeConfig {
       activeBorderWidth: safeGetValue(configNavItems, 'activeBorderWidth', '2px'),
       activeBorderColor: safeGetValue(configNavItems, 'activeBorderColor', 'primary'),
     }
+
+    const inputs = safeGetValue(config, 'inputs', {})
+    this.inputs = {
+      borderWidth: safeGetValue(inputs, 'borderWidth', '2px'),
+      borderColor: safeGetValue(inputs, 'borderColor', 'neutral'),
+      color: safeGetValue(inputs, 'color', 'copy'),
+      backgroundColor: safeGetValue(inputs, 'backgroundColor', 'light'),
+      highlight: safeGetValue(inputs, 'highlight', 'neutral'),
+      active: safeGetValue(inputs, 'highlight', 'primary'),
+      disabled: safeGetValue(inputs, 'highlight', 'neutral'),
+    }
   }
 }
 

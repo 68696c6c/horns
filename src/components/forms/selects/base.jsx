@@ -17,7 +17,7 @@ export const StyledDropDownContainer = styled('div')`
   position: relative;
   ${({ theme }) => font(theme)};
   // Move the dropdown up the height of the input border.
-  top: -2px;
+  top: -${({ theme }) => theme.inputs.borderWidth};
 `
 export const StyledSelect = styled('div')`
   ${({ theme }) => baseInput(theme)};
@@ -35,11 +35,11 @@ export const StyledFilter = styled('input')`
 export const StyledDropDown = styled('ul')`
   display: ${({ open }) => open ? 'block' : 'none'};
   position: absolute;
-  background: ${({ theme }) => rgb(theme.colors.copy.light)};
-  border-left: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  border-right: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  border-bottom: 2px solid ${({ theme }) => rgb(theme.colors.neutral.dark)};
-  color: ${({ theme }) => rgb(theme.colors.copy.dark)};
+  background: ${({ theme }) => rgb(theme.inputs.backgroundColor)};
+  border-left: ${({ theme }) => `${theme.inputs.borderWidth} solid ${rgb(theme.inputs.borderColor)}`};
+  border-right: ${({ theme }) => `${theme.inputs.borderWidth} solid ${rgb(theme.inputs.borderColor)}`};
+  border-bottom: ${({ theme }) => `${theme.inputs.borderWidth} solid ${rgb(theme.inputs.borderColor)}`};
+  color: ${({ theme }) => rgb(theme.inputs.color)};
   border-radius: 0 0 ${({ theme }) => theme.config.radius} ${({ theme }) => theme.config.radius};
   margin: 0;
   padding: 0;
@@ -51,10 +51,10 @@ export const StyledDropDown = styled('ul')`
 `
 export const Option = styled('li')`
   ${({ theme }) => font(theme)};
-  padding: ${({ theme }) => theme.spacing.xsmall};
+  padding: ${({ theme }) => theme.spacing.tiny} ${({ theme }) => theme.spacing.xsmall};
   cursor: pointer;
   &:hover {
-    background: ${({ theme }) => rgb(theme.colors.neutral.alpha)};
+    background: ${({ theme }) => rgb(theme.inputs.highlight)};
   }
 `
 export const StyledSelectContainer = styled('div')`

@@ -25,6 +25,7 @@ class Theme {
     this.grid = this.getGrid()
     this.spacing = this.getSpacing()
     this.typography = this.getTypography()
+    this.inputs = this.getInputs()
 
     // These use values set above and must be called last.
     this.buttons = this.getButtons()
@@ -103,6 +104,19 @@ class Theme {
     }
   }
 
+  getInputs() {
+    const { inputs } = this.config
+    return {
+      borderWidth: inputs.borderWidth,
+      borderColor: this.colors[inputs.borderColor].default,
+      color: this.colors[inputs.color].default,
+      backgroundColor: this.colors[inputs.backgroundColor].default,
+      highlight: this.colors[inputs.highlight].alpha,
+      active: this.colors[inputs.active].default,
+      disabled: this.colors[inputs.disabled].default,
+    }
+  }
+
   // @TODO use a font config class
   makeFont(family, weight = 'default') {
     const { fontFamilies, fontWeights } = this.config
@@ -151,7 +165,7 @@ class Theme {
   // @TODO use a link config class
   makeLink(color, hover, active, linkDecorations) {
     return {
-      color: color,
+      color,
       decoration: linkDecorations.default,
       hover: {
         color: hover,

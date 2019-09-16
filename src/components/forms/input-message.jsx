@@ -7,7 +7,7 @@ import { font, typographyColor } from '../utils'
 
 const Styled = styled('label')`
   display: block;
-  margin: -${({ theme }) => theme.spacing.small} 0 0 0;
+  margin: -${({ theme }) => theme.spacing.tiny} 0 0 0;
   ${({ theme }) => font(theme)};
   ${({ theme, variant }) => typographyColor(theme, variant)};
 `
