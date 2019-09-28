@@ -15,6 +15,23 @@ export const SVGRectA = styled('rect')`
   fill-opacity: 0;
 `
 
+export const MapBackground = ({ ...others }) => (
+  <SVGRectA
+    x="-2020"
+    y="-1242"
+    width="5000"
+    height="3080"
+    r="0"
+    rx="0"
+    ry="0"
+    fill="#ffffff"
+    stroke="none"
+    transform="matrix(0.741,0,0,0.741,0,0)"
+    strokeWidth="1.349527665317139"
+    fillOpacity="0"
+  />
+)
+
 // style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; cursor: pointer; stroke-opacity: 1; stroke-linejoin: round; display: none; fill-opacity: 1;"
 export const SVGPathA = styled('path')`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -24,22 +41,6 @@ export const SVGPathA = styled('path')`
   stroke-linejoin: round;
   display: none;
   fill-opacity: 1;
-`
-
-// style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1; cursor: pointer; stroke-opacity: 1; stroke-linejoin: round; fill-opacity: 1;"
-const cssB = css`
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  opacity: 1;
-  cursor: pointer;
-  stroke-opacity: 1;
-  stroke-linejoin: round;
-  fill-opacity: 1;
-`
-export const SVGPathB = styled('path')`
-  ${cssB}
-`
-export const SVGRectB = styled('rect')`
-  ${cssB}
 `
 
 // style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font: bold 22px arial, sans-serif; cursor: pointer; opacity: 1;"
