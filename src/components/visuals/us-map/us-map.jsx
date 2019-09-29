@@ -2,6 +2,7 @@
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { getColorVariants } from '../../utils'
 
 import {
   Alabama,
@@ -62,95 +63,119 @@ import {
   Wyoming,
 } from './states'
 
-import {
-  SVGMap,
-  MapBackground,
-  MapLocations,
-} from './us-map.styles'
+import { SVGMap, MapBackground, MapLocations } from './us-map.styles'
 
-const USMap = ({ bgFill, stateFill, stateStroke, labelColor, width, height, showLabels, pacificStates, territories }) => (
-  <SVGMap
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-    width={width}
-    height={height}
-    viewBox={`0 0 ${width} ${height}`}
-    preserveAspectRatio="xMinYMin"
-  >
-    <MapBackground variant={bgFill} />
-    <MapLocations id="map-locations" fill={stateFill} stroke={stateStroke} labelColor={labelColor}>
+const USMap = ({
+  bgFill,
+  stateFill,
+  stateFillHover,
+  stateFillActive,
+  stateStroke,
+  stateStrokeHover,
+  stateStrokeActive,
+  labelFill,
+  labelFillHover,
+  labelFillActive,
+  width,
+  height,
+  showLabels,
+  pacificStates,
+  territories,
+}) => {
+  const stateProps = {
+    showLabel: showLabels,
+    fill: stateFill,
+    fillHover: stateFillHover,
+    fillActive: stateFillActive,
+    stroke: stateStroke,
+    strokeHover: stateStrokeHover,
+    strokeActive: stateStrokeActive,
+    labelFill,
+    labelFillHover,
+    labelFillActive,
+  }
+  return (
+    <SVGMap
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMinYMin"
+    >
+      <MapBackground variant={bgFill} />
       <g id="map-states">
         {pacificStates && (
           <g id="map-pacific-states">
-            <Alaska showLabel={showLabels} />
-            <Hawaii showLabel={showLabels} />
+            <Alaska {...stateProps} />
+            <Hawaii {...stateProps} />
           </g>
         )}
         <g id="map-north-east-coast-small-states">
-          <NewHampshire showLabel={showLabels} />
-          <Massachusetts showLabel={showLabels} />
-          <Connecticut showLabel={showLabels} />
-          <RhodeIsland showLabel={showLabels} />
-          <Maryland showLabel={showLabels} />
-          <Vermont showLabel={showLabels} />
-          <NewJersey showLabel={showLabels} />
-          <Delaware showLabel={showLabels} />
-          <DistrictOfColumbia showLabel={showLabels} />
+          <NewHampshire {...stateProps} />
+          <Massachusetts {...stateProps} />
+          <Connecticut {...stateProps} />
+          <RhodeIsland {...stateProps} />
+          <Maryland {...stateProps} />
+          <Vermont {...stateProps} />
+          <NewJersey {...stateProps} />
+          <Delaware {...stateProps} />
+          <DistrictOfColumbia {...stateProps} />
         </g>
-        <Michigan showLabel={showLabels} />
-        <Maine showLabel={showLabels} />
-        <Pennsylvania showLabel={showLabels} />
-        <NewYork showLabel={showLabels} />
-        <WestVirginia showLabel={showLabels} />
-        <Wisconsin showLabel={showLabels} />
-        <Virginia showLabel={showLabels} />
-        <Tennessee showLabel={showLabels} />
-        <Ohio showLabel={showLabels} />
-        <NorthCarolina showLabel={showLabels} />
-        <Kentucky showLabel={showLabels} />
-        <Indiana showLabel={showLabels} />
-        <Illinois showLabel={showLabels} />
-        <SouthCarolina showLabel={showLabels} />
-        <Mississippi showLabel={showLabels} />
-        <Georgia showLabel={showLabels} />
-        <Florida showLabel={showLabels} />
-        <Alabama showLabel={showLabels} />
-        <Texas showLabel={showLabels} />
-        <Louisiana showLabel={showLabels} />
-        <SouthDakota showLabel={showLabels} />
-        <Oklahoma showLabel={showLabels} />
-        <Nebraska showLabel={showLabels} />
-        <Missouri showLabel={showLabels} />
-        <Kansas showLabel={showLabels} />
-        <Iowa showLabel={showLabels} />
-        <Arkansas showLabel={showLabels} />
-        <Wyoming showLabel={showLabels} />
-        <Utah showLabel={showLabels} />
-        <Oregon showLabel={showLabels} />
-        <NewMexico showLabel={showLabels} />
-        <Nevada showLabel={showLabels} />
-        <Colorado showLabel={showLabels} />
-        <California showLabel={showLabels} />
-        <Arizona showLabel={showLabels} />
-        <Washington showLabel={showLabels} />
-        <Idaho showLabel={showLabels} />
-        <NorthDakota showLabel={showLabels} />
-        <Montana showLabel={showLabels} />
-        <Minnesota showLabel={showLabels} />
+        <Michigan {...stateProps} />
+        <Maine {...stateProps} />
+        <Pennsylvania {...stateProps} />
+        <NewYork {...stateProps} />
+        <WestVirginia {...stateProps} />
+        <Wisconsin {...stateProps} />
+        <Virginia {...stateProps} />
+        <Tennessee {...stateProps} />
+        <Ohio {...stateProps} />
+        <NorthCarolina {...stateProps} />
+        <Kentucky {...stateProps} />
+        <Indiana {...stateProps} />
+        <Illinois {...stateProps} />
+        <SouthCarolina {...stateProps} />
+        <Mississippi {...stateProps} />
+        <Georgia {...stateProps} />
+        <Florida {...stateProps} />
+        <Alabama {...stateProps} />
+        <Texas {...stateProps} />
+        <Louisiana {...stateProps} />
+        <SouthDakota {...stateProps} />
+        <Oklahoma {...stateProps} />
+        <Nebraska {...stateProps} />
+        <Missouri {...stateProps} />
+        <Kansas {...stateProps} />
+        <Iowa {...stateProps} />
+        <Arkansas {...stateProps} />
+        <Wyoming {...stateProps} />
+        <Utah {...stateProps} />
+        <Oregon {...stateProps} />
+        <NewMexico {...stateProps} />
+        <Nevada {...stateProps} />
+        <Colorado {...stateProps} />
+        <California {...stateProps} />
+        <Arizona {...stateProps} />
+        <Washington {...stateProps} />
+        <Idaho {...stateProps} />
+        <NorthDakota {...stateProps} />
+        <Montana {...stateProps} />
+        <Minnesota {...stateProps} />
       </g>
       {territories && (
         <g id="map-territories">
-          <AmericanSamoa showLabel={showLabels} />
-          <NorthernMarianaIslands showLabel={showLabels} />
-          <VirginIslands showLabel={showLabels} />
-          <Guam showLabel={showLabels} />
-          <PuertoRico showLabel={showLabels} />
+          <AmericanSamoa {...stateProps} />
+          <NorthernMarianaIslands {...stateProps} />
+          <VirginIslands {...stateProps} />
+          <Guam {...stateProps} />
+          <PuertoRico {...stateProps} />
         </g>
       )}
-    </MapLocations>
-    <g id="map-points" />
-  </SVGMap>
-)
+      <g id="map-points" />
+    </SVGMap>
+  )
+}
 
 USMap.propTypes = {
   showLabels: PropTypes.bool,
@@ -158,58 +183,16 @@ USMap.propTypes = {
   territories: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  bgFill: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]),
-  stateFill: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]),
-  stateStroke: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]),
-  labelColor: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]),
+  bgFill: PropTypes.oneOf(getColorVariants()),
+  stateFill: PropTypes.oneOf(getColorVariants()),
+  stateFillHover: PropTypes.oneOf(getColorVariants()),
+  stateFillActive: PropTypes.oneOf(getColorVariants()),
+  stateStroke: PropTypes.oneOf(getColorVariants()),
+  stateStrokeHover: PropTypes.oneOf(getColorVariants()),
+  stateStrokeActive: PropTypes.oneOf(getColorVariants()),
+  labelFill: PropTypes.oneOf(getColorVariants()),
+  labelFillHover: PropTypes.oneOf(getColorVariants()),
+  labelFillActive: PropTypes.oneOf(getColorVariants()),
 }
 
 USMap.defaultProps = {
@@ -220,8 +203,14 @@ USMap.defaultProps = {
   height: 437,
   bgFill: 'background',
   stateFill: 'primary',
+  stateFillHover: 'primary-light',
+  stateFillActive: 'primary-dark',
   stateStroke: 'neutral',
-  labelColor: 'dark',
+  stateStrokeHover: 'neutral',
+  stateStrokeActive: 'neutral',
+  labelFill: 'copy',
+  labelFillHover: 'copy',
+  labelFillActive: 'copy',
 }
 
 export default USMap

@@ -1,5 +1,6 @@
 import { css } from '@emotion/core'
 import React from 'react'
+import { isUndefined } from '..'
 import { rgb, valueToInt } from '../themes/utils'
 
 /**
@@ -8,19 +9,55 @@ import { rgb, valueToInt } from '../themes/utils'
 
 export const COLOR_VARIANT_NONE = 'none'
 
-// @TODO this can't be used with component prop types because it breaks the PropsTable Docz component.
-export const COLOR_VARIANTS = [
+export const getColorVariants = () => [
   'primary',
+  'primary-dark',
+  'primary-light',
+  'primary-alpha',
   'secondary',
+  'secondary-dark',
+  'secondary-light',
+  'secondary-alpha',
   'tertiary',
+  'tertiary-dark',
+  'tertiary-light',
+  'tertiary-alpha',
   'light',
+  'light-dark',
+  'light-light',
+  'light-alpha',
   'neutral',
+  'neutral-dark',
+  'neutral-light',
+  'neutral-alpha',
   'dark',
+  'dark-dark',
+  'dark-light',
+  'dark-alpha',
   'success',
+  'success-dark',
+  'success-light',
+  'success-alpha',
   'info',
+  'info-dark',
+  'info-light',
+  'info-alpha',
   'warning',
+  'warning-dark',
+  'warning-light',
+  'warning-alpha',
   'danger',
+  'danger-dark',
+  'danger-light',
+  'danger-alpha',
   'background',
+  'background-dark',
+  'background-light',
+  'background-alpha',
+  'copy',
+  'copy-dark',
+  'copy-light',
+  'copy-alpha',
   COLOR_VARIANT_NONE,
 ]
 
@@ -37,6 +74,12 @@ export const colorVariantCSS = (theme, variant, swatch = 'default') => {
 
 export const colorVariantSwatchValue = (theme, variant, swatch = 'default') => {
   return variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant][swatch])
+}
+
+export const colorVariantValue = (theme, variant) => {
+  const [v, s] = variant.split('-')
+  const swatch = isUndefined(s) ? 'default' : s
+  return v === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[v][swatch])
 }
 
 export const colorVariantReadableSwatchValue = (theme, variant, swatch = 'default') => {
