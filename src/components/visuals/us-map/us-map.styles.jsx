@@ -88,11 +88,7 @@ export const MapStateWrapper = styled('g')`
 `
 
 MapStateWrapper.propTypes = {
-  variant: PropTypes.oneOf(getColorVariants(['custom'])),
-}
-
-MapStateWrapper.propTypes = {
-  variant: 'custom',
+  variant: PropTypes.oneOf(getColorVariants(['custom'])).isRequired,
 }
 
 const StyledMapState = styled('path')``
