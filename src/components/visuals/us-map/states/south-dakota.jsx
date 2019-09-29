@@ -6,10 +6,7 @@ import PropTypes from 'prop-types'
 import { getColorVariants } from '../../../utils'
 
 import * as Styled from '../us-map.styles'
-import {
-  getMapStateClassName,
-  getMapLabelClassName,
-} from '../utils'
+import { getMapStateClassName, getMapLabelClassName } from '../utils'
 
 const abbr = 'SD'
 
