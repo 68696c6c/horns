@@ -11,9 +11,9 @@ import USMap from './us-map'
 
 <Playground>
   <h3>Clickable US Map</h3>
-  <USMap />
-  <USMap pacificStates={false} territories={false} />
-  <USMap showLabels={false} />
+  <USMap bgFill="tertiary" />
+  <USMap bgFill="dark" stateFill="warning" stateStroke="tertiary" labelColor="danger" pacificStates={false} territories={false} />
+  <USMap bgFill="neutral" stateFill="dark" stateStroke="neutral" labelColor="light" showLabels={false} />
 </Playground>
 
 ## Props

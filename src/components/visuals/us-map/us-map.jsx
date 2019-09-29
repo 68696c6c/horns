@@ -64,8 +64,6 @@ import {
 
 import {
   SVGMap,
-  Point,
-  StarPoint,
   MapBackground,
   MapLocations,
 } from './us-map.styles'
@@ -218,8 +216,8 @@ USMap.defaultProps = {
   showLabels: true,
   pacificStates: true,
   territories: true,
-  width: 741,
-  height: 456.456,
+  width: 745,
+  height: 437,
   bgFill: 'background',
   stateFill: 'primary',
   stateStroke: 'neutral',
