@@ -3,7 +3,7 @@ import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { colorVariantValue, getColorVariants } from '../../../utils'
+import { colorVariantValue, getColorVariants } from '../../utils'
 
 export const getMapStateClassName = abbr => `map-state map-state-${abbr}`
 export const getMapLabelBGClassName = abbr => `map-label-bg map-label-bg-${abbr}`

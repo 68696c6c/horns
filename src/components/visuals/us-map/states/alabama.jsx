@@ -1,3 +1,4 @@
+/** generated using horns-cli */
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import React from 'react'
@@ -9,22 +10,22 @@ import MapState, {
   MapStateLabel,
   getMapStateClassName,
   getMapLabelClassName,
-} from './_map-state'
+} from '../map-state'
 
 const abbr = 'AL'
 
 const Alabama = ({
-                   fill,
-                   fillHover,
-                   fillActive,
-                   stroke,
-                   strokeHover,
-                   strokeActive,
-                   labelFill,
-                   labelFillHover,
-                   labelFillActive,
-                   showLabel,
-                 }) => (
+  fill,
+  fillHover,
+  fillActive,
+  stroke,
+  strokeHover,
+  strokeActive,
+  labelFill,
+  labelFillHover,
+  labelFillActive,
+  showLabel,
+}) => (
   <MapStateWrapper
     fill={fill}
     fillHover={fillHover}

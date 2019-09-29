@@ -11,6 +11,7 @@ BUILD_TAG ?= latest
 	@echo '    local         spin up local Docz environment'
 	@echo '    local-down    tear down local environment'
 	@echo '    test          run unit tests'
+	@echo '    states        generate USMap State components using horns-cli'
 	@echo
 
 default: .DEFAULT
@@ -33,3 +34,6 @@ local-down:
 
 test:
 	docker-compose run --rm app yarn test
+
+states:
+	./horns gen:states "src/components/visuals/us-map"
