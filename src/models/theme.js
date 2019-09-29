@@ -1,3 +1,4 @@
+import { isUndefined } from '..'
 import ThemeConfig from './theme-config'
 import { rgb } from '../themes/utils'
 
@@ -28,6 +29,7 @@ class Theme {
     this.inputs = this.getInputs()
 
     // These use values set above and must be called last.
+    this.mapVariants = this.getMapVariants()
     this.buttons = this.getButtons()
     this.links = this.getLinks()
     this.navItems = this.getNavItems()
@@ -114,6 +116,88 @@ class Theme {
       highlight: this.colors[inputs.highlight].alpha,
       active: this.colors[inputs.active].default,
       disabled: this.colors[inputs.disabled].default,
+    }
+  }
+
+  getMapVariants() {
+    const { map, colors } = this.config
+    const getColorSwatch = variant => {
+      const [v, s] = variant.split('-')
+      const swatch = isUndefined(s) ? 'default' : s
+      return this.colors[v][swatch]
+    }
+    const result = {
+      custom: {
+        backgroundFill: getColorSwatch(map.backgroundColor),
+        states: {
+          fill: getColorSwatch(map.stateColor),
+          fillHover: getColorSwatch(map.stateColorHover),
+          fillActive: getColorSwatch(map.stateColorActive),
+          stroke: getColorSwatch(map.stateLineColor),
+          strokeHover: getColorSwatch(map.stateLineColorHover),
+          strokeActive: getColorSwatch(map.stateLineColorActive),
+        },
+        labels: {
+          fill: getColorSwatch(map.labelColor),
+          fillHover: getColorSwatch(map.labelColorHover),
+          fillActive: getColorSwatch(map.labelColorActive),
+        },
+      },
+    }
+    this.swatches.forEach(swatch => {
+      if (colors.hasOwnProperty(swatch)) {
+        // @TODO use a color config class
+        result[swatch] = this.makeMapVariant(swatch)
+      }
+    })
+    return result
+  }
+
+  makeMapVariant(swatch) {
+    const { background, copy, light, neutral, dark } = this.colors
+    let backgroundFill
+    let copySwatch
+    let fill
+    let fillHover
+    let fillActive
+    switch (swatch) {
+      case 'light':
+        backgroundFill = dark.default
+        copySwatch = neutral.default
+        fill = this.colors[swatch].default
+        fillHover = this.colors[swatch].dark
+        fillActive = this.colors[swatch].dark
+        break
+      case 'dark':
+        backgroundFill = light.default
+        copySwatch = neutral.default
+        fill = this.colors[swatch].default
+        fillHover = this.colors[swatch].light
+        fillActive = this.colors[swatch].light
+        break
+      default:
+        backgroundFill = background.default
+        copySwatch = backgroundFill.isDark() ? copy.light : copy.dark
+        fill = this.colors[swatch].default
+        fillHover = this.colors[swatch].light
+        fillActive = this.colors[swatch].dark
+        break
+    }
+    return {
+      backgroundFill,
+      states: {
+        fill,
+        fillHover,
+        fillActive,
+        stroke: backgroundFill,
+        strokeHover: backgroundFill,
+        strokeActive: backgroundFill,
+      },
+      labels: {
+        fill: copySwatch,
+        fillHover: copySwatch,
+        fillActive: copySwatch,
+      },
     }
   }
 

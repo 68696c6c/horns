@@ -14,29 +14,8 @@ import {
 
 const abbr = 'DC'
 
-const DistrictOfColumbia = ({
-  fill,
-  fillHover,
-  fillActive,
-  stroke,
-  strokeHover,
-  strokeActive,
-  labelFill,
-  labelFillHover,
-  labelFillActive,
-  showLabel,
-}) => (
-  <Styled.MapStateWrapper
-    fill={fill}
-    fillHover={fillHover}
-    fillActive={fillActive}
-    stroke={stroke}
-    strokeHover={strokeHover}
-    strokeActive={strokeActive}
-    labelFill={labelFill}
-    labelFillHover={labelFillHover}
-    labelFillActive={labelFillActive}
-  >
+const DistrictOfColumbia = ({ variant, showLabel }) => (
+  <Styled.MapStateWrapper variant={variant}>
     <Styled.MapState
       d="M805.95,253.62L807.62,251.324L804.896,249.77100000000002L803.692,251.25000000000003L804.937,251.59900000000002L805.871,252.49300000000002L805.9499999999999,253.621Z"
       transform="matrix(0.741,0,0,0.741,0,0)"
@@ -66,28 +45,12 @@ const DistrictOfColumbia = ({
 
 DistrictOfColumbia.propTypes = {
   showLabel: PropTypes.bool,
-  fill: PropTypes.oneOf(getColorVariants()),
-  fillHover: PropTypes.oneOf(getColorVariants()),
-  fillActive: PropTypes.oneOf(getColorVariants()),
-  stroke: PropTypes.oneOf(getColorVariants()),
-  strokeHover: PropTypes.oneOf(getColorVariants()),
-  strokeActive: PropTypes.oneOf(getColorVariants()),
-  labelFill: PropTypes.oneOf(getColorVariants()),
-  labelFillHover: PropTypes.oneOf(getColorVariants()),
-  labelFillActive: PropTypes.oneOf(getColorVariants()),
+  variant: PropTypes.oneOf(getColorVariants(['custom'])),
 }
 
 DistrictOfColumbia.defaultProps = {
   showLabel: true,
-  fill: 'primary',
-  fillHover: 'primary-light',
-  fillActive: 'primary-dark',
-  stroke: 'neutral',
-  strokeHover: 'neutral',
-  strokeActive: 'neutral',
-  labelFill: 'copy',
-  labelFillHover: 'copy',
-  labelFillActive: 'copy',
+  variant: 'custom',
 }
 
 export default DistrictOfColumbia

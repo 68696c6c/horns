@@ -66,33 +66,16 @@ import {
 import * as Styled from './us-map.styles'
 
 const USMap = ({
-  bgFill,
-  stateFill,
-  stateFillHover,
-  stateFillActive,
-  stateStroke,
-  stateStrokeHover,
-  stateStrokeActive,
-  labelFill,
-  labelFillHover,
-  labelFillActive,
   width,
   height,
+  variant,
   showLabels,
   pacificStates,
   territories,
 }) => {
   const stateProps = {
     showLabel: showLabels,
-    fill: stateFill,
-    fillHover: stateFillHover,
-    fillActive: stateFillActive,
-    stroke: stateStroke,
-    strokeHover: stateStrokeHover,
-    strokeActive: stateStrokeActive,
-    labelFill,
-    labelFillHover,
-    labelFillActive,
+    variant,
   }
   return (
     <Styled.SVGMap
@@ -102,8 +85,9 @@ const USMap = ({
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMinYMin"
+      variant={variant}
     >
-      <Styled.MapBackground variant={bgFill} />
+      <Styled.MapBackground variant={variant} />
       <g id="map-states">
         {pacificStates && (
           <g id="map-pacific-states">
@@ -183,16 +167,7 @@ USMap.propTypes = {
   territories: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  bgFill: PropTypes.oneOf(getColorVariants()),
-  stateFill: PropTypes.oneOf(getColorVariants()),
-  stateFillHover: PropTypes.oneOf(getColorVariants()),
-  stateFillActive: PropTypes.oneOf(getColorVariants()),
-  stateStroke: PropTypes.oneOf(getColorVariants()),
-  stateStrokeHover: PropTypes.oneOf(getColorVariants()),
-  stateStrokeActive: PropTypes.oneOf(getColorVariants()),
-  labelFill: PropTypes.oneOf(getColorVariants()),
-  labelFillHover: PropTypes.oneOf(getColorVariants()),
-  labelFillActive: PropTypes.oneOf(getColorVariants()),
+  variant: PropTypes.oneOf(getColorVariants(['custom'])),
 }
 
 USMap.defaultProps = {
@@ -201,16 +176,7 @@ USMap.defaultProps = {
   territories: true,
   width: 745,
   height: 437,
-  bgFill: 'background',
-  stateFill: 'primary',
-  stateFillHover: 'primary-light',
-  stateFillActive: 'primary-dark',
-  stateStroke: 'neutral',
-  stateStrokeHover: 'neutral',
-  stateStrokeActive: 'neutral',
-  labelFill: 'copy',
-  labelFillHover: 'copy',
-  labelFillActive: 'copy',
+  variant: 'custom',
 }
 
 export default USMap

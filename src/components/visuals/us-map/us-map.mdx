@@ -11,24 +11,25 @@ import USMap from './us-map'
 
 <Playground>
   <h3>Clickable US Map</h3>
-  <USMap bgFill="tertiary" />
-  <USMap
-    bgFill="dark"
-    stateFill="warning"
-    stateFillHover="warning-dark"
-    stateFillActive="danger"
-    stateStroke="tertiary"
-    stateStrokeHover="success"
-    stateStrokeActive="info"
-    labelFill="danger"
-    labelFillHover="success"
-    labelFillActive="info"
-    pacificStates={false}
-    territories={false}
-  />
-  <USMap bgFill="neutral" stateFill="dark" stateStroke="neutral" labelColor="light" showLabels={false} />
+  <USMap />
+  <USMap variant="secondary" pacificStates={false} territories={false} />
+  <USMap variant="warning" showLabels={false} />
 </Playground>
 
 ## Props
 
 <Props of={USMap} />
+
+## Variants
+
+<Playground>
+  <USMap variant="primary" />
+  <USMap variant="secondary" />
+  <USMap variant="tertiary" />
+  <USMap variant="light" />
+  <USMap variant="neutral" />
+  <USMap variant="dark" />
+  <USMap variant="info" />
+  <USMap variant="warning" />
+  <USMap variant="danger" />
+</Playground>

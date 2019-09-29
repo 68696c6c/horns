@@ -3,22 +3,20 @@ import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { rgb } from '../../../themes'
 
-import {
-  colorVariantSwatchValue,
-  colorVariantValue,
-  getColorVariants,
-} from '../../utils'
+import { getColorVariants } from '../../utils'
 
 export const SVGMap = styled('svg')`
   overflow: hidden;
   position: relative;
 `
 
-export const StyledMapBackground = styled('rect')`
+const StyledMapBackground = styled('rect')`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   fill-opacity: 1;
-  fill: ${({ theme, variant }) => colorVariantSwatchValue(theme, variant)};
+  fill: ${({ theme, variant }) =>
+    rgb(theme.mapVariants[variant].backgroundFill)};
   stroke: none;
   width: 100%;
   height: 100%;
@@ -29,74 +27,72 @@ export const MapBackground = props => (
 )
 
 MapBackground.propTypes = {
-  variant: PropTypes.oneOf(getColorVariants()).isRequired,
+  variant: PropTypes.oneOf(getColorVariants(['custom'])).isRequired,
 }
 
 export const MapStateWrapper = styled('g')`
   .map-state {
     cursor: pointer;
-    fill: ${({ theme, fill }) => fill && colorVariantValue(theme, fill)};
-    stroke: ${({ theme, stroke }) =>
-      stroke && colorVariantValue(theme, stroke)};
+    fill: ${({ theme, variant }) =>
+      rgb(theme.mapVariants[variant].states.fill)};
+    stroke: ${({ theme, variant }) =>
+      rgb(theme.mapVariants[variant].states.stroke)};
   }
   .map-label-bg {
     cursor: pointer;
-    fill: ${({ theme, fill }) => fill && colorVariantValue(theme, fill)};
-    stroke: ${({ theme, stroke }) =>
-      stroke && colorVariantValue(theme, stroke)};
+    fill: ${({ theme, variant }) =>
+      rgb(theme.mapVariants[variant].states.fill)};
+    stroke: ${({ theme, variant }) =>
+      rgb(theme.mapVariants[variant].states.stroke)};
   }
   .map-label tspan {
-    fill: ${({ theme, labelFill }) =>
-      labelFill && colorVariantValue(theme, labelFill)};
+    fill: ${({ theme, variant }) =>
+      rgb(theme.mapVariants[variant].labels.fill)};
   }
   &:hover {
     .map-state {
-      fill: ${({ theme, fillHover }) =>
-        fillHover && colorVariantValue(theme, fillHover)};
-      stroke: ${({ theme, strokeHover }) =>
-        strokeHover && colorVariantValue(theme, strokeHover)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.fillHover)};
+      stroke: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.strokeHover)};
     }
     .map-label-bg {
-      fill: ${({ theme, fillHover }) =>
-        fillHover && colorVariantValue(theme, fillHover)};
-      stroke: ${({ theme, strokeHover }) =>
-        strokeHover && colorVariantValue(theme, strokeHover)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.fillHover)};
+      stroke: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.strokeHover)};
     }
     .map-label tspan {
-      fill: ${({ theme, labelFillHover }) =>
-        labelFillHover && colorVariantValue(theme, labelFillHover)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].labels.fillHover)};
     }
   }
   &:active {
     .map-state {
-      fill: ${({ theme, fillActive }) =>
-        fillActive && colorVariantValue(theme, fillActive)};
-      stroke: ${({ theme, strokeActive }) =>
-        strokeActive && colorVariantValue(theme, strokeActive)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.fillActive)};
+      stroke: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.strokeActive)};
     }
     .map-label-bg {
-      fill: ${({ theme, fillActive }) =>
-        fillActive && colorVariantValue(theme, fillActive)};
-      stroke: ${({ theme, strokeActive }) =>
-        strokeActive && colorVariantValue(theme, strokeActive)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.fillActive)};
+      stroke: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].states.strokeActive)};
     }
     .map-label tspan {
-      fill: ${({ theme, labelFillActive }) =>
-        labelFillActive && colorVariantValue(theme, labelFillActive)};
+      fill: ${({ theme, variant }) =>
+        rgb(theme.mapVariants[variant].labels.fillActive)};
     }
   }
 `
 
 MapStateWrapper.propTypes = {
-  fill: PropTypes.oneOf(getColorVariants()).isRequired,
-  fillHover: PropTypes.oneOf(getColorVariants()).isRequired,
-  fillActive: PropTypes.oneOf(getColorVariants()).isRequired,
-  stroke: PropTypes.oneOf(getColorVariants()).isRequired,
-  strokeHover: PropTypes.oneOf(getColorVariants()).isRequired,
-  strokeActive: PropTypes.oneOf(getColorVariants()).isRequired,
-  labelFill: PropTypes.oneOf(getColorVariants()).isRequired,
-  labelFillHover: PropTypes.oneOf(getColorVariants()).isRequired,
-  labelFillActive: PropTypes.oneOf(getColorVariants()).isRequired,
+  variant: PropTypes.oneOf(getColorVariants(['custom'])),
+}
+
+MapStateWrapper.propTypes = {
+  variant: 'custom',
 }
 
 const StyledMapState = styled('path')``

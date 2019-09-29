@@ -9,7 +9,24 @@ import { rgb, valueToInt } from '../themes/utils'
 
 export const COLOR_VARIANT_NONE = 'none'
 
-export const getColorVariants = () => [
+export const getColorVariants = (additional = []) => [
+  'primary',
+  'secondary',
+  'tertiary',
+  'light',
+  'neutral',
+  'dark',
+  'success',
+  'info',
+  'warning',
+  'danger',
+  'background',
+  'copy',
+  COLOR_VARIANT_NONE,
+  ...additional,
+]
+
+export const getColorVariantSwatches = () => [
   'primary',
   'primary-dark',
   'primary-light',

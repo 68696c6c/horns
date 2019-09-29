@@ -110,6 +110,20 @@ class ThemeConfig {
       active: safeGetValue(inputs, 'highlight', 'primary'),
       disabled: safeGetValue(inputs, 'highlight', 'neutral'),
     }
+
+    const map = safeGetValue(config, 'map', {})
+    this.map = {
+      backgroundColor: safeGetValue(map, 'backgroundColor', 'neutral'),
+      stateColor: safeGetValue(map, 'stateColor', 'primary'),
+      stateColorHover: safeGetValue(map, 'stateColorHover', 'tertiary-light'),
+      stateColorActive: safeGetValue(map, 'stateColorActive', 'tertiary-dark'),
+      stateLineColor: safeGetValue(map, 'stateLineColor', 'background'),
+      stateLineColorHover: safeGetValue(map, 'stateLineColorHover', 'background'),
+      stateLineColorActive: safeGetValue(map, 'stateLineColorActive', 'background'),
+      labelColor: safeGetValue(map, 'labelColor', 'light'),
+      labelColorHover: safeGetValue(map, 'labelColorHover', 'dark'),
+      labelColorActive: safeGetValue(map, 'labelColorActive', 'dark'),
+    }
   }
 }
 
