@@ -63,7 +63,7 @@ import {
   Wyoming,
 } from './states'
 
-import { SVGMap, MapBackground, MapLocations } from './us-map.styles'
+import * as Styled from './us-map.styles'
 
 const USMap = ({
   bgFill,
@@ -95,7 +95,7 @@ const USMap = ({
     labelFillActive,
   }
   return (
-    <SVGMap
+    <Styled.SVGMap
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -103,7 +103,7 @@ const USMap = ({
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMinYMin"
     >
-      <MapBackground variant={bgFill} />
+      <Styled.MapBackground variant={bgFill} />
       <g id="map-states">
         {pacificStates && (
           <g id="map-pacific-states">
@@ -173,7 +173,7 @@ const USMap = ({
         </g>
       )}
       <g id="map-points" />
-    </SVGMap>
+    </Styled.SVGMap>
   )
 }
 
