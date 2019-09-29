@@ -1,13 +1,10 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
-import PropTypes from 'prop-types'
 import React from 'react'
-import { colorVariantSwatchValue } from '../../../utils'
 
-export const getMapStateClassName = abbr => `$map-state-${abbr}`
-export const getMapLabelClassName = abbr => `$map-label-${abbr}`
-
+export const getMapStateClassName = abbr => `map-state-${abbr}`
+export const getMapLabelClassName = abbr => `map-label map-label-${abbr}`
 
 const StyledMapState = styled('path')`
   fill: inherit;
@@ -40,14 +37,12 @@ const StyledLabel = styled('text')`
   font: bold 22px arial, sans-serif;
   cursor: pointer;
   opacity: 1;
-  fill: ${({ theme, variant }) => colorVariantSwatchValue(theme, variant)};
   stroke: none;
   stroke-width: 0;
 `
 
 export const StyledMapLabelText = styled('tspan')`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  fill: inherit;
 `
 
 export const MapStateLabel = ({ children, textX, textY, ...others }) => (
@@ -61,25 +56,5 @@ export const MapStateLabel = ({ children, textX, textY, ...others }) => (
     <StyledMapLabelText dy={textY}>{children}</StyledMapLabelText>
   </StyledLabel>
 )
-
-MapStateLabel.propTypes = {
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]),
-}
-
-MapStateLabel.defaultProps = {
-  variant: 'dark',
-}
 
 export default MapState

@@ -37,11 +37,7 @@ MapBackground.propTypes = {
     'warning',
     'danger',
     'background',
-  ]),
-}
-
-MapBackground.defaultProps = {
-  variant: 'background',
+  ]).isRequired,
 }
 
 export const StyledMapLocations = styled('g')`
@@ -53,6 +49,9 @@ export const StyledMapLocations = styled('g')`
   stroke-opacity: 1;
   stroke-linejoin: round;
   stroke-width: 1.8749999999999998;
+  .map-label {
+    fill: ${({ theme, labelColor }) => colorVariantSwatchValue(theme, labelColor)};
+  }
 `
 
 export const MapLocations = props => <StyledMapLocations {...props} />
@@ -70,7 +69,7 @@ MapLocations.propTypes = {
     'warning',
     'danger',
     'background',
-  ]),
+  ]).isRequired,
   stroke: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -83,25 +82,30 @@ MapLocations.propTypes = {
     'warning',
     'danger',
     'background',
-  ]),
+  ]).isRequired,
+  labelColor: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]).isRequired,
 }
 
-MapLocations.defaultProps = {
-  fill: 'primary',
-  stroke: 'neutral',
-}
-
-// style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0.8; cursor: pointer;"
-export const SVGPathC = styled('path')`
+export const SVGPStyledPoint = styled('path')`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   opacity: 0.8;
   cursor: pointer;
 `
 
-// ////
-
 export const Point = props => (
-  <SVGPathC
+  <SVGPStyledPoint
     fill="#ff46a2"
     stroke="#ffffff"
     strokeWidth="1.8749999999999998"
@@ -111,7 +115,7 @@ export const Point = props => (
 )
 
 export const StarPoint = props => (
-  <SVGPathC
+  <SVGPStyledPoint
     fill="#ffe42f"
     stroke="#ffffff"
     strokeWidth="1.8749999999999998"

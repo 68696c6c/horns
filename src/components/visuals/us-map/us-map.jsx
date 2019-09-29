@@ -65,10 +65,12 @@ import {
 import {
   SVGMap,
   Point,
-  StarPoint, MapBackground, MapLocations,
+  StarPoint,
+  MapBackground,
+  MapLocations,
 } from './us-map.styles'
 
-const USMap = ({ width, height, showLabels, pacificStates, territories }) => (
+const USMap = ({ bgFill, stateFill, stateStroke, labelColor, width, height, showLabels, pacificStates, territories }) => (
   <SVGMap
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -77,8 +79,8 @@ const USMap = ({ width, height, showLabels, pacificStates, territories }) => (
     viewBox={`0 0 ${width} ${height}`}
     preserveAspectRatio="xMinYMin"
   >
-    <MapBackground variant="background" />
-    <MapLocations id="map-locations">
+    <MapBackground variant={bgFill} />
+    <MapLocations id="map-locations" fill={stateFill} stroke={stateStroke} labelColor={labelColor}>
       <g id="map-states">
         {pacificStates && (
           <g id="map-pacific-states">
@@ -209,16 +211,70 @@ USMap.propTypes = {
   territories: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
+  bgFill: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]),
+  stateFill: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]),
+  stateStroke: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]),
+  labelColor: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]),
 }
 
 USMap.defaultProps = {
   showLabels: true,
   pacificStates: true,
   territories: true,
-  // width: 5000,
-  // height: 3080,
   width: 741,
   height: 456.456,
+  bgFill: 'background',
+  stateFill: 'primary',
+  stateStroke: 'neutral',
+  labelColor: 'dark',
 }
 
 export default USMap

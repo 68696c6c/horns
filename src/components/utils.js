@@ -36,10 +36,15 @@ export const colorVariantCSS = (theme, variant, swatch = 'default') => {
 }
 
 export const colorVariantSwatchValue = (theme, variant, swatch = 'default') => {
-  console.log('colorVariantSwatchValue', theme, variant, swatch)
-  const value = variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant][swatch])
-  console.log('stroke', value)
-  return value
+  return variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant][swatch])
+}
+
+export const colorVariantReadableSwatchValue = (theme, variant, swatch = 'default') => {
+  let color = 'inherit'
+  if (variant !== COLOR_VARIANT_NONE) {
+    color = theme.colors[variant][swatch].isLight() ? rgb(theme.colors.copy.dark) : rgb(theme.colors.copy.light)
+  }
+  return color
 }
 
 /**
