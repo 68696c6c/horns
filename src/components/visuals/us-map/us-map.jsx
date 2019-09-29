@@ -70,7 +70,7 @@ import {
   StarPoint, MapBackground,
 } from './us-map.styles'
 
-const USMap = ({ smallStates, pacificStates, territories }) => (
+const USMap = ({ showLabels, pacificStates, territories }) => (
   <SVGMap
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -88,69 +88,69 @@ const USMap = ({ smallStates, pacificStates, territories }) => (
     <g id="map-states">
       {pacificStates && (
         <g id="map-pacific-states">
-          <Alaska />
-          <Hawaii />
+          <Alaska showLabel={showLabels} />
+          <Hawaii showLabel={showLabels} />
         </g>
       )}
       <g id="map-north-east-coast-small-states">
-        <NewHampshire showLabel={smallStates} />
-        <Massachusetts showLabel={smallStates} />
-        <Connecticut showLabel={smallStates} />
-        <RhodeIsland showLabel={smallStates} />
-        <Maryland showLabel={smallStates} />
-        <Vermont showLabel={smallStates} />
-        <NewJersey showLabel={smallStates} />
-        <Delaware showLabel={smallStates} />
-        <DistrictOfColumbia showLabel={smallStates} />
+        <NewHampshire showLabel={showLabels} />
+        <Massachusetts showLabel={showLabels} />
+        <Connecticut showLabel={showLabels} />
+        <RhodeIsland showLabel={showLabels} />
+        <Maryland showLabel={showLabels} />
+        <Vermont showLabel={showLabels} />
+        <NewJersey showLabel={showLabels} />
+        <Delaware showLabel={showLabels} />
+        <DistrictOfColumbia showLabel={showLabels} />
       </g>
-      <Michigan />
-      <Maine />
-      <Pennsylvania />
-      <NewYork />
-      <WestVirginia />
-      <Wisconsin />
-      <Virginia />
-      <Tennessee />
-      <Ohio />
-      <NorthCarolina />
-      <Kentucky />
-      <Indiana />
-      <Illinois />
-      <SouthCarolina />
-      <Mississippi />
-      <Georgia />
-      <Florida />
-      <Alabama />
-      <Texas />
-      <Louisiana />
-      <SouthDakota />
-      <Oklahoma />
-      <Nebraska />
-      <Missouri />
-      <Kansas />
-      <Iowa />
-      <Arkansas />
-      <Wyoming />
-      <Utah />
-      <Oregon />
-      <NewMexico />
-      <Nevada />
-      <Colorado />
-      <California />
-      <Arizona />
-      <Washington />
-      <Idaho />
-      <NorthDakota />
-      <Montana />
-      <Minnesota />
+      <Michigan showLabel={showLabels} />
+      <Maine showLabel={showLabels} />
+      <Pennsylvania showLabel={showLabels} />
+      <NewYork showLabel={showLabels} />
+      <WestVirginia showLabel={showLabels} />
+      <Wisconsin showLabel={showLabels} />
+      <Virginia showLabel={showLabels} />
+      <Tennessee showLabel={showLabels} />
+      <Ohio showLabel={showLabels} />
+      <NorthCarolina showLabel={showLabels} />
+      <Kentucky showLabel={showLabels} />
+      <Indiana showLabel={showLabels} />
+      <Illinois showLabel={showLabels} />
+      <SouthCarolina showLabel={showLabels} />
+      <Mississippi showLabel={showLabels} />
+      <Georgia showLabel={showLabels} />
+      <Florida showLabel={showLabels} />
+      <Alabama showLabel={showLabels} />
+      <Texas showLabel={showLabels} />
+      <Louisiana showLabel={showLabels} />
+      <SouthDakota showLabel={showLabels} />
+      <Oklahoma showLabel={showLabels} />
+      <Nebraska showLabel={showLabels} />
+      <Missouri showLabel={showLabels} />
+      <Kansas showLabel={showLabels} />
+      <Iowa showLabel={showLabels} />
+      <Arkansas showLabel={showLabels} />
+      <Wyoming showLabel={showLabels} />
+      <Utah showLabel={showLabels} />
+      <Oregon showLabel={showLabels} />
+      <NewMexico showLabel={showLabels} />
+      <Nevada showLabel={showLabels} />
+      <Colorado showLabel={showLabels} />
+      <California showLabel={showLabels} />
+      <Arizona showLabel={showLabels} />
+      <Washington showLabel={showLabels} />
+      <Idaho showLabel={showLabels} />
+      <NorthDakota showLabel={showLabels} />
+      <Montana showLabel={showLabels} />
+      <Minnesota showLabel={showLabels} />
     </g>
     {territories && (
       <g id="map-territories">
-        <AmericanSamoa />
-        <NorthernMarianaIslands />
-        <VirginIslands />
-        <Guam />
-        <PuertoRico />
+        <AmericanSamoa showLabel={showLabels} />
+        <NorthernMarianaIslands showLabel={showLabels} />
+        <VirginIslands showLabel={showLabels} />
+        <Guam showLabel={showLabels} />
+        <PuertoRico showLabel={showLabels} />
       </g>
     )}
     <g id="map-points">
@@ -209,13 +209,13 @@ const USMap = ({ smallStates, pacificStates, territories }) => (
 )
 
 USMap.propTypes = {
-  smallStates: PropTypes.bool,
+  showLabels: PropTypes.bool,
   pacificStates: PropTypes.bool,
   territories: PropTypes.bool,
 }
 
 USMap.defaultProps = {
-  smallStates: true,
+  showLabels: true,
   pacificStates: true,
   territories: true,
 }
