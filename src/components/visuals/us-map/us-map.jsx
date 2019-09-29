@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -64,95 +64,90 @@ import {
 
 import {
   SVGMap,
-  SVGPathA,
-  SVGRectA,
   Point,
-  StarPoint, MapBackground,
+  StarPoint, MapBackground, MapLocations,
 } from './us-map.styles'
 
-const USMap = ({ showLabels, pacificStates, territories }) => (
+const USMap = ({ width, height, showLabels, pacificStates, territories }) => (
   <SVGMap
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
-    height="456.456"
-    width="741"
-    viewBox="-14.82 -7.41 741 456.456"
+    width={width}
+    height={height}
+    viewBox={`0 0 ${width} ${height}`}
     preserveAspectRatio="xMinYMin"
   >
-    <defs
-      className={css`
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      `}
-    />
-    <MapBackground />
-    <g id="map-states">
-      {pacificStates && (
-        <g id="map-pacific-states">
-          <Alaska showLabel={showLabels} />
-          <Hawaii showLabel={showLabels} />
+    <MapBackground variant="background" />
+    <MapLocations id="map-locations">
+      <g id="map-states">
+        {pacificStates && (
+          <g id="map-pacific-states">
+            <Alaska showLabel={showLabels} />
+            <Hawaii showLabel={showLabels} />
+          </g>
+        )}
+        <g id="map-north-east-coast-small-states">
+          <NewHampshire showLabel={showLabels} />
+          <Massachusetts showLabel={showLabels} />
+          <Connecticut showLabel={showLabels} />
+          <RhodeIsland showLabel={showLabels} />
+          <Maryland showLabel={showLabels} />
+          <Vermont showLabel={showLabels} />
+          <NewJersey showLabel={showLabels} />
+          <Delaware showLabel={showLabels} />
+          <DistrictOfColumbia showLabel={showLabels} />
+        </g>
+        <Michigan showLabel={showLabels} />
+        <Maine showLabel={showLabels} />
+        <Pennsylvania showLabel={showLabels} />
+        <NewYork showLabel={showLabels} />
+        <WestVirginia showLabel={showLabels} />
+        <Wisconsin showLabel={showLabels} />
+        <Virginia showLabel={showLabels} />
+        <Tennessee showLabel={showLabels} />
+        <Ohio showLabel={showLabels} />
+        <NorthCarolina showLabel={showLabels} />
+        <Kentucky showLabel={showLabels} />
+        <Indiana showLabel={showLabels} />
+        <Illinois showLabel={showLabels} />
+        <SouthCarolina showLabel={showLabels} />
+        <Mississippi showLabel={showLabels} />
+        <Georgia showLabel={showLabels} />
+        <Florida showLabel={showLabels} />
+        <Alabama showLabel={showLabels} />
+        <Texas showLabel={showLabels} />
+        <Louisiana showLabel={showLabels} />
+        <SouthDakota showLabel={showLabels} />
+        <Oklahoma showLabel={showLabels} />
+        <Nebraska showLabel={showLabels} />
+        <Missouri showLabel={showLabels} />
+        <Kansas showLabel={showLabels} />
+        <Iowa showLabel={showLabels} />
+        <Arkansas showLabel={showLabels} />
+        <Wyoming showLabel={showLabels} />
+        <Utah showLabel={showLabels} />
+        <Oregon showLabel={showLabels} />
+        <NewMexico showLabel={showLabels} />
+        <Nevada showLabel={showLabels} />
+        <Colorado showLabel={showLabels} />
+        <California showLabel={showLabels} />
+        <Arizona showLabel={showLabels} />
+        <Washington showLabel={showLabels} />
+        <Idaho showLabel={showLabels} />
+        <NorthDakota showLabel={showLabels} />
+        <Montana showLabel={showLabels} />
+        <Minnesota showLabel={showLabels} />
+      </g>
+      {territories && (
+        <g id="map-territories">
+          <AmericanSamoa showLabel={showLabels} />
+          <NorthernMarianaIslands showLabel={showLabels} />
+          <VirginIslands showLabel={showLabels} />
+          <Guam showLabel={showLabels} />
+          <PuertoRico showLabel={showLabels} />
         </g>
       )}
-      <g id="map-north-east-coast-small-states">
-        <NewHampshire showLabel={showLabels} />
-        <Massachusetts showLabel={showLabels} />
-        <Connecticut showLabel={showLabels} />
-        <RhodeIsland showLabel={showLabels} />
-        <Maryland showLabel={showLabels} />
-        <Vermont showLabel={showLabels} />
-        <NewJersey showLabel={showLabels} />
-        <Delaware showLabel={showLabels} />
-        <DistrictOfColumbia showLabel={showLabels} />
-      </g>
-      <Michigan showLabel={showLabels} />
-      <Maine showLabel={showLabels} />
-      <Pennsylvania showLabel={showLabels} />
-      <NewYork showLabel={showLabels} />
-      <WestVirginia showLabel={showLabels} />
-      <Wisconsin showLabel={showLabels} />
-      <Virginia showLabel={showLabels} />
-      <Tennessee showLabel={showLabels} />
-      <Ohio showLabel={showLabels} />
-      <NorthCarolina showLabel={showLabels} />
-      <Kentucky showLabel={showLabels} />
-      <Indiana showLabel={showLabels} />
-      <Illinois showLabel={showLabels} />
-      <SouthCarolina showLabel={showLabels} />
-      <Mississippi showLabel={showLabels} />
-      <Georgia showLabel={showLabels} />
-      <Florida showLabel={showLabels} />
-      <Alabama showLabel={showLabels} />
-      <Texas showLabel={showLabels} />
-      <Louisiana showLabel={showLabels} />
-      <SouthDakota showLabel={showLabels} />
-      <Oklahoma showLabel={showLabels} />
-      <Nebraska showLabel={showLabels} />
-      <Missouri showLabel={showLabels} />
-      <Kansas showLabel={showLabels} />
-      <Iowa showLabel={showLabels} />
-      <Arkansas showLabel={showLabels} />
-      <Wyoming showLabel={showLabels} />
-      <Utah showLabel={showLabels} />
-      <Oregon showLabel={showLabels} />
-      <NewMexico showLabel={showLabels} />
-      <Nevada showLabel={showLabels} />
-      <Colorado showLabel={showLabels} />
-      <California showLabel={showLabels} />
-      <Arizona showLabel={showLabels} />
-      <Washington showLabel={showLabels} />
-      <Idaho showLabel={showLabels} />
-      <NorthDakota showLabel={showLabels} />
-      <Montana showLabel={showLabels} />
-      <Minnesota showLabel={showLabels} />
-    </g>
-    {territories && (
-      <g id="map-territories">
-        <AmericanSamoa showLabel={showLabels} />
-        <NorthernMarianaIslands showLabel={showLabels} />
-        <VirginIslands showLabel={showLabels} />
-        <Guam showLabel={showLabels} />
-        <PuertoRico showLabel={showLabels} />
-      </g>
-    )}
+    </MapLocations>
     <g id="map-points">
       <Point
         d="M626.277528601318,109.9534164246557C623.597528601318,109.9534164246557,621.077528601318,111.2734164246557,619.077528601318,112.99341642465569C616.637528601318,115.15341642465569,615.117528601318,118.43341642465569,615.397528601318,121.7534164246557C615.3935286013179,124.6734164246557,616.757528601318,127.31341642465568,618.117528601318,129.79341642465567C620.4375286013179,133.9534164246557,622.997528601318,138.03341642465568,624.4375286013179,142.5934164246557C625.277528601318,144.91341642465568,625.997528601318,147.2734164246557,626.757528601318,149.5934164246557C626.997528601318,149.9534164246557,627.197528601318,149.4334164246557,627.197528601318,149.2334164246557C628.6775286013179,144.2334164246557,630.357528601318,139.2734164246557,632.957528601318,134.75341642465568C634.6775286013179,131.5534164246557,636.757528601318,128.47341642465568,637.9175286013179,124.99341642465569C638.7975286013179,121.99341642465569,638.5575286013179,118.5534164246557,636.877528601318,115.8334164246557C634.957528601318,112.63341642465569,631.517528601318,110.3934164246557,627.7975286013179,109.99341642465569C627.277528601318,109.9894164246557,626.717528601318,109.9894164246557,626.197528601318,109.9894164246557C626.197528601318,109.9894164246557,626.277528601318,109.9534164246557,626.277528601318,109.9534164246557Z"
@@ -212,12 +207,18 @@ USMap.propTypes = {
   showLabels: PropTypes.bool,
   pacificStates: PropTypes.bool,
   territories: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
 }
 
 USMap.defaultProps = {
   showLabels: true,
   pacificStates: true,
   territories: true,
+  // width: 5000,
+  // height: 3080,
+  width: 741,
+  height: 456.456,
 }
 
 export default USMap

@@ -35,6 +35,13 @@ export const colorVariantCSS = (theme, variant, swatch = 'default') => {
   `
 }
 
+export const colorVariantSwatchValue = (theme, variant, swatch = 'default') => {
+  console.log('colorVariantSwatchValue', theme, variant, swatch)
+  const value = variant === COLOR_VARIANT_NONE ? 'none' : rgb(theme.colors[variant][swatch])
+  console.log('stroke', value)
+  return value
+}
+
 /**
  * Return an Emotion CSS snippet that applies a CSS color property based on the provided theme variant.
  * @returns SerializedStyles

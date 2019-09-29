@@ -1,57 +1,36 @@
 /** @jsx jsx */
-import { jsx, css } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import styled from '@emotion/styled'
+import PropTypes from 'prop-types'
 import React from 'react'
-import { TSpanA } from '../us-map.styles'
+import { colorVariantSwatchValue } from '../../../utils'
 
 export const getMapStateClassName = abbr => `$map-state-${abbr}`
 export const getMapLabelClassName = abbr => `$map-label-${abbr}`
 
-const mapStateBaseCSS = css`
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  opacity: 1;
+
+const StyledMapState = styled('path')`
+  fill: inherit;
+  stroke: inherit;
   cursor: pointer;
-  stroke-opacity: 1;
-  stroke-linejoin: round;
-  fill-opacity: 1;
 `
 
-const Styled = styled('path')`
-  ${mapStateBaseCSS}
-`
-
-const MapState = ({ ...others }) => (
-  <Styled
-    fill="#77bcff"
-    stroke="#ffffff"
-    opacity="1"
-    strokeOpacity="1"
-    strokeWidth="1.8749999999999998"
-    strokeLinejoin="round"
-    fillOpacity="1"
-    {...others}
-  />
-)
+const MapState = props => <StyledMapState {...props} />
 
 const StyledMapStateLabelBackground = styled('rect')`
-  ${mapStateBaseCSS}
+  fill: inherit;
+  stroke: inherit;
+  cursor: pointer;
 `
 
-export const MapStateLabelBackground = ({ ...others }) => (
+export const MapStateLabelBackground = props => (
   <StyledMapStateLabelBackground
     width="45"
     height="28.767968749999998"
     r="5.753593749999999"
     rx="5.753593749999999"
     ry="5.753593749999999"
-    fill="#77bcff"
-    stroke="#ffffff"
-    strokeWidth="1.8749999999999998"
-    opacity="1"
-    strokeOpacity="1"
-    strokeLinejoin="round"
-    fillOpacity="1"
-    {...others}
+    {...props}
   />
 )
 
@@ -61,23 +40,46 @@ const StyledLabel = styled('text')`
   font: bold 22px arial, sans-serif;
   cursor: pointer;
   opacity: 1;
+  fill: ${({ theme, variant }) => colorVariantSwatchValue(theme, variant)};
+  stroke: none;
+  stroke-width: 0;
+`
+
+export const StyledMapLabelText = styled('tspan')`
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  fill: inherit;
 `
 
 export const MapStateLabel = ({ children, textX, textY, ...others }) => (
   <StyledLabel
-    textAnchor="middle"
     font='10px "Arial"'
-    stroke="none"
-    fill="#002767"
-    strokeWidth="0"
     fontSize="22px"
     fontWeight="bold"
     fontFamily="arial,sans-serif"
-    opacity="1"
     {...others}
   >
-    <TSpanA dy={textY}>{children}</TSpanA>
+    <StyledMapLabelText dy={textY}>{children}</StyledMapLabelText>
   </StyledLabel>
 )
+
+MapStateLabel.propTypes = {
+  variant: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'light',
+    'neutral',
+    'dark',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'background',
+  ]),
+}
+
+MapStateLabel.defaultProps = {
+  variant: 'dark',
+}
 
 export default MapState
