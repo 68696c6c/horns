@@ -18,8 +18,8 @@
     "react-select": "^2.0.0",
     "react-spring": "^5.4.0",
     "react-text-mask": "^5.4.3",
-    "text-mask-addons": "^3.8.0",
     "react-toastify": "^4.1.0",
+    "text-mask-addons": "^3.8.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -30,8 +30,13 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.1.3",
+    "@storybook/addon-links": "^5.1.3",
+    "@storybook/addons": "^5.1.3",
+    "@storybook/react": "^5.1.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.6",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "core-js": "^2.5.7",
     "detect-port": "^1.2.3",
@@ -50,7 +55,9 @@
     "build": "./node_modules/.bin/babel src --out-dir dist",
     "docker-docz": "docz dev --protocol=http --host=0.0.0.0 --port=8000",
     "docz:dev": "docz dev",
-    "docz:build": "docz build"
+    "docz:build": "docz build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",

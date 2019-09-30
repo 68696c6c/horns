@@ -32,3 +32,6 @@ local-down:
 
 test:
 	docker-compose run --rm app yarn test
+
+sbinit: image
+	docker-compose run --rm app bash -c "npx -p @storybook/cli sb init"
