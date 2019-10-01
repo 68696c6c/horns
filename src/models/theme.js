@@ -69,7 +69,9 @@ class Theme {
       default: color,
       alpha: color.alpha(colorFactors.alpha),
       light: color.lighten(colorFactors.light),
+      lighter: color.lighten(colorFactors.lighter),
       dark: color.darken(colorFactors.dark),
+      darker: color.darken(colorFactors.darker),
     }
   }
 
@@ -172,7 +174,7 @@ class Theme {
         backgroundFill = light.default
         copySwatch = neutral.default
         fill = this.colors[swatch].default
-        fillHover = this.colors[swatch].light
+        fillHover = this.colors[swatch].lighter
         fillActive = this.colors[swatch].light
         break
       default:

@@ -9,6 +9,9 @@ import { isUndefined } from '../utils/utils'
  */
 
 export const pallet = {
+  primary: Color('#FFAA00'),
+  secondary: Color('#3914AF'),
+  tertiary: Color('#009999'),
   violet: Color('#7f00ff'),
   indigo: Color('#3f00ff'),
   blue: Color('#1a99ff'),

@@ -34,9 +34,9 @@ class ThemeConfig {
 
     const configColors = safeGetValue(config, 'colors', {})
     this.colors = {
-      primary: safeGetValue(configColors, 'primary', pallet.violet),
-      secondary: safeGetValue(configColors, 'secondary', pallet.indigo),
-      tertiary: safeGetValue(configColors, 'tertiary', pallet.yellow),
+      primary: safeGetValue(configColors, 'primary', pallet.primary),
+      secondary: safeGetValue(configColors, 'secondary', pallet.secondary),
+      tertiary: safeGetValue(configColors, 'tertiary', pallet.tertiary),
       light: safeGetValue(configColors, 'light', pallet.gray.lightest),
       neutral: safeGetValue(configColors, 'neutral', pallet.gray.medium),
       dark: safeGetValue(configColors, 'dark', pallet.gray.darkest),
@@ -52,7 +52,9 @@ class ThemeConfig {
     this.colorFactors = {
       alpha: safeGetValue(configColorFactors, 'alpha', .3),
       light: safeGetValue(configColorFactors, 'light', .2),
+      lighter: safeGetValue(configColorFactors, 'light', .5),
       dark: safeGetValue(configColorFactors, 'dark', .2),
+      darker: safeGetValue(configColorFactors, 'dark', .5),
     }
 
     const configFontFamilies = safeGetValue(config, 'fontFamilies', {})
