@@ -83,17 +83,19 @@ export class HeaderBase extends React.Component {
   }
 
   handleState() {
-    const height = this.headerRef.current.offsetHeight
-    if (!isUndefined(height) && height > 0) {
-      const stuck = this.props.sticky && window.scrollY > height
-      const mobile = window.innerWidth <= this.minWidth
-      if (!this.cancelled) {
-        this.setState(() => ({ height, set: true, mobile, stuck }))
-      }
-      if (stuck) {
-        this.fireStick()
-      } else {
-        this.fireUnStick()
+    if (this.headerRef.current) {
+      const height = this.headerRef.current.offsetHeight
+      if (!isUndefined(height) && height > 0) {
+        const stuck = this.props.sticky && window.scrollY > height
+        const mobile = window.innerWidth <= this.minWidth
+        if (!this.cancelled) {
+          this.setState(() => ({ height, set: true, mobile, stuck }))
+        }
+        if (stuck) {
+          this.fireStick()
+        } else {
+          this.fireUnStick()
+        }
       }
     }
   }
