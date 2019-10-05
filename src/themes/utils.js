@@ -35,17 +35,20 @@ export const pallet = {
  * @param {Object} c - Color from 'color'
  * @returns {string}
  */
-export const rgb = (c) => {
-  return c.rgb().string()
-}
+export const rgb = c => c.rgb().string()
 
 /**
  * Return a CSS property value as a unit-less integer.
  * @param cssVal
  * @returns {*}
  */
-export const valueToInt = (cssVal) => {
-  return cssVal.replace('px', '').replace('rem', '').replace('em', '').replace('vw', '').replace('vh', '')
+export const valueToInt = cssVal => {
+  return cssVal
+    .replace('px', '')
+    .replace('rem', '')
+    .replace('em', '')
+    .replace('vw', '')
+    .replace('vh', '')
 }
 
 /**
@@ -55,17 +58,33 @@ export const valueToInt = (cssVal) => {
  * @returns SerializedStyles
  */
 export const hoverStates = config => {
-  const bgDef = isUndefined(config.background) ? '' : `background-color: ${rgb(config.background)}`
-  const bgHover = isUndefined(config.hover.background) ? '' : `background-color: ${rgb(config.hover.background)}`
-  const bgActive = isUndefined(config.active.background) ? '' : `background-color: ${rgb(config.active.background)}`
+  const bgDef = isUndefined(config.background)
+    ? ''
+    : `background-color: ${rgb(config.background)}`
+  const bgHover = isUndefined(config.hover.background)
+    ? ''
+    : `background-color: ${rgb(config.hover.background)}`
+  const bgActive = isUndefined(config.active.background)
+    ? ''
+    : `background-color: ${rgb(config.active.background)}`
 
-  const decDef = isUndefined(config.decoration) ? '' : `text-decoration: ${config.decoration}`
-  const decHover = isUndefined(config.hover.decoration) ? '' : `text-decoration: ${config.hover.decoration}`
-  const decActive = isUndefined(config.active.decoration) ? '' : `text-decoration: ${config.active.decoration}`
+  const decDef = isUndefined(config.decoration)
+    ? ''
+    : `text-decoration: ${config.decoration}`
+  const decHover = isUndefined(config.hover.decoration)
+    ? ''
+    : `text-decoration: ${config.hover.decoration}`
+  const decActive = isUndefined(config.active.decoration)
+    ? ''
+    : `text-decoration: ${config.active.decoration}`
 
   const borderDef = isUndefined(config.border) ? '' : `${config.border}`
-  const borderHover = isUndefined(config.hover.border) ? '' : `${config.hover.border}`
-  const borderActive = isUndefined(config.active.border) ? '' : `${config.active.border}`
+  const borderHover = isUndefined(config.hover.border)
+    ? ''
+    : `${config.hover.border}`
+  const borderActive = isUndefined(config.active.border)
+    ? ''
+    : `${config.active.border}`
 
   return css`
     ${bgDef};
