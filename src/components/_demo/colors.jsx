@@ -8,11 +8,11 @@ import { diagonalLinesCSS, textShadow } from '../utils'
 import uuid from 'uuid/v4'
 
 const StyledColorDemo = styled('div')`
-  background: ${({ theme }) => diagonalLinesCSS(theme.colors.dark.alpha)};
+  background: ${({ theme }) => diagonalLinesCSS(theme.colors.dark.alpha, 66)};
 `
 const StyledColorSwatches = styled('div')`
   display: grid;
-  grid-template-areas: "light default dark alpha";
+  grid-template-areas: 'light default dark alpha';
 `
 const Swatch = styled('div')`
   background: ${({ theme, color, swatch }) => rgb(theme.colors[color][swatch])};
@@ -70,17 +70,17 @@ ColorSwatches.propTypes = {
 
 const Colors = () => (
   <StyledColorDemo>
-    <ColorSwatches color="primary"/>
-    <ColorSwatches color="secondary"/>
-    <ColorSwatches color="tertiary"/>
-    <ColorSwatches color="light"/>
-    <ColorSwatches color="neutral"/>
-    <ColorSwatches color="dark"/>
-    <ColorSwatches color="success"/>
-    <ColorSwatches color="info"/>
-    <ColorSwatches color="warning"/>
-    <ColorSwatches color="danger"/>
-    <ColorSwatches color="background"/>
+    <ColorSwatches color="primary" />
+    <ColorSwatches color="secondary" />
+    <ColorSwatches color="tertiary" />
+    <ColorSwatches color="light" />
+    <ColorSwatches color="neutral" />
+    <ColorSwatches color="dark" />
+    <ColorSwatches color="success" />
+    <ColorSwatches color="info" />
+    <ColorSwatches color="warning" />
+    <ColorSwatches color="danger" />
+    <ColorSwatches color="background" />
   </StyledColorDemo>
 )
 
