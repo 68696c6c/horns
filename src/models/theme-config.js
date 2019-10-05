@@ -50,11 +50,11 @@ class ThemeConfig {
 
     const configColorFactors = safeGetValue(config, 'colorFactors', {})
     this.colorFactors = {
-      alpha: safeGetValue(configColorFactors, 'alpha', .3),
-      light: safeGetValue(configColorFactors, 'light', .2),
-      lighter: safeGetValue(configColorFactors, 'light', .5),
-      dark: safeGetValue(configColorFactors, 'dark', .2),
-      darker: safeGetValue(configColorFactors, 'dark', .5),
+      alpha: safeGetValue(configColorFactors, 'alpha', 0.3),
+      light: safeGetValue(configColorFactors, 'light', 0.2),
+      lighter: safeGetValue(configColorFactors, 'lighter', 0.5),
+      dark: safeGetValue(configColorFactors, 'dark', 0.2),
+      darker: safeGetValue(configColorFactors, 'darker', 0.5),
     }
 
     const configFontFamilies = safeGetValue(config, 'fontFamilies', {})
