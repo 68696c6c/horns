@@ -202,8 +202,15 @@ export const containerStyleHorizontal = (breakpoints, fluid = false) => {
   `
 }
 
-export const diagonalLinesCSS = color => {
-  return css`repeating-linear-gradient(45deg, transparent, transparent 10px, ${rgb(color)} 10px, ${rgb(color)} 20px)`
+// The width of the stripe, measured at the base, is leg of a 45-45-90 right triangle.
+// For the first stripe to start at the top left corner of the bar, the height of the background needs to be equal to the hypotenuse.
+// width = Math.sqrt(height / 2)
+// For thicker stripes, height can be manipulated, e.g. Math.sqrt(height) produces stripes twice as thick, Math.sqrt(height * 2) produces stripes four times as thick, etc.
+export const diagonalLinesCSS = (color, height) => {
+  const width = Math.sqrt(height * 2)
+  const stop = width * 2
+  const colorRGB = rgb(color)
+  return css`repeating-linear-gradient(45deg, transparent 0px, transparent ${width}px, ${colorRGB} ${width}px, ${colorRGB} ${stop}px)`
 }
 
 export const gradientHorizontalCSS = (color1, color2) => {

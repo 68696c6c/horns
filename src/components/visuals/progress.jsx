@@ -8,13 +8,12 @@ import { rgb } from '../../themes/utils'
 
 const Styled = styled('progress')`
   appearance: none;
-  height: 1em;
+  height: 16px;
   &:not([value]) {
     &::-webkit-progress-bar {
       background-color: ${({ theme, variant }) => rgb(theme.colors[variant].light)};
-      background-image: ${({ theme }) => diagonalLinesCSS(theme.colors.copy.alpha)},
+      background-image: ${({ theme }) => diagonalLinesCSS(theme.colors.copy.alpha, 16)},
         ${({ theme }) => gradientVerticalCSS(theme.colors.background.alpha, theme.colors.copy.alpha)};
-      background-size: 35px 1em, 100% 100%, 100% 100%;
       border-radius: ${({ theme, rounded }) => rounded ? theme.config.radius : 0};
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
     }
