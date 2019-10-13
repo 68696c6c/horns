@@ -1,4 +1,3 @@
-import Color from 'color'
 import { css } from '@emotion/core'
 import { isUndefined } from '../utils/utils'
 
@@ -9,25 +8,25 @@ import { isUndefined } from '../utils/utils'
  */
 
 export const pallet = {
-  primary: Color('#FFAA00'),
-  secondary: Color('#3914AF'),
-  tertiary: Color('#009999'),
-  violet: Color('#7f00ff'),
-  indigo: Color('#3f00ff'),
-  blue: Color('#1a99ff'),
-  green: Color('#00aa33'),
-  yellow: Color('#f6d500'),
-  orange: Color('#ff9900'),
-  red: Color('#ff3600'),
-  white: Color('#ffffff'),
+  primary: '#FFAA00',
+  secondary: '#3914AF',
+  tertiary: '#009999',
+  violet: '#7f00ff',
+  indigo: '#3f00ff',
+  blue: '#1a99ff',
+  green: '#00aa33',
+  yellow: '#f6d500',
+  orange: '#ff9900',
+  red: '#ff3600',
+  white: '#ffffff',
   gray: {
-    lightest: Color('#fafafa'),
-    light: Color('#cccccc'),
-    medium: Color('#999999'),
-    dark: Color('#666666'),
-    darkest: Color('#231f20'),
+    lightest: '#fafafa',
+    light: '#cccccc',
+    medium: '#999999',
+    dark: '#666666',
+    darkest: '#231f20',
   },
-  black: Color('#000000'),
+  black: '#000000',
 }
 
 /**

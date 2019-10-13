@@ -1,3 +1,4 @@
+import Color from 'color'
 import { pallet } from '../themes/utils'
 
 const safeGetValue = (config, key, defaultValue) => {
@@ -34,18 +35,18 @@ class ThemeConfig {
 
     const configColors = safeGetValue(config, 'colors', {})
     this.colors = {
-      primary: safeGetValue(configColors, 'primary', pallet.primary),
-      secondary: safeGetValue(configColors, 'secondary', pallet.secondary),
-      tertiary: safeGetValue(configColors, 'tertiary', pallet.tertiary),
-      light: safeGetValue(configColors, 'light', pallet.gray.lightest),
-      neutral: safeGetValue(configColors, 'neutral', pallet.gray.medium),
-      dark: safeGetValue(configColors, 'dark', pallet.gray.darkest),
-      success: safeGetValue(configColors, 'success', pallet.green),
-      info: safeGetValue(configColors, 'info', pallet.blue),
-      warning: safeGetValue(configColors, 'warning', pallet.orange),
-      danger: safeGetValue(configColors, 'danger', pallet.red),
-      background: safeGetValue(configColors, 'background', pallet.white),
-      copy: safeGetValue(configColors, 'copy', pallet.black),
+      primary: Color(safeGetValue(configColors, 'primary', pallet.primary)),
+      secondary: Color(safeGetValue(configColors, 'secondary', pallet.secondary)),
+      tertiary: Color(safeGetValue(configColors, 'tertiary', pallet.tertiary)),
+      light: Color(safeGetValue(configColors, 'light', pallet.gray.lightest)),
+      neutral: Color(safeGetValue(configColors, 'neutral', pallet.gray.medium)),
+      dark: Color(safeGetValue(configColors, 'dark', pallet.gray.darkest)),
+      success: Color(safeGetValue(configColors, 'success', pallet.green)),
+      info: Color(safeGetValue(configColors, 'info', pallet.blue)),
+      warning: Color(safeGetValue(configColors, 'warning', pallet.orange)),
+      danger: Color(safeGetValue(configColors, 'danger', pallet.red)),
+      background: Color(safeGetValue(configColors, 'background', pallet.white)),
+      copy: Color(safeGetValue(configColors, 'copy', pallet.black)),
     }
 
     const configColorFactors = safeGetValue(config, 'colorFactors', {})

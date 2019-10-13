@@ -4,6 +4,7 @@ import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import { rgb } from '../..'
+import { withColorProp } from '../../themes/color-variant-hocs'
 import { diagonalLinesCSS, textShadow } from '../utils'
 import uuid from 'uuid/v4'
 
@@ -14,7 +15,7 @@ const StyledColorSwatches = styled('div')`
   display: grid;
   grid-template-areas: 'light default dark alpha';
 `
-const Swatch = styled('div')`
+const SwatchBase = styled('div')`
   background: ${({ theme, color, swatch }) => rgb(theme.colors[color][swatch])};
   ${({ theme, color}) => textShadow(theme, color)};
   grid-area: ${({ swatch }) => swatch};
@@ -26,22 +27,11 @@ const Swatch = styled('div')`
   align-items: center;
 `
 
-Swatch.propTypes = {
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-  ]).isRequired,
+SwatchBase.propTypes = {
   swatch: PropTypes.oneOf(['default', 'light', 'dark', 'alpha']).isRequired,
 }
+
+const Swatch = withColorProp(SwatchBase)
 
 const ColorSwatches = ({ color, ...others }) => (
   <StyledColorSwatches {...others}>

@@ -37,7 +37,7 @@ class Theme {
 
   getColors() {
     const { colors, colorFactors } = this.config
-    let result = {}
+    const result = {}
     this.swatches.forEach(swatch => {
       if (colors.hasOwnProperty(swatch)) {
         // @TODO use a color config class
@@ -47,7 +47,8 @@ class Theme {
     })
     result.background = this.makeColor(colors.background, colorFactors)
     const copyDefault = colors.copy
-    let copyLight, copyDark = null
+    let copyLight = null
+    let copyDark = null
     if (copyDefault.isDark()) {
       copyLight = copyDefault.negate()
       copyDark = copyDefault
