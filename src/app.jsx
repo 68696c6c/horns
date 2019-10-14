@@ -4,6 +4,7 @@ import { ThemeProvider } from 'emotion-theming'
 import { css, Global } from '@emotion/core'
 import { getBaseStyles } from './themes'
 import theme from './themes/base'
+import { modeCSS } from './themes/mode'
 
 const App = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -11,8 +12,7 @@ const App = ({ children }) => (
       styles={css`
         ${getBaseStyles(theme)}
         [class^='Playground__StyledPreviewWrapper-'] {
-          background: white;
-          color: black;
+          ${modeCSS(theme)};
         }
       `}
     />

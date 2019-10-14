@@ -14,13 +14,13 @@ A Box is a generic, padded container that uses the CSS flex property to align it
 
 <Playground>
   <WrapperInline>
-    <Box variant="primary" width="200px" height="200px">Centered Box Content</Box>
+    <Box colorway="primary" width="200px" height="200px">Centered Box Content</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="dark" width="200px" height="200px" x="left">Left-Aligned Box Content</Box>
+    <Box colorway="dark" width="200px" height="200px" x="left">Left-Aligned Box Content</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="tertiary" width="200px" height="200px" y="bottom">Bottom-Aligned Box Content</Box>
+    <Box colorway="tertiary" width="200px" height="200px" y="bottom">Bottom-Aligned Box Content</Box>
   </WrapperInline>
 </Playground>
 
@@ -28,43 +28,40 @@ A Box is a generic, padded container that uses the CSS flex property to align it
 
 <Props of={Box} />
 
-## Variants
+## Colorways
 
 <Playground>
   <WrapperInline>
     <Box>None</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="background">Background</Box>
+    <Box colorway="primary">Primary</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="primary">Primary</Box>
+    <Box colorway="secondary">Secondary</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="secondary">Secondary</Box>
+    <Box colorway="tertiary">Tertiary</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="tertiary">Tertiary</Box>
+    <Box colorway="light">Light</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="light">Light</Box>
+    <Box colorway="neutral">Neutral</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="neutral">Neutral</Box>
+    <Box colorway="dark">Dark</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="dark">Dark</Box>
+    <Box colorway="success">Success</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="success">Success</Box>
+    <Box colorway="info">Info</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="info">Info</Box>
+    <Box colorway="warning">Warning</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box variant="warning">Warning</Box>
-  </WrapperInline>
-  <WrapperInline>
-    <Box variant="danger">Danger</Box>
+    <Box colorway="danger">Danger</Box>
   </WrapperInline>
 </Playground>

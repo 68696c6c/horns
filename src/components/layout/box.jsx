@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
-import { variantCSS, withVariantProp } from '../../themes/color-variant-hocs'
+import { colorwayCSS, withColorwayProp } from '../../themes/color-variant-hocs'
 import { COLOR_VARIANT_NONE, toClassNames } from '../utils'
 
 const getFlexCSS = (x, y) => {
@@ -37,7 +37,7 @@ const getFlexCSS = (x, y) => {
 }
 
 const Styled = styled('div')`
-  ${({ theme, variant }) => variantCSS(theme, variant)};
+  ${({ theme, colorway }) => colorwayCSS(theme, colorway)};
   display: flex;
   height: ${({ height }) => height};
   width: ${({ width }) => width};
@@ -71,6 +71,6 @@ BoxBase.defaultProps = {
   y: 'center',
 }
 
-const Box = withVariantProp(BoxBase, COLOR_VARIANT_NONE)
+const Box = withColorwayProp(BoxBase, COLOR_VARIANT_NONE)
 
 export default Box

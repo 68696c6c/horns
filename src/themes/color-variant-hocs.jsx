@@ -5,24 +5,23 @@ import { css } from '@emotion/core'
 import { COLOR_VARIANT_NONE } from '../components/utils'
 import { rgb } from './utils'
 
-export const variantCSS = (theme, variant) => {
-  if (variant === COLOR_VARIANT_NONE) {
+export const colorwayCSS = (theme, colorway) => {
+  if (colorway === COLOR_VARIANT_NONE) {
     return css`
       color: inherit;
     `
   }
-  const bg = theme.colors[variant].default
-  const color = bg.isDark() ? theme.colors.copy.light : theme.colors.copy.dark
+  const cw = theme.colorways[colorway]
   return css`
-    background: ${rgb(bg)};
-    color: ${rgb(color)};
+    background: ${cw.default.base};
+    color: ${cw.default.readable};
   `
 }
 
-export function withVariantProp(Component, defaultVariant) {
+export function withColorwayProp(Component, defaultColorway) {
   const ComponentWithProp = props => <Component {...props} />
   ComponentWithProp.propTypes = {
-    variant: PropTypes.oneOf([
+    colorway: PropTypes.oneOf([
       'primary',
       'secondary',
       'tertiary',
@@ -33,13 +32,11 @@ export function withVariantProp(Component, defaultVariant) {
       'info',
       'warning',
       'danger',
-      'background',
-      'copy',
       COLOR_VARIANT_NONE,
     ]),
   }
   ComponentWithProp.defaultProps = {
-    variant: defaultVariant,
+    colorway: defaultColorway,
   }
   return ComponentWithProp
 }

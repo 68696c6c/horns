@@ -1,15 +1,14 @@
-import Color from 'color'
-import { MODE_DEFAULT } from '../themes/mode'
-import { pallet } from '../themes/utils'
-
-const safeGetValue = (config, key, defaultValue) => {
-  return typeof config[key] === 'undefined' ? defaultValue : config[key]
-}
+import ColorsConfig from './colors'
+import { safeGetValue } from './utils'
 
 class ThemeConfig {
   constructor(config = {}) {
     // @TODO get default values from a config file.
-    this.mode = safeGetValue(config, 'mode', MODE_DEFAULT)
+    // Read values from config object and initialize sub-configs.
+    const configColors = safeGetValue(config, 'colors', {})
+    this.colors = new ColorsConfig(configColors)
+    /** ============================================================================================================= */
+
     this.headingMargin = safeGetValue(config, 'headingMargin', '.75rem 0')
     this.gap = safeGetValue(config, 'gap', '15px')
     this.lineHeight = safeGetValue(config, 'lineHeight', '1.6em')
@@ -33,31 +32,6 @@ class ThemeConfig {
       medium: safeGetValue(configBreakpoints, 'medium', '768px'),
       large: safeGetValue(configBreakpoints, 'large', '992px'),
       max: safeGetValue(configBreakpoints, 'max', '1200px'),
-    }
-
-    const configColors = safeGetValue(config, 'colors', {})
-    this.colors = {
-      primary: Color(safeGetValue(configColors, 'primary', pallet.primary)),
-      secondary: Color(safeGetValue(configColors, 'secondary', pallet.secondary)),
-      tertiary: Color(safeGetValue(configColors, 'tertiary', pallet.tertiary)),
-      light: Color(safeGetValue(configColors, 'light', pallet.gray.lightest)),
-      neutral: Color(safeGetValue(configColors, 'neutral', pallet.gray.medium)),
-      dark: Color(safeGetValue(configColors, 'dark', pallet.gray.darkest)),
-      success: Color(safeGetValue(configColors, 'success', pallet.green)),
-      info: Color(safeGetValue(configColors, 'info', pallet.blue)),
-      warning: Color(safeGetValue(configColors, 'warning', pallet.orange)),
-      danger: Color(safeGetValue(configColors, 'danger', pallet.red)),
-      background: Color(safeGetValue(configColors, 'background', pallet.white)),
-      copy: Color(safeGetValue(configColors, 'copy', pallet.black)),
-    }
-
-    const configColorFactors = safeGetValue(config, 'colorFactors', {})
-    this.colorFactors = {
-      alpha: safeGetValue(configColorFactors, 'alpha', 0.3),
-      light: safeGetValue(configColorFactors, 'light', 0.2),
-      lighter: safeGetValue(configColorFactors, 'lighter', 0.5),
-      dark: safeGetValue(configColorFactors, 'dark', 0.2),
-      darker: safeGetValue(configColorFactors, 'darker', 0.5),
     }
 
     const configFontFamilies = safeGetValue(config, 'fontFamilies', {})

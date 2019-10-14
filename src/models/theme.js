@@ -1,6 +1,31 @@
 import { isUndefined } from '..'
-import ThemeConfig from './theme-config'
+import { MODE_LIGHT } from '../themes/mode'
+import Colors from './colors'
+import ThemeConfig from './config/theme'
 import { rgb } from '../themes/utils'
+
+// const makeColorway = (color, copy) => {
+//   const light = copy.light
+//   const dark = copy.dark
+//   const colorN = color.negate()
+//   const cl = color.isLight()
+//   const cd = color.isDark()
+//   const ccl = color.contrast(light) >= 7
+//   const ccd = color.contrast(dark) >= 7
+//
+//   // If the contrast is ambiguous, prefer the mode color
+//   // if (!ccl && !ccd) {
+//   //   read =
+//   // }
+//
+//   console.log('light, dark, ccl, ccd', cl, cd, ccl, ccd)
+//   return {
+//     base: color.rgb().string(),
+//     readable: color.isDark() ? light.rgb().string() : dark.rgb().string(),
+//     negative: colorN.rgb().string(),
+//     negativeReadable: colorN.isDark() ? light.rgb().string() : dark.rgb().string(),
+//   }
+// }
 
 class Theme {
   constructor(config) {
@@ -17,12 +42,16 @@ class Theme {
       'danger',
     ]
 
+    this.configBase = config
     this.config = new ThemeConfig(config)
 
     // @TODO add support for imports.
     this.imports = []
     this.breakpoints = this.config.breakpoints
-    this.colors = this.getColors()
+    this.mode = this.config.mode
+    this.colors = this.config.colors.swatches
+
+    // this.colorways = new Colors(this.config)
     this.grid = this.getGrid()
     this.spacing = this.getSpacing()
     this.typography = this.getTypography()
@@ -45,34 +74,66 @@ class Theme {
         result[swatch] = this.makeColor(color, colorFactors)
       }
     })
-    result.background = this.makeColor(colors.background, colorFactors)
-    const copyDefault = colors.copy
-    let copyLight = null
-    let copyDark = null
-    if (copyDefault.isDark()) {
-      copyLight = copyDefault.negate()
-      copyDark = copyDefault
+    if (this.mode === MODE_LIGHT) {
+      result.background = this.makeColor(result.light.default, colorFactors)
+      result.copy = this.makeColor(result.dark.default, colorFactors)
     } else {
-      copyLight = copyDefault
-      copyDark = copyDefault.negate()
-    }
-    result.copy = {
-      default: copyDefault,
-      alpha: copyDefault.alpha(colorFactors.alpha),
-      light: copyLight,
-      dark: copyDark,
+      result.background = this.makeColor(result.dark.default, colorFactors)
+      result.copy = this.makeColor(result.light.default, colorFactors)
     }
     return result
   }
 
+  // getColorways() {
+  //   const cw = {}
+  //   const { dark, light } = this.colors
+  //   const darkDefault = dark.default.rgb().string()
+  //   const lightDefault = light.default.rgb().string()
+  //   if (this.mode === MODE_LIGHT) {
+  //     cw.background = {
+  //       primary: lightDefault,
+  //       secondary: light.dark.rgb().string(),
+  //       tertiary: light.darker.rgb().string(),
+  //     }
+  //     cw.copy = {
+  //       primary: darkDefault,
+  //       dark: darkDefault,
+  //       light: lightDefault,
+  //     }
+  //   } else {
+  //     cw.background = {
+  //       primary: darkDefault,
+  //       secondary: dark.light.rgb().string(),
+  //       tertiary: dark.lighter.rgb().string(),
+  //     }
+  //     cw.copy = {
+  //       primary: lightDefault,
+  //       dark: darkDefault,
+  //       light: lightDefault,
+  //     }
+  //   }
+  //   const shades = ['darker', 'dark', 'default', 'light', 'lighter']
+  //   this.swatches.forEach(swatch => {
+  //     cw[swatch] = {}
+  //     shades.forEach(shade => {
+  //       const color = this.colors[swatch][shade]
+  //       console.log('color', swatch, shade)
+  //       cw[swatch][shade] = makeColorway(color, { light: light.default, dark: dark.default })
+  //     })
+  //   })
+  //   console.log('coloryways debug: ', cw)
+  //
+  //   return cw
+  // }
+
   makeColor(color, colorFactors) {
     return {
+      darker: color.darken(colorFactors.darker),
+      dark: color.darken(colorFactors.dark),
       default: color,
-      alpha: color.alpha(colorFactors.alpha),
       light: color.lighten(colorFactors.light),
       lighter: color.lighten(colorFactors.lighter),
-      dark: color.darken(colorFactors.dark),
-      darker: color.darken(colorFactors.darker),
+      alpha: color.alpha(colorFactors.alpha),
     }
   }
 

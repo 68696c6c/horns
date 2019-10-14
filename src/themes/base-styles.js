@@ -1,4 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import { css } from '@emotion/core'
+import { modeCSS } from './mode'
 import { rgb, hoverStates } from './utils'
 
 export const getBaseStyles = theme => css`
@@ -12,11 +14,10 @@ export const getBaseStyles = theme => css`
     font-family: ${theme.typography.fonts.default.family};
     margin: 0;
     padding: 0;
-    background: ${rgb(theme.colors.background.default)};
-    color: ${rgb(theme.colors.copy.default)};
+    ${modeCSS(theme)};
     min-width: ${theme.breakpoints.min};
     #___gatsby {
-      background: ${rgb(theme.colors.background.default)};
+      ${modeCSS(theme)};
     }
   }
 
