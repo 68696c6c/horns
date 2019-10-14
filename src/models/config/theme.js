@@ -1,4 +1,5 @@
 import ColorsConfig from './colors'
+import InputsConfig from './inputs'
 import { safeGetValue } from './utils'
 
 class ThemeConfig {
@@ -7,6 +8,9 @@ class ThemeConfig {
     // Read values from config object and initialize sub-configs.
     const configColors = safeGetValue(config, 'colors', {})
     this.colors = new ColorsConfig(configColors)
+
+    const configInputs = safeGetValue(config, 'inputs', {})
+    this.inputs = new InputsConfig(configInputs)
     /** ============================================================================================================= */
 
     this.headingMargin = safeGetValue(config, 'headingMargin', '.75rem 0')

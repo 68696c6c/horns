@@ -4,29 +4,6 @@ import Colors from './colors'
 import ThemeConfig from './config/theme'
 import { rgb } from '../themes/utils'
 
-// const makeColorway = (color, copy) => {
-//   const light = copy.light
-//   const dark = copy.dark
-//   const colorN = color.negate()
-//   const cl = color.isLight()
-//   const cd = color.isDark()
-//   const ccl = color.contrast(light) >= 7
-//   const ccd = color.contrast(dark) >= 7
-//
-//   // If the contrast is ambiguous, prefer the mode color
-//   // if (!ccl && !ccd) {
-//   //   read =
-//   // }
-//
-//   console.log('light, dark, ccl, ccd', cl, cd, ccl, ccd)
-//   return {
-//     base: color.rgb().string(),
-//     readable: color.isDark() ? light.rgb().string() : dark.rgb().string(),
-//     negative: colorN.rgb().string(),
-//     negativeReadable: colorN.isDark() ? light.rgb().string() : dark.rgb().string(),
-//   }
-// }
-
 class Theme {
   constructor(config) {
     this.swatches = [
@@ -45,13 +22,13 @@ class Theme {
     this.configBase = config
     this.config = new ThemeConfig(config)
 
+    this.colors = this.config.colors
+
     // @TODO add support for imports.
     this.imports = []
     this.breakpoints = this.config.breakpoints
     this.mode = this.config.mode
-    this.colors = this.config.colors.swatches
 
-    // this.colorways = new Colors(this.config)
     this.grid = this.getGrid()
     this.spacing = this.getSpacing()
     this.typography = this.getTypography()
@@ -62,79 +39,6 @@ class Theme {
     this.buttons = this.getButtons()
     this.links = this.getLinks()
     this.navItems = this.getNavItems()
-  }
-
-  getColors() {
-    const { colors, colorFactors } = this.config
-    const result = {}
-    this.swatches.forEach(swatch => {
-      if (colors.hasOwnProperty(swatch)) {
-        // @TODO use a color config class
-        const color = colors[swatch]
-        result[swatch] = this.makeColor(color, colorFactors)
-      }
-    })
-    if (this.mode === MODE_LIGHT) {
-      result.background = this.makeColor(result.light.default, colorFactors)
-      result.copy = this.makeColor(result.dark.default, colorFactors)
-    } else {
-      result.background = this.makeColor(result.dark.default, colorFactors)
-      result.copy = this.makeColor(result.light.default, colorFactors)
-    }
-    return result
-  }
-
-  // getColorways() {
-  //   const cw = {}
-  //   const { dark, light } = this.colors
-  //   const darkDefault = dark.default.rgb().string()
-  //   const lightDefault = light.default.rgb().string()
-  //   if (this.mode === MODE_LIGHT) {
-  //     cw.background = {
-  //       primary: lightDefault,
-  //       secondary: light.dark.rgb().string(),
-  //       tertiary: light.darker.rgb().string(),
-  //     }
-  //     cw.copy = {
-  //       primary: darkDefault,
-  //       dark: darkDefault,
-  //       light: lightDefault,
-  //     }
-  //   } else {
-  //     cw.background = {
-  //       primary: darkDefault,
-  //       secondary: dark.light.rgb().string(),
-  //       tertiary: dark.lighter.rgb().string(),
-  //     }
-  //     cw.copy = {
-  //       primary: lightDefault,
-  //       dark: darkDefault,
-  //       light: lightDefault,
-  //     }
-  //   }
-  //   const shades = ['darker', 'dark', 'default', 'light', 'lighter']
-  //   this.swatches.forEach(swatch => {
-  //     cw[swatch] = {}
-  //     shades.forEach(shade => {
-  //       const color = this.colors[swatch][shade]
-  //       console.log('color', swatch, shade)
-  //       cw[swatch][shade] = makeColorway(color, { light: light.default, dark: dark.default })
-  //     })
-  //   })
-  //   console.log('coloryways debug: ', cw)
-  //
-  //   return cw
-  // }
-
-  makeColor(color, colorFactors) {
-    return {
-      darker: color.darken(colorFactors.darker),
-      dark: color.darken(colorFactors.dark),
-      default: color,
-      light: color.lighten(colorFactors.light),
-      lighter: color.lighten(colorFactors.lighter),
-      alpha: color.alpha(colorFactors.alpha),
-    }
   }
 
   getGrid() {
@@ -174,12 +78,12 @@ class Theme {
     const { inputs } = this.config
     return {
       borderWidth: inputs.borderWidth,
-      borderColor: this.colors[inputs.borderColor].default,
-      color: this.colors[inputs.color].default,
-      backgroundColor: this.colors[inputs.backgroundColor].default,
-      highlight: this.colors[inputs.highlight].alpha,
-      active: this.colors[inputs.active].default,
-      disabled: this.colors[inputs.disabled].default,
+      borderColor: this.colors.background.secondary,
+      color: this.colors.copy.primary,
+      backgroundColor: this.colors.background.primary,
+      highlight: this.colors.hover,
+      active: this.colors.active,
+      disabled: this.colors.disabled,
     }
   }
 

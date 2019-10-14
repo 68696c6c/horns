@@ -46,7 +46,7 @@ export const getShadedColorPallet = (pallet, factors) => {
 
 const getColorValue = c => c.rgb().string()
 
-export const getModeColors = (mode, dark, light) => {
+export const getModeColors = (mode, dark, neutral, light) => {
   const darkBase = getColorValue(dark.base)
   const lightBase = getColorValue(light.base)
 
@@ -58,6 +58,8 @@ export const getModeColors = (mode, dark, light) => {
         primary: lightBase,
         secondary: lightDark,
         tertiary: lightDarker,
+        active: getColorValue(neutral.lighter),
+        inactive: getColorValue(neutral.light),
       },
       copy: {
         primary: darkBase,
@@ -74,6 +76,8 @@ export const getModeColors = (mode, dark, light) => {
       primary: darkBase,
       secondary: darkLight,
       tertiary: darkLighter,
+      active: getColorValue(neutral.darker),
+      inactive: getColorValue(neutral.dark),
     },
     copy: {
       primary: lightBase,
