@@ -1,4 +1,4 @@
-import Theme from '../models/theme'
+import Theme from '../config/theme'
 
 const baseTheme = new Theme()
 

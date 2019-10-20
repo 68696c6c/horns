@@ -1,6 +1,6 @@
 /* eslint-disable prefer-destructuring */
 import TypographyConfig from './typography'
-import { valueToInt } from '../../themes'
+import { valueToInt } from '../utils/utils'
 import { safeGetValue } from './utils'
 
 const pxToEM = (base, px) => `${valueToInt(px) / valueToInt(base)}em`

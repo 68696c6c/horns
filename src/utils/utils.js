@@ -79,3 +79,17 @@ export const getParentByClassName = (element, className) => {
   } while (element !== null && !element.classList.contains(className))
   return element
 }
+
+/**
+ * Return a CSS property value as a unit-less integer.
+ * @param cssVal
+ * @returns {*}
+ */
+export const valueToInt = cssVal => {
+  return cssVal
+    .replace('px', '')
+    .replace('rem', '')
+    .replace('em', '')
+    .replace('vw', '')
+    .replace('vh', '')
+}

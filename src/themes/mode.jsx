@@ -8,7 +8,7 @@ export const MODE_DEFAULT = MODE_DARK
 
 export const modeCSS = theme => {
   return css`
-    background: ${theme.colorways.background.primary};
-    color: ${theme.colorways.copy.primary};
+    background: ${theme.colors.background.primary};
+    color: ${theme.colors.copy.base};
   `
 }

@@ -10,7 +10,7 @@ import ButtonsConfig from './buttons'
 import MapsConfig from './maps'
 import { safeGetValue } from './utils'
 
-class ThemeConfig {
+class Theme {
   constructor(config = {}) {
     // @TODO get default values from a config file.
     // Read values from config object and initialize sub-configs.
@@ -46,4 +46,4 @@ class ThemeConfig {
   }
 }
 
-export default ThemeConfig
+export default Theme
