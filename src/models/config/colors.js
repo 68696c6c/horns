@@ -42,6 +42,10 @@ class ColorsConfig {
   lightMode() {
     return this.mode === MODE_LIGHT
   }
+
+  getGetSwatch(swatchKey) {
+    return getColorSwatch(this.swatches, swatchKey)
+  }
 }
 
 export default ColorsConfig

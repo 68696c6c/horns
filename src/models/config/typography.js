@@ -67,6 +67,13 @@ class TypographyConfig {
 
     console.log('TypographyConfig', this)
   }
+
+  getWeight(weight) {
+    if (this.weights[weight]) {
+      return this.weights[weight]
+    }
+    return this.weights.base
+  }
 }
 
 export default TypographyConfig

@@ -1,6 +1,8 @@
+import ButtonsConfig from './buttons'
 import ColorsConfig from './colors'
 import InputsConfig from './inputs'
 import LinksConfig from './links'
+import MapsConfig from './maps'
 import NavItemsConfig from './nav-items'
 import RadiusConfig from './radis'
 import SpacingConfig from './spacing'
@@ -27,36 +29,20 @@ class ThemeConfig {
     const configGrid = safeGetValue(config, 'navItems', {})
     this.grid = new GridConfig(this.spacing, configGrid)
 
-    const configNavItems = safeGetValue(config, 'navItems', {})
-    this.navItems = new NavItemsConfig(this.colors, this.spacing, configNavItems)
-
     const configRadius = safeGetValue(config, 'radius', {})
     this.radius = new RadiusConfig(this.spacing, configRadius)
 
+    const configNavItems = safeGetValue(config, 'navItems', {})
+    this.navItems = new NavItemsConfig(this.colors, this.spacing, configNavItems)
+
     const configLinks = safeGetValue(config, 'links', {})
     this.links = new LinksConfig(this.colors, configLinks)
-    /** ============================================================================================================= */
 
-    const configLinkDecorations = safeGetValue(config, 'linkDecorations', {})
-    this.linkDecorations = {
-      default: safeGetValue(configLinkDecorations, 'default', 'none'),
-      hover: safeGetValue(configLinkDecorations, 'hover', 'none'),
-      active: safeGetValue(configLinkDecorations, 'active', 'none'),
-    }
+    const configButtons = safeGetValue(config, 'buttons', {})
+    this.buttons = new ButtonsConfig(this.colors, this.spacing, this.radius, this.typography, configButtons)
 
-    const map = safeGetValue(config, 'map', {})
-    this.map = {
-      backgroundColor: safeGetValue(map, 'backgroundColor', 'neutral'),
-      stateColor: safeGetValue(map, 'stateColor', 'primary'),
-      stateColorHover: safeGetValue(map, 'stateColorHover', 'tertiary-light'),
-      stateColorActive: safeGetValue(map, 'stateColorActive', 'tertiary-dark'),
-      stateLineColor: safeGetValue(map, 'stateLineColor', 'background'),
-      stateLineColorHover: safeGetValue(map, 'stateLineColorHover', 'background'),
-      stateLineColorActive: safeGetValue(map, 'stateLineColorActive', 'background'),
-      labelColor: safeGetValue(map, 'labelColor', 'light'),
-      labelColorHover: safeGetValue(map, 'labelColorHover', 'dark'),
-      labelColorActive: safeGetValue(map, 'labelColorActive', 'dark'),
-    }
+    const configMap = safeGetValue(config, 'map', {})
+    this.map = new MapsConfig(this.colors, configMap)
   }
 }
 

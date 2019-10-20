@@ -40,7 +40,6 @@ class LinksConfig {
     }
     const swatches = colorsConfig.swatches
 
-    //
     let color = colorsConfig.copy.primary
     let hColor = colorsConfig.hover
     let aColor = colorsConfig.active
@@ -75,7 +74,7 @@ class LinksConfig {
     }
 
     // Default link style.
-    this.base = makeLink(colors, decorations)
+    this.copy = makeLink(colors, decorations)
 
     // Themed link styles.
     let hShade = 'dark'

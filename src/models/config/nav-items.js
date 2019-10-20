@@ -68,17 +68,15 @@ class NavItemsConfig {
       throw new Error('NavItemsConfig: invalid SpacingConfig')
     }
 
-    const cn = safeGetValue(config, 'navItems', {})
-
-    let spacing = safeGetValue(cn, 'spacing', defaultNavItems.spacing)
+    let spacing = safeGetValue(config, 'spacing', defaultNavItems.spacing)
     if (!spacingSizes.includes(spacing)) {
       spacing = defaultNavItems.spacing
     }
     const padding = spacingConfig[spacing].px
 
-    const { color, background } = getConfigState(swatches, cn)
-    const { color: hColor, background: hBG } = getConfigState(swatches, cn, 'hover')
-    const { color: aColor, background: aBG } = getConfigState(swatches, cn, 'active')
+    const { color, background } = getConfigState(swatches, config)
+    const { color: hColor, background: hBG } = getConfigState(swatches, config, 'hover')
+    const { color: aColor, background: aBG } = getConfigState(swatches, config, 'active')
     const base = {
       color,
       background,
@@ -92,7 +90,7 @@ class NavItemsConfig {
       },
     }
 
-    const configCurrent = safeGetValue(cn, 'current', defaultNavItems.current)
+    const configCurrent = safeGetValue(config, 'current', defaultNavItems.current)
     const currentEffect = safeGetValue(configCurrent, 'effect', defaultNavItems.current.effect)
     const lineSize = safeGetValue(configCurrent, 'lineSize', defaultNavItems.current.lineSize)
     const lineColor = safeGetValue(configCurrent, 'lineColor', defaultNavItems.current.lineColor)

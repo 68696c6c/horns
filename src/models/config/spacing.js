@@ -81,6 +81,13 @@ class SpacingConfig {
 
     console.log('SpacingConfig', this)
   }
+
+  getSpacing(size) {
+    if (this[size]) {
+      return this[size].px
+    }
+    return 'auto'
+  }
 }
 
 export default SpacingConfig

@@ -96,6 +96,10 @@ class RadiusConfig {
 
     console.log('RadiusConfig', this)
   }
+
+  getRadius() {
+    return `${this.topLeft} ${this.topRight} ${this.bottomRight} ${this.bottomLeft}`
+  }
 }
 
 export default RadiusConfig
