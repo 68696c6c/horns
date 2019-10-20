@@ -46,7 +46,7 @@ export const getShadedColorPallet = (pallet, factors) => {
 
 const getColorValue = c => c.rgb().string()
 
-export const getSwatchPath = colorSwatch => {
+const getSwatchPath = colorSwatch => {
   const parts = colorSwatch.split('-')
   switch (parts.length) {
     case 1:

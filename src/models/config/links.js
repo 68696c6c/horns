@@ -38,7 +38,6 @@ class LinksConfig {
     if (!(colorsConfig instanceof ColorsConfig)) {
       throw new Error('LinksConfig: invalid ColorsConfig')
     }
-    const swatches = colorsConfig.swatches
 
     let color = colorsConfig.copy.primary
     let hColor = colorsConfig.hover
@@ -47,17 +46,17 @@ class LinksConfig {
 
     const configColor = safeGetValue(configColors, 'base', '')
     if (configColor) {
-      color = getColorSwatch(swatches, configColor)
+      color = colorsConfig.getSwatch(configColor)
     }
 
     const configHColor = safeGetValue(configColors, 'hover', '')
     if (configHColor) {
-      hColor = getColorSwatch(swatches, configHColor)
+      hColor = colorsConfig.getSwatch(configHColor)
     }
 
     const configAColor = safeGetValue(configColors, 'active', '')
     if (configAColor) {
-      aColor = getColorSwatch(swatches, configAColor)
+      aColor = colorsConfig.getSwatch(configAColor)
     }
 
     const colors = {
@@ -86,9 +85,9 @@ class LinksConfig {
     this.colorways = {}
     palletColors.forEach(palletColor => {
       const c = {
-        base: swatches[palletColor].base.base,
-        hover: swatches[palletColor][hShade].base,
-        active: swatches[palletColor][aShade].base,
+        base: colorsConfig.getSwatch(`${palletColor}-base-base`),
+        hover: colorsConfig.getSwatch(`${palletColor}-${hShade}-base`),
+        active: colorsConfig.getSwatch(`${palletColor}-${aShade}-base`),
       }
       this.colorways[palletColor] = makeLink(c, decorations)
     })

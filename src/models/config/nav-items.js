@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import ColorsConfig from './colors'
 import SpacingConfig, { spacingSizes } from './spacing'
-import { getColorSwatch, safeGetValue } from './utils'
+import { safeGetValue } from './utils'
 
 // @TODO get default values from a config file.
 const defaultNavItems = {
@@ -25,20 +25,20 @@ const defaultNavItems = {
   },
 }
 
-const getConfigState = (swatches, config, state = 'base') => {
+const getConfigState = (colorsConfig, config, state = 'base') => {
   let color
   let background
   if (!['hover', 'active'].includes(state)) {
     const stateColor = safeGetValue(config, 'color', defaultNavItems.color)
-    color = getColorSwatch(swatches, stateColor)
+    color = colorsConfig.getSwatch(stateColor)
     const stateBG = safeGetValue(config, 'background', defaultNavItems.background)
-    background = getColorSwatch(swatches, stateBG)
+    background = colorsConfig.getSwatch(stateBG)
   } else {
     const stateConfig = safeGetValue(config, state, defaultNavItems[state])
     const stateColor = safeGetValue(stateConfig, 'color', defaultNavItems[state].color)
-    color = getColorSwatch(swatches, stateColor)
+    color = colorsConfig.getSwatch(stateColor)
     const stateBG = safeGetValue(stateConfig, 'background', defaultNavItems[state].background)
-    background = getColorSwatch(swatches, stateBG)
+    background = colorsConfig.getSwatch(stateBG)
   }
   return { color, background }
 }
@@ -62,7 +62,6 @@ class NavItemsConfig {
     if (!(colorsConfig instanceof ColorsConfig)) {
       throw new Error('NavItemsConfig: invalid ColorsConfig')
     }
-    const swatches = colorsConfig.swatches
 
     if (!(spacingConfig instanceof SpacingConfig)) {
       throw new Error('NavItemsConfig: invalid SpacingConfig')
@@ -74,9 +73,9 @@ class NavItemsConfig {
     }
     const padding = spacingConfig[spacing].px
 
-    const { color, background } = getConfigState(swatches, config)
-    const { color: hColor, background: hBG } = getConfigState(swatches, config, 'hover')
-    const { color: aColor, background: aBG } = getConfigState(swatches, config, 'active')
+    const { color, background } = getConfigState(colorsConfig, config)
+    const { color: hColor, background: hBG } = getConfigState(colorsConfig, config, 'hover')
+    const { color: aColor, background: aBG } = getConfigState(colorsConfig, config, 'active')
     const base = {
       color,
       background,
@@ -106,7 +105,7 @@ class NavItemsConfig {
         inlineBorder = `border-bottom: ${lineSize} solid transparent;`
         stackedPadding = `${padding} ${padding} ${padding} calc(${padding} - ${lineSize})`
         stackedBorder = `border-left: ${lineSize} solid transparent;`
-        currentBorder = `border-color: ${getColorSwatch(swatches, lineColor)};`
+        currentBorder = `border-color: ${colorsConfig.getSwatch(lineColor)};`
         break
       case 'highlight':
         break

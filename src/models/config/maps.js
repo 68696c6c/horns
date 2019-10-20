@@ -85,21 +85,21 @@ const makeBaseMap = (colors, config) => {
     defaultMap.labelColorActive
   )
 
-  const bg = colors.getGetSwatch(backgroundColor)
+  const bg = colors.getSwatch(backgroundColor)
   const stateFill = {
-    base: colors.getGetSwatch(stateColor),
-    hover: colors.getGetSwatch(stateColorHover),
-    active: colors.getGetSwatch(stateColorActive),
+    base: colors.getSwatch(stateColor),
+    hover: colors.getSwatch(stateColorHover),
+    active: colors.getSwatch(stateColorActive),
   }
   const stateStroke = {
-    base: colors.getGetSwatch(stateLineColor),
-    hover: colors.getGetSwatch(stateLineColorHover),
-    active: colors.getGetSwatch(stateLineColorActive),
+    base: colors.getSwatch(stateLineColor),
+    hover: colors.getSwatch(stateLineColorHover),
+    active: colors.getSwatch(stateLineColorActive),
   }
   const labelFill = {
-    base: colors.getGetSwatch(labelColor),
-    hover: colors.getGetSwatch(labelColorHover),
-    active: colors.getGetSwatch(labelColorActive),
+    base: colors.getSwatch(labelColor),
+    hover: colors.getSwatch(labelColorHover),
+    active: colors.getSwatch(labelColorActive),
   }
   return makeMap(bg, stateFill, stateStroke, labelFill)
 }

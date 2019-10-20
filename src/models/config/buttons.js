@@ -1,9 +1,9 @@
 /* eslint-disable prefer-destructuring */
 import ColorsConfig from './colors'
-import RadiusConfig from './radis'
-import SpacingConfig, { spacingSizes } from './spacing'
+import RadiusConfig from './radius'
+import SpacingConfig from './spacing'
 import TypographyConfig from './typography'
-import { palletColors, getColorSwatch, safeGetValue } from './utils'
+import { palletColors, safeGetValue } from './utils'
 
 // @TODO get default values from a config file.
 const defaultButtons = {

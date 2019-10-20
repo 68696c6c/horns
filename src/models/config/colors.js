@@ -43,7 +43,7 @@ class ColorsConfig {
     return this.mode === MODE_LIGHT
   }
 
-  getGetSwatch(swatchKey) {
+  getSwatch(swatchKey) {
     return getColorSwatch(this.swatches, swatchKey)
   }
 }
