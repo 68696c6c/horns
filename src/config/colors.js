@@ -48,6 +48,11 @@ const getColorSwatch = (swatches, swatch) => {
   return swatches[path.color][path.shade][path.swatch]
 }
 
+const getColorShade = (swatches, shade) => {
+  const path = getSwatchPath(shade)
+  return swatches[path.color][path.shade]
+}
+
 const getModeColors = (mode, dark, neutral, light) => {
   const darkBase = getColorValue(dark.base)
   const lightBase = getColorValue(light.base)
@@ -115,13 +120,33 @@ const getShadedColorPallet = (pallet, factors) => {
   const shades = {}
   palletColors.forEach(palletColor => {
     const color = pallet[palletColor]
-    shades[palletColor] = {
-      alpha: color.alpha(factors.alpha),
-      darker: color.darken(factors.darker),
-      dark: color.darken(factors.dark),
-      base: color,
-      light: color.lighten(factors.light),
-      lighter: color.lighten(factors.lighter),
+    if (palletColor === 'dark') {
+      shades[palletColor] = {
+        alpha: color.alpha(factors.alpha),
+        darker: color.darken(factors.darker),
+        dark: color.darken(factors.dark),
+        base: color,
+        light: color.lighten(25),
+        lighter: color.lighten(50),
+      }
+    } else if (palletColor === 'light') {
+      shades[palletColor] = {
+        alpha: color.alpha(factors.alpha),
+        darker: color.darken(0.15),
+        dark: color.darken(0.08),
+        base: color,
+        light: color.lighten(factors.light),
+        lighter: color.lighten(factors.lighter),
+      }
+    } else {
+      shades[palletColor] = {
+        alpha: color.alpha(factors.alpha),
+        darker: color.darken(factors.darker),
+        dark: color.darken(factors.dark),
+        base: color,
+        light: color.lighten(factors.light),
+        lighter: color.lighten(factors.lighter),
+      }
     }
   })
   return shades
@@ -163,6 +188,10 @@ class ColorsConfig {
 
   getSwatch(swatchKey) {
     return getColorSwatch(this.swatches, swatchKey)
+  }
+
+  getShade(shadeKey) {
+    return getColorShade(this.swatches, shadeKey)
   }
 }
 

@@ -3,7 +3,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 import { COLOR_VARIANT_NONE } from '../components/utils'
-import { rgb } from './utils'
 
 export const colorwayCSS = (theme, colorway) => {
   if (colorway === COLOR_VARIANT_NONE) {
@@ -13,8 +12,8 @@ export const colorwayCSS = (theme, colorway) => {
   }
   const cw = theme.colorways[colorway]
   return css`
-    background: ${cw.default.base};
-    color: ${cw.default.readable};
+    background: ${cw.base};
+    color: ${cw.readable};
   `
 }
 
@@ -23,40 +22,40 @@ export function withColorwayProp(Component, defaultColorway) {
   ComponentWithProp.propTypes = {
     colorway: PropTypes.oneOf([
       'primary',
+      'primary-dark',
+      'primary-light',
       'secondary',
+      'secondary-dark',
+      'secondary-light',
       'tertiary',
+      'tertiary-dark',
+      'tertiary-light',
       'light',
+      'light-dark',
+      'light-darker',
       'neutral',
+      'neutral-dark',
+      'neutral-light',
       'dark',
+      'dark-light',
+      'dark-lighter',
       'success',
+      'success-dark',
+      'success-light',
       'info',
+      'info-dark',
+      'info-light',
       'warning',
+      'warning-dark',
+      'warning-light',
       'danger',
+      'danger-dark',
+      'danger-light',
       COLOR_VARIANT_NONE,
     ]),
   }
   ComponentWithProp.defaultProps = {
     colorway: defaultColorway,
-  }
-  return ComponentWithProp
-}
-
-export function withColorProp(Component) {
-  const ComponentWithProp = props => <Component {...props} />
-  ComponentWithProp.propTypes = {
-    color: PropTypes.oneOf([
-      'primary',
-      'secondary',
-      'tertiary',
-      'light',
-      'neutral',
-      'dark',
-      'success',
-      'info',
-      'warning',
-      'danger',
-      'background',
-    ]).isRequired,
   }
   return ComponentWithProp
 }

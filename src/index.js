@@ -1,6 +1,4 @@
-import baseTheme from './themes/base'
-
-export { Theme, ThemeConfig } from './models'
+export { Theme } from './config'
 
 export {
   baseTheme,

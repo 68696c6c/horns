@@ -1,10 +1,7 @@
 import Color from 'color'
 import { safeGetValue, palletColors } from './utils'
 
-const defaultPallet = {
-  primary: '#FFAA00',
-  secondary: '#3914AF',
-  tertiary: '#009999',
+const basePallet = {
   violet: '#7f00ff',
   indigo: '#3f00ff',
   blue: '#1a99ff',
@@ -13,8 +10,21 @@ const defaultPallet = {
   orange: '#ff9900',
   red: '#ff3600',
   white: '#ffffff',
-  gray: '#999999',
-  black: '#000000',
+  gray: '#888888',
+  black: '#010101',
+}
+
+const defaultPallet = {
+  primary: '#FFAA00',
+  secondary: '#3914AF',
+  tertiary: '#009999',
+  light: basePallet.white,
+  neutral: basePallet.gray,
+  dark: basePallet.black,
+  success: basePallet.green,
+  info: basePallet.blue,
+  warning: basePallet.orange,
+  danger: basePallet.red,
 }
 
 class ColorPallet {

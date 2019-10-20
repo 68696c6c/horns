@@ -3,24 +3,10 @@ import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withColorwayProp } from '../../themes/color-variant-hocs'
-import { COLOR_VARIANT_NONE } from '../utils'
-import uuid from 'uuid/v4'
+import { palletColors, palletColorShades } from '../../config/utils'
 
-// const StyledColorDemo = styled('div')`
-//   background: ${({ theme }) => diagonalLinesCSS(theme.colors.dark.alpha, 66)};
-// `
-const StyledColorSwatches = styled('div')`
-  display: grid;
-  grid-template-areas: 'darker dark base light lighter';
-`
-const cwCSS = (theme, colorway, swatch) => {
-  if (colorway === COLOR_VARIANT_NONE) {
-    return css`
-      color: inherit;
-    `
-  }
-  const cw = theme.colorways[colorway][swatch]
+const cwCSS = (theme, colorway) => {
+  const cw = theme.colors.getShade(colorway)
   return css`
     background: ${cw.base};
     color: ${cw.readable};
@@ -31,53 +17,84 @@ const cwCSS = (theme, colorway, swatch) => {
   `
 }
 
-const SwatchBase = styled('div')`
-  ${({ theme, colorway, swatch }) => cwCSS(theme, colorway, swatch)};
-  grid-area: ${({ swatch }) => swatch};
-  padding: 1em;
-  font-size: 1.15em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const Swatch = styled('div')`
+  ${({ theme, colorway }) => cwCSS(theme, colorway)};
+  padding: ${({ theme }) => theme.spacing.xSmall.px};
 `
 
-SwatchBase.propTypes = {
-  swatch: PropTypes.oneOf([
-    'darker',
-    'dark',
-    'base',
-    'light',
-    'lighter',
-  ]).isRequired,
+Swatch.propTypes = {
+  colorway: PropTypes.oneOf(palletColorShades).isRequired,
 }
 
-const Swatch = withColorwayProp(SwatchBase)
+const StyledColorShade = styled('div')`
+  text-align: center;
+  margin: ${({ theme }) => theme.spacing.xSmall.px};
+`
 
-const ColorSwatchesBase = ({ colorway, ...others }) => (
-  <StyledColorSwatches {...others}>
-    <Swatch key={uuid()} colorway={colorway} swatch="darker">{colorway} - darker</Swatch>
-    <Swatch key={uuid()} colorway={colorway} swatch="dark">{colorway} - dark</Swatch>
-    <Swatch key={uuid()} colorway={colorway} swatch="base">{colorway} - base</Swatch>
-    <Swatch key={uuid()} colorway={colorway} swatch="light">{colorway} - light</Swatch>
-    <Swatch key={uuid()} colorway={colorway} swatch="lighter">{colorway} - lighter</Swatch>
-  </StyledColorSwatches>
+const StyledSwatches = styled('div')`
+  border-radius: ${({ theme }) => theme.radius};
+  overflow: hidden;
+`
+
+const ColorShade = ({ colorway }) => (
+  <StyledColorShade>
+    <h1>{colorway}</h1>
+    <StyledSwatches>
+      <Swatch colorway={`${colorway}-darker`}>darker</Swatch>
+      <Swatch colorway={`${colorway}-dark`}>dark</Swatch>
+      <Swatch colorway={colorway}>base</Swatch>
+      <Swatch colorway={`${colorway}-light`}>light</Swatch>
+      <Swatch colorway={`${colorway}-lighter`}>lighter</Swatch>
+    </StyledSwatches>
+  </StyledColorShade>
 )
 
-const ColorSwatches = withColorwayProp(ColorSwatchesBase)
+ColorShade.propTypes = {
+  colorway: PropTypes.oneOf(palletColors).isRequired,
+}
+
+const StyledColors = styled('div')`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+`
+
+const NeutralColorShades = () => (
+  <StyledColorShade>
+    <h1>dark, neutral, light</h1>
+    <StyledSwatches>
+      <Swatch colorway="dark">dark base</Swatch>
+      <Swatch colorway="dark-light">dark light</Swatch>
+      <Swatch colorway="dark-lighter">dark lighter</Swatch>
+
+      <Swatch colorway="neutral-darker">neutral darker</Swatch>
+      <Swatch colorway="neutral-dark">neutral dark</Swatch>
+      <Swatch colorway="neutral">neutral base</Swatch>
+      <Swatch colorway="neutral-light">neutral light</Swatch>
+      <Swatch colorway="neutral-lighter">neutral lighter</Swatch>
+
+      <Swatch colorway="light-darker">light darker</Swatch>
+      <Swatch colorway="light-dark">light dark</Swatch>
+      <Swatch colorway="light">light base</Swatch>
+    </StyledSwatches>
+  </StyledColorShade>
+)
 
 const Colors = () => (
   <>
-    <ColorSwatches colorway="primary" />
-    <ColorSwatches colorway="secondary" />
-    <ColorSwatches colorway="tertiary" />
-    <ColorSwatches colorway="light" />
-    <ColorSwatches colorway="neutral" />
-    <ColorSwatches colorway="dark" />
-    <ColorSwatches colorway="success" />
-    <ColorSwatches colorway="info" />
-    <ColorSwatches colorway="warning" />
-    <ColorSwatches colorway="danger" />
+    <StyledColors>
+      <ColorShade colorway="primary" />
+      <ColorShade colorway="secondary" />
+      <ColorShade colorway="tertiary" />
+    </StyledColors>
+    <StyledColors>
+      <NeutralColorShades />
+    </StyledColors>
+    <StyledColors>
+      <ColorShade colorway="success" />
+      <ColorShade colorway="info" />
+      <ColorShade colorway="warning" />
+      <ColorShade colorway="danger" />
+    </StyledColors>
   </>
 )
 
