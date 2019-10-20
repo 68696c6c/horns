@@ -1,4 +1,4 @@
-import { colorFactors, safeGetValue } from './utils'
+import { safeGetValue } from './utils'
 
 const defaultColorFactors = {
   alpha: 0.3,
@@ -7,6 +7,8 @@ const defaultColorFactors = {
   light: 0.2,
   lighter: 0.5,
 }
+
+const colorFactors = ['alpha', 'darker', 'dark', 'light', 'lighter']
 
 class ColorFactors {
   constructor(config = {}) {
