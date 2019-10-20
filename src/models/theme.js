@@ -3,6 +3,7 @@ import { MODE_LIGHT } from '../themes/mode'
 import Colors from './colors'
 import ThemeConfig from './config/theme'
 import { rgb } from '../themes/utils'
+import { getSwatchPath, MODE_DARK } from './config/utils'
 
 class Theme {
   constructor(config) {
@@ -29,16 +30,16 @@ class Theme {
     this.breakpoints = this.config.breakpoints
     this.mode = this.config.mode
 
-    this.grid = this.getGrid()
-    this.spacing = this.getSpacing()
-    this.typography = this.getTypography()
-    this.inputs = this.getInputs()
-
-    // These use values set above and must be called last.
-    this.mapVariants = this.getMapVariants()
-    this.buttons = this.getButtons()
-    this.links = this.getLinks()
-    this.navItems = this.getNavItems()
+    // this.grid = this.getGrid()
+    // this.spacing = this.getSpacing()
+    // this.typography = this.getTypography()
+    // this.inputs = this.getInputs()
+    //
+    // // These use values set above and must be called last.
+    // this.mapVariants = this.getMapVariants()
+    // this.buttons = this.getButtons()
+    // this.links = this.getLinks()
+    // this.navItems = this.getNavItems()
   }
 
   getGrid() {
@@ -88,41 +89,37 @@ class Theme {
   }
 
   getMapVariants() {
-    const { map, colors } = this.config
-    const getColorSwatch = variant => {
-      const [v, s] = variant.split('-')
-      const swatch = isUndefined(s) ? 'default' : s
-      return this.colors[v][swatch]
-    }
+    const { map } = this.config
     const result = {
       custom: {
-        backgroundFill: getColorSwatch(map.backgroundColor),
+        backgroundFill: getSwatchPath(map.backgroundColor),
         states: {
-          fill: getColorSwatch(map.stateColor),
-          fillHover: getColorSwatch(map.stateColorHover),
-          fillActive: getColorSwatch(map.stateColorActive),
-          stroke: getColorSwatch(map.stateLineColor),
-          strokeHover: getColorSwatch(map.stateLineColorHover),
-          strokeActive: getColorSwatch(map.stateLineColorActive),
+          fill: getSwatchPath(map.stateColor),
+          fillHover: getSwatchPath(map.stateColorHover),
+          fillActive: getSwatchPath(map.stateColorActive),
+          stroke: getSwatchPath(map.stateLineColor),
+          strokeHover: getSwatchPath(map.stateLineColorHover),
+          strokeActive: getSwatchPath(map.stateLineColorActive),
         },
         labels: {
-          fill: getColorSwatch(map.labelColor),
-          fillHover: getColorSwatch(map.labelColorHover),
-          fillActive: getColorSwatch(map.labelColorActive),
+          fill: getSwatchPath(map.labelColor),
+          fillHover: getSwatchPath(map.labelColorHover),
+          fillActive: getSwatchPath(map.labelColorActive),
         },
       },
     }
-    this.swatches.forEach(swatch => {
-      if (colors.hasOwnProperty(swatch)) {
-        // @TODO use a color config class
-        result[swatch] = this.makeMapVariant(swatch)
-      }
+    const { colors } = this
+    Object.keys(colors.swatches).forEach(color => {
+      result[color] = this.makeMapVariant(color)
     })
     return result
   }
 
   makeMapVariant(swatch) {
-    const { background, copy, light, neutral, dark } = this.colors
+    const colorSwatch = this.colors.swatches[swatch]
+    const { background, copy, mode } = this.colors
+    const isDark = mode === MODE_DARK
+    const { light, neutral, dark } = this.colors.swatches
     let backgroundFill
     let copySwatch
     let fill
@@ -130,25 +127,25 @@ class Theme {
     let fillActive
     switch (swatch) {
       case 'light':
-        backgroundFill = dark.default
-        copySwatch = neutral.default
-        fill = this.colors[swatch].default
-        fillHover = this.colors[swatch].dark
-        fillActive = this.colors[swatch].dark
+        backgroundFill = dark.base
+        copySwatch = neutral.base
+        fill = colorSwatch.base
+        fillHover = colorSwatch.dark
+        fillActive = colorSwatch.dark
         break
       case 'dark':
-        backgroundFill = light.default
-        copySwatch = neutral.default
-        fill = this.colors[swatch].default
-        fillHover = this.colors[swatch].lighter
-        fillActive = this.colors[swatch].light
+        backgroundFill = light.base
+        copySwatch = neutral.base
+        fill = colorSwatch.base
+        fillHover = colorSwatch.lighter
+        fillActive = colorSwatch.light
         break
       default:
-        backgroundFill = background.default
-        copySwatch = backgroundFill.isDark() ? copy.light : copy.dark
-        fill = this.colors[swatch].default
-        fillHover = this.colors[swatch].light
-        fillActive = this.colors[swatch].dark
+        backgroundFill = background.primary
+        copySwatch = isDark ? copy.light : copy.dark
+        fill = colorSwatch.base
+        fillHover = colorSwatch.light
+        fillActive = colorSwatch.dark
         break
     }
     return {
@@ -201,16 +198,16 @@ class Theme {
 
   getLinks() {
     const { linkDecorations } = this.config
-    const colors = this.colors
-    let result = {}
-    this.swatches.forEach(swatch => {
-      if (swatch !== 'copy' && swatch !== 'background' && colors.hasOwnProperty(swatch)) {
-        const color = colors[swatch]
-        const shade = color.default.isDark() ? 'light' : 'dark'
-        result[swatch] = this.makeLink(color.default, color[shade], color[shade], linkDecorations)
-      }
+    const { colors } = this
+    const result = {}
+    Object.keys(colors.swatches).forEach(color => {
+      const c = colors.swatches[color]
+      const isDark = colors.mode === MODE_DARK
+      const hover = isDark ? c.light.base : c.dark.base
+      const active = isDark ? c.lighter.base : c.darker.base
+      result[color] = this.makeLink(c.base.base, hover, active, linkDecorations)
     })
-    result.copy = this.makeLink(colors.copy.default, colors.primary.default, colors.secondary.default, linkDecorations)
+    result.copy = this.makeLink(colors.copy.primary, colors.hover, colors.active, linkDecorations)
     return result
   }
 
@@ -270,9 +267,23 @@ class Theme {
   }
 
   getNavItems() {
-    const { padding, activeEffect, activeBorderWidth, activeBorderColor } = this.config.navItems
-    let inline = { padding, border: 'border: none', active: { border: 'border: none' } }
-    let stacked = { padding, border: 'border: none', active: { border: 'border: none' } }
+    const { colors } = this
+    const {
+      padding,
+      activeEffect,
+      activeBorderWidth,
+      activeBorderColor,
+    } = this.config.navItems
+    let inline = {
+      padding,
+      border: 'border: none',
+      active: { border: 'border: none' },
+    }
+    let stacked = {
+      padding,
+      border: 'border: none',
+      active: { border: 'border: none' },
+    }
     // @TODO add support for more active effects
     switch (activeEffect) {
       case 'border':

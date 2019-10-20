@@ -1,6 +1,15 @@
 import ColorFactors from './color-factors'
 import ColorPallet from './color-pallet'
-import { MODE_DEFAULT, safeGetValue, getModeColors, getShadedColorPallet, getColorSwatches } from './utils'
+import {
+  MODE_DEFAULT,
+  MODE_DARK,
+  MODE_LIGHT,
+  safeGetValue,
+  getModeColors,
+  getShadedColorPallet,
+  getColorSwatches,
+  getColorSwatch,
+} from './utils'
 
 class ColorsConfig {
   constructor(config = {}) {
@@ -19,11 +28,19 @@ class ColorsConfig {
     this.swatches = getColorSwatches(shaded, copy)
     this.background = background
     this.copy = copy
-    this.hover = this.swatches[hover].base
-    this.active = this.swatches[active].base
-    this.disabled = this.swatches[disabled].base
+    this.hover = getColorSwatch(this.swatches, hover)
+    this.active = getColorSwatch(this.swatches, active)
+    this.disabled = getColorSwatch(this.swatches, disabled)
 
-    console.log('colors config', this)
+    console.log('ColorsConfig', this)
+  }
+
+  darkMode() {
+    return this.mode === MODE_DARK
+  }
+
+  lightMode() {
+    return this.mode === MODE_LIGHT
   }
 }
 

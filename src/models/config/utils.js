@@ -46,6 +46,38 @@ export const getShadedColorPallet = (pallet, factors) => {
 
 const getColorValue = c => c.rgb().string()
 
+export const getSwatchPath = colorSwatch => {
+  const parts = colorSwatch.split('-')
+  switch (parts.length) {
+    case 1:
+      return {
+        color: parts[0],
+        shade: 'base',
+        swatch: 'base',
+      }
+    case 2:
+      return {
+        color: parts[0],
+        shade: parts[1],
+        swatch: 'base',
+      }
+    default:
+      return {
+        color: parts[0],
+        shade: parts[1],
+        swatch: parts[2],
+      }
+  }
+}
+
+export const getColorSwatch = (swatches, swatch) => {
+  if (swatch === 'inherit') {
+    return 'inherit'
+  }
+  const path = getSwatchPath(swatch)
+  return swatches[path.color][path.shade][path.swatch]
+}
+
 export const getModeColors = (mode, dark, neutral, light) => {
   const darkBase = getColorValue(dark.base)
   const lightBase = getColorValue(light.base)
