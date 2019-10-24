@@ -19,7 +19,7 @@ const cwCSS = (theme, colorway) => {
 
 const Swatch = styled('div')`
   ${({ theme, colorway }) => cwCSS(theme, colorway)};
-  padding: ${({ theme }) => theme.spacing.xSmall.px};
+  padding: ${({ theme, prominent }) => prominent ? theme.spacing.large.px : theme.spacing.xSmall.px};
 `
 
 Swatch.propTypes = {
@@ -42,7 +42,7 @@ const ColorShade = ({ colorway }) => (
     <StyledSwatches>
       <Swatch colorway={`${colorway}-darker`}>darker</Swatch>
       <Swatch colorway={`${colorway}-dark`}>dark</Swatch>
-      <Swatch colorway={colorway}>base</Swatch>
+      <Swatch colorway={colorway} prominent>base</Swatch>
       <Swatch colorway={`${colorway}-light`}>light</Swatch>
       <Swatch colorway={`${colorway}-lighter`}>lighter</Swatch>
     </StyledSwatches>
@@ -62,19 +62,19 @@ const NeutralColorShades = () => (
   <StyledColorShade>
     <h1>dark, neutral, light</h1>
     <StyledSwatches>
-      <Swatch colorway="dark">dark base</Swatch>
+      <Swatch colorway="dark" prominent>dark base</Swatch>
       <Swatch colorway="dark-light">dark light</Swatch>
       <Swatch colorway="dark-lighter">dark lighter</Swatch>
 
       <Swatch colorway="neutral-darker">neutral darker</Swatch>
       <Swatch colorway="neutral-dark">neutral dark</Swatch>
-      <Swatch colorway="neutral">neutral base</Swatch>
+      <Swatch colorway="neutral" prominent>neutral base</Swatch>
       <Swatch colorway="neutral-light">neutral light</Swatch>
       <Swatch colorway="neutral-lighter">neutral lighter</Swatch>
 
       <Swatch colorway="light-darker">light darker</Swatch>
       <Swatch colorway="light-dark">light dark</Swatch>
-      <Swatch colorway="light">light base</Swatch>
+      <Swatch colorway="light" prominent>light base</Swatch>
     </StyledSwatches>
   </StyledColorShade>
 )
