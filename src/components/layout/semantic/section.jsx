@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyle } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyle } from '../../utils'
 
 const Styled = styled('section')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from './events'
+import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
 class HeaderStickyContent extends React.Component {
   constructor(props) {

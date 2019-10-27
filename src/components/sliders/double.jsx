@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Grid from '../layout/grid'
+import { Grid } from '../layout'
 import Slider from './slider'
 
 const SliderDouble = ({

@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal } from '../../utils'
 
 const FluidTitleBar = styled('header')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};

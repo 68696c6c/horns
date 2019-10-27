@@ -1,15 +1,13 @@
-export { default as Area } from './area'
-export { default as Box } from './box'
+export { Box } from './flex'
+
+export { Area, Grid, GridGuide } from './grid'
+
+export { Panel, TitleBar } from './panel'
+
+export { Footer, Header, HeaderStickyContent, Section } from './semantic'
+
 export { default as ButtonContainer } from './button-container'
-export { default as Footer } from './footer'
-export { default as Grid } from './grid'
-export { default as GridGuide } from './grid-guide'
 export { default as GridStacked } from './stacked'
-export { default as Header } from './header'
-export { default as Panel } from './panel'
-export { default as HeaderStickyContent } from './header-sticky-content'
 export { default as Parallax } from './parallax'
 export { default as ScrollPages } from './scroll-pages'
 export { default as ScrollProgress } from './scroll-progress'
-export { default as Section } from './section'
-export { default as TitleBar } from './title-bar'

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { COLOR_VARIANT_NONE, colorVariantCSS } from '../utils'
+import { COLOR_VARIANT_NONE, colorVariantCSS } from '../../utils'
 
 const Styled = styled('footer')`
   ${({ theme, variant }) => colorVariantCSS(theme, variant)};

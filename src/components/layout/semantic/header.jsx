@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../utils'
-import { isUndefined } from '../../utils/utils'
-import { valueToInt } from '../../themes/utils'
-import { Nav } from '../nav'
-import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from './events'
+import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../../utils'
+import { isUndefined } from '../../../utils/utils'
+import { valueToInt } from '../../../themes/utils'
+import { Nav } from '../../nav'
+import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
 const fixedCSS = () => (
   css`

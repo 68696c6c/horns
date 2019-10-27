@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import { toClassNames } from '../utils'
-import Grid from './grid'
+import { Grid } from './grid'
 import { rgb } from '../../themes/utils'
 
 const getFontColor = (variant, theme) => {
