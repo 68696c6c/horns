@@ -1,3 +1,4 @@
 export { colorwayCSS } from './color'
-export { toClassNames, propTypeChildren } from './component'
-export { flexOptionsX, flexOptionsY, flexCSS } from './flex'
+export { handleProps, propTypeChildren } from './component'
+export { flexOptionsX, flexOptionsY, flexCSS, ContainerSplit, Container } from './layout'
+export { valueToInt } from './utils'

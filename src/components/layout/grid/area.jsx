@@ -1,40 +1,24 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { COLOR_VARIANT_NONE, colorVariantCSS } from '../../utils'
 
-const Styled = styled('div')`
-  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-  ${({ area }) => area === '' ? '' : `grid-area: ${area};`}
-`
+import { palletColorShades } from '../../../config'
+import { handleProps, propTypeChildren } from '../../../utils/component'
+import * as Styled from './styles'
 
-const Area = ({ children, ...others }) => {
-  return <Styled {...others}>{children}</Styled>
-}
+const Area = ({ children, ...others }) => (
+  <Styled.Area {...handleProps('area', others)}>{children}</Styled.Area>
+)
 
 Area.propTypes = {
+  children: propTypeChildren(),
+  colorway: PropTypes.oneOf(palletColorShades),
   area: PropTypes.string,
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-    COLOR_VARIANT_NONE,
-  ]),
 }
 
 Area.defaultProps = {
+  children: null,
+  colorway: '',
   area: '',
-  variant: COLOR_VARIANT_NONE,
 }
 
 export default Area

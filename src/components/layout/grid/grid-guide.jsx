@@ -1,15 +1,7 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 
-const Styled = styled('div')`
-  width: ${({ theme }) => theme.breakpoints.max};
-  margin: auto;
-  background: orange;
-  height: 50px;
-`
+import * as Styled from './styles'
 
-export const GridGuide = (props) => <Styled {...props} />
+const GridGuide = props => <Styled.ContainerGuide {...props}>Container Width</Styled.ContainerGuide>
 
 export default GridGuide

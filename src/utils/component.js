@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const toClassNames = (...values) => values.join(' ').trim()
+const toClassNames = (...values) => values.join(' ').trim()
 
 export const propTypeChildren = () =>
   PropTypes.oneOfType([
@@ -8,3 +8,11 @@ export const propTypeChildren = () =>
     PropTypes.objectOf(PropTypes.node),
     PropTypes.arrayOf(PropTypes.node),
   ])
+
+export const handleProps = (name, { className, ...others }) => {
+  const props = {
+    className: toClassNames(name, className),
+    ...others,
+  }
+  return props
+}

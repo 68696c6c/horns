@@ -13,22 +13,24 @@ import FullscreenDemo from '../../_demo/fullscreen-demo'
 
 <FullscreenDemo variant="dark" of={Grid} title="Grid">
   <h1>Equal Grid</h1>
-  <Grid style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
-    <Area variant="info">The Grid is orange</Area>
-    <Area variant="info">The columns are blue</Area>
+  <Grid colorway="primary">
+    <Area colorway="secondary">Left</Area>
+    <Area colorway="secondary">Right</Area>
+    <Area colorway="tertiary">Left</Area>
+    <Area colorway="tertiary">Right</Area>
   </Grid>
   <Grid variant="equal" style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
-    <Area variant="info">Equal Grid Column</Area>
-    <Area variant="info">Equal Grid Column</Area>
-    <Area variant="info">Equal Grid Column</Area>
-    <Area variant="info">Equal Grid Column</Area>
+    <Area colorway="info">Equal Grid Column</Area>
+    <Area colorway="info">Equal Grid Column</Area>
+    <Area colorway="info">Equal Grid Column</Area>
+    <Area colorway="info">Equal Grid Column</Area>
   </Grid>
   <h1>Centered Equal Grid</h1>
-  <Grid variant="equal" centered={true} style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
-    <Area variant="success">Equal Grid Column</Area>
-    <Area variant="success">Equal Grid Column</Area>
-    <Area variant="success">Equal Grid Column</Area>
-    <Area variant="success">Equal Grid Column</Area>
+  <Grid variant="equal" contained style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
+    <Area colorway="success">Equal Grid Column</Area>
+    <Area colorway="success">Equal Grid Column</Area>
+    <Area colorway="success">Equal Grid Column</Area>
+    <Area colorway="success">Equal Grid Column</Area>
   </Grid>
   <h1>Thirds Grid</h1>
   <Grid variant="thirds" style={{ backgroundColor: 'magenta', margin: '1rem 0', }}>
@@ -47,22 +49,33 @@ import FullscreenDemo from '../../_demo/fullscreen-demo'
       Thirds Grid - Right
     </Area>
   </Grid>
-  <h1>Centered Thirds Grid</h1>
-  <Grid variant="thirds" centered={true} style={{ backgroundColor: 'magenta', margin: '1rem 0', }}>
-    <Area area="left" variant="primary">
-      Responsive Thirds Grid - Left
-    </Area>
-    <Area area="right" variant="primary">
-      Responsive Thirds Grid - Right
-    </Area>
+  <h1>Contained Fluid Thirds Grid - Left</h1>
+  <Grid colorway="primary" variant="thirds" contained fluid>
+    <Area colorway="secondary">Left</Area>
+    <Area colorway="secondary">Right</Area>
+    <Area colorway="tertiary">Left</Area>
+    <Area colorway="tertiary">Right</Area>
   </Grid>
-  <Grid variant="thirds" responsive={true} side="right" style={{ backgroundColor: 'lime', margin: '1rem 0', }}>
-    <Area area="left" variant="secondary">
-      Responsive Thirds Grid - Left
-    </Area>
-    <Area area="right" variant="secondary">
-      Responsive Thirds Grid - Right
-    </Area>
+  <h1>Contained Fluid Thirds Grid - Right</h1>
+  <Grid colorway="primary" variant="thirds" contained fluid side="right">
+    <Area colorway="secondary">Left</Area>
+    <Area colorway="secondary">Right</Area>
+    <Area colorway="tertiary">Left</Area>
+    <Area colorway="tertiary">Right</Area>
+  </Grid>
+  <h1>Contained Thirds Grid - Left</h1>
+  <Grid colorway="primary" variant="thirds" contained>
+    <Area colorway="secondary">Left</Area>
+    <Area colorway="secondary">Right</Area>
+    <Area colorway="tertiary">Left</Area>
+    <Area colorway="tertiary">Right</Area>
+  </Grid>
+  <h1>Contained Thirds Grid - Right</h1>
+  <Grid colorway="primary" variant="thirds" contained side="right">
+    <Area colorway="secondary">Left</Area>
+    <Area colorway="secondary">Right</Area>
+    <Area colorway="tertiary">Left</Area>
+    <Area colorway="tertiary">Right</Area>
   </Grid>
 </FullscreenDemo>
 

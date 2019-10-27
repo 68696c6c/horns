@@ -1,6 +1,6 @@
 import ColorFactors from './color-factors'
-import ColorPallet from './color-pallet'
-import { palletColors, safeGetValue } from './utils'
+import ColorPallet, { palletColors } from './color-pallet'
+import { safeGetValue } from './utils'
 
 const MODE_LIGHT = 'light'
 const MODE_DARK = 'dark'

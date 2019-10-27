@@ -67,6 +67,7 @@ export {
 export {
   Area,
   Box,
+  Columns,
   ButtonContainer,
   Footer,
   Grid,

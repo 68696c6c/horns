@@ -1,24 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { palletColorShades } from '../../../config/utils'
+import { palletColorShades } from '../../../config'
 import {
   flexOptionsX,
   flexOptionsY,
+  handleProps,
   propTypeChildren,
-  toClassNames,
 } from '../../../utils'
 import * as Styled from './styles'
 
-const Box = ({ className, children, ...others }) => (
-  <Styled.Box className={toClassNames(className, 'box')} {...others}>
-    {children}
-  </Styled.Box>
+const Box = ({ children, ...others }) => (
+  <Styled.Box {...handleProps('box', others)}>{children}</Styled.Box>
 )
 
 Box.propTypes = {
   children: propTypeChildren(),
-  className: PropTypes.string,
   colorway: PropTypes.oneOf(palletColorShades),
   height: PropTypes.string,
   width: PropTypes.string,
@@ -28,7 +25,6 @@ Box.propTypes = {
 
 Box.defaultProps = {
   children: null,
-  className: '',
   colorway: '',
   height: 'auto',
   width: 'auto',

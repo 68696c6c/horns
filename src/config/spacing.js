@@ -8,43 +8,23 @@ const emToPX = (base, em) => `${valueToInt(em) / valueToInt(base)}px`
 
 // @TODO get default values from a config file.
 // To work correctly, these ratios need to be maintained exactly, e.g. xxSmall must be 2x tiny etc.
+
 const defaultSpacing = {
-  none: {
-    em: '0',
-    px: '0',
-  },
-  tiny: {
-    em: '0.143',
-    px: '2px',
-  },
-  xxSmall: {
-    em: '0.286em',
-    px: '4px',
-  },
-  xSmall: {
-    em: '0.571em',
-    px: '8px',
-  },
-  small: {
-    em: '0.857em',
-    px: '12px',
-  },
-  medium: {
-    em: '1.142em',
-    px: '16px',
-  },
-  large: {
-    em: '1.429em',
-    px: '20px',
-  },
-  xLarge: {
-    em: '2.286em',
-    px: '32px',
-  },
+  min: '0',
+  tiny: '2px',
+  xxSmall: '4px',
+  xSmall: '8px',
+  small: '12px',
+  medium: '16px',
+  large: '24px',
+  xLarge: '32px',
+  xxLarge: '48px',
+  giant: '64px',
+  max: '88px',
 }
 
 export const spacingSizes = [
-  'none',
+  'min',
   'tiny',
   'xxSmall',
   'xSmall',
@@ -52,6 +32,9 @@ export const spacingSizes = [
   'medium',
   'large',
   'xLarge',
+  'xxLarge',
+  'giant',
+  'max',
 ]
 
 class SpacingConfig {
@@ -73,8 +56,8 @@ class SpacingConfig {
         px = emToPX(baseFontSize, configValue)
       } else {
         const def = safeGetValue(config, size, defaultSpacing[size])
-        em = def.em
-        px = def.px
+        em = pxToEM(baseFontSize, def)
+        px = def
       }
       this[size] = { em, px }
     })

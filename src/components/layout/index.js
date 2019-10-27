@@ -1,6 +1,6 @@
 export { Box } from './flex'
 
-export { Area, Grid, GridGuide } from './grid'
+export { Area, Columns, Grid, GridGuide } from './grid'
 
 export { Panel, TitleBar } from './panel'
 

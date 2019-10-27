@@ -1,6 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import ColorsConfig from './colors'
-import { palletColors, getColorSwatch, safeGetValue } from './utils'
+import { palletColors } from './color-pallet'
+import { safeGetValue } from './utils'
 
 // @TODO get default values from a config file.
 const defaultLinks = {
