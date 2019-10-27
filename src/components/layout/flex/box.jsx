@@ -1,76 +1,39 @@
-/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
-import { colorwayCSS, withColorwayProp } from '../../themes/color-variant-hocs'
-import { COLOR_VARIANT_NONE, toClassNames } from '../utils'
 
-const getFlexCSS = (x, y) => {
-  let alignItems, justifyContent
-  switch (x) {
-    case 'left':
-      justifyContent = 'flex-start'
-      break
-    case 'center':
-      justifyContent = 'center'
-      break
-    case 'right':
-      justifyContent = 'flex-end'
-      break
-  }
-  switch (y) {
-    case 'top':
-      alignItems = 'flex-start'
-      break
-    case 'center':
-      alignItems = 'center'
-      break
-    case 'bottom':
-      alignItems = 'flex-end'
-      break
-  }
-  return css`
-    align-items: ${alignItems};
-    justify-content: ${justifyContent};
-  `
-}
+import { palletColorShades } from '../../../config/utils'
+import {
+  flexOptionsX,
+  flexOptionsY,
+  propTypeChildren,
+  toClassNames,
+} from '../../../utils'
+import * as Styled from './styles'
 
-const Styled = styled('div')`
-  ${({ theme, colorway }) => colorwayCSS(theme, colorway)};
-  display: flex;
-  height: ${({ height }) => height};
-  width: ${({ width }) => width};
-  padding: ${({ theme }) => theme.spacing.small};
-  ${({ x, y }) => getFlexCSS(x, y)};
-`
+const Box = ({ className, children, ...others }) => (
+  <Styled.Box className={toClassNames(className, 'box')} {...others}>
+    {children}
+  </Styled.Box>
+)
 
-const BoxBase = ({ className, children, ...others }) => {
-  return <Styled className={toClassNames(className, 'box')} {...others}>{children}</Styled>
-}
-
-BoxBase.propTypes = {
+Box.propTypes = {
+  children: propTypeChildren(),
+  className: PropTypes.string,
+  colorway: PropTypes.oneOf(palletColorShades),
   height: PropTypes.string,
   width: PropTypes.string,
-  x: PropTypes.oneOf([
-    'left',
-    'center',
-    'right',
-  ]),
-  y: PropTypes.oneOf([
-    'top',
-    'center',
-    'bottom',
-  ]),
+  x: PropTypes.oneOf(flexOptionsX),
+  y: PropTypes.oneOf(flexOptionsY),
 }
 
-BoxBase.defaultProps = {
+Box.defaultProps = {
+  children: null,
+  className: '',
+  colorway: '',
   height: 'auto',
   width: 'auto',
   x: 'center',
   y: 'center',
 }
-
-const Box = withColorwayProp(BoxBase, COLOR_VARIANT_NONE)
 
 export default Box
