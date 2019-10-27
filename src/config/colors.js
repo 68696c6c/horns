@@ -49,6 +49,9 @@ const getColorSwatch = (swatches, swatch) => {
 }
 
 const getColorShade = (swatches, shade) => {
+  if (shade === '') {
+    return 'inherit'
+  }
   const path = getSwatchPath(shade)
   return swatches[path.color][path.shade]
 }

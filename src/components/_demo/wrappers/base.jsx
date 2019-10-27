@@ -1,16 +1,18 @@
 /** @jsx jsx */
+import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { rgb } from '../../../themes/utils'
+import { backgroundColorCSS } from '../../../utils/color'
 
 export const wrapperStyle = (bgColor, theme) => {
   return css`
-    background: ${rgb(bgColor)};
-    color: ${bgColor.isDark() ? rgb(theme.colors.copy.light) : rgb(theme.colors.copy.dark)};
+    background: ${backgroundColorCSS(theme)};
     overflow: auto;
   `
 }
+
+const Styled = styled.div`${({theme }) => wrapperStyle('', theme)};`
 
 const Wrapper = ({ variant, children }) => <Styled variant={variant} className="wrapper">{children}</Styled>
 

@@ -18,6 +18,7 @@ export const palletColors = [
 ]
 
 export const palletColorShades = [
+  '',
   'primary',
   'primary-darker',
   'primary-dark',
