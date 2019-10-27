@@ -6,76 +6,55 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Grid from './grid'
+import GridGuide from './grid-guide'
 import Area from './area'
 import FullscreenDemo from '../../_demo/fullscreen-demo'
 
 # Grid
 
+Grids do not have a gap or multiple rows and arrange their areas according to specific templates.
+
 <FullscreenDemo variant="dark" of={Grid} title="Grid">
-  <h1>Equal Grid</h1>
+  <h1>Halves</h1>
+  <h2>Fluid</h2>
   <Grid colorway="primary">
-    <Area colorway="secondary">Left</Area>
-    <Area colorway="secondary">Right</Area>
-    <Area colorway="tertiary">Left</Area>
-    <Area colorway="tertiary">Right</Area>
+    <Area colorway="secondary" area="left">Left</Area>
+    <Area colorway="tertiary" area="right">Right</Area>
   </Grid>
-  <Grid variant="equal" style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
-    <Area colorway="info">Equal Grid Column</Area>
-    <Area colorway="info">Equal Grid Column</Area>
-    <Area colorway="info">Equal Grid Column</Area>
-    <Area colorway="info">Equal Grid Column</Area>
+  <Grid colorway="primary">
+    <Area colorway="tertiary" area="left">Left</Area>
+    <Area colorway="secondary" area="right">Right</Area>
   </Grid>
-  <h1>Centered Equal Grid</h1>
-  <Grid variant="equal" contained style={{ backgroundColor: 'orange', margin: '1rem 0', }}>
-    <Area colorway="success">Equal Grid Column</Area>
-    <Area colorway="success">Equal Grid Column</Area>
-    <Area colorway="success">Equal Grid Column</Area>
-    <Area colorway="success">Equal Grid Column</Area>
+  <h2>Contained</h2>
+  <GridGuide />
+  <Grid colorway="primary" contained>
+    <Area colorway="secondary" area="left">Left</Area>
+    <Area colorway="tertiary" area="right">Right</Area>
   </Grid>
-  <h1>Thirds Grid</h1>
-  <Grid variant="thirds" style={{ backgroundColor: 'magenta', margin: '1rem 0', }}>
-    <Area area="left" style={{ backgroundColor: 'rebeccapurple', }}>
-      Thirds Grid - Left
-    </Area>
-    <Area area="right" style={{ backgroundColor: 'rebeccapurple', }}>
-      Thirds Grid - Right
-    </Area>
+  <Grid colorway="primary" contained>
+    <Area colorway="tertiary" area="left">Left</Area>
+    <Area colorway="secondary" area="right">Right</Area>
   </Grid>
-  <Grid variant="thirds" side="right" style={{ backgroundColor: 'lime', margin: '1rem 0', }}>
-    <Area area="left" style={{ backgroundColor: 'dodgerblue', }}>
-      Thirds Grid - Left
-    </Area>
-    <Area area="right" style={{ backgroundColor: 'dodgerblue', }}>
-      Thirds Grid - Right
-    </Area>
+
+  <h1>Thirds</h1>
+  <h2>Fluid</h2>
+  <Grid colorway="primary" variant="thirds">
+    <Area colorway="secondary" area="left">Left</Area>
+    <Area colorway="tertiary" area="right">Right</Area>
   </Grid>
-  <h1>Contained Fluid Thirds Grid - Left</h1>
-  <Grid colorway="primary" variant="thirds" contained fluid>
-    <Area colorway="secondary">Left</Area>
-    <Area colorway="secondary">Right</Area>
-    <Area colorway="tertiary">Left</Area>
-    <Area colorway="tertiary">Right</Area>
+  <Grid colorway="primary" variant="thirds">
+    <Area colorway="tertiary" area="left">Left</Area>
+    <Area colorway="secondary" area="right">Right</Area>
   </Grid>
-  <h1>Contained Fluid Thirds Grid - Right</h1>
-  <Grid colorway="primary" variant="thirds" contained fluid side="right">
-    <Area colorway="secondary">Left</Area>
-    <Area colorway="secondary">Right</Area>
-    <Area colorway="tertiary">Left</Area>
-    <Area colorway="tertiary">Right</Area>
-  </Grid>
-  <h1>Contained Thirds Grid - Left</h1>
+  <h2>Contained</h2>
+  <GridGuide />
   <Grid colorway="primary" variant="thirds" contained>
-    <Area colorway="secondary">Left</Area>
-    <Area colorway="secondary">Right</Area>
-    <Area colorway="tertiary">Left</Area>
-    <Area colorway="tertiary">Right</Area>
+    <Area colorway="secondary" area="left">Left</Area>
+    <Area colorway="tertiary" area="right">Right</Area>
   </Grid>
-  <h1>Contained Thirds Grid - Right</h1>
-  <Grid colorway="primary" variant="thirds" contained side="right">
-    <Area colorway="secondary">Left</Area>
-    <Area colorway="secondary">Right</Area>
-    <Area colorway="tertiary">Left</Area>
-    <Area colorway="tertiary">Right</Area>
+  <Grid colorway="primary" variant="thirds" contained>
+    <Area colorway="tertiary" area="left">Left</Area>
+    <Area colorway="secondary" area="right">Right</Area>
   </Grid>
 </FullscreenDemo>
 

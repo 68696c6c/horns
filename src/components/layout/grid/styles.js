@@ -44,65 +44,47 @@ export const Columns = styled.div(
 
 export const ColumnsContained = styled(Columns)(Container)
 
-// /
-export const Equal = styled.div(({ theme, colorway, breakpoint, gap }) => {
-  const minWidth = theme.grid.getBreakpoint(breakpoint)
-  return css`
-    ${colorwayCSS(theme, colorway)};
-    @media (min-width: ${minWidth}) {
-      display: grid;
-      grid-gap: ${gap ? theme.grid.gap : '0'};
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(${theme.grid.columnMin}, 1fr)
-      );
+export const Halves = styled.div(
+  ({ theme, colorway, breakpoint, reversed }) => {
+    const minWidth = theme.grid.getBreakpoint(breakpoint)
+    let areas = ['left', 'right']
+    if (reversed) {
+      areas = areas.reverse()
     }
-  `
-})
-
-export const EqualCentered = styled(Equal)(({ theme, breakpoint, gap }) => {
-  const container = theme.grid.getContainer()
-  const minWidth = theme.grid.getBreakpoint(breakpoint)
-  return css`
-    padding-left: calc(((100vw - ${container}) / 2));
-    padding-right: calc(((100vw - ${container}) / 2));
-    @media (min-width: ${minWidth}) {
-      grid-gap: ${gap ? theme.grid.gap : '0'};
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(${theme.grid.columnMin}, 1fr)
-      );
-    }
-  `
-})
-
-const getThirdsTemplateColumns = (theme, fluid, side) => {
-  if (fluid) {
-    return side === 'left' ? '1fr 2fr' : '2fr 1fr'
+    return css`
+      ${colorwayCSS(theme, colorway)};
+      @media (min-width: ${minWidth}) {
+        display: grid;
+        grid-gap: 0;
+        grid-template: '${areas.join(' ')}' / 1fr 1fr;
+      }
+    `
   }
+)
+
+export const HalvesContained = styled(Halves)(ContainerSplit)
+
+export const Thirds = styled.div(({ theme, colorway, breakpoint }) => {
   const container = theme.grid.getContainer()
+  const minWidth = theme.grid.getBreakpoint(breakpoint)
   const gutter = `((100vw - ${container}) / 2)`
-  const thirds = [
+  const fractions = [
     `calc((${container} / 3) + ${gutter})`,
     `calc(((${container} / 3) * 2) + ${gutter})`,
   ]
-  return side === 'left' ? thirds.join(' ') : thirds.reverse().join(' ')
-}
-
-const ThirdsBase = ({ theme, colorway, breakpoint, fluid, gap, side }) => {
-  console.log('ThirdsBase')
-  const minWidth = theme.grid.getBreakpoint(breakpoint)
   return css`
-    ${colorwayCSS(theme, colorway)};
-    @media (min-width: ${minWidth}) {
-      display: grid;
-      grid-template-rows: auto;
-      grid-template-columns: ${getThirdsTemplateColumns(theme, fluid, side)};
-      grid-gap: ${gap ? theme.grid.gap : '0'};
-    }
-  `
-}
+      ${colorwayCSS(theme, colorway)};
+      @media (min-width: ${minWidth}) {
+        display: grid;
+        grid-gap: 0;
+        grid-template: 'left right' / ${fractions.join(' ')};
+      }
+      @media (max-width: ${container}) {
+        display: grid;
+        grid-gap: 0;
+        grid-template: 'left right' / 1fr 2fr};
+      }
+    `
+})
 
-export const Thirds = styled.div(ThirdsBase)
-
-export const ThirdsCentered = styled.div(ContainerSplit, ThirdsBase)
+export const ThirdsContained = styled(Thirds)(ContainerSplit)

@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { breakpoints, palletColorShades } from '../../../config'
-import { propTypeChildren } from '../../../utils'
+import { handleProps, propTypeChildren } from '../../../utils'
 import * as Styled from './styles'
 
 const Columns = ({ contained, children, ...others }) => {
   const Tag = contained ? Styled.ColumnsContained : Styled.Columns
-  return <Tag {...others}>{children}</Tag>
+  return <Tag {...handleProps('columns', others)}>{children}</Tag>
 }
 
 Columns.propTypes = {
