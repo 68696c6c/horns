@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 
-import { palletColorShades } from '../../../config'
+import { palletColorShades, spacingSizes } from '../../../config'
 import {
   Colorway,
   Container,
@@ -21,6 +21,7 @@ export const layoutPropTypes = () => ({
   colorway: PropTypes.oneOf(palletColorShades),
   contained: PropTypes.bool,
   padded: PropTypes.bool,
+  spacing: PropTypes.oneOf(spacingSizes),
   textAlign: PropTypes.oneOf(textAlignOptions),
 })
 
@@ -29,9 +30,10 @@ export const layoutDefaultProps = () => ({
   colorway: '',
   contained: true,
   padded: true,
+  spacing: 'medium',
   textAlign: 'inherit',
 })
 
 export const Footer = styled.footer(Container, Padded, Colorway, Layout)
-export const Header = styled.footer(Container, Padded, Colorway, Layout)
+export const Header = styled.header(Container, Padded, Colorway, Layout)
 export const Section = styled.section(Container, Padded, Colorway, Layout)

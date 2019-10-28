@@ -69,7 +69,7 @@ class SpacingConfig {
     if (this[size]) {
       return this[size].px
     }
-    return 'auto'
+    return ''
   }
 }
 

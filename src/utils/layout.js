@@ -72,13 +72,26 @@ export const Container = ({ theme, contained }) => {
   `
 }
 
-export const Padded = ({ theme, padded }) => {
-  if (!padded) {
+export const Padded = ({
+  theme,
+  contained,
+  spacing,
+  padded = '*',
+  compact = '*',
+}) => {
+  if ((padded === '*' && compact) || (compact === '*' && !padded)) {
     return ''
   }
-  const padding = theme.spacing.getSpacing('small')
+  const padding = theme.spacing.getSpacing(spacing)
+  const paddingX = contained
+    ? ''
+    : css`
+        padding-left: ${padding};
+        padding-right: ${padding};
+      `
   return css`
     padding-top: ${padding};
     padding-bottom: ${padding};
+    ${paddingX}
   `
 }

@@ -8,6 +8,7 @@ export {
   flexOptionsX,
   flexOptionsY,
   Flex,
+  Spacing,
   ContainerSplit,
   Container,
   Padded,
