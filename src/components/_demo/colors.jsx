@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { palletColors, palletColorShades } from '../../config/utils'
+import { palletColors, palletColorShades } from '../../config'
 
 const cwCSS = (theme, colorway) => {
   const cw = theme.colors.getShade(colorway)

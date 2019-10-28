@@ -6,7 +6,7 @@ export const backgroundColorCSS = theme => css`
   color: ${theme.colors.copy.primary};
 `
 
-export const colorwayCSS = (theme, colorway) => {
+export const Colorway = ({ theme, colorway }) => {
   const cw = theme.colors.getShade(colorway)
   return css`
     background: ${cw.base};

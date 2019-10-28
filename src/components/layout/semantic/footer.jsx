@@ -1,35 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { COLOR_VARIANT_NONE, colorVariantCSS } from '../../utils'
 
-const Styled = styled('footer')`
-  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-`
+import { handleProps } from '../../../utils'
+import * as Styled from './styles'
 
-const Footer = ({ children, ...others }) => {
-  return <Styled {...others}>{children}</Styled>
-}
+// eslint-disable-next-line react/prop-types
+const Footer = ({ children, ...others }) => (
+  <Styled.Footer {...handleProps(others)}>{children}</Styled.Footer>
+)
 
-Footer.propTypes = {
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-    COLOR_VARIANT_NONE,
-  ]),
-}
+Footer.propTypes = Styled.layoutPropTypes()
 
-Footer.defaultProps = {
-  variant: COLOR_VARIANT_NONE,
-}
+Footer.defaultProps = Styled.layoutDefaultProps()
 
 export default Footer

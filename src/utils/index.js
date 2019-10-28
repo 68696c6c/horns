@@ -1,4 +1,15 @@
-export { colorwayCSS } from './color'
-export { handleProps, propTypeChildren } from './component'
-export { flexOptionsX, flexOptionsY, flexCSS, ContainerSplit, Container } from './layout'
+export { Colorway } from './color'
+export {
+  handleProps,
+  propTypeChildren,
+} from './component'
+export {
+  textAlignOptions,
+  flexOptionsX,
+  flexOptionsY,
+  Flex,
+  ContainerSplit,
+  Container,
+  Padded,
+} from './layout'
 export { valueToInt } from './utils'

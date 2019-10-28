@@ -5,10 +5,9 @@ import { breakpoints, palletColorShades } from '../../../config'
 import { handleProps, propTypeChildren } from '../../../utils'
 import * as Styled from './styles'
 
-const Columns = ({ contained, children, ...others }) => {
-  const Tag = contained ? Styled.ColumnsContained : Styled.Columns
-  return <Tag {...handleProps('columns', others)}>{children}</Tag>
-}
+const Columns = ({ children, ...others }) => (
+  <Styled.Columns {...handleProps(others, 'columns')}>{children}</Styled.Columns>
+)
 
 Columns.propTypes = {
   children: propTypeChildren(),

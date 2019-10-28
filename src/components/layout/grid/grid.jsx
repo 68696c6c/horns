@@ -8,12 +8,12 @@ import * as Styled from './styles'
 const VARIANT_HALVES = 'halves'
 const VARIANT_THIRDS = 'thirds'
 
-const Grid = ({ contained, variant, children, ...others }) => {
-  let Tag = contained ? Styled.HalvesContained : Styled.Halves
+const Grid = ({ variant, children, ...others }) => {
+  let Tag = Styled.Halves
   if (variant === VARIANT_THIRDS) {
-    Tag = contained ? Styled.ThirdsContained : Styled.Thirds
+    Tag = Styled.Thirds
   }
-  return <Tag {...handleProps('grid', others)}>{children}</Tag>
+  return <Tag {...handleProps(others, 'grid')}>{children}</Tag>
 }
 
 Grid.propTypes = {

@@ -9,29 +9,30 @@ import Footer from './footer'
 
 # Footer
 
-A Footer is a semantic container that supports color variants.
+A Footer is a semantic layout element that supports colorways.
 
 <Playground>
-  <Footer />
+  <Footer>
+    <h1>Footer</h1>
+  </Footer>
 </Playground>
 
 ## Props
 
 <Props of={Footer} />
 
-## Variants
+## Colorways
 
 <Playground>
-  <Footer style={{ textAlign: 'center' }}>None</Footer>
-  <Footer variant="background" style={{ textAlign: 'center' }}>Background</Footer>
-  <Footer variant="primary" style={{ textAlign: 'center' }}>Primary</Footer>
-  <Footer variant="secondary" style={{ textAlign: 'center' }}>Secondary</Footer>
-  <Footer variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</Footer>
-  <Footer variant="light" style={{ textAlign: 'center' }}>Light</Footer>
-  <Footer variant="neutral" style={{ textAlign: 'center' }}>Neutral</Footer>
-  <Footer variant="dark" style={{ textAlign: 'center' }}>Dark</Footer>
-  <Footer variant="success" style={{ textAlign: 'center' }}>Success</Footer>
-  <Footer variant="info" style={{ textAlign: 'center' }}>Info</Footer>
-  <Footer variant="warning" style={{ textAlign: 'center' }}>Warning</Footer>
-  <Footer variant="danger" style={{ textAlign: 'center' }}>Danger</Footer>
+  <Footer textAlign="center">None</Footer>
+  <Footer textAlign="center" colorway="primary">Primary</Footer>
+  <Footer textAlign="center" colorway="secondary">Secondary</Footer>
+  <Footer textAlign="center" colorway="tertiary">Tertiary</Footer>
+  <Footer textAlign="center" colorway="light">Light</Footer>
+  <Footer textAlign="center" colorway="neutral">Neutral</Footer>
+  <Footer textAlign="center" colorway="dark">Dark</Footer>
+  <Footer textAlign="center" colorway="success">Success</Footer>
+  <Footer textAlign="center" colorway="info">Info</Footer>
+  <Footer textAlign="center" colorway="warning">Warning</Footer>
+  <Footer textAlign="center" colorway="danger">Danger</Footer>
 </Playground>

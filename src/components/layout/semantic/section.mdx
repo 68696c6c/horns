@@ -6,34 +6,26 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Section from './section'
-import Wrapper from '../../_demo/wrappers/wrapper'
-import WrapperFluid from '../../_demo/wrappers/fluid'
 import FullscreenDemo from '../../_demo/fullscreen-demo'
 
 # Section
 
-A Section is a semantic content area that confines it's contents to the page content area and supports color variants.
+A Section is a semantic layout element that confines its contents to the page content area and supports colorways.
 
 <FullscreenDemo variant="dark" of={Section} title="Section">
-  <Section padded={false}>
+  <Section>
     <p style={{ marginTop: 0, color: 'white' }}>These Sections have had their padding highlighted to illustrate how the padding works.</p>
   </Section>
-  <Section variant="warning">
-    <Wrapper variant="dark">
-      <p>Sections are semantic content areas that horizontally center their contents on the page.</p>
-      <p>Sections also add a bit of vertical padding around their contents.</p>
-      <p>Both of these features can be disabled, allowing the Section to be used as a simple themable content area.</p>
-    </Wrapper> 
+  <Section colorway="warning">
+    <p>Sections are semantic content areas that horizontally center their contents on the page.</p>
+    <p>Sections also add a bit of vertical padding around their contents.</p>
+    <p>Both of these features can be disabled, allowing the Section to be used as a simple themable content area.</p>
   </Section>
-  <Section variant="danger" fluid={true}>
-    <Wrapper variant="dark">
-      <p>This Section's horizontal centering has been disabled, making it fluid.</p>
-    </Wrapper> 
+  <Section colorway="danger" contained={false}>
+    <p>This Section's horizontal centering has been disabled, making it fluid.</p>
   </Section>
-  <Section variant="info" padded={false}>
-    <Wrapper variant="dark">
-      <p>This Section's vertical padding has been disabled.</p>
-    </Wrapper> 
+  <Section colorway="info" padded={false}>
+    <p>This Section's vertical padding has been disabled.</p>
   </Section>
 </FullscreenDemo>
 
@@ -41,19 +33,18 @@ A Section is a semantic content area that confines it's contents to the page con
 
 <Props of={Section} />
 
-## Variants
+## Colorways
 
 <Playground>
-  <Section fluid={true} style={{ textAlign: 'center' }}>None</Section>
-  <Section fluid={true} variant="background" style={{ textAlign: 'center' }}>Background</Section>
-  <Section fluid={true} variant="primary" style={{ textAlign: 'center' }}>Primary</Section>
-  <Section fluid={true} variant="secondary" style={{ textAlign: 'center' }}>Secondary</Section>
-  <Section fluid={true} variant="tertiary" style={{ textAlign: 'center' }}>Tertiary</Section>
-  <Section fluid={true} variant="light" style={{ textAlign: 'center' }}>Light</Section>
-  <Section fluid={true} variant="neutral" style={{ textAlign: 'center' }}>Neutral</Section>
-  <Section fluid={true} variant="dark" style={{ textAlign: 'center' }}>Dark</Section>
-  <Section fluid={true} variant="success" style={{ textAlign: 'center' }}>Success</Section>
-  <Section fluid={true} variant="info" style={{ textAlign: 'center' }}>Info</Section>
-  <Section fluid={true} variant="warning" style={{ textAlign: 'center' }}>Warning</Section>
-  <Section fluid={true} variant="danger" style={{ textAlign: 'center' }}>Danger</Section>
+  <Section textAlign="center">None</Section>
+  <Section textAlign="center" colorway="primary">Primary</Section>
+  <Section textAlign="center" colorway="secondary">Secondary</Section>
+  <Section textAlign="center" colorway="tertiary">Tertiary</Section>
+  <Section textAlign="center" colorway="light">Light</Section>
+  <Section textAlign="center" colorway="neutral">Neutral</Section>
+  <Section textAlign="center" colorway="dark">Dark</Section>
+  <Section textAlign="center" colorway="success">Success</Section>
+  <Section textAlign="center" colorway="info">Info</Section>
+  <Section textAlign="center" colorway="warning">Warning</Section>
+  <Section textAlign="center" colorway="danger">Danger</Section>
 </Playground>

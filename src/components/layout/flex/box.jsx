@@ -11,7 +11,7 @@ import {
 import * as Styled from './styles'
 
 const Box = ({ children, ...others }) => (
-  <Styled.Box {...handleProps('box', others)}>{children}</Styled.Box>
+  <Styled.Box {...handleProps(others, 'box')}>{children}</Styled.Box>
 )
 
 Box.propTypes = {

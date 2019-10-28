@@ -1,10 +1,18 @@
 import { css } from '@emotion/core'
-import { valueToInt } from './utils'
+
+export const textAlignOptions = [
+  'left',
+  'right',
+  'center',
+  'justify',
+  'initial',
+  'inherit',
+]
 
 export const flexOptionsX = ['left', 'center', 'right']
 export const flexOptionsY = ['top', 'center', 'bottom']
 
-export const flexCSS = (x, y) => {
+export const Flex = ({ x, y }) => {
   let alignItems
   let justifyContent
   switch (x) {
@@ -34,7 +42,10 @@ export const flexCSS = (x, y) => {
   `
 }
 
-export const ContainerSplit = ({ theme }) => {
+export const ContainerSplit = ({ theme, contained }) => {
+  if (!contained) {
+    return ''
+  }
   const container = theme.grid.getContainer()
   const gutter = `calc(((100vw - ${container}) / 2))`
   return css`
@@ -49,10 +60,25 @@ export const ContainerSplit = ({ theme }) => {
   `
 }
 
-export const Container = ({ theme }) => {
+export const Container = ({ theme, contained }) => {
+  if (!contained) {
+    return ''
+  }
   const container = theme.grid.getContainer()
+  const gutter = `calc(((100vw - ${container}) / 2))`
   return css`
-    padding-left: calc(((100vw - ${container}) / 2));
-    padding-right: calc(((100vw - ${container}) / 2));
+    padding-left: ${gutter};
+    padding-right: ${gutter};
+  `
+}
+
+export const Padded = ({ theme, padded }) => {
+  if (!padded) {
+    return ''
+  }
+  const padding = theme.spacing.getSpacing('small')
+  return css`
+    padding-top: ${padding};
+    padding-bottom: ${padding};
   `
 }

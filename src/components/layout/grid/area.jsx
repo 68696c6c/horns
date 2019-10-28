@@ -6,7 +6,7 @@ import { handleProps, propTypeChildren } from '../../../utils/component'
 import * as Styled from './styles'
 
 const Area = ({ children, ...others }) => (
-  <Styled.Area {...handleProps('area', others)}>{children}</Styled.Area>
+  <Styled.Area {...handleProps(others, 'area')}>{children}</Styled.Area>
 )
 
 Area.propTypes = {

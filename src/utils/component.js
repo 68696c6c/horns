@@ -9,7 +9,7 @@ export const propTypeChildren = () =>
     PropTypes.arrayOf(PropTypes.node),
   ])
 
-export const handleProps = (name, { className, ...others }) => {
+export const handleProps = ({ className, ...others }, name = '') => {
   const props = {
     className: toClassNames(name, className),
     ...others,
