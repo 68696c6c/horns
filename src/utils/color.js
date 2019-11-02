@@ -1,10 +1,15 @@
-/* eslint-disable import/prefer-default-export */
+import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
-export const backgroundColorCSS = theme => css`
-  background: ${theme.colors.background.primary};
-  color: ${theme.colors.copy.primary};
-`
+import { palletColorShades } from '../config'
+
+export const colorwayPropTypes = () => ({
+  colorway: PropTypes.oneOf(palletColorShades),
+})
+
+export const colorwayDefaultProps = () => ({
+  colorway: '',
+})
 
 export const Colorway = ({ theme, colorway }) => {
   const cw = theme.colors.getShade(colorway)

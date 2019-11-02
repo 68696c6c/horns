@@ -6,7 +6,7 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Header, { HeaderBase } from './header'
-import Section from './section'
+import { Section } from '../semantic'
 import { NavItem, NavItemMenu, NavItemSticky } from '../../nav'
 import LayoutDemo from '../../_demo/layout-demo'
 
@@ -14,7 +14,7 @@ import LayoutDemo from '../../_demo/layout-demo'
 
 <LayoutDemo variant="dark">
   <Header 
-    variant="dark"
+    colorway="dark"
     sticky={true}
     navItems={(
       <React.Fragment>
@@ -32,7 +32,7 @@ import LayoutDemo from '../../_demo/layout-demo'
     <NavItem href="#">Brand</NavItem>
   </Header>
   <Header 
-    variant="primary"
+    colorway="primary"
     sticky={true}
     navItems={(
       <React.Fragment>

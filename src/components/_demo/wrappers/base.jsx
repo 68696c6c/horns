@@ -3,7 +3,11 @@ import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { backgroundColorCSS } from '../../../utils/color'
+
+const backgroundColorCSS = theme => css`
+  background: ${theme.colors.background.primary};
+  color: ${theme.colors.copy.primary};
+`
 
 export const wrapperStyle = (bgColor, theme) => {
   return css`

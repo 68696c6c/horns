@@ -2,9 +2,11 @@ export { Box } from './flex'
 
 export { Area, Columns, Grid, GridGuide } from './grid'
 
+export { Header, HeaderStickyContent } from './header'
+
 export { Panel, TitleBar } from './panel'
 
-export { Footer, Header, HeaderStickyContent, Section } from './semantic'
+export { Footer, Section } from './semantic'
 
 export { default as ButtonContainer } from './button-container'
 export { default as GridStacked } from './stacked'

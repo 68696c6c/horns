@@ -4,42 +4,14 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
+
+import { colorwayDefaultProps, colorwayPropTypes } from '../../../utils'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../../utils'
 import { isUndefined } from '../../../utils/utils'
-import { valueToInt } from '../../../themes/utils'
 import { Nav } from '../../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
-const fixedCSS = () => (
-  css`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-  `
-)
-
-const Styled = styled('header')`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-  ${({ fluid, theme }) => containerStyleHorizontal(theme.breakpoints, fluid)};
-  ${({ stuck }) => stuck ? fixedCSS() : ''};
-  @media(max-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
-    nav .nav-item-menu {
-      position: static;
-    }
-    .nav-item-menu-items {
-      width: 100%;
-    }
-  }
-  .nav.mobile {
-    margin-left: -1em;
-    margin-right: -1em;
-  }
-`
+import * as Styled from './styles'
 
 export class HeaderBase extends React.Component {
   constructor(props) {
@@ -57,7 +29,7 @@ export class HeaderBase extends React.Component {
       mobile: false,
     }
 
-    this.minWidth = valueToInt(props.theme.breakpoints[props.breakpoint])
+    this.minWidth = props.theme.grid.getBreakpoint(props.breakpoint)
 
     this.headerRef = React.createRef()
   }
@@ -104,7 +76,7 @@ export class HeaderBase extends React.Component {
     const { fluid, variant, menuVariant, children, navItems, className, ...others } = this.props
     const { stuck, mobile } = this.state
     return (
-      <Styled
+      <Styled.Header
         innerRef={this.headerRef}
         fluid={fluid}
         stuck={stuck}
@@ -114,30 +86,17 @@ export class HeaderBase extends React.Component {
       >
         {children}
         <Nav mobile={mobile} menuVariant={menuVariant}>{navItems}</Nav>
-      </Styled>
+      </Styled.Header>
     )
   }
 }
 
 HeaderBase.propTypes = {
+  ...colorwayPropTypes(),
   fluid: PropTypes.bool,
   sticky: PropTypes.bool,
   breakpoint: PropTypes.string,
   containerID: PropTypes.string,
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-    COLOR_VARIANT_NONE,
-  ]),
   menuVariant: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -156,6 +115,7 @@ HeaderBase.propTypes = {
 }
 
 HeaderBase.defaultProps = {
+  ...colorwayDefaultProps(),
   fluid: false,
   sticky: false,
   breakpoint: 'small',
