@@ -9,7 +9,7 @@ class InputsConfig {
     // @TODO get default values from a config file.
     this.borderWidth = safeGetValue(config, 'borderWidth', defaultInputs.borderWidth)
 
-    console.log('inputs config', this)
+    console.log('InputsConfig', this)
   }
 }
 
