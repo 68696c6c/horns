@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import PropTypes from 'prop-types'
 
-import { spacingSizes } from '../../../config'
+import { spacingSizes } from '../../config'
 import {
   Colorway,
   Container,
@@ -10,8 +10,10 @@ import {
   propTypeChildren,
   colorwayPropTypes,
   colorwayDefaultProps,
+  containerPropTypes,
+  containerDefaultProps,
   textAlignOptions,
-} from '../../../utils'
+} from '../../utils'
 
 const Layout = ({ textAlign }) => css`
   text-align: ${textAlign};
@@ -21,7 +23,7 @@ const Layout = ({ textAlign }) => css`
 export const layoutPropTypes = () => ({
   children: propTypeChildren(),
   ...colorwayPropTypes(),
-  contained: PropTypes.bool,
+  ...containerPropTypes(),
   padded: PropTypes.bool,
   spacing: PropTypes.oneOf(spacingSizes),
   textAlign: PropTypes.oneOf(textAlignOptions),
@@ -30,7 +32,7 @@ export const layoutPropTypes = () => ({
 export const layoutDefaultProps = () => ({
   children: null,
   ...colorwayDefaultProps(),
-  contained: true,
+  ...containerDefaultProps(),
   padded: true,
   spacing: 'medium',
   textAlign: 'inherit',

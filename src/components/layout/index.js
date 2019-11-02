@@ -6,7 +6,8 @@ export { Header, HeaderStickyContent } from './header'
 
 export { Panel, TitleBar } from './panel'
 
-export { Footer, Section } from './semantic'
+export { default as Footer } from './footer'
+export { default as Section } from './section'
 
 export { default as ButtonContainer } from './button-container'
 export { default as GridStacked } from './stacked'

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { handleProps } from '../../../utils'
+import { handleProps } from '../../utils'
 import * as Styled from './styles'
 
 // eslint-disable-next-line react/prop-types

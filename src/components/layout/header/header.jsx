@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 
-import { colorwayDefaultProps, colorwayPropTypes } from '../../../utils'
+import { colorwayDefaultProps, colorwayPropTypes, containerPropTypes, containerDefaultProps } from '../../../utils'
 import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../../utils'
 import { isUndefined } from '../../../utils/utils'
 import { Nav } from '../../nav'
@@ -93,6 +93,7 @@ export class HeaderBase extends React.Component {
 
 HeaderBase.propTypes = {
   ...colorwayPropTypes(),
+  ...containerPropTypes(),
   fluid: PropTypes.bool,
   sticky: PropTypes.bool,
   breakpoint: PropTypes.string,
@@ -116,7 +117,7 @@ HeaderBase.propTypes = {
 
 HeaderBase.defaultProps = {
   ...colorwayDefaultProps(),
-  fluid: false,
+  ...containerDefaultProps(),
   sticky: false,
   breakpoint: 'small',
   containerID: '',

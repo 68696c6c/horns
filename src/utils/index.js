@@ -8,6 +8,8 @@ export {
   flexOptionsY,
   Flex,
   ContainerSplit,
+  containerPropTypes,
+  containerDefaultProps,
   Container,
   Padded,
 } from './layout'

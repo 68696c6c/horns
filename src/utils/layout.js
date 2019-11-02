@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 export const textAlignOptions = [
@@ -42,6 +43,14 @@ export const Flex = ({ x, y }) => {
   `
 }
 
+export const containerPropTypes = () => ({
+  contained: PropTypes.bool,
+})
+
+export const containerDefaultProps = (contained = true) => ({
+  contained,
+})
+
 export const ContainerSplit = ({ theme, contained }) => {
   if (!contained) {
     return ''
@@ -60,8 +69,8 @@ export const ContainerSplit = ({ theme, contained }) => {
   `
 }
 
-export const Container = ({ theme, contained }) => {
-  if (!contained) {
+export const Container = ({ theme, contained, fluid }) => {
+  if (!contained || fluid) {
     return ''
   }
   const container = theme.grid.getContainer()
