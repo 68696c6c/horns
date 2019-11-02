@@ -12,6 +12,7 @@ export const colorwayDefaultProps = () => ({
 })
 
 export const Colorway = ({ theme, colorway }) => {
+  console.log('Colorway', colorway, theme)
   const cw = theme.colors.getShade(colorway)
   return css`
     background: ${cw.base};

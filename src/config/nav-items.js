@@ -8,18 +8,22 @@ const defaultNavItems = {
   spacing: 'tiny',
   background: 'inherit',
   color: 'inherit',
+  decoration: 'none',
   hover: {
     background: 'inherit',
     color: 'inherit',
+    decoration: 'none',
   },
   active: {
     background: 'inherit',
     color: 'inherit',
+    decoration: 'none',
   },
   current: {
     effect: 'line',
     background: 'inherit',
     color: 'inherit',
+    decoration: 'none',
     lineSize: 'tiny',
     lineColor: 'primary',
   },
@@ -28,25 +32,29 @@ const defaultNavItems = {
 const getConfigState = (colorsConfig, config, state = 'base') => {
   let color
   let background
+  let decoration
   if (!['hover', 'active'].includes(state)) {
     const stateColor = safeGetValue(config, 'color', defaultNavItems.color)
     color = colorsConfig.getSwatch(stateColor)
     const stateBG = safeGetValue(config, 'background', defaultNavItems.background)
     background = colorsConfig.getSwatch(stateBG)
+    decoration = safeGetValue(config, 'decoration', defaultNavItems.decoration)
   } else {
     const stateConfig = safeGetValue(config, state, defaultNavItems[state])
     const stateColor = safeGetValue(stateConfig, 'color', defaultNavItems[state].color)
     color = colorsConfig.getSwatch(stateColor)
     const stateBG = safeGetValue(stateConfig, 'background', defaultNavItems[state].background)
     background = colorsConfig.getSwatch(stateBG)
+    decoration = safeGetValue(stateConfig, 'decoration', defaultNavItems[state].decoration)
   }
-  return { color, background }
+  return { color, background, decoration }
 }
 
 const makeNavItem = (base, padding, border, currentBorder) => {
   return {
     color: base.color,
     background: base.background,
+    decoration: base.decoration,
     padding,
     border,
     hover: base.hover,
@@ -71,21 +79,24 @@ class NavItemsConfig {
     if (!spacingSizes.includes(spacing)) {
       spacing = defaultNavItems.spacing
     }
-    const padding = spacingConfig[spacing].px
+    const padding = spacingConfig.getSpacing(spacing)
 
-    const { color, background } = getConfigState(colorsConfig, config)
-    const { color: hColor, background: hBG } = getConfigState(colorsConfig, config, 'hover')
-    const { color: aColor, background: aBG } = getConfigState(colorsConfig, config, 'active')
+    const { color, background, decoration } = getConfigState(colorsConfig, config)
+    const { color: hColor, background: hBG, decoration: hDecoration } = getConfigState(colorsConfig, config, 'hover')
+    const { color: aColor, background: aBG, decoration: aDecoration } = getConfigState(colorsConfig, config, 'active')
     const base = {
       color,
       background,
+      decoration,
       hover: {
         color: hColor,
         background: hBG,
+        decoration: hDecoration,
       },
       active: {
         color: aColor,
         background: aBG,
+        decoration: aDecoration,
       },
     }
 
@@ -94,11 +105,11 @@ class NavItemsConfig {
     const lineSize = safeGetValue(configCurrent, 'lineSize', defaultNavItems.current.lineSize)
     const lineColor = safeGetValue(configCurrent, 'lineColor', defaultNavItems.current.lineColor)
 
-    let inlinePadding
-    let inlineBorder
-    let stackedPadding
-    let stackedBorder
-    let currentBorder
+    let inlinePadding = ''
+    let inlineBorder = ''
+    let stackedPadding = ''
+    let stackedBorder = ''
+    let currentBorder = ''
     switch (currentEffect) {
       case 'underline':
         inlinePadding = `${padding} ${padding} calc(${padding} - ${lineSize})`

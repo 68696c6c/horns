@@ -1,15 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
-import PropTypes from 'prop-types'
 
-import { palletColorShades, spacingSizes } from '../../../config'
-import {
-  Colorway,
-  Container,
-  Padded,
-  propTypeChildren,
-  textAlignOptions,
-} from '../../../utils'
+import { Colorway, Container, Padded } from '../../../utils'
 
 const fixedCSS = () =>
   css`

@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { palletColorShades, spacingSizes } from '../../../config'
+import { spacingSizes } from '../../../config'
 import {
+  colorwayDefaultProps,
+  colorwayPropTypes,
   flexOptionsX,
   flexOptionsY,
   handleProps,
@@ -16,7 +18,7 @@ const Box = ({ children, ...others }) => (
 
 Box.propTypes = {
   children: propTypeChildren(),
-  colorway: PropTypes.oneOf(palletColorShades),
+  ...colorwayPropTypes(),
   compact: PropTypes.bool,
   spacing: PropTypes.oneOf(spacingSizes),
   height: PropTypes.string,
@@ -27,7 +29,7 @@ Box.propTypes = {
 
 Box.defaultProps = {
   children: null,
-  colorway: '',
+  ...colorwayDefaultProps(),
   compact: false,
   spacing: 'small',
   height: 'auto',

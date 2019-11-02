@@ -1,29 +1,35 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { toClassNames } from '../../utils'
-import baseNavItem from './base'
 
-const Styled = styled('a')`
-  ${({ variant, theme }) => baseNavItem(theme, variant)}
-`
+import {
+  handleProps,
+  colorwayDefaultProps,
+  colorwayPropTypes,
+} from '../../../utils'
+import * as Styled from './styles'
 
 const NavItem = ({ href, active, variant, className, children, ...others }) => {
-  const activeClass = active ? 'active' : ''
-  return <Styled href={href} variant={variant} className={toClassNames(className, 'nav-item', activeClass)} {...others}>{children}</Styled>
+  const cName = active ? 'nav-item active' : 'nav-item'
+  return (
+    <Styled.NavItemInline
+      href={href}
+      variant={variant}
+      {...handleProps(others, cName)}
+    >
+      {children}
+    </Styled.NavItemInline>
+  )
 }
 
 NavItem.propTypes = {
+  ...colorwayPropTypes(),
   href: PropTypes.string.isRequired,
   active: PropTypes.bool,
-  variant: PropTypes.string,
 }
 
 NavItem.defaultProps = {
+  ...colorwayDefaultProps(),
   active: false,
-  variant: 'none',
 }
 
 export default NavItem

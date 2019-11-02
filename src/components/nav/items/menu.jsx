@@ -1,33 +1,31 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 import NavItem from './item'
 import { getEventName } from '../../../events'
-import { navMenuItem } from './base'
 import { isUndefined } from '../../../utils/utils'
-import { colorVariantCSS } from '../../utils'
 import { getParentByClassName } from '../../..'
+
+import * as Styled from './styles'
+import { colorwayDefaultProps, colorwayPropTypes } from '../../../utils'
 
 const EVENT_OPEN = getEventName('menu:open')
 const EVENT_CLOSE = getEventName('menu:close')
 const EVENT_CLOSE_OTHERS = getEventName('menu:closeOthers')
 
-const StyledMenuContainer = styled('span')`
-  position: relative;
-`
-const StyledMenu = styled('nav')`
-  display: ${({ open }) => open ? 'block' : 'none'};
-  ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-  .nav-item, a {
-    ${({ theme }) => navMenuItem(theme)};
-  }
-`
-StyledMenu.propTypes = {
-  open: PropTypes.bool.isRequired,
-}
+// const StyledMenuContainer = styled('span')`
+//   position: relative;
+// `
+// const StyledMenu = styled('nav')`
+//   display: ${({ open }) => open ? 'block' : 'none'};
+//   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
+//   .nav-item, a {
+//     ${({ theme }) => navMenuItem(theme)};
+//   }
+// `
+// StyledMenu.propTypes = {
+//   open: PropTypes.bool.isRequired,
+// }
 
 class NavItemMenu extends React.Component {
   constructor(props) {
@@ -96,34 +94,40 @@ class NavItemMenu extends React.Component {
   }
 
   getEventData() {
-    const menuID = this.menuID
+    const { menuID } = this
     return {
       bubbles: true,
-      detail: { menuID }
+      detail: { menuID },
     }
   }
 
   getCloseOthersEventData(event) {
-    let menuIDs = [this.menuID]
+    const menuIDs = [this.menuID]
     let ancestor = getParentByClassName(event.target, 'nav-item-menu')
     menuIDs.push(ancestor.dataset.menu_id)
-    while(ancestor !== null) {
+    while (ancestor !== null) {
       menuIDs.push(ancestor.dataset.menu_id)
       ancestor = getParentByClassName(ancestor, 'nav-item-menu')
     }
     return {
       bubbles: true,
-      detail: { menuIDs }
+      detail: { menuIDs },
     }
   }
 
   fireOpen(event) {
-    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
-    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_CLOSE_OTHERS, this.getCloseOthersEventData(event)))
+    this.menuRef.current.dispatchEvent(
+      new CustomEvent(EVENT_OPEN, this.getEventData())
+    )
+    this.menuRef.current.dispatchEvent(
+      new CustomEvent(EVENT_CLOSE_OTHERS, this.getCloseOthersEventData(event))
+    )
   }
 
   fireClose() {
-    this.menuRef.current.dispatchEvent(new CustomEvent(EVENT_CLOSE, this.getEventData()))
+    this.menuRef.current.dispatchEvent(
+      new CustomEvent(EVENT_CLOSE, this.getEventData())
+    )
   }
 
   hasActiveItem(pathname) {
@@ -158,7 +162,10 @@ class NavItemMenu extends React.Component {
   render() {
     const { content, variant, menuVariant, className, children } = this.props
     return (
-      <StyledMenuContainer className="nav-item-menu" data-menu_id={this.menuID}>
+      <Styled.MenuContainer
+        className="nav-item-menu"
+        data-menu_id={this.menuID}
+      >
         <NavItem
           href="#"
           variant={variant}
@@ -168,36 +175,32 @@ class NavItemMenu extends React.Component {
         >
           {content}
         </NavItem>
-        <StyledMenu
-          variant={menuVariant}
+        <Styled.Menu
+          colorway={menuVariant}
           open={this.state.open}
           innerRef={this.menuRef}
           className="nav-item-menu-items"
         >
           {children}
-        </StyledMenu>
-      </StyledMenuContainer>
+        </Styled.Menu>
+      </Styled.MenuContainer>
     )
   }
 }
 
 NavItemMenu.propTypes = {
-  content: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]).isRequired,
+  ...colorwayPropTypes(),
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   active: PropTypes.bool,
-  variant: PropTypes.string,
   menuVariant: PropTypes.string,
   onClick: PropTypes.func,
 }
 
 NavItemMenu.defaultProps = {
-  variant: 'none',
+  ...colorwayDefaultProps(),
   menuVariant: 'light',
   active: false,
-  onClick: () => {
-  },
+  onClick: () => {},
 }
 
 export default NavItemMenu
