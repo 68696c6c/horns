@@ -1,0 +1,2011 @@
+{
+  "config": {
+    "title": "Horns",
+    "description": "Fully themable React UI kit.",
+    "menu": [],
+    "version": "0.2.33",
+    "repository": "https://github.com/68696c6c/horns",
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "mode": "dark",
+      "src": "./src/components",
+      "colors": {
+        "primary": "#EE9B3F"
+      }
+    },
+    "separator": "-",
+    "wrapper": "src/app.jsx",
+    "src": "./src",
+    "public": "public",
+    "htmlContext": {
+      "favicon": "public/favicon.ico"
+    }
+  },
+  "props": [],
+  "entries": [
+    {
+      "key": "index.mdx",
+      "value": {
+        "name": "Horns",
+        "route": "/",
+        "order": 1,
+        "id": "6576455a124f9aaefd860597f03a8fe4",
+        "filepath": "index.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/index.mdx",
+        "slug": "index",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "welcome-to-horns",
+            "depth": 1,
+            "value": "Welcome to Horns"
+          },
+          {
+            "slug": "fully-themable-react-ui-kit",
+            "depth": 3,
+            "value": "Fully themable React UI Kit."
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/_demo/colors.mdx",
+      "value": {
+        "name": "Colors",
+        "id": "4194cd5df531fa8d06b143e6bfaffc74",
+        "filepath": "components/_demo/colors.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/_demo/colors.mdx",
+        "slug": "components-demo-colors",
+        "route": "/components-demo-colors",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "colors",
+            "depth": 1,
+            "value": "Colors"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/_demo/spacing.mdx",
+      "value": {
+        "name": "Spacing",
+        "id": "6206709f4e52cf7ed4940546f4b4c12f",
+        "filepath": "components/_demo/spacing.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/_demo/spacing.mdx",
+        "slug": "components-demo-spacing",
+        "route": "/components-demo-spacing",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "colors",
+            "depth": 1,
+            "value": "Colors"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/buttons/button.mdx",
+      "value": {
+        "id": "462c36afebdfaef7fe79dbc39b78b319",
+        "filepath": "components/buttons/button.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/buttons/button.mdx",
+        "slug": "components-buttons-button",
+        "route": "/components-buttons-button",
+        "name": "Button",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "button",
+            "depth": 1,
+            "value": "Button"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "colorways",
+            "depth": 2,
+            "value": "Colorways"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/data-tables/data-table-async.mdx",
+      "value": {
+        "name": "Data Table - Async",
+        "menu": "Tables",
+        "id": "adaee39c806f16e3fcc1f6b272bd3035",
+        "filepath": "components/data-tables/data-table-async.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/data-tables/data-table-async.mdx",
+        "slug": "components-data-tables-data-table-async",
+        "route": "/components-data-tables-data-table-async",
+        "headings": [
+          {
+            "slug": "datatableasync",
+            "depth": 1,
+            "value": "DataTableAsync"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "per-page-prop",
+            "depth": 2,
+            "value": "Per Page Prop"
+          },
+          {
+            "slug": "controlled-through-a-ref",
+            "depth": 2,
+            "value": "Controlled through a ref"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/data-tables/data-table.mdx",
+      "value": {
+        "name": "Data Table",
+        "menu": "Tables",
+        "id": "f05cbe945c0f71733e9e658b32dc9b2a",
+        "filepath": "components/data-tables/data-table.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/data-tables/data-table.mdx",
+        "slug": "components-data-tables-data-table",
+        "route": "/components-data-tables-data-table",
+        "headings": [
+          {
+            "slug": "datatable",
+            "depth": 1,
+            "value": "DataTable"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "per-page-prop",
+            "depth": 2,
+            "value": "Per Page Prop"
+          },
+          {
+            "slug": "controlled-through-a-ref",
+            "depth": 2,
+            "value": "Controlled through a ref"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/images/image-frame.mdx",
+      "value": {
+        "name": "ImageFrame",
+        "menu": "Images",
+        "id": "97c1e7f833cf8ebc9e5c1cf4d543e694",
+        "filepath": "components/images/image-frame.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/images/image-frame.mdx",
+        "slug": "components-images-image-frame",
+        "route": "/components-images-image-frame",
+        "headings": [
+          {
+            "slug": "imageframe",
+            "depth": 1,
+            "value": "ImageFrame"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/images/picture.mdx",
+      "value": {
+        "name": "Picture",
+        "menu": "Images",
+        "id": "50a2378b31d25eb107d514bee10b6f56",
+        "filepath": "components/images/picture.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/images/picture.mdx",
+        "slug": "components-images-picture",
+        "route": "/components-images-picture",
+        "headings": [
+          {
+            "slug": "picture",
+            "depth": 1,
+            "value": "Picture"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/field.mdx",
+      "value": {
+        "name": "Field",
+        "menu": "Forms",
+        "id": "d77dc6b8322890b56c89523ad75ddafa",
+        "filepath": "components/forms/field.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/field.mdx",
+        "slug": "components-forms-field",
+        "route": "/components-forms-field",
+        "headings": [
+          {
+            "slug": "field",
+            "depth": 1,
+            "value": "Field"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/fieldset.mdx",
+      "value": {
+        "name": "Fieldset",
+        "menu": "Forms",
+        "id": "b3af335e00e7a2e52902d1b072474df3",
+        "filepath": "components/forms/fieldset.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/fieldset.mdx",
+        "slug": "components-forms-fieldset",
+        "route": "/components-forms-fieldset",
+        "headings": [
+          {
+            "slug": "fieldset",
+            "depth": 1,
+            "value": "Fieldset"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/group-inline.mdx",
+      "value": {
+        "name": "Group - Inline",
+        "menu": "Forms",
+        "id": "d37560b63995953fb0737ae4f2aa6302",
+        "filepath": "components/forms/group-inline.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/group-inline.mdx",
+        "slug": "components-forms-group-inline",
+        "route": "/components-forms-group-inline",
+        "headings": [
+          {
+            "slug": "groupinline",
+            "depth": 1,
+            "value": "GroupInline"
+          },
+          {
+            "slug": "responsiveness",
+            "depth": 2,
+            "value": "Responsiveness"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/group.mdx",
+      "value": {
+        "name": "Group",
+        "menu": "Forms",
+        "id": "9d0999fa2dedfcbc65703e82a1d7579a",
+        "filepath": "components/forms/group.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/group.mdx",
+        "slug": "components-forms-group",
+        "route": "/components-forms-group",
+        "headings": [
+          {
+            "slug": "group",
+            "depth": 1,
+            "value": "Group"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/input-message.mdx",
+      "value": {
+        "name": "Input Message",
+        "menu": "Forms",
+        "id": "81f37eb722c084765abf152bdae788f0",
+        "filepath": "components/forms/input-message.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/input-message.mdx",
+        "slug": "components-forms-input-message",
+        "route": "/components-forms-input-message",
+        "headings": [
+          {
+            "slug": "inputmessage",
+            "depth": 1,
+            "value": "InputMessage"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/links/button.mdx",
+      "value": {
+        "name": "Button Link",
+        "menu": "Links",
+        "id": "0e23630dc4ba7cf0385c4bd8b9da950d",
+        "filepath": "components/links/button.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/links/button.mdx",
+        "slug": "components-links-button",
+        "route": "/components-links-button",
+        "headings": [
+          {
+            "slug": "linkbutton",
+            "depth": 1,
+            "value": "LinkButton"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/links/email.mdx",
+      "value": {
+        "name": "Email Link",
+        "menu": "Links",
+        "id": "89a2feb77d8e50c884670b4c4b00221f",
+        "filepath": "components/links/email.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/links/email.mdx",
+        "slug": "components-links-email",
+        "route": "/components-links-email",
+        "headings": [
+          {
+            "slug": "linkemail",
+            "depth": 1,
+            "value": "LinkEmail"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "type",
+            "depth": 2,
+            "value": "Type"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/links/link.mdx",
+      "value": {
+        "name": "Link",
+        "menu": "Links",
+        "id": "503524a4b1f36e6fae6b5b12230ae437",
+        "filepath": "components/links/link.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/links/link.mdx",
+        "slug": "components-links-link",
+        "route": "/components-links-link",
+        "headings": [
+          {
+            "slug": "link",
+            "depth": 1,
+            "value": "Link"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/links/phone.mdx",
+      "value": {
+        "name": "Phone Link",
+        "menu": "Links",
+        "id": "4c82b0f8b5f9678b4457f6fb436a0e76",
+        "filepath": "components/links/phone.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/links/phone.mdx",
+        "slug": "components-links-phone",
+        "route": "/components-links-phone",
+        "headings": [
+          {
+            "slug": "linkphone",
+            "depth": 1,
+            "value": "LinkPhone"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "type",
+            "depth": 2,
+            "value": "Type"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/button-container.mdx",
+      "value": {
+        "name": "Button Container",
+        "menu": "Layout",
+        "id": "73b32d034ebab804d8ba5ad3a83dddd4",
+        "filepath": "components/layout/button-container.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/button-container.mdx",
+        "slug": "components-layout-button-container",
+        "route": "/components-layout-button-container",
+        "headings": [
+          {
+            "slug": "buttoncontainer",
+            "depth": 1,
+            "value": "ButtonContainer"
+          },
+          {
+            "slug": "responsiveness",
+            "depth": 2,
+            "value": "Responsiveness"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/footer.mdx",
+      "value": {
+        "name": "Footer",
+        "menu": "Layout",
+        "id": "b0df4acc04a4ac2ff9697a658edbc1a9",
+        "filepath": "components/layout/footer.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/footer.mdx",
+        "slug": "components-layout-footer",
+        "route": "/components-layout-footer",
+        "headings": [
+          {
+            "slug": "footer",
+            "depth": 1,
+            "value": "Footer"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "colorways",
+            "depth": 2,
+            "value": "Colorways"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/parallax.mdx",
+      "value": {
+        "name": "Parallax",
+        "menu": "Layout",
+        "id": "8fdace2464f791df1a33cc7be3894bf5",
+        "filepath": "components/layout/parallax.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/parallax.mdx",
+        "slug": "components-layout-parallax",
+        "route": "/components-layout-parallax",
+        "headings": [
+          {
+            "slug": "parallax",
+            "depth": 1,
+            "value": "Parallax"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/scroll-pages.mdx",
+      "value": {
+        "name": "Scroll Pages",
+        "menu": "Layout",
+        "id": "d2e98e1b6948d7cb3212f841b5721b71",
+        "filepath": "components/layout/scroll-pages.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/scroll-pages.mdx",
+        "slug": "components-layout-scroll-pages",
+        "route": "/components-layout-scroll-pages",
+        "headings": [
+          {
+            "slug": "scrollpages",
+            "depth": 1,
+            "value": "ScrollPages"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/scroll-progress.mdx",
+      "value": {
+        "name": "Scroll Progress",
+        "menu": "Layout",
+        "id": "e0356694171de2b9a1dbfda8f3ff9881",
+        "filepath": "components/layout/scroll-progress.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/scroll-progress.mdx",
+        "slug": "components-layout-scroll-progress",
+        "route": "/components-layout-scroll-progress",
+        "headings": [
+          {
+            "slug": "scrollprogress",
+            "depth": 1,
+            "value": "ScrollProgress"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/section.mdx",
+      "value": {
+        "name": "Section",
+        "menu": "Layout",
+        "id": "8749a7c1480648e37da43d40c58b18ba",
+        "filepath": "components/layout/section.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/section.mdx",
+        "slug": "components-layout-section",
+        "route": "/components-layout-section",
+        "headings": [
+          {
+            "slug": "section",
+            "depth": 1,
+            "value": "Section"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "colorways",
+            "depth": 2,
+            "value": "Colorways"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/stacked.mdx",
+      "value": {
+        "name": "Grid - Stacked",
+        "menu": "Layout",
+        "id": "4c3949e37cc4c5fd9771de379cb32bf7",
+        "filepath": "components/layout/stacked.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/stacked.mdx",
+        "slug": "components-layout-stacked",
+        "route": "/components-layout-stacked",
+        "headings": [
+          {
+            "slug": "gridstacked",
+            "depth": 1,
+            "value": "GridStacked"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/lists/item.mdx",
+      "value": {
+        "name": "List Item",
+        "menu": "Lists",
+        "id": "eb3aad31859746215185c1d025ce02aa",
+        "filepath": "components/lists/item.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/lists/item.mdx",
+        "slug": "components-lists-item",
+        "route": "/components-lists-item",
+        "headings": [
+          {
+            "slug": "listitem",
+            "depth": 1,
+            "value": "ListItem"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "types",
+            "depth": 2,
+            "value": "Types"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/lists/ordered.mdx",
+      "value": {
+        "name": "Ordered List",
+        "menu": "Lists",
+        "id": "7886d887bea587ac63aa0670177378f5",
+        "filepath": "components/lists/ordered.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/lists/ordered.mdx",
+        "slug": "components-lists-ordered",
+        "route": "/components-lists-ordered",
+        "headings": [
+          {
+            "slug": "ordered-list",
+            "depth": 1,
+            "value": "Ordered List"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "types",
+            "depth": 2,
+            "value": "Types"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/lists/steps.mdx",
+      "value": {
+        "name": "Step List",
+        "menu": "Lists",
+        "id": "3f78f5a9c43aeae948f7ceac49849b6a",
+        "filepath": "components/lists/steps.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/lists/steps.mdx",
+        "slug": "components-lists-steps",
+        "route": "/components-lists-steps",
+        "headings": [
+          {
+            "slug": "liststeps",
+            "depth": 1,
+            "value": "ListSteps"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/lists/symbols.mdx",
+      "value": {
+        "name": "Symbol List",
+        "menu": "Lists",
+        "id": "774bde27ad978b26b2feeb3e837c82c9",
+        "filepath": "components/lists/symbols.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/lists/symbols.mdx",
+        "slug": "components-lists-symbols",
+        "route": "/components-lists-symbols",
+        "headings": [
+          {
+            "slug": "symbol-list",
+            "depth": 1,
+            "value": "Symbol List"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "icons",
+            "depth": 2,
+            "value": "Icons"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/lists/unordered.mdx",
+      "value": {
+        "name": "Unordered List",
+        "menu": "Lists",
+        "id": "c1b6f525b25616e7747ea68e7f621734",
+        "filepath": "components/lists/unordered.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/lists/unordered.mdx",
+        "slug": "components-lists-unordered",
+        "route": "/components-lists-unordered",
+        "headings": [
+          {
+            "slug": "unordered-list",
+            "depth": 1,
+            "value": "Unordered List"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "types",
+            "depth": 2,
+            "value": "Types"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/nav.mdx",
+      "value": {
+        "name": "Nav",
+        "menu": "Navs",
+        "id": "403c0b75fee0802917b4a9342631ceee",
+        "filepath": "components/nav/nav.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/nav.mdx",
+        "slug": "components-nav-nav",
+        "route": "/components-nav-nav",
+        "headings": [
+          {
+            "slug": "nav",
+            "depth": 1,
+            "value": "Nav"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "mobile",
+            "depth": 2,
+            "value": "Mobile"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/stacked.mdx",
+      "value": {
+        "name": "Nav - Stacked",
+        "menu": "Navs",
+        "id": "17a6f0dded825d4173ef514b0eb9d49e",
+        "filepath": "components/nav/stacked.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/stacked.mdx",
+        "slug": "components-nav-stacked",
+        "route": "/components-nav-stacked",
+        "headings": [
+          {
+            "slug": "navstacked",
+            "depth": 1,
+            "value": "NavStacked"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/pagination.mdx",
+      "value": {
+        "name": "Pagination",
+        "menu": "Navs",
+        "id": "67f2b59d77babbc45723efaa404e6d03",
+        "filepath": "components/nav/pagination.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/pagination.mdx",
+        "slug": "components-nav-pagination",
+        "route": "/components-nav-pagination",
+        "headings": [
+          {
+            "slug": "pagination",
+            "depth": 1,
+            "value": "Pagination"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/svg/svg.mdx",
+      "value": {
+        "name": "SVG",
+        "menu": "SVG",
+        "id": "c7881150c860140d60e9bd307c2cc476",
+        "filepath": "components/svg/svg.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/svg/svg.mdx",
+        "slug": "components-svg-svg",
+        "route": "/components-svg-svg",
+        "headings": [
+          {
+            "slug": "svg",
+            "depth": 1,
+            "value": "SVG"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/tables/table.mdx",
+      "value": {
+        "name": "Table",
+        "menu": "Tables",
+        "id": "4b4c76097a2ac48bb3f86a88e95abb7a",
+        "filepath": "components/tables/table.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/tables/table.mdx",
+        "slug": "components-tables-table",
+        "route": "/components-tables-table",
+        "headings": [
+          {
+            "slug": "table",
+            "depth": 1,
+            "value": "Table"
+          },
+          {
+            "slug": "responsiveness",
+            "depth": 2,
+            "value": "Responsiveness"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/sliders/double.mdx",
+      "value": {
+        "name": "Slider - Double",
+        "menu": "Sliders",
+        "id": "6a2f28c66cdc6a8080b9d00c29b5e8af",
+        "filepath": "components/sliders/double.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/sliders/double.mdx",
+        "slug": "components-sliders-double",
+        "route": "/components-sliders-double",
+        "headings": [
+          {
+            "slug": "sliderdouble",
+            "depth": 1,
+            "value": "SliderDouble"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/sliders/slider.mdx",
+      "value": {
+        "name": "Slider",
+        "menu": "Sliders",
+        "id": "e58889ff0a726d972b76ba4b9553a553",
+        "filepath": "components/sliders/slider.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/sliders/slider.mdx",
+        "slug": "components-sliders-slider",
+        "route": "/components-sliders-slider",
+        "headings": [
+          {
+            "slug": "slider",
+            "depth": 1,
+            "value": "Slider"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/notifications/alert.mdx",
+      "value": {
+        "name": "Alert",
+        "menu": "Notifications",
+        "id": "4716b6cfd9dd531ef346cd194061d3fc",
+        "filepath": "components/notifications/alert.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/notifications/alert.mdx",
+        "slug": "components-notifications-alert",
+        "route": "/components-notifications-alert",
+        "headings": [
+          {
+            "slug": "alert",
+            "depth": 1,
+            "value": "Alert"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/notifications/flash.mdx",
+      "value": {
+        "id": "0a27db42841a5036acb599114cf0ddc9",
+        "filepath": "components/notifications/flash.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/notifications/flash.mdx",
+        "slug": "components-notifications-flash",
+        "route": "/components-notifications-flash",
+        "name": "Flash",
+        "menu": "",
+        "headings": []
+      }
+    },
+    {
+      "key": "components/typography/disclaimer.mdx",
+      "value": {
+        "name": "Disclaimer",
+        "menu": "Typography",
+        "id": "690bbfe44b73d5544489a3506d0f9104",
+        "filepath": "components/typography/disclaimer.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/disclaimer.mdx",
+        "slug": "components-typography-disclaimer",
+        "route": "/components-typography-disclaimer",
+        "headings": [
+          {
+            "slug": "disclaimer",
+            "depth": 1,
+            "value": "Disclaimer"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/typography/notes.md",
+      "value": {
+        "id": "3de1935dd13dd81b8947e6db849ae40c",
+        "filepath": "components/typography/notes.md",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/notes.md",
+        "slug": "components-typography-notes",
+        "route": "/components-typography-notes",
+        "name": "Notes",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "the-typographic-bible",
+            "depth": 1,
+            "value": "The Typographic Bible"
+          },
+          {
+            "slug": "rythym-and-proportion",
+            "depth": 2,
+            "value": "Rythym and Proportion"
+          },
+          {
+            "slug": "choosing-and-combining-type",
+            "depth": 2,
+            "value": "Choosing and Combining Type"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/visuals/meter.mdx",
+      "value": {
+        "name": "Meter",
+        "menu": "Visuals",
+        "id": "9a3c21cae6ce9dbbcc93b9cb9acb74ec",
+        "filepath": "components/visuals/meter.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/visuals/meter.mdx",
+        "slug": "components-visuals-meter",
+        "route": "/components-visuals-meter",
+        "headings": [
+          {
+            "slug": "meter",
+            "depth": 1,
+            "value": "Meter"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/visuals/progress.mdx",
+      "value": {
+        "name": "Progress",
+        "menu": "Visuals",
+        "id": "be82225842b61db8b27e757ffde3ea28",
+        "filepath": "components/visuals/progress.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/visuals/progress.mdx",
+        "slug": "components-visuals-progress",
+        "route": "/components-visuals-progress",
+        "headings": [
+          {
+            "slug": "progress",
+            "depth": 1,
+            "value": "Progress"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/charts/pie/pie.mdx",
+      "value": {
+        "name": "Pie Chart",
+        "menu": "Charts",
+        "id": "b94c7cdffba53d32dd3cb3392c03a76d",
+        "filepath": "components/charts/pie/pie.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/charts/pie/pie.mdx",
+        "slug": "components-charts-pie-pie",
+        "route": "/components-charts-pie-pie",
+        "headings": [
+          {
+            "slug": "piechart",
+            "depth": 1,
+            "value": "PieChart"
+          },
+          {
+            "slug": "piechart-props",
+            "depth": 2,
+            "value": "PieChart Props"
+          },
+          {
+            "slug": "region-props",
+            "depth": 2,
+            "value": "Region Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/charts/line/line-chart.mdx",
+      "value": {
+        "name": "Line Chart",
+        "menu": "Charts",
+        "id": "5c32a192b6105768d211c4ca88e120b9",
+        "filepath": "components/charts/line/line-chart.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/charts/line/line-chart.mdx",
+        "slug": "components-charts-line-line-chart",
+        "route": "/components-charts-line-line-chart",
+        "headings": [
+          {
+            "slug": "linechart",
+            "depth": 1,
+            "value": "LineChart"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/inputs/hidden.mdx",
+      "value": {
+        "name": "Hidden Input",
+        "menu": "Forms",
+        "id": "869917169969d3d7665ba9490cb1333b",
+        "filepath": "components/forms/inputs/hidden.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/inputs/hidden.mdx",
+        "slug": "components-forms-inputs-hidden",
+        "route": "/components-forms-inputs-hidden",
+        "headings": [
+          {
+            "slug": "inputhidden",
+            "depth": 1,
+            "value": "InputHidden"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/inputs/input.mdx",
+      "value": {
+        "name": "Input",
+        "menu": "Forms",
+        "id": "005ecb2d86b4dcac746189f877d6388d",
+        "filepath": "components/forms/inputs/input.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/inputs/input.mdx",
+        "slug": "components-forms-inputs-input",
+        "route": "/components-forms-inputs-input",
+        "headings": [
+          {
+            "slug": "input",
+            "depth": 1,
+            "value": "Input"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "types",
+            "depth": 2,
+            "value": "Types"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/inputs/textarea.mdx",
+      "value": {
+        "name": "Textarea",
+        "menu": "Forms",
+        "id": "88790ad9256404fcabbe80e85e621419",
+        "filepath": "components/forms/inputs/textarea.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/inputs/textarea.mdx",
+        "slug": "components-forms-inputs-textarea",
+        "route": "/components-forms-inputs-textarea",
+        "headings": [
+          {
+            "slug": "input",
+            "depth": 1,
+            "value": "Input"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/toggles/checkbox.mdx",
+      "value": {
+        "name": "Checkbox",
+        "menu": "Forms",
+        "id": "1bda48b3c5288477760d0b66046bbd3c",
+        "filepath": "components/forms/toggles/checkbox.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/toggles/checkbox.mdx",
+        "slug": "components-forms-toggles-checkbox",
+        "route": "/components-forms-toggles-checkbox",
+        "headings": [
+          {
+            "slug": "checkbox",
+            "depth": 1,
+            "value": "Checkbox"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/toggles/radio.mdx",
+      "value": {
+        "name": "Radio",
+        "menu": "Forms",
+        "id": "491be6acb580ed5339f7fda231e46634",
+        "filepath": "components/forms/toggles/radio.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/toggles/radio.mdx",
+        "slug": "components-forms-toggles-radio",
+        "route": "/components-forms-toggles-radio",
+        "headings": [
+          {
+            "slug": "radio",
+            "depth": 1,
+            "value": "Radio"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/flex/box.mdx",
+      "value": {
+        "name": "Box",
+        "menu": "Layout",
+        "id": "dac0adc96c5085b65963a3b2d80948e5",
+        "filepath": "components/layout/flex/box.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/flex/box.mdx",
+        "slug": "components-layout-flex-box",
+        "route": "/components-layout-flex-box",
+        "headings": [
+          {
+            "slug": "box",
+            "depth": 1,
+            "value": "Box"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "colorways",
+            "depth": 2,
+            "value": "Colorways"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/header/header.mdx",
+      "value": {
+        "name": "Header",
+        "menu": "Layout",
+        "id": "1ef83431e6c8784da203c858bca70bf6",
+        "filepath": "components/layout/header/header.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/header/header.mdx",
+        "slug": "components-layout-header-header",
+        "route": "/components-layout-header-header",
+        "headings": [
+          {
+            "slug": "header",
+            "depth": 1,
+            "value": "Header"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/header/header-sticky-content.mdx",
+      "value": {
+        "name": "Header Sticky Content",
+        "menu": "Layout",
+        "id": "c3d7beb3f1ad338e7e29b27565ee1390",
+        "filepath": "components/layout/header/header-sticky-content.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/header/header-sticky-content.mdx",
+        "slug": "components-layout-header-header-sticky-content",
+        "route": "/components-layout-header-header-sticky-content",
+        "headings": [
+          {
+            "slug": "headerstickycontent",
+            "depth": 1,
+            "value": "HeaderStickyContent"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/panel/panel.mdx",
+      "value": {
+        "name": "Panel",
+        "menu": "Layout",
+        "id": "9d301df19173789de6f2a27cf2f799f1",
+        "filepath": "components/layout/panel/panel.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/panel/panel.mdx",
+        "slug": "components-layout-panel-panel",
+        "route": "/components-layout-panel-panel",
+        "headings": [
+          {
+            "slug": "panel",
+            "depth": 1,
+            "value": "Panel"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/panel/title-bar.mdx",
+      "value": {
+        "name": "Title Bar",
+        "menu": "Layout",
+        "id": "46f00c386369d7de546a1f2d0e5e57ad",
+        "filepath": "components/layout/panel/title-bar.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/panel/title-bar.mdx",
+        "slug": "components-layout-panel-title-bar",
+        "route": "/components-layout-panel-title-bar",
+        "headings": [
+          {
+            "slug": "titlebar",
+            "depth": 1,
+            "value": "TitleBar"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/grid/area.mdx",
+      "value": {
+        "name": "Area",
+        "menu": "Layout",
+        "id": "8adff4cd8f11157a3fadf0c002256ed7",
+        "filepath": "components/layout/grid/area.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/grid/area.mdx",
+        "slug": "components-layout-grid-area",
+        "route": "/components-layout-grid-area",
+        "headings": [
+          {
+            "slug": "area",
+            "depth": 1,
+            "value": "Area"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/grid/columns.mdx",
+      "value": {
+        "name": "Columns",
+        "menu": "Layout",
+        "id": "3c23a1d84fe85f0a8d0596f789bfecc1",
+        "filepath": "components/layout/grid/columns.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/grid/columns.mdx",
+        "slug": "components-layout-grid-columns",
+        "route": "/components-layout-grid-columns",
+        "headings": [
+          {
+            "slug": "columns",
+            "depth": 1,
+            "value": "Columns"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/grid/grid-guide.mdx",
+      "value": {
+        "name": "Grid Guide",
+        "menu": "Layout",
+        "id": "586b8e2904b1c2750d3e2b52550d26f4",
+        "filepath": "components/layout/grid/grid-guide.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/grid/grid-guide.mdx",
+        "slug": "components-layout-grid-grid-guide",
+        "route": "/components-layout-grid-grid-guide",
+        "headings": [
+          {
+            "slug": "gridguide",
+            "depth": 1,
+            "value": "GridGuide"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/layout/grid/grid.mdx",
+      "value": {
+        "name": "Grid",
+        "menu": "Layout",
+        "id": "5e7a312c3e68f37e93666643f2e2ea85",
+        "filepath": "components/layout/grid/grid.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/layout/grid/grid.mdx",
+        "slug": "components-layout-grid-grid",
+        "route": "/components-layout-grid-grid",
+        "headings": [
+          {
+            "slug": "grid",
+            "depth": 1,
+            "value": "Grid"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/items/item.mdx",
+      "value": {
+        "name": "Nav Item",
+        "menu": "Navs",
+        "id": "2fd5d1352d8377b385069f7a4d566812",
+        "filepath": "components/nav/items/item.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/items/item.mdx",
+        "slug": "components-nav-items-item",
+        "route": "/components-nav-items-item",
+        "headings": [
+          {
+            "slug": "nav-item",
+            "depth": 1,
+            "value": "Nav Item"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/items/menu.mdx",
+      "value": {
+        "name": "Nav Item Menu",
+        "menu": "Navs",
+        "id": "533568366216bf027bc1d28efbd8d65c",
+        "filepath": "components/nav/items/menu.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/items/menu.mdx",
+        "slug": "components-nav-items-menu",
+        "route": "/components-nav-items-menu",
+        "headings": [
+          {
+            "slug": "nav-item-menu",
+            "depth": 1,
+            "value": "Nav Item Menu"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/nav/items/sticky.mdx",
+      "value": {
+        "name": "Nav Item Sticky",
+        "menu": "Navs",
+        "id": "c3cb2d961e37fd9cc5256da43d905689",
+        "filepath": "components/nav/items/sticky.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/nav/items/sticky.mdx",
+        "slug": "components-nav-items-sticky",
+        "route": "/components-nav-items-sticky",
+        "headings": [
+          {
+            "slug": "navitemsticky",
+            "depth": 1,
+            "value": "NavItemSticky"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/typography/headings/copy.mdx",
+      "value": {
+        "name": "Heading - Copy",
+        "menu": "Typography",
+        "id": "f12801caac9b442cd8c42f4cf30442a4",
+        "filepath": "components/typography/headings/copy.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/headings/copy.mdx",
+        "slug": "components-typography-headings-copy",
+        "route": "/components-typography-headings-copy",
+        "headings": [
+          {
+            "slug": "headingcopy",
+            "depth": 1,
+            "value": "HeadingCopy"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/typography/headings/hero.mdx",
+      "value": {
+        "name": "Heading - Hero",
+        "menu": "Typography",
+        "id": "c4c9cf3321b66a5326028fc261c49f05",
+        "filepath": "components/typography/headings/hero.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/headings/hero.mdx",
+        "slug": "components-typography-headings-hero",
+        "route": "/components-typography-headings-hero",
+        "headings": [
+          {
+            "slug": "headinghero",
+            "depth": 1,
+            "value": "HeadingHero"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/typography/headings/section-sub.mdx",
+      "value": {
+        "name": "Heading - Sub-Section",
+        "menu": "Typography",
+        "id": "65474eeb6652f6517c79811f2a330818",
+        "filepath": "components/typography/headings/section-sub.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/headings/section-sub.mdx",
+        "slug": "components-typography-headings-section-sub",
+        "route": "/components-typography-headings-section-sub",
+        "headings": [
+          {
+            "slug": "headingsectionsub",
+            "depth": 1,
+            "value": "HeadingSectionSub"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/typography/headings/section.mdx",
+      "value": {
+        "name": "Heading - Section",
+        "menu": "Typography",
+        "id": "29bf10cad3fefc5f5eee57c369becdad",
+        "filepath": "components/typography/headings/section.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/typography/headings/section.mdx",
+        "slug": "components-typography-headings-section",
+        "route": "/components-typography-headings-section",
+        "headings": [
+          {
+            "slug": "headingsection",
+            "depth": 1,
+            "value": "HeadingSection"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/visuals/us-map/us-map.mdx",
+      "value": {
+        "name": "US Map",
+        "menu": "Visuals",
+        "id": "1123a6cb82b7b9162693de513c6570f1",
+        "filepath": "components/visuals/us-map/us-map.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/visuals/us-map/us-map.mdx",
+        "slug": "components-visuals-us-map-us-map",
+        "route": "/components-visuals-us-map-us-map",
+        "headings": [
+          {
+            "slug": "us-map",
+            "depth": 1,
+            "value": "US Map"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "variants",
+            "depth": 2,
+            "value": "Variants"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/select/async.mdx",
+      "value": {
+        "name": "Select - Async",
+        "menu": "Forms",
+        "id": "a50458966b6976fccd7e38a8b44ea7f5",
+        "filepath": "components/forms/selects/select/async.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/select/async.mdx",
+        "slug": "components-forms-selects-select-async",
+        "route": "/components-forms-selects-select-async",
+        "headings": [
+          {
+            "slug": "selectasync",
+            "depth": 1,
+            "value": "SelectAsync"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/select/native.mdx",
+      "value": {
+        "name": "Select - Native",
+        "menu": "Forms",
+        "id": "fa37e952eafaffa680d84c4849ac77e1",
+        "filepath": "components/forms/selects/select/native.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/select/native.mdx",
+        "slug": "components-forms-selects-select-native",
+        "route": "/components-forms-selects-select-native",
+        "headings": [
+          {
+            "slug": "select",
+            "depth": 1,
+            "value": "Select"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/select/select.mdx",
+      "value": {
+        "name": "Select",
+        "menu": "Forms",
+        "id": "2bd5efaf0ee1d3493a9bda32831097d1",
+        "filepath": "components/forms/selects/select/select.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/select/select.mdx",
+        "slug": "components-forms-selects-select-select",
+        "route": "/components-forms-selects-select-select",
+        "headings": [
+          {
+            "slug": "select",
+            "depth": 1,
+            "value": "Select"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/multiselect/async.mdx",
+      "value": {
+        "name": "Multiselect - Async",
+        "menu": "Forms",
+        "id": "aa6d9ad8685f5b84c26f1a0d07cf35de",
+        "filepath": "components/forms/selects/multiselect/async.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/multiselect/async.mdx",
+        "slug": "components-forms-selects-multiselect-async",
+        "route": "/components-forms-selects-multiselect-async",
+        "headings": [
+          {
+            "slug": "multiselectasync",
+            "depth": 1,
+            "value": "MultiselectAsync"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/multiselect/multiselect.mdx",
+      "value": {
+        "name": "Multiselect",
+        "menu": "Forms",
+        "id": "b767cc579d9a74b91a9015801176bfb1",
+        "filepath": "components/forms/selects/multiselect/multiselect.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/multiselect/multiselect.mdx",
+        "slug": "components-forms-selects-multiselect-multiselect",
+        "route": "/components-forms-selects-multiselect-multiselect",
+        "headings": [
+          {
+            "slug": "multiselect",
+            "depth": 1,
+            "value": "Multiselect"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    },
+    {
+      "key": "components/forms/selects/multiselect/native.mdx",
+      "value": {
+        "name": "Multiselect - Native",
+        "menu": "Forms",
+        "id": "38b807c0e051fb3e405291797e9d4f20",
+        "filepath": "components/forms/selects/multiselect/native.mdx",
+        "link": "https://github.com/68696c6c/horns/edit/master/src/components/forms/selects/multiselect/native.mdx",
+        "slug": "components-forms-selects-multiselect-native",
+        "route": "/components-forms-selects-multiselect-native",
+        "headings": [
+          {
+            "slug": "multiselectnative",
+            "depth": 1,
+            "value": "MultiselectNative"
+          },
+          {
+            "slug": "props",
+            "depth": 2,
+            "value": "Props"
+          },
+          {
+            "slug": "examples",
+            "depth": 2,
+            "value": "Examples"
+          }
+        ]
+      }
+    }
+  ]
+}

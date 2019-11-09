@@ -49,14 +49,38 @@ class GridConfig {
 
     this.columnMin = safeGetValue(config, 'columnMin', defaultGrid.columnMin)
 
-    const configBreakpoints = safeGetValue(config, 'breakpoints', defaultGrid.breakpoints)
+    const configBreakpoints = safeGetValue(
+      config,
+      'breakpoints',
+      defaultGrid.breakpoints
+    )
     this.breakpoints = {
       min: safeGetValue(configBreakpoints, 'min', defaultGrid.breakpoints.min),
-      small: safeGetValue(configBreakpoints, 'small', defaultGrid.breakpoints.small),
-      mobile: safeGetValue(configBreakpoints, 'mobile', defaultGrid.breakpoints.mobile),
-      medium: safeGetValue(configBreakpoints, 'medium', defaultGrid.breakpoints.medium),
-      large: safeGetValue(configBreakpoints, 'large', defaultGrid.breakpoints.large),
-      container: safeGetValue(configBreakpoints, 'container', defaultGrid.breakpoints.container),
+      small: safeGetValue(
+        configBreakpoints,
+        'small',
+        defaultGrid.breakpoints.small
+      ),
+      mobile: safeGetValue(
+        configBreakpoints,
+        'mobile',
+        defaultGrid.breakpoints.mobile
+      ),
+      medium: safeGetValue(
+        configBreakpoints,
+        'medium',
+        defaultGrid.breakpoints.medium
+      ),
+      large: safeGetValue(
+        configBreakpoints,
+        'large',
+        defaultGrid.breakpoints.large
+      ),
+      container: safeGetValue(
+        configBreakpoints,
+        'container',
+        defaultGrid.breakpoints.container
+      ),
       max: safeGetValue(configBreakpoints, 'max', defaultGrid.breakpoints.max),
     }
 
