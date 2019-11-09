@@ -94,7 +94,6 @@ export class HeaderBase extends React.Component {
 HeaderBase.propTypes = {
   ...colorwayPropTypes(),
   ...containerPropTypes(),
-  fluid: PropTypes.bool,
   sticky: PropTypes.bool,
   breakpoint: PropTypes.string,
   containerID: PropTypes.string,
@@ -121,7 +120,6 @@ HeaderBase.defaultProps = {
   sticky: false,
   breakpoint: 'small',
   containerID: '',
-  variant: COLOR_VARIANT_NONE,
   menuVariant: 'light',
 }
 
