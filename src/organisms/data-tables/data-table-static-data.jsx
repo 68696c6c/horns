@@ -1,5 +1,5 @@
 import React from 'react'
-import { TableHead, TableCell, TableRow } from '../tables'
+import { TableHead, TableCell, TableRow } from '../../components'
 
 const getDataTableStaticData = () => (
   <>

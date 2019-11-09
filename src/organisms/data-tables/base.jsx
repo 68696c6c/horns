@@ -6,11 +6,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FaSort, FaSortUp, FaSortDown } from 'react-icons/fa'
 
-import { InlineText } from '../typography'
-import { Input, Select } from '../forms'
-import Pagination from '../nav/pagination'
-import { toClassNames } from '../utils'
-import { Table } from '../tables'
+import {
+  InlineText,
+  Input,
+  Select,
+  Pagination,
+  Table,
+} from '../../components'
+import { toClassNames } from '../../components/utils'
 
 export const SORT_ASC = 'asc'
 export const SORT_DESC = 'desc'

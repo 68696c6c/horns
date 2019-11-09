@@ -1,43 +1,11 @@
-export { Theme } from './config'
-
-export {
-  baseTheme,
-  getBaseStyles,
-  pallet,
-  rgb,
-  valueToInt,
-  hoverStates,
-  buttonStates,
-} from './themes'
-
-export {
-  toNumber,
-  numberToCurrency,
-  isEmptyObject,
-  isUndefined,
-  formatDate,
-  isArray,
-  arrayRemoveByValue,
-  debounce,
-  debounceFirst,
-  getParentByClassName,
-} from './utils/utils'
-
-export { getValidator } from './utils/validation'
-
-export { Button, ButtonStyle } from './components/buttons'
+export { Button, ButtonStyle } from './buttons'
 
 export {
   LineChart,
   Line,
   PieChart,
   Region,
-} from './components/charts'
-
-export {
-  DataTable,
-  DataTableAsync,
-} from './organisms/data-tables'
+} from './charts'
 
 export {
   Checkbox,
@@ -57,12 +25,12 @@ export {
   Multiselect,
   MultiselectAsync,
   MultiselectNative,
-} from './components/forms'
+} from './forms'
 
 export {
   ImageFrame,
   Picture,
-} from './components/images'
+} from './images'
 
 export {
   Area,
@@ -81,14 +49,14 @@ export {
   ScrollProgress,
   Section,
   TitleBar,
-} from './components/layout'
+} from './layout'
 
 export {
   Link,
   LinkButton,
   LinkEmail,
   LinkPhone,
-} from './components/links'
+} from './links'
 
 export {
   ListItem,
@@ -96,7 +64,7 @@ export {
   ListSteps,
   ListSymbols,
   ListUnordered,
-} from './components/lists'
+} from './lists'
 
 export {
   Nav,
@@ -105,13 +73,13 @@ export {
   NavItemMenu,
   NavItemSticky,
   Pagination,
-} from './components/nav'
+} from './nav'
 
 export {
   Slide,
   Slider,
   SliderDouble,
-} from './components/sliders'
+} from './sliders'
 
 export {
   SVGCircle,
@@ -120,14 +88,14 @@ export {
   SVGPolygon,
   SVGRect,
   SVG,
-} from './components/svg'
+} from './svg'
 
 export {
   Table,
   TableCell,
   TableHead,
   TableRow,
-} from './components/tables'
+} from './tables'
 
 export {
   Disclaimer,
@@ -136,8 +104,8 @@ export {
   HeadingSection,
   HeadingSectionSub,
   InlineText,
-} from './components/typography'
+} from './typography'
 
 export {
   Progress,
-} from './components/visuals'
+} from './visuals'

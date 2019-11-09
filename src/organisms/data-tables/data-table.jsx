@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 
-import { InlineText } from '../typography'
-import { toClassNames, isReactFragment } from '../utils'
+import { InlineText } from '../../components/typography'
+import { toClassNames, isReactFragment } from '../../components/utils'
 import {
   debounce,
   getParentByClassName,
   isArray,
   isUndefined,
 } from '../../utils/utils'
-import { TableHead, TableCell, TableRow } from '../tables'
+import { TableHead, TableCell, TableRow } from '../../components'
 
 import DataTableBase, { SORT_ASC, SORT_DESC, SortIcon, StyledHeaderCellContent } from './base'
 
