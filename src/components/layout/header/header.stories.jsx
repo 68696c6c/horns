@@ -20,29 +20,30 @@ export const example = () => (
         dark: 'dark',
         light: 'light',
       })}
-      sticky={boolean('sticky', true)}
+      sticky={boolean('sticky', false)}
       navItems={
         <>
           <NavItemSticky
             variant="light"
             content={<span>Default</span>}
             stuckContent={<span>Stuck</span>}
+            href="/?path=/story/header--example"
           />
-          <NavItem href="#" variant="light">
+          <NavItem href="/?path=/story/header--example" variant="light">
             Item 1
           </NavItem>
-          <NavItem href="#" variant="light">
+          <NavItem href="/?path=/story/header--example" variant="light">
             Item 2
           </NavItem>
           <NavItemMenu content="Nav Item Menu" variant="light">
-            <NavItem href="#">Item One</NavItem>
-            <NavItem href="#">Item Two</NavItem>
-            <NavItem href="#">Item Three</NavItem>
+            <NavItem href="/?path=/story/header--example">Item One</NavItem>
+            <NavItem href="/?path=/story/header--example">Item Two</NavItem>
+            <NavItem href="/?path=/story/header--example">Item Three</NavItem>
           </NavItemMenu>
         </>
       }
     >
-      <NavItem href="#">Brand</NavItem>
+      <NavItem href="/?path=/story/header--example">Brand</NavItem>
     </Header>
     <Section>
       <p>
