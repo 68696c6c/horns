@@ -1,6 +1,7 @@
 /* eslint-disable prefer-destructuring */
 import SpacingConfig, { spacingSizes } from './spacing'
 import { safeGetValue } from './utils'
+
 const merge = require('deepmerge')
 
 // @TODO get default values from a config file.

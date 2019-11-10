@@ -38,7 +38,13 @@ const makeButton = (color, bg, padding, fontWeight, radius) => {
 }
 
 class ButtonsConfig {
-  constructor(colorsConfig, spacingConfig, radiusConfig, typographyConfig, config = {}) {
+  constructor(
+    colorsConfig,
+    spacingConfig,
+    radiusConfig,
+    typographyConfig,
+    config = {}
+  ) {
     if (!(colorsConfig instanceof ColorsConfig)) {
       throw new Error('ButtonsConfig: invalid ColorsConfig')
     }
@@ -61,7 +67,11 @@ class ButtonsConfig {
     if (!(typographyConfig instanceof TypographyConfig)) {
       throw new Error('ButtonsConfig: invalid TypographyConfig')
     }
-    const configWeight = safeGetValue(config, 'fontWeight', defaultButtons.fontWeight)
+    const configWeight = safeGetValue(
+      config,
+      'fontWeight',
+      defaultButtons.fontWeight
+    )
     const weight = typographyConfig.getWeight(configWeight)
 
     let hShade = 'dark'
@@ -82,7 +92,13 @@ class ButtonsConfig {
         hover: swatches[palletColor][hShade].readable,
         active: swatches[palletColor][aShade].readable,
       }
-      this.colorways[palletColor] = makeButton(color, bg, padding, weight, radius)
+      this.colorways[palletColor] = makeButton(
+        color,
+        bg,
+        padding,
+        weight,
+        radius
+      )
     })
 
     console.log('ButtonsConfig', this)

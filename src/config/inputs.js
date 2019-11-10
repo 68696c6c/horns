@@ -7,7 +7,11 @@ const defaultInputs = {
 class InputsConfig {
   constructor(config = {}) {
     // @TODO get default values from a config file.
-    this.borderWidth = safeGetValue(config, 'borderWidth', defaultInputs.borderWidth)
+    this.borderWidth = safeGetValue(
+      config,
+      'borderWidth',
+      defaultInputs.borderWidth
+    )
 
     console.log('InputsConfig', this)
   }

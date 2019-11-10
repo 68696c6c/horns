@@ -34,13 +34,23 @@ class Theme {
     this.radius = cr.getRadius()
 
     const configNavItems = safeGetValue(config, 'navItems', {})
-    this.navItems = new NavItemsConfig(this.colors, this.spacing, configNavItems)
+    this.navItems = new NavItemsConfig(
+      this.colors,
+      this.spacing,
+      configNavItems
+    )
 
     const configLinks = safeGetValue(config, 'links', {})
     this.links = new LinksConfig(this.colors, configLinks)
 
     const configButtons = safeGetValue(config, 'buttons', {})
-    this.buttons = new ButtonsConfig(this.colors, this.spacing, cr, this.typography, configButtons)
+    this.buttons = new ButtonsConfig(
+      this.colors,
+      this.spacing,
+      cr,
+      this.typography,
+      configButtons
+    )
 
     const configMap = safeGetValue(config, 'map', {})
     this.map = new MapsConfig(this.colors, configMap)

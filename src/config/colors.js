@@ -169,7 +169,12 @@ class ColorsConfig {
     const factors = new ColorFactors(configFactors)
 
     const shaded = getShadedColorPallet(pallet, factors)
-    const { background, copy } = getModeColors(this.mode, shaded.dark, shaded.neutral, shaded.light)
+    const { background, copy } = getModeColors(
+      this.mode,
+      shaded.dark,
+      shaded.neutral,
+      shaded.light
+    )
 
     this.swatches = getColorSwatches(shaded, copy)
     this.background = background

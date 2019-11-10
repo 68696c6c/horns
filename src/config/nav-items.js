@@ -36,16 +36,32 @@ const getConfigState = (colorsConfig, config, state = 'base') => {
   if (!['hover', 'active'].includes(state)) {
     const stateColor = safeGetValue(config, 'color', defaultNavItems.color)
     color = colorsConfig.getSwatch(stateColor)
-    const stateBG = safeGetValue(config, 'background', defaultNavItems.background)
+    const stateBG = safeGetValue(
+      config,
+      'background',
+      defaultNavItems.background
+    )
     background = colorsConfig.getSwatch(stateBG)
     decoration = safeGetValue(config, 'decoration', defaultNavItems.decoration)
   } else {
     const stateConfig = safeGetValue(config, state, defaultNavItems[state])
-    const stateColor = safeGetValue(stateConfig, 'color', defaultNavItems[state].color)
+    const stateColor = safeGetValue(
+      stateConfig,
+      'color',
+      defaultNavItems[state].color
+    )
     color = colorsConfig.getSwatch(stateColor)
-    const stateBG = safeGetValue(stateConfig, 'background', defaultNavItems[state].background)
+    const stateBG = safeGetValue(
+      stateConfig,
+      'background',
+      defaultNavItems[state].background
+    )
     background = colorsConfig.getSwatch(stateBG)
-    decoration = safeGetValue(stateConfig, 'decoration', defaultNavItems[state].decoration)
+    decoration = safeGetValue(
+      stateConfig,
+      'decoration',
+      defaultNavItems[state].decoration
+    )
   }
   return { color, background, decoration }
 }
@@ -81,9 +97,20 @@ class NavItemsConfig {
     }
     const padding = spacingConfig.getSpacing(spacing)
 
-    const { color, background, decoration } = getConfigState(colorsConfig, config)
-    const { color: hColor, background: hBG, decoration: hDecoration } = getConfigState(colorsConfig, config, 'hover')
-    const { color: aColor, background: aBG, decoration: aDecoration } = getConfigState(colorsConfig, config, 'active')
+    const { color, background, decoration } = getConfigState(
+      colorsConfig,
+      config
+    )
+    const {
+      color: hColor,
+      background: hBG,
+      decoration: hDecoration,
+    } = getConfigState(colorsConfig, config, 'hover')
+    const {
+      color: aColor,
+      background: aBG,
+      decoration: aDecoration,
+    } = getConfigState(colorsConfig, config, 'active')
     const base = {
       color,
       background,
@@ -100,10 +127,26 @@ class NavItemsConfig {
       },
     }
 
-    const configCurrent = safeGetValue(config, 'current', defaultNavItems.current)
-    const currentEffect = safeGetValue(configCurrent, 'effect', defaultNavItems.current.effect)
-    const lineSize = safeGetValue(configCurrent, 'lineSize', defaultNavItems.current.lineSize)
-    const lineColor = safeGetValue(configCurrent, 'lineColor', defaultNavItems.current.lineColor)
+    const configCurrent = safeGetValue(
+      config,
+      'current',
+      defaultNavItems.current
+    )
+    const currentEffect = safeGetValue(
+      configCurrent,
+      'effect',
+      defaultNavItems.current.effect
+    )
+    const lineSize = safeGetValue(
+      configCurrent,
+      'lineSize',
+      defaultNavItems.current.lineSize
+    )
+    const lineColor = safeGetValue(
+      configCurrent,
+      'lineColor',
+      defaultNavItems.current.lineColor
+    )
 
     let inlinePadding = ''
     let inlineBorder = ''
@@ -125,7 +168,12 @@ class NavItemsConfig {
     }
 
     this.inline = makeNavItem(base, inlinePadding, inlineBorder, currentBorder)
-    this.stacked = makeNavItem(base, stackedPadding, stackedBorder, currentBorder)
+    this.stacked = makeNavItem(
+      base,
+      stackedPadding,
+      stackedBorder,
+      currentBorder
+    )
 
     console.log('NavItemsConfig', this)
   }
