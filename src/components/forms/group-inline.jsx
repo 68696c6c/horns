@@ -17,7 +17,9 @@ const StyledFormGroupHeading = styled(Label)`
 `
 
 const FormGroupHeading = ({ text, end }) => (
-  <StyledFormGroupHeading end={end} className="group-heading">{text}</StyledFormGroupHeading>
+  <StyledFormGroupHeading end={end} className="group-heading">
+    {text}
+  </StyledFormGroupHeading>
 )
 
 FormGroupHeading.propTypes = {
@@ -38,7 +40,8 @@ const StyledGroupField = styled('div')`
   label {
     margin-top: 0;
   }
-  @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
+  @media (min-width: ${({ theme, breakpoint }) =>
+      theme.breakpoints[breakpoint]}) {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -68,7 +71,8 @@ const StyledButtonContainer = styled('div')`
 
 const StyledGroupInline = styled('div')`
   margin-top: ${({ theme }) => theme.spacing.small};
-  @media(min-width: ${({ theme, breakpoint }) => theme.breakpoints[breakpoint]}) {
+  @media (min-width: ${({ theme, breakpoint }) =>
+      theme.breakpoints[breakpoint]}) {
     display: grid;
     grid-auto-columns: 1fr;
     column-gap: ${({ theme }) => theme.spacing.small};
@@ -117,13 +121,19 @@ class GroupInline extends React.Component {
               isComponentType(child, 'Radio')
             ) {
               result = (
-                <StyledGroupField breakpoint={breakpoint} key={this.keys[index]}>
+                <StyledGroupField
+                  breakpoint={breakpoint}
+                  key={this.keys[index]}
+                >
                   <StyledToggleContainer>{child}</StyledToggleContainer>
                 </StyledGroupField>
               )
             } else if (isComponentType(child, 'Button')) {
               result = (
-                <StyledGroupField breakpoint={breakpoint} key={this.keys[index]}>
+                <StyledGroupField
+                  breakpoint={breakpoint}
+                  key={this.keys[index]}
+                >
                   <StyledButtonContainer>{child}</StyledButtonContainer>
                 </StyledGroupField>
               )
