@@ -27,17 +27,9 @@ export { getValidator } from './utils/validation'
 
 export { Button, ButtonStyle } from './components/buttons'
 
-export {
-  LineChart,
-  Line,
-  PieChart,
-  Region,
-} from './components/charts'
+export { LineChart, Line, PieChart, Region } from './components/charts'
 
-export {
-  DataTable,
-  DataTableAsync,
-} from './components/data-tables'
+export { DataTable, DataTableAsync } from './components/data-tables'
 
 export {
   Checkbox,
@@ -59,10 +51,7 @@ export {
   MultiselectNative,
 } from './components/forms'
 
-export {
-  ImageFrame,
-  Picture,
-} from './components/images'
+export { ImageFrame, Picture } from './components/images'
 
 export {
   Area,
@@ -83,12 +72,7 @@ export {
   TitleBar,
 } from './components/layout'
 
-export {
-  Link,
-  LinkButton,
-  LinkEmail,
-  LinkPhone,
-} from './components/links'
+export { Link, LinkButton, LinkEmail, LinkPhone } from './components/links'
 
 export {
   ListItem,
@@ -107,11 +91,7 @@ export {
   Pagination,
 } from './components/nav'
 
-export {
-  Slide,
-  Slider,
-  SliderDouble,
-} from './components/sliders'
+export { Slide, Slider, SliderDouble } from './components/sliders'
 
 export {
   SVGCircle,
@@ -122,12 +102,7 @@ export {
   SVG,
 } from './components/svg'
 
-export {
-  Table,
-  TableCell,
-  TableHead,
-  TableRow,
-} from './components/tables'
+export { Table, TableCell, TableHead, TableRow } from './components/tables'
 
 export {
   Disclaimer,
@@ -138,6 +113,4 @@ export {
   InlineText,
 } from './components/typography'
 
-export {
-  Progress,
-} from './components/visuals'
+export { Progress } from './components/visuals'
