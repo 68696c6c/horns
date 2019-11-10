@@ -1,12 +1,16 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 
-import { colorwayDefaultProps, colorwayPropTypes, containerPropTypes, containerDefaultProps } from '../../../utils'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../../utils'
+import {
+  colorwayDefaultProps,
+  colorwayPropTypes,
+  containerPropTypes,
+  containerDefaultProps,
+} from '../../../utils'
+import { COLOR_VARIANT_NONE, toClassNames } from '../../utils'
 import { isUndefined } from '../../../utils/utils'
 import { Nav } from '../../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
@@ -73,7 +77,15 @@ export class HeaderBase extends React.Component {
   }
 
   render() {
-    const { fluid, variant, menuVariant, children, navItems, className, ...others } = this.props
+    const {
+      fluid,
+      variant,
+      menuVariant,
+      children,
+      navItems,
+      className,
+      ...others
+    } = this.props
     const { stuck, mobile } = this.state
     return (
       <Styled.Header
@@ -85,7 +97,9 @@ export class HeaderBase extends React.Component {
         {...others}
       >
         {children}
-        <Nav mobile={mobile} menuVariant={menuVariant}>{navItems}</Nav>
+        <Nav mobile={mobile} menuVariant={menuVariant}>
+          {navItems}
+        </Nav>
       </Styled.Header>
     )
   }
