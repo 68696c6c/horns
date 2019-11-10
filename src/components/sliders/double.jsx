@@ -4,25 +4,25 @@ import { Grid } from '../layout'
 import Slider from './slider'
 
 const SliderDouble = ({
-                        debug,
-                        height,
-                        leftAnimation,
-                        rightAnimation,
-                        leftPadded,
-                        rightPadded,
-                        leftSlides,
-                        rightSlides,
-                        speed,
-                        animationSpeed,
-                        leftDirection,
-                        rightDirection,
-                        bannerLeft,
-                        bannerLeftPosition,
-                        bannerRight,
-                        bannerRightPosition,
-                        ...others,
-                      }) => (
-  <Grid gap={false} fluid={true} {...others}>
+  debug,
+  height,
+  leftAnimation,
+  rightAnimation,
+  leftPadded,
+  rightPadded,
+  leftSlides,
+  rightSlides,
+  speed,
+  animationSpeed,
+  leftDirection,
+  rightDirection,
+  bannerLeft,
+  bannerLeftPosition,
+  bannerRight,
+  bannerRightPosition,
+  ...others
+}) => (
+  <Grid gap={false} fluid {...others}>
     <Slider
       debug={debug}
       className="slider-left"
@@ -66,35 +66,17 @@ SliderDouble.propTypes = {
   animationSpeed: PropTypes.number,
   leftAnimation: PropTypes.oneOf(['slide', 'fade']),
   rightAnimation: PropTypes.oneOf(['slide', 'fade']),
-  leftDirection: PropTypes.oneOf([
-    'up',
-    'down',
-    'left',
-    'right',
-  ]),
-  rightDirection: PropTypes.oneOf([
-    'up',
-    'down',
-    'left',
-    'right',
-  ]),
+  leftDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
+  rightDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
   variant: PropTypes.oneOf(['equal', 'thirds']),
   side: PropTypes.string,
   height: PropTypes.string,
   leftPadded: PropTypes.bool,
   rightPadded: PropTypes.bool,
   bannerLeft: PropTypes.element,
-  bannerLeftPosition: PropTypes.oneOf([
-    'top',
-    'center',
-    'bottom',
-  ]),
+  bannerLeftPosition: PropTypes.oneOf(['top', 'center', 'bottom']),
   bannerRight: PropTypes.element,
-  bannerRightPosition: PropTypes.oneOf([
-    'top',
-    'center',
-    'bottom',
-  ]),
+  bannerRightPosition: PropTypes.oneOf(['top', 'center', 'bottom']),
 }
 
 SliderDouble.defaultProps = {
