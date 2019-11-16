@@ -8,7 +8,7 @@ export default { title: 'Footer', decorators: [withKnobs] }
 
 export const example = () => (
   <Footer
-    textAlign={select('Text Alignment', {
+    textAlign={select('textAlign', {
       left: 'left',
       center: 'center',
       right: 'right',
