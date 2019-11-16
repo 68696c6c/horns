@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
-class HeaderStickyContent extends React.Component {
+class SiteHeaderStickyContent extends React.Component {
   constructor(props) {
     super(props)
 
@@ -44,11 +44,11 @@ class HeaderStickyContent extends React.Component {
   }
 }
 
-HeaderStickyContent.propTypes = {
+SiteHeaderStickyContent.propTypes = {
   content: PropTypes.element,
   stuckContent: PropTypes.element,
 }
 
-HeaderStickyContent.defaultProps = {}
+SiteHeaderStickyContent.defaultProps = {}
 
-export default HeaderStickyContent
+export default SiteHeaderStickyContent

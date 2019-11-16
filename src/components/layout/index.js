@@ -2,11 +2,12 @@ export { Box } from './flex'
 
 export { Area, Columns, Grid, GridGuide } from './grid'
 
-export { Header, HeaderStickyContent } from './header'
+export { SiteHeader, SiteHeaderStickyContent } from './site-header'
 
 export { Panel, TitleBar } from './panel'
 
 export { default as Footer } from './footer'
+export { default as Header } from './header'
 export { default as Section } from './section'
 
 export { default as ButtonContainer } from './button-container'

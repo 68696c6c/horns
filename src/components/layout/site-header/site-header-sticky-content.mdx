@@ -5,16 +5,16 @@ menu: Layout
 
 import { Playground, Props } from 'docz'
 
-import HeaderStickyContent from './header-sticky-content'
-import Header from './header'
+import SiteHeaderStickyContent from './site-header-sticky-content'
+import SiteHeader from './site-header'
 import Section from '../section'
 import { NavItem, NavItemMenu, NavItemSticky } from '../../nav'
 import LayoutDemo from '../../_demo/layout-demo'
 
-# HeaderStickyContent
+# SiteHeaderStickyContent
 
 <LayoutDemo variant="dark">
-  <Header 
+  <SiteHeader 
     variant="dark"
     menuVariant="tertiary"
     sticky={true}
@@ -44,8 +44,8 @@ import LayoutDemo from '../../_demo/layout-demo'
       </React.Fragment>
     )}
   >
-    <HeaderStickyContent content={<span>Default Content</span>} stuckContent={<span>Stuck Content</span>}/>
-  </Header>
+    <SiteHeaderStickyContent content={<span>Default Content</span>} stuckContent={<span>Stuck Content</span>}/>
+  </SiteHeader>
   <Section variant="background">
     <p>
       Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -201,4 +201,4 @@ import LayoutDemo from '../../_demo/layout-demo'
 
 ## Props
 
-<Props of={HeaderStickyContent} />
+<Props of={SiteHeaderStickyContent} />

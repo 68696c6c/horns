@@ -32,7 +32,7 @@ const Nav = ({ mobile, colorway, children, className, ...others }) => {
     content = (
       <NavMenu
         menuVariant={colorway}
-        content={<FaBars/>}
+        content={<FaBars />}
         className={('nav', 'mobile', className)}
         {...others}
       >

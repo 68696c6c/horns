@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { css, jsx } from '@emotion/core'
+import {  jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 
 import { colorwayDefaultProps, colorwayPropTypes, containerPropTypes, containerDefaultProps } from '../../../utils'
@@ -13,7 +12,7 @@ import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
 import * as Styled from './styles'
 
-export class HeaderBase extends React.Component {
+export class SiteHeaderBase extends React.Component {
   constructor(props) {
     super(props)
 
@@ -91,7 +90,7 @@ export class HeaderBase extends React.Component {
   }
 }
 
-HeaderBase.propTypes = {
+SiteHeaderBase.propTypes = {
   ...colorwayPropTypes(),
   ...containerPropTypes(),
   sticky: PropTypes.bool,
@@ -114,7 +113,7 @@ HeaderBase.propTypes = {
   navItems: PropTypes.node,
 }
 
-HeaderBase.defaultProps = {
+SiteHeaderBase.defaultProps = {
   ...colorwayDefaultProps(),
   ...containerDefaultProps(),
   sticky: false,
@@ -123,4 +122,4 @@ HeaderBase.defaultProps = {
   menuVariant: 'light',
 }
 
-export default withTheme(HeaderBase)
+export default withTheme(SiteHeaderBase)

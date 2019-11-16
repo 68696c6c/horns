@@ -1,0 +1,50 @@
+---
+name: 'Header'
+menu: Layout
+---
+
+import { Playground, Props } from 'docz'
+
+import Header from './section'
+import FullscreenDemo from '../_demo/fullscreen-demo'
+
+# Header
+
+A Header is a semantic layout element that confines its contents to the page content area and supports colorways.
+
+<FullscreenDemo variant="dark" of={Header} title="Header">
+  <Header>
+    <p style={{ marginTop: 0, color: 'white' }}>These Headers have had their padding highlighted to illustrate how the padding works.</p>
+  </Header>
+  <Header colorway="warning">
+    <p>Headers are semantic content areas that horizontally center their contents on the page.</p>
+    <p>Headers also add a bit of vertical padding around their contents.</p>
+    <p>Both of these features can be disabled, allowing the Header to be used as a simple themable content area.</p>
+  </Header>
+  <Header colorway="danger" contained={false}>
+    <p>This Header's horizontal centering has been disabled, making it fluid.</p>
+  </Header>
+  <Header colorway="info" padded={false}>
+    <p>This Header's vertical padding has been disabled.</p>
+  </Header>
+</FullscreenDemo>
+
+## Props
+
+<Props of={Header} />
+
+## Colorways
+
+<Playground>
+  <Header textAlign="center">None</Header>
+  <Header textAlign="center" colorway="primary">Primary</Header>
+  <Header textAlign="center" colorway="secondary">Secondary</Header>
+  <Header textAlign="center" colorway="tertiary">Tertiary</Header>
+  <Header textAlign="center" colorway="light">Light</Header>
+  <Header textAlign="center" colorway="neutral">Neutral</Header>
+  <Header textAlign="center" colorway="dark">Dark</Header>
+  <Header textAlign="center" colorway="success">Success</Header>
+  <Header textAlign="center" colorway="info">Info</Header>
+  <Header textAlign="center" colorway="warning">Warning</Header>
+  <Header textAlign="center" colorway="danger">Danger</Header>
+</Playground>
