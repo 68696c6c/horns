@@ -7,7 +7,8 @@
   "license": "ISC",
   "main": "dist/index.js",
   "scripts": {
-    "develop": "docz dev --protocol=http --host=0.0.0.0 --port=8000",
+    "develop": "docz dev --protocol=http --port=8000",
+    "develop:docker": "docz dev --protocol=http --host=0.0.0.0 --port=8000",
     "build": "./node_modules/.bin/babel src --out-dir dist",
     "test": "jest --config=jest-config.js",
     "test:watch": "jest --watch --config=jest-config.js"
