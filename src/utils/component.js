@@ -57,3 +57,8 @@ export const Clickable = () => css`
 export const Roundable = ({ theme }) => css`
   border-radius: ${theme.radius};
 `
+
+export const Bordered = ({ theme }) => css`
+  border-width: ${theme.borders.width};
+  border-style: ${theme.borders.style};
+`

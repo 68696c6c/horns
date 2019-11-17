@@ -1,7 +1,12 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { ColorwayInteractive, Padded, Clickable, Roundable } from '../../utils'
+import {
+  ColorwayInteractive,
+  Clickable,
+  Roundable,
+  Bordered,
+} from '../../utils'
 
 const ButtonBase = ({ theme }) => {
   return css`
@@ -14,8 +19,16 @@ const ButtonBase = ({ theme }) => {
 
 export const Button = styled.button(
   ColorwayInteractive,
-  Padded,
   Clickable,
   Roundable,
+  Bordered,
+  ButtonBase
+)
+
+export const LinkButton = styled.a(
+  ColorwayInteractive,
+  Clickable,
+  Roundable,
+  Bordered,
   ButtonBase
 )

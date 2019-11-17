@@ -1,6 +1,6 @@
 > designers think in terms of points and letting
 
-curning: the spacing between letters, always tweaked manually
+kerning: the spacing between letters, always tweaked manually
 letting: spacing between lines
 spacing: spacing before and after the line, spacing between paragraphs; indenting: the spacing on left or right on a line
 em: a unit of space

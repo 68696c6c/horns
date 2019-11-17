@@ -1,3 +1,4 @@
+import BordersConfig from './borders'
 import ColorsConfig from './colors'
 import ColorsInteractiveConfig from './colors-interactive'
 import InputsConfig from './inputs'
@@ -27,6 +28,9 @@ class Theme {
 
     const configSpacing = safeGetValue(config, 'spacing', {})
     this.spacing = new SpacingConfig(this.typography, configSpacing)
+
+    const configBorders = safeGetValue(config, 'borders', {})
+    this.borders = new BordersConfig(this.spacing, configBorders)
 
     const configGrid = safeGetValue(config, 'navItems', {})
     this.grid = new GridConfig(this.spacing, configGrid)

@@ -11,6 +11,7 @@ export {
   sizableDefaultProps,
   Clickable,
   Roundable,
+  Bordered,
 } from './component'
 
 export {

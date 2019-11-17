@@ -1,31 +1,23 @@
 /* eslint-disable prefer-destructuring */
 import ColorsConfig from './colors'
 import { palletColors } from './color-pallet'
-import { safeGetValue } from './utils'
 
-// @TODO get default values from a config file.
-const defaultButtons = {
-  spacingX: 'medium',
-  spacingY: 'small',
-  fontWeight: 'bold',
-}
-
-const makeConfig = (color, bg) => {
+const makeConfig = (color, bg, border) => {
   return {
     background: bg.base,
     color: color.base,
-    border: 'none',
+    border: border.base,
     decoration: 'none',
     hover: {
       background: bg.hover,
       color: color.hover,
-      border: 'none',
+      border: border.hover,
       decoration: 'none',
     },
     active: {
       background: bg.active,
       color: color.active,
-      border: 'none',
+      border: border.active,
       decoration: 'none',
     },
   }
@@ -38,9 +30,15 @@ class ColorsInteractiveConfig {
     }
     const swatches = colorsConfig.swatches
 
+    let bShade = 'dark'
+    let bhShade = 'darker'
+    let baShade = 'base'
     let hShade = 'dark'
     let aShade = 'darker'
     if (colorsConfig.darkMode()) {
+      bShade = 'light'
+      bhShade = 'lighter'
+      baShade = 'base'
       hShade = 'light'
       aShade = 'lighter'
     }
@@ -56,7 +54,12 @@ class ColorsInteractiveConfig {
         hover: swatches[palletColor][hShade].base,
         active: swatches[palletColor][aShade].base,
       }
-      this.colorways[palletColor] = makeConfig(color, bg)
+      const border = {
+        base: swatches[palletColor][bShade].base,
+        hover: swatches[palletColor][bhShade].base,
+        active: swatches[palletColor][baShade].base,
+      }
+      this.colorways[palletColor] = makeConfig(color, bg, border)
     })
 
     console.log('ColorsInteractiveConfig', this)

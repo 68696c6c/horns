@@ -16,7 +16,7 @@ class ButtonsConfig {
     }
     const configY = safeGetValue(config, 'spacingY', defaultButtons.spacingY)
     const paddingY = spacingConfig.getSpacing(configY)
-    const configX = safeGetValue(config, 'spacingX', defaultButtons.spacingY)
+    const configX = safeGetValue(config, 'spacingX', defaultButtons.spacingX)
     const paddingX = spacingConfig.getSpacing(configX)
     const padding = `${paddingY} ${paddingX}`
 
