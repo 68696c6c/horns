@@ -1,11 +1,6 @@
 export { Button, ButtonStyle } from './buttons'
 
-export {
-  LineChart,
-  Line,
-  PieChart,
-  Region,
-} from './charts'
+export { LineChart, Line, PieChart, Region } from './charts'
 
 export {
   Checkbox,
@@ -27,10 +22,7 @@ export {
   MultiselectNative,
 } from './forms'
 
-export {
-  ImageFrame,
-  Picture,
-} from './images'
+export { ImageFrame, Picture } from './images'
 
 export {
   Area,
@@ -49,12 +41,7 @@ export {
   TitleBar,
 } from './layout'
 
-export {
-  Link,
-  LinkButton,
-  LinkEmail,
-  LinkPhone,
-} from './links'
+export { Link, LinkEmail, LinkPhone } from './links'
 
 export {
   ListItem,
@@ -73,27 +60,11 @@ export {
   Pagination,
 } from './nav'
 
-export {
-  Slide,
-  Slider,
-  SliderDouble,
-} from './sliders'
+export { Slide, Slider, SliderDouble } from './sliders'
 
-export {
-  SVGCircle,
-  SVGLine,
-  SVGPath,
-  SVGPolygon,
-  SVGRect,
-  SVG,
-} from './svg'
+export { SVGCircle, SVGLine, SVGPath, SVGPolygon, SVGRect, SVG } from './svg'
 
-export {
-  Table,
-  TableCell,
-  TableHead,
-  TableRow,
-} from './tables'
+export { Table, TableCell, TableHead, TableRow } from './tables'
 
 export {
   Disclaimer,
@@ -104,6 +75,4 @@ export {
   InlineText,
 } from './typography'
 
-export {
-  Progress,
-} from './visuals'
+export { Progress } from './visuals'

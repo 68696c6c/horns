@@ -1,6 +1,7 @@
 import BordersConfig from './borders'
 import ColorsConfig from './colors'
 import ColorsInteractiveConfig from './colors-interactive'
+import ColorsTextInteractiveConfig from './colors-text-interactive'
 import InputsConfig from './inputs'
 import TypographyConfig from './typography'
 import SpacingConfig from './spacing'
@@ -19,6 +20,7 @@ class Theme {
     const configColors = safeGetValue(config, 'colors', {})
     this.colors = new ColorsConfig(configColors)
     this.colorsInteractive = new ColorsInteractiveConfig(this.colors)
+    this.colorsTextInteractive = new ColorsTextInteractiveConfig(this.colors)
 
     const configInputs = safeGetValue(config, 'inputs', {})
     this.inputs = new InputsConfig(configInputs)

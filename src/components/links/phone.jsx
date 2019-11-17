@@ -1,31 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import StyledLink, { StyledLinkButton } from './base'
 
-const LinkPhone = ({ phone, type, variant, children, ...others }) => {
-  let Tag = StyledLink
-  if (type === 'button') {
-    Tag = StyledLinkButton
-    if (variant === 'copy') {
-      variant = 'neutral'
-    }
+import { handleProps } from '../../utils'
+import * as Styled from './styles'
+
+const LinkPhone = ({ phone, variant, children, ...others }) => {
+  let Tag = Styled.Link
+  if (variant === 'button') {
+    Tag = Styled.LinkButton
   }
-  return <Tag href={`tel:${phone}`} variant={variant} {...others}>{children}</Tag>
+  return (
+    <Tag href={`tel:${phone}`} {...handleProps(others, 'link-phone')}>
+      {children}
+    </Tag>
+  )
 }
 
 LinkPhone.propTypes = {
-  children: PropTypes.string.isRequired,
+  ...Styled.linkPropTypes(),
   phone: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([
-    'link',
-    'button',
-  ]),
-  variant: PropTypes.string,
 }
 
 LinkPhone.defaultProps = {
-  type: 'link',
-  variant: 'copy',
+  ...Styled.linkDefaultProps(),
 }
 
 export default LinkPhone

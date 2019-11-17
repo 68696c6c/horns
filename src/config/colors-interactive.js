@@ -7,18 +7,15 @@ const makeConfig = (color, bg, border) => {
     background: bg.base,
     color: color.base,
     border: border.base,
-    decoration: 'none',
     hover: {
       background: bg.hover,
       color: color.hover,
       border: border.hover,
-      decoration: 'none',
     },
     active: {
       background: bg.active,
       color: color.active,
       border: border.active,
-      decoration: 'none',
     },
   }
 }
@@ -66,7 +63,7 @@ class ColorsInteractiveConfig {
   }
 
   getColorway(colorway) {
-    if (!colorway) {
+    if (!colorway || colorway === 'copy') {
       return this.colorways.neutral
     }
     return this.colorways[colorway]

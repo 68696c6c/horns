@@ -3,16 +3,7 @@ import { css } from '@emotion/core'
 
 import { palletColorShades } from '../config'
 
-export const colorwayPropTypes = () => ({
-  colorway: PropTypes.oneOf(palletColorShades),
-})
-
-export const colorwayDefaultProps = () => ({
-  colorway: '',
-})
-
 export const Colorway = ({ theme, colorway }) => {
-  console.log('Colorway', colorway, theme)
   const cw = theme.colors.getShade(colorway)
   return css`
     background: ${cw.base};
@@ -21,24 +12,60 @@ export const Colorway = ({ theme, colorway }) => {
 }
 
 export const ColorwayInteractive = ({ theme, colorway }) => {
-  const c = theme.colorsInteractive.getColorway(colorway)
-  console.log('ColorwayInteractive', colorway, c)
+  const cw = theme.colorsInteractive.getColorway(colorway)
   return css`
-    background: ${c.background};
-    color: ${c.color};
-    border-color: ${c.border};
-    text-decoration: ${c.decoration};
+    background: ${cw.background};
+    color: ${cw.color};
+    border-color: ${cw.border};
+    text-decoration: ${cw.decoration};
     &:hover {
-      background: ${c.hover.background};
-      color: ${c.hover.color};
-      border-color: ${c.hover.border};
-      text-decoration: ${c.hover.decoration};
+      background: ${cw.hover.background};
+      color: ${cw.hover.color};
+      border-color: ${cw.hover.border};
+      text-decoration: ${cw.hover.decoration};
     }
     &:active {
-      background: ${c.active.background};
-      color: ${c.active.color};
-      border-color: ${c.active.border};
-      text-decoration: ${c.active.decoration};
+      background: ${cw.active.background};
+      color: ${cw.active.color};
+      border-color: ${cw.active.border};
+      text-decoration: ${cw.active.decoration};
     }
   `
 }
+
+export const colorwayPropTypes = () => ({
+  colorway: PropTypes.oneOf(palletColorShades),
+})
+
+export const colorwayDefaultProps = () => ({
+  colorway: '',
+})
+
+export const ColorwayText = ({ theme, colorway }) => {
+  const cw = theme.colors.getShade(colorway)
+  return css`
+    color: ${cw.base};
+  `
+}
+
+export const ColorwayTextInteractive = ({ theme, colorway }) => {
+  const cw = theme.colorsTextInteractive.getColorway(colorway)
+  console.log('ColorwayTextInteractive', colorway, cw)
+  return css`
+    color: ${cw.color};
+    &:hover {
+      color: ${cw.hover.color};
+    }
+    &:active {
+      color: ${cw.active.color};
+    }
+  `
+}
+
+export const colorwayTextPropTypes = () => ({
+  colorway: PropTypes.oneOf([...palletColorShades, 'copy']),
+})
+
+export const colorwayTextDefaultProps = () => ({
+  colorway: 'copy',
+})

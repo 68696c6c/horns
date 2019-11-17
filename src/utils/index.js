@@ -1,9 +1,20 @@
-export { Colorway, ColorwayInteractive, colorwayPropTypes, colorwayDefaultProps } from './color'
+export {
+  Colorway,
+  ColorwayInteractive,
+  colorwayPropTypes,
+  colorwayDefaultProps,
+  ColorwayText,
+  ColorwayTextInteractive,
+  colorwayTextPropTypes,
+  colorwayTextDefaultProps,
+} from './color'
 
 export {
   handleProps,
   childrenPropTypes,
   childrenDefaultProps,
+  childrenTextPropTypes,
+  childrenTextDefaultProps,
   elementPropTypes,
   elementDefaultProps,
   Sizeable,
@@ -12,6 +23,7 @@ export {
   Clickable,
   Roundable,
   Bordered,
+  Decoratable,
 } from './component'
 
 export {

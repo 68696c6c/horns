@@ -5,69 +5,64 @@ menu: Links
 
 import { Playground, Props } from 'docz'
 
-import LinkEmail from './email'
-import WrapperColumns from '../_demo/wrappers/columns'
+import EmailLink from './email'
 
-# LinkEmail
+# EmailLink
 
 <Playground>
-  <LinkEmail email="example@example.com" subject="test" body="test">Email Link</LinkEmail>
+  <EmailLink href="#">EmailLink</EmailLink>
+  <EmailLink href="#" variant="button">EmailLink Button</EmailLink>
 </Playground>
 
 ## Props
 
-<Props of={LinkEmail} />
+<Props of={EmailLink} />
 
-## Type
-
-<Playground>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test">Email Link</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test">Button Email Link</LinkEmail>
-  </WrapperColumns>
-</Playground>
-
-## Variants
+## Colorways
 
 <Playground>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="primary">Primary</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="primary">Primary Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="secondary">Secondary</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="secondary">Secondary Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="tertiary">Tertiary</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="tertiary">Tertiary Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns variant="dark">
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="light">Light</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="light">Light Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="neutral">Neutral</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="neutral">Neutral Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="dark">Dark</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="dark">Dark Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="success">Success</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="success">Success Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="info">Info</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="info">Info Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="warning">Warning</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="warning">Warning Button</LinkEmail>
-  </WrapperColumns>
-  <WrapperColumns>
-    <LinkEmail email="example@example.com" subject="test" body="test" variant="danger">Danger</LinkEmail>
-    <LinkEmail type="button" email="example@example.com" subject="test" body="test" variant="danger">Danger Button</LinkEmail>
-  </WrapperColumns>
+  <EmailLink href="#">Default</EmailLink>
+  <br />
+  <EmailLink href="#" variant="button">Default</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="primary">Primary</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="primary" variant="button">Primary Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="secondary">Secondary</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="secondary" variant="button">Secondary Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="tertiary">Tertiary</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="tertiary" variant="button">Tertiary Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="light">Light</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="light" variant="button">Light Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="neutral">Neutral</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="neutral" variant="button">Neutral Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="dark">Dark</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="dark" variant="button">Dark Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="success">Success</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="success" variant="button">Success Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="info">Info</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="info" variant="button">Info Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="warning">Warning</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="warning" variant="button">Warning Button</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="danger">Danger</EmailLink>
+  <br />
+  <EmailLink href="#" colorway="danger" variant="button">Danger Button</EmailLink>
+  <br />
 </Playground>

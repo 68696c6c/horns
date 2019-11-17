@@ -1,19 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import StyledLink from './base'
 
-const Link = ({ href, variant, className, children, ...others }) => (
-  <StyledLink href={href} variant={variant} className={className} {...others}>{children}</StyledLink>
-)
+import { handleProps } from '../../utils'
+import * as Styled from './styles'
+
+const Link = ({ href, variant, children, ...others }) => {
+  let Tag = Styled.Link
+  if (variant === 'button') {
+    Tag = Styled.LinkButton
+  }
+  return (
+    <Tag href={href} {...handleProps(others, 'link')}>
+      {children}
+    </Tag>
+  )
+}
 
 Link.propTypes = {
-  children: PropTypes.string.isRequired,
+  ...Styled.linkPropTypes(),
   href: PropTypes.string.isRequired,
-  variant: PropTypes.string,
 }
 
 Link.defaultProps = {
-  variant: 'copy',
+  ...Styled.linkDefaultProps(),
 }
 
 export default Link

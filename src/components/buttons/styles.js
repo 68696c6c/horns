@@ -8,27 +8,17 @@ import {
   Bordered,
 } from '../../utils'
 
-const ButtonBase = ({ theme }) => {
-  return css`
+export const buttonStyles = [
+  ColorwayInteractive,
+  Clickable,
+  Roundable,
+  Bordered,
+  ({ theme }) => css`
     display: inline-block;
     text-align: center;
     font-weight: ${theme.buttons.fontWeight};
     padding: ${theme.buttons.padding};
-  `
-}
+  `,
+]
 
-export const Button = styled.button(
-  ColorwayInteractive,
-  Clickable,
-  Roundable,
-  Bordered,
-  ButtonBase
-)
-
-export const LinkButton = styled.a(
-  ColorwayInteractive,
-  Clickable,
-  Roundable,
-  Bordered,
-  ButtonBase
-)
+export const Button = styled.button(...buttonStyles)

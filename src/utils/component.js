@@ -25,6 +25,14 @@ export const childrenDefaultProps = () => ({
   children: null,
 })
 
+export const childrenTextPropTypes = () => ({
+  children: PropTypes.string,
+})
+
+export const childrenTextDefaultProps = () => ({
+  children: '',
+})
+
 export const elementPropTypes = () => ({
   ...childrenPropTypes(),
   ...colorwayPropTypes(),
@@ -61,4 +69,14 @@ export const Roundable = ({ theme }) => css`
 export const Bordered = ({ theme }) => css`
   border-width: ${theme.borders.width};
   border-style: ${theme.borders.style};
+`
+
+export const Decoratable = ({ theme }) => css`
+  text-decoration: ${theme.links.decorations.base};
+  &:hover {
+    text-decoration: ${theme.links.decorations.hover};
+  }
+  &:active {
+    text-decoration: ${theme.links.decorations.active};
+  }
 `

@@ -6,52 +6,63 @@ menu: Links
 import { Playground, Props } from 'docz'
 
 import Link from './link'
-import WrapperInline from '../_demo/wrappers/inline'
 
 # Link
 
 <Playground>
   <Link href="#">Link</Link>
+  <Link href="#" variant="button">Link Button</Link>
 </Playground>
 
 ## Props
 
 <Props of={Link} />
 
-## Variants
+## Colorways
 
 <Playground>
-  <WrapperInline>
-    <Link href="#">Default</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="primary">Primary</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="secondary">Secondary</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="tertiary">Tertiary</Link>
-  </WrapperInline>
-  <WrapperInline variant="dark">
-    <Link href="#" variant="light">Light</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="neutral">Neutral</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="dark">Dark</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="success">Success</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="info">Info</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="warning">Warning</Link>
-  </WrapperInline>
-  <WrapperInline>
-    <Link href="#" variant="danger">Danger</Link>
-  </WrapperInline>
+  <Link href="#">Default</Link>
+  <br />
+  <Link href="#" variant="button">Default</Link>
+  <br />
+  <Link href="#" colorway="primary">Primary</Link>
+  <br />
+  <Link href="#" colorway="primary" variant="button">Primary Button</Link>
+  <br />
+  <Link href="#" colorway="secondary">Secondary</Link>
+  <br />
+  <Link href="#" colorway="secondary" variant="button">Secondary Button</Link>
+  <br />
+  <Link href="#" colorway="tertiary">Tertiary</Link>
+  <br />
+  <Link href="#" colorway="tertiary" variant="button">Tertiary Button</Link>
+  <br />
+  <Link href="#" colorway="light">Light</Link>
+  <br />
+  <Link href="#" colorway="light" variant="button">Light Button</Link>
+  <br />
+  <Link href="#" colorway="neutral">Neutral</Link>
+  <br />
+  <Link href="#" colorway="neutral" variant="button">Neutral Button</Link>
+  <br />
+  <Link href="#" colorway="dark">Dark</Link>
+  <br />
+  <Link href="#" colorway="dark" variant="button">Dark Button</Link>
+  <br />
+  <Link href="#" colorway="success">Success</Link>
+  <br />
+  <Link href="#" colorway="success" variant="button">Success Button</Link>
+  <br />
+  <Link href="#" colorway="info">Info</Link>
+  <br />
+  <Link href="#" colorway="info" variant="button">Info Button</Link>
+  <br />
+  <Link href="#" colorway="warning">Warning</Link>
+  <br />
+  <Link href="#" colorway="warning" variant="button">Warning Button</Link>
+  <br />
+  <Link href="#" colorway="danger">Danger</Link>
+  <br />
+  <Link href="#" colorway="danger" variant="button">Danger Button</Link>
+  <br />
 </Playground>
