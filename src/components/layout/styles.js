@@ -1,12 +1,6 @@
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 
-import { Colorway, Container, Padded } from '../../utils'
-
-const Layout = ({ textAlign }) => css`
-  text-align: ${textAlign};
-  overflow: auto;
-`
+import { Colorway, Container, Padded, Layout } from '../../utils'
 
 export const Footer = styled.footer(Container, Padded, Colorway, Layout)
 export const Header = styled.header(Container, Padded, Colorway, Layout)

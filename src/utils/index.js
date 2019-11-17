@@ -1,17 +1,35 @@
-export { Colorway, colorwayPropTypes, colorwayDefaultProps } from './color'
+export { Colorway, ColorwayInteractive, colorwayPropTypes, colorwayDefaultProps } from './color'
 
-export { handleProps, propTypeChildren } from './component'
+export {
+  handleProps,
+  childrenPropTypes,
+  childrenDefaultProps,
+  elementPropTypes,
+  elementDefaultProps,
+  Sizeable,
+  sizeablePropTypes,
+  sizableDefaultProps,
+  Clickable,
+  Roundable,
+} from './component'
 
 export {
   textAlignOptions,
   flexOptionsX,
   flexOptionsY,
   Flex,
+  flexPropTypes,
+  flexDefaultProps,
+  responsivePropTypes,
+  responsiveDefaultProps,
+  Container,
   ContainerSplit,
   containerPropTypes,
   containerDefaultProps,
-  Container,
   Padded,
+  paddedPropTypes,
+  paddedDefaultProps,
+  Layout,
   layoutPropTypes,
   layoutDefaultProps,
 } from './layout'

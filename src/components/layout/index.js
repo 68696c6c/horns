@@ -1,4 +1,4 @@
-export { Box } from './flex'
+export { Box, ButtonContainer } from './flex'
 
 export { Area, Columns, Grid, GridGuide } from './grid'
 
@@ -10,7 +10,6 @@ export { default as Footer } from './footer'
 export { default as Header } from './header'
 export { default as Section } from './section'
 
-export { default as ButtonContainer } from './button-container'
 export { default as GridStacked } from './stacked'
 export { default as Parallax } from './parallax'
 export { default as ScrollPages } from './scroll-pages'

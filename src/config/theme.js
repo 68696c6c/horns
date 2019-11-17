@@ -1,4 +1,5 @@
 import ColorsConfig from './colors'
+import ColorsInteractiveConfig from './colors-interactive'
 import InputsConfig from './inputs'
 import TypographyConfig from './typography'
 import SpacingConfig from './spacing'
@@ -16,6 +17,7 @@ class Theme {
     // Read values from config object and initialize sub-configs.
     const configColors = safeGetValue(config, 'colors', {})
     this.colors = new ColorsConfig(configColors)
+    this.colorsInteractive = new ColorsInteractiveConfig(this.colors)
 
     const configInputs = safeGetValue(config, 'inputs', {})
     this.inputs = new InputsConfig(configInputs)
@@ -40,7 +42,7 @@ class Theme {
     this.links = new LinksConfig(this.colors, configLinks)
 
     const configButtons = safeGetValue(config, 'buttons', {})
-    this.buttons = new ButtonsConfig(this.colors, this.spacing, cr, this.typography, configButtons)
+    this.buttons = new ButtonsConfig(this.spacing, cr, this.typography, configButtons)
 
     const configMap = safeGetValue(config, 'map', {})
     this.map = new MapsConfig(this.colors, configMap)

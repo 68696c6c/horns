@@ -1,0 +1,121 @@
+---
+name: 'Button Container'
+menu: Layout
+---
+
+import { Playground, Props } from 'docz'
+
+import ButtonContainer from './button-container'
+import Section from '../section'
+import { Button } from '../../buttons'
+import { HeadingSection } from '../../typography'
+import FullscreenDemo from '../../_demo/fullscreen-demo'
+
+# ButtonContainer
+
+A ButtonContainer is a padded container for grouping Buttons that uses the CSS flex property for alignment and supports 
+Colorways.  The Buttons switch to a stacked layout at the specified breakpoint.
+
+<Playground>
+  <ButtonContainer>
+    <Button colorway="primary">Left Button</Button>
+    <Button colorway="secondary">Center Button</Button>
+    <Button colorway="tertiary">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer x="center">
+    <Button colorway="primary">Left Button</Button>
+    <Button colorway="secondary">Center Button</Button>
+    <Button colorway="tertiary">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer x="left">
+    <Button colorway="primary">Left Button</Button>
+    <Button colorway="secondary">Center Button</Button>
+    <Button colorway="tertiary">Right Button</Button>
+  </ButtonContainer>
+</Playground>
+
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={ButtonContainer} title="ButtonContainer">
+  <Section>
+    <ButtonContainer>
+      <Button colorway="primary">Left Button</Button>
+      <Button colorway="secondary">Center Button</Button>
+      <Button colorway="tertiary">Right Button</Button>
+    </ButtonContainer>
+    <ButtonContainer x="center">
+      <Button colorway="primary">Left Button</Button>
+      <Button colorway="secondary">Center Button</Button>
+      <Button colorway="tertiary">Right Button</Button>
+    </ButtonContainer>
+    <ButtonContainer x="left">
+      <Button colorway="primary">Left Button</Button>
+      <Button colorway="secondary">Center Button</Button>
+      <Button colorway="tertiary">Right Button</Button>
+    </ButtonContainer>
+  </Section>
+</FullscreenDemo>
+
+## Props
+
+<Props of={ButtonContainer} />
+
+## Variants
+
+<Playground>
+  <ButtonContainer>
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="primary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="secondary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="tertiary">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="light">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="neutral">
+    <Button colorway="dark">Left Button</Button>
+    <Button colorway="dark">Center Button</Button>
+    <Button colorway="dark">Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="dark">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="success">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="info">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="warning">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+  <ButtonContainer colorway="danger">
+    <Button>Left Button</Button>
+    <Button>Center Button</Button>
+    <Button>Right Button</Button>
+  </ButtonContainer>
+</Playground>

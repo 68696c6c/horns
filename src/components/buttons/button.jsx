@@ -1,23 +1,26 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withColorwayProp } from '../../themes/color-variant-hocs'
-import baseButton from './base'
 
-const Styled = styled('button')`
-  ${({ theme, colorway }) => baseButton(theme, colorway)}
-`
+import {
+  handleProps,
+  elementDefaultProps,
+  elementPropTypes,
+  paddedDefaultProps,
+  paddedPropTypes,
+} from '../../utils'
+import * as Styled from './styles'
 
-const ButtonBase = ({ children, ...others }) => (
-  <Styled {...others}>{children}</Styled>
+const Button = ({ children, ...others }) => (
+  <Styled.Button {...handleProps(others, 'button')}>{children}</Styled.Button>
 )
 
-ButtonBase.propTypes = {
-  children: PropTypes.string.isRequired,
+Button.propTypes = {
+  ...elementPropTypes(),
+  ...paddedPropTypes(),
 }
 
-const Button = withColorwayProp(ButtonBase, 'neutral')
+Button.defaultProps = {
+  ...elementDefaultProps(),
+  ...paddedDefaultProps('small'),
+}
 
 export default Button

@@ -19,3 +19,26 @@ export const Colorway = ({ theme, colorway }) => {
     color: ${cw.readable};
   `
 }
+
+export const ColorwayInteractive = ({ theme, colorway }) => {
+  console.log('ColorwayInteractive', colorway)
+  const c = theme.colorsInteractive.getColorway(colorway)
+  return css`
+    background: ${c.background};
+    color: ${c.color};
+    border: ${c.border};
+    text-decoration: ${c.decoration};
+    &:hover {
+      background: ${c.hover.background};
+      color: ${c.hover.color};
+      border: ${c.hover.border};
+      text-decoration: ${c.hover.decoration};
+    }
+    &:active {
+      background: ${c.active.background};
+      color: ${c.active.color};
+      border: ${c.active.border};
+      text-decoration: ${c.active.decoration};
+    }
+  `
+}

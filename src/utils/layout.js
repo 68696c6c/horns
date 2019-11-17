@@ -39,12 +39,20 @@ export const Flex = ({ x, y }) => {
     default:
       alignItems = 'center'
   }
+  console.log('Flex x', x, justifyContent)
   return css`
     display: flex;
     align-items: ${alignItems};
     justify-content: ${justifyContent};
   `
 }
+
+export const flexPropTypes = () => ({
+  x: PropTypes.oneOf(flexOptionsX),
+  y: PropTypes.oneOf(flexOptionsY),
+})
+
+export const flexDefaultProps = (x = 'center', y = 'center') => ({ x, y })
 
 export const responsivePropTypes = () => ({
   breakpoint: PropTypes.oneOf(breakpoints),
@@ -126,12 +134,28 @@ export const Padded = ({
   `
 }
 
+export const paddedPropTypes = () => ({
+  spacing: PropTypes.oneOf(spacingSizes),
+  padded: PropTypes.bool,
+  compact: PropTypes.bool,
+})
+
+export const paddedDefaultProps = (spacing = 'small', padded = true) => ({
+  spacing,
+  padded,
+  compact: !padded,
+})
+
+export const Layout = ({ textAlign }) => css`
+  text-align: ${textAlign};
+  overflow: auto;
+`
+
 export const layoutPropTypes = () => ({
   ...childrenPropTypes(),
   ...colorwayPropTypes(),
   ...containerPropTypes(),
-  padded: PropTypes.bool,
-  spacing: PropTypes.oneOf(spacingSizes),
+  ...paddedPropTypes(),
   textAlign: PropTypes.oneOf(textAlignOptions),
 })
 
@@ -139,7 +163,6 @@ export const layoutDefaultProps = () => ({
   ...childrenDefaultProps(),
   ...colorwayDefaultProps(),
   ...containerDefaultProps(),
-  padded: true,
-  spacing: 'medium',
+  ...paddedDefaultProps(),
   textAlign: 'inherit',
 })

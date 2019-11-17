@@ -1,9 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import { spacingSizes } from '../../../config'
-import { flexOptionsX, flexOptionsY, handleProps } from '../../../utils'
-import { elementDefaultProps, elementPropTypes } from '../../../utils/component'
+import {
+  handleProps,
+  elementDefaultProps,
+  elementPropTypes,
+  paddedDefaultProps,
+  paddedPropTypes,
+  flexPropTypes,
+  flexDefaultProps,
+  sizableDefaultProps,
+  sizeablePropTypes,
+} from '../../../utils'
 import * as Styled from './styles'
 
 const Box = ({ children, ...others }) => (
@@ -12,22 +19,16 @@ const Box = ({ children, ...others }) => (
 
 Box.propTypes = {
   ...elementPropTypes(),
-  compact: PropTypes.bool,
-  spacing: PropTypes.oneOf(spacingSizes),
-  height: PropTypes.string,
-  width: PropTypes.string,
-  x: PropTypes.oneOf(flexOptionsX),
-  y: PropTypes.oneOf(flexOptionsY),
+  ...paddedPropTypes(),
+  ...flexPropTypes(),
+  ...sizeablePropTypes(),
 }
 
 Box.defaultProps = {
   ...elementDefaultProps(),
-  compact: false,
-  spacing: 'small',
-  height: 'auto',
-  width: 'auto',
-  x: 'center',
-  y: 'center',
+  ...paddedDefaultProps('small'),
+  ...flexDefaultProps(),
+  ...sizableDefaultProps(),
 }
 
 export default Box
