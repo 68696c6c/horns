@@ -45,9 +45,6 @@ export {
   SiteHeader,
   SiteHeaderStickyContent,
   Panel,
-  Parallax,
-  ScrollPages,
-  ScrollProgress,
   Section,
   TitleBar,
 } from './layout'

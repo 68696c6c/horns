@@ -37,7 +37,10 @@ export {
 export {
   DataTable,
   DataTableAsync,
-} from './organisms/data-tables'
+  Parallax,
+  ScrollPages,
+  ScrollProgress,
+} from './organisms'
 
 export {
   Checkbox,
@@ -77,9 +80,6 @@ export {
   SiteHeader,
   SiteHeaderStickyContent,
   Panel,
-  Parallax,
-  ScrollPages,
-  ScrollProgress,
   Section,
   TitleBar,
 } from './components/layout'
