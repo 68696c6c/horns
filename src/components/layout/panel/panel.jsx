@@ -1,46 +1,26 @@
-/** @jsx jsx */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { COLOR_VARIANT_NONE, colorVariantCSS } from '../../utils'
-import TitleBar from './title-bar'
 
-const StyledPanelBody = styled('div')`
-  ${({ theme }) => colorVariantCSS(theme, 'background')};
-  padding: ${({ theme }) => theme.spacing.small};
-  margin-bottom: ${({ theme }) => theme.spacing.small};
-`
+import TitleBar from './title-bar'
+import { handleProps, layoutDefaultProps, layoutPropTypes } from '../../../utils'
+import * as Styled from './styles'
 
 // @TODO make the DataTable etc components use this.
-const Panel = ({ title, variant, children }) => (
-  <React.Fragment>
-    <TitleBar variant={variant}>{title}</TitleBar>
-    <StyledPanelBody>{children}</StyledPanelBody>
-  </React.Fragment>
+const Panel = ({ title, colorway, children, ...others }) => (
+  <Styled.Panel {...handleProps(others)}>
+    <TitleBar colorway={colorway} fluid>{title}</TitleBar>
+    <Styled.Body>{children}</Styled.Body>
+  </Styled.Panel>
 )
 
 Panel.propTypes = {
+  ...layoutPropTypes(),
   title: PropTypes.string,
-  variant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-    COLOR_VARIANT_NONE,
-  ]),
 }
 
 Panel.defaultProps = {
+  ...layoutDefaultProps(),
   title: '',
-  variant: 'dark',
 }
 
 export default Panel

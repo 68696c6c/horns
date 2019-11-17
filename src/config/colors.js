@@ -1,3 +1,4 @@
+import { isUndefined } from '../utils'
 import ColorFactors from './color-factors'
 import ColorPallet, { palletColors } from './color-pallet'
 import { safeGetValue } from './utils'
@@ -41,7 +42,7 @@ const getSwatchPath = colorSwatch => {
 }
 
 const getColorSwatch = (swatches, swatch) => {
-  if (swatch === 'inherit') {
+  if (swatch === 'inherit' || isUndefined(swatch)) {
     return 'inherit'
   }
   const path = getSwatchPath(swatch)
@@ -49,7 +50,7 @@ const getColorSwatch = (swatches, swatch) => {
 }
 
 const getColorShade = (swatches, shade) => {
-  if (shade === '') {
+  if (shade === '' || isUndefined(shade)) {
     return 'inherit'
   }
   const path = getSwatchPath(shade)

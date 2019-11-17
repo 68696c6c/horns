@@ -87,15 +87,18 @@ export const ContainerSplit = ({ theme, contained }) => {
   `
 }
 
-export const Container = ({ theme, contained, fluid }) => {
+export const Container = ({ theme, contained, fluid, breakpoint }) => {
   if (!contained || fluid) {
     return ''
   }
+  const minWidth = theme.grid.getBreakpoint(breakpoint)
   const container = theme.grid.getContainer()
   const gutter = `calc(((100vw - ${container}) / 2))`
   return css`
-    padding-left: ${gutter};
-    padding-right: ${gutter};
+    @media (min-width: ${minWidth}) {
+      padding-left: ${gutter};
+      padding-right: ${gutter};
+    }
   `
 }
 
