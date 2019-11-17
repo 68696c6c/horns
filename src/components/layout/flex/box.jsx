@@ -2,14 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { spacingSizes } from '../../../config'
-import {
-  colorwayDefaultProps,
-  colorwayPropTypes,
-  flexOptionsX,
-  flexOptionsY,
-  handleProps,
-  propTypeChildren,
-} from '../../../utils'
+import { flexOptionsX, flexOptionsY, handleProps } from '../../../utils'
+import { elementDefaultProps, elementPropTypes } from '../../../utils/component'
 import * as Styled from './styles'
 
 const Box = ({ children, ...others }) => (
@@ -17,8 +11,7 @@ const Box = ({ children, ...others }) => (
 )
 
 Box.propTypes = {
-  children: propTypeChildren(),
-  ...colorwayPropTypes(),
+  ...elementPropTypes(),
   compact: PropTypes.bool,
   spacing: PropTypes.oneOf(spacingSizes),
   height: PropTypes.string,
@@ -28,8 +21,7 @@ Box.propTypes = {
 }
 
 Box.defaultProps = {
-  children: null,
-  ...colorwayDefaultProps(),
+  ...elementDefaultProps(),
   compact: false,
   spacing: 'small',
   height: 'auto',

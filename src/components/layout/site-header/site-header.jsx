@@ -1,12 +1,17 @@
 /** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
-import {  jsx } from '@emotion/core'
+import { jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 
-import { colorwayDefaultProps, colorwayPropTypes, containerPropTypes, containerDefaultProps } from '../../../utils'
-import { COLOR_VARIANT_NONE, colorVariantCSS, containerStyleHorizontal, toClassNames } from '../../utils'
-import { isUndefined } from '../../../utils/utils'
+import {
+  handleProps,
+  colorwayDefaultProps,
+  colorwayPropTypes,
+  layoutDefaultProps,
+  layoutPropTypes,
+  isUndefined,
+} from '../../../utils'
 import { Nav } from '../../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 
@@ -72,7 +77,14 @@ export class SiteHeaderBase extends React.Component {
   }
 
   render() {
-    const { fluid, variant, menuVariant, children, navItems, className, ...others } = this.props
+    const {
+      fluid,
+      variant,
+      menuVariant,
+      children,
+      navItems,
+      ...others
+    } = this.props
     const { stuck, mobile } = this.state
     return (
       <Styled.Header
@@ -80,46 +92,33 @@ export class SiteHeaderBase extends React.Component {
         fluid={fluid}
         stuck={stuck}
         variant={variant}
-        className={toClassNames(className, stuck ? 'stuck' : '')}
-        {...others}
+        {...handleProps(others, stuck ? 'stuck' : '')}
       >
         {children}
-        <Nav mobile={mobile} menuVariant={menuVariant}>{navItems}</Nav>
+        <Nav mobile={mobile} menuVariant={menuVariant}>
+          {navItems}
+        </Nav>
       </Styled.Header>
     )
   }
 }
 
+const { colorway: colorwayOptions } = colorwayPropTypes()
+const { colorway: colorwayDefault } = colorwayDefaultProps()
+
 SiteHeaderBase.propTypes = {
-  ...colorwayPropTypes(),
-  ...containerPropTypes(),
+  ...layoutPropTypes(),
   sticky: PropTypes.bool,
-  breakpoint: PropTypes.string,
   containerID: PropTypes.string,
-  menuVariant: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'light',
-    'neutral',
-    'dark',
-    'success',
-    'info',
-    'warning',
-    'danger',
-    'background',
-    COLOR_VARIANT_NONE,
-  ]),
+  menuVariant: colorwayOptions,
   navItems: PropTypes.node,
 }
 
 SiteHeaderBase.defaultProps = {
-  ...colorwayDefaultProps(),
-  ...containerDefaultProps(),
+  ...layoutDefaultProps(),
   sticky: false,
-  breakpoint: 'small',
   containerID: '',
-  menuVariant: 'light',
+  menuVariant: colorwayDefault,
 }
 
 export default withTheme(SiteHeaderBase)

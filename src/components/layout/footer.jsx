@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { handleProps } from '../../utils'
+import { handleProps, layoutPropTypes, layoutDefaultProps } from '../../utils'
 import * as Styled from './styles'
 
 // eslint-disable-next-line react/prop-types
@@ -8,8 +8,8 @@ const Footer = ({ children, ...others }) => (
   <Styled.Footer {...handleProps(others)}>{children}</Styled.Footer>
 )
 
-Footer.propTypes = Styled.layoutPropTypes()
+Footer.propTypes = layoutPropTypes()
 
-Footer.defaultProps = Styled.layoutDefaultProps()
+Footer.defaultProps = layoutDefaultProps()
 
 export default Footer

@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { breakpoints, palletColorShades } from '../../../config'
-import { handleProps, propTypeChildren } from '../../../utils'
+import { handleProps, layoutPropTypes, layoutDefaultProps } from '../../../utils'
 import * as Styled from './styles'
 
 const VARIANT_HALVES = 'halves'
@@ -17,18 +16,12 @@ const Grid = ({ variant, children, ...others }) => {
 }
 
 Grid.propTypes = {
-  children: propTypeChildren(),
-  colorway: PropTypes.oneOf(palletColorShades),
-  breakpoint: PropTypes.oneOf(breakpoints),
-  contained: PropTypes.bool,
+  ...layoutPropTypes(),
   variant: PropTypes.oneOf([VARIANT_HALVES, VARIANT_THIRDS]),
 }
 
 Grid.defaultProps = {
-  children: null,
-  colorway: '',
-  breakpoint: '',
-  contained: false,
+  ...layoutDefaultProps(),
   variant: VARIANT_HALVES,
 }
 

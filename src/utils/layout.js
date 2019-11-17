@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
+import { breakpoints, spacingSizes } from '../config'
+import { colorwayDefaultProps, colorwayPropTypes } from './color'
+import { childrenDefaultProps, childrenPropTypes } from './component'
 
 export const textAlignOptions = [
   'left',
@@ -43,12 +46,27 @@ export const Flex = ({ x, y }) => {
   `
 }
 
-export const containerPropTypes = () => ({
-  contained: PropTypes.bool,
+export const responsivePropTypes = () => ({
+  breakpoint: PropTypes.oneOf(breakpoints),
 })
 
-export const containerDefaultProps = (contained = true) => ({
+export const responsiveDefaultProps = (breakpoint = 'container') => ({
+  breakpoint,
+})
+
+export const containerPropTypes = () => ({
+  ...responsivePropTypes(),
+  contained: PropTypes.bool,
+  fluid: PropTypes.bool,
+})
+
+export const containerDefaultProps = (
+  contained = true,
+  breakpoint = 'container'
+) => ({
+  ...responsiveDefaultProps(breakpoint),
   contained,
+  fluid: !contained,
 })
 
 export const ContainerSplit = ({ theme, contained }) => {
@@ -104,3 +122,21 @@ export const Padded = ({
     ${paddingX}
   `
 }
+
+export const layoutPropTypes = () => ({
+  ...childrenPropTypes(),
+  ...colorwayPropTypes(),
+  ...containerPropTypes(),
+  padded: PropTypes.bool,
+  spacing: PropTypes.oneOf(spacingSizes),
+  textAlign: PropTypes.oneOf(textAlignOptions),
+})
+
+export const layoutDefaultProps = () => ({
+  ...childrenDefaultProps(),
+  ...colorwayDefaultProps(),
+  ...containerDefaultProps(),
+  padded: true,
+  spacing: 'medium',
+  textAlign: 'inherit',
+})

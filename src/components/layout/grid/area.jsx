@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { palletColorShades } from '../../../config'
-import { handleProps, propTypeChildren } from '../../../utils/component'
+import { elementPropTypes, handleProps, elementDefaultProps } from '../../../utils/component'
 import * as Styled from './styles'
 
 const Area = ({ children, ...others }) => (
@@ -10,14 +9,12 @@ const Area = ({ children, ...others }) => (
 )
 
 Area.propTypes = {
-  children: propTypeChildren(),
-  colorway: PropTypes.oneOf(palletColorShades),
+  ...elementPropTypes(),
   area: PropTypes.string,
 }
 
 Area.defaultProps = {
-  children: null,
-  colorway: '',
+  ...elementDefaultProps(),
   area: '',
 }
 

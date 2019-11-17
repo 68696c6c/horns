@@ -12,6 +12,8 @@ export {
   containerDefaultProps,
   Container,
   Padded,
+  layoutPropTypes,
+  layoutDefaultProps,
 } from './layout'
 
-export { valueToInt } from './utils'
+export { valueToInt, isUndefined } from './utils'
