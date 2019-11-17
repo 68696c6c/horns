@@ -1,8 +1,9 @@
 export {
-  Colorway,
-  ColorwayInteractive,
   colorwayPropTypes,
   colorwayDefaultProps,
+  Colorway,
+  ColorwayBordered,
+  ColorwayInteractive,
   ColorwayText,
   ColorwayTextInteractive,
 } from './color'

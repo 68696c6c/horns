@@ -17,18 +17,30 @@ export const Colorway = ({ theme, colorway }) => {
   `
 }
 
+export const ColorwayBordered = ({ theme, colorway }) => {
+  const cw = theme.colors.getShade(colorway)
+  return css`
+    background: ${cw.base};
+    color: ${cw.readable};
+    border-color: ${cw.border};
+  `
+}
+
 export const ColorwayInteractive = ({ theme, colorway }) => {
   const cw = theme.colors.getShade(colorway)
   return css`
     background: ${cw.base};
     color: ${cw.readable};
+    border-color: ${cw.border};
     &:hover {
       background: ${cw.hover};
       color: ${cw.hoverReadable};
+      border-color: ${cw.hoverBorder};
     }
     &:active {
       background: ${cw.active};
       color: ${cw.activeReadable};
+      border-color: ${cw.activeBorder};
     }
   `
 }

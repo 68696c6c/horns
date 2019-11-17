@@ -1,9 +1,22 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, Flex, Padded, Sizeable } from '../../../utils'
+import {
+  Colorway,
+  ColorwayBordered,
+  Bordered,
+  Flex,
+  Padded,
+  Sizeable,
+} from '../../../utils'
 
-export const Box = styled.div(Colorway, Flex, Padded, Sizeable)
+export const Box = styled.div(
+  ColorwayBordered,
+  Bordered,
+  Flex,
+  Padded,
+  Sizeable
+)
 
 export const ButtonContainer = styled.div(
   Colorway,

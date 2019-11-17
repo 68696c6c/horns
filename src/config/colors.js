@@ -101,24 +101,37 @@ const getModeColors = (mode, dark, neutral, light) => {
 const makeSwatch = (color, copy, factors) => {
   const negative = color.negate()
   const isDark = color.isDark()
+  let borderLight
+  let borderDark
   let hover
   let active
   if (isDark) {
+    borderLight = color.lighten(factors.light)
+    borderDark = color.darken(factors.dark)
     hover = color.lighten(factors.light)
     active = color.lighten(factors.lighter)
   } else {
+    borderLight = color.lighten(factors.light)
+    borderDark = color.darken(factors.dark)
     hover = color.darken(factors.dark)
     active = color.darken(factors.darker)
   }
+  const hoverLight = hover.lighten(factors.light)
+  const hoverDark = hover.darken(factors.dark)
+  const activeLight = active.lighten(factors.light)
+  const activeDark = active.lighten(factors.dark)
   return {
     base: getColorValue(color),
     readable: isDark ? copy.light : copy.dark,
+    border: getColorValue(isDark ? borderLight : borderDark),
     negative: getColorValue(negative),
     negativeReadable: negative.isDark() ? copy.light : copy.dark,
     hover: getColorValue(hover),
     hoverReadable: hover.isDark() ? copy.light : copy.dark,
+    hoverBorder: getColorValue(isDark ? hoverLight : hoverDark),
     active: getColorValue(active),
     activeReadable: active.isDark() ? copy.light : copy.dark,
+    activeBorder: getColorValue(isDark ? activeLight : activeDark),
   }
 }
 
@@ -132,12 +145,18 @@ const getColorSwatches = (colorShades, copy, factors) => {
         if (colorShade === 'prominent') {
           const color = shadeColor[shade]
           const hover = colorShades.hover[shade]
+          const hoverLight = hover.lighten(factors.light)
+          const hoverDark = hover.darken(factors.dark)
           const active = colorShades.active[shade]
+          const activeLight = active.lighten(factors.light)
+          const activeDark = active.lighten(factors.dark)
           const r = makeSwatch(color, copy, factors)
           r.hover = getColorValue(hover)
           r.hoverReadable = hover.isDark() ? copy.light : copy.dark
+          r.hoverBorder = getColorValue(hover.isDark() ? hoverLight : hoverDark)
           r.active = getColorValue(active)
           r.activeReadable = active.isDark() ? copy.light : copy.dark
+          r.activeBorder = getColorValue(active.isDark() ? activeLight : activeDark)
           swatches[colorShade][shade] = r
         } else {
           const color = shadeColor[shade]
