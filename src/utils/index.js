@@ -5,8 +5,6 @@ export {
   colorwayDefaultProps,
   ColorwayText,
   ColorwayTextInteractive,
-  colorwayTextPropTypes,
-  colorwayTextDefaultProps,
 } from './color'
 
 export {

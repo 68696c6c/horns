@@ -19,7 +19,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  ...elementDefaultProps(),
+  ...elementDefaultProps('prominent'),
   ...paddedDefaultProps('small'),
 }
 

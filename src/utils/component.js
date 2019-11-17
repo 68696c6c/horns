@@ -38,9 +38,9 @@ export const elementPropTypes = () => ({
   ...colorwayPropTypes(),
 })
 
-export const elementDefaultProps = () => ({
+export const elementDefaultProps = (colorway = '') => ({
   ...childrenDefaultProps(),
-  ...colorwayDefaultProps(),
+  ...colorwayDefaultProps(colorway),
 })
 
 export const Sizeable = ({ height, width }) => css`

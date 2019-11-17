@@ -12,6 +12,7 @@ export const palletColors = [
   'info',
   'warning',
   'danger',
+  'prominent',
 ]
 
 export const palletColorShades = [
@@ -66,11 +67,19 @@ export const palletColorShades = [
   'danger-dark',
   'danger-light',
   'danger-lighter',
+  'prominent',
+  'prominent-darker',
+  'prominent-dark',
+  'prominent-light',
+  'prominent-lighter',
 ]
 
 export const colorShades = ['darker', 'dark', 'base', 'light', 'lighter']
 
 const basePallet = {
+  primary: '#FFAA00',
+  secondary: '#3914AF',
+  tertiary: '#009999',
   violet: '#7f00ff',
   indigo: '#3f00ff',
   blue: '#1a99ff',
@@ -84,9 +93,9 @@ const basePallet = {
 }
 
 const defaultPallet = {
-  primary: '#FFAA00',
-  secondary: '#3914AF',
-  tertiary: '#009999',
+  primary: basePallet.primary,
+  secondary: basePallet.secondary,
+  tertiary: basePallet.tertiary,
   light: basePallet.white,
   neutral: basePallet.gray,
   dark: basePallet.black,
@@ -94,6 +103,10 @@ const defaultPallet = {
   info: basePallet.blue,
   warning: basePallet.orange,
   danger: basePallet.red,
+  prominent: basePallet.primary,
+  hover: basePallet.secondary,
+  active: basePallet.tertiary,
+  disabled: basePallet.gray,
 }
 
 class ColorPallet {
@@ -102,6 +115,10 @@ class ColorPallet {
       const value = safeGetValue(config, color, defaultPallet[color])
       this[color] = Color(value)
     })
+    const hValue = safeGetValue(config, 'hover', defaultPallet.hover)
+    this.hover = Color(hValue)
+    const aValue = safeGetValue(config, 'active', defaultPallet.active)
+    this.active = Color(aValue)
   }
 }
 

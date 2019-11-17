@@ -6,7 +6,9 @@ import {
   Clickable,
   Decoratable,
   childrenTextPropTypes,
-  colorwayTextPropTypes, childrenTextDefaultProps, colorwayTextDefaultProps
+  childrenTextDefaultProps,
+  colorwayPropTypes,
+  colorwayDefaultProps,
 } from '../../utils'
 import { buttonStyles } from '../buttons/styles'
 
@@ -16,12 +18,12 @@ export const LinkButton = styled.a(...buttonStyles)
 
 export const linkPropTypes = () => ({
   ...childrenTextPropTypes(),
-  ...colorwayTextPropTypes(),
+  ...colorwayPropTypes(),
   variant: PropTypes.oneOf(['link', 'button']),
 })
 
 export const linkDefaultProps = () => ({
   ...childrenTextDefaultProps(),
-  ...colorwayTextDefaultProps(),
+  ...colorwayDefaultProps('prominent'),
   variant: 'link',
 })

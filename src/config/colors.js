@@ -10,9 +10,9 @@ const MODE_DEFAULT = MODE_DARK
 // @TODO get default values from a config file.
 const defaultColors = {
   mode: MODE_DEFAULT,
-  hover: 'primary',
-  active: 'secondary',
-  disabled: 'neutral',
+  prominent: 'primary',
+  hover: 'secondary',
+  active: 'tertiary',
 }
 
 const getColorValue = c => c.rgb().string()
@@ -98,24 +98,53 @@ const getModeColors = (mode, dark, neutral, light) => {
   }
 }
 
-const getColorSwatches = (colorShades, copy) => {
-  const copyLight = copy.light
-  const copyDark = copy.dark
+const makeSwatch = (color, copy, factors) => {
+  const negative = color.negate()
+  const isDark = color.isDark()
+  let hover
+  let active
+  if (isDark) {
+    hover = color.lighten(factors.light)
+    active = color.lighten(factors.lighter)
+  } else {
+    hover = color.darken(factors.dark)
+    active = color.darken(factors.darker)
+  }
+  return {
+    base: getColorValue(color),
+    readable: isDark ? copy.light : copy.dark,
+    negative: getColorValue(negative),
+    negativeReadable: negative.isDark() ? copy.light : copy.dark,
+    hover: getColorValue(hover),
+    hoverReadable: hover.isDark() ? copy.light : copy.dark,
+    active: getColorValue(active),
+    activeReadable: active.isDark() ? copy.light : copy.dark,
+  }
+}
+
+const getColorSwatches = (colorShades, copy, factors) => {
   const swatches = {}
   Object.keys(colorShades).forEach(colorShade => {
-    const shadeColor = colorShades[colorShade]
-    swatches[colorShade] = {}
-    Object.keys(shadeColor).forEach(shade => {
-      const color = shadeColor[shade]
-      const negative = color.negate()
-
-      swatches[colorShade][shade] = {
-        base: getColorValue(color),
-        readable: color.isDark() ? copyLight : copyDark,
-        negative: getColorValue(negative),
-        negativeReadable: negative.isDark() ? copyLight : copyDark,
-      }
-    })
+    if (colorShade !== 'hover' && colorShade !== 'active') {
+      const shadeColor = colorShades[colorShade]
+      swatches[colorShade] = {}
+      Object.keys(shadeColor).forEach(shade => {
+        if (colorShade === 'prominent') {
+          const color = shadeColor[shade]
+          const hover = colorShades.hover[shade]
+          const active = colorShades.active[shade]
+          const r = makeSwatch(color, copy, factors)
+          r.hover = getColorValue(hover)
+          r.hoverReadable = hover.isDark() ? copy.light : copy.dark
+          r.active = getColorValue(active)
+          r.activeReadable = active.isDark() ? copy.light : copy.dark
+          swatches[colorShade][shade] = r
+        } else {
+          const color = shadeColor[shade]
+          swatches[colorShade][shade] = makeSwatch(color, copy, factors)
+        }
+      })
+    }
   })
   return swatches
 }
@@ -153,15 +182,28 @@ const getShadedColorPallet = (pallet, factors) => {
       }
     }
   })
+  shades.hover = {
+    alpha: pallet.hover.alpha(factors.alpha),
+    darker: pallet.hover.darken(factors.darker),
+    dark: pallet.hover.darken(factors.dark),
+    base: pallet.hover,
+    light: pallet.hover.lighten(factors.light),
+    lighter: pallet.hover.lighten(factors.lighter),
+  }
+  shades.active = {
+    alpha: pallet.active.alpha(factors.alpha),
+    darker: pallet.active.darken(factors.darker),
+    dark: pallet.active.darken(factors.dark),
+    base: pallet.active,
+    light: pallet.active.lighten(factors.light),
+    lighter: pallet.active.lighten(factors.lighter),
+  }
   return shades
 }
 
 class ColorsConfig {
   constructor(config = {}) {
     this.mode = safeGetValue(config, 'mode', defaultColors.mode)
-    const hover = safeGetValue(config, 'hover', defaultColors.hover)
-    const active = safeGetValue(config, 'active', defaultColors.active)
-    const disabled = safeGetValue(config, 'disabled', defaultColors.disabled)
 
     const configPallet = safeGetValue(config, 'pallet', {})
     const pallet = new ColorPallet(configPallet)
@@ -172,12 +214,9 @@ class ColorsConfig {
     const shaded = getShadedColorPallet(pallet, factors)
     const { background, copy } = getModeColors(this.mode, shaded.dark, shaded.neutral, shaded.light)
 
-    this.swatches = getColorSwatches(shaded, copy)
+    this.swatches = getColorSwatches(shaded, copy, factors)
     this.background = background
     this.copy = copy
-    this.hover = getColorSwatch(this.swatches, hover)
-    this.active = getColorSwatch(this.swatches, active)
-    this.disabled = getColorSwatch(this.swatches, disabled)
 
     console.log('ColorsConfig', this)
   }
