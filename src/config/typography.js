@@ -1,3 +1,4 @@
+import { isUndefined } from '../utils'
 import { safeGetValue } from './utils'
 
 
@@ -79,17 +80,17 @@ const makeTypographyStyle = (family, weight, size) => {
       textIndent: '',
     },
     justification: {
-      wordSpacing: '',
-      textAlign: '',
-      textJustify: '',
+      wordSpacing: 'normal',
+      textAlign: 'left',
+      textJustify: 'auto',
     },
     hyphenation: {
-      wordBreak: '',
-      wordWrap: '',
+      wordBreak: 'normal',
+      wordWrap: 'normal',
     },
     kerning: {
-      letterSpacing: '',
-      fontKerning: '',
+      letterSpacing: 'normal',
+      fontKerning: 'auto',
     },
     nestedStyles: [
       {
@@ -109,20 +110,24 @@ const makeTypographyStyle = (family, weight, size) => {
 
 // @TODO get default values from a config file.
 const defaultTypography = {
-  lineHeight: '1.6em',
-  headingMargin: '.75em 0',
   families: {
     primary: {
       base: 'Helvetica',
       fallback: 'sans-serif',
+      kerning: '', // letter-spacing
+      tracking: '', // word-spacing
     },
     secondary: {
-      base: 'Arial',
-      fallback: 'sans-serif',
-    },
-    tertiary: {
       base: 'Times New Roman',
       fallback: 'serif',
+      kerning: '',
+      tracking: '',
+    },
+    tertiary: {
+      base: 'Monaco',
+      fallback: 'monospace',
+      kerning: '',
+      tracking: '',
     },
   },
   weights: {
@@ -146,54 +151,166 @@ const defaultTypography = {
     h5: '1.15rem',
     h6: '1rem',
   },
+  // margin; space before and after the text
+  spacing: {
+    base: '0',
+    paragraph: '1em',
+    heading: '.75em',
+  },
+  // line-height
+  letting: {
+    base: '1.6em',
+    paragraph: '1.6em',
+    heading: '1.6em',
+  },
+  indent: '1em',
+  hyphenation: {
+    wrap: 'normal',
+    break: 'normal',
+  },
+  // @TODO need to support text decoration based on hover, active, etc
   styles: {
-    paragraph: {},
-    headings: {},
-    prominent: {},
-    caption: {},
-    icon: {},
-    menu: {},
-    messageBox: {},
-    smallCaption: {},
-    statusBar: {},
+    paragraph: {
+      family: 'primary',
+      style: 'normal',
+      align: 'justify',
+      justify: 'auto',
+      transform: 'none',
+      decoration: 'none',
+      // these are modifiers for the base value provided by the typeface.
+      kerning: 'base',
+      tracking: 'base',
+    },
+    heading: {
+      family: 'primary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    quote: {
+      family: 'secondary',
+      style: 'italic',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    text: {
+      family: 'primary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    button: {
+      family: 'primary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    link: {
+      family: 'primary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    caption: {
+      family: 'secondary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    legal: {
+      family: 'primary',
+      style: 'italic',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    code: {
+      family: 'tertiary',
+      style: 'normal',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
   },
-  nestedStyles: {
-    firstWord: {},
-    firstLine: {},
-    // Style the first word in a paragraph differently.
-    dropCap: {},
-    // Style a specific word differently.
-    match: {},
-  },
+}
+
+const getConfigStyle = (config, style) => {
+  let def = defaultTypography.styles[style]
+  if (isUndefined(def)) {
+    def = defaultTypography.styles.text
+  }
+  const cs = safeGetValue(config, style, {})
+  return {
+    family: safeGetValue(cs, 'family', def.family),
+    style: safeGetValue(cs, 'style', def.style),
+    align: safeGetValue(cs, 'align', def.align),
+    justify: safeGetValue(cs, 'justify', def.justify),
+    transform: safeGetValue(cs, 'transform', def.transform),
+    decoration: safeGetValue(cs, 'decoration', def.decoration),
+    kerning: safeGetValue(cs, 'kerning', def.kerning),
+    tracking: safeGetValue(cs, 'tracking', def.tracking),
+  }
 }
 
 class TypographyConfig {
   constructor(config = {}) {
-    this.lineHeight = safeGetValue(config, 'lineHeight', defaultTypography.lineHeight)
-    this.headingMargin = safeGetValue(config, 'headingMargin', defaultTypography.headingMargin)
-
     const cf = safeGetValue(config, 'families', {})
     const familyPrimary = safeGetValue(cf, 'primary', {})
     const familySecondary = safeGetValue(cf, 'secondary', {})
     const familyTertiary = safeGetValue(cf, 'tertiary', {})
-    const families = {
+    this.families = {
       primary: {
         base: safeGetValue(familyPrimary, 'base', defaultTypography.families.primary.base),
         fallback: safeGetValue(familyPrimary, 'fallback', defaultTypography.families.primary.fallback),
+        kerning: safeGetValue(familyPrimary, 'kerning', defaultTypography.families.primary.kerning),
+        tracking: safeGetValue(familyPrimary, 'tracking', defaultTypography.families.primary.tracking),
       },
       secondary: {
         base: safeGetValue(familySecondary, 'base', defaultTypography.families.secondary.base),
         fallback: safeGetValue(familySecondary, 'fallback', defaultTypography.families.secondary.fallback),
+        kerning: safeGetValue(familySecondary, 'kerning', defaultTypography.families.secondary.kerning),
+        tracking: safeGetValue(familySecondary, 'tracking', defaultTypography.families.secondary.tracking),
       },
       tertiary: {
         base: safeGetValue(familyTertiary, 'base', defaultTypography.families.tertiary.base),
         fallback: safeGetValue(familyTertiary, 'fallback', defaultTypography.families.tertiary.fallback),
+        kerning: safeGetValue(familyTertiary, 'kerning', defaultTypography.families.tertiary.kerning),
+        tracking: safeGetValue(familyTertiary, 'tracking', defaultTypography.families.tertiary.tracking),
       },
     }
-    this.families = families
 
     const cw = safeGetValue(config, 'weights', {})
-    const weights = {
+    this.weights = {
       base: safeGetValue(cw, 'base', defaultTypography.weights.base),
       lighter: safeGetValue(cw, 'lighter', defaultTypography.weights.lighter),
       light: safeGetValue(cw, 'light', defaultTypography.weights.light),
@@ -201,10 +318,9 @@ class TypographyConfig {
       bold: safeGetValue(cw, 'bold', defaultTypography.weights.bold),
       bolder: safeGetValue(cw, 'bolder', defaultTypography.weights.bolder),
     }
-    this.weights = weights
 
     const cs = safeGetValue(config, 'sizes', {})
-    const sizes = {
+    this.sizes = {
       base: safeGetValue(cs, 'base', defaultTypography.sizes.base),
       small: safeGetValue(cs, 'small', defaultTypography.sizes.small),
       large: safeGetValue(cs, 'large', defaultTypography.sizes.large),
@@ -217,18 +333,39 @@ class TypographyConfig {
       h5: safeGetValue(cs, 'h5', defaultTypography.sizes.h5),
       h6: safeGetValue(cs, 'h6', defaultTypography.sizes.h6),
     }
-    this.sizes = sizes
 
+    const csp = safeGetValue(config, 'spacing', {})
+    this.spacing = {
+      base: safeGetValue(csp, 'base', defaultTypography.spacing.base),
+      paragraph: safeGetValue(csp, 'paragraph', defaultTypography.spacing.paragraph),
+      heading: safeGetValue(csp, 'heading', defaultTypography.spacing.heading),
+    }
+
+    const cl = safeGetValue(config, 'letting', {})
+    this.letting = {
+      base: safeGetValue(cl, 'base', defaultTypography.letting.base),
+      paragraph: safeGetValue(cl, 'paragraph', defaultTypography.letting.paragraph),
+      heading: safeGetValue(cl, 'heading', defaultTypography.letting.heading),
+    }
+
+    this.indent = safeGetValue(config, 'indent', defaultTypography.indent)
+
+    const ch = safeGetValue(config, 'hyphenation', {})
+    this.hyphenation = {
+      wrap: safeGetValue(ch, 'wrap', defaultTypography.hyphenation.wrap),
+      break: safeGetValue(ch, 'break', defaultTypography.hyphenation.break),
+    }
+
+    const cst = safeGetValue(config, 'styles', {})
     this.styles = {
-      paragraph: makeTypographyStyle(families.primary, weights.base, sizes.base),
-      headings: {},
-      prominent: {},
-      caption: {},
-      icon: {},
-      menu: {},
-      messageBox: {},
-      smallCaption: {},
-      statusBar: {},
+      paragraph: getConfigStyle(cst, 'paragraph'),
+      heading: getConfigStyle(cst, 'heading'),
+      quote: getConfigStyle(cst, 'quote'),
+      text: getConfigStyle(cst, 'text'),
+      button: getConfigStyle(cst, 'button'),
+      caption: getConfigStyle(cst, 'caption'),
+      legal: getConfigStyle(cst, 'legal'),
+      code: getConfigStyle(cst, 'code'),
     }
 
     console.log('TypographyConfig', this)

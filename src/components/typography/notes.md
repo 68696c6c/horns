@@ -28,6 +28,7 @@ justification: measured min and max and desired (ideal) percentages
 - block: is a block of text, non-technical term; perhaps small snippets of text that don't require as much thought
 - paragraph: large sections of text that require consideration of more concepts like rythym etc.
 
+copy is the raw content to put in the design
 
 # The Typographic Bible
 The Elements of Typographic Style, 4th edition
@@ -127,7 +128,7 @@ These should be configurable typeface-styles
 - menu: Uses the fonts that are used by dropdown menus
 - message-box: Uses the fonts that are used by dialog boxes
 - small-caption: A smaller version of the caption font
-- status-bar: Uses the fonts that are used by the status bar
+- status-bar: Uses the fonts that are used by the status bar.
 - initial: Sets this property to its default value.
 - inherit: Inherits this property from its parent element.
 
@@ -162,7 +163,7 @@ word-wrap: allows long words to be able to be broken and wrap onto the next line
 
 ## Justification properties
 word-spacing: increases or decreases the white space between words.
-- normal: Defines normal space between words (0.25em) . This is default.
+- normal: Defines normal space between words (0.25em). This is default.
 - length: Defines an additional space between words (in px, pt, cm, em, etc). Negative values are allowed.
 - initial: Sets this property to its default value.
 - inherit: Inherits this property from its parent element.
