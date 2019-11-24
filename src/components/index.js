@@ -31,7 +31,6 @@ export {
   Footer,
   Grid,
   GridGuide,
-  GridStacked,
   Header,
   SiteHeader,
   SiteHeaderStickyContent,
