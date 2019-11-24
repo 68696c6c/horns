@@ -11,9 +11,7 @@ export const fontPropTypes = () => ({
 export const fontDefaultProps = (font = 'text') => ({ font })
 
 export const Font = ({ theme, font }) => {
-  console.log('Typography Font theme', font, theme)
-  const style = theme.typography.styles[font]
-  console.log('Typography Font style', style)
+  const style = theme.typography.getStyle(font)
   return css`
     font-style: ${style.style};
     font-variant: ${style.variant};
@@ -22,19 +20,31 @@ export const Font = ({ theme, font }) => {
     line-height: ${style.height};
     font-family: ${style.family};
     text-decoration: ${style.decoration};
-    ${isUndefined(style.hover)
-      ? ''
-      : css`
-          &:hover {
-            text-decoration: ${style.hover.decoration};
-          }
-        `}
-    ${isUndefined(style.active)
-      ? ''
-      : css`
-          &:active {
-            text-decoration: ${style.active.decoration};
-          }
-        `}
+    text-align: ${style.align};
+    ${
+      style.align === 'justify'
+        ? css`
+            text-justify: ${style.justify};
+          `
+        : ''
+    }
+    ${
+      isUndefined(style.hover)
+        ? ''
+        : css`
+            &:hover {
+              text-decoration: ${style.hover.decoration};
+            }
+          `
+    }
+    ${
+      isUndefined(style.active)
+        ? ''
+        : css`
+            &:active {
+              text-decoration: ${style.active.decoration};
+            }
+          `
+    }
   `
 }

@@ -415,7 +415,6 @@ class TypographyConfig {
   }
 
   getStyle(style) {
-    console.log('TypographyConfig styles', style, this.styles)
     if (this.styles[style]) {
       return this.styles[style]
     }
