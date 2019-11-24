@@ -43,7 +43,6 @@ export {
   Fieldset,
   Group,
   GroupInline,
-  Label,
   InputHidden,
   Input,
   InputMessage,
@@ -109,12 +108,15 @@ export {
 export { Table, TableCell, TableHead, TableRow } from './components/tables'
 
 export {
-  Disclaimer,
-  HeadingCopy,
-  HeadingHero,
-  HeadingSection,
-  HeadingSectionSub,
-  InlineText,
-} from './components/typography'
+  Caption,
+  Heading,
+  Label,
+  Legal,
+  Paragraph,
+  Pre,
+  Sub,
+  Sup,
+  Text,
+} from './components'
 
 export { Progress } from './components/visuals'

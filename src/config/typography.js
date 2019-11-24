@@ -154,13 +154,13 @@ const defaultTypography = {
   spacing: {
     base: '0',
     paragraph: '1em',
-    heading: '.75em',
+    heading: '1.25rem 0 1rem 0',
   },
   // line-height
   letting: {
     base: '1.6em',
     paragraph: '1.6em',
-    heading: '1.6em',
+    heading: '1em',
   },
   indent: '1em',
   hyphenation: {
@@ -171,7 +171,7 @@ const defaultTypography = {
     paragraph: {
       family: 'primary',
       style: 'normal',
-      weight: 'bold',
+      weight: 'base',
       align: 'justify',
       justify: 'auto',
       transform: 'none',
@@ -192,7 +192,7 @@ const defaultTypography = {
       tracking: 'base',
     },
     quote: {
-      family: 'secondary',
+      family: 'primary',
       style: 'italic',
       weight: 'base',
       align: 'left',
@@ -206,6 +206,17 @@ const defaultTypography = {
       family: 'primary',
       style: 'normal',
       weight: 'base',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    label: {
+      family: 'primary',
+      style: 'normal',
+      weight: 'bold',
       align: 'left',
       justify: 'none',
       transform: 'none',
@@ -242,9 +253,9 @@ const defaultTypography = {
       },
     },
     caption: {
-      family: 'secondary',
+      family: 'primary',
       style: 'normal',
-      weight: 'base',
+      weight: 'light',
       align: 'left',
       justify: 'none',
       transform: 'none',
@@ -253,7 +264,7 @@ const defaultTypography = {
       tracking: 'base',
     },
     legal: {
-      family: 'primary',
+      family: 'secondary',
       style: 'italic',
       weight: 'base',
       align: 'left',
@@ -274,6 +285,39 @@ const defaultTypography = {
       kerning: 'base',
       tracking: 'base',
     },
+    emphasized: {
+      family: 'primary',
+      style: 'italic',
+      weight: 'base',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    strong: {
+      family: 'primary',
+      style: 'normal',
+      weight: 'bold',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
+    variable: {
+      family: 'tertiary',
+      style: 'italic',
+      weight: 'base',
+      align: 'left',
+      justify: 'none',
+      transform: 'none',
+      decoration: 'none',
+      kerning: 'base',
+      tracking: 'base',
+    },
   },
 }
 
@@ -282,11 +326,15 @@ export const fontStyles = [
   'heading',
   'quote',
   'text',
+  'label',
   'button',
   'link',
   'caption',
   'legal',
   'code',
+  'emphasized',
+  'strong',
+  'variable',
 ]
 
 const getConfigStyle = (tc, styles, style) => {
@@ -404,11 +452,15 @@ class TypographyConfig {
       heading: getConfigStyle(this, cst, 'heading'),
       quote: getConfigStyle(this, cst, 'quote'),
       text: getConfigStyle(this, cst, 'text'),
+      label: getConfigStyle(this, cst, 'label'),
       button: getConfigStyle(this, cst, 'button'),
       link: getConfigStyle(this, cst, 'link'),
       caption: getConfigStyle(this, cst, 'caption'),
       legal: getConfigStyle(this, cst, 'legal'),
       code: getConfigStyle(this, cst, 'code'),
+      emphasized: getConfigStyle(this, cst, 'emphasized'),
+      strong: getConfigStyle(this, cst, 'strong'),
+      variable: getConfigStyle(this, cst, 'variable'),
     }
 
     console.log('TypographyConfig', this)
@@ -419,6 +471,14 @@ class TypographyConfig {
       return this.styles[style]
     }
     return this.styles.text
+  }
+
+  getSize(size) {
+    console.log('TypographyConfig getSize', size, this.sizes)
+    if (this.sizes[size]) {
+      return this.sizes[size]
+    }
+    return this.sizes.base
   }
 }
 

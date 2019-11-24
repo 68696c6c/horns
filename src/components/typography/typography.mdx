@@ -1,0 +1,150 @@
+---
+name: 'Typography'
+menu: Typography
+---
+
+import { Playground, Props } from 'docz'
+
+import Caption from './caption'
+import Heading from './heading'
+import Label from './label'
+import Legal from './legal'
+import Paragraph from './paragraph'
+import Pre from './pre'
+import Quote from './quote'
+import Sub from './sub'
+import Sup from './sup'
+import Text from './text'
+
+# Typography
+
+<Playground>
+
+  <Heading level="h1">H1 Heading</Heading>
+  <Heading level="h2">H2 Heading</Heading>
+  <Heading level="h3">H3 Heading</Heading>
+  <Heading level="h4">H4 Heading</Heading>
+  <Heading level="h5">H5 Heading</Heading>
+  <Heading level="h6">H6 Heading</Heading>
+  
+  <Heading level="h3">Paragraph Text</Heading>
+  <Paragraph>
+    Ahriman Typhon dasata beregida od torezodul! Ahpuch Tezcatlipoca Melek Taus Thoth Giui cahisa lusada oreri od 
+    micalapape cahisa bia ozodonugonu! Chemosh Bast Nergal Samnu Sammael Micama! goho Pe-IAD! zodir com-selahe azodien 
+    biabe os-lon-dohe. Yehusozod ca-ca-com, od do-o-a-inu noari micaolazoda a-ai-om.
+  </Paragraph>
+  <Paragraph>
+    Sekhmet Fenriz Pilahe farezodem zodenurezoda adana gono Ia dapiel das home – tohe: soba ipame luipamis Tunrida 
+    Casarameji gohia: Zodacare! Vaunigilaji! od im-ua-mar pugo pelapeli Ananael Qo-a-an. Damballa Hecate Asmodeus 
+    Sabazios Sekhmet Giui cahisa lusada oreri od micalapape cahisa bia ozodonugonu!
+  </Paragraph>
+  
+  <Heading level="h3">Inline Text</Heading>
+  <Text>Inline text</Text>
+  <br />
+  <Text>Text with a <Sub>subscript</Sub></Text>
+  <br />
+  <Text>Text with a <Sup>superscript</Sup></Text>
+  <br />
+  <Text variant="em">Emphasized text</Text>
+  <br />
+  <Text variant="strong">Strong text</Text>
+  <br />
+  <Text variant="small">Small text</Text>
+  <br />
+  <Text variant="code">Code text</Text>
+  <br />
+  <Text variant="samp">Sample text</Text>
+  <br />
+  <Text variant="kbd">Keyboard input text</Text>
+  <br />
+  <Text variant="var">Variable text</Text>
+  
+  <Heading level="h3">Quote Text</Heading>
+  <Quote>Inline quote text</Quote>
+  <Quote variant="block">
+    Loki zodoreje, lape zodiredo Noco Mada, hoathahe Saitan! Do-o-i-ape mada: goholore, gohus, amiranu! Micama! 
+    Baalberith Chemosh Pwcca Milcom dasata beregida od torezodul! Dagon Haborym Midgard Tchort vaunid-el-cahisa 
+    ta-pu-ime qo-mos-pelehe telocahe.
+  </Quote>
+  
+  <Heading level="h3">Label Text</Heading>
+  <Label>Inline label text</Label><input type="text" placholder="example" />
+  <br />
+  <Label variant="block">Stacked label text</Label><input type="text" placholder="example" />
+  <br />
+  <Label required>Required inline label text</Label><input type="text" placholder="example" />
+  <br />
+  <Label variant="block" required>Required stacked label text</Label><input type="text" placholder="example" />
+  <br />
+  <Label className="error">Error inline label text</Label><input type="text" placholder="example" />
+  <br />
+  <Label variant="block" className="error">Error stacked label text</Label><input type="text" placholder="example" />
+  
+  <Heading level="h3">Legal Text</Heading>
+  <Legal>Inline legal text</Legal>
+  <br />
+  <Legal variant="block">
+    A block of legal text.  Asmodeus Micama! goho Pe-IAD! zodir com-selahe azodien biabe os-lon-dohe. Pilada noanu 
+    vaunalahe balata od-vaoan. Shaitan Rimmon erem Iadanahe Beelzebub Pwcca Ahriman Fenriz Yen-lo-Wang Mephistopheles 
+    Demogorgon Fenriz Ahriman sobrazod-ol Roray i tanazodapesad, od comemahe ta nobeloha zodien.
+  </Legal>
+  
+  <Heading level="h3">Caption Text</Heading>
+  <Caption>Inline caption text</Caption>
+  <br />
+  <Caption variant="block">
+    A block of caption text.  Asmodeus Micama! goho Pe-IAD! zodir com-selahe azodien biabe os-lon-dohe. Pilada noanu 
+    vaunalahe balata od-vaoan. Shaitan Rimmon erem Iadanahe Beelzebub Pwcca Ahriman Fenriz Yen-lo-Wang Mephistopheles 
+    Demogorgon Fenriz Ahriman sobrazod-ol Roray i tanazodapesad, od comemahe ta nobeloha zodien.
+  </Caption>
+  
+  <Heading level="h3">Pre-formatted Text</Heading>
+  <Paragraph>Docz seems to be removing newlines here...</Paragraph>
+  <Pre>
+    name: "Capricorn Example"
+    module: "github.com/68696c6c/capricorn-example"
+    
+    license: "MIT"
+    author:
+      name: Aaron Hill
+      email: 68696c6c@gmail.com
+    
+    resources:
+    
+    - name: user
+      belongs_to:
+      - organization
+      fields:
+      - name: first_name
+        type: string
+        required: true
+      - name: last_name
+        type: string
+        required: false
+      - name: email
+        type: string
+        required: true
+    
+    - name: organization
+      has_many:
+      - users
+      fields:
+      - name: name
+        type: string
+        required: true
+      - name: website
+        type: string
+        required: false
+      actions:
+      - list
+      - view
+      - create
+      - update
+
+  </Pre>
+</Playground>
+
+## Props
+
+<Props of={Paragraph} />

@@ -47,7 +47,7 @@ spacing:
 - no space within strings of initials
 - letterspace all strings of capitals and small caps, and all long strings lof digits
 - for lowercase strings, only letterspace for a reason; italic roman serif faces with a lot of 'horizontal motion' or implied connection between the letters will not look good letterspaced; condensed sanserfi fonts like Helvetica can sometimes be letterspaced.
-- sidebaring is the precise amount of breathing space a ltter carries with it on the left or right
+- sidebaring is the precise amount of breathing space a letter carries with it on the left or right
 
 
 

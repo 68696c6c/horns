@@ -8,7 +8,6 @@ export {
   Fieldset,
   Group,
   GroupInline,
-  Label,
   InputHidden,
   Input,
   InputMessage,
@@ -67,12 +66,15 @@ export { SVGCircle, SVGLine, SVGPath, SVGPolygon, SVGRect, SVG } from './svg'
 export { Table, TableCell, TableHead, TableRow } from './tables'
 
 export {
-  Disclaimer,
-  HeadingCopy,
-  HeadingHero,
-  HeadingSection,
-  HeadingSectionSub,
-  InlineText,
+  Caption,
+  Heading,
+  Label,
+  Legal,
+  Paragraph,
+  Pre,
+  Sub,
+  Sup,
+  Text,
 } from './typography'
 
 export { Progress } from './visuals'

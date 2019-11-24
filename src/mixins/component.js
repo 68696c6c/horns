@@ -26,7 +26,11 @@ export const childrenDefaultProps = () => ({
 })
 
 export const childrenTextPropTypes = () => ({
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.objectOf(PropTypes.node),
+    PropTypes.arrayOf(PropTypes.node),
+  ]),
 })
 
 export const childrenTextDefaultProps = () => ({

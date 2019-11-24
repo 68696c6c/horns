@@ -1,9 +1,9 @@
-export {
-  HeadingCopy,
-  HeadingHero,
-  HeadingSection,
-  HeadingSectionSub,
-} from './headings'
-
-export { default as Disclaimer } from './disclaimer'
-export { default as InlineText } from './inline-text'
+export { default as Caption } from './caption'
+export { default as Heading } from './heading'
+export { default as Label } from './label'
+export { default as Legal } from './legal'
+export { default as Paragraph } from './paragraph'
+export { default as Pre } from './pre'
+export { default as Sub } from './sub'
+export { default as Sup } from './sup'
+export { default as Text } from './text'

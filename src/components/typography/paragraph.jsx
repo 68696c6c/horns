@@ -14,7 +14,7 @@ Paragraph.propTypes = {
 }
 
 Paragraph.defaultProps = {
-  ...fontDefaultProps(),
+  ...fontDefaultProps('paragraph'),
 }
 
 export default Paragraph
