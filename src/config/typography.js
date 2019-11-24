@@ -153,7 +153,7 @@ const defaultTypography = {
   // margin; space before and after the text
   spacing: {
     base: '0',
-    paragraph: '1em',
+    paragraph: '1em 0',
     heading: '1.25rem 0 1rem 0',
   },
   // line-height

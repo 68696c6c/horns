@@ -8,6 +8,7 @@ import { Playground, Props } from 'docz'
 import Columns from './columns'
 import GridGuide from './grid-guide'
 import Area from './area'
+import { Heading } from '../../typography'
 import FullscreenDemo from '../../_demo/fullscreen-demo'
 
 # Columns
@@ -17,75 +18,155 @@ Columns always have a gap and can either auto-size their areas or have a max row
 <FullscreenDemo variant="dark" of={Columns} title="Columns">
   <h1>Auto-Columns</h1>
   <Columns colorway="primary">
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   <h1>Auto-Columns - Contained</h1>
   <GridGuide />
   <Columns colorway="primary" contained>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   
   <h1>Max Columns</h1>
   <h2>One Column</h2>
   <Columns colorway="primary" columns={1}>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   <h2>Two Columns</h2>
   <Columns colorway="primary" columns={2}>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   <h2>Three Columns</h2>
   <Columns colorway="primary" columns={3}>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   
   <h1>Max Columns - Contained</h1>
   <h2>One Column</h2>
   <GridGuide />
   <Columns colorway="primary" columns={1} contained>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   <h2>Two Columns</h2>
   <GridGuide />
   <Columns colorway="primary" columns={2} contained>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
   <h2>Three Columns</h2>
   <GridGuide />
   <Columns colorway="primary" columns={3} contained>
-    <Area colorway="secondary-lighter">One</Area>
-    <Area colorway="secondary-light">Two</Area>
-    <Area colorway="secondary">Three</Area>
-    <Area colorway="secondary-dark">Four</Area>
-    <Area colorway="secondary-darker">Five</Area>
+    <Area colorway="secondary-lighter">
+      <Heading level="h3" align="center">One</Heading>
+    </Area>
+    <Area colorway="secondary-light">
+      <Heading level="h3" align="center">Two</Heading>
+    </Area>
+    <Area colorway="secondary">
+      <Heading level="h3" align="center">Three</Heading>
+    </Area>
+    <Area colorway="secondary-dark">
+      <Heading level="h3" align="center">Four</Heading>
+    </Area>
+    <Area colorway="secondary-darker">
+      <Heading level="h3" align="center">Five</Heading>
+    </Area>
   </Columns>
 
 </FullscreenDemo>

@@ -8,14 +8,22 @@ import { isUndefined } from '../utils'
 export const fontPropTypes = () => ({
   ...childrenTextPropTypes(),
   font: PropTypes.oneOf(fontStyles),
+  align: PropTypes.oneOf([
+    '',
+    'left',
+    'center',
+    'right',
+    'justify',
+  ]),
 })
 
 export const fontDefaultProps = (font = 'text') => ({
   ...childrenTextDefaultProps(),
   font,
+  align: '',
 })
 
-export const Font = ({ theme, font }) => {
+export const Font = ({ theme, font, align }) => {
   const style = theme.typography.getStyle(font)
   return css`
     font-family: ${style.family};
@@ -24,7 +32,7 @@ export const Font = ({ theme, font }) => {
     font-variant: ${style.variant};
     font-size: ${style.size};
     line-height: ${theme.typography.letting.base};
-    text-align: ${style.align};
+    text-align: ${align || style.align};
     margin: ${theme.typography.spacing.base};
     ${
       style.align === 'justify'

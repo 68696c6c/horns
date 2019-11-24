@@ -11,10 +11,16 @@ import {
   colorwayDefaultProps,
   fontDefaultProps,
   fontPropTypes,
+  Font,
 } from '../../mixins'
 import { buttonStyles } from '../buttons/styles'
 
-export const Link = styled.a(ColorwayTextInteractive, Clickable, Decoratable)
+export const Link = styled.a(
+  ColorwayTextInteractive,
+  Clickable,
+  Decoratable,
+  Font
+)
 
 export const LinkButton = styled.a(...buttonStyles)
 

@@ -6,6 +6,7 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Header from './section'
+import { Paragraph, Heading } from '../typography'
 import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Header
@@ -14,18 +15,18 @@ A Header is a semantic layout element that confines its contents to the page con
 
 <FullscreenDemo variant="dark" of={Header} title="Header">
   <Header>
-    <p style={{ marginTop: 0, color: 'white' }}>These Headers have had their padding highlighted to illustrate how the padding works.</p>
+    <Paragraph>These Headers have had their padding highlighted to illustrate how the padding works.</Paragraph>
   </Header>
   <Header colorway="warning">
-    <p>Headers are semantic content areas that horizontally center their contents on the page.</p>
-    <p>Headers also add a bit of vertical padding around their contents.</p>
-    <p>Both of these features can be disabled, allowing the Header to be used as a simple themable content area.</p>
+    <Paragraph>Headers are semantic content areas that horizontally center their contents on the page.</Paragraph>
+    <Paragraph>Headers also add a bit of vertical padding around their contents.</Paragraph>
+    <Paragraph>Both of these features can be disabled, allowing the Header to be used as a simple themable content area.</Paragraph>
   </Header>
-  <Header colorway="danger" contained={false}>
-    <p>This Header's horizontal centering has been disabled, making it fluid.</p>
+  <Header colorway="danger" fluid>
+    <Paragraph>This Header's horizontal centering has been disabled, making it fluid.</Paragraph>
   </Header>
-  <Header colorway="info" padded={false}>
-    <p>This Header's vertical padding has been disabled.</p>
+  <Header colorway="info" compact>
+    <Paragraph>This Header's vertical padding has been disabled.</Paragraph>
   </Header>
 </FullscreenDemo>
 
@@ -36,15 +37,15 @@ A Header is a semantic layout element that confines its contents to the page con
 ## Colorways
 
 <Playground>
-  <Header textAlign="center">None</Header>
-  <Header textAlign="center" colorway="primary">Primary</Header>
-  <Header textAlign="center" colorway="secondary">Secondary</Header>
-  <Header textAlign="center" colorway="tertiary">Tertiary</Header>
-  <Header textAlign="center" colorway="light">Light</Header>
-  <Header textAlign="center" colorway="neutral">Neutral</Header>
-  <Header textAlign="center" colorway="dark">Dark</Header>
-  <Header textAlign="center" colorway="success">Success</Header>
-  <Header textAlign="center" colorway="info">Info</Header>
-  <Header textAlign="center" colorway="warning">Warning</Header>
-  <Header textAlign="center" colorway="danger">Danger</Header>
+  <Header><Heading align="center">None</Heading></Header>
+  <Header colorway="primary"><Heading align="center">Primary</Heading></Header>
+  <Header colorway="secondary"><Heading align="center">Secondary</Heading></Header>
+  <Header colorway="tertiary"><Heading align="center">Tertiary</Heading></Header>
+  <Header colorway="light"><Heading align="center">Light</Heading></Header>
+  <Header colorway="neutral"><Heading align="center">Neutral</Heading></Header>
+  <Header colorway="dark"><Heading align="center">Dark</Heading></Header>
+  <Header colorway="success"><Heading align="center">Success</Heading></Header>
+  <Header colorway="info"><Heading align="center">Info</Heading></Header>
+  <Header colorway="warning"><Heading align="center">Warning</Heading></Header>
+  <Header colorway="danger"><Heading align="center">Danger</Heading></Header>
 </Playground>

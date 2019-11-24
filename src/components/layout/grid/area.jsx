@@ -2,9 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import {
-  elementPropTypes,
   handleProps,
+  elementPropTypes,
   elementDefaultProps,
+  paddedPropTypes,
+  paddedDefaultProps,
 } from '../../../mixins'
 import * as Styled from './styles'
 
@@ -14,11 +16,13 @@ const Area = ({ children, ...others }) => (
 
 Area.propTypes = {
   ...elementPropTypes(),
+  ...paddedPropTypes(),
   area: PropTypes.string,
 }
 
 Area.defaultProps = {
   ...elementDefaultProps(),
+  ...paddedDefaultProps('small', false),
   area: '',
 }
 

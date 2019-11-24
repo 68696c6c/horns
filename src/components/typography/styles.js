@@ -25,7 +25,7 @@ export const Paragraph = styled.p(
   Font,
   ({ theme }) => css`
     line-height: ${theme.typography.letting.paragraph};
-    margin: ${theme.typography.spacing.paragraph} 0;
+    margin: ${theme.typography.spacing.paragraph};
   `
 )
 export const Pre = styled.pre(Font)
@@ -56,15 +56,10 @@ export const KBD = styled.kbd(Font)
 export const Var = styled.var(Font)
 
 // Heading components
-// @TODO first-child throws a console error about being potentially unsafe with server-side rendering
-// @TODO need an error-free way of removing heading top-margin if it's the first element
 const BaseHeading = ({ theme, level }) => css`
   font-size: ${theme.typography.getSize(level)};
   line-height: ${theme.typography.letting.heading};
   margin: ${theme.typography.spacing.heading};
-  &:first-child {
-    margin-top: 0;
-  }
 `
 export const H1 = styled.h1(Font, BaseHeading)
 export const H2 = styled.h2(Font, BaseHeading)

@@ -6,6 +6,7 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Section from './section'
+import { Paragraph, Heading } from '../typography'
 import FullscreenDemo from '../_demo/fullscreen-demo'
 
 # Section
@@ -14,18 +15,18 @@ A Section is a semantic layout element that confines its contents to the page co
 
 <FullscreenDemo variant="dark" of={Section} title="Section">
   <Section>
-    <p style={{ marginTop: 0, color: 'white' }}>These Sections have had their padding highlighted to illustrate how the padding works.</p>
+    <Paragraph>These Sections have had their padding highlighted to illustrate how the padding works.</Paragraph>
   </Section>
   <Section colorway="warning">
-    <p>Sections are semantic content areas that horizontally center their contents on the page.</p>
-    <p>Sections also add a bit of vertical padding around their contents.</p>
-    <p>Both of these features can be disabled, allowing the Section to be used as a simple themable content area.</p>
+    <Paragraph>Sections are semantic content areas that horizontally center their contents on the page.</Paragraph>
+    <Paragraph>Sections also add a bit of vertical padding around their contents.</Paragraph>
+    <Paragraph>Both of these features can be disabled, allowing the Section to be used as a simple themable content area.</Paragraph>
   </Section>
-  <Section colorway="danger" contained={false}>
-    <p>This Section's horizontal centering has been disabled, making it fluid.</p>
+  <Section colorway="danger" fluid>
+    <Paragraph>This Section's horizontal centering has been disabled, making it fluid.</Paragraph>
   </Section>
-  <Section colorway="info" padded={false}>
-    <p>This Section's vertical padding has been disabled.</p>
+  <Section colorway="info" compact>
+    <Paragraph>This Section's vertical padding has been disabled.</Paragraph>
   </Section>
 </FullscreenDemo>
 
@@ -36,15 +37,15 @@ A Section is a semantic layout element that confines its contents to the page co
 ## Colorways
 
 <Playground>
-  <Section textAlign="center">None</Section>
-  <Section textAlign="center" colorway="primary">Primary</Section>
-  <Section textAlign="center" colorway="secondary">Secondary</Section>
-  <Section textAlign="center" colorway="tertiary">Tertiary</Section>
-  <Section textAlign="center" colorway="light">Light</Section>
-  <Section textAlign="center" colorway="neutral">Neutral</Section>
-  <Section textAlign="center" colorway="dark">Dark</Section>
-  <Section textAlign="center" colorway="success">Success</Section>
-  <Section textAlign="center" colorway="info">Info</Section>
-  <Section textAlign="center" colorway="warning">Warning</Section>
-  <Section textAlign="center" colorway="danger">Danger</Section>
+  <Section><Heading align="center">None</Heading></Section>
+  <Section colorway="primary"><Heading align="center">Primary</Heading></Section>
+  <Section colorway="secondary"><Heading align="center">Secondary</Heading></Section>
+  <Section colorway="tertiary"><Heading align="center">Tertiary</Heading></Section>
+  <Section colorway="light"><Heading align="center">Light</Heading></Section>
+  <Section colorway="neutral"><Heading align="center">Neutral</Heading></Section>
+  <Section colorway="dark"><Heading align="center">Dark</Heading></Section>
+  <Section colorway="success"><Heading align="center">Success</Heading></Section>
+  <Section colorway="info"><Heading align="center">Info</Heading></Section>
+  <Section colorway="warning"><Heading align="center">Warning</Heading></Section>
+  <Section colorway="danger"><Heading align="center">Danger</Heading></Section>
 </Playground>

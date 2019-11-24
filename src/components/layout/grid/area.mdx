@@ -7,6 +7,7 @@ import { Playground, Props } from 'docz'
 
 import Grid from './grid'
 import Area from './area'
+import { Heading } from '../../typography'
 
 # Area
 
@@ -14,8 +15,11 @@ An Area is a generic container that supports colorways and can be assigned to a 
 
 <Playground>
   <Grid>
-    <Area>
-      Default Area
+    <Area colorway="primary" area="left" padded>
+      <Heading level="h3" align="center">Left Area</Heading>
+    </Area>
+    <Area colorway="secondary" area="right" padded>
+      <Heading level="h3" align="center">Right Area</Heading>
     </Area>
   </Grid>
 </Playground>
@@ -27,15 +31,37 @@ An Area is a generic container that supports colorways and can be assigned to a 
 ## Variants
 
 <Playground>
-  <Area style={{ textAlign: 'center' }}>None</Area>
-  <Area colorway="primary" style={{ textAlign: 'center' }}>Primary</Area>
-  <Area colorway="secondary" style={{ textAlign: 'center' }}>Secondary</Area>
-  <Area colorway="tertiary" style={{ textAlign: 'center' }}>Tertiary</Area>
-  <Area colorway="light" style={{ textAlign: 'center' }}>Light</Area>
-  <Area colorway="neutral" style={{ textAlign: 'center' }}>Neutral</Area>
-  <Area colorway="dark" style={{ textAlign: 'center' }}>Dark</Area>
-  <Area colorway="success" style={{ textAlign: 'center' }}>Success</Area>
-  <Area colorway="info" style={{ textAlign: 'center' }}>Info</Area>
-  <Area colorway="warning" style={{ textAlign: 'center' }}>Warning</Area>
-  <Area colorway="danger" style={{ textAlign: 'center' }}>Danger</Area>
+  <Area>
+    <Heading level="h3" align="center">Default</Heading>
+  </Area>
+  <Area colorway="primary">
+    <Heading level="h3" align="center">Primary</Heading>
+  </Area>
+  <Area colorway="secondary">
+    <Heading level="h3" align="center">Secondary</Heading>
+  </Area>
+  <Area colorway="tertiary">
+    <Heading level="h3" align="center">Tertiary</Heading>
+  </Area>
+  <Area colorway="light">
+    <Heading level="h3" align="center">Light</Heading>
+  </Area>
+  <Area colorway="neutral">
+    <Heading level="h3" align="center">Neutral</Heading>
+  </Area>
+  <Area colorway="dark">
+    <Heading level="h3" align="center">Dark</Heading>
+  </Area>
+  <Area colorway="success">
+    <Heading level="h3" align="center">Success</Heading>
+  </Area>
+  <Area colorway="info">
+    <Heading level="h3" align="center">Info</Heading>
+  </Area>
+  <Area colorway="warning">
+    <Heading level="h3" align="center">Warning</Heading>
+  </Area>
+  <Area colorway="danger">
+    <Heading level="h3" align="center">Danger</Heading>
+  </Area>
 </Playground>

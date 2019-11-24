@@ -6,6 +6,7 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Box from './box'
+import { Text } from '../../typography'
 import WrapperInline from '../../_demo/wrappers/inline'
 
 # Box
@@ -14,13 +15,13 @@ A Box is a generic, padded container that uses the CSS flex property to align it
 
 <Playground>
     <Box colorway="primary" width="200px" height="200px" spacing="large">
-      <span>Large Centered Box</span>
+      <Text>Large Centered Box</Text>
     </Box>
     <Box colorway="secondary" width="200px" height="200px" compact x="left">
-      <span>Left-Aligned Box</span>
+      <Text>Left-Aligned Box</Text>
     </Box>
     <Box colorway="tertiary" width="200px" height="200px" x="right" y="bottom">
-      <span style={{ width: '50px' }}>Bottom-Right-Aligned Box</span>
+      <Text style={{ width: '50px' }}>Bottom-Right-Aligned Box</Text>
     </Box>
 </Playground>
 
@@ -35,33 +36,53 @@ A Box is a generic, padded container that uses the CSS flex property to align it
     <Box>None</Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="primary">Primary</Box>
+    <Box colorway="primary">
+      <Text>Primary</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="secondary">Secondary</Box>
+    <Box colorway="secondary">
+      <Text>Secondary</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="tertiary">Tertiary</Box>
+    <Box colorway="tertiary">
+      <Text>Tertiary</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="light">Light</Box>
+    <Box colorway="light">
+      <Text>Light</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="neutral">Neutral</Box>
+    <Box colorway="neutral">
+      <Text>Neutral</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="dark">Dark</Box>
+    <Box colorway="dark">
+      <Text>Dark</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="success">Success</Box>
+    <Box colorway="success">
+      <Text>Success</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="info">Info</Box>
+    <Box colorway="info">
+      <Text>Info</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="warning">Warning</Box>
+    <Box colorway="warning">
+      <Text>Warning</Text>
+    </Box>
   </WrapperInline>
   <WrapperInline>
-    <Box colorway="danger">Danger</Box>
+    <Box colorway="danger">
+      <Text>Danger</Text>
+    </Box>
   </WrapperInline>
 </Playground>

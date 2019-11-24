@@ -110,14 +110,8 @@ export const Container = ({ theme, contained, fluid, breakpoint }) => {
   `
 }
 
-export const Padded = ({
-  theme,
-  contained,
-  spacing,
-  padded = '*',
-  compact = '*',
-}) => {
-  if ((padded === '*' && compact) || (compact === '*' && !padded)) {
+export const Padded = ({ theme, contained, spacing, padded, compact }) => {
+  if (compact || !padded) {
     return ''
   }
   const padding = theme.spacing.getSpacing(spacing)
@@ -146,10 +140,10 @@ export const paddedDefaultProps = (spacing = 'small', padded = true) => ({
   compact: !padded,
 })
 
-export const Layout = ({ textAlign }) => css`
-  text-align: ${textAlign};
-  overflow: auto;
-`
+export const Layout = () =>
+  css`
+    overflow: auto;
+  `
 
 export const layoutPropTypes = () => ({
   ...childrenPropTypes(),

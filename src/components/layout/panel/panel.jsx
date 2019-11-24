@@ -7,13 +7,14 @@ import {
   layoutDefaultProps,
   layoutPropTypes,
 } from '../../../mixins'
+import { Heading } from '../../typography'
 import * as Styled from './styles'
 
 // @TODO make the DataTable etc components use this.
 const Panel = ({ title, colorway, children, ...others }) => (
-  <Styled.Panel {...handleProps(others)}>
+  <Styled.Panel {...handleProps(others, 'panel')}>
     <TitleBar colorway={colorway} fluid>
-      {title}
+      <Heading level="h3">{title}</Heading>
     </TitleBar>
     <Styled.Body>{children}</Styled.Body>
   </Styled.Panel>

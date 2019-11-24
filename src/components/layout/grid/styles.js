@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, ContainerSplit } from '../../../mixins'
+import { Colorway, ContainerSplit, Padded } from '../../../mixins'
 
 export const ContainerGuide = styled.div(
   Colorway,
@@ -15,9 +15,12 @@ export const ContainerGuide = styled.div(
 
 export const Area = styled.div(
   Colorway,
-  ({ area }) => css`
-    ${area && `grid-area: ${area}`};
-  `
+  Padded,
+  ({ area }) =>
+    area &&
+    css`
+      grid-area: ${area};
+    `
 )
 
 export const Columns = styled.div(

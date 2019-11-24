@@ -6,6 +6,7 @@ menu: Layout
 import { Playground, Props } from 'docz'
 
 import Footer from './footer'
+import { Paragraph, Heading } from '../typography'
 
 # Footer
 
@@ -13,7 +14,18 @@ A Footer is a semantic layout element that supports colorways.
 
 <Playground>
   <Footer>
-    <h1>Footer</h1>
+    <Paragraph>These Footers have had their padding highlighted to illustrate how the padding works.</Paragraph>
+  </Footer>
+  <Footer colorway="warning">
+    <Paragraph>Footers are semantic content areas that horizontally center their contents on the page.</Paragraph>
+    <Paragraph>Footers also add a bit of vertical padding around their contents.</Paragraph>
+    <Paragraph>Both of these features can be disabled, allowing the Footer to be used as a simple themable content area.</Paragraph>
+  </Footer>
+  <Footer colorway="danger" fluid>
+    <Paragraph>This Footer's horizontal centering has been disabled, making it fluid.</Paragraph>
+  </Footer>
+  <Footer colorway="info" compact>
+    <Paragraph>This Footer's vertical padding has been disabled.</Paragraph>
   </Footer>
 </Playground>
 
@@ -24,15 +36,15 @@ A Footer is a semantic layout element that supports colorways.
 ## Colorways
 
 <Playground>
-  <Footer textAlign="center">None</Footer>
-  <Footer textAlign="center" colorway="primary">Primary</Footer>
-  <Footer textAlign="center" colorway="secondary">Secondary</Footer>
-  <Footer textAlign="center" colorway="tertiary">Tertiary</Footer>
-  <Footer textAlign="center" colorway="light">Light</Footer>
-  <Footer textAlign="center" colorway="neutral">Neutral</Footer>
-  <Footer textAlign="center" colorway="dark">Dark</Footer>
-  <Footer textAlign="center" colorway="success">Success</Footer>
-  <Footer textAlign="center" colorway="info">Info</Footer>
-  <Footer textAlign="center" colorway="warning">Warning</Footer>
-  <Footer textAlign="center" colorway="danger">Danger</Footer>
+  <Footer><Heading align="center">None</Heading></Footer>
+  <Footer colorway="primary"><Heading align="center">Primary</Heading></Footer>
+  <Footer colorway="secondary"><Heading align="center">Secondary</Heading></Footer>
+  <Footer colorway="tertiary"><Heading align="center">Tertiary</Heading></Footer>
+  <Footer colorway="light"><Heading align="center">Light</Heading></Footer>
+  <Footer colorway="neutral"><Heading align="center">Neutral</Heading></Footer>
+  <Footer colorway="dark"><Heading align="center">Dark</Heading></Footer>
+  <Footer colorway="success"><Heading align="center">Success</Heading></Footer>
+  <Footer colorway="info"><Heading align="center">Info</Heading></Footer>
+  <Footer colorway="warning"><Heading align="center">Warning</Heading></Footer>
+  <Footer colorway="danger"><Heading align="center">Danger</Heading></Footer>
 </Playground>
