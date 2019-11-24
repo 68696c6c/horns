@@ -10,8 +10,8 @@ import {
   colorwayPropTypes,
   layoutDefaultProps,
   layoutPropTypes,
-  isUndefined,
-} from '../../../utils'
+} from '../../../mixins'
+import { isUndefined } from '../../../utils'
 import { Nav } from '../../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 

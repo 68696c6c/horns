@@ -7,25 +7,11 @@ import { isUndefined } from '../../../utils/utils'
 import { getParentByClassName } from '../../..'
 
 import * as Styled from './styles'
-import { colorwayDefaultProps, colorwayPropTypes } from '../../../utils'
+import { colorwayDefaultProps, colorwayPropTypes } from '../../../mixins'
 
 const EVENT_OPEN = getEventName('menu:open')
 const EVENT_CLOSE = getEventName('menu:close')
 const EVENT_CLOSE_OTHERS = getEventName('menu:closeOthers')
-
-// const StyledMenuContainer = styled('span')`
-//   position: relative;
-// `
-// const StyledMenu = styled('nav')`
-//   display: ${({ open }) => open ? 'block' : 'none'};
-//   ${({ theme, variant }) => colorVariantCSS(theme, variant)};
-//   .nav-item, a {
-//     ${({ theme }) => navMenuItem(theme)};
-//   }
-// `
-// StyledMenu.propTypes = {
-//   open: PropTypes.bool.isRequired,
-// }
 
 class NavItemMenu extends React.Component {
   constructor(props) {

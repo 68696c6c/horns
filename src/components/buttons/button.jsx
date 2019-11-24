@@ -6,7 +6,9 @@ import {
   elementPropTypes,
   paddedDefaultProps,
   paddedPropTypes,
-} from '../../utils'
+  fontDefaultProps,
+  fontPropTypes,
+} from '../../mixins'
 import * as Styled from './styles'
 
 const Button = ({ children, ...others }) => (
@@ -16,11 +18,13 @@ const Button = ({ children, ...others }) => (
 Button.propTypes = {
   ...elementPropTypes(),
   ...paddedPropTypes(),
+  ...fontPropTypes(),
 }
 
 Button.defaultProps = {
   ...elementDefaultProps('prominent'),
   ...paddedDefaultProps('small'),
+  ...fontDefaultProps('button'),
 }
 
 export default Button

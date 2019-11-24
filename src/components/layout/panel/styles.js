@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, Container, Padded } from '../../../utils'
+import { Colorway, Container, Padded } from '../../../mixins'
 
 // @TODO add more props.
 export const Panel = styled.section(

@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { handleProps, layoutPropTypes, layoutDefaultProps } from '../../../utils'
+import {
+  handleProps,
+  layoutPropTypes,
+  layoutDefaultProps,
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const VARIANT_HALVES = 'halves'

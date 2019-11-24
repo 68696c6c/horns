@@ -1,4 +1,4 @@
-export { Button, ButtonStyle } from './buttons'
+export { Button } from './buttons'
 
 export { LineChart, Line, PieChart, Region } from './charts'
 

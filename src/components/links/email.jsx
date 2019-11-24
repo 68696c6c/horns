@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { handleProps } from '../../utils'
+import { handleProps } from '../../mixins'
 import * as Styled from './styles'
 
 const LinkEmail = ({ email, subject, body, variant, children, ...others }) => {

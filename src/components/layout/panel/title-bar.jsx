@@ -4,7 +4,7 @@ import {
   handleProps,
   layoutDefaultProps,
   layoutPropTypes,
-} from '../../../utils'
+} from '../../../mixins'
 import * as Styled from './styles'
 
 // eslint-disable-next-line react/prop-types

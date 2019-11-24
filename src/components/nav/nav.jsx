@@ -1,29 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
-import NavMenu from './items/menu'
-import { isArray } from '../../utils/utils'
-import { COLOR_VARIANT_NONE } from '../utils'
 
+import NavMenu from './items/menu'
 import {
   handleProps,
   colorwayDefaultProps,
   colorwayPropTypes,
-} from '../../utils'
+} from '../../mixins'
+import { isArray } from '../../utils'
 import * as Styled from './styles'
-
-// const Styled = styled('nav')`
-//   .nav-item, a {
-//     ${({ theme }) => navItemInline(theme)};
-//   }
-//   > .nav-item-menu {
-//     display: inline-block;
-//     > .nav-item-menu-items {
-//       position: absolute;
-//       left: 0;
-//     }
-//   }
-// `
 
 const Nav = ({ mobile, colorway, children, className, ...others }) => {
   let content = children
@@ -34,7 +20,7 @@ const Nav = ({ mobile, colorway, children, className, ...others }) => {
         menuVariant={colorway}
         content={<FaBars />}
         className={('nav', 'mobile', className)}
-        {...others}
+        {...handleProps('nav', others)}
       >
         {items}
       </NavMenu>

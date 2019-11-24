@@ -5,7 +5,7 @@ import {
   handleProps,
   colorwayDefaultProps,
   colorwayPropTypes,
-} from '../../../utils'
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const NavItem = ({ href, active, variant, className, children, ...others }) => {

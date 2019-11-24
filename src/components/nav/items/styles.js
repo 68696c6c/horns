@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, Padded } from '../../../utils'
+import { Colorway, Padded } from '../../../mixins'
 
 const NavItem = styled.a(Colorway, ({ theme }) => {
   return css`

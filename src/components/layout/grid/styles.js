@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, ContainerSplit } from '../../../utils'
+import { Colorway, ContainerSplit } from '../../../mixins'
 
 export const ContainerGuide = styled.div(
   Colorway,

@@ -6,17 +6,18 @@ import {
   Clickable,
   Roundable,
   Bordered,
-} from '../../utils'
+  Font,
+} from '../../mixins'
 
 export const buttonStyles = [
   ColorwayInteractive,
   Clickable,
   Roundable,
   Bordered,
+  Font,
   ({ theme }) => css`
     display: inline-block;
     text-align: center;
-    font-weight: ${theme.buttons.fontWeight};
     padding: ${theme.buttons.padding};
   `,
 ]

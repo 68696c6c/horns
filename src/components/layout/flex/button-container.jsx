@@ -10,7 +10,7 @@ import {
   paddedPropTypes,
   flexDefaultProps,
   flexPropTypes,
-} from '../../../utils'
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const ButtonContainer = ({ children, ...others }) => (

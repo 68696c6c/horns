@@ -25,7 +25,7 @@ export {
 
 export { getValidator } from './utils/validation'
 
-export { Button, ButtonStyle } from './components/buttons'
+export { Button } from './components/buttons'
 
 export { LineChart, Line, PieChart, Region } from './components/charts'
 

@@ -10,7 +10,7 @@ import {
   flexDefaultProps,
   sizableDefaultProps,
   sizeablePropTypes,
-} from '../../../utils'
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const Box = ({ children, ...others }) => (

@@ -1,7 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { elementPropTypes, handleProps, elementDefaultProps } from '../../../utils/component'
+import {
+  elementPropTypes,
+  handleProps,
+  elementDefaultProps,
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const Area = ({ children, ...others }) => (

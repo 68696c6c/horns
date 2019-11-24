@@ -8,7 +8,7 @@ import {
   Flex,
   Padded,
   Sizeable,
-} from '../../../utils'
+} from '../../../mixins'
 
 export const Box = styled.div(
   ColorwayBordered,
