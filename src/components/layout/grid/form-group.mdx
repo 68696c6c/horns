@@ -1,0 +1,103 @@
+---
+name: 'FormGroup - Inline'
+menu: Layout
+---
+
+import { Playground, Props } from 'docz'
+
+import FormGroup from './form-group'
+import { Input, Textarea, Checkbox, Radio, Select } from '../../forms'
+import Section from '../section'
+import { Button } from '../../buttons'
+import { Heading } from '../../typography'
+import FullscreenDemo from '../../_demo/fullscreen-demo'
+
+# FormGroup
+
+Inline Groups can be used to collect form inputs into a single row.  The inputs will be vertically aligned to each other
+and will will switch to a stacked layout at the specified breakpoint.
+
+<Playground>
+  <FormGroup>
+    <Input label="Input inside of a Group" />
+    <Button>Button Text</Button>
+  </FormGroup>
+  <FormGroup heading="Form Group Heading">
+    <Input label="Input inside of a Group" />
+    <Checkbox label="Checkbox inside of a Group" />
+  </FormGroup>
+  <FormGroup>
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Input label="Input inside of a Group" />
+  </FormGroup>
+  <FormGroup heading="Form Group Heading">
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+    <Radio label="Radio inside of a Group" />
+  </FormGroup>
+  <FormGroup>
+    <Input label="Input inside of a Group" />
+    <Input label="Input inside of a Group" />
+    <Input label="Input inside of a Group" />
+  </FormGroup>
+  <FormGroup heading="Form Group Heading">
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Input label="Input inside of a Group" />
+    <Select label="Select inside of a Group">
+      <option>Option 1</option>
+    </Select>
+    <Textarea label="Textarea inside of a Group" />
+  </FormGroup>
+</Playground>
+
+## Responsiveness
+
+<FullscreenDemo variant="dark" of={FormGroup} title="FormGroup">
+  <Section variant="background">
+    <Heading>
+      These FormGroups will change to a stacked layout at the medium breakpoint.
+    </Heading>
+    <FormGroup>
+      <Input label="Input inside of a FormGroup" />
+      <Button>Button Text</Button>
+    </FormGroup>
+    <FormGroup heading="FormGroup Heading">
+      <Input label="Input inside of a FormGroup" />
+      <Checkbox label="Checkbox inside of a FormGroup" />
+    </FormGroup>
+    <FormGroup>
+      <Select label="Select inside of a FormGroup">
+        <option>Option 1</option>
+      </Select>
+      <Input label="Input inside of a FormGroup" />
+    </FormGroup>
+    <FormGroup heading="FormGroup Heading">
+      <Radio label="Radio inside of a FormGroup" />
+      <Radio label="Radio inside of a FormGroup" />
+      <Radio label="Radio inside of a FormGroup" />
+    </FormGroup>
+    <FormGroup>
+      <Input label="Input inside of a FormGroup" />
+      <Input label="Input inside of a FormGroup" />
+      <Input label="Input inside of a FormGroup" />
+    </FormGroup>
+    <FormGroup heading="FormGroup Heading">
+      <Select label="Select inside of a FormGroup">
+        <option>Option 1</option>
+      </Select>
+      <Input label="Input inside of a FormGroup" />
+      <Select label="Select inside of a FormGroup">
+        <option>Option 1</option>
+      </Select>
+      <Textarea label="Textarea inside of a FormGroup" />
+    </FormGroup>
+  </Section>
+</FullscreenDemo>
+
+## Props
+
+<Props of={FormGroup} />

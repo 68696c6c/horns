@@ -1,6 +1,6 @@
 export { Box, ButtonContainer } from './flex'
 
-export { Area, Columns, Grid, GridGuide } from './grid'
+export { Area, Columns, FormGroup, Grid, GridGuide } from './grid'
 
 export { SiteHeader, SiteHeaderStickyContent } from './site-header'
 
