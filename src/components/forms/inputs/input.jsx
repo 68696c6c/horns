@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import uuid from 'uuid/v4'
 
-import { handleProps } from '../../../mixins'
+import { handleProps, inputPropTypes, inputDefaultProps } from '../../../mixins'
 import { ERROR_CLASS } from '../../../config'
 import { handleLabel, handleMessage } from './base'
 import * as Styled from './styles'
@@ -83,7 +83,7 @@ const Input = ({
 }
 
 Input.propTypes = {
-  ...Styled.inputPropTypes(),
+  ...inputPropTypes(),
   type: PropTypes.oneOf([
     'color',
     'date',
@@ -106,7 +106,7 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  ...Styled.inputDefaultProps(),
+  ...inputDefaultProps(),
   type: 'text',
   currency: '$',
 }

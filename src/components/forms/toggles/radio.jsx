@@ -1,50 +1,58 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { toClassNames } from '../../utils'
-import InputMessage from '../input-message'
-import { Toggle, ToggleControl, ToggleLabel } from './base'
-import { ERROR_CLASS } from '../utils'
 
-const Radio = ({ label, id, name, value, required, hasError, errorMessage, className, ...others }) => {
+import { handleProps, inputDefaultProps, inputPropTypes } from '../../../mixins'
+import { ERROR_CLASS } from '../../../config'
+import { handleMessage } from '../inputs/base'
+import ToggleLabel from './toggle-label'
+import * as Styled from './styles'
+
+const Radio = ({
+  label,
+  id,
+  name,
+  value,
+  required,
+  hasError,
+  errorMessage,
+  ...others
+}) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
-      <Toggle
-        type="checkbox"
+      <Styled.Toggle
+        type="radio"
         name={name}
         id={idValue}
-        className={toClassNames(className, 'radio', errorClass)}
         value={value}
         required={required ? 'required' : ''}
-        {...others}
+        {...handleProps(others, `radio ${errorClass}`)}
       />
-      <ToggleControl htmlFor={idValue} className="toggle-control" round />
-      {label && <ToggleLabel htmlFor={idValue} required={required} hasError={hasError}>{label}</ToggleLabel>}
-      {errorMessage && <InputMessage htmlFor={idValue} variant="danger" className="toggle-message">{errorMessage}</InputMessage>}
+      <Styled.ToggleControl
+        htmlFor={idValue}
+        className="toggle-control"
+        round
+      />
+      {label && (
+        <ToggleLabel htmlFor={idValue} required={required} hasError={hasError}>
+          {label}
+        </ToggleLabel>
+      )}
+      {handleMessage(errorMessage, idValue)}
     </React.Fragment>
   )
 }
 
 Radio.propTypes = {
-  name: PropTypes.string,
+  ...inputPropTypes(),
   value: PropTypes.string,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  required: PropTypes.bool,
-  hasError: PropTypes.bool,
-  errorMessage: PropTypes.string,
 }
 
 Radio.defaultProps = {
-  id: '',
-  label: '',
-  required: false,
-  hasError: false,
-  errorMessage: '',
+  ...inputDefaultProps(),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 export default Radio

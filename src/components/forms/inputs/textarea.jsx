@@ -1,8 +1,8 @@
 import React from 'react'
 import uuid from 'uuid/v4'
 
-import { handleProps } from '../../../mixins'
-import { ERROR_CLASS } from '../utils'
+import { handleProps, inputPropTypes, inputDefaultProps } from '../../../mixins'
+import { ERROR_CLASS } from '../../../config'
 import { handleLabel, handleMessage } from './base'
 import * as Styled from './styles'
 
@@ -34,11 +34,11 @@ const Textarea = ({
 }
 
 Textarea.propTypes = {
-  ...Styled.inputPropTypes(),
+  ...inputPropTypes(),
 }
 
 Textarea.defaultProps = {
-  ...Styled.inputDefaultProps(),
+  ...inputDefaultProps(),
 }
 
 export default Textarea
