@@ -17,9 +17,9 @@ export const handleLabel = (label, id, required, hasError) => {
   )
 }
 
-export const handleMessage = (errorMessage, id) => {
+export const handleMessage = (errorMessage, id, className = '') => {
   return errorMessage ? (
-    <InputMessage htmlFor={id} colorway="danger">
+    <InputMessage htmlFor={id} colorway="danger" className={className}>
       {errorMessage}
     </InputMessage>
   ) : (

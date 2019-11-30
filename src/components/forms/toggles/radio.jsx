@@ -40,19 +40,19 @@ const Radio = ({
           {label}
         </ToggleLabel>
       )}
-      {handleMessage(errorMessage, idValue)}
+      {handleMessage(errorMessage, idValue, 'toggle-message')}
     </React.Fragment>
   )
 }
 
 Radio.propTypes = {
   ...inputPropTypes(),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 Radio.defaultProps = {
   ...inputDefaultProps(),
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: '',
 }
 
 export default Radio

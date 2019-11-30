@@ -37,19 +37,19 @@ const Checkbox = ({
           {label}
         </ToggleLabel>
       )}
-      {handleMessage(errorMessage, idValue)}
+      {handleMessage(errorMessage, idValue, 'toggle-message')}
     </React.Fragment>
   )
 }
 
 Checkbox.propTypes = {
   ...inputPropTypes(),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 Checkbox.defaultProps = {
   ...inputDefaultProps(),
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: '',
 }
 
 export default Checkbox
