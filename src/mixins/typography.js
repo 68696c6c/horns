@@ -8,13 +8,7 @@ import { isUndefined } from '../utils'
 export const fontPropTypes = () => ({
   ...childrenTextPropTypes(),
   font: PropTypes.oneOf(fontStyles),
-  align: PropTypes.oneOf([
-    '',
-    'left',
-    'center',
-    'right',
-    'justify',
-  ]),
+  align: PropTypes.oneOf(['', 'left', 'center', 'right', 'justify']),
 })
 
 export const fontDefaultProps = (font = 'text') => ({

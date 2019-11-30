@@ -7,7 +7,6 @@ export {
   Field,
   Fieldset,
   Group,
-  GroupInline,
   InputHidden,
   Input,
   InputMessage,

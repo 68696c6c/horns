@@ -1,5 +1,7 @@
 import { safeGetValue } from './utils'
 
+export const ERROR_CLASS = 'error'
+
 const defaultInputs = {
   borderWidth: '2px',
 }

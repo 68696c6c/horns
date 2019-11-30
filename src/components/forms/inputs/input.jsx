@@ -1,37 +1,51 @@
-/** @jsx jsx */
-/* eslint-disable no-param-reassign */
-import styled from '@emotion/styled'
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import MaskedInput from 'react-text-mask'
 import createNumberMask from 'text-mask-addons/dist/createNumberMask'
 import uuid from 'uuid/v4'
 
-import Label from '../label'
-import InputMessage from '../input-message'
-import baseInput from './base'
-import { ERROR_CLASS } from '../utils'
+import { handleProps } from '../../../mixins'
+import { ERROR_CLASS } from '../../../config'
+import { handleLabel, handleMessage } from './base'
+import * as Styled from './styles'
 
-const StyledInput = styled('input')`
-  ${({ theme }) => baseInput(theme)}
-`
-const StyledMask = styled(MaskedInput)`
-  ${({ theme }) => baseInput(theme)}
-`
+const phoneMask = [
+  /\d/,
+  /\d/,
+  /\d/,
+  '.',
+  /\d/,
+  /\d/,
+  /\d/,
+  '.',
+  /\d/,
+  /\d/,
+  /\d/,
+  /\d/,
+]
 
-const Input = ({ type, name, id, label, currency, placeholder, required, hasError, errorMessage, className, ...others }) => {
-  const errorClass = hasError ? ERROR_CLASS : ''
-  const idValue = id === '' ? uuid() : id
+const Input = ({
+  type: initialType,
+  name,
+  id,
+  label,
+  currency,
+  placeholder,
+  required,
+  hasError,
+  errorMessage,
+  ...props
+}) => {
+  let type = initialType
+  const others = props
   let Tag
   switch (type) {
     case 'tel':
-      Tag = StyledMask
-      others.mask = [/\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, /\d/]
+      Tag = Styled.InputMasked
+      others.mask = phoneMask
       others.placeholderChar = '_'
       break
     case 'currency':
-      Tag = StyledMask
+      Tag = Styled.InputMasked
       others.mask = createNumberMask({
         prefix: currency,
         allowDecimal: true,
@@ -39,7 +53,7 @@ const Input = ({ type, name, id, label, currency, placeholder, required, hasErro
       type = 'text'
       break
     case 'percentage':
-      Tag = StyledMask
+      Tag = Styled.InputMasked
       others.mask = createNumberMask({
         prefix: '',
         suffix: '%',
@@ -48,26 +62,28 @@ const Input = ({ type, name, id, label, currency, placeholder, required, hasErro
       type = 'text'
       break
     default:
-      Tag = StyledInput
+      Tag = Styled.Input
   }
+  const errorClass = hasError ? ERROR_CLASS : ''
+  const idValue = id === '' ? uuid() : id
   return (
     <React.Fragment>
-      {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
+      {handleLabel(label, idValue, required, hasError)}
       <Tag
         type={type}
         name={name}
         id={idValue}
-        className={`${className} input ${errorClass}`}
         placeholder={placeholder}
         required={required ? 'required' : ''}
-        {...others}
+        {...handleProps(others, `input ${errorClass}`)}
       />
-      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
+      {handleMessage(errorMessage, idValue)}
     </React.Fragment>
   )
 }
 
 Input.propTypes = {
+  ...Styled.inputPropTypes(),
   type: PropTypes.oneOf([
     'color',
     'date',
@@ -86,27 +102,13 @@ Input.propTypes = {
     'currency',
     'percentage',
   ]),
-  name: PropTypes.string,
-  id: PropTypes.string,
-  label: PropTypes.string,
   currency: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  hasError: PropTypes.bool,
-  errorMessage: PropTypes.string,
-  className: PropTypes.string,
 }
 
 Input.defaultProps = {
+  ...Styled.inputDefaultProps(),
   type: 'text',
-  id: '',
-  label: '',
   currency: '$',
-  placeholder: '',
-  required: false,
-  hasError: false,
-  errorMessage: '',
-  className: '',
 }
 
 export default Input

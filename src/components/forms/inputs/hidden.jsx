@@ -1,38 +1,34 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { toClassNames } from '../../utils'
-import { ERROR_CLASS } from '../utils'
 
-const InputHidden = ({ id, name, value, required, hasError, className, ...others }) => (
+import { handleProps } from '../../../mixins'
+import { ERROR_CLASS } from '../../../config'
+
+const InputHidden = ({ id, name, value, required, hasError, ...others }) => (
   <input
     type="hidden"
     id={id}
     name={name}
     value={value}
     required={required ? 'required' : ''}
-    className={toClassNames(className, hasError ? ERROR_CLASS : '')}
-    {...others}
+    {...handleProps(others, hasError ? ERROR_CLASS : '')}
   />
 )
 
 InputHidden.propTypes = {
-  id: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  id: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 InputHidden.defaultProps = {
+  name: '',
   id: '',
-  value: '',
   required: false,
   hasError: false,
+  value: '',
 }
 
 export default InputHidden

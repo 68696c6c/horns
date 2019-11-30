@@ -16,8 +16,8 @@ export const borderStyles = [
 
 // @TODO get default values from a config file.
 const defaultBorders = {
-  width: 'min',
-  style: 'none',
+  width: 'tiny',
+  style: 'solid',
 }
 
 class BordersConfig {

@@ -11,7 +11,7 @@ import { Select } from './selects'
 import InputMessage from './input-message'
 import Field from './field'
 import Group from './group'
-import { GroupInline } from '../layout'
+import { FormGroup } from '../layout'
 import Fieldset from './fieldset'
 import WrapperInline from '../_demo/wrappers/inline'
 
@@ -111,7 +111,7 @@ import WrapperInline from '../_demo/wrappers/inline'
     <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
     <Radio label="Radio inside of a Group" hasError={true} errorMessage="example error message" />
   </Group>
-  <GroupInline heading="Inline Form Group">
+  <FormGroup heading="Inline Form Group">
     <Input label="Input inside of an Inline Group" hasError={true} errorMessage="example error message" />
     <Textarea label="Textarea inside of an Inline Group" hasError={true} errorMessage="example error message" />
     <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
@@ -119,13 +119,13 @@ import WrapperInline from '../_demo/wrappers/inline'
     <Select label="Select inside of an Inline Group" hasError={true} errorMessage="example error message">
       <option>Option 1</option>
     </Select>
-  </GroupInline>
-  <GroupInline heading="Inline Form Group of Checkboxes">
+  </FormGroup>
+  <FormGroup heading="Inline Form Group of Checkboxes">
     <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
     <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
     <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
     <Checkbox label="Checkbox inside of an Inline Group" hasError={true} errorMessage="example error message" />
-  </GroupInline>
+  </FormGroup>
   <Fieldset legend="Fieldset">
     <Input label="Input inside of a Fieldset" hasError={true} errorMessage="example error message" />
     <Textarea label="Textarea inside of a Fieldset" hasError={true} errorMessage="example error message" />

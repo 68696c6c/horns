@@ -3,9 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { jsx } from '@emotion/core'
-import Label from './label'
 
-const StyledFormGroupHeading = styled(Label)`
+const StyledFormGroupHeading = styled('label')`
   font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
   margin-top: 0;
   margin-bottom: ${({ theme }) => theme.spacing.tiny};

@@ -39,7 +39,6 @@ export const Flex = ({ x, y }) => {
     default:
       alignItems = 'center'
   }
-  console.log('Flex x', x, justifyContent)
   return css`
     display: flex;
     align-items: ${alignItems};

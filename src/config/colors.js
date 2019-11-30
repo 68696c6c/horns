@@ -80,8 +80,8 @@ const getModeColors = (mode, dark, neutral, light) => {
     }
   }
 
-  const darkLight = getColorValue(dark.base)
-  const darkLighter = getColorValue(dark.base)
+  const darkLight = getColorValue(dark.light)
+  const darkLighter = getColorValue(dark.lighter)
   return {
     background: {
       primary: darkBase,
@@ -156,7 +156,9 @@ const getColorSwatches = (colorShades, copy, factors) => {
           r.hoverBorder = getColorValue(hover.isDark() ? hoverLight : hoverDark)
           r.active = getColorValue(active)
           r.activeReadable = active.isDark() ? copy.light : copy.dark
-          r.activeBorder = getColorValue(active.isDark() ? activeLight : activeDark)
+          r.activeBorder = getColorValue(
+            active.isDark() ? activeLight : activeDark
+          )
           swatches[colorShade][shade] = r
         } else {
           const color = shadeColor[shade]
@@ -231,7 +233,12 @@ class ColorsConfig {
     const factors = new ColorFactors(configFactors)
 
     const shaded = getShadedColorPallet(pallet, factors)
-    const { background, copy } = getModeColors(this.mode, shaded.dark, shaded.neutral, shaded.light)
+    const { background, copy } = getModeColors(
+      this.mode,
+      shaded.dark,
+      shaded.neutral,
+      shaded.light
+    )
 
     this.swatches = getColorSwatches(shaded, copy, factors)
     this.background = background

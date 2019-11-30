@@ -54,7 +54,6 @@ export const ColorwayText = ({ theme, colorway }) => {
 
 export const ColorwayTextInteractive = ({ theme, colorway }) => {
   const cw = theme.colors.getShade(colorway)
-  console.log('ColorwayTextInteractive', colorway, cw)
   return css`
     color: ${cw.base};
     &:hover {

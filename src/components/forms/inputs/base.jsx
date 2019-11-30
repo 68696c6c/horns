@@ -1,7 +1,31 @@
+import React from 'react'
 import { css } from '@emotion/core'
 import { rgb } from '../../../themes/utils'
+
 import { font } from '../../utils'
 import { ERROR_CLASS } from '../utils'
+import InputMessage from '../input-message'
+import { Label } from '../../typography'
+
+export const handleLabel = (label, id, required, hasError) => {
+  return label ? (
+    <Label htmlFor={id} required={required} hasError={hasError}>
+      {label}
+    </Label>
+  ) : (
+    ''
+  )
+}
+
+export const handleMessage = (errorMessage, id) => {
+  return errorMessage ? (
+    <InputMessage htmlFor={id} colorway="danger">
+      {errorMessage}
+    </InputMessage>
+  ) : (
+    ''
+  )
+}
 
 const baseInput = theme =>
   css`
@@ -14,7 +38,8 @@ const baseInput = theme =>
     padding: ${theme.spacing.tiny} ${theme.spacing.xsmall};
     ${font(theme)};
     &.${ERROR_CLASS} {
-      border: ${theme.inputs.borderWidth} solid ${rgb(theme.colors.danger.default)};
+      border: ${theme.inputs.borderWidth} solid
+        ${rgb(theme.colors.danger.default)};
       &::placeholder {
         color: ${rgb(theme.colors.danger.default)};
       }

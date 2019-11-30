@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
-import { fontDefaultProps, fontPropTypes, Font } from '../../mixins'
+import { fontPropTypes, fontDefaultProps, Font } from '../../mixins'
 import { ERROR_CLASS } from '../forms/utils'
 
 export const TYPOGRAPHY_INLINE = 'inline'
