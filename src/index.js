@@ -50,9 +50,6 @@ export {
   Select,
   SelectAsync,
   SelectNative,
-  Multiselect,
-  MultiselectAsync,
-  MultiselectNative,
 } from './components/forms'
 
 export { ImageFrame, Picture } from './components/images'

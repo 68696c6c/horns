@@ -1,7 +1,7 @@
 import React from 'react'
 
-import SelectAsync from './base-async'
-import Select from './base'
+import SelectAsync from './async'
+import Select from './select'
 
 export const AsyncRefExample = props => {
   const ref = React.createRef()
