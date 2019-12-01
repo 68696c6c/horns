@@ -13,7 +13,7 @@ import filterOptions, { filterStringOptions } from '../../_demo/select-async-dat
 
 <Playground>
   <SelectAsync id="select-async" filterOptions={filterOptions} label="Select Async" name="demo" />
-  <SelectAsync multi id="multi-async" filterOptions={filterOptions} label="Select Async" name="demo" />
+  <SelectAsync multiple id="multi-async" filterOptions={filterOptions} label="Select Async" name="demo" />
 </Playground>
 
 ## Props
@@ -36,12 +36,12 @@ import filterOptions, { filterStringOptions } from '../../_demo/select-async-dat
 ## Multiselect Examples
 
 <Playground>
-  <AsyncRefExample multi filterOptions={filterOptions} label="Select ref example (see console)" name="multi_ref" />
-  <SelectAsync multi filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
-  <SelectAsync multi filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
-  <SelectAsync multi filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
-  <SelectAsync multi filterOptions={filterOptions} label="Required Example" name="required" required={true} />
-  <SelectAsync multi filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
-  <SelectAsync multi filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
-  <SelectAsync multi filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
+  <AsyncRefExample multiple filterOptions={filterOptions} label="Select ref example (see console)" name="multi_ref" />
+  <SelectAsync multiple filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
+  <SelectAsync multiple filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
+  <SelectAsync multiple filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
+  <SelectAsync multiple filterOptions={filterOptions} label="Required Example" name="required" required={true} />
+  <SelectAsync multiple filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
+  <SelectAsync multiple filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
+  <SelectAsync multiple filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
 </Playground>

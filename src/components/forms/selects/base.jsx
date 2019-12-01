@@ -58,7 +58,7 @@ export class BaseSelect extends React.Component {
 
     this.selectRef = React.createRef()
 
-    if (props.multi) {
+    if (props.multiple) {
       this.eventOpen = EVENT_MULTISELECT_OPEN
       this.eventChange = EVENT_MULTISELECT_CHANGE
     } else {
@@ -160,7 +160,7 @@ export class BaseSelect extends React.Component {
 
   handleChange(event) {
     if (!this.cancelled) {
-      const { multi, placeholder } = this.props
+      const { multiple, placeholder } = this.props
 
       // The options are actually list items, not option elements, and their value attributes are NOT the same as the
       // value attribute of an option or input.  Event.target.value is for accessing the value of inputs, options, etc.
@@ -169,7 +169,7 @@ export class BaseSelect extends React.Component {
       const text = event.target.getAttribute('label')
       let newState = {}
 
-      if (multi) {
+      if (multiple) {
         const { values: currentValues, text: currentText } = this.state
         const selected = currentValues.indexOf(eventValue) > -1
 
@@ -262,7 +262,7 @@ export class BaseSelect extends React.Component {
       disabled,
       hasError,
       errorMessage,
-      multi,
+      multiple,
       // id and placeholder are unused, but destructured here to prevent passing them to handleProps.
       id,
       placeholder,
@@ -270,7 +270,7 @@ export class BaseSelect extends React.Component {
     } = this.props
     const { values, text, open } = this.state
     const errorClass = hasError ? ERROR_CLASS : ''
-    const className = multi
+    const className = multiple
       ? `multiselect-custom ${errorClass}`
       : `select-custom ${errorClass}`
     return (
@@ -336,7 +336,7 @@ BaseSelect.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.object }),
   ]),
-  multi: PropTypes.bool,
+  multiple: PropTypes.bool,
   term: PropTypes.string,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
@@ -348,7 +348,7 @@ BaseSelect.defaultProps = {
   value: '',
   disabled: false,
   filterRef: null,
-  multi: false,
+  multiple: false,
   term: '',
   onClick: () => {},
   onChange: () => {},
