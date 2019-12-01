@@ -30,4 +30,4 @@ SelectAsyncDocz.defaultProps = {
   onChange: () => {},
 }
 
-export default withAsync(Select)
+// export default withAsync(Select)

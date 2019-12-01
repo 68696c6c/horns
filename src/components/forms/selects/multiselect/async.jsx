@@ -30,4 +30,4 @@ MultiselectAsyncDocz.defaultProps = {
   onChange: () => {},
 }
 
-export default withAsync(Multiselect)
+// export default withAsync(Multiselect)

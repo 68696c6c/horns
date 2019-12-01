@@ -1,7 +1,6 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { ERROR_CLASS } from '../../../config'
 
 import {
   EVENT_MULTISELECT_CHANGE,
@@ -9,6 +8,7 @@ import {
   EVENT_SELECT_CHANGE,
   EVENT_SELECT_OPEN,
 } from '../../../events'
+import { ERROR_CLASS } from '../../../config'
 import { handleProps, inputDefaultProps, inputPropTypes } from '../../../mixins'
 import { arrayRemoveByValue, isArray, isUndefined } from '../../../utils'
 import { handleLabel, handleMessage } from '../inputs/base'
@@ -19,7 +19,7 @@ const SelectInput = React.forwardRef((props, ref) => (
 ))
 
 SelectInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 SelectInput.defaultProps = {
@@ -44,7 +44,6 @@ class BaseSelect extends React.Component {
       open: false,
       text: '',
       values,
-      options: [],
     }
 
     this.getEventData = this.getEventData.bind(this)
@@ -57,6 +56,7 @@ class BaseSelect extends React.Component {
     this.toggleDropDown = this.toggleDropDown.bind(this)
 
     this.htmlID = props.id === '' ? uuid() : props.id
+    this.options = []
     this.cancelled = false
     this.selectID = uuid()
     this.showFilter = !isUndefined(props.filterRef) && props.filterRef != null
@@ -96,25 +96,25 @@ class BaseSelect extends React.Component {
     this.setOptions(optionArray, value)
   }
 
-  // componentWillReceiveProps(props) {
-  //   const { options } = this.props
-  //   if (props.options !== options) {
-  //     this.setOptions(props.options, props.value)
-  //   }
-  // }
+  componentWillReceiveProps(props) {
+    const { options } = this.props
+    if (props.options !== options) {
+      this.setOptions(props.options, props.value)
+    }
+  }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   let should = false
-  //   if (
-  //     nextState.open !== this.state.open ||
-  //     nextState.value !== this.state.value ||
-  //     nextState.text !== this.state.text ||
-  //     nextProps.term !== this.props.term
-  //   ) {
-  //     should = true
-  //   }
-  //   return should
-  // }
+  // This exists to reduce the number of times the component renders.
+  // The reason for the unused 'term' prop is for this function to make sure the component re-renders when the term
+  // state variable in the withAsync HOC changes.
+  shouldComponentUpdate(nextProps, nextState) {
+    const { open, value, text, term } = this.state
+    return (
+      nextState.open !== open ||
+      nextState.value !== value ||
+      nextState.text !== text ||
+      nextProps.term !== term
+    )
+  }
 
   componentWillUnmount() {
     this.cancelled = true
@@ -131,7 +131,6 @@ class BaseSelect extends React.Component {
 
   setOptions(optionArray, selectedValue) {
     const { placeholder } = this.props
-
     // Value is always treated as an array in order to support multiselects.
     let selectedValues
     if (selectedValue === '') {
@@ -157,7 +156,11 @@ class BaseSelect extends React.Component {
       }
     })
     const text = optionText.length === 0 ? placeholder : optionText.join(', ')
-    this.setState(() => ({ text, options }))
+    // It is weird to handle the options as a class property rather than a state variable, but is done this way so that
+    // the withAsync HOC can manage its options in its own state and pass them to this component as props.  Since this
+    // component is intended to be static, this should not cause any problems.
+    this.options = options
+    this.setState({ text })
   }
 
   handleChange(event) {
@@ -225,21 +228,18 @@ class BaseSelect extends React.Component {
 
   closeDropDown() {
     if (!this.cancelled) {
-      this.setState(() => ({ open: false }))
+      this.setState({ open: false })
     }
   }
 
   openDropDown() {
     if (!this.cancelled) {
-      this.setState(
-        () => ({ open: true }),
-        () => {
-          if (this.showFilter) {
-            const { filterRef } = this.props
-            filterRef.current.focus()
-          }
+      this.setState({ open: true }, () => {
+        if (this.showFilter) {
+          const { filterRef } = this.props
+          filterRef.current.focus()
         }
-      )
+      })
     }
   }
 
@@ -273,7 +273,7 @@ class BaseSelect extends React.Component {
       placeholder,
       ...others
     } = this.props
-    const { values, text, open, options } = this.state
+    const { values, text, open } = this.state
     const errorClass = hasError ? ERROR_CLASS : ''
     const className = multi
       ? `multiselect-custom ${errorClass}`
@@ -302,7 +302,7 @@ class BaseSelect extends React.Component {
               {this.showFilter && (
                 <Styled.Filter ref={filterRef} onKeyUp={onKeyUp} />
               )}
-              {options.map(o => (
+              {this.options.map(o => (
                 <Styled.DropDownOption
                   key={o.key}
                   value={o.value}
@@ -324,15 +324,19 @@ class BaseSelect extends React.Component {
 BaseSelect.propTypes = {
   ...inputPropTypes(),
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    })
+  ),
   disabled: PropTypes.bool,
   filterRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.object }),
   ]),
-
   multi: PropTypes.bool,
-
-  // Forwarded
+  term: PropTypes.string,
   onClick: PropTypes.func,
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
@@ -343,10 +347,8 @@ BaseSelect.defaultProps = {
   value: '',
   disabled: false,
   filterRef: null,
-
   multi: false,
-
-  // Forwarded
+  term: '',
   onClick: () => {},
   onChange: () => {},
   onKeyUp: () => {},

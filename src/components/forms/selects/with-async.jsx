@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function withAsync(Component) {
   class Async extends React.Component {
@@ -19,37 +20,55 @@ function withAsync(Component) {
     }
 
     filterOptions() {
-      const value = this.state.value
-      const term = this.filterRef.current === null ? '' : this.filterRef.current.value
-      this.props.filterOptions(term, options => {
+      const { current } = this.filterRef
+      const term = current === null ? '' : current.value
+      const { filterOptions } = this.props
+      filterOptions(term, options => {
         if (!this.cancelled) {
-          const selectedOption = options.filter(option => {
+          const { value } = this.state
+          const selectedOpt = options.filter(option => {
             return option.value === value
           })
-          const text = selectedOption.length > 0 ? selectedOption[0].label : undefined
-          this.setState(() => ({ options, text, term }))
+          const text = selectedOpt.length > 0 ? selectedOpt[0].label : undefined
+          this.setState({ options, text, term })
         }
       })
     }
 
     render() {
       const { forwardedRef, ...others } = this.props
-      return <Component
-        forwardedRef={forwardedRef}
-        text={this.state.text}
-        term={this.state.term}
-        options={this.state.options}
-        filterRef={this.filterRef}
-        onKeyUp={this.filterOptions}
-        {...others}
-      />
+      const { text, term, options } = this.state
+      return (
+        <Component
+          forwardedRef={forwardedRef}
+          text={text}
+          term={term}
+          options={options}
+          filterRef={this.filterRef}
+          onKeyUp={this.filterOptions}
+          {...others}
+        />
+      )
     }
   }
 
-  return React.forwardRef((props, ref) => {
-    const { value, ...others } = props
-    return <Async value={`${value}`} {...others} forwardedRef={ref} />
-  })
+  Async.propTypes = {
+    forwardedRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.object }),
+    ]),
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    filterOptions: PropTypes.func.isRequired,
+  }
+
+  Async.defaultProps = {
+    value: '',
+    forwardedRef: undefined,
+  }
+
+  return React.forwardRef((props, ref) => (
+    <Async {...props} forwardedRef={ref} />
+  ))
 }
 
 export default withAsync
