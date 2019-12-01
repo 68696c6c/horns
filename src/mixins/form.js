@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 import { ERROR_CLASS } from '../config'
-import { Bordered, Roundable } from './component'
+import { BorderedElement, BorderedInput, Roundable } from './component'
 
 export const inputPropTypes = () => ({
   name: PropTypes.string,
@@ -44,11 +44,11 @@ export const FormControl = ({ theme }) => {
 
 export const inputStyles = [
   Roundable,
-  Bordered,
+  BorderedInput,
   FormControl,
   ({ theme }) => css`
     display: block;
-    margin: 0 0 ${theme.spacing.tiny} 0;
+    margin: 0 0 ${theme.spacing.getSpacing('tiny')} 0;
     padding: ${theme.spacing.getSpacing('xSmall')};
   `,
 ]

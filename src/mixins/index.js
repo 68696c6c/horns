@@ -8,7 +8,12 @@ export {
   ColorwayTextInteractive,
 } from './color'
 
-export { inputPropTypes, inputDefaultProps, FormControl, inputStyles } from './form'
+export {
+  inputPropTypes,
+  inputDefaultProps,
+  FormControl,
+  inputStyles,
+} from './form'
 
 export {
   handleProps,
@@ -23,7 +28,8 @@ export {
   sizableDefaultProps,
   Clickable,
   Roundable,
-  Bordered,
+  BorderedElement,
+  BorderedInput,
   Decoratable,
 } from './component'
 

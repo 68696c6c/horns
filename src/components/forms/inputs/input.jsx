@@ -67,7 +67,7 @@ const Input = ({
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
-    <React.Fragment>
+    <>
       {handleLabel(label, idValue, required, hasError)}
       <Tag
         type={type}
@@ -78,7 +78,7 @@ const Input = ({
         {...handleProps(others, `input ${errorClass}`)}
       />
       {handleMessage(errorMessage, idValue)}
-    </React.Fragment>
+    </>
   )
 }
 

@@ -1,58 +1,59 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import React from 'react'
-import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { toClassNames } from '../../../utils'
-import InputMessage from '../../input-message'
-import Label from '../../label'
-import { ERROR_CLASS } from '../../utils'
-import { StyledNativeSelect } from '../base'
 import { isUndefined } from '../../../../utils/utils'
 
-const SelectNative = ({ name, value, id, label, placeholder, required, hasError, errorMessage, className, children, ...others }) => {
-  const errorClass = hasError ? ERROR_CLASS : ''
-  const idValue = id === '' ? uuid() : id
+import {
+  handleProps,
+  inputDefaultProps,
+  inputPropTypes,
+} from '../../../../mixins'
+import { ERROR_CLASS } from '../../../../config'
+import { handleLabel, handleMessage } from '../../inputs/base'
+import * as Styled from '../styles'
+
+const SelectNative = ({
+  name,
+  value,
+  id,
+  label,
+  placeholder,
+  required,
+  hasError,
+  errorMessage,
+  children,
+  ...others
+}) => {
   const selected = isUndefined(value)
   const valueProp = !selected ? { defaultValue: value } : { value }
+  const errorClass = hasError ? ERROR_CLASS : ''
+  const idValue = id === '' ? uuid() : id
   return (
-    <React.Fragment>
-      {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
-      <StyledNativeSelect
+    <>
+      {handleLabel(label, idValue, required, hasError)}
+      <Styled.SelectNative
         name={name}
         {...valueProp}
         id={idValue}
-        className={toClassNames(className, 'select', errorClass)}
         placeholder={placeholder}
         required={required}
-        {...others}
+        {...handleProps(others, `select-native ${errorClass}`)}
       >
-        <option disabled selected={selected}>{placeholder}</option>
+        <option disabled selected={selected}>
+          {placeholder}
+        </option>
         {children}
-      </StyledNativeSelect>
-      {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
-    </React.Fragment>
+      </Styled.SelectNative>
+      {handleMessage(errorMessage, idValue)}
+    </>
   )
 }
 
 SelectNative.propTypes = {
-  name: PropTypes.string,
-  value: PropTypes.string,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  hasError: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  ...inputPropTypes(),
 }
 
 SelectNative.defaultProps = {
-  id: '',
-  label: '',
-  placeholder: '',
-  required: false,
-  hasError: false,
-  errorMessage: '',
+  ...inputDefaultProps(),
 }
 
 export default SelectNative

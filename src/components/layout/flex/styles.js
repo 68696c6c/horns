@@ -4,7 +4,7 @@ import { css } from '@emotion/core'
 import {
   Colorway,
   ColorwayBordered,
-  Bordered,
+  BorderedElement,
   Flex,
   Padded,
   Sizeable,
@@ -12,7 +12,7 @@ import {
 
 export const Box = styled.div(
   ColorwayBordered,
-  Bordered,
+  BorderedElement,
   Flex,
   Padded,
   Sizeable

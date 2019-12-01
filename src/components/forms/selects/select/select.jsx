@@ -1,22 +1,18 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { isArray, isUndefined } from '../../../../utils/utils'
+
+import { isArray, isUndefined } from '../../../../utils'
 import { getEventName } from '../../../../events'
-import { toClassNames } from '../../../utils'
-import InputMessage from '../../input-message'
-import Label from '../../label'
-import { ERROR_CLASS } from '../../utils'
+
 import {
-  Option,
-  StyledDropDown,
-  StyledDropDownContainer,
-  StyledFilter,
-  StyledSelect,
-  StyledSelectContainer,
-} from '../base'
+  handleProps,
+  inputDefaultProps,
+  inputPropTypes,
+} from '../../../../mixins'
+import { ERROR_CLASS } from '../../../../config'
+import { handleLabel, handleMessage } from '../../inputs/base'
+import * as Styled from '../styles'
 
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
@@ -62,7 +58,12 @@ export class Select extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     let should = false
-    if (nextState.open !== this.state.open || nextState.value !== this.state.value || nextState.text !== this.state.text || nextProps.term !== this.props.term) {
+    if (
+      nextState.open !== this.state.open ||
+      nextState.value !== this.state.value ||
+      nextState.text !== this.state.text ||
+      nextProps.term !== this.props.term
+    ) {
       should = true
     }
     return should
@@ -115,40 +116,56 @@ export class Select extends React.Component {
       if (optionValue === value) {
         optionText = label
       }
-      return <Option key={uuid()} value={optionValue} label={label} onClick={this.fireChange}>{label}</Option>
+      return (
+        <Styled.DropDownOption
+          key={uuid()}
+          value={optionValue}
+          label={label}
+          onClick={this.fireChange}
+        >
+          {label}
+        </Styled.DropDownOption>
+      )
     })
     const text = optionText === '' ? placeholder : optionText
     this.setState(() => ({ value, text }))
   }
 
   getEventData() {
-    const selectID = this.selectID
+    const { selectID } = this
     return {
       bubbles: true,
-      detail: { selectID }
+      detail: { selectID },
     }
   }
 
   fireOpen(event) {
     if (!this.props.disabled) {
-      this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
+      this.selectRef.current.dispatchEvent(
+        new CustomEvent(EVENT_OPEN, this.getEventData())
+      )
       this.props.onClick(event)
     }
   }
 
   fireChange(event) {
     this.handleChange(event)
-    this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_CHANGE, this.getEventData()))
+    this.selectRef.current.dispatchEvent(
+      new CustomEvent(EVENT_CHANGE, this.getEventData())
+    )
   }
 
   handleChange(event) {
     if (!this.cancelled) {
       const value = `${event.target.getAttribute('value')}`
       const text = event.target.getAttribute('label')
-      this.setState(() => ({ value, text }), () => {
-        this.closeDropDown()
-        this.props.onChange(event)
-      })
+      this.setState(
+        () => ({ value, text }),
+        () => {
+          this.closeDropDown()
+          this.props.onChange(event)
+        }
+      )
     }
   }
 
@@ -160,11 +177,14 @@ export class Select extends React.Component {
 
   openDropDown() {
     if (!this.cancelled) {
-      this.setState(() => ({ open: true }), () => {
-        if (this.showFilter) {
-          this.props.filterRef.current.focus()
+      this.setState(
+        () => ({ open: true }),
+        () => {
+          if (this.showFilter) {
+            this.props.filterRef.current.focus()
+          }
         }
-      })
+      )
     }
   }
 
@@ -181,44 +201,60 @@ export class Select extends React.Component {
   }
 
   render() {
-    const { forwardedRef, filterRef, onKeyUp, name, id, label, required, disabled, hasError, errorMessage, className } = this.props
-    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp} /> : ''
+    const {
+      forwardedRef,
+      filterRef,
+      onKeyUp,
+      name,
+      id,
+      label,
+      required,
+      disabled,
+      hasError,
+      errorMessage,
+      placeholder,
+      ...others
+    } = this.props
+    const { value, text, open } = this.state
+    const errorClass = hasError ? ERROR_CLASS : ''
     const idValue = id === '' ? uuid() : id
     return (
-      <React.Fragment>
-        <SelectInput ref={forwardedRef} id={idValue} name={name} value={this.state.value} required={required} />
-        {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
-        <StyledSelectContainer className="select-custom-container">
-          <StyledSelect
-            innerRef={this.selectRef}
-            className={toClassNames(className, 'select-custom', hasError ? ERROR_CLASS : '')}
+      <>
+        <SelectInput
+          ref={forwardedRef}
+          id={idValue}
+          name={name}
+          value={value}
+          required={required}
+        />
+        {handleLabel(label, idValue, required, hasError)}
+        <Styled.SelectContainer className="select-custom-container">
+          <Styled.Select
+            {...handleProps(others, `select-custom ${errorClass}`)}
+            ref={this.selectRef}
             onClick={this.fireOpen}
             disabled={disabled}
           >
-            {this.state.text}
-          </StyledSelect>
-          <StyledDropDownContainer className="select-custom-dropdown-container">
-            <StyledDropDown open={this.state.open} className={hasError ? ERROR_CLASS : ''}>
-              {filter}
+            {text}
+          </Styled.Select>
+          <Styled.DropDownContainer className="select-custom-dropdown-container">
+            <Styled.DropDown open={open} className={errorClass}>
+              {this.showFilter && (
+                <Styled.Filter ref={filterRef} onKeyUp={onKeyUp} />
+              )}
               {this.options}
-            </StyledDropDown>
-          </StyledDropDownContainer>
-        </StyledSelectContainer>
-        {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
-      </React.Fragment>
+            </Styled.DropDown>
+          </Styled.DropDownContainer>
+        </Styled.SelectContainer>
+        {handleMessage(errorMessage, idValue)}
+      </>
     )
   }
 }
 
 Select.propTypes = {
-  name: PropTypes.string,
-  value: PropTypes.string,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  hasError: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  ...inputPropTypes(),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   disabled: PropTypes.bool,
   filterRef: PropTypes.object,
   onClick: PropTypes.func,
@@ -227,12 +263,8 @@ Select.propTypes = {
 }
 
 Select.defaultProps = {
-  id: '',
-  label: '',
-  placeholder: '',
-  required: false,
-  hasError: false,
-  errorMessage: '',
+  ...inputDefaultProps(),
+  value: '',
   disabled: false,
   onClick: () => {},
   onChange: () => {},

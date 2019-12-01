@@ -18,6 +18,8 @@ export const borderStyles = [
 const defaultBorders = {
   width: 'tiny',
   style: 'solid',
+  elements: false,
+  inputs: true,
 }
 
 class BordersConfig {
@@ -26,10 +28,10 @@ class BordersConfig {
       throw new Error('BordersConfig: invalid SpacingConfig')
     }
     const configWidth = safeGetValue(config, 'width', defaultBorders.width)
-    const configStyle = safeGetValue(config, 'style', defaultBorders.style)
-
     this.width = spacingConfig.getSpacing(configWidth)
-    this.style = configStyle
+    this.style = safeGetValue(config, 'style', defaultBorders.style)
+    this.elements = safeGetValue(config, 'elements', defaultBorders.elements)
+    this.inputs = safeGetValue(config, 'inputs', defaultBorders.inputs)
 
     console.log('BordersConfig', this)
   }

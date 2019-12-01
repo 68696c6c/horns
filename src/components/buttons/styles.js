@@ -5,7 +5,7 @@ import {
   ColorwayInteractive,
   Clickable,
   Roundable,
-  Bordered,
+  BorderedElement,
   Font,
 } from '../../mixins'
 
@@ -13,7 +13,7 @@ export const buttonStyles = [
   ColorwayInteractive,
   Clickable,
   Roundable,
-  Bordered,
+  BorderedElement,
   Font,
   ({ theme }) => css`
     display: inline-block;

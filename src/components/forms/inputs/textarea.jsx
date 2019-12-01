@@ -19,7 +19,7 @@ const Textarea = ({
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
-    <React.Fragment>
+    <>
       {handleLabel(label, idValue, required, hasError)}
       <Styled.Textarea
         name={name}
@@ -29,7 +29,7 @@ const Textarea = ({
         {...handleProps(others, `textarea ${errorClass}`)}
       />
       {handleMessage(errorMessage, idValue)}
-    </React.Fragment>
+    </>
   )
 }
 

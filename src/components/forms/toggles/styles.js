@@ -3,23 +3,26 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
 import { Label } from '../../typography'
-import { FormControl } from '../../../mixins'
+import { inputStyles } from '../../../mixins'
 import { ERROR_CLASS } from '../../../config'
 
-export const ToggleControl = styled.label(FormControl, ({ theme, round }) => {
-  return css`
-    content: ' ';
-    display: inline-block;
-    width: 1.2em;
-    min-width: 1.2em;
-    height: 1.2em;
-    vertical-align: middle;
-    margin: 0 ${theme.spacing.getSpacing('xSmall')} 0
-      ${theme.spacing.getSpacing('tiny')};
-    cursor: pointer;
-    ${round ? 'border-radius: 50%;' : ''};
-  `
-})
+export const ToggleControl = styled.label(
+  ...inputStyles,
+  ({ theme, round }) => {
+    return css`
+      content: ' ';
+      display: inline-block;
+      width: 1.2em;
+      min-width: 1.2em;
+      height: 1.2em;
+      vertical-align: middle;
+      margin: 0 ${theme.spacing.getSpacing('xSmall')} 0
+        ${theme.spacing.getSpacing('tiny')};
+      cursor: pointer;
+      ${round ? 'border-radius: 50%;' : ''};
+    `
+  }
+)
 
 ToggleControl.propTypes = {
   round: PropTypes.bool,

@@ -70,10 +70,25 @@ export const Roundable = ({ theme }) => css`
   border-radius: ${theme.radius};
 `
 
-export const Bordered = ({ theme }) => css`
-  border-width: ${theme.borders.width};
-  border-style: ${theme.borders.style};
-`
+export const BorderedElement = ({ theme }) => {
+  if (theme.borders.elements) {
+    return css`
+      border-width: ${theme.borders.width};
+      border-style: ${theme.borders.style};
+    `
+  }
+  return ''
+}
+
+export const BorderedInput = ({ theme }) => {
+  if (theme.borders.inputs) {
+    return css`
+      border-width: ${theme.borders.width};
+      border-style: ${theme.borders.style};
+    `
+  }
+  return ''
+}
 
 export const Decoratable = ({ theme }) => css`
   text-decoration: ${theme.links.decorations.base};

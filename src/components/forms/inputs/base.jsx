@@ -3,7 +3,7 @@ import { css } from '@emotion/core'
 import { rgb } from '../../../themes/utils'
 
 import { font } from '../../utils'
-import { ERROR_CLASS } from '../utils'
+import { ERROR_CLASS } from '../../../config'
 import InputMessage from '../input-message'
 import { Label } from '../../typography'
 

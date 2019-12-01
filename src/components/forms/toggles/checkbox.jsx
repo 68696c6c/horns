@@ -22,7 +22,7 @@ const Checkbox = ({
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
-    <React.Fragment>
+    <>
       <Styled.Toggle
         type="checkbox"
         name={name}
@@ -38,7 +38,7 @@ const Checkbox = ({
         </ToggleLabel>
       )}
       {handleMessage(errorMessage, idValue, 'toggle-message')}
-    </React.Fragment>
+    </>
   )
 }
 
