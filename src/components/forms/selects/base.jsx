@@ -141,22 +141,12 @@ class BaseSelect extends React.Component {
     } else {
       selectedValues = [`${selectedValue}`]
     }
-    if (this.htmlID === 'multi-default-value-strings') {
-      console.log('BaseSelect setOptions selectedValues', selectedValues)
-    }
     const optionText = []
 
     const options = optionArray.map(o => {
       const isComponent = !isUndefined(o.props)
       const optionValue = isComponent ? `${o.props.value}` : `${o.value}`
       const label = isComponent ? o.props.children : o.label
-      if (this.htmlID === 'multi-default-value-strings') {
-        console.log(
-          'BaseSelect setOptions optionValue',
-          optionValue,
-          selectedValues.indexOf(optionValue) > -1
-        )
-      }
       if (selectedValues.indexOf(optionValue) > -1) {
         optionText.push(label)
       }
@@ -179,51 +169,38 @@ class BaseSelect extends React.Component {
       // and is not safe for accessing our arbitrary value attribute, so getAttribute('value') must be used instead.
       const eventValue = event.target.getAttribute('value')
       const text = event.target.getAttribute('label')
-      console.log('BaseSelect handleChange | eventValue', eventValue)
+      let newState = {}
 
       if (multi) {
-        const { values: currentValues } = this.state
+        const { values: currentValues, text: currentText } = this.state
         const selected = currentValues.indexOf(eventValue) > -1
-        if (this.htmlID === 'multi-default-value-strings') {
-          console.log(
-            'BaseSelect handleChange | currentValues | selected',
-            currentValues,
-            selected
-          )
-        }
-        this.setState(
-          prevState => {
-            let newValues = currentValues
-            let newText =
-              prevState.text === '' || prevState.text === placeholder
-                ? []
-                : prevState.text.split(', ')
 
-            // If the event value already exists in the state values, the user is trying to unselect it.
-            if (selected) {
-              newValues = arrayRemoveByValue(newValues, eventValue)
-              newText = arrayRemoveByValue(newText, text)
-            } else {
-              newValues.push(eventValue)
-              newText.push(text)
-            }
-            newText = newText.join(', ')
-            newText = newText === '' ? placeholder : newText
-            return { values: newValues, text: newText }
-          },
-          () => {
-            this.closeDropDown()
-            const { onChange } = this.props
-            onChange(event)
-          }
-        )
+        let newValues = currentValues
+        let newText =
+          currentText === '' || currentText === placeholder
+            ? []
+            : currentText.split(', ')
+
+        // If the event value already exists in the state values, the user is trying to unselect it.
+        if (selected) {
+          newValues = arrayRemoveByValue(newValues, eventValue)
+          newText = arrayRemoveByValue(newText, text)
+        } else {
+          newValues.push(eventValue)
+          newText.push(text)
+        }
+        newText = newText.join(', ')
+        newText = newText === '' ? placeholder : newText
+        newState = { values: newValues, text: newText }
       } else {
-        this.setState({ values: [eventValue], text }, () => {
-          this.closeDropDown()
-          const { onChange } = this.props
-          onChange(event)
-        })
+        newState = { values: [eventValue], text }
       }
+
+      this.setState(newState, () => {
+        this.closeDropDown()
+        const { onChange } = this.props
+        onChange(event)
+      })
     }
   }
 
