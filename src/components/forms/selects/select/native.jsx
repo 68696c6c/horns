@@ -1,6 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { isUndefined } from '../../../../utils/utils'
 
 import {
   handleProps,
@@ -23,7 +23,7 @@ const SelectNative = ({
   children,
   ...others
 }) => {
-  const selected = isUndefined(value)
+  const selected = value !== ''
   const valueProp = !selected ? { defaultValue: value } : { value }
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
@@ -50,10 +50,12 @@ const SelectNative = ({
 
 SelectNative.propTypes = {
   ...inputPropTypes(),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 }
 
 SelectNative.defaultProps = {
   ...inputDefaultProps(),
+  value: '',
 }
 
 export default SelectNative

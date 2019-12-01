@@ -1,32 +1,30 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { arrayRemoveByValue, isArray, isUndefined } from '../../../../utils/utils'
+
+import { arrayRemoveByValue, isArray, isUndefined } from '../../../../utils'
 import { getEventName } from '../../../../events'
-import { toClassNames } from '../../../utils'
-import InputMessage from '../../input-message'
-import InputHidden from '../../inputs/hidden'
-import Label from '../../label'
-import { ERROR_CLASS } from '../../utils'
+
 import {
-  Option,
-  StyledDropDown,
-  StyledDropDownContainer,
-  StyledFilter,
-  StyledSelect,
-  StyledSelectContainer,
-} from '../base'
+  handleProps,
+  inputDefaultProps,
+  inputPropTypes,
+} from '../../../../mixins'
+import { ERROR_CLASS } from '../../../../config'
+import { handleLabel, handleMessage } from '../../inputs/base'
+import * as Styled from '../styles'
 
 // @TODO highlight selected options.
 // @TODO use badges for selected values instead of comma string.
-// @TODO need to use a global config value for input margins and borders.
 
 const EVENT_OPEN = getEventName('multiselect:open')
 const EVENT_CHANGE = getEventName('multiselect:change')
 
-class Multiselect extends React.Component {
+const SelectInput = React.forwardRef((props, ref) => (
+  <input type="hidden" ref={ref} {...props} />
+))
+
+export class Multiselect extends React.Component {
   constructor(props) {
     super(props)
 
@@ -47,7 +45,7 @@ class Multiselect extends React.Component {
 
     this.cancelled = false
     this.selectID = uuid()
-    this.showFilter = !isUndefined(props.filterRef)
+    this.showFilter = !isUndefined(props.filterRef) && props.filterRef != null
 
     this.selectRef = React.createRef()
   }
@@ -94,7 +92,7 @@ class Multiselect extends React.Component {
     const initialValue = isUndefined(value) ? [] : value
     const valueArray = isArray(initialValue) ? initialValue : [initialValue]
     const { placeholder } = this.props
-    let optionText = []
+    const optionText = []
     this.options = options.map(o => {
       const isComponent = !isUndefined(o.props)
       const optionValue = isComponent ? o.props.value : o.value
@@ -102,58 +100,77 @@ class Multiselect extends React.Component {
       if (valueArray.indexOf(optionValue) > -1) {
         optionText.push(label)
       }
-      return <Option key={uuid()} value={optionValue} label={label} onClick={this.fireChange}>{label}</Option>
+      return (
+        <Styled.DropDownOption
+          key={uuid()}
+          value={optionValue}
+          label={label}
+          onClick={this.fireChange}
+        >
+          {label}
+        </Styled.DropDownOption>
+      )
     })
     const text = optionText.length === 0 ? placeholder : optionText.join(', ')
     this.setState(() => ({ value, text }))
   }
 
   getEventData() {
-    const selectID = this.selectID
+    const { selectID } = this
     return {
       bubbles: true,
-      detail: { selectID }
+      detail: { selectID },
     }
   }
 
   fireOpen(event) {
     if (!this.props.disabled) {
-      this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_OPEN, this.getEventData()))
+      this.selectRef.current.dispatchEvent(
+        new CustomEvent(EVENT_OPEN, this.getEventData())
+      )
       this.props.onClick(event)
     }
   }
 
   fireChange(event) {
     this.handleChange(event)
-    this.selectRef.current.dispatchEvent(new CustomEvent(EVENT_CHANGE, this.getEventData()))
+    this.selectRef.current.dispatchEvent(
+      new CustomEvent(EVENT_CHANGE, this.getEventData())
+    )
     this.props.onChange(event)
   }
 
   handleChange(event) {
     if (!this.cancelled) {
       const { placeholder } = this.props
-      const value = event.target.value
+      const { value } = event.target
       const text = event.target.getAttribute('label')
       const stateValue = isUndefined(this.state.value) ? [] : this.state.value
       const currentValue = isArray(stateValue) ? stateValue : [stateValue]
       const exists = currentValue.indexOf(value) > -1
-      this.setState(prevState => {
-        let newValue = currentValue
-        let newText = prevState.text === '' || prevState.text === placeholder ? [] : prevState.text.split(', ')
-        if (exists) {
-          newValue = arrayRemoveByValue(newValue, value)
-          newText = arrayRemoveByValue(newText, text)
-        } else {
-          newValue.push(value)
-          newText.push(text)
+      this.setState(
+        prevState => {
+          let newValue = currentValue
+          let newText =
+            prevState.text === '' || prevState.text === placeholder
+              ? []
+              : prevState.text.split(', ')
+          if (exists) {
+            newValue = arrayRemoveByValue(newValue, value)
+            newText = arrayRemoveByValue(newText, text)
+          } else {
+            newValue.push(value)
+            newText.push(text)
+          }
+          newText = newText.join(', ')
+          newText = newText === '' ? placeholder : newText
+          return { value: newValue, text: newText }
+        },
+        () => {
+          this.closeDropDown()
+          this.props.onChange(event)
         }
-        newText = newText.join(', ')
-        newText = newText === '' ? placeholder : newText
-        return { value: newValue, text: newText }
-      }, () => {
-        this.closeDropDown()
-        this.props.onChange(event)
-      })
+      )
     }
   }
 
@@ -165,11 +182,14 @@ class Multiselect extends React.Component {
 
   openDropDown() {
     if (!this.cancelled) {
-      this.setState(() => ({ open: true }), () => {
-        if (this.showFilter) {
-          this.props.filterRef.current.focus()
+      this.setState(
+        () => ({ open: true }),
+        () => {
+          if (this.showFilter) {
+            this.props.filterRef.current.focus()
+          }
         }
-      })
+      )
     }
   }
 
@@ -186,48 +206,60 @@ class Multiselect extends React.Component {
   }
 
   render() {
-    const { filterRef, onKeyUp, name, id, label, required, disabled, hasError, errorMessage, className } = this.props
-    const filter = this.showFilter ? <StyledFilter innerRef={filterRef} onKeyUp={onKeyUp} /> : ''
+    const {
+      forwardedRef,
+      filterRef,
+      onKeyUp,
+      name,
+      id,
+      label,
+      required,
+      disabled,
+      hasError,
+      errorMessage,
+      placeholder,
+      ...others
+    } = this.props
+    const { value, text, open } = this.state
+    const errorClass = hasError ? ERROR_CLASS : ''
     const idValue = id === '' ? uuid() : id
     return (
-      <React.Fragment>
-        <InputHidden id={idValue} name={name} value={this.state.value} required={required} />
-        {label && <Label htmlFor={idValue} required={required} hasError={hasError}>{label}</Label>}
-        <StyledSelectContainer className="select-custom-container">
-          <StyledSelect
-            innerRef={this.selectRef}
-            className={toClassNames(className, 'select-custom', hasError ? ERROR_CLASS : '')}
+      <>
+        <SelectInput
+          ref={forwardedRef}
+          id={idValue}
+          name={name}
+          value={value}
+          required={required}
+        />
+        {handleLabel(label, idValue, required, hasError)}
+        <Styled.SelectContainer className="select-custom-container">
+          <Styled.Select
+            {...handleProps(others, `multiselect-custom ${errorClass}`)}
+            ref={this.selectRef}
             onClick={this.fireOpen}
             disabled={disabled}
           >
-            {this.state.text}
-          </StyledSelect>
-          <StyledDropDownContainer className="select-custom-dropdown-container">
-            <StyledDropDown open={this.state.open} className={hasError ? ERROR_CLASS : ''}>
-              {filter}
+            {text}
+          </Styled.Select>
+          <Styled.DropDownContainer className="select-custom-dropdown-container">
+            <Styled.DropDown open={open} className={errorClass}>
+              {this.showFilter && (
+                <Styled.Filter ref={filterRef} onKeyUp={onKeyUp} />
+              )}
               {this.options}
-            </StyledDropDown>
-          </StyledDropDownContainer>
-        </StyledSelectContainer>
-        {errorMessage && <InputMessage htmlFor={idValue} variant="danger">{errorMessage}</InputMessage>}
-      </React.Fragment>
+            </Styled.DropDown>
+          </Styled.DropDownContainer>
+        </Styled.SelectContainer>
+        {handleMessage(errorMessage, idValue)}
+      </>
     )
   }
 }
 
 Multiselect.propTypes = {
-  name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.array,
-  ]),
-  id: PropTypes.string,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  required: PropTypes.bool,
-  hasError: PropTypes.bool,
-  errorMessage: PropTypes.string,
+  ...inputPropTypes(),
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   disabled: PropTypes.bool,
   filterRef: PropTypes.object,
   onClick: PropTypes.func,
@@ -236,16 +268,16 @@ Multiselect.propTypes = {
 }
 
 Multiselect.defaultProps = {
-  id: '',
-  label: '',
-  placeholder: '',
-  required: false,
-  hasError: false,
-  errorMessage: '',
+  ...inputDefaultProps(),
+  value: '',
   disabled: false,
+  filterRef: null,
   onClick: () => {},
   onChange: () => {},
   onKeyUp: () => {},
 }
 
-export default Multiselect
+export default React.forwardRef((props, ref) => {
+  const { value, ...others } = props
+  return <Multiselect value={`${value}`} {...others} forwardedRef={ref} />
+})

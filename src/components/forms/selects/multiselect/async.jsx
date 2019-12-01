@@ -1,36 +1,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withAsync from '../with-async'
-import Multiselect from './multiselect'
+import { Multiselect } from './multiselect'
 
-const MultiselectAsync = withAsync(Multiselect)
+// Docz's PropsTable doesn't recognize props defined on higher-order components, so this dummy component here
+// exists just for use in the PropsTable on the docs page.  This component should NOT be exported for use outside this
+// app since it won't actually function.
+// @TODO delete this once we've migrated to storybook.
+export const MultiselectAsyncDocz = () => <React.Fragment />
 
-MultiselectAsync.propTypes = {
+MultiselectAsyncDocz.propTypes = {
   name: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.array,
-  ]),
+  value: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   hasError: PropTypes.bool,
-  filter: PropTypes.bool,
   filterOptions: PropTypes.func.isRequired,
   onChange: PropTypes.func,
 }
 
-MultiselectAsync.defaultProps = {
+MultiselectAsyncDocz.defaultProps = {
   id: '',
   label: '',
   placeholder: '',
   required: false,
   hasError: false,
-  filter: false,
-  onChange: () => {
-  },
+  onChange: () => {},
 }
 
-export default MultiselectAsync
+export default withAsync(Multiselect)

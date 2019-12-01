@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
+
 import { inputStyles } from '../../../mixins'
 
 export const SelectNative = styled.select(...inputStyles, () => {
