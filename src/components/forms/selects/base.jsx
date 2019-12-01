@@ -18,15 +18,10 @@ const SelectInput = React.forwardRef((props, ref) => (
   <input type="hidden" ref={ref} {...props} />
 ))
 
-SelectInput.propTypes = {
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-}
-
-SelectInput.defaultProps = {
-  value: '',
-}
-
-class BaseSelect extends React.Component {
+// The class is exported in addition to the default export on purpose.  The default export forwards a ref to the
+// underlying input element.  If the default export is wrapped by the withAsync HOC, we would need to forward the ref
+// twice.  To avoid that, withAsync wraps the exported class directly.
+export class BaseSelect extends React.Component {
   constructor(props) {
     super(props)
 
@@ -323,7 +318,13 @@ class BaseSelect extends React.Component {
 
 BaseSelect.propTypes = {
   ...inputPropTypes(),
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    ),
+  ]),
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,

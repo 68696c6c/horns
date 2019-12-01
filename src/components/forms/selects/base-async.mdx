@@ -5,20 +5,43 @@ menu: Forms
 
 import { Playground, Props } from 'docz'
 
-import SelectAsync, { SelectAsyncDocz } from './base-async.jsx'
+import SelectAsync from './base-async.jsx'
+import { AsyncRefExample } from './ref-example.jsx'
 import filterOptions, { filterStringOptions } from '../../_demo/select-async-data'
 
 # SelectAsync
 
 <Playground>
   <SelectAsync id="select-async" filterOptions={filterOptions} label="Select Async" name="demo" />
+  <SelectAsync multi id="multi-async" filterOptions={filterOptions} label="Select Async" name="demo" />
 </Playground>
 
 ## Props
 
-<Props of={SelectAsyncDocz} />
+<Props of={SelectAsync} />
 
-## Examples
+## Select Examples
 
 <Playground>
+  <AsyncRefExample filterOptions={filterOptions} label="Select ref example (see console)" name="ref" />
+  <SelectAsync filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
+  <SelectAsync filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
+  <SelectAsync filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
+  <SelectAsync filterOptions={filterOptions} label="Required Example" name="required" required={true} />
+  <SelectAsync filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
+  <SelectAsync filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
+  <SelectAsync filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
+</Playground>
+
+## Multiselect Examples
+
+<Playground>
+  <AsyncRefExample multi filterOptions={filterOptions} label="Select ref example (see console)" name="multi_ref" />
+  <SelectAsync multi filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
+  <SelectAsync multi filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
+  <SelectAsync multi filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
+  <SelectAsync multi filterOptions={filterOptions} label="Required Example" name="required" required={true} />
+  <SelectAsync multi filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
+  <SelectAsync multi filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
+  <SelectAsync multi filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
 </Playground>

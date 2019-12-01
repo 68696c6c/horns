@@ -1,6 +1,4 @@
-import React from 'react'
-
 import withAsync from './with-async'
-import Select from './base'
+import { BaseSelect } from './base'
 
-export default withAsync(Select)
+export default withAsync(BaseSelect)

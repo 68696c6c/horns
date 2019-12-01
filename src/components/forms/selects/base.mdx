@@ -6,6 +6,7 @@ menu: Forms
 import { Playground, Props } from 'docz'
 
 import Select from './base'
+import { SelectRefExample } from './ref-example.jsx'
 
 # BaseSelect
 
@@ -29,6 +30,7 @@ import Select from './base'
 ## Select Examples
 
 <Playground>
+  <SelectRefExample id="select-ref-example" label="Select ref example (see console)" name="ref" />
   <Select id="select-options-prop" label="Options prop" name="options_prop" options={[{ value: 1, label: "One" }, { value: 2, label: "Two" }, { value: 3, label: "Three" }]} />
   <Select id="select-options-html" label="Options HTML" name="options_html">
     <option value={1}>One</option>
@@ -80,6 +82,7 @@ import Select from './base'
 ## Multiselect Examples
 
 <Playground>
+  <SelectRefExample multi id="multi-ref-example" label="Multiselect ref example (see console)" name="multi_ref" />
   <Select multi id="multi-options-prop" label="Options prop" name="multi_options_prop" options={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }, { value: 3, label: 'Three' }]} />
   <Select multi id="multi-options-html" label="Options HTML" name="multi_options_html">
     <option value={1}>One</option>
