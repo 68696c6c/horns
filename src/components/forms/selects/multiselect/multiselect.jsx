@@ -24,6 +24,14 @@ const SelectInput = React.forwardRef((props, ref) => (
   <input type="hidden" ref={ref} {...props} />
 ))
 
+SelectInput.propTypes = {
+  value: PropTypes.string,
+}
+
+SelectInput.defaultProps = {
+  value: '',
+}
+
 export class Multiselect extends React.Component {
   constructor(props) {
     super(props)
@@ -69,13 +77,7 @@ export class Multiselect extends React.Component {
     if (!isUndefined(children) && isUndefined(options)) {
       optionArray = isArray(children) ? children : [children]
     }
-    const initialValue = isUndefined(value) ? [] : value
-    this.setOptions(optionArray, initialValue)
-  }
-
-  componentWillUnmount() {
-    this.cancelled = true
-    window.removeEventListener('click', {})
+    this.setOptions(optionArray, value)
   }
 
   componentWillReceiveProps(props) {
@@ -85,6 +87,25 @@ export class Multiselect extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    let should = false
+    if (
+      nextState.open !== this.state.open ||
+      nextState.value !== this.state.value ||
+      nextState.text !== this.state.text ||
+      nextProps.term !== this.props.term
+    ) {
+      should = true
+    }
+    return should
+  }
+
+  componentWillUnmount() {
+    this.cancelled = true
+    window.removeEventListener('click', {})
+  }
+
+  // Different
   setOptions(options, value) {
     if (isUndefined(options)) {
       return
@@ -140,6 +161,7 @@ export class Multiselect extends React.Component {
     this.props.onChange(event)
   }
 
+  // Different
   handleChange(event) {
     if (!this.cancelled) {
       const { placeholder } = this.props

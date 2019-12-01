@@ -17,6 +17,9 @@ import * as Styled from '../styles'
 const EVENT_OPEN = getEventName('select:open')
 const EVENT_CHANGE = getEventName('select:change')
 
+
+
+
 const SelectInput = React.forwardRef((props, ref) => (
   <input type="hidden" ref={ref} {...props} />
 ))
@@ -37,7 +40,6 @@ export class Select extends React.Component {
       open: false,
       value: '',
       text: '',
-      term: props.term,
     }
 
     this.setOptions = this.setOptions.bind(this)
@@ -54,19 +56,6 @@ export class Select extends React.Component {
     this.showFilter = !isUndefined(props.filterRef) && props.filterRef != null
 
     this.selectRef = React.createRef()
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    let should = false
-    if (
-      nextState.open !== this.state.open ||
-      nextState.value !== this.state.value ||
-      nextState.text !== this.state.text ||
-      nextProps.term !== this.props.term
-    ) {
-      should = true
-    }
-    return should
   }
 
   componentDidMount() {
@@ -91,11 +80,6 @@ export class Select extends React.Component {
     this.setOptions(optionArray, value)
   }
 
-  componentWillUnmount() {
-    this.cancelled = true
-    window.removeEventListener('click', {})
-  }
-
   componentWillReceiveProps(props) {
     const { options } = this.props
     if (props.options !== options) {
@@ -103,6 +87,25 @@ export class Select extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    let should = false
+    if (
+      nextState.open !== this.state.open ||
+      nextState.value !== this.state.value ||
+      nextState.text !== this.state.text ||
+      nextProps.term !== this.props.term
+    ) {
+      should = true
+    }
+    return should
+  }
+
+  componentWillUnmount() {
+    this.cancelled = true
+    window.removeEventListener('click', {})
+  }
+
+  // Different
   setOptions(options, value) {
     if (isUndefined(options)) {
       return
@@ -131,6 +134,8 @@ export class Select extends React.Component {
     this.setState(() => ({ value, text }))
   }
 
+
+
   getEventData() {
     const { selectID } = this
     return {
@@ -153,8 +158,10 @@ export class Select extends React.Component {
     this.selectRef.current.dispatchEvent(
       new CustomEvent(EVENT_CHANGE, this.getEventData())
     )
+    this.props.onChange(event)
   }
 
+  // Different
   handleChange(event) {
     if (!this.cancelled) {
       const value = `${event.target.getAttribute('value')}`
@@ -168,6 +175,26 @@ export class Select extends React.Component {
       )
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   closeDropDown() {
     if (!this.cancelled) {

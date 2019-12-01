@@ -1,0 +1,139 @@
+---
+name: 'BaseSelect'
+menu: Forms
+---
+
+import { Playground, Props } from 'docz'
+
+import Select from './base'
+
+# BaseSelect
+
+<Playground>
+  <Select label="Select" name="demo">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select label="Multiselect" name="demo_multi" multi>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+</Playground>
+
+## Props
+
+<Props of={Select} />
+
+## Select Examples
+
+<Playground>
+  <Select id="select-options-prop" label="Options prop" name="options_prop" options={[{ value: 1, label: "One" }, { value: 2, label: "Two" }, { value: 3, label: "Three" }]} />
+  <Select id="select-options-html" label="Options HTML" name="options_html">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-placeholder" label="Placeholder Example" name="placeholder" placeholder="Placeholder Text">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-string-values" label="String Values Example" name="string_values">
+    <option value="40294d64-2d44-4831-a364-c5b189bf0a9e">First Option</option>
+    <option value="55e6ffbe-c034-4755-b6c0-86c6a9bada62">Second Option</option>
+    <option value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">Third Option</option>
+  </Select>
+  <Select id="select-default-value" label="Default Value Example" name="default_value" value={2}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-default-value-strings" label="Default Value Strings Example" name="default_value_strings" value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">
+    <option value="40294d64-2d44-4831-a364-c5b189bf0a9e">First Option</option>
+    <option value="55e6ffbe-c034-4755-b6c0-86c6a9bada62">Second Option</option>
+    <option value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">Third Option</option>
+  </Select>
+  <Select id="select-required" label="Required Example" name="required" required={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-error" label="Error State Example" name="error" hasError={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-error-message" label="Error Message Example" name="message" hasError={true} errorMessage="example error message">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select id="select-disabled" label="Disabled Example" name="disabled" disabled>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+</Playground>
+
+## Multiselect Examples
+
+<Playground>
+  <Select multi id="multi-options-prop" label="Options prop" name="multi_options_prop" options={[{ value: 1, label: 'One' }, { value: 2, label: 'Two' }, { value: 3, label: 'Three' }]} />
+  <Select multi id="multi-options-html" label="Options HTML" name="multi_options_html">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-placeholder" label="Placeholder Example" name="multi_placeholder" placeholder="Placeholder Text">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-string-values" label="String Values Example" name="multi_string_values">
+    <option value="40294d64-2d44-4831-a364-c5b189bf0a9e">First Option</option>
+    <option value="55e6ffbe-c034-4755-b6c0-86c6a9bada62">Second Option</option>
+    <option value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">Third Option</option>
+  </Select>
+  <Select multi id="multi-default-value" label="Default Value Example" name="multi_value" value={1}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-multi-default-value" label="Multiple Default Values Example" name="multi_multi_value" value={[1, 2]}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-default-value-strings" label="Default Value Strings Example" name="multi_value_strings" value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">
+    <option value="40294d64-2d44-4831-a364-c5b189bf0a9e">First Option</option>
+    <option value="55e6ffbe-c034-4755-b6c0-86c6a9bada62">Second Option</option>
+    <option value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">Third Option</option>
+  </Select>
+  <Select multi id="multi-multi-default-value-strings" label="Multiple Default Values Strings Example" name="multi_multi_value_strings" value={["40294d64-2d44-4831-a364-c5b189bf0a9e", "55e6ffbe-c034-4755-b6c0-86c6a9bada62"]}>
+    <option value="40294d64-2d44-4831-a364-c5b189bf0a9e">First Option</option>
+    <option value="55e6ffbe-c034-4755-b6c0-86c6a9bada62">Second Option</option>
+    <option value="2402ef98-1f67-4834-8b89-7ae8ede7b8bf">Third Option</option>
+  </Select>
+  <Select multi id="multi-required" label="Required Example" name="multi_required" required={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-error" label="Error State Example" name="multi_error" hasError={true}>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-message-message" label="Error Message Example" name="multi_message" hasError={true} errorMessage="example error message">
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+  <Select multi id="multi-disabled" label="Disabled Example" name="multi_disabled" disabled>
+    <option value={1}>One</option>
+    <option value={2}>Two</option>
+    <option value={3}>Three</option>
+  </Select>
+</Playground>

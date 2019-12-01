@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import { css, jsx } from '@emotion/core'
 import { rgb } from '../../themes/utils'
 import { font, toClassNames } from '../utils'
-import Label from './label'
+import { Label } from '../typography'
 
 const StyledFieldset = styled('div')`
   &:not(:first-child) {
