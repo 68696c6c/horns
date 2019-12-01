@@ -22,7 +22,7 @@ export const Select = styled.div(...inputStyles, ({ theme, open }) => {
   `
 })
 
-export const Filter = styled.div(
+export const Filter = styled.input(
   ...inputStyles,
   ({ theme }) => css`
     margin: ${theme.spacing.getSpacing('tiny')};

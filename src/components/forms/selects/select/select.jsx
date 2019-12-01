@@ -51,7 +51,7 @@ export class Select extends React.Component {
 
     this.cancelled = false
     this.selectID = uuid()
-    this.showFilter = !isUndefined(props.filterRef)
+    this.showFilter = !isUndefined(props.filterRef) && props.filterRef != null
 
     this.selectRef = React.createRef()
   }
@@ -266,6 +266,7 @@ Select.defaultProps = {
   ...inputDefaultProps(),
   value: '',
   disabled: false,
+  filterRef: null,
   onClick: () => {},
   onChange: () => {},
   onKeyUp: () => {},

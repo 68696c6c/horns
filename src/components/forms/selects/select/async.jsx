@@ -6,7 +6,8 @@ import { Select } from './select'
 // Docz's PropsTable doesn't recognize props defined on higher-order components, so this dummy component here
 // exists just for use in the PropsTable on the docs page.  This component should NOT be exported for use outside this
 // app since it won't actually function.
-export const SelectAsyncDocz = () => <React.Fragment/>
+// @TODO delete this once we've migrated to storybook.
+export const SelectAsyncDocz = () => <React.Fragment />
 
 SelectAsyncDocz.propTypes = {
   name: PropTypes.string,
@@ -26,8 +27,7 @@ SelectAsyncDocz.defaultProps = {
   placeholder: '',
   required: false,
   hasError: false,
-  onChange: () => {
-  },
+  onChange: () => {},
 }
 
 export default withAsync(Select)
