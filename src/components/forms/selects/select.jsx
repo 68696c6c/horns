@@ -102,10 +102,10 @@ export class BaseSelect extends React.Component {
   // The reason for the unused 'term' prop is for this function to make sure the component re-renders when the term
   // state variable in the withAsync HOC changes.
   shouldComponentUpdate(nextProps, nextState) {
-    const { open, value, text, term } = this.state
+    const { open, values, text, term } = this.state
     return (
       nextState.open !== open ||
-      nextState.value !== value ||
+      nextState.values !== values ||
       nextState.text !== text ||
       nextProps.term !== term
     )

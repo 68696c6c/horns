@@ -30,20 +30,23 @@ function withAsync(Component) {
             return option.value === value
           })
           const text = selectedOpt.length > 0 ? selectedOpt[0].label : undefined
-          this.setState({ options, text, term })
+          console.log('withAsync text', text, selectedOpt)
+          console.log('withAsync value', value)
+          this.setState({ options, text, term, value })
         }
       })
     }
 
     render() {
       const { forwardedRef, ...others } = this.props
-      const { text, term, options } = this.state
+      const { text, term, options, value } = this.state
       return (
         <Component
           forwardedRef={forwardedRef}
           text={text}
           term={term}
           options={options}
+          value={value}
           filterRef={this.filterRef}
           onKeyUp={this.filterOptions}
           {...others}
