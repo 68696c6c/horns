@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 
-import { isArray, isUndefined } from '../../utils/utils'
+import { isArray, isUndefined } from '../../utils'
 import {
+  handleProps,
   paddedDefaultProps,
   paddedPropTypes,
   responsiveDefaultProps,
@@ -42,12 +43,11 @@ class FormGroup extends React.Component {
   }
 
   render() {
-    const { heading, breakpoint, className, children, ...others } = this.props
+    const { heading, breakpoint, children, ...others } = this.props
     return (
       <Styled.FormGroupInline
         breakpoint={breakpoint}
-        className={`${className} inline-group`}
-        {...others}
+        {...handleProps(others, 'inline-group')}
       >
         {heading && (
           <Styled.FormGroupHeading
