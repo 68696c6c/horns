@@ -18,10 +18,7 @@ const SelectInput = React.forwardRef((props, ref) => (
   <input type="hidden" ref={ref} {...props} />
 ))
 
-// The class is exported in addition to the default export on purpose.  The default export forwards a ref to the
-// underlying input element.  If the default export is wrapped by the withAsync HOC, we would need to forward the ref
-// twice.  To avoid that, withAsync wraps the exported class directly.
-export class BaseSelect extends React.Component {
+class BaseSelect extends React.Component {
   constructor(props) {
     super(props)
 
@@ -85,26 +82,6 @@ export class BaseSelect extends React.Component {
     })
 
     this.filterOptions()
-  }
-
-  // componentWillReceiveProps(props) {
-  //   const { options } = this.props
-  //   if (props.options !== options) {
-  //     this.setOptions(props.options, props.value)
-  //   }
-  // }
-
-  // This exists to reduce the number of times the component renders.
-  // The reason for the unused 'term' prop is for this function to make sure the component re-renders when the term
-  // state variable in the withAsync HOC changes.
-  shouldComponentUpdate(nextProps, nextState) {
-    const { open, values, text, term } = this.state
-    return (
-      nextState.open !== open ||
-      nextState.values !== values ||
-      nextState.text !== text ||
-      nextProps.term !== term
-    )
   }
 
   componentWillUnmount() {

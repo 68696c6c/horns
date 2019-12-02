@@ -1,23 +1,8 @@
 import React from 'react'
 
-import SelectAsync from './async'
 import Select from './select'
 
-export const AsyncRefExample = props => {
-  const ref = React.createRef()
-  return (
-    <SelectAsync
-      {...props}
-      ref={ref}
-      label="Ref Example (see console)"
-      placeholder="Placeholder Text"
-      name="placeholder"
-      onChange={() => { console.log('selected value', ref.current.value) }}
-    />
-  )
-}
-
-export const SelectRefExample = props => {
+const SelectRefExample = props => {
   const ref = React.createRef()
   return (
     <Select
@@ -31,3 +16,5 @@ export const SelectRefExample = props => {
     </Select>
   )
 }
+
+export default SelectRefExample

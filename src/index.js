@@ -48,7 +48,6 @@ export {
   Radio,
   Textarea,
   Select,
-  SelectAsync,
   SelectNative,
 } from './components/forms'
 

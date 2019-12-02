@@ -6,10 +6,10 @@ menu: Forms
 import { Playground, Props } from 'docz'
 
 import Select from './select'
-import { SelectRefExample } from './ref-example.jsx'
+import SelectRefExample from './ref-example.jsx'
 import filterOptions, { filterStringOptions } from '../../_demo/select-async-data'
 
-# BaseSelect
+# Select
 
 <Playground>
   <Select label="Select" name="demo">
@@ -142,4 +142,30 @@ import filterOptions, { filterStringOptions } from '../../_demo/select-async-dat
     <option value={2}>Two</option>
     <option value={3}>Three</option>
   </Select>
+</Playground>
+
+## Async Select Examples
+
+<Playground>
+  <SelectRefExample filterOptions={filterOptions} label="Select ref example (see console)" name="ref" />
+  <Select filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
+  <Select filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
+  <Select filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
+  <Select filterOptions={filterOptions} label="Required Example" name="required" required={true} />
+  <Select filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
+  <Select filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
+  <Select filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
+</Playground>
+
+## Async Multiselect Examples
+
+<Playground>
+  <SelectRefExample multiple filterOptions={filterOptions} label="Select ref example (see console)" name="multi_ref" />
+  <Select multiple filterOptions={filterStringOptions} label="String Values Example" name="string_values" />
+  <Select multiple filterOptions={filterOptions} label="Placeholder Example" placeholder="Placeholder Text" name="placeholder" />
+  <Select multiple filterOptions={filterOptions} label="Default Value Example" name="value" value={2}/>
+  <Select multiple filterOptions={filterOptions} label="Required Example" name="required" required={true} />
+  <Select multiple filterOptions={filterOptions} label="Error State Example" name="error" hasError={true} />
+  <Select multiple filterOptions={filterOptions} label="Error Message Example" name="message" hasError={true} errorMessage="example error message" />
+  <Select multiple filterOptions={filterOptions} label="Disabled Example" name="disabled" disabled />
 </Playground>
