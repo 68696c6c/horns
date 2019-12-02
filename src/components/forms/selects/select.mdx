@@ -7,6 +7,7 @@ import { Playground, Props } from 'docz'
 
 import Select from './select'
 import { SelectRefExample } from './ref-example.jsx'
+import filterOptions, { filterStringOptions } from '../../_demo/select-async-data'
 
 # BaseSelect
 
@@ -21,6 +22,8 @@ import { SelectRefExample } from './ref-example.jsx'
     <option value={2}>Two</option>
     <option value={3}>Three</option>
   </Select>
+  <Select id="select-async" filterOptions={filterOptions} label="Select Async" name="async_demo" />
+  <Select multiple id="multi-async" filterOptions={filterOptions} label="Multiselect Async" name="multi_async_demo" />
 </Playground>
 
 ## Props
