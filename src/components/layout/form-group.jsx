@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
 
-import { isArray, isUndefined } from '../../../utils/utils'
+import { isArray, isUndefined } from '../../utils/utils'
 import {
   paddedDefaultProps,
   paddedPropTypes,
   responsiveDefaultProps,
   responsivePropTypes,
-} from '../../../mixins'
+} from '../../mixins'
 import * as Styled from './styles'
 
 const FormGroupHeading = ({ children, end }) => (
