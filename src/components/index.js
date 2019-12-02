@@ -9,7 +9,6 @@ export {
   Group,
   InputHidden,
   Input,
-  InputMessage,
   Radio,
   Textarea,
   Select,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 import { fontPropTypes, fontDefaultProps, Font } from '../../mixins'
-import { ERROR_CLASS } from '../forms/utils'
+import { ERROR_CLASS } from '../../config'
 
 export const TYPOGRAPHY_INLINE = 'inline'
 export const TYPOGRAPHY_BLOCK = 'block'
