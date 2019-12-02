@@ -32,7 +32,11 @@ const Heading = ({ children, level: baseLevel, ...others }) => {
       Tag = Styled.H1
       level = 'h1'
   }
-  return <Tag {...handleProps(props, 'heading')} level={level}>{children}</Tag>
+  return (
+    <Tag {...handleProps(props, 'heading')} level={level}>
+      {children}
+    </Tag>
+  )
 }
 
 Heading.propTypes = {
@@ -41,7 +45,7 @@ Heading.propTypes = {
 }
 
 Heading.defaultProps = {
-  ...fontDefaultProps(),
+  ...fontDefaultProps('heading'),
   level: 'auto',
 }
 

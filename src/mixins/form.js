@@ -2,7 +2,8 @@ import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
 import { ERROR_CLASS } from '../config'
-import { BorderedElement, BorderedInput, Roundable } from './component'
+import { BorderedInput, Roundable } from './component'
+import { Font } from './typography'
 
 export const inputPropTypes = () => ({
   name: PropTypes.string,
@@ -24,8 +25,14 @@ export const inputDefaultProps = () => ({
   errorMessage: '',
 })
 
-export const FormControl = ({ theme }) => {
-  return css`
+export const inputStyles = [
+  Font,
+  Roundable,
+  BorderedInput,
+  ({ theme }) => css`
+    display: block;
+    margin: 0 0 ${theme.spacing.getSpacing('tiny')} 0;
+    padding: ${theme.spacing.getSpacing('xSmall')};
     background: ${theme.colors.background.secondary};
     color: ${theme.colors.copy.primary};
     border-color: ${theme.colors.background.tertiary};
@@ -39,16 +46,5 @@ export const FormControl = ({ theme }) => {
       background: ${theme.colors.background.inactive};
       cursor: not-allowed;
     }
-  `
-}
-
-export const inputStyles = [
-  Roundable,
-  BorderedInput,
-  FormControl,
-  ({ theme }) => css`
-    display: block;
-    margin: 0 0 ${theme.spacing.getSpacing('tiny')} 0;
-    padding: ${theme.spacing.getSpacing('xSmall')};
   `,
 ]

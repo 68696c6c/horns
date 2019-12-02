@@ -8,12 +8,7 @@ export {
   ColorwayTextInteractive,
 } from './color'
 
-export {
-  inputPropTypes,
-  inputDefaultProps,
-  FormControl,
-  inputStyles,
-} from './form'
+export { inputPropTypes, inputDefaultProps, inputStyles } from './form'
 
 export {
   handleProps,
@@ -54,4 +49,9 @@ export {
   layoutDefaultProps,
 } from './layout'
 
-export { fontPropTypes, fontDefaultProps, Font } from './typography'
+export {
+  fontPropTypes,
+  fontDefaultProps,
+  Font,
+  BaseHeading,
+} from './typography'

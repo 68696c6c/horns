@@ -1,10 +1,13 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, ContainerSplit, Padded } from '../../../mixins'
-import { valueToInt } from '../../../utils'
-
-import { Label } from '../../typography'
+import {
+  BaseHeading,
+  Colorway,
+  ContainerSplit,
+  Font,
+  Padded,
+} from '../../../mixins'
 
 export const ContainerGuide = styled.div(
   Colorway,
@@ -126,29 +129,18 @@ export const FormGroupField = styled.div(({ theme, breakpoint }) => {
   `
 })
 
-// @TODO move this to typography?
-export const FormGroupHeading = styled(Label)`
-  grid-column-end: span ${({ end }) => end};
-  font-weight: ${({ theme }) => theme.typography.fonts.bold.weight};
-  margin-top: ${({ theme }) => theme.spacing.tiny};
-  margin-bottom: ${({ theme }) => theme.spacing.tiny};
-  grid-row: 1;
-`
+export const FormGroupHeading = styled.label(
+  Font,
+  BaseHeading,
+  ({ end }) => css`
+    grid-column-end: span ${end};
+    grid-row: 1;
+  `
+)
+FormGroupHeading.defaultProps = { level: 'h6', font: 'heading' }
 
-// @TODO move this to flex?
-export const FormGroupToggleContainer = styled.div`
+export const FormGroupVerticalContainer = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing.tiny};
-`
-
-// @TODO combine with flex/button-container?
-export const FormGroupButtonContainer = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  margin-top: ${({ theme }) =>
-    valueToInt(theme.typography.sizes.default) *
-    valueToInt(theme.typography.lineHeight)}px;
 `

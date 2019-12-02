@@ -1,12 +1,14 @@
-/** @jsx jsx */
 import React from 'react'
 import PropTypes from 'prop-types'
 import uuid from 'uuid/v4'
-import { jsx } from '@emotion/core'
-import { paddedDefaultProps, paddedPropTypes, responsiveDefaultProps, responsivePropTypes } from '../../../mixins'
 
 import { isArray, isUndefined } from '../../../utils/utils'
-
+import {
+  paddedDefaultProps,
+  paddedPropTypes,
+  responsiveDefaultProps,
+  responsivePropTypes,
+} from '../../../mixins'
 import * as Styled from './styles'
 
 const FormGroupHeading = ({ children, end }) => (
@@ -58,23 +60,26 @@ class FormGroup extends React.Component {
           .filter(c => !isUndefined(c.type))
           .map((child, index) => {
             let result = (
-              <Styled.FormGroupField breakpoint={breakpoint} key={this.keys[index]}>
+              <Styled.FormGroupField
+                breakpoint={breakpoint}
+                key={this.keys[index]}
+              >
                 {child}
               </Styled.FormGroupField>
             )
             if (
               isComponentType(child, 'Checkbox') ||
-              isComponentType(child, 'Radio')
+              isComponentType(child, 'Radio') ||
+              isComponentType(child, 'Button')
             ) {
               result = (
-                <Styled.FormGroupField breakpoint={breakpoint} key={this.keys[index]}>
-                  <Styled.FormGroupToggleContainer>{child}</Styled.FormGroupToggleContainer>
-                </Styled.FormGroupField>
-              )
-            } else if (isComponentType(child, 'Button')) {
-              result = (
-                <Styled.FormGroupField breakpoint={breakpoint} key={this.keys[index]}>
-                  <Styled.FormGroupButtonContainer>{child}</Styled.FormGroupButtonContainer>
+                <Styled.FormGroupField
+                  breakpoint={breakpoint}
+                  key={this.keys[index]}
+                >
+                  <Styled.FormGroupVerticalContainer>
+                    {child}
+                  </Styled.FormGroupVerticalContainer>
                 </Styled.FormGroupField>
               )
             }

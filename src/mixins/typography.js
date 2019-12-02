@@ -28,31 +28,31 @@ export const Font = ({ theme, font, align }) => {
     line-height: ${theme.typography.letting.base};
     text-align: ${align || style.align};
     margin: ${theme.typography.spacing.base};
-    ${
-      style.align === 'justify'
-        ? css`
-            text-justify: ${style.justify};
-          `
-        : ''
-    }
+    ${style.align === 'justify'
+      ? css`
+          text-justify: ${style.justify};
+        `
+      : ''};
     text-decoration: ${style.decoration};
-    ${
-      isUndefined(style.hover)
-        ? ''
-        : css`
-            &:hover {
-              text-decoration: ${style.hover.decoration};
-            }
-          `
-    }
-    ${
-      isUndefined(style.active)
-        ? ''
-        : css`
-            &:active {
-              text-decoration: ${style.active.decoration};
-            }
-          `
-    }
+    ${isUndefined(style.hover)
+      ? ''
+      : css`
+          &:hover {
+            text-decoration: ${style.hover.decoration};
+          }
+        `}
+    ${isUndefined(style.active)
+      ? ''
+      : css`
+          &:active {
+            text-decoration: ${style.active.decoration};
+          }
+        `}
   `
 }
+
+export const BaseHeading = ({ theme, level }) => css`
+  font-size: ${theme.typography.getSize(level)};
+  line-height: ${theme.typography.letting.heading};
+  margin: ${theme.typography.spacing.heading};
+`

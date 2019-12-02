@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from 'emotion-theming'
 import { css, Global } from '@emotion/core'
-import { getBaseStyles } from './themes'
+
+import { getBaseStyles, modeCSS } from './themes'
 import theme from './themes/base'
-import { modeCSS } from './themes/mode'
 
 const App = ({ children }) => (
   <ThemeProvider theme={theme}>

@@ -2,7 +2,12 @@ import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
 import { css } from '@emotion/core'
 
-import { fontPropTypes, fontDefaultProps, Font } from '../../mixins'
+import {
+  fontPropTypes,
+  fontDefaultProps,
+  Font,
+  BaseHeading,
+} from '../../mixins'
 import { ERROR_CLASS } from '../../config'
 
 export const TYPOGRAPHY_INLINE = 'inline'
@@ -56,11 +61,6 @@ export const KBD = styled.kbd(Font)
 export const Var = styled.var(Font)
 
 // Heading components
-const BaseHeading = ({ theme, level }) => css`
-  font-size: ${theme.typography.getSize(level)};
-  line-height: ${theme.typography.letting.heading};
-  margin: ${theme.typography.spacing.heading};
-`
 export const H1 = styled.h1(Font, BaseHeading)
 export const H2 = styled.h2(Font, BaseHeading)
 export const H3 = styled.h3(Font, BaseHeading)
