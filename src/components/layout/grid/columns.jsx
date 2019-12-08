@@ -28,18 +28,3 @@ Columns.defaultProps = {
 }
 
 export default Columns
-
-// // Used in storybook stories, doesn't work with Styled.layoutPropTypes() for some reason
-// Columns.propTypes = {
-//   /** heck!! */
-//   fuck: PropTypes.string.isRequired, // eat shit
-//   /** i hate being alive */
-//   hell: PropTypes.string,
-// }
-
-// // console.log(Footer.propTypes)
-
-// Columns.defaultProps = {
-//   /** well shit */
-//   hell: 'damn',
-// }
