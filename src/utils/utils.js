@@ -23,6 +23,11 @@ export const isArray = arr => {
   return arr.constructor === Array
 }
 
+export const isComponentType = (component, type) =>
+  component.type.displayName === type ||
+  component.type.name === type ||
+  component.props.mdxType === type
+
 export const isNumber = v => typeof v === 'number'
 
 export const toNumber = v =>

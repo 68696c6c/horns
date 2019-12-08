@@ -1,1 +1,7 @@
-export { valueToInt, isUndefined, isArray, arrayRemoveByValue } from './utils'
+export {
+  valueToInt,
+  isUndefined,
+  isArray,
+  arrayRemoveByValue,
+  isComponentType,
+} from './utils'
