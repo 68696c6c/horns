@@ -7,7 +7,13 @@ import { withKnobs, boolean, select } from '@storybook/addon-knobs'
 import Columns from './columns'
 import Area from './area'
 
-export default { title: 'Columns', decorators: [withKnobs] }
+export default {
+  title: 'Columns',
+  parameters: {
+    component: Columns,
+  },
+  decorators: [withKnobs],
+}
 
 export const example = () => (
   <>
@@ -23,4 +29,10 @@ export const example = () => (
       <Area colorway="secondary-darker">Five</Area>
     </Columns>
   </>
+)
+
+export const test = () => (
+  <Columns>
+    <Area>hi</Area>
+  </Columns>
 )

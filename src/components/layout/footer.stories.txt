@@ -1,0 +1,14 @@
+import { Meta, Props } from '@storybook/addon-docs/blocks'
+import Footer from './footer'
+
+import PropTypes from 'prop-types'
+
+<Meta title="Footer" component={Footer} />
+
+# Footer
+
+Displays a customizable activity indicator.
+
+## Prop Table
+
+<Props of={Footer} />

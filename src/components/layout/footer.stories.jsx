@@ -2,6 +2,7 @@ import React from 'react'
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { withKnobs, text, select } from '@storybook/addon-knobs'
+// import { Props } from '@storybook/addon-docs/blocks'
 import Footer from './footer'
 
 export default { title: 'Footer', decorators: [withKnobs] }
