@@ -25,7 +25,7 @@ export const Font = ({ theme, font, align }) => {
     font-weight: ${style.weight};
     font-variant: ${style.variant};
     font-size: ${style.size};
-    line-height: ${theme.typography.letting.base};
+    line-height: ${style.letting};
     text-align: ${align || style.align};
     margin: ${theme.typography.spacing.base};
     ${style.align === 'justify'
@@ -52,6 +52,7 @@ export const Font = ({ theme, font, align }) => {
 }
 
 export const BaseHeading = ({ theme, level }) => css`
+  display: block;
   font-size: ${theme.typography.getSize(level)};
   line-height: ${theme.typography.letting.heading};
   margin: ${theme.typography.spacing.heading};

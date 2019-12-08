@@ -16,13 +16,12 @@ const Checkbox = ({
   required,
   hasError,
   errorMessage,
-  className,
   ...others
 }) => {
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
-    <>
+    <Styled.ToggleContainer className="toggle-container">
       <Styled.Toggle
         type="checkbox"
         name={name}
@@ -38,7 +37,7 @@ const Checkbox = ({
         </ToggleLabel>
       )}
       {handleMessage(errorMessage, idValue, 'toggle-message')}
-    </>
+    </Styled.ToggleContainer>
   )
 }
 

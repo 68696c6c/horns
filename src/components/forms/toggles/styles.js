@@ -3,18 +3,21 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
 import { Label } from '../../typography'
-import { inputStyles } from '../../../mixins'
+import { InputSpacing, inputStyles } from '../../../mixins'
 import { ERROR_CLASS } from '../../../config'
+
+export const ToggleContainer = styled.div(InputSpacing)
 
 export const ToggleControl = styled.label(
   ...inputStyles,
   ({ theme, round }) => {
+    const style = theme.typography.getStyle('label')
     return css`
       content: ' ';
       display: inline-block;
-      width: 1.2em;
-      min-width: 1.2em;
-      height: 1.2em;
+      width: ${style.letting};
+      min-width: ${style.letting};
+      height: ${style.letting};
       vertical-align: middle;
       margin: 0 ${theme.spacing.getSpacing('xSmall')} 0
         ${theme.spacing.getSpacing('tiny')};
@@ -49,7 +52,7 @@ export const Toggle = styled.input(({ theme }) => {
     height: 1em;
     ~ label.toggle-label,
     ~ label.toggle-message {
-      vertical-align: bottom;
+      vertical-align: middle;
       display: inline-block;
     }
     &:checked + label.toggle-control {

@@ -155,13 +155,13 @@ const defaultTypography = {
   spacing: {
     base: '0',
     paragraph: '1em 0',
-    heading: '1.25rem 0 1rem 0',
+    heading: '1.25em 0 1em 0',
   },
   // line-height
   letting: {
     base: '1.6em',
-    paragraph: '1.6em',
-    heading: '1em',
+    min: '1em',
+    max: '2em',
   },
   indent: '1em',
   hyphenation: {
@@ -181,6 +181,7 @@ const defaultTypography = {
       // these are modifiers for the base value provided by the typeface.
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     heading: {
       family: 'primary',
@@ -194,6 +195,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'min',
     },
     quote: {
       family: 'primary',
@@ -206,6 +208,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     text: {
       family: 'primary',
@@ -218,6 +221,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     label: {
       family: 'primary',
@@ -230,6 +234,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'min',
     },
     message: {
       family: 'primary',
@@ -242,6 +247,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     button: {
       family: 'primary',
@@ -254,6 +260,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     link: {
       family: 'primary',
@@ -266,6 +273,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
       hover: {
         decoration: 'underline',
       },
@@ -284,6 +292,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     legal: {
       family: 'secondary',
@@ -296,6 +305,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     code: {
       family: 'tertiary',
@@ -308,6 +318,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     emphasized: {
       family: 'primary',
@@ -320,6 +331,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     strong: {
       family: 'primary',
@@ -332,6 +344,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
     variable: {
       family: 'tertiary',
@@ -344,6 +357,7 @@ const defaultTypography = {
       decoration: 'none',
       kerning: 'base',
       tracking: 'base',
+      letting: 'base',
     },
   },
 }
@@ -380,6 +394,7 @@ const getConfigStyle = (tc, styles, style) => {
   const family = tc.families[safeGetValue(cs, 'family', def.family)]
   const weight = tc.weights[safeGetValue(cs, 'weight', def.weight)]
   const size = tc.sizes[safeGetValue(cs, 'size', def.size)]
+  const letting = tc.letting[safeGetValue(cs, 'letting', def.letting)]
   return {
     family: `"${family.base}", ${family.fallback}`,
     style: safeGetValue(cs, 'style', def.style),
@@ -391,6 +406,7 @@ const getConfigStyle = (tc, styles, style) => {
     decoration: safeGetValue(cs, 'decoration', def.decoration),
     kerning: safeGetValue(cs, 'kerning', def.kerning),
     tracking: safeGetValue(cs, 'tracking', def.tracking),
+    letting,
     hover,
     active,
   }
@@ -464,8 +480,8 @@ class TypographyConfig {
     const dl = defaultTypography.letting
     this.letting = {
       base: safeGetValue(cl, 'base', dl.base),
-      paragraph: safeGetValue(cl, 'paragraph', dl.paragraph),
-      heading: safeGetValue(cl, 'heading', dl.heading),
+      min: safeGetValue(cl, 'min', dl.min),
+      max: safeGetValue(cl, 'max', dl.max),
     }
 
     this.indent = safeGetValue(config, 'indent', defaultTypography.indent)

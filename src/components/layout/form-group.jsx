@@ -12,34 +12,39 @@ import {
 } from '../../mixins'
 import * as Styled from './styles'
 
-const FormGroup = ({ heading, breakpoint, children, ...others }) => {
-  const fields = (isArray(children) ? children : [children]).filter(
-    c => !isUndefined(c.type)
-  )
+const FormGroup = ({ inline, heading, breakpoint, children, ...others }) => {
+  let Tag = Styled.FormGroup
+  let headingProps = {}
+  let content = children
+  if (inline) {
+    Tag = Styled.FormGroupInline
+    const fields = (isArray(children) ? children : [children]).filter(
+      c => !isUndefined(c.type)
+    )
+    headingProps = { end: fields.length }
+    content = fields.map(child => (
+      <Styled.FormGroupField breakpoint={breakpoint} key={uuid()}>
+        {isComponentType(child, 'Checkbox') ||
+        isComponentType(child, 'Radio') ||
+        isComponentType(child, 'Button') ? (
+          <Styled.FormGroupVerticalContainer>
+            {child}
+          </Styled.FormGroupVerticalContainer>
+        ) : (
+          child
+        )}
+      </Styled.FormGroupField>
+    ))
+  }
   return (
-    <Styled.FormGroupInline
-      {...handleProps(others, 'inline-group')}
-      breakpoint={breakpoint}
-    >
+    <Tag {...handleProps(others, 'form-group')} breakpoint={breakpoint}>
       {heading && (
-        <Styled.FormGroupHeading end={fields.length}>
+        <Styled.FormGroupHeading {...headingProps}>
           {heading}
         </Styled.FormGroupHeading>
       )}
-      {fields.map(child => (
-        <Styled.FormGroupField breakpoint={breakpoint} key={uuid()}>
-          {isComponentType(child, 'Checkbox') ||
-          isComponentType(child, 'Radio') ||
-          isComponentType(child, 'Button') ? (
-            <Styled.FormGroupVerticalContainer>
-              {child}
-            </Styled.FormGroupVerticalContainer>
-          ) : (
-            child
-          )}
-        </Styled.FormGroupField>
-      ))}
-    </Styled.FormGroupInline>
+      {content}
+    </Tag>
   )
 }
 
@@ -47,12 +52,14 @@ FormGroup.propTypes = {
   ...paddedPropTypes(),
   ...responsivePropTypes(),
   heading: PropTypes.string,
+  inline: PropTypes.bool,
 }
 
 FormGroup.defaultProps = {
   ...paddedDefaultProps('small'),
   ...responsiveDefaultProps('medium'),
   heading: '',
+  inline: false,
 }
 
 export default FormGroup

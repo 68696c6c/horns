@@ -21,7 +21,7 @@ const Radio = ({
   const errorClass = hasError ? ERROR_CLASS : ''
   const idValue = id === '' ? uuid() : id
   return (
-    <>
+    <Styled.ToggleContainer className="toggle-container">
       <Styled.Toggle
         type="radio"
         name={name}
@@ -41,7 +41,7 @@ const Radio = ({
         </ToggleLabel>
       )}
       {handleMessage(errorMessage, idValue, 'toggle-message')}
-    </>
+    </Styled.ToggleContainer>
   )
 }
 

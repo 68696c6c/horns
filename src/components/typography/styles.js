@@ -68,34 +68,32 @@ export const H4 = styled.h4(Font, BaseHeading)
 export const H5 = styled.h5(Font, BaseHeading)
 export const H6 = styled.h6(Font, BaseHeading)
 
-export const Label = styled.label(
-  Font,
-  ({ theme, variant, required, spacing }) => {
-    const requiredCSS = required
-      ? css`
-          &::after {
-            content: ' *';
-          }
-        `
-      : ''
-    let displayCSS
-    if (variant === TYPOGRAPHY_BLOCK) {
-      displayCSS = css`
-        display: block;
-        margin: ${theme.spacing.getSpacing(spacing)} 0 0 0;
+export const Label = styled.label(Font, ({ theme, variant, required }) => {
+  const space = theme.spacing.getSpacing('tiny')
+  const requiredCSS = required
+    ? css`
+        &::after {
+          content: ' *';
+        }
       `
-    } else {
-      displayCSS = css`
-        display: inline-block;
-        margin: ${theme.spacing.getSpacing(spacing)} 0.25em 0 0;
-      `
-    }
-    return css`
-      ${displayCSS};
-      &.${ERROR_CLASS} {
-        color: ${theme.colors.getSwatch('danger')};
-      }
-      ${requiredCSS}
+    : ''
+  let displayCSS
+  if (variant === TYPOGRAPHY_BLOCK) {
+    displayCSS = css`
+      display: block;
+      margin: 0 0 ${space} 0;
+    `
+  } else {
+    displayCSS = css`
+      display: inline-block;
+      margin: 0 0.25em ${space} 0;
     `
   }
-)
+  return css`
+    ${displayCSS};
+    &.${ERROR_CLASS} {
+      color: ${theme.colors.getSwatch('danger')};
+    }
+    ${requiredCSS}
+  `
+})

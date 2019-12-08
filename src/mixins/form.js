@@ -25,26 +25,47 @@ export const inputDefaultProps = () => ({
   errorMessage: '',
 })
 
+export const InputSpacing = ({ theme }) => css`
+  display: block;
+  margin: 0 0 ${theme.spacing.getSpacing('small')} 0;
+`
+
+export const InputWidth = () => css`
+  width: 12em;
+`
+
+export const InputWrapper = () => css`
+  input:not([type='checkbox']):not([type='radio']):not([type='submit']),
+  textarea,
+  .select-custom-container {
+    width: 100%;
+  }
+`
+
 export const inputStyles = [
   Font,
   Roundable,
   BorderedInput,
-  ({ theme }) => css`
-    display: block;
-    margin: 0 0 ${theme.spacing.getSpacing('tiny')} 0;
-    padding: ${theme.spacing.getSpacing('xSmall')};
-    background: ${theme.colors.background.secondary};
-    color: ${theme.colors.copy.primary};
-    border-color: ${theme.colors.background.tertiary};
-    &.${ERROR_CLASS} {
-      border-color: ${theme.colors.getSwatch('danger')};
-      &::placeholder {
-        color: ${theme.colors.getSwatch('danger')};
+  InputSpacing,
+  InputWidth,
+  ({ theme }) => {
+    const style = theme.typography.getStyle('label')
+    return css`
+      padding: ${theme.spacing.getSpacing('xSmall')};
+      background: ${theme.colors.background.secondary};
+      color: ${theme.colors.copy.primary};
+      border-color: ${theme.colors.background.tertiary};
+      line-height: ${style.letting};
+      &.${ERROR_CLASS} {
+        border-color: ${theme.colors.getSwatch('danger')};
+        &::placeholder {
+          color: ${theme.colors.getSwatch('danger')};
+        }
       }
-    }
-    &[disabled] {
-      background: ${theme.colors.background.inactive};
-      cursor: not-allowed;
-    }
-  `,
+      &[disabled] {
+        background: ${theme.colors.background.inactive};
+        cursor: not-allowed;
+      }
+    `
+  },
 ]

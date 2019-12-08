@@ -8,7 +8,14 @@ export {
   ColorwayTextInteractive,
 } from './color'
 
-export { inputPropTypes, inputDefaultProps, inputStyles } from './form'
+export {
+  inputPropTypes,
+  inputDefaultProps,
+  inputStyles,
+  InputWidth,
+  InputSpacing,
+  InputWrapper,
+} from './form'
 
 export {
   handleProps,

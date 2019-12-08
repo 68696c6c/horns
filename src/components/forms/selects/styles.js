@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { inputStyles } from '../../../mixins'
+import { InputSpacing, inputStyles, InputWidth } from '../../../mixins'
 
 export const SelectNative = styled.select(...inputStyles, () => {
   return css`
@@ -13,13 +13,18 @@ export const SelectNative = styled.select(...inputStyles, () => {
   `
 })
 
+// Need box-sizing: content-box for correctly setting the *height* of the element when nothing is selected.
+// To remain consistent with the other inputs, width needs to be calculated as border-box, hence the calc.
 export const Select = styled.div(...inputStyles, ({ theme, open }) => {
+  const style = theme.typography.getStyle('label')
+  const padding = theme.spacing.getSpacing('xSmall')
   return css`
     margin: 0;
     display: ${open ? 'none' : 'block'};
     box-sizing: content-box;
     cursor: pointer;
-    min-height: ${theme.typography.letting.base};
+    min-height: ${style.letting};
+    width: calc(100% - (${padding} * 2));
   `
 })
 
@@ -37,6 +42,7 @@ export const DropDownContainer = styled.div(({ theme }) => {
   return css`
     position: relative;
     top: -${offset};
+    width: 100%;
   `
 })
 
@@ -65,9 +71,4 @@ export const DropDownOption = styled.li(({ theme }) => {
   `
 })
 
-export const SelectContainer = styled.div(
-  ({ theme }) =>
-    css`
-      margin: 0 0 ${theme.spacing.getSpacing('small')} 0;
-    `
-)
+export const SelectContainer = styled.div(InputSpacing, InputWidth)
