@@ -44,47 +44,35 @@ class FormGroup extends React.Component {
 
   render() {
     const { heading, breakpoint, children, ...others } = this.props
+    const fields = isArray(children) ? children : [children]
     return (
       <Styled.FormGroupInline
-        breakpoint={breakpoint}
         {...handleProps(others, 'inline-group')}
+        breakpoint={breakpoint}
       >
         {heading && (
-          <Styled.FormGroupHeading
-            end={(isArray(children) ? children : [children]).length}
-          >
+          <Styled.FormGroupHeading end={fields.length}>
             {heading}
           </Styled.FormGroupHeading>
         )}
-        {(isArray(children) ? children : [children])
+        {fields
           .filter(c => !isUndefined(c.type))
-          .map((child, index) => {
-            let result = (
-              <Styled.FormGroupField
-                breakpoint={breakpoint}
-                key={this.keys[index]}
-              >
-                {child}
-              </Styled.FormGroupField>
-            )
-            if (
-              isComponentType(child, 'Checkbox') ||
+          .map((child, index) => (
+            <Styled.FormGroupField
+              breakpoint={breakpoint}
+              key={this.keys[index]}
+            >
+              {isComponentType(child, 'Checkbox') ||
               isComponentType(child, 'Radio') ||
-              isComponentType(child, 'Button')
-            ) {
-              result = (
-                <Styled.FormGroupField
-                  breakpoint={breakpoint}
-                  key={this.keys[index]}
-                >
-                  <Styled.FormGroupVerticalContainer>
-                    {child}
-                  </Styled.FormGroupVerticalContainer>
-                </Styled.FormGroupField>
-              )
-            }
-            return result
-          })}
+              isComponentType(child, 'Button') ? (
+                <Styled.FormGroupVerticalContainer>
+                  {child}
+                </Styled.FormGroupVerticalContainer>
+              ) : (
+                child
+              )}
+            </Styled.FormGroupField>
+          ))}
       </Styled.FormGroupInline>
     )
   }
