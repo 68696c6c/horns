@@ -37,37 +37,7 @@ export {
   ScrollProgress,
 } from './organisms'
 
-export {
-  Checkbox,
-  Field,
-  Fieldset,
-  Group,
-  InputHidden,
-  Input,
-  Radio,
-  Textarea,
-  Select,
-  SelectNative,
-} from './components/forms'
-
 export { ImageFrame, Picture } from './components/images'
-
-export {
-  Area,
-  Box,
-  Columns,
-  ButtonContainer,
-  Footer,
-  Grid,
-  GridGuide,
-  FormGroup,
-  Header,
-  SiteHeader,
-  SiteHeaderStickyContent,
-  Panel,
-  Section,
-  TitleBar,
-} from './components/layout'
 
 export { Link, LinkEmail, LinkPhone } from './components/links'
 
@@ -102,6 +72,31 @@ export {
 export { Table, TableCell, TableHead, TableRow } from './components/tables'
 
 export {
+  // Forms
+  Checkbox,
+  InputHidden,
+  Input,
+  Radio,
+  Textarea,
+  Select,
+  SelectNative,
+  // Layout
+  Area,
+  Box,
+  Columns,
+  ButtonContainer,
+  Footer,
+  Grid,
+  GridGuide,
+  Fieldset,
+  Group,
+  Header,
+  SiteHeader,
+  SiteHeaderStickyContent,
+  Panel,
+  Section,
+  TitleBar,
+  // Typography
   Caption,
   Heading,
   Label,

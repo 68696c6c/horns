@@ -12,54 +12,54 @@ import {
 } from '../../mixins'
 import * as Styled from './styles'
 
-const FormGroup = ({ inline, heading, breakpoint, children, ...others }) => {
-  let Tag = Styled.FormGroup
+const Group = ({ inline, heading, breakpoint, children, ...others }) => {
+  let Tag = Styled.Group
   let headingProps = {}
   let content = children
   if (inline) {
-    Tag = Styled.FormGroupInline
+    Tag = Styled.GroupInline
     const fields = (isArray(children) ? children : [children]).filter(
       c => !isUndefined(c.type)
     )
     headingProps = { end: fields.length }
     content = fields.map(child => (
-      <Styled.FormGroupField breakpoint={breakpoint} key={uuid()}>
+      <Styled.GroupField breakpoint={breakpoint} key={uuid()}>
         {isComponentType(child, 'Checkbox') ||
         isComponentType(child, 'Radio') ||
         isComponentType(child, 'Button') ? (
-          <Styled.FormGroupVerticalContainer>
+          <Styled.GroupVerticalContainer>
             {child}
-          </Styled.FormGroupVerticalContainer>
+          </Styled.GroupVerticalContainer>
         ) : (
           child
         )}
-      </Styled.FormGroupField>
+      </Styled.GroupField>
     ))
   }
   return (
-    <Tag {...handleProps(others, 'form-group')} breakpoint={breakpoint}>
+    <Tag {...handleProps(others, 'group')} breakpoint={breakpoint}>
       {heading && (
-        <Styled.FormGroupHeading {...headingProps}>
+        <Styled.GroupHeading {...headingProps}>
           {heading}
-        </Styled.FormGroupHeading>
+        </Styled.GroupHeading>
       )}
       {content}
     </Tag>
   )
 }
 
-FormGroup.propTypes = {
+Group.propTypes = {
   ...paddedPropTypes(),
   ...responsivePropTypes(),
   heading: PropTypes.string,
   inline: PropTypes.bool,
 }
 
-FormGroup.defaultProps = {
+Group.defaultProps = {
   ...paddedDefaultProps('small'),
   ...responsiveDefaultProps('medium'),
   heading: '',
   inline: false,
 }
 
-export default FormGroup
+export default Group

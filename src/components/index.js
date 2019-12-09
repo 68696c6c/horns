@@ -4,9 +4,6 @@ export { LineChart, Line, PieChart, Region } from './charts'
 
 export {
   Checkbox,
-  Field,
-  Fieldset,
-  Group,
   InputHidden,
   Input,
   Radio,
@@ -18,6 +15,8 @@ export {
 export { ImageFrame, Picture } from './images'
 
 export {
+  Fieldset,
+  Group,
   Area,
   Box,
   Columns,
