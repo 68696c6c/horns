@@ -1,40 +1,45 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Colorway, Padded } from '../../../mixins'
+import {
+  Padded,
+  Clickable,
+  Colorway,
+  ColorwayTextInteractive,
+  Decoratable,
+  Font,
+} from '../../../mixins'
 
-const NavItem = styled.a(Colorway, ({ theme }) => {
-  return css`
-    text-decoration: ${theme.navItems.inline.decoration};
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      text-decoration: ${theme.navItems.inline.hover.decoration};
-    }
-    &:active {
-      text-decoration: ${theme.navItems.inline.active.decoration};
-    }
-  `
-})
+const NavItem = styled.a(
+  ColorwayTextInteractive,
+  Clickable,
+  Decoratable,
+  Font,
+)
 
-export const NavItemInline = styled(NavItem)(({ theme }) => {
+export const NavItemInline = styled(NavItem)(({ theme, current }) => {
+  const { inline: itemConfig } = theme.navItems
+  const currentStyle = itemConfig.current.border
   return css`
     display: inline-block;
-    ${theme.navItems.inline.border};
-    &.active {
-      ${theme.navItems.inline.current.border};
-    }
+    padding: ${itemConfig.padding};
+    ${current &&
+      css`
+        border-bottom: ${currentStyle};
+      `}
   `
 })
 
-export const NavItemStacked = styled(NavItem)(({ theme }) => {
+export const NavItemStacked = styled(NavItem)(({ theme, current }) => {
+  const { stacked: itemConfig } = theme.navItems
+  const currentStyle = itemConfig.current.border
   return css`
     display: block;
-    ${theme.navItems.stacked.border};
-    &.active {
-      ${theme.navItems.stacked.current.border};
-    }
+    padding: ${itemConfig.padding};
+    ${current &&
+      css`
+        border-left: ${currentStyle};
+      `}
   `
 })
 

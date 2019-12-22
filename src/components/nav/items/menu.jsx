@@ -147,6 +147,7 @@ class NavItemMenu extends React.Component {
 
   render() {
     const { content, variant, menuVariant, className, children } = this.props
+    const { active, open } = this.state
     return (
       <Styled.MenuContainer
         className="nav-item-menu"
@@ -156,14 +157,14 @@ class NavItemMenu extends React.Component {
           href="#"
           variant={variant}
           className={className}
-          active={this.state.active}
+          active={active}
           onClick={this.handleClick}
         >
           {content}
         </NavItem>
         <Styled.Menu
           colorway={menuVariant}
-          open={this.state.open}
+          open={open}
           innerRef={this.menuRef}
           className="nav-item-menu-items"
         >

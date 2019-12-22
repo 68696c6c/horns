@@ -5,31 +5,47 @@ import {
   handleProps,
   colorwayDefaultProps,
   colorwayPropTypes,
+  fontPropTypes,
+  fontDefaultProps,
+  childrenTextDefaultProps,
+  childrenTextPropTypes, paddedPropTypes, paddedDefaultProps,
 } from '../../../mixins'
 import * as Styled from './styles'
 
-const NavItem = ({ href, active, variant, className, children, ...others }) => {
-  const cName = active ? 'nav-item active' : 'nav-item'
+const NavItem = ({ href, current, variant, children, ...others }) => {
+  let Tag = Styled.NavItemInline
+  if (variant === 'stacked') {
+    Tag = Styled.NavItemStacked
+  }
   return (
-    <Styled.NavItemInline
+    <Tag
       href={href}
       variant={variant}
-      {...handleProps(others, cName)}
+      current={current}
+      {...handleProps(others, `nav-item${current ? ' current' : ''}`)}
     >
       {children}
-    </Styled.NavItemInline>
+    </Tag>
   )
 }
 
 NavItem.propTypes = {
+  ...childrenTextPropTypes(),
   ...colorwayPropTypes(),
+  ...fontPropTypes(),
+  ...paddedPropTypes(),
   href: PropTypes.string.isRequired,
-  active: PropTypes.bool,
+  current: PropTypes.bool,
+  variant: PropTypes.oneOf(['inline', 'stacked']),
 }
 
 NavItem.defaultProps = {
-  ...colorwayDefaultProps(),
-  active: false,
+  ...childrenTextDefaultProps(),
+  ...colorwayDefaultProps('prominent'),
+  ...fontDefaultProps('link'),
+  ...paddedDefaultProps(),
+  current: false,
+  variant: 'inline',
 }
 
 export default NavItem

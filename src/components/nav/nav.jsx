@@ -11,7 +11,7 @@ import {
 import { isArray } from '../../utils'
 import * as Styled from './styles'
 
-const Nav = ({ mobile, colorway, children, className, ...others }) => {
+const Nav = ({ mobile, colorway, children, ...others }) => {
   let content = children
   if (mobile) {
     const items = isArray(children) ? children : [children]
@@ -19,14 +19,13 @@ const Nav = ({ mobile, colorway, children, className, ...others }) => {
       <NavMenu
         menuVariant={colorway}
         content={<FaBars />}
-        className={('nav', 'mobile', className)}
-        {...handleProps('nav', others)}
+        {...handleProps(others, 'nav mobile')}
       >
         {items}
       </NavMenu>
     )
   }
-  return <Styled.Nav className={('nav', className)} {...others}>{content}</Styled.Nav>
+  return <Styled.Nav {...handleProps(others, 'nav')}>{content}</Styled.Nav>
 }
 
 Nav.propTypes = {

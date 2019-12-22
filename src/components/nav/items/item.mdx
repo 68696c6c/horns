@@ -6,12 +6,12 @@ menu: Navs
 import { Playground, Props } from 'docz'
 
 import NavItem from './item'
-import WrapperInline from '../../_demo/wrappers/inline'
 
 # Nav Item
 
 <Playground>
   <NavItem href="#">Nav Item</NavItem>
+  <NavItem href="#" current>Current Nav Item</NavItem>
 </Playground>
 
 ## Props
@@ -21,16 +21,37 @@ import WrapperInline from '../../_demo/wrappers/inline'
 ## Variants
 
 <Playground>
-  <WrapperInline>
-    <NavItem href="#">Default Nav Item</NavItem>
-  </WrapperInline>
-  <WrapperInline>
-    <NavItem href="#" active={true}>Active Nav Item</NavItem>
-  </WrapperInline>
-  <WrapperInline>
-    <NavItem href="#" variant="dark">Dark Nav Item</NavItem>
-  </WrapperInline>
-  <WrapperInline variant="dark">
-    <NavItem href="#" variant="light">Light Nav Item</NavItem>
-  </WrapperInline>
+  <NavItem href="#">Default Nav Item</NavItem>
+  <NavItem href="#" current>Default Nav Item</NavItem>
+  <br />
+  <NavItem href="#" variant="stacked">Stacked Nav Item</NavItem>
+  <NavItem href="#" variant="stacked" current>Stacked Nav Item</NavItem>
+  <br />
+</Playground>
+
+## Colorways
+
+<Playground>
+  <NavItem href="#">Default</NavItem>
+  <br />
+  <NavItem href="#" colorway="primary">Primary</NavItem>
+  <br />
+  <NavItem href="#" colorway="secondary">Secondary</NavItem>
+  <br />
+  <NavItem href="#" colorway="tertiary">Tertiary</NavItem>
+  <br />
+  <NavItem href="#" colorway="light">Light</NavItem>
+  <br />
+  <NavItem href="#" colorway="neutral">Neutral</NavItem>
+  <br />
+  <NavItem href="#" colorway="dark">Dark</NavItem>
+  <br />
+  <NavItem href="#" colorway="success">Success</NavItem>
+  <br />
+  <NavItem href="#" colorway="info">Info</NavItem>
+  <br />
+  <NavItem href="#" colorway="warning">Warning</NavItem>
+  <br />
+  <NavItem href="#" colorway="danger">Danger</NavItem>
+  <br />
 </Playground>
