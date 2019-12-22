@@ -13,6 +13,22 @@ export const handleProps = ({ className, ...others }, name = '') => {
   return props
 }
 
+export const themePropTypes = () => ({
+  theme: PropTypes.shape({
+    grid: PropTypes.shape({
+      getBreakpoint: PropTypes.func,
+    }),
+  }),
+})
+
+export const themeDefaultProps = () => ({
+  theme: {
+    grid: {
+      getBreakpoint: () => '768px',
+    },
+  },
+})
+
 export const childrenPropTypes = () => ({
   children: PropTypes.oneOfType([
     PropTypes.node,

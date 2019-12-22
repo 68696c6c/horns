@@ -19,6 +19,8 @@ export {
 
 export {
   handleProps,
+  themePropTypes,
+  themeDefaultProps,
   childrenPropTypes,
   childrenDefaultProps,
   childrenTextPropTypes,
