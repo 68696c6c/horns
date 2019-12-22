@@ -11,12 +11,13 @@ import {
   layoutDefaultProps,
   layoutPropTypes,
 } from '../../../mixins'
-import { isUndefined } from '../../../utils'
+import { isUndefined, valueToInt } from '../../../utils'
 import { Nav } from '../../nav'
 import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
-
 import * as Styled from './styles'
 
+// This component should NOT be exported for use outside this app since it requires the Emotion withTheme HOC in order
+// to function correctly.
 export class SiteHeaderBase extends React.Component {
   constructor(props) {
     super(props)
@@ -27,13 +28,12 @@ export class SiteHeaderBase extends React.Component {
     this.cancelled = false
 
     this.state = {
-      set: false,
       height: 0,
       stuck: false,
       mobile: false,
     }
 
-    this.minWidth = props.theme.grid.getBreakpoint(props.breakpoint)
+    this.minWidth = valueToInt(props.theme.grid.getBreakpoint(props.breakpoint))
 
     this.headerRef = React.createRef()
   }
@@ -65,7 +65,7 @@ export class SiteHeaderBase extends React.Component {
         const stuck = this.props.sticky && window.scrollY > height
         const mobile = window.innerWidth <= this.minWidth
         if (!this.cancelled) {
-          this.setState(() => ({ height, set: true, mobile, stuck }))
+          this.setState(() => ({ height, mobile, stuck }))
         }
         if (stuck) {
           this.fireStick()
@@ -92,7 +92,7 @@ export class SiteHeaderBase extends React.Component {
         fluid={fluid}
         stuck={stuck}
         variant={variant}
-        {...handleProps(others, stuck ? 'stuck' : '')}
+        {...handleProps(others, `site-header${stuck ? ' stuck' : ''}`)}
       >
         {children}
         <Nav mobile={mobile} menuVariant={menuVariant}>
@@ -104,8 +104,6 @@ export class SiteHeaderBase extends React.Component {
 }
 
 const { colorway: colorwayOptions } = colorwayPropTypes()
-const { colorway: colorwayDefault } = colorwayDefaultProps()
-
 SiteHeaderBase.propTypes = {
   ...layoutPropTypes(),
   sticky: PropTypes.bool,
@@ -114,6 +112,7 @@ SiteHeaderBase.propTypes = {
   navItems: PropTypes.node,
 }
 
+const { colorway: colorwayDefault } = colorwayDefaultProps()
 SiteHeaderBase.defaultProps = {
   ...layoutDefaultProps(),
   sticky: false,

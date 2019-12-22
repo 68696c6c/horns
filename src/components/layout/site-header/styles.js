@@ -16,15 +16,17 @@ export const Header = styled.header(
   Container,
   Padded,
   Colorway,
-  ({ theme, breakpoint, stuck }) => {
-    console.log('header', theme)
+  ({ theme, breakpoint, stuck, spacing }) => {
     const minWidth = theme.grid.getBreakpoint(breakpoint)
+    const padding = theme.spacing.getSpacing(spacing)
     return css`
       display: flex;
       align-items: center;
       justify-content: space-between;
       ${stuck ? fixedCSS() : ''};
       @media (max-width: ${minWidth}) {
+        padding-left: ${padding};
+        padding-right: ${padding};
         nav .nav-item-menu {
           position: static;
         }
