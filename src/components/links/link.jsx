@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { handleProps } from '../../mixins'
+import { handleProps, linkPropTypes, linkDefaultProps } from '../../mixins'
 import * as Styled from './styles'
 
 const Link = ({ href, variant, children, ...others }) => {
@@ -17,12 +17,12 @@ const Link = ({ href, variant, children, ...others }) => {
 }
 
 Link.propTypes = {
-  ...Styled.linkPropTypes(),
+  ...linkPropTypes(),
   href: PropTypes.string.isRequired,
 }
 
 Link.defaultProps = {
-  ...Styled.linkDefaultProps(),
+  ...linkDefaultProps(),
 }
 
 export default Link

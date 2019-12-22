@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { handleProps } from '../../mixins'
+import { handleProps, linkPropTypes, linkDefaultProps } from '../../mixins'
 import * as Styled from './styles'
 
 const LinkPhone = ({ phone, variant, children, ...others }) => {
@@ -17,12 +17,12 @@ const LinkPhone = ({ phone, variant, children, ...others }) => {
 }
 
 LinkPhone.propTypes = {
-  ...Styled.linkPropTypes(),
+  ...linkPropTypes(),
   phone: PropTypes.string.isRequired,
 }
 
 LinkPhone.defaultProps = {
-  ...Styled.linkDefaultProps(),
+  ...linkDefaultProps(),
 }
 
 export default LinkPhone

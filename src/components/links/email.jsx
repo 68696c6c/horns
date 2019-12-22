@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { handleProps } from '../../mixins'
+import { handleProps, linkPropTypes, linkDefaultProps } from '../../mixins'
 import * as Styled from './styles'
 
 const LinkEmail = ({ email, subject, body, variant, children, ...others }) => {
@@ -20,14 +20,14 @@ const LinkEmail = ({ email, subject, body, variant, children, ...others }) => {
 }
 
 LinkEmail.propTypes = {
-  ...Styled.linkPropTypes(),
+  ...linkPropTypes(),
   email: PropTypes.string.isRequired,
   subject: PropTypes.string,
   body: PropTypes.string,
 }
 
 LinkEmail.defaultProps = {
-  ...Styled.linkDefaultProps(),
+  ...linkDefaultProps(),
   subject: '',
   body: '',
 }

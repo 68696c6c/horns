@@ -58,6 +58,8 @@ export {
   layoutDefaultProps,
 } from './layout'
 
+export { linkPropTypes, linkDefaultProps } from './link'
+
 export {
   fontPropTypes,
   fontDefaultProps,
