@@ -11,6 +11,7 @@ import {
   colorwayPropTypes,
 } from '../../mixins'
 import { isArray, isComponentType } from '../../utils'
+import NavItemSticky from './items/sticky'
 import * as Styled from './styles'
 
 const Nav = ({ mobile, colorway, children, ...others }) => {
@@ -18,11 +19,7 @@ const Nav = ({ mobile, colorway, children, ...others }) => {
   let content
   if (mobile) {
     content = (
-      <NavItemMenu
-        colorway={colorway}
-        content={<FaBars />}
-        className="mobile"
-      >
+      <NavItemMenu colorway={colorway} content={<FaBars />} className="mobile">
         {items}
       </NavItemMenu>
     )
@@ -32,11 +29,17 @@ const Nav = ({ mobile, colorway, children, ...others }) => {
         ...child.props,
         colorway,
       }
-      return isComponentType(child, 'NavItemMenu') ? (
-        <NavItemMenu {...props} key={uuid()}>
-          {child.props.children}
-        </NavItemMenu>
-      ) : (
+      if (isComponentType(child, 'NavItemMenu')) {
+        return (
+          <NavItemMenu {...props} key={uuid()}>
+            {child.props.children}
+          </NavItemMenu>
+        )
+      }
+      if (isComponentType(child, 'NavItemSticky')) {
+        return <NavItemSticky {...props} key={uuid()} />
+      }
+      return (
         <NavItem {...props} key={uuid()}>
           {child.props.children}
         </NavItem>

@@ -146,12 +146,6 @@ class NavItemMenu extends React.Component {
   }
 
   hasActiveItem(pathname) {
-    console.log(
-      'hasActiveItem',
-      this.hrefs,
-      pathname,
-      this.hrefs.indexOf(pathname) >= 0
-    )
     return this.hrefs.indexOf(pathname) >= 0
   }
 

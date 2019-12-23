@@ -1,7 +1,6 @@
-/** @jsx jsx */
+/* eslint-disable no-undef */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { jsx } from '@emotion/core'
 import { withTheme } from 'emotion-theming'
 
 import {
@@ -28,7 +27,6 @@ export class SiteHeaderBase extends React.Component {
     this.cancelled = false
 
     this.state = {
-      height: 0,
       stuck: false,
       mobile: false,
     }
@@ -62,10 +60,11 @@ export class SiteHeaderBase extends React.Component {
     if (this.headerRef.current) {
       const height = this.headerRef.current.offsetHeight
       if (!isUndefined(height) && height > 0) {
-        const stuck = this.props.sticky && window.scrollY > height
+        const { sticky } = this.props
+        const stuck = sticky && window.scrollY > height
         const mobile = window.innerWidth <= this.minWidth
         if (!this.cancelled) {
-          this.setState(() => ({ height, mobile, stuck }))
+          this.setState(() => ({ mobile, stuck }))
         }
         if (stuck) {
           this.fireStick()
@@ -94,7 +93,6 @@ export class SiteHeaderBase extends React.Component {
         variant={variant}
         {...handleProps(others, `site-header${stuck ? ' stuck' : ''}`)}
       >
-        {children}
         <Nav mobile={mobile} colorway={menuColorway}>
           {navItems}
         </Nav>

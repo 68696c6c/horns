@@ -16,36 +16,50 @@ import LayoutDemo from '../../_demo/layout-demo'
   <SiteHeader
     colorway="dark"
     sticky={true}
-    navItems={(
-      <React.Fragment>
-        <NavItemSticky variant="light" content={<span>Default</span>} stuckContent={<span>Stuck</span>}/>
-        <NavItem href="#" variant="light">Item 1</NavItem>
-        <NavItem href="#" variant="light">Item 2</NavItem>
-        <NavItemMenu content="Nav Item Menu" variant="light">
-          <NavItem href="#">Item One</NavItem>
-          <NavItem href="#">Item Two</NavItem>
-          <NavItem href="#">Item Three</NavItem>
+    navItems={[
+      <NavItemSticky content={<span>Default</span>} stuckContent={<span>Stuck</span>}/>,
+      <NavItem href="#" variant="light">Item 1</NavItem>,
+      <NavItem href="#" variant="light">Item 2</NavItem>,
+      <NavItemMenu content="Nav Menu">
+        <NavItem href="#">Menu Item One</NavItem>
+        <NavItem href="#">Menu Item Two</NavItem>
+        <NavItem href="#">Menu Item Three</NavItem>
+        <NavItemMenu content="Sub Menu One">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#" href="/components-layout-site-header-site-header" current>Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
         </NavItemMenu>
-      </React.Fragment>
-    )}
-  >
-    <NavItem href="#">Brand</NavItem>
-  </SiteHeader>
+        <NavItemMenu content="Sub Menu Two">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#">Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
+        </NavItemMenu>
+      </NavItemMenu>,
+    ]}
+  />
   <SiteHeader
     colorway="primary"
     sticky={true}
-    navItems={(
-      <React.Fragment>
-        <NavItemSticky variant="light" content={<span>Default</span>} stuckContent={<span>Stuck</span>}/>
-        <NavItem href="#" variant="light">Item 1</NavItem>
-        <NavItem href="#" variant="light">Item 2</NavItem>
-        <NavItemMenu content="Nav Item Menu" variant="light">
-          <NavItem href="#">Item One</NavItem>
-          <NavItem href="#">Item Two</NavItem>
-          <NavItem href="#">Item Three</NavItem>
+    navItems={[
+      <NavItemSticky content={<span>Default</span>} stuckContent={<span>Stuck</span>} />,
+      <NavItem href="#" variant="light">Item 1</NavItem>,
+      <NavItem href="#" variant="light">Item 2</NavItem>,
+      <NavItemMenu content="Nav Menu">
+        <NavItem href="#">Menu Item One</NavItem>
+        <NavItem href="#">Menu Item Two</NavItem>
+        <NavItem href="#">Menu Item Three</NavItem>
+        <NavItemMenu content="Sub Menu One">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#" href="/components-layout-site-header-site-header" current>Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
         </NavItemMenu>
-      </React.Fragment>
-    )}
+        <NavItemMenu content="Sub Menu Two">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#">Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
+        </NavItemMenu>
+      </NavItemMenu>,
+    ]}
   />
   <Section variant="background">
     <p>

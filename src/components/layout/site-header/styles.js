@@ -12,6 +12,7 @@ const fixedCSS = () =>
     z-index: 999;
   `
 
+// eslint-disable-next-line import/prefer-default-export
 export const Header = styled.header(
   Container,
   Padded,
@@ -23,6 +24,8 @@ export const Header = styled.header(
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-top: 0;
+      padding-bottom: 0;
       ${stuck ? fixedCSS() : ''};
       @media (max-width: ${minWidth}) {
         padding-left: ${padding};
