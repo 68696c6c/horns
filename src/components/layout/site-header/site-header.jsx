@@ -80,7 +80,7 @@ export class SiteHeaderBase extends React.Component {
     const {
       fluid,
       variant,
-      menuVariant,
+      menuColorway,
       children,
       navItems,
       ...others
@@ -88,14 +88,14 @@ export class SiteHeaderBase extends React.Component {
     const { stuck, mobile } = this.state
     return (
       <Styled.Header
-        innerRef={this.headerRef}
+        ref={this.headerRef}
         fluid={fluid}
         stuck={stuck}
         variant={variant}
         {...handleProps(others, `site-header${stuck ? ' stuck' : ''}`)}
       >
         {children}
-        <Nav mobile={mobile} menuVariant={menuVariant}>
+        <Nav mobile={mobile} colorway={menuColorway}>
           {navItems}
         </Nav>
       </Styled.Header>
@@ -108,7 +108,7 @@ SiteHeaderBase.propTypes = {
   ...layoutPropTypes(),
   sticky: PropTypes.bool,
   containerID: PropTypes.string,
-  menuVariant: colorwayOptions,
+  menuColorway: colorwayOptions,
   navItems: PropTypes.node,
 }
 
@@ -117,7 +117,7 @@ SiteHeaderBase.defaultProps = {
   ...layoutDefaultProps(),
   sticky: false,
   containerID: '',
-  menuVariant: colorwayDefault,
+  menuColorway: colorwayDefault,
 }
 
 export default withTheme(SiteHeaderBase)

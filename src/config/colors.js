@@ -51,7 +51,19 @@ const getColorSwatch = (swatches, swatch) => {
 
 const getColorShade = (swatches, shade) => {
   if (shade === '' || isUndefined(shade)) {
-    return 'inherit'
+    return {
+      base: 'inherit',
+      readable: 'inherit',
+      border: 'inherit',
+      negative: 'inherit',
+      negativeReadable: 'inherit',
+      hover: 'inherit',
+      hoverReadable: 'inherit',
+      hoverBorder: 'inherit',
+      active: 'inherit',
+      activeReadable: 'inherit',
+      activeBorder: 'inherit',
+    }
   }
   const path = getSwatchPath(shade)
   return swatches[path.color][path.shade]

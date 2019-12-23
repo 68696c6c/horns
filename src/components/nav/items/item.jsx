@@ -41,7 +41,7 @@ NavItem.propTypes = {
 
 NavItem.defaultProps = {
   ...childrenTextDefaultProps(),
-  ...colorwayDefaultProps('prominent'),
+  ...colorwayDefaultProps(),
   ...fontDefaultProps('link'),
   ...paddedDefaultProps(),
   current: false,

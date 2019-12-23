@@ -4,6 +4,7 @@ export {
   Colorway,
   ColorwayBordered,
   ColorwayInteractive,
+  ColorwayInteractiveBordered,
   ColorwayText,
   ColorwayTextInteractive,
 } from './color'

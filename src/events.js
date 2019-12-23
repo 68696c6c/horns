@@ -10,3 +10,6 @@ export const EVENT_SELECT_CHANGE = `${EVENT_PREFIX}:select:change`
 export const EVENT_MULTISELECT_OPEN = `${EVENT_PREFIX}:multiselect:open`
 export const EVENT_MULTISELECT_CHANGE = `${EVENT_PREFIX}:multiselect:change`
 
+export const EVENT_MENU_OPEN = `${EVENT_PREFIX}:menu:open`
+export const EVENT_MENU_CLOSE = `${EVENT_PREFIX}:menu:close`
+export const EVENT_MENU_CLOSE_OTHERS = `${EVENT_PREFIX}:menu:closeOthers`

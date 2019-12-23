@@ -31,6 +31,22 @@ export const ColorwayInteractive = ({ theme, colorway }) => {
   return css`
     background: ${cw.base};
     color: ${cw.readable};
+    &:hover {
+      background: ${cw.hover};
+      color: ${cw.hoverReadable};
+    }
+    &:active {
+      background: ${cw.active};
+      color: ${cw.activeReadable};
+    }
+  `
+}
+
+export const ColorwayInteractiveBordered = ({ theme, colorway }) => {
+  const cw = theme.colors.getShade(colorway)
+  return css`
+    background: ${cw.base};
+    color: ${cw.readable};
     border-color: ${cw.border};
     &:hover {
       background: ${cw.hover};

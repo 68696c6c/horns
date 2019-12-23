@@ -1,65 +1,66 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import {
-  Padded,
-  Clickable,
-  Colorway,
-  ColorwayTextInteractive,
-  Decoratable,
-  Font,
-} from '../../../mixins'
+import { Clickable, Colorway, ColorwayInteractive, Font } from '../../../mixins'
 
-const NavItem = styled.a(
-  ColorwayTextInteractive,
-  Clickable,
-  Decoratable,
-  Font,
-)
+const NavItem = styled.a(ColorwayInteractive, Clickable, Font)
 
-export const NavItemInline = styled(NavItem)(({ theme, current }) => {
+export const NavItemInline = styled(NavItem)(({ theme, current, colorway }) => {
   const { inline: itemConfig } = theme.navItems
-  const currentStyle = itemConfig.current.border
+  const { padding, lineSize } = itemConfig
+  const cw = theme.colors.getShade(colorway)
   return css`
     display: inline-block;
-    padding: ${itemConfig.padding};
+    padding: ${padding} ${padding} calc(${padding} - ${lineSize});
+    border-bottom: ${lineSize} solid transparent;
     ${current &&
       css`
-        border-bottom: ${currentStyle};
+        border-color: ${cw.border};
       `}
   `
 })
 
-export const NavItemStacked = styled(NavItem)(({ theme, current }) => {
-  const { stacked: itemConfig } = theme.navItems
-  const currentStyle = itemConfig.current.border
-  return css`
-    display: block;
-    padding: ${itemConfig.padding};
-    ${current &&
-      css`
-        border-left: ${currentStyle};
-      `}
-  `
-})
+export const NavItemStacked = styled(NavItem)(
+  ({ theme, current, colorway }) => {
+    const { stacked: itemConfig } = theme.navItems
+    const { padding, lineSize } = itemConfig
+    const cw = theme.colors.getShade(colorway)
+    return css`
+      display: block;
+      padding: ${padding} ${padding} ${padding} calc(${padding} - ${lineSize});
+      border-left: ${lineSize} solid transparent;
+      ${current &&
+        css`
+          border-color: ${cw.border};
+        `}
+    `
+  }
+)
 
-export const MenuContainer = styled.span(
+export const NavItemMenu = styled.span(
   () =>
     css`
-      position: relative;
+      display: inline-block;
     `
 )
 
-export const Menu = styled.nav(Colorway, ({ open }) => {
-  return css`
-    display: ${open ? 'block' : 'none'};
-  `
-})
-
-export const NavMenuItem = styled.a(Padded, () => {
-  return css`
+export const MenuContainer = styled.span(
+  () => css`
     display: block;
-    border: none;
-    white-space: nowrap;
+    position: relative;
+  `
+)
+
+export const Menu = styled.nav(Colorway, ({ theme, open, level }) => {
+  const { stacked: itemConfig } = theme.navItems
+  const { padding } = itemConfig
+  return css`
+    display: ${open ? 'flex' : 'none'};
+    flex-direction: column;
+    > a,
+    > .nav-item-menu > a {
+      white-space: nowrap;
+      padding-left: calc(${padding} + ${level}em);
+    }
   `
 })

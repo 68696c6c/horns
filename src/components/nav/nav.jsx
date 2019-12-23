@@ -1,31 +1,53 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FaBars } from 'react-icons/fa'
+import uuid from 'uuid/v4'
 
-import NavMenu from './items/menu'
+import NavItem from './items/item'
+import NavItemMenu from './items/menu'
 import {
   handleProps,
   colorwayDefaultProps,
   colorwayPropTypes,
 } from '../../mixins'
-import { isArray } from '../../utils'
+import { isArray, isComponentType } from '../../utils'
 import * as Styled from './styles'
 
 const Nav = ({ mobile, colorway, children, ...others }) => {
-  let content = children
+  const items = isArray(children) ? children : [children]
+  let content
   if (mobile) {
-    const items = isArray(children) ? children : [children]
     content = (
-      <NavMenu
-        menuVariant={colorway}
+      <NavItemMenu
+        colorway={colorway}
         content={<FaBars />}
-        {...handleProps(others, 'nav mobile')}
+        className="mobile"
       >
         {items}
-      </NavMenu>
+      </NavItemMenu>
     )
+  } else {
+    content = items.map(child => {
+      const props = {
+        ...child.props,
+        colorway,
+      }
+      return isComponentType(child, 'NavItemMenu') ? (
+        <NavItemMenu {...props} key={uuid()}>
+          {child.props.children}
+        </NavItemMenu>
+      ) : (
+        <NavItem {...props} key={uuid()}>
+          {child.props.children}
+        </NavItem>
+      )
+    })
   }
-  return <Styled.Nav {...handleProps(others, 'nav')}>{content}</Styled.Nav>
+  return (
+    <Styled.Nav colorway={colorway} {...handleProps(others, 'nav')}>
+      {content}
+    </Styled.Nav>
+  )
 }
 
 Nav.propTypes = {

@@ -13,14 +13,19 @@ import { NavItemMenu } from './items'
 
 <Playground style={{ height: '350px' }}>
   <Nav>
-    <NavItem href="#" current>Item One</NavItem>
+    <NavItem href="#">Item One</NavItem>
     <NavItem href="#">Item Two</NavItem>
     <NavItem href="#">Item Three</NavItem>
     <NavItemMenu content="Nav Menu">
       <NavItem href="#">Menu Item One</NavItem>
       <NavItem href="#">Menu Item Two</NavItem>
       <NavItem href="#">Menu Item Three</NavItem>
-      <NavItemMenu content="Sub Menu">
+      <NavItemMenu content="Sub Menu One">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#" href="/components-nav-nav" current>Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+      <NavItemMenu content="Sub Menu Two">
         <NavItem href="#">Sub Menu Item One</NavItem>
         <NavItem href="#">Sub Menu Item Two</NavItem>
         <NavItem href="#">Sub Menu Item Three</NavItem>
@@ -35,16 +40,66 @@ import { NavItemMenu } from './items'
 
 ## Mobile
 
-<Playground>
-  <Nav mobile={true}>
+<Playground style={{ height: '350px' }}>
+  <Nav mobile>
     <NavItem href="#">Item One</NavItem>
     <NavItem href="#">Item Two</NavItem>
     <NavItem href="#">Item Three</NavItem>
-    <NavItemMenu content="Nav Menu" active>
+    <NavItemMenu content="Nav Menu">
       <NavItem href="#">Menu Item One</NavItem>
       <NavItem href="#">Menu Item Two</NavItem>
       <NavItem href="#">Menu Item Three</NavItem>
-      <NavItemMenu content="Sub Menu" active>
+      <NavItemMenu content="Sub Menu One">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#" href="/components-nav-nav" current>Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+      <NavItemMenu content="Sub Menu Two">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#">Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+    </NavItemMenu>
+  </Nav>
+</Playground>
+
+## Colorways
+
+<Playground style={{ height: '350px' }}>
+  <Nav colorway="primary">
+    <NavItem href="#">Item One</NavItem>
+    <NavItem href="#">Item Two</NavItem>
+    <NavItem href="#">Item Three</NavItem>
+    <NavItemMenu content="Nav Menu">
+      <NavItem href="#">Menu Item One</NavItem>
+      <NavItem href="#">Menu Item Two</NavItem>
+      <NavItem href="#">Menu Item Three</NavItem>
+      <NavItemMenu content="Sub Menu One">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#" href="/components-nav-nav" current>Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+      <NavItemMenu content="Sub Menu Two">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#">Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+    </NavItemMenu>
+  </Nav>
+  <Nav colorway="secondary" mobile>
+    <NavItem href="#">Item One</NavItem>
+    <NavItem href="#">Item Two</NavItem>
+    <NavItem href="#">Item Three</NavItem>
+    <NavItemMenu content="Nav Menu">
+      <NavItem href="#">Menu Item One</NavItem>
+      <NavItem href="#">Menu Item Two</NavItem>
+      <NavItem href="#">Menu Item Three</NavItem>
+      <NavItemMenu content="Sub Menu One">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#" href="/components-nav-nav" current>Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+      <NavItemMenu content="Sub Menu Two">
         <NavItem href="#">Sub Menu Item One</NavItem>
         <NavItem href="#">Sub Menu Item Two</NavItem>
         <NavItem href="#">Sub Menu Item Three</NavItem>
