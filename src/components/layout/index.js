@@ -2,7 +2,7 @@ export { Box, ButtonContainer } from './flex'
 
 export { Area, Columns, Grid, GridGuide } from './grid'
 
-export { SiteHeader, SiteHeaderStickyContent } from './site-header'
+export { SiteHeader } from './site-header'
 
 export { Panel, TitleBar } from './panel'
 
