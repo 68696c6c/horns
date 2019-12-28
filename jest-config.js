@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'kedge-ui',
+  name: 'horns',
   verbose: true,
   // globalSetup: '<rootDir>/test/setup-global.js',
   setupFiles: [
