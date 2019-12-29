@@ -7,7 +7,7 @@ const baseNavItem = (theme, variant) => {
     ${colorVariantCSS(theme, variant)};
     text-decoration: ${theme.config.linkDecorations.default};
     &:focus {
-      outline: none; 
+      outline: none;
     }
     &:hover {
       text-decoration: ${theme.config.linkDecorations.hover};

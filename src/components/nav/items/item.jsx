@@ -8,7 +8,9 @@ import {
   fontPropTypes,
   fontDefaultProps,
   childrenTextDefaultProps,
-  childrenTextPropTypes, paddedPropTypes, paddedDefaultProps,
+  childrenTextPropTypes,
+  paddedPropTypes,
+  paddedDefaultProps,
 } from '../../../mixins'
 import * as Styled from './styles'
 
