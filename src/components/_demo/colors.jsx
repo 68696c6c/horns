@@ -58,6 +58,27 @@ const StyledColors = styled('div')`
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 `
 
+const BackgroundColorShades = () => (
+  <StyledColorShade>
+    <h1>Background</h1>
+    <StyledSwatches>
+      <Swatch colorway="background" prominent>background base</Swatch>
+      <Swatch colorway="background:primary">background primary</Swatch>
+      <Swatch colorway="background:secondary">background secondary</Swatch>
+      <Swatch colorway="background:tertiary">background tertiary</Swatch>
+      <Swatch colorway="background:active">background active</Swatch>
+      <Swatch colorway="background:inactive">background inactive</Swatch>
+    </StyledSwatches>
+    <h1>Copy</h1>
+    <StyledSwatches>
+      <Swatch colorway="copy" prominent>copy base</Swatch>
+      <Swatch colorway="copy:primary">copy primary</Swatch>
+      <Swatch colorway="copy:light">copy light</Swatch>
+      <Swatch colorway="copy:dark">copy dark</Swatch>
+    </StyledSwatches>
+  </StyledColorShade>
+)
+
 const NeutralColorShades = () => (
   <StyledColorShade>
     <h1>dark, neutral, light</h1>
@@ -81,6 +102,9 @@ const NeutralColorShades = () => (
 
 const Colors = () => (
   <>
+    <StyledColors>
+      <BackgroundColorShades />
+    </StyledColors>
     <StyledColors>
       <ColorShade colorway="primary" />
       <ColorShade colorway="secondary" />

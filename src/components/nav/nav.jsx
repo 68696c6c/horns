@@ -14,7 +14,7 @@ import { isArray, isComponentType } from '../../utils'
 import NavItemSticky from './items/sticky'
 import * as Styled from './styles'
 
-const Nav = ({ mobile, colorway, children, ...others }) => {
+const Nav = ({ mobile, colorway, menuColorway, children, ...others }) => {
   const items = isArray(children) ? children : [children]
   let content
   if (mobile) {
@@ -28,6 +28,7 @@ const Nav = ({ mobile, colorway, children, ...others }) => {
       const props = {
         ...child.props,
         colorway,
+        menuColorway,
       }
       if (isComponentType(child, 'NavItemMenu')) {
         return (
@@ -53,14 +54,18 @@ const Nav = ({ mobile, colorway, children, ...others }) => {
   )
 }
 
+const { colorway: colorwayOptions } = colorwayPropTypes()
 Nav.propTypes = {
   ...colorwayPropTypes(),
   mobile: PropTypes.bool,
+  menuColorway: colorwayOptions,
 }
 
+const { colorway: colorwayDefault } = colorwayDefaultProps('background')
 Nav.defaultProps = {
   ...colorwayDefaultProps(),
   mobile: false,
+  menuColorway: colorwayDefault,
 }
 
 export default Nav

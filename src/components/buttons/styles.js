@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
 import {
-  ColorwayInteractive,
+  ColorwayInteractiveBordered,
   Clickable,
   Roundable,
   BorderedElement,
@@ -10,7 +10,7 @@ import {
 } from '../../mixins'
 
 export const buttonStyles = [
-  ColorwayInteractive,
+  ColorwayInteractiveBordered,
   Clickable,
   Roundable,
   BorderedElement,

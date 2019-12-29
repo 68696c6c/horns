@@ -124,28 +124,30 @@ class MapsConfig {
     }
     this.colorways = {}
     palletColors.forEach(palletColor => {
-      const bg = swatches[palletColor].base.readable
-      const stateFill = {
-        base: swatches[palletColor].base.base,
-        hover: swatches[palletColor][hShade].base,
-        active: swatches[palletColor][aShade].base,
+      if (!['background', 'copy'].includes(palletColor)) {
+        const bg = swatches[palletColor].base.readable
+        const stateFill = {
+          base: swatches[palletColor].base.base,
+          hover: swatches[palletColor][hShade].base,
+          active: swatches[palletColor][aShade].base,
+        }
+        const stateStroke = {
+          base: bg,
+          hover: bg,
+          active: bg,
+        }
+        const labelFill = {
+          base: bg,
+          hover: bg,
+          active: bg,
+        }
+        this.colorways[palletColor] = makeMap(
+          bg,
+          stateFill,
+          stateStroke,
+          labelFill
+        )
       }
-      const stateStroke = {
-        base: bg,
-        hover: bg,
-        active: bg,
-      }
-      const labelFill = {
-        base: bg,
-        hover: bg,
-        active: bg,
-      }
-      this.colorways[palletColor] = makeMap(
-        bg,
-        stateFill,
-        stateStroke,
-        labelFill
-      )
     })
 
     console.log('MapsConfig', this)

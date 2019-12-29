@@ -79,6 +79,7 @@ export class SiteHeaderBase extends React.Component {
 
   render() {
     const {
+      colorway,
       fluid,
       variant,
       menuColorway,
@@ -93,9 +94,10 @@ export class SiteHeaderBase extends React.Component {
         fluid={fluid}
         stuck={stuck}
         variant={variant}
+        colorway={colorway}
         {...handleProps(others, `site-header${stuck ? ' stuck' : ''}`)}
       >
-        <Nav mobile={mobile} colorway={menuColorway}>
+        <Nav mobile={mobile} colorway={colorway} menuColorway={menuColorway}>
           {navItems}
         </Nav>
       </Styled.Header>
@@ -111,7 +113,7 @@ SiteHeaderBase.propTypes = {
   navItems: PropTypes.node,
 }
 
-const { colorway: colorwayDefault } = colorwayDefaultProps()
+const { colorway: colorwayDefault } = colorwayDefaultProps('background')
 SiteHeaderBase.defaultProps = {
   ...layoutDefaultProps(),
   sticky: false,

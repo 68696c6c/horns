@@ -4,8 +4,8 @@ import { valueToInt } from '../utils'
 
 export const modeCSS = theme => {
   return css`
-    background: ${theme.colors.background.primary};
-    color: ${theme.colors.copy.base};
+    background: ${theme.colors.getSwatch('background:primary')};
+    color: ${theme.colors.getSwatch('copy:primary')};
   `
 }
 

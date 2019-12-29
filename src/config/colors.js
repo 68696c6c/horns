@@ -1,6 +1,6 @@
 import { isUndefined } from '../utils'
 import ColorFactors from './color-factors'
-import ColorPallet, { palletColors } from './color-pallet'
+import ColorPallet, { palletColors, modeColorShades } from './color-pallet'
 import { safeGetValue } from './utils'
 
 const MODE_LIGHT = 'light'
@@ -70,47 +70,35 @@ const getColorShade = (swatches, shade) => {
 }
 
 const getModeColors = (mode, dark, neutral, light) => {
-  const darkBase = getColorValue(dark.base)
-  const lightBase = getColorValue(light.base)
-
   if (mode === MODE_LIGHT) {
-    const lightDark = getColorValue(dark.base)
-    const lightDarker = getColorValue(dark.base)
     return {
-      background: {
-        primary: lightBase,
-        secondary: lightDark,
-        tertiary: lightDarker,
-        active: getColorValue(neutral.lighter),
-        inactive: getColorValue(neutral.light),
-      },
-      copy: {
-        primary: darkBase,
-        dark: darkBase,
-        light: lightBase,
-      },
+      background: light.base,
+      'background:primary': light.base,
+      'background:secondary': light.dark,
+      'background:tertiary': light.darker,
+      'background:active': neutral.lighter,
+      'background:inactive': neutral.light,
+      copy: dark.base,
+      'copy:primary': dark.base,
+      'copy:dark': dark.base,
+      'copy:light': light.base,
     }
   }
-
-  const darkLight = getColorValue(dark.light)
-  const darkLighter = getColorValue(dark.lighter)
   return {
-    background: {
-      primary: darkBase,
-      secondary: darkLight,
-      tertiary: darkLighter,
-      active: getColorValue(neutral.darker),
-      inactive: getColorValue(neutral.dark),
-    },
-    copy: {
-      primary: lightBase,
-      dark: darkBase,
-      light: lightBase,
-    },
+    background: dark.base,
+    'background:primary': dark.base,
+    'background:secondary': dark.light,
+    'background:tertiary': dark.lighter,
+    'background:active': neutral.darker,
+    'background:inactive': neutral.dark,
+    copy: light.base,
+    'copy:primary': light.base,
+    'copy:dark': dark.base,
+    'copy:light': light.base,
   }
 }
 
-const makeSwatch = (color, copy, factors) => {
+const makeSwatch = (color, copyLight, copyDark, factors) => {
   const negative = color.negate()
   const isDark = color.isDark()
   let borderLight
@@ -134,20 +122,22 @@ const makeSwatch = (color, copy, factors) => {
   const activeDark = active.lighten(factors.dark)
   return {
     base: getColorValue(color),
-    readable: isDark ? copy.light : copy.dark,
+    readable: isDark ? copyLight : copyDark,
     border: getColorValue(isDark ? borderLight : borderDark),
     negative: getColorValue(negative),
-    negativeReadable: negative.isDark() ? copy.light : copy.dark,
+    negativeReadable: negative.isDark() ? copyLight : copyDark,
     hover: getColorValue(hover),
-    hoverReadable: hover.isDark() ? copy.light : copy.dark,
+    hoverReadable: hover.isDark() ? copyLight : copyDark,
     hoverBorder: getColorValue(isDark ? hoverLight : hoverDark),
     active: getColorValue(active),
-    activeReadable: active.isDark() ? copy.light : copy.dark,
+    activeReadable: active.isDark() ? copyLight : copyDark,
     activeBorder: getColorValue(isDark ? activeLight : activeDark),
   }
 }
 
-const getColorSwatches = (colorShades, copy, factors) => {
+const getColorSwatches = (colorShades, factors) => {
+  const copyLight = getColorValue(colorShades['copy:light'].base)
+  const copyDark = getColorValue(colorShades['copy:dark'].base)
   const swatches = {}
   Object.keys(colorShades).forEach(colorShade => {
     if (colorShade !== 'hover' && colorShade !== 'active') {
@@ -162,19 +152,19 @@ const getColorSwatches = (colorShades, copy, factors) => {
           const active = colorShades.active[shade]
           const activeLight = active.lighten(factors.light)
           const activeDark = active.lighten(factors.dark)
-          const r = makeSwatch(color, copy, factors)
+          const r = makeSwatch(color, copyLight, copyDark, factors)
           r.hover = getColorValue(hover)
-          r.hoverReadable = hover.isDark() ? copy.light : copy.dark
+          r.hoverReadable = hover.isDark() ? copyLight : copyDark
           r.hoverBorder = getColorValue(hover.isDark() ? hoverLight : hoverDark)
           r.active = getColorValue(active)
-          r.activeReadable = active.isDark() ? copy.light : copy.dark
+          r.activeReadable = active.isDark() ? copyLight : copyDark
           r.activeBorder = getColorValue(
             active.isDark() ? activeLight : activeDark
           )
           swatches[colorShade][shade] = r
         } else {
           const color = shadeColor[shade]
-          swatches[colorShade][shade] = makeSwatch(color, copy, factors)
+          swatches[colorShade][shade] = makeSwatch(color, copyLight, copyDark, factors)
         }
       })
     }
@@ -182,7 +172,18 @@ const getColorSwatches = (colorShades, copy, factors) => {
   return swatches
 }
 
-const getShadedColorPallet = (pallet, factors) => {
+const getSwatches = (color, factors) => {
+  return {
+    alpha: color.alpha(factors.alpha),
+    darker: color.darken(factors.darker),
+    dark: color.darken(factors.dark),
+    base: color,
+    light: color.lighten(factors.light),
+    lighter: color.lighten(factors.lighter),
+  }
+}
+
+const getShadedColorPallet = (pallet, factors, mode) => {
   const shades = {}
   palletColors.forEach(palletColor => {
     const color = pallet[palletColor]
@@ -204,7 +205,7 @@ const getShadedColorPallet = (pallet, factors) => {
         light: color.lighten(factors.light),
         lighter: color.lighten(factors.lighter),
       }
-    } else {
+    } else if (!modeColorShades.includes(palletColor)) {
       shades[palletColor] = {
         alpha: color.alpha(factors.alpha),
         darker: color.darken(factors.darker),
@@ -231,6 +232,22 @@ const getShadedColorPallet = (pallet, factors) => {
     light: pallet.active.lighten(factors.light),
     lighter: pallet.active.lighten(factors.lighter),
   }
+  const modePallet = getModeColors(
+    mode,
+    shades.dark,
+    shades.neutral,
+    shades.light
+  )
+  shades.background = getSwatches(modePallet.background, factors)
+  shades['background:primary'] = getSwatches(modePallet['background:primary'], factors)
+  shades['background:secondary'] = getSwatches(modePallet['background:secondary'], factors)
+  shades['background:tertiary'] = getSwatches(modePallet['background:tertiary'], factors)
+  shades['background:active'] = getSwatches(modePallet['background:active'], factors)
+  shades['background:inactive'] = getSwatches(modePallet['background:inactive'], factors)
+  shades.copy = getSwatches(modePallet.copy, factors)
+  shades['copy:primary'] = getSwatches(modePallet['copy:primary'], factors)
+  shades['copy:dark'] = getSwatches(modePallet['copy:dark'], factors)
+  shades['copy:light'] = getSwatches(modePallet['copy:light'], factors)
   return shades
 }
 
@@ -244,17 +261,8 @@ class ColorsConfig {
     const configFactors = safeGetValue(config, 'factors', {})
     const factors = new ColorFactors(configFactors)
 
-    const shaded = getShadedColorPallet(pallet, factors)
-    const { background, copy } = getModeColors(
-      this.mode,
-      shaded.dark,
-      shaded.neutral,
-      shaded.light
-    )
-
-    this.swatches = getColorSwatches(shaded, copy, factors)
-    this.background = background
-    this.copy = copy
+    const shaded = getShadedColorPallet(pallet, factors, this.mode)
+    this.swatches = getColorSwatches(shaded, factors)
 
     console.log('ColorsConfig', this)
   }

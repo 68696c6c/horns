@@ -171,8 +171,19 @@ class NavItemMenu extends React.Component {
   }
 
   render() {
-    const { content, variant, colorway, children, level, ...others } = this.props
+    const {
+      content,
+      variant,
+      colorway,
+      menuColorway,
+      children,
+      level,
+      ...others
+    } = this.props
     const { current, open } = this.state
+    if (open) {
+      console.log('NavItemMenu menuColorway', menuColorway)
+    }
     const items = isArray(children) ? children : [children]
     return (
       <Styled.NavItemMenu
@@ -182,7 +193,7 @@ class NavItemMenu extends React.Component {
         <NavItem
           href="#"
           variant={variant}
-          colorway={colorway}
+          colorway={level >= 1 ? menuColorway : colorway}
           current={current}
           onClick={this.handleClick}
         >
@@ -190,7 +201,7 @@ class NavItemMenu extends React.Component {
         </NavItem>
         <Styled.MenuContainer className="menu-container">
           <Styled.Menu
-            colorway={colorway}
+            colorway={menuColorway}
             open={open}
             ref={this.menuRef}
             className="menu"
@@ -201,6 +212,7 @@ class NavItemMenu extends React.Component {
               const props = {
                 ...child.props,
                 colorway,
+                menuColorway,
                 variant: 'stacked',
               }
               return isComponentType(child, 'NavItemMenu') ? (
@@ -213,7 +225,7 @@ class NavItemMenu extends React.Component {
                   {child.props.children}
                 </NavItemMenu>
               ) : (
-                <NavItem {...props} key={uuid()}>
+                <NavItem {...props} colorway={menuColorway} key={uuid()}>
                   {child.props.children}
                 </NavItem>
               )
@@ -225,6 +237,7 @@ class NavItemMenu extends React.Component {
   }
 }
 
+const { colorway: colorwayOptions } = colorwayPropTypes()
 NavItemMenu.propTypes = {
   ...colorwayPropTypes(),
   content: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
@@ -232,14 +245,17 @@ NavItemMenu.propTypes = {
   current: PropTypes.bool,
   variant: PropTypes.oneOf(['inline', 'stacked']),
   onClick: PropTypes.func,
+  menuColorway: colorwayOptions,
 }
 
+const { colorway: colorwayDefault } = colorwayDefaultProps('background')
 NavItemMenu.defaultProps = {
   ...colorwayDefaultProps(),
   current: false,
   level: 0,
   variant: 'inline',
   onClick: () => {},
+  menuColorway: colorwayDefault,
 }
 
 export default NavItemMenu
