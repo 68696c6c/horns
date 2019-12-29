@@ -48,10 +48,12 @@ export class SiteHeaderBase extends React.Component {
     window.removeEventListener('resize', {})
   }
 
+  // eslint-disable-next-line class-methods-use-this
   fireStick() {
     window.dispatchEvent(new CustomEvent(EVENT_HEADER_STICK, {}))
   }
 
+  // eslint-disable-next-line class-methods-use-this
   fireUnStick() {
     window.dispatchEvent(new CustomEvent(EVENT_HEADER_UNSTICK, {}))
   }
@@ -105,7 +107,6 @@ const { colorway: colorwayOptions } = colorwayPropTypes()
 SiteHeaderBase.propTypes = {
   ...layoutPropTypes(),
   sticky: PropTypes.bool,
-  containerID: PropTypes.string,
   menuColorway: colorwayOptions,
   navItems: PropTypes.node,
 }
@@ -114,7 +115,6 @@ const { colorway: colorwayDefault } = colorwayDefaultProps()
 SiteHeaderBase.defaultProps = {
   ...layoutDefaultProps(),
   sticky: false,
-  containerID: '',
   menuColorway: colorwayDefault,
 }
 

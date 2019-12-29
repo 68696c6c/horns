@@ -10,16 +10,24 @@ import Section from '../section'
 import { NavItem, NavItemMenu, NavItemSticky } from '../../nav'
 import LayoutDemo from '../../_demo/layout-demo'
 
-# Header
+# SiteHeader
+
+A SiteHeader is a header element that contains the main navigation for a site.  SiteHeaders are fluid, taking up the 
+full available width, and center their children to the content area.  SiteHeaders are responsive and will convert their
+navigation to a mobile layout at the mobile breakpoint.  If the sticky prop is provided, a SiteHeader will stick to the 
+top of the browser window once the user has scrolled beyond it so that it remains visible.  Note that multiple sitcky 
+SiteHeaders will overlap each other.  Due to this behavior, and for semantics, only one SiteHeader element should be 
+present on the page at a time.  SiteHeaders support colorways, and accept a menuColorway prop for controlling the 
+colorway of any navigation menus.
 
 <LayoutDemo variant="dark">
   <SiteHeader
     colorway="dark"
-    sticky={true}
+    sticky
     navItems={[
       <NavItemSticky content={<span>Default</span>} stuckContent={<span>Stuck</span>}/>,
-      <NavItem href="#" variant="light">Item 1</NavItem>,
-      <NavItem href="#" variant="light">Item 2</NavItem>,
+      <NavItem href="#">Item 1</NavItem>,
+      <NavItem href="#">Item 2</NavItem>,
       <NavItemMenu content="Nav Menu">
         <NavItem href="#">Menu Item One</NavItem>
         <NavItem href="#">Menu Item Two</NavItem>
@@ -39,11 +47,34 @@ import LayoutDemo from '../../_demo/layout-demo'
   />
   <SiteHeader
     colorway="primary"
-    sticky={true}
+    sticky
     navItems={[
       <NavItemSticky content={<span>Default</span>} stuckContent={<span>Stuck</span>} />,
-      <NavItem href="#" variant="light">Item 1</NavItem>,
-      <NavItem href="#" variant="light">Item 2</NavItem>,
+      <NavItem href="#">Item 1</NavItem>,
+      <NavItem href="#">Item 2</NavItem>,
+      <NavItemMenu content="Nav Menu">
+        <NavItem href="#">Menu Item One</NavItem>
+        <NavItem href="#">Menu Item Two</NavItem>
+        <NavItem href="#">Menu Item Three</NavItem>
+        <NavItemMenu content="Sub Menu One">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#" href="/components-layout-site-header-site-header" current>Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
+        </NavItemMenu>
+        <NavItemMenu content="Sub Menu Two">
+          <NavItem href="#">Sub Menu Item One</NavItem>
+          <NavItem href="#">Sub Menu Item Two</NavItem>
+          <NavItem href="#">Sub Menu Item Three</NavItem>
+        </NavItemMenu>
+      </NavItemMenu>,
+    ]}
+  />
+  <SiteHeader
+    colorway="secondary"
+    navItems={[
+      <span>Non-sticky</span>,
+      <NavItem href="#">Item 1</NavItem>,
+      <NavItem href="#">Item 2</NavItem>,
       <NavItemMenu content="Nav Menu">
         <NavItem href="#">Menu Item One</NavItem>
         <NavItem href="#">Menu Item Two</NavItem>
