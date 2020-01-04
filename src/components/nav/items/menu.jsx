@@ -181,9 +181,6 @@ class NavItemMenu extends React.Component {
       ...others
     } = this.props
     const { current, open } = this.state
-    if (open) {
-      console.log('NavItemMenu menuColorway', menuColorway)
-    }
     const items = isArray(children) ? children : [children]
     return (
       <Styled.NavItemMenu
