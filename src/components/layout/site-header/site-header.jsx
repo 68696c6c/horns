@@ -1,8 +1,8 @@
-/* eslint-disable no-undef */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withTheme } from 'emotion-theming'
 
+import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../../../events'
 import {
   handleProps,
   colorwayDefaultProps,
@@ -12,7 +12,6 @@ import {
 } from '../../../mixins'
 import { isUndefined, valueToInt } from '../../../utils'
 import { Nav } from '../../nav'
-import { EVENT_HEADER_STICK, EVENT_HEADER_UNSTICK } from '../events'
 import * as Styled from './styles'
 
 // This component should NOT be exported for use outside this app since it requires the Emotion withTheme HOC in order
@@ -38,40 +37,51 @@ export class SiteHeaderBase extends React.Component {
 
   componentDidMount() {
     this.handleState()
+    // eslint-disable-next-line no-undef
     window.addEventListener('scroll', this.handleState)
+    // eslint-disable-next-line no-undef
     window.addEventListener('resize', this.handleState)
   }
 
   componentWillUnmount() {
     this.cancelled = true
+    // eslint-disable-next-line no-undef
     window.removeEventListener('scroll', {})
+    // eslint-disable-next-line no-undef
     window.removeEventListener('resize', {})
   }
 
   // eslint-disable-next-line class-methods-use-this
   fireStick() {
+    // eslint-disable-next-line no-undef
     window.dispatchEvent(new CustomEvent(EVENT_HEADER_STICK, {}))
   }
 
   // eslint-disable-next-line class-methods-use-this
   fireUnStick() {
+    // eslint-disable-next-line no-undef
     window.dispatchEvent(new CustomEvent(EVENT_HEADER_UNSTICK, {}))
   }
 
   handleState() {
+    const { sticky } = this.props
+    if (!sticky) {
+      return
+    }
     if (this.headerRef.current) {
       const height = this.headerRef.current.offsetHeight
       if (!isUndefined(height) && height > 0) {
-        const { sticky } = this.props
+        const { stuck: alreadyStuck } = this.state
+        // eslint-disable-next-line no-undef
         const stuck = sticky && window.scrollY > height
+        // eslint-disable-next-line no-undef
         const mobile = window.innerWidth <= this.minWidth
         if (!this.cancelled) {
-          this.setState(() => ({ mobile, stuck }))
-        }
-        if (stuck) {
-          this.fireStick()
-        } else {
-          this.fireUnStick()
+          if (stuck && !alreadyStuck) {
+            this.setState(() => ({ mobile, stuck }), this.fireStick)
+          } else if (!stuck && alreadyStuck) {
+            this.setState(() => ({ mobile, stuck }), this.fireUnStick)
+          }
         }
       }
     }

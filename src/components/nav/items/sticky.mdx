@@ -6,14 +6,18 @@ menu: Navs
 import { Playground, Props } from 'docz'
 
 import NavItemSticky from './sticky'
-import WrapperInline from '../../_demo/wrappers/inline'
 
 # NavItemSticky
 
+The NavItemSticky component is a NavItem intended for use in a sticky SiteHeader component.  The content of the 
+NavItemSticky changes based on the stuck state of the SiteHeader.
+
 <Playground>
-  <WrapperInline>
-    <NavItemSticky href="#" content={<span>Default Content</span>} stuckContent={<span>Stuck Content</span>}/>
-  </WrapperInline>
+  <NavItemSticky
+    href="#"
+    content={<span>Default Content</span>}
+    stuckContent={<span>Stuck Content</span>}
+  />
 </Playground>
 
 ## Props

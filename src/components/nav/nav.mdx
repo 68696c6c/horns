@@ -11,12 +11,33 @@ import { NavItemMenu } from './items'
 
 # Nav
 
-<Playground style={{ height: '350px' }}>
+<Playground>
   <Nav>
     <NavItem href="#">Item One</NavItem>
     <NavItem href="#">Item Two</NavItem>
     <NavItem href="#">Item Three</NavItem>
     <NavItemMenu content="Nav Menu">
+      <NavItem href="#">Menu Item One</NavItem>
+      <NavItem href="#">Menu Item Two</NavItem>
+      <NavItem href="#">Menu Item Three</NavItem>
+      <NavItemMenu content="Sub Menu One">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#" href="/components-nav-nav" current>Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+      <NavItemMenu content="Sub Menu Two">
+        <NavItem href="#">Sub Menu Item One</NavItem>
+        <NavItem href="#">Sub Menu Item Two</NavItem>
+        <NavItem href="#">Sub Menu Item Three</NavItem>
+      </NavItemMenu>
+    </NavItemMenu>
+  </Nav>
+  <br />
+  <Nav variant="stacked">
+    <NavItem href="#">Stacked Item One</NavItem>
+    <NavItem href="#">Stacked Item Two</NavItem>
+    <NavItem href="#">Stacked Item Three</NavItem>
+    <NavItemMenu content="Stacked Nav Menu">
       <NavItem href="#">Menu Item One</NavItem>
       <NavItem href="#">Menu Item Two</NavItem>
       <NavItem href="#">Menu Item Three</NavItem>
@@ -86,7 +107,7 @@ import { NavItemMenu } from './items'
       </NavItemMenu>
     </NavItemMenu>
   </Nav>
-  <Nav colorway="secondary" mobile>
+  <Nav colorway="secondary" menuColorway="light" mobile>
     <NavItem href="#">Item One</NavItem>
     <NavItem href="#">Item Two</NavItem>
     <NavItem href="#">Item Three</NavItem>
