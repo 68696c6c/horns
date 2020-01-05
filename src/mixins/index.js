@@ -36,6 +36,7 @@ export {
   BorderedElement,
   BorderedInput,
   Decoratable,
+  Shadowed,
 } from './component'
 
 export {

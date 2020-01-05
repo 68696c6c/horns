@@ -83,7 +83,7 @@ export const Fieldset = styled.fieldset(
   BorderedElement,
   InputWrapper,
   ({ theme }) => css`
-    border-color: ${theme.colors.background.tertiary};
+    border-color: ${theme.colors.getSwatch('background:tertiary')};
     padding-bottom: 0;
   `
 )

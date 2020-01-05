@@ -50,11 +50,12 @@ export const inputStyles = [
   InputWidth,
   ({ theme }) => {
     const style = theme.typography.getStyle('label')
+    const cw = theme.colors.getShade('background:secondary')
     return css`
       padding: ${theme.spacing.getSpacing('xSmall')};
-      background: ${theme.colors.background.secondary};
-      color: ${theme.colors.copy.primary};
-      border-color: ${theme.colors.background.tertiary};
+      background: ${cw.base};
+      color: ${cw.readable};
+      border-color: ${theme.colors.getSwatch('background:tertiary')};
       line-height: ${style.letting};
       &.${ERROR_CLASS} {
         border-color: ${theme.colors.getSwatch('danger')};
@@ -63,7 +64,7 @@ export const inputStyles = [
         }
       }
       &[disabled] {
-        background: ${theme.colors.background.inactive};
+        background: ${theme.colors.getSwatch('background:inactive')};
         cursor: not-allowed;
       }
     `

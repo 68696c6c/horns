@@ -78,6 +78,10 @@ export const sizableDefaultProps = (height = 'auto', width = 'auto') => ({
   width,
 })
 
+export const Shadowed = ({ theme }) => css`
+  box-shadow: 0 0 50px -20px ${theme.colors.getSwatch('background:active')};
+`
+
 export const Clickable = () => css`
   cursor: pointer;
 `

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import {
   childrenDefaultProps,
-  childrenPropTypes,
+  childrenPropTypes, colorwayDefaultProps, colorwayPropTypes,
   handleProps,
   paddedDefaultProps,
   paddedPropTypes,

@@ -152,9 +152,9 @@ export const layoutPropTypes = () => ({
   textAlign: PropTypes.oneOf(textAlignOptions),
 })
 
-export const layoutDefaultProps = () => ({
+export const layoutDefaultProps = (colorway = '') => ({
   ...childrenDefaultProps(),
-  ...colorwayDefaultProps(),
+  ...colorwayDefaultProps(colorway),
   ...containerDefaultProps(),
   ...paddedDefaultProps(),
   textAlign: 'inherit',

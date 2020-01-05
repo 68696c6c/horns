@@ -62,7 +62,7 @@ export const Toggle = styled.input(({ theme }) => {
       border-color: ${theme.colors.getSwatch('danger')};
     }
     &:disabled + label.toggle-control {
-      background: ${theme.colors.background.inactive};
+      background: ${theme.colors.getSwatch('background:inactive')};
       cursor: not-allowed;
     }
     &:disabled + label.toggle-control + label.toggle-label {
