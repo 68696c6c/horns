@@ -3,37 +3,41 @@ import PropTypes from 'prop-types'
 
 import TitleBar from './title-bar'
 import {
+  childrenDefaultProps,
+  childrenPropTypes,
   colorwayDefaultProps,
   colorwayPropTypes,
   handleProps,
-  layoutDefaultProps,
-  layoutPropTypes,
+  paddedDefaultProps,
+  paddedPropTypes,
 } from '../../../mixins'
 import { Heading } from '../../typography'
 import * as Styled from './styles'
 
 // @TODO make the DataTable etc components use this.
 const Panel = ({ title, colorway, bodyColorway, children, ...others }) => (
-  <Styled.PanelSection>
-    <Styled.Panel {...handleProps(others, 'panel')}>
-      <TitleBar colorway={colorway} fluid>
-        <Heading level="h3">{title}</Heading>
-      </TitleBar>
-      <Styled.Body colorway={bodyColorway}>{children}</Styled.Body>
-    </Styled.Panel>
-  </Styled.PanelSection>
+  <Styled.Panel {...handleProps(others, 'panel')}>
+    <TitleBar colorway={colorway} fluid>
+      <Heading level="h3">{title}</Heading>
+    </TitleBar>
+    <Styled.Body colorway={bodyColorway}>{children}</Styled.Body>
+  </Styled.Panel>
 )
 
 const { colorway: colorwayOptions } = colorwayPropTypes()
 Panel.propTypes = {
-  ...layoutPropTypes(),
+  ...childrenPropTypes(),
+  ...colorwayPropTypes(),
+  ...paddedPropTypes(),
   bodyColorway: colorwayOptions,
   title: PropTypes.string,
 }
 
-const { colorway: colorwayDefault } = colorwayDefaultProps()
+const { colorway: colorwayDefault } = colorwayDefaultProps('background')
 Panel.defaultProps = {
-  ...layoutDefaultProps('background:secondary'),
+  ...childrenDefaultProps(),
+  ...colorwayDefaultProps('background:secondary'),
+  ...paddedDefaultProps(),
   bodyColorway: colorwayDefault,
   title: '',
 }

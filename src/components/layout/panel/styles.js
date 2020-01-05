@@ -3,9 +3,6 @@ import { css } from '@emotion/core'
 
 import { Colorway, Container, Padded, Shadowed } from '../../../mixins'
 
-// @TODO add more props.
-export const PanelSection = styled.section(Container)
-
 export const Panel = styled.div(Shadowed, ({ theme, spacing }) => {
   const space = theme.spacing.getSpacing(spacing)
   return css`

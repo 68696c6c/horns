@@ -5,13 +5,10 @@ import { colorwayDefaultProps, colorwayPropTypes } from './color'
 
 const toClassNames = (...values) => values.join(' ').trim()
 
-export const handleProps = ({ className, ...others }, name = '') => {
-  const props = {
-    className: toClassNames(name, className),
-    ...others,
-  }
-  return props
-}
+export const handleProps = ({ className, ...others }, name = '') => ({
+  className: toClassNames(name, className),
+  ...others,
+})
 
 export const themePropTypes = () => ({
   theme: PropTypes.shape({
@@ -79,7 +76,9 @@ export const sizableDefaultProps = (height = 'auto', width = 'auto') => ({
 })
 
 export const Shadowed = ({ theme }) => css`
-  box-shadow: 0 0 50px -20px ${theme.colors.getSwatch('background:active')};
+  box-shadow: 0 3px 3px -2px ${theme.colors.getSwatch('background:inactive-alpha')},
+    0px 3px 4px 0px ${theme.colors.getSwatch('background:inactive-alpha')},
+    0px 1px 8px 0px ${theme.colors.getSwatch('background:inactive-alpha')};
 `
 
 export const Clickable = () => css`
