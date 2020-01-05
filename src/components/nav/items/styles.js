@@ -1,11 +1,25 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 
-import { Clickable, Colorway, ColorwayInteractive, Font } from '../../../mixins'
+import {
+  Clickable,
+  Colorway,
+  ColorwayInteractive,
+  ColorwayTextInteractive,
+  Font,
+} from '../../../mixins'
+
+export const PaginationNav = styled.nav(
+  Colorway,
+  () =>
+    css`
+      display: inline-block;
+    `
+)
 
 const NavItem = styled.a(ColorwayInteractive, Clickable, Font)
 
-export const NavItemInline = styled(NavItem)(({ theme, current, colorway }) => {
+const inlineStyles = ({ theme, current, colorway }) => {
   const { inline: itemConfig } = theme.navItems
   const { padding, lineSize } = itemConfig
   const cw = theme.colors.getShade(colorway)
@@ -18,7 +32,16 @@ export const NavItemInline = styled(NavItem)(({ theme, current, colorway }) => {
         border-color: ${cw.border};
       `}
   `
-})
+}
+
+export const NavItemInline = styled(NavItem)(inlineStyles)
+
+export const Page = styled.a(
+  ColorwayTextInteractive,
+  Clickable,
+  Font,
+  inlineStyles
+)
 
 export const NavItemStacked = styled(NavItem)(
   ({ theme, current, colorway }) => {
