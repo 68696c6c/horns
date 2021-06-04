@@ -1,0 +1,24 @@
+{
+  "name": "@horns/ui",
+  "version": "0.0.0",
+  "description": "Devilishly themeable React UI kit.",
+  "author": "68696c6c@gmail.com",
+  "license": "GPL",
+  "private": false,
+  "sideEffects": false,
+  "main": "dist/umd/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -cw"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@rollup/plugin-babel": "^5.3.0"
+  }
+}

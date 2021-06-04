@@ -1,0 +1,20 @@
+{
+  "name": "@horns/theme",
+  "version": "0.0.0",
+  "description": "Theme modelling for Horns UI and CLI.",
+  "author": "68696c6c@gmail.com",
+  "license": "GPL",
+  "private": false,
+  "sideEffects": false,
+  "main": "dist/cjs/bundle.min.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -cw"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0"
+  }
+}
