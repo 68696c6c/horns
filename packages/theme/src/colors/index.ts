@@ -1,4 +1,3 @@
-export const helloWorld = () => {
-  // eslint-disable-next-line no-console
-  console.log('hello world')
-}
+export { Colors, makeColors } from './colors'
+export { Config as ColorsConfig } from './config'
+export { Colorway, ColorwayNotification } from './types'

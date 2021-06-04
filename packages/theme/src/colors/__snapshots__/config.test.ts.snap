@@ -1,0 +1,671 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeColors should support dark mode 1`] = `
+Object {
+  "background": Object {
+    "active": Object {
+      "base": "rgb(26, 26, 26)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(0, 0, 0)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(13, 13, 13)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(64, 64, 64)",
+      "border": "rgb(89, 89, 89)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "backgroundAlt": Object {
+    "active": Object {
+      "base": "rgb(38, 38, 38)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(13, 13, 13)",
+      "border": "rgb(26, 26, 26)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(26, 26, 26)",
+      "border": "rgb(38, 38, 38)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(70, 70, 70)",
+      "border": "rgb(93, 93, 93)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "danger": Object {
+    "active": Object {
+      "base": "rgb(242, 181, 187)",
+      "border": "rgb(229, 104, 116)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(220, 53, 69)",
+      "border": "rgb(229, 104, 116)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(229, 104, 116)",
+      "border": "rgb(220, 53, 69)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(174, 90, 98)",
+      "border": "rgb(155, 105, 110)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "dark": Object {
+    "active": Object {
+      "base": "rgb(51, 51, 51)",
+      "border": "rgb(38, 38, 38)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(26, 26, 26)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(38, 38, 38)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(76, 76, 76)",
+      "border": "rgb(97, 97, 97)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "info": Object {
+    "active": Object {
+      "base": "rgb(87, 214, 234)",
+      "border": "rgb(28, 198, 225)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(23, 162, 184)",
+      "border": "rgb(28, 198, 225)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(28, 198, 225)",
+      "border": "rgb(23, 162, 184)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(75, 145, 156)",
+      "border": "rgb(96, 138, 144)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "light": Object {
+    "active": Object {
+      "base": "rgb(224, 224, 224)",
+      "border": "rgb(232, 232, 232)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(240, 240, 240)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(232, 232, 232)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(183, 183, 183)",
+      "border": "rgb(161, 161, 161)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "neutral": Object {
+    "active": Object {
+      "base": "rgb(197, 197, 197)",
+      "border": "rgb(155, 155, 155)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(127, 127, 127)",
+      "border": "rgb(155, 155, 155)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(155, 155, 155)",
+      "border": "rgb(127, 127, 127)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(127, 127, 127)",
+      "border": "rgb(127, 127, 127)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "primary": Object {
+    "active": Object {
+      "base": "rgb(255, 217, 140)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(255, 189, 56)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "prominent": Object {
+    "active": Object {
+      "base": "rgb(255, 217, 140)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(255, 189, 56)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "secondary": Object {
+    "active": Object {
+      "base": "rgb(181, 222, 255)",
+      "border": "rgb(88, 181, 255)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(26, 153, 255)",
+      "border": "rgb(88, 181, 255)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(88, 181, 255)",
+      "border": "rgb(26, 153, 255)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(77, 140, 191)",
+      "border": "rgb(97, 135, 165)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "selected": Object {
+    "active": Object {
+      "base": "rgb(255, 217, 140)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(255, 189, 56)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(255, 189, 56)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "success": Object {
+    "active": Object {
+      "base": "rgb(102, 218, 129)",
+      "border": "rgb(49, 204, 84)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(40, 167, 69)",
+      "border": "rgb(49, 204, 84)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(49, 204, 84)",
+      "border": "rgb(40, 167, 69)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(84, 147, 98)",
+      "border": "rgb(101, 139, 110)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "tertiary": Object {
+    "active": Object {
+      "base": "rgb(0, 237, 237)",
+      "border": "rgb(0, 187, 187)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(0, 153, 153)",
+      "border": "rgb(0, 187, 187)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(0, 187, 187)",
+      "border": "rgb(0, 153, 153)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(64, 140, 140)",
+      "border": "rgb(89, 135, 135)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "typography": Object {
+    "active": Object {
+      "base": "rgb(255, 255, 255)",
+      "border": "rgb(255, 255, 255)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 255, 255)",
+      "border": "rgb(255, 255, 255)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(255, 255, 255)",
+      "border": "rgb(255, 255, 255)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 191, 191)",
+      "border": "rgb(165, 165, 165)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "warning": Object {
+    "active": Object {
+      "base": "rgb(255, 229, 151)",
+      "border": "rgb(255, 207, 65)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 193, 7)",
+      "border": "rgb(255, 207, 65)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(255, 207, 65)",
+      "border": "rgb(255, 193, 7)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 160, 67)",
+      "border": "rgb(165, 147, 91)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+}
+`;
+
+exports[`makeColors should support light mode 1`] = `
+Object {
+  "background": Object {
+    "active": Object {
+      "base": "rgb(240, 240, 240)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(255, 255, 255)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(247, 247, 247)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 191, 191)",
+      "border": "rgb(165, 165, 165)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "backgroundAlt": Object {
+    "active": Object {
+      "base": "rgb(232, 232, 232)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(247, 247, 247)",
+      "border": "rgb(240, 240, 240)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(240, 240, 240)",
+      "border": "rgb(232, 232, 232)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(187, 187, 187)",
+      "border": "rgb(163, 163, 163)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "danger": Object {
+    "active": Object {
+      "base": "rgb(123, 21, 31)",
+      "border": "rgb(186, 32, 47)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(220, 53, 69)",
+      "border": "rgb(186, 32, 47)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(186, 32, 47)",
+      "border": "rgb(220, 53, 69)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(174, 90, 98)",
+      "border": "rgb(155, 105, 110)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "dark": Object {
+    "active": Object {
+      "base": "rgb(51, 51, 51)",
+      "border": "rgb(38, 38, 38)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(26, 26, 26)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(38, 38, 38)",
+      "border": "rgb(51, 51, 51)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(76, 76, 76)",
+      "border": "rgb(97, 97, 97)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "info": Object {
+    "active": Object {
+      "base": "rgb(12, 86, 98)",
+      "border": "rgb(18, 130, 147)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(23, 162, 184)",
+      "border": "rgb(18, 130, 147)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(18, 130, 147)",
+      "border": "rgb(23, 162, 184)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(75, 145, 156)",
+      "border": "rgb(96, 138, 144)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "light": Object {
+    "active": Object {
+      "base": "rgb(224, 224, 224)",
+      "border": "rgb(232, 232, 232)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "base": Object {
+      "base": "rgb(240, 240, 240)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(232, 232, 232)",
+      "border": "rgb(224, 224, 224)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(183, 183, 183)",
+      "border": "rgb(161, 161, 161)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "neutral": Object {
+    "active": Object {
+      "base": "rgb(67, 67, 67)",
+      "border": "rgb(102, 102, 102)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(127, 127, 127)",
+      "border": "rgb(102, 102, 102)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(102, 102, 102)",
+      "border": "rgb(127, 127, 127)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(127, 127, 127)",
+      "border": "rgb(127, 127, 127)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "primary": Object {
+    "active": Object {
+      "base": "rgb(135, 90, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(204, 136, 0)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "prominent": Object {
+    "active": Object {
+      "base": "rgb(135, 90, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(204, 136, 0)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "secondary": Object {
+    "active": Object {
+      "base": "rgb(0, 83, 149)",
+      "border": "rgb(0, 125, 225)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(26, 153, 255)",
+      "border": "rgb(0, 125, 225)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(0, 125, 225)",
+      "border": "rgb(26, 153, 255)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(77, 140, 191)",
+      "border": "rgb(97, 135, 165)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "selected": Object {
+    "active": Object {
+      "base": "rgb(135, 90, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(255, 170, 0)",
+      "border": "rgb(204, 136, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(204, 136, 0)",
+      "border": "rgb(255, 170, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 149, 64)",
+      "border": "rgb(165, 140, 89)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+  "success": Object {
+    "active": Object {
+      "base": "rgb(21, 89, 37)",
+      "border": "rgb(32, 134, 55)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(40, 167, 69)",
+      "border": "rgb(32, 134, 55)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(32, 134, 55)",
+      "border": "rgb(40, 167, 69)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(84, 147, 98)",
+      "border": "rgb(101, 139, 110)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "tertiary": Object {
+    "active": Object {
+      "base": "rgb(0, 81, 81)",
+      "border": "rgb(0, 122, 122)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(0, 153, 153)",
+      "border": "rgb(0, 122, 122)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(0, 122, 122)",
+      "border": "rgb(0, 153, 153)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(64, 140, 140)",
+      "border": "rgb(89, 135, 135)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "typography": Object {
+    "active": Object {
+      "base": "rgb(0, 0, 0)",
+      "border": "rgb(0, 0, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(0, 0, 0)",
+      "border": "rgb(0, 0, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "hover": Object {
+      "base": "rgb(0, 0, 0)",
+      "border": "rgb(0, 0, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "inactive": Object {
+      "base": "rgb(64, 64, 64)",
+      "border": "rgb(89, 89, 89)",
+      "readable": "rgb(255, 255, 255)",
+    },
+  },
+  "warning": Object {
+    "active": Object {
+      "base": "rgb(139, 104, 0)",
+      "border": "rgb(210, 157, 0)",
+      "readable": "rgb(255, 255, 255)",
+    },
+    "base": Object {
+      "base": "rgb(255, 193, 7)",
+      "border": "rgb(210, 157, 0)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "hover": Object {
+      "base": "rgb(210, 157, 0)",
+      "border": "rgb(255, 193, 7)",
+      "readable": "rgb(0, 0, 0)",
+    },
+    "inactive": Object {
+      "base": "rgb(191, 160, 67)",
+      "border": "rgb(165, 147, 91)",
+      "readable": "rgb(0, 0, 0)",
+    },
+  },
+}
+`;

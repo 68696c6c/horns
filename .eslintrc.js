@@ -29,6 +29,7 @@ module.exports = {
     ],
     'import/prefer-default-export': 'off', // We export everything through barrel files and rarely ever use default exports.
     'react/jsx-props-no-spreading': 'off', // We are making a component library so we actually do want to spread all user-provided props on to our components.
+    '@typescript-eslint/lines-between-class-members': 'off',
   },
   overrides: [
     {
