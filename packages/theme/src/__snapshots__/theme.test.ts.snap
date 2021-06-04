@@ -2,6 +2,29 @@
 
 exports[`makeTheme should accept a theme name 1`] = `
 Object {
+  "breakpoints": Object {
+    "large": "992px",
+    "max": "1200px",
+    "medium": "768px",
+    "min": "320px",
+    "mobile": "480px",
+    "small": "480px",
+  },
+  "buttons": Object {
+    "border": Object {
+      "all": Object {
+        "style": "solid",
+        "width": "tiny",
+      },
+    },
+    "padding": Object {
+      "x": "medium",
+      "y": "small",
+    },
+    "radius": Object {
+      "all": "tiny",
+    },
+  },
   "colors": Object {
     "background": Object {
       "active": Object {
@@ -334,6 +357,24 @@ Object {
       },
     },
   },
+  "controls": Object {
+    "border": Object {
+      "all": Object {
+        "style": "solid",
+        "width": "tiny",
+      },
+    },
+    "padding": Object {
+      "all": "xSmall",
+    },
+    "radius": Object {
+      "all": "tiny",
+    },
+  },
+  "grid": Object {
+    "columnMin": "280px",
+    "gap": "small",
+  },
   "name": "example-theme",
   "sizes": Object {
     "giant": "64px",
@@ -347,6 +388,11 @@ Object {
     "xSmall": "8px",
     "xxLarge": "48px",
     "xxSmall": "4px",
+  },
+  "tables": Object {
+    "padding": Object {
+      "all": "xSmall",
+    },
   },
   "typography": Object {
     "blockquote": Object {
@@ -2797,6 +2843,29 @@ Object {
 
 exports[`makeTheme should match snapshot 1`] = `
 Object {
+  "breakpoints": Object {
+    "large": "992px",
+    "max": "1200px",
+    "medium": "768px",
+    "min": "320px",
+    "mobile": "480px",
+    "small": "480px",
+  },
+  "buttons": Object {
+    "border": Object {
+      "all": Object {
+        "style": "solid",
+        "width": "tiny",
+      },
+    },
+    "padding": Object {
+      "x": "medium",
+      "y": "small",
+    },
+    "radius": Object {
+      "all": "tiny",
+    },
+  },
   "colors": Object {
     "background": Object {
       "active": Object {
@@ -3129,6 +3198,24 @@ Object {
       },
     },
   },
+  "controls": Object {
+    "border": Object {
+      "all": Object {
+        "style": "solid",
+        "width": "tiny",
+      },
+    },
+    "padding": Object {
+      "all": "xSmall",
+    },
+    "radius": Object {
+      "all": "tiny",
+    },
+  },
+  "grid": Object {
+    "columnMin": "280px",
+    "gap": "small",
+  },
   "name": "horns-theme",
   "sizes": Object {
     "giant": "64px",
@@ -3142,6 +3229,11 @@ Object {
     "xSmall": "8px",
     "xxLarge": "48px",
     "xxSmall": "4px",
+  },
+  "tables": Object {
+    "padding": Object {
+      "all": "xSmall",
+    },
   },
   "typography": Object {
     "blockquote": Object {

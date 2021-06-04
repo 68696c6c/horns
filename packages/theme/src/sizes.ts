@@ -1,3 +1,5 @@
+import { Corner, Side } from './utils'
+
 export enum Size {
   Min = 'min',
   Tiny = 'tiny',
@@ -10,6 +12,14 @@ export enum Size {
   XXLarge = 'xxLarge',
   Giant = 'giant',
   Max = 'max',
+}
+
+export type SideSizeOptions = {
+  [key in Side]?: Size
+}
+
+export type CornerSizeOptions = {
+  [key in Corner]?: Size
 }
 
 export type Sizes = {
