@@ -1,4 +1,4 @@
-import { makeBreakpoints, defaultConfig } from './breakpoints'
+import { Breakpoint, makeBreakpoints, defaultConfig } from './breakpoints'
 
 describe('Breakpoints', () => {
   it('should use default values if no config is provided', () => {
@@ -33,16 +33,13 @@ describe('Breakpoints', () => {
 
   it('should set the mobile breakpoint correctly', () => {
     const result = makeBreakpoints({
-      mobile: 'large',
+      mobile: Breakpoint.Large,
       large: '800px',
     })
     expect(result).toEqual({
+      ...defaultConfig,
       mobile: '800px',
-      min: '320px',
-      small: '500px',
-      medium: '768px',
       large: '800px',
-      max: '1200px',
     })
   })
 })

@@ -1,4 +1,4 @@
-import _merge from 'lodash.merge'
+import { mergeConfig } from '../utils'
 
 import { Config, defaultConfig } from './config'
 import { Font, FontConfig } from './fonts'
@@ -36,8 +36,10 @@ export type Typography = {
   [key in Font | HeadingLevel]: Readonly<FontStates>
 }
 
-export const makeTypography = (input?: Config): Readonly<Typography> => {
-  const config = _merge(defaultConfig, input)
+export const makeTypography = (
+  input?: Partial<Config>,
+): Readonly<Typography> => {
+  const config = mergeConfig<Config>(defaultConfig, input)
   const fontBase = makeDefaultFontConfig(config)
 
   const result: Partial<Typography> = {}

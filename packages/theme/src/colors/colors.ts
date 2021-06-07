@@ -1,4 +1,4 @@
-import _merge from 'lodash.merge'
+import { mergeConfig } from '../utils'
 
 import { defaultConfig, Config } from './config'
 import {
@@ -18,7 +18,7 @@ export type Colors = {
 }
 
 export const makeColors = (config?: Partial<Config>): Colors => {
-  const mergedConfig = _merge(defaultConfig, config)
+  const mergedConfig = mergeConfig<Config>(defaultConfig, config)
   const colorShades = makeColorShades(mergedConfig)
   const isDark = mergedConfig.mode === Mode.Dark
   return {

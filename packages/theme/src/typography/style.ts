@@ -1,8 +1,5 @@
-import _cloneDeep from 'lodash.clonedeep'
-import _merge from 'lodash.merge'
-
 import { Colorway } from '../colors'
-import { UIState } from '../utils'
+import { mergeConfig, UIState } from '../utils'
 
 import { Config } from './config'
 import { FontConfig, FontStatesConfig } from './fonts'
@@ -57,9 +54,6 @@ const makeFontStyle = (
   }
 }
 
-const merge = (defaults: FontConfig, style?: Partial<FontConfig>) =>
-  _merge(_cloneDeep(defaults), _cloneDeep(style))
-
 export type FontStates = {
   [key in UIState]: FontStyle
 }
@@ -78,11 +72,15 @@ export const makeFontStates = ({
   size,
 }: FontStateArgs): FontStates => {
   const { base: inputBase, hover, active, inactive } = fontStyle
-  const base = merge(fontBase, inputBase)
+  const base = mergeConfig<FontConfig>(fontBase, inputBase)
   return {
     base: makeFontStyle(base, config, size),
-    hover: makeFontStyle(merge(base, hover), config, size),
-    active: makeFontStyle(merge(base, active), config, size),
-    inactive: makeFontStyle(merge(base, inactive), config, size),
+    hover: makeFontStyle(mergeConfig<FontConfig>(base, hover), config, size),
+    active: makeFontStyle(mergeConfig<FontConfig>(base, active), config, size),
+    inactive: makeFontStyle(
+      mergeConfig<FontConfig>(base, inactive),
+      config,
+      size,
+    ),
   }
 }
