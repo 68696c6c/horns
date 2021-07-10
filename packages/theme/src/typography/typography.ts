@@ -32,13 +32,13 @@ export const makeDefaultFontConfig = (config: Config): FontConfig => ({
   tracking: '',
 })
 
-export type Typography = {
-  [key in Font | HeadingLevel]: Readonly<FontStates>
-}
+export type Typography = Required<
+  {
+    [key in Font | HeadingLevel]: Readonly<FontStates>
+  }
+>
 
-export const makeTypography = (
-  input?: Partial<Config>,
-): Readonly<Typography> => {
+export const makeTypography = (input?: Partial<Config>): Typography => {
   const config = mergeConfig<Config>(defaultConfig, input)
   const fontBase = makeDefaultFontConfig(config)
 
@@ -89,5 +89,5 @@ export const makeTypography = (
     size: HeadingLevel.H6,
   })
 
-  return result as Readonly<Typography>
+  return result as Typography
 }

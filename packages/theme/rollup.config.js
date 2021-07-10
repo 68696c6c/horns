@@ -9,7 +9,7 @@ const input = 'src/index.ts'
 
 const external = [
   ...Object.keys(pkg.dependencies),
-  ...Object.keys(pkg.peerDependencies),
+  ...Object.keys(pkg.peerDependencies || []),
 ]
 
 const plugins = [

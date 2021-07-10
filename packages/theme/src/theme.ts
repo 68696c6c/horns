@@ -1,47 +1,52 @@
 import { BreakpointsConfig, Breakpoints, makeBreakpoints } from './breakpoints'
 import { ColorsConfig, Colors, makeColors } from './colors'
-import { defaultSizes, Sizes } from './sizes'
+import { SizesConfig, Sizes, makeSizes } from './sizes'
 import { TypographyConfig, Typography, makeTypography } from './typography'
-import { defaultButtons, defaultControls, ControlsConfig } from './controls'
-import { defaultGrid, Grid } from './grid'
-import { defaultTables, Tables } from './tables'
-import { mergeConfig } from './utils'
+import {
+  ElementTheme,
+  ElementConfig,
+  makeButtons,
+  makeControls,
+  makeTables,
+} from './elements'
+import { GridConfig, Grid, makeGrid } from './grid'
 
 export interface Config {
   name?: string
-  buttons?: Partial<ControlsConfig>
+  buttons?: Partial<ElementConfig>
   breakpoints?: Partial<BreakpointsConfig>
   colors?: Partial<ColorsConfig>
-  controls?: ControlsConfig
-  grid?: Partial<Grid>
-  sizes?: Partial<Sizes>
-  tables?: Partial<Tables>
+  controls?: Partial<ElementConfig>
+  grid?: Partial<GridConfig>
+  sizes?: Partial<SizesConfig>
+  tables?: Partial<ElementConfig>
   typography?: Partial<TypographyConfig>
 }
 
 export interface Theme {
-  name: string
-  buttons: ControlsConfig
-  breakpoints: Breakpoints
-  colors: Colors
-  controls: ControlsConfig
-  grid: Grid
-  sizes: Sizes
-  tables: Tables
-  typography: Typography
+  readonly name: string
+  readonly buttons: ElementTheme
+  readonly breakpoints: Breakpoints
+  readonly colors: Colors
+  readonly controls: ElementTheme
+  readonly grid: Grid
+  readonly sizes: Sizes
+  readonly tables: ElementTheme
+  readonly typography: Typography
 }
 
 export const makeTheme = (themeConfig?: Config): Theme => {
   const config = typeof themeConfig !== 'undefined' ? themeConfig : {}
+  const sizes = makeSizes(config.sizes)
   return {
     name: typeof config.name === 'string' ? config.name : 'horns-theme',
-    buttons: mergeConfig<ControlsConfig>(defaultButtons, config.buttons),
+    buttons: makeButtons(sizes, config.buttons),
     breakpoints: makeBreakpoints(config.breakpoints),
     colors: makeColors(config.colors),
-    controls: mergeConfig<ControlsConfig>(defaultControls, config.controls),
-    sizes: mergeConfig<Sizes>(defaultSizes, config.sizes),
-    grid: mergeConfig<Grid>(defaultGrid, config.grid),
-    tables: mergeConfig<Tables>(defaultTables, config.tables),
+    controls: makeControls(sizes, config.controls),
+    sizes,
+    grid: makeGrid(sizes, config.grid),
+    tables: makeTables(sizes, config.tables),
     typography: makeTypography(config.typography),
   }
 }

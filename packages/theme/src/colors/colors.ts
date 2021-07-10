@@ -13,9 +13,11 @@ import {
 import { makeColorShades } from './shades'
 import { Colorway, Mode } from './types'
 
-export type Colors = {
-  [key in Colorway]: ColorwayStates
-}
+export type Colors = Required<
+  {
+    [key in Colorway]: ColorwayStates
+  }
+>
 
 export const makeColors = (config?: Partial<Config>): Colors => {
   const mergedConfig = mergeConfig<Config>(defaultConfig, config)

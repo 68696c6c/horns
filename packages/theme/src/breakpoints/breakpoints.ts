@@ -27,14 +27,14 @@ export const defaultConfig: Config = {
   max: '1200px',
 }
 
-export type Breakpoints = {
+export type Breakpoints = Required<{
   readonly [Breakpoint.Mobile]: string
   readonly [Breakpoint.Min]: string
   readonly [Breakpoint.Small]: string
   readonly [Breakpoint.Medium]: string
   readonly [Breakpoint.Large]: string
   readonly [Breakpoint.Max]: string
-}
+}>
 
 export const makeBreakpoints = (config?: Partial<Config>): Breakpoints => {
   const merged = mergeConfig<Config>(defaultConfig, config)

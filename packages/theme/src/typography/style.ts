@@ -54,16 +54,18 @@ const makeFontStyle = (
   }
 }
 
-export type FontStates = {
-  [key in UIState]: FontStyle
-}
-
 export interface FontStateArgs {
   fontStyle: FontStatesConfig
   fontBase: Readonly<FontConfig>
   config: Readonly<Config>
   size?: HeadingLevel
 }
+
+export type FontStates = Required<
+  {
+    [key in UIState]: FontStyle
+  }
+>
 
 export const makeFontStates = ({
   fontStyle,
