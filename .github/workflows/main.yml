@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate coverage report
-        run: yarn test:cover
+        run:  yarn && yarn test:cover
 
   # This workflow contains a single job called "build"
   build:
