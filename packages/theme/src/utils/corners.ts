@@ -15,13 +15,16 @@ export type CornersConfig<T> = {
 }
 
 export type Corners<T> = {
-  [Corner.TopLeft]?: T
-  [Corner.TopRight]?: T
-  [Corner.BottomLeft]?: T
-  [Corner.BottomRight]?: T
+  [Corner.TopLeft]: T
+  [Corner.TopRight]: T
+  [Corner.BottomLeft]: T
+  [Corner.BottomRight]: T
 }
 
-export const evalCorners = <T>(options: CornersConfig<T>): Corners<T> => {
+export const configToCorners = <T>(
+  defaults: Corners<T>,
+  corners: CornersConfig<T>,
+): Corners<T> => {
   const {
     all,
     top,
@@ -32,11 +35,17 @@ export const evalCorners = <T>(options: CornersConfig<T>): Corners<T> => {
     topRight,
     bottomLeft,
     bottomRight,
-  } = options
+  } = corners
+  const {
+    topLeft: dTopLeft,
+    topRight: dTopRight,
+    bottomLeft: dBottomLeft,
+    bottomRight: dBottomRight,
+  } = defaults
   return {
-    topLeft: topLeft || top || left || all,
-    topRight: topRight || top || right || all,
-    bottomLeft: bottomLeft || bottom || left || all,
-    bottomRight: bottomRight || bottom || right || all,
+    topLeft: topLeft || top || left || all || dTopLeft,
+    topRight: topRight || top || right || all || dTopRight,
+    bottomLeft: bottomLeft || bottom || left || all || dBottomLeft,
+    bottomRight: bottomRight || bottom || right || all || dBottomRight,
   }
 }

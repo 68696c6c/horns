@@ -1,130 +1,100 @@
-import { Sizes } from '../sizes'
+import { BorderStyle } from '../borders'
+import { Size } from '../sizes'
 
 import { makeButtons, makeControls, makeTables } from '.'
 
 describe('makeButtons', () => {
-  const sizes: Sizes = {
-    none: '0px',
-    tiny: '2px',
-    xxSmall: '4px',
-    xSmall: '8px',
-    small: '12px',
-    medium: '16px',
-    large: '24px',
-    xLarge: '32px',
-    xxLarge: '48px',
-    giant: '64px',
-  }
   const defaults = {
     border: {
-      bottom: { style: 'solid', width: '2px' },
-      left: { style: 'solid', width: '2px' },
-      right: { style: 'solid', width: '2px' },
-      top: { style: 'solid', width: '2px' },
+      bottom: { style: BorderStyle.Solid, width: Size.Tiny },
+      left: { style: BorderStyle.Solid, width: Size.Tiny },
+      right: { style: BorderStyle.Solid, width: Size.Tiny },
+      top: { style: BorderStyle.Solid, width: Size.Tiny },
     },
-    padding: { bottom: '12px', left: '16px', right: '16px', top: '12px' },
+    padding: {
+      bottom: Size.Small,
+      left: Size.Medium,
+      right: Size.Medium,
+      top: Size.Small,
+    },
     radius: {
-      bottomLeft: '2px',
-      bottomRight: '2px',
-      topLeft: '2px',
-      topRight: '2px',
+      bottomLeft: Size.Tiny,
+      bottomRight: Size.Tiny,
+      topLeft: Size.Tiny,
+      topRight: Size.Tiny,
     },
   }
   it('should return default values if no input is provided', () => {
-    const result = makeButtons(sizes)
+    const result = makeButtons()
     expect(result).toStrictEqual(defaults)
   })
   it('should return default values for missing no inputs', () => {
     const input = {}
-    const result = makeButtons(sizes, input)
+    const result = makeButtons(input)
     expect(result).toStrictEqual(defaults)
   })
 })
 
 describe('makeControls', () => {
-  const sizes: Sizes = {
-    none: '0px',
-    tiny: '2px',
-    xxSmall: '4px',
-    xSmall: '8px',
-    small: '12px',
-    medium: '16px',
-    large: '24px',
-    xLarge: '32px',
-    xxLarge: '48px',
-    giant: '64px',
-  }
   const defaults = {
     border: {
-      bottom: { style: 'solid', width: '2px' },
-      left: { style: 'solid', width: '2px' },
-      right: { style: 'solid', width: '2px' },
-      top: { style: 'solid', width: '2px' },
+      bottom: { style: BorderStyle.Solid, width: Size.Tiny },
+      left: { style: BorderStyle.Solid, width: Size.Tiny },
+      right: { style: BorderStyle.Solid, width: Size.Tiny },
+      top: { style: BorderStyle.Solid, width: Size.Tiny },
     },
     padding: {
-      bottom: '8px',
-      left: '8px',
-      right: '8px',
-      top: '8px',
+      bottom: Size.XSmall,
+      left: Size.XSmall,
+      right: Size.XSmall,
+      top: Size.XSmall,
     },
     radius: {
-      bottomLeft: '2px',
-      bottomRight: '2px',
-      topLeft: '2px',
-      topRight: '2px',
+      bottomLeft: Size.Tiny,
+      bottomRight: Size.Tiny,
+      topLeft: Size.Tiny,
+      topRight: Size.Tiny,
     },
   }
   it('should return default values if no input is provided', () => {
-    const result = makeControls(sizes)
+    const result = makeControls()
     expect(result).toStrictEqual(defaults)
   })
   it('should return default values for missing no inputs', () => {
     const input = {}
-    const result = makeControls(sizes, input)
+    const result = makeControls(input)
     expect(result).toStrictEqual(defaults)
   })
 })
 
 describe('makeTables', () => {
-  const sizes: Sizes = {
-    none: '0px',
-    tiny: '2px',
-    xxSmall: '4px',
-    xSmall: '8px',
-    small: '12px',
-    medium: '16px',
-    large: '24px',
-    xLarge: '32px',
-    xxLarge: '48px',
-    giant: '64px',
-  }
   const defaults = {
     border: {
-      bottom: { style: 'solid', width: '2px' },
-      left: { style: 'solid', width: '2px' },
-      right: { style: 'solid', width: '2px' },
-      top: { style: 'solid', width: '2px' },
+      bottom: { style: BorderStyle.Solid, width: Size.Tiny },
+      left: { style: BorderStyle.Solid, width: Size.Tiny },
+      right: { style: BorderStyle.Solid, width: Size.Tiny },
+      top: { style: BorderStyle.Solid, width: Size.Tiny },
     },
     padding: {
-      bottom: '8px',
-      left: '8px',
-      right: '8px',
-      top: '8px',
+      bottom: Size.XSmall,
+      left: Size.XSmall,
+      right: Size.XSmall,
+      top: Size.XSmall,
     },
     radius: {
-      bottomLeft: '2px',
-      bottomRight: '2px',
-      topLeft: '2px',
-      topRight: '2px',
+      bottomLeft: Size.Tiny,
+      bottomRight: Size.Tiny,
+      topLeft: Size.Tiny,
+      topRight: Size.Tiny,
     },
   }
   it('should return default values if no input is provided', () => {
-    const result = makeTables(sizes)
+    const result = makeTables()
     expect(result).toStrictEqual(defaults)
   })
   it('should return default values for missing no inputs', () => {
     const input = {}
-    const result = makeTables(sizes, input)
+    const result = makeTables(input)
     expect(result).toStrictEqual(defaults)
   })
 })

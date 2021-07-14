@@ -1,10 +1,5 @@
-import {
-  evalSideSizesConfig,
-  evalCornerSizesConfig,
-  Size,
-  Sizes,
-} from '../sizes'
-import { BorderStyle, evalBorderConfig } from '../borders'
+import { evalSideSizesConfig, evalCornerSizesConfig, Size } from '../sizes'
+import { BorderStyle, evalSideBordersConfig } from '../borders'
 
 import { ElementConfig, ElementTheme } from './elements'
 
@@ -24,11 +19,8 @@ const defaultButtons: ElementConfig = {
   },
 }
 
-export const makeButtons = (
-  sizes: Sizes,
-  config?: Partial<ElementConfig>,
-): ElementTheme => ({
-  border: evalBorderConfig(sizes, defaultButtons.border, config?.border),
-  padding: evalSideSizesConfig(sizes, defaultButtons.padding, config?.padding),
-  radius: evalCornerSizesConfig(sizes, defaultButtons.radius, config?.radius),
+export const makeButtons = (config?: Partial<ElementConfig>): ElementTheme => ({
+  border: evalSideBordersConfig(defaultButtons.border, config?.border),
+  padding: evalSideSizesConfig(defaultButtons.padding, config?.padding),
+  radius: evalCornerSizesConfig(defaultButtons.radius, config?.radius),
 })

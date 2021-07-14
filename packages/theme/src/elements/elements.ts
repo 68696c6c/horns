@@ -1,19 +1,19 @@
-import { Borders, BordersConfig } from '../borders'
+import { SideBorders, SideBordersConfig } from '../borders'
 import {
+  CornerSizes,
   CornerSizesConfig,
-  SideValues,
+  SideSizes,
   SideSizesConfig,
-  CornerValues,
 } from '../sizes'
 
 export type ElementConfig = Required<{
-  border: BordersConfig
+  border: SideBordersConfig
   padding: SideSizesConfig
   radius: CornerSizesConfig
 }>
 
 export type ElementTheme = Required<{
-  border: Borders
-  padding: SideValues
-  radius: CornerValues
+  border: SideBorders
+  padding: SideSizes
+  radius: CornerSizes
 }>

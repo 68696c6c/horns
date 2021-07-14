@@ -1,10 +1,5 @@
-import {
-  evalSideSizesConfig,
-  evalCornerSizesConfig,
-  Size,
-  Sizes,
-} from '../sizes'
-import { BorderStyle, evalBorderConfig } from '../borders'
+import { evalSideSizesConfig, evalCornerSizesConfig, Size } from '../sizes'
+import { BorderStyle, evalSideBordersConfig } from '../borders'
 
 import { ElementConfig, ElementTheme } from './elements'
 
@@ -24,10 +19,9 @@ const defaultControls: ElementConfig = {
 }
 
 export const makeControls = (
-  sizes: Sizes,
   config?: Partial<ElementConfig>,
 ): ElementTheme => ({
-  border: evalBorderConfig(sizes, defaultControls.border, config?.border),
-  padding: evalSideSizesConfig(sizes, defaultControls.padding, config?.padding),
-  radius: evalCornerSizesConfig(sizes, defaultControls.radius, config?.radius),
+  border: evalSideBordersConfig(defaultControls.border, config?.border),
+  padding: evalSideSizesConfig(defaultControls.padding, config?.padding),
+  radius: evalCornerSizesConfig(defaultControls.radius, config?.radius),
 })

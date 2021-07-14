@@ -13,18 +13,22 @@ export type SidesConfig<T> = {
 }
 
 export type Sides<T> = {
-  [Side.Top]?: T
-  [Side.Right]?: T
-  [Side.Bottom]?: T
-  [Side.Left]?: T
+  [Side.Top]: T
+  [Side.Right]: T
+  [Side.Bottom]: T
+  [Side.Left]: T
 }
 
-export const evalSides = <T>(options: SidesConfig<T>): Sides<T> => {
-  const { all, x, y, top, bottom, left, right } = options
+export const configToSides = <T>(
+  defaults: Sides<T>,
+  sides: SidesConfig<T>,
+): Sides<T> => {
+  const { all, x, y, top, bottom, left, right } = sides
+  const { top: dTop, bottom: dBottom, left: dLeft, right: dRight } = defaults
   return {
-    top: top || y || all,
-    right: right || x || all,
-    bottom: bottom || y || all,
-    left: left || x || all,
+    top: top || y || all || dTop,
+    right: right || x || all || dRight,
+    bottom: bottom || y || all || dBottom,
+    left: left || x || all || dLeft,
   }
 }

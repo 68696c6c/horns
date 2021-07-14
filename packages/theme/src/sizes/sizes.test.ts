@@ -1,28 +1,13 @@
 import {
-  evalSideSizes,
-  evalCornerSizes,
   isSize,
   SideSizes,
-  SideSizesConfig,
   Size,
   CornerSizes,
   CornerSizesConfig,
-  getSizeValue,
-  Sizes,
-} from './sizes'
-
-const sizes: Sizes = {
-  none: '0px',
-  tiny: '2px',
-  xxSmall: '4px',
-  xSmall: '8px',
-  small: '12px',
-  medium: '16px',
-  large: '24px',
-  xLarge: '32px',
-  xxLarge: '48px',
-  giant: '64px',
-}
+  SideSizesConfig,
+  evalSideSizesConfig,
+  evalCornerSizesConfig,
+} from '.'
 
 describe('isSize', () => {
   it('should return true if the input is a Size', () => {
@@ -57,14 +42,7 @@ describe('isSize', () => {
   })
 })
 
-describe('getSizeValue', () => {
-  it('should return "none" if no input is provided', () => {
-    const result = getSizeValue()
-    expect(result).toBe(Size.None)
-  })
-})
-
-describe('evalSideSizes', () => {
+describe('evalSideSizesConfig', () => {
   let defaults: SideSizes
   beforeEach(() => {
     defaults = {
@@ -78,48 +56,48 @@ describe('evalSideSizes', () => {
     const props: SideSizesConfig = {
       all: Size.Tiny,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Tiny])
-    expect(result.bottom).toBe(sizes[Size.Tiny])
-    expect(result.left).toBe(sizes[Size.Tiny])
-    expect(result.right).toBe(sizes[Size.Tiny])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Tiny)
+    expect(result.bottom).toBe(Size.Tiny)
+    expect(result.left).toBe(Size.Tiny)
+    expect(result.right).toBe(Size.Tiny)
   })
   it('should handle a raw size value as an "all" value', () => {
-    const result = evalSideSizes(sizes, defaults, Size.Tiny)
-    expect(result.top).toBe(sizes[Size.Tiny])
-    expect(result.bottom).toBe(sizes[Size.Tiny])
-    expect(result.left).toBe(sizes[Size.Tiny])
-    expect(result.right).toBe(sizes[Size.Tiny])
+    const result = evalSideSizesConfig(defaults, Size.Tiny)
+    expect(result.top).toBe(Size.Tiny)
+    expect(result.bottom).toBe(Size.Tiny)
+    expect(result.left).toBe(Size.Tiny)
+    expect(result.right).toBe(Size.Tiny)
   })
   it('should allow the "x" prop value override the horizontal default values', () => {
     const props: SideSizesConfig = {
       x: Size.Tiny,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Small])
-    expect(result.bottom).toBe(sizes[Size.Small])
-    expect(result.left).toBe(sizes[Size.Tiny])
-    expect(result.right).toBe(sizes[Size.Tiny])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Small)
+    expect(result.bottom).toBe(Size.Small)
+    expect(result.left).toBe(Size.Tiny)
+    expect(result.right).toBe(Size.Tiny)
   })
   it('should allow the "y" prop value override the vertical default values', () => {
     const props: SideSizesConfig = {
       y: Size.Tiny,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Tiny])
-    expect(result.bottom).toBe(sizes[Size.Tiny])
-    expect(result.left).toBe(sizes[Size.Small])
-    expect(result.right).toBe(sizes[Size.Small])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Tiny)
+    expect(result.bottom).toBe(Size.Tiny)
+    expect(result.left).toBe(Size.Small)
+    expect(result.right).toBe(Size.Small)
   })
   it('should allow default values for incomplete prop values', () => {
     const props: SideSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Tiny])
-    expect(result.bottom).toBe(sizes[Size.Small])
-    expect(result.left).toBe(sizes[Size.Small])
-    expect(result.right).toBe(sizes[Size.Small])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Tiny)
+    expect(result.bottom).toBe(Size.Small)
+    expect(result.left).toBe(Size.Small)
+    expect(result.right).toBe(Size.Small)
   })
   it('should correctly evaluate the "all" value with the other prop values', () => {
     const props: SideSizesConfig = {
@@ -127,22 +105,22 @@ describe('evalSideSizes', () => {
       y: Size.Giant,
       left: Size.Large,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Giant])
-    expect(result.bottom).toBe(sizes[Size.Giant])
-    expect(result.left).toBe(sizes[Size.Large])
-    expect(result.right).toBe(sizes[Size.XLarge])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Giant)
+    expect(result.bottom).toBe(Size.Giant)
+    expect(result.left).toBe(Size.Large)
+    expect(result.right).toBe(Size.XLarge)
   })
   it('should allow default values when evaluating incomplete prop values', () => {
     const props: SideSizesConfig = {
       y: Size.Giant,
       left: Size.Large,
     }
-    const result = evalSideSizes(sizes, defaults, props)
-    expect(result.top).toBe(sizes[Size.Giant])
-    expect(result.bottom).toBe(sizes[Size.Giant])
-    expect(result.left).toBe(sizes[Size.Large])
-    expect(result.right).toBe(sizes[Size.Small])
+    const result = evalSideSizesConfig(defaults, props)
+    expect(result.top).toBe(Size.Giant)
+    expect(result.bottom).toBe(Size.Giant)
+    expect(result.left).toBe(Size.Large)
+    expect(result.right).toBe(Size.Small)
   })
 })
 
@@ -160,68 +138,68 @@ describe('evalCornerSizes', () => {
     const props: SideSizesConfig = {
       all: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Tiny])
-    expect(result.topRight).toBe(sizes[Size.Tiny])
-    expect(result.bottomLeft).toBe(sizes[Size.Tiny])
-    expect(result.bottomRight).toBe(sizes[Size.Tiny])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Tiny)
+    expect(result.topRight).toBe(Size.Tiny)
+    expect(result.bottomLeft).toBe(Size.Tiny)
+    expect(result.bottomRight).toBe(Size.Tiny)
   })
   it('should handle a raw size value as an "all" value', () => {
-    const result = evalCornerSizes(sizes, defaults, Size.Tiny)
-    expect(result.topLeft).toBe(sizes[Size.Tiny])
-    expect(result.topRight).toBe(sizes[Size.Tiny])
-    expect(result.bottomLeft).toBe(sizes[Size.Tiny])
-    expect(result.bottomRight).toBe(sizes[Size.Tiny])
+    const result = evalCornerSizesConfig(defaults, Size.Tiny)
+    expect(result.topLeft).toBe(Size.Tiny)
+    expect(result.topRight).toBe(Size.Tiny)
+    expect(result.bottomLeft).toBe(Size.Tiny)
+    expect(result.bottomRight).toBe(Size.Tiny)
   })
   it('should allow the "top" prop value override the top default values', () => {
     const props: CornerSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Tiny])
-    expect(result.topRight).toBe(sizes[Size.Tiny])
-    expect(result.bottomLeft).toBe(sizes[Size.Small])
-    expect(result.bottomRight).toBe(sizes[Size.Small])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Tiny)
+    expect(result.topRight).toBe(Size.Tiny)
+    expect(result.bottomLeft).toBe(Size.Small)
+    expect(result.bottomRight).toBe(Size.Small)
   })
   it('should allow the "bottom" prop value override the bottom default values', () => {
     const props: CornerSizesConfig = {
       bottom: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Small])
-    expect(result.topRight).toBe(sizes[Size.Small])
-    expect(result.bottomLeft).toBe(sizes[Size.Tiny])
-    expect(result.bottomRight).toBe(sizes[Size.Tiny])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Small)
+    expect(result.topRight).toBe(Size.Small)
+    expect(result.bottomLeft).toBe(Size.Tiny)
+    expect(result.bottomRight).toBe(Size.Tiny)
   })
   it('should allow the "left" prop value override the left default values', () => {
     const props: CornerSizesConfig = {
       left: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Tiny])
-    expect(result.topRight).toBe(sizes[Size.Small])
-    expect(result.bottomLeft).toBe(sizes[Size.Tiny])
-    expect(result.bottomRight).toBe(sizes[Size.Small])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Tiny)
+    expect(result.topRight).toBe(Size.Small)
+    expect(result.bottomLeft).toBe(Size.Tiny)
+    expect(result.bottomRight).toBe(Size.Small)
   })
   it('should allow the "right" prop value override the right default values', () => {
     const props: CornerSizesConfig = {
       right: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Small])
-    expect(result.topRight).toBe(sizes[Size.Tiny])
-    expect(result.bottomLeft).toBe(sizes[Size.Small])
-    expect(result.bottomRight).toBe(sizes[Size.Tiny])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Small)
+    expect(result.topRight).toBe(Size.Tiny)
+    expect(result.bottomLeft).toBe(Size.Small)
+    expect(result.bottomRight).toBe(Size.Tiny)
   })
   it('should allow default values for incomplete prop values', () => {
     const props: CornerSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Tiny])
-    expect(result.topRight).toBe(sizes[Size.Tiny])
-    expect(result.bottomLeft).toBe(sizes[Size.Small])
-    expect(result.bottomRight).toBe(sizes[Size.Small])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Tiny)
+    expect(result.topRight).toBe(Size.Tiny)
+    expect(result.bottomLeft).toBe(Size.Small)
+    expect(result.bottomRight).toBe(Size.Small)
   })
   it('should correctly evaluate the "all" value with the other prop values', () => {
     const props: CornerSizesConfig = {
@@ -229,21 +207,21 @@ describe('evalCornerSizes', () => {
       top: Size.Giant,
       left: Size.Large,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Giant])
-    expect(result.topRight).toBe(sizes[Size.Giant])
-    expect(result.bottomLeft).toBe(sizes[Size.Large])
-    expect(result.bottomRight).toBe(sizes[Size.XLarge])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Giant)
+    expect(result.topRight).toBe(Size.Giant)
+    expect(result.bottomLeft).toBe(Size.Large)
+    expect(result.bottomRight).toBe(Size.XLarge)
   })
   it('should allow default values when evaluating incomplete prop values', () => {
     const props: CornerSizesConfig = {
       bottom: Size.Giant,
       left: Size.Large,
     }
-    const result = evalCornerSizes(sizes, defaults, props)
-    expect(result.topLeft).toBe(sizes[Size.Large])
-    expect(result.topRight).toBe(sizes[Size.Small])
-    expect(result.bottomLeft).toBe(sizes[Size.Giant])
-    expect(result.bottomRight).toBe(sizes[Size.Giant])
+    const result = evalCornerSizesConfig(defaults, props)
+    expect(result.topLeft).toBe(Size.Large)
+    expect(result.topRight).toBe(Size.Small)
+    expect(result.bottomLeft).toBe(Size.Giant)
+    expect(result.bottomRight).toBe(Size.Giant)
   })
 })

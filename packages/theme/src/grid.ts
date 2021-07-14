@@ -1,4 +1,4 @@
-import { Size, Sizes } from './sizes'
+import { Size } from './sizes'
 import { mergeConfig } from './utils'
 
 export interface GridConfig {
@@ -11,15 +11,7 @@ const defaultConfig: GridConfig = {
   columnMin: '280px',
 }
 
-export type Grid = Required<{
-  gap: string
-  columnMin: string
-}>
+export type Grid = Required<GridConfig>
 
-export const makeGrid = (sizes: Sizes, config?: Partial<GridConfig>): Grid => {
-  const merged = mergeConfig<GridConfig>(defaultConfig, config)
-  return {
-    gap: sizes[merged.gap],
-    columnMin: merged.columnMin,
-  }
-}
+export const makeGrid = (config?: Partial<GridConfig>): Grid =>
+  mergeConfig<GridConfig>(defaultConfig, config)

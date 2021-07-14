@@ -14,32 +14,32 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "12px",
-      "left": "16px",
-      "right": "16px",
-      "top": "12px",
+      "bottom": "small",
+      "left": "medium",
+      "right": "medium",
+      "top": "small",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "colors": Object {
@@ -378,37 +378,37 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "8px",
-      "left": "8px",
-      "right": "8px",
-      "top": "8px",
+      "bottom": "xSmall",
+      "left": "xSmall",
+      "right": "xSmall",
+      "top": "xSmall",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "grid": Object {
     "columnMin": "280px",
-    "gap": "12px",
+    "gap": "small",
   },
   "name": "example-theme",
   "sizes": Object {
@@ -427,32 +427,32 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "8px",
-      "left": "8px",
-      "right": "8px",
-      "top": "8px",
+      "bottom": "xSmall",
+      "left": "xSmall",
+      "right": "xSmall",
+      "top": "xSmall",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "typography": Object {
@@ -2916,32 +2916,32 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "12px",
-      "left": "16px",
-      "right": "16px",
-      "top": "12px",
+      "bottom": "small",
+      "left": "medium",
+      "right": "medium",
+      "top": "small",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "colors": Object {
@@ -3280,37 +3280,37 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "8px",
-      "left": "8px",
-      "right": "8px",
-      "top": "8px",
+      "bottom": "xSmall",
+      "left": "xSmall",
+      "right": "xSmall",
+      "top": "xSmall",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "grid": Object {
     "columnMin": "280px",
-    "gap": "12px",
+    "gap": "small",
   },
   "name": "horns-theme",
   "sizes": Object {
@@ -3329,32 +3329,32 @@ Object {
     "border": Object {
       "bottom": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "left": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "right": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
       "top": Object {
         "style": "solid",
-        "width": "2px",
+        "width": "tiny",
       },
     },
     "padding": Object {
-      "bottom": "8px",
-      "left": "8px",
-      "right": "8px",
-      "top": "8px",
+      "bottom": "xSmall",
+      "left": "xSmall",
+      "right": "xSmall",
+      "top": "xSmall",
     },
     "radius": Object {
-      "bottomLeft": "2px",
-      "bottomRight": "2px",
-      "topLeft": "2px",
-      "topRight": "2px",
+      "bottomLeft": "tiny",
+      "bottomRight": "tiny",
+      "topLeft": "tiny",
+      "topRight": "tiny",
     },
   },
   "typography": Object {

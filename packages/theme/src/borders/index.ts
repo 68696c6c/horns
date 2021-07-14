@@ -1,5 +1,5 @@
-import { Size, Sizes } from '../sizes'
-import { evalSides, Side, Sides, SidesConfig } from '../utils'
+import { SideSizes, SideSizesConfig, Size } from '../sizes'
+import { configToSides, Sides, SidesConfig } from '../utils'
 
 export enum BorderStyle {
   None = 'none',
@@ -16,13 +16,15 @@ export enum BorderStyle {
   Inherit = 'inherit',
 }
 
+// i.e. Size
 export type BorderProperties = {
   width?: Size
   style?: BorderStyle
 }
 
+// i.e. isSize
 export const isBorderProperties = (
-  tbd?: BordersConfig | BorderProperties,
+  tbd?: SideBordersConfig | BorderProperties,
 ): tbd is BorderProperties => {
   if (typeof tbd === 'undefined') {
     return false
@@ -32,76 +34,107 @@ export const isBorderProperties = (
   return hasStyle || hasWidth
 }
 
-export type BordersConfig = SidesConfig<BorderProperties>
+// i.e. SideSizes
+export type SideBorders = Sides<BorderProperties>
+export type SideBorderStyles = Sides<BorderStyle>
 
-export type BorderValues = {
-  width: string
-  style: string
+// i.e. defaultSideSizes
+const defaultBorderWidths: SideSizes = {
+  top: Size.None,
+  bottom: Size.None,
+  left: Size.None,
+  right: Size.None,
+}
+const defaultBorderStyles: SideBorderStyles = {
+  top: BorderStyle.None,
+  bottom: BorderStyle.None,
+  left: BorderStyle.None,
+  right: BorderStyle.None,
+}
+const defaultSideBorders: SideBorders = {
+  top: {},
+  bottom: {},
+  left: {},
+  right: {},
 }
 
-export type Borders = Required<Sides<BorderValues>>
+// i.e. SideSizesConfig
+export type SideBordersConfig = SidesConfig<BorderProperties>
+type SideBorderStylesConfig = SidesConfig<BorderStyle>
 
-export const getBorderValues = (
-  sizes: Sizes,
-  input?: BorderProperties,
-): BorderValues => {
-  return {
-    width: input && input.width ? sizes[input.width] : '',
-    style: (input && input.style) || '',
+type Extracted = {
+  widths: SideSizesConfig
+  styles: SideBorderStylesConfig
+}
+
+const extract = (value: SideBordersConfig | BorderProperties): Extracted => {
+  const props: SideBordersConfig = isBorderProperties(value)
+    ? { all: value }
+    : value
+  const { all, x, y, top, bottom, left, right } = props
+  const widths: SideSizesConfig = {}
+  const styles: SideBorderStylesConfig = {}
+  if (all) {
+    widths.all = all.width
+    styles.all = all.style
   }
-}
-
-export const evalBorderSizes = (
-  sizes: Sizes,
-  input: BordersConfig,
-): Borders => {
-  const computed = evalSides<BorderProperties>(input)
-  const top = getBorderValues(sizes, computed.top)
-  const bottom = getBorderValues(sizes, computed.bottom)
-  const left = getBorderValues(sizes, computed.left)
-  const right = getBorderValues(sizes, computed.right)
-  return { top, bottom, left, right }
-}
-
-// call this from a component to merge props with the theme default
-export const evalBorders = (
-  sizes: Sizes,
-  defaults: Required<Borders>,
-  input?: BordersConfig | BorderProperties,
-): Borders => {
-  if (typeof input === 'undefined') {
-    return defaults
+  if (x) {
+    widths.x = x.width
+    styles.x = x.style
   }
-  const config: BordersConfig = isBorderProperties(input)
-    ? { [Side.All]: input }
-    : input
-  const cv = evalBorderSizes(sizes, config)
+  if (y) {
+    widths.y = y.width
+    styles.y = y.style
+  }
+  if (top) {
+    widths.top = top.width
+    styles.top = top.style
+  }
+  if (bottom) {
+    widths.bottom = bottom.width
+    styles.bottom = bottom.style
+  }
+  if (left) {
+    widths.left = left.width
+    styles.left = left.style
+  }
+  if (right) {
+    widths.right = right.width
+    styles.right = right.style
+  }
+  return { widths, styles }
+}
+
+// i.e. evalSideSizesConfig
+export const evalSideBordersConfig = (
+  defaults: SideBordersConfig,
+  value?: SideBordersConfig | BorderProperties,
+): SideBorders => {
+  if (typeof value === 'undefined') {
+    return configToSides<BorderProperties>(defaultSideBorders, defaults)
+  }
+  const defs = extract(defaults)
+  const defWidths = configToSides<Size>(defaultBorderWidths, defs.widths)
+  const defStyles = configToSides<BorderStyle>(defaultBorderStyles, defs.styles)
+  const props = extract(value)
+  const widths = configToSides<Size>(defWidths, props.widths)
+  const styles = configToSides<BorderStyle>(defStyles, props.styles)
   return {
     top: {
-      width: cv.top.width || defaults.top.width,
-      style: cv.top.style || defaults.top.style,
+      width: widths.top,
+      style: styles.top,
     },
     bottom: {
-      width: cv.bottom.width || defaults.bottom.width,
-      style: cv.bottom.style || defaults.bottom.style,
+      width: widths.bottom,
+      style: styles.bottom,
     },
     left: {
-      width: cv.left.width || defaults.left.width,
-      style: cv.left.style || defaults.left.style,
+      width: widths.left,
+      style: styles.left,
     },
     right: {
-      width: cv.right.width || defaults.right.width,
-      style: cv.right.style || defaults.right.style,
+      width: widths.right,
+      style: styles.right,
     },
   }
-}
-
-// call this to compute the default theme border
-export const evalBorderConfig = (
-  sizes: Sizes,
-  defaults: BordersConfig,
-  config?: BordersConfig | BorderProperties,
-): Borders => {
-  const db = evalBorderSizes(sizes, defaults)
-  return evalBorders(sizes, db, config)
 }

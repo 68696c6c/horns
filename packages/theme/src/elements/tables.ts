@@ -1,10 +1,5 @@
-import {
-  evalSideSizesConfig,
-  evalCornerSizesConfig,
-  Size,
-  Sizes,
-} from '../sizes'
-import { BorderStyle, evalBorderConfig } from '../borders'
+import { evalSideSizesConfig, evalCornerSizesConfig, Size } from '../sizes'
+import { BorderStyle, evalSideBordersConfig } from '../borders'
 
 import { ElementConfig, ElementTheme } from './elements'
 
@@ -23,11 +18,8 @@ const defaultTables: ElementConfig = {
   },
 }
 
-export const makeTables = (
-  sizes: Sizes,
-  config?: Partial<ElementConfig>,
-): ElementTheme => ({
-  border: evalBorderConfig(sizes, defaultTables.border, config?.border),
-  padding: evalSideSizesConfig(sizes, defaultTables.padding, config?.padding),
-  radius: evalCornerSizesConfig(sizes, defaultTables.radius, config?.radius),
+export const makeTables = (config?: Partial<ElementConfig>): ElementTheme => ({
+  border: evalSideBordersConfig(defaultTables.border, config?.border),
+  padding: evalSideSizesConfig(defaultTables.padding, config?.padding),
+  radius: evalCornerSizesConfig(defaultTables.radius, config?.radius),
 })

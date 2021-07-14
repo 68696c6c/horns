@@ -37,16 +37,15 @@ export interface Theme {
 
 export const makeTheme = (themeConfig?: Config): Theme => {
   const config = typeof themeConfig !== 'undefined' ? themeConfig : {}
-  const sizes = makeSizes(config.sizes)
   return {
     name: typeof config.name === 'string' ? config.name : 'horns-theme',
-    buttons: makeButtons(sizes, config.buttons),
+    buttons: makeButtons(config.buttons),
     breakpoints: makeBreakpoints(config.breakpoints),
     colors: makeColors(config.colors),
-    controls: makeControls(sizes, config.controls),
-    sizes,
-    grid: makeGrid(sizes, config.grid),
-    tables: makeTables(sizes, config.tables),
+    controls: makeControls(config.controls),
+    sizes: makeSizes(config.sizes),
+    grid: makeGrid(config.grid),
+    tables: makeTables(config.tables),
     typography: makeTypography(config.typography),
   }
 }
