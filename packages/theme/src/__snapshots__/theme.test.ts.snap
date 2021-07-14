@@ -10,38 +10,6 @@ Object {
     "mobile": "480px",
     "small": "480px",
   },
-  "buttons": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-    },
-    "padding": Object {
-      "bottom": "small",
-      "left": "medium",
-      "right": "medium",
-      "top": "small",
-    },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
-    },
-  },
   "colors": Object {
     "background": Object {
       "active": Object {
@@ -374,41 +342,151 @@ Object {
       },
     },
   },
-  "controls": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
+  "elements": Object {
+    "buttons": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
       },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
+      "color": "background",
+      "cursor": "pointer",
+      "font": "button",
+      "padding": Object {
+        "bottom": "small",
+        "left": "medium",
+        "right": "medium",
+        "top": "small",
       },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
       },
     },
-    "padding": Object {
-      "bottom": "xSmall",
-      "left": "xSmall",
-      "right": "xSmall",
-      "top": "xSmall",
+    "controls": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "background",
+      "cursor": "default",
+      "font": "control",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
     },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
+    "grid": Object {
+      "columnMin": "280px",
+      "gap": "small",
     },
-  },
-  "grid": Object {
-    "columnMin": "280px",
-    "gap": "small",
+    "links": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "color": "background",
+      "cursor": "pointer",
+      "font": "link",
+      "padding": Object {
+        "bottom": "none",
+        "left": "none",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "tables": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "background",
+      "cursor": "default",
+      "font": "button",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
+    },
   },
   "name": "example-theme",
   "sizes": Object {
@@ -422,38 +500,6 @@ Object {
     "xSmall": "8px",
     "xxLarge": "48px",
     "xxSmall": "4px",
-  },
-  "tables": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-    },
-    "padding": Object {
-      "bottom": "xSmall",
-      "left": "xSmall",
-      "right": "xSmall",
-      "top": "xSmall",
-    },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
-    },
   },
   "typography": Object {
     "blockquote": Object {
@@ -2912,38 +2958,6 @@ Object {
     "mobile": "480px",
     "small": "480px",
   },
-  "buttons": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-    },
-    "padding": Object {
-      "bottom": "small",
-      "left": "medium",
-      "right": "medium",
-      "top": "small",
-    },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
-    },
-  },
   "colors": Object {
     "background": Object {
       "active": Object {
@@ -3276,41 +3290,151 @@ Object {
       },
     },
   },
-  "controls": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
+  "elements": Object {
+    "buttons": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
       },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
+      "color": "background",
+      "cursor": "pointer",
+      "font": "button",
+      "padding": Object {
+        "bottom": "small",
+        "left": "medium",
+        "right": "medium",
+        "top": "small",
       },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
       },
     },
-    "padding": Object {
-      "bottom": "xSmall",
-      "left": "xSmall",
-      "right": "xSmall",
-      "top": "xSmall",
+    "controls": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "background",
+      "cursor": "default",
+      "font": "control",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
     },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
+    "grid": Object {
+      "columnMin": "280px",
+      "gap": "small",
     },
-  },
-  "grid": Object {
-    "columnMin": "280px",
-    "gap": "small",
+    "links": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "color": "background",
+      "cursor": "pointer",
+      "font": "link",
+      "padding": Object {
+        "bottom": "none",
+        "left": "none",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "tables": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "background",
+      "cursor": "default",
+      "font": "button",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
+    },
   },
   "name": "horns-theme",
   "sizes": Object {
@@ -3324,38 +3448,6 @@ Object {
     "xSmall": "8px",
     "xxLarge": "48px",
     "xxSmall": "4px",
-  },
-  "tables": Object {
-    "border": Object {
-      "bottom": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "left": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "right": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-      "top": Object {
-        "style": "solid",
-        "width": "tiny",
-      },
-    },
-    "padding": Object {
-      "bottom": "xSmall",
-      "left": "xSmall",
-      "right": "xSmall",
-      "top": "xSmall",
-    },
-    "radius": Object {
-      "bottomLeft": "tiny",
-      "bottomRight": "tiny",
-      "topLeft": "tiny",
-      "topRight": "tiny",
-    },
   },
   "typography": Object {
     "blockquote": Object {

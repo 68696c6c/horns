@@ -10,6 +10,7 @@ import {
   makeTables,
 } from './elements'
 import { GridConfig, Grid, makeGrid } from './grid'
+import { makeLinks } from './elements/links'
 
 export interface Config {
   name?: string
@@ -17,21 +18,27 @@ export interface Config {
   breakpoints?: Partial<BreakpointsConfig>
   colors?: Partial<ColorsConfig>
   controls?: Partial<ElementConfig>
+  links?: Partial<ElementConfig>
   grid?: Partial<GridConfig>
   sizes?: Partial<SizesConfig>
   tables?: Partial<ElementConfig>
   typography?: Partial<TypographyConfig>
 }
 
-export interface Theme {
-  readonly name: string
+interface Elements {
   readonly buttons: ElementTheme
-  readonly breakpoints: Breakpoints
-  readonly colors: Colors
   readonly controls: ElementTheme
   readonly grid: Grid
-  readonly sizes: Sizes
+  readonly links: ElementTheme
   readonly tables: ElementTheme
+}
+
+export interface Theme {
+  readonly name: string
+  readonly breakpoints: Breakpoints
+  readonly colors: Colors
+  readonly elements: Elements
+  readonly sizes: Sizes
   readonly typography: Typography
 }
 
@@ -39,13 +46,16 @@ export const makeTheme = (themeConfig?: Config): Theme => {
   const config = typeof themeConfig !== 'undefined' ? themeConfig : {}
   return {
     name: typeof config.name === 'string' ? config.name : 'horns-theme',
-    buttons: makeButtons(config.buttons),
     breakpoints: makeBreakpoints(config.breakpoints),
     colors: makeColors(config.colors),
-    controls: makeControls(config.controls),
     sizes: makeSizes(config.sizes),
-    grid: makeGrid(config.grid),
-    tables: makeTables(config.tables),
     typography: makeTypography(config.typography),
+    elements: {
+      buttons: makeButtons(config.buttons),
+      controls: makeControls(config.controls),
+      grid: makeGrid(config.grid),
+      links: makeLinks(config.links),
+      tables: makeTables(config.tables),
+    },
   }
 }

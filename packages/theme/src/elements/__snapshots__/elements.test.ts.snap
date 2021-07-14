@@ -1,0 +1,457 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeButtons should accept "all" inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeButtons should accept complete inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeButtons should accept dimensional inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "xLarge",
+    "bottomRight": "xLarge",
+    "topLeft": "large",
+    "topRight": "large",
+  },
+}
+`;
+
+exports[`makeControls should accept "all" inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeControls should accept complete inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeControls should accept dimensional inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "xLarge",
+    "bottomRight": "xLarge",
+    "topLeft": "large",
+    "topRight": "large",
+  },
+}
+`;
+
+exports[`makeLinks should accept "all" inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeLinks should accept complete inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeLinks should accept dimensional inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "pointer",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "xLarge",
+    "bottomRight": "xLarge",
+    "topLeft": "large",
+    "topRight": "large",
+  },
+}
+`;
+
+exports[`makeTables should accept "all" inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeTables should accept complete inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "giant",
+    "bottomRight": "giant",
+    "topLeft": "giant",
+    "topRight": "giant",
+  },
+}
+`;
+
+exports[`makeTables should accept dimensional inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "left": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "right": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+    "top": Object {
+      "style": "dotted",
+      "width": "giant",
+    },
+  },
+  "color": "primary",
+  "cursor": "default",
+  "font": "paragraph",
+  "padding": Object {
+    "bottom": "giant",
+    "left": "giant",
+    "right": "giant",
+    "top": "giant",
+  },
+  "radius": Object {
+    "bottomLeft": "xLarge",
+    "bottomRight": "xLarge",
+    "topLeft": "large",
+    "topRight": "large",
+  },
+}
+`;
