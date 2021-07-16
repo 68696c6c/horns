@@ -5,12 +5,15 @@ import { TypographyConfig, Typography, makeTypography } from './typography'
 import {
   ElementTheme,
   ElementConfig,
+  NavTheme,
+  NavConfig,
   makeButtons,
   makeControls,
+  makeLinks,
+  makeNav,
   makeTables,
 } from './elements'
 import { GridConfig, Grid, makeGrid } from './grid'
-import { makeLinks } from './elements/links'
 
 export interface Config {
   name?: string
@@ -21,6 +24,7 @@ export interface Config {
   links?: Partial<ElementConfig>
   grid?: Partial<GridConfig>
   sizes?: Partial<SizesConfig>
+  nav?: Partial<NavConfig>
   tables?: Partial<ElementConfig>
   typography?: Partial<TypographyConfig>
 }
@@ -30,6 +34,7 @@ interface Elements {
   readonly controls: ElementTheme
   readonly grid: Grid
   readonly links: ElementTheme
+  readonly nav: NavTheme
   readonly tables: ElementTheme
 }
 
@@ -55,6 +60,7 @@ export const makeTheme = (themeConfig?: Config): Theme => {
       controls: makeControls(config.controls),
       grid: makeGrid(config.grid),
       links: makeLinks(config.links),
+      nav: makeNav(config.nav),
       tables: makeTables(config.tables),
     },
   }

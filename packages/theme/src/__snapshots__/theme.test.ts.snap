@@ -452,6 +452,76 @@ Object {
         "topRight": "none",
       },
     },
+    "nav": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "left": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "right": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "top": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+      },
+      "color": "background",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "left": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "right": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "top": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+        },
+        "color": "primary",
+        "cursor": "default",
+        "font": "nav",
+        "padding": Object {
+          "bottom": "small",
+          "left": "medium",
+          "right": "medium",
+          "top": "small",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+      },
+      "cursor": "pointer",
+      "font": "nav",
+      "padding": Object {
+        "bottom": "small",
+        "left": "medium",
+        "right": "medium",
+        "top": "small",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
     "tables": Object {
       "border": Object {
         "bottom": Object {
@@ -3392,6 +3462,76 @@ Object {
         "left": "none",
         "right": "none",
         "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "nav": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "left": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "right": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+        "top": Object {
+          "style": "dotted",
+          "width": "small",
+        },
+      },
+      "color": "background",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "left": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "right": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+          "top": Object {
+            "style": "dotted",
+            "width": "small",
+          },
+        },
+        "color": "primary",
+        "cursor": "default",
+        "font": "nav",
+        "padding": Object {
+          "bottom": "small",
+          "left": "medium",
+          "right": "medium",
+          "top": "small",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+      },
+      "cursor": "pointer",
+      "font": "nav",
+      "padding": Object {
+        "bottom": "small",
+        "left": "medium",
+        "right": "medium",
+        "top": "small",
       },
       "radius": Object {
         "bottomLeft": "none",
