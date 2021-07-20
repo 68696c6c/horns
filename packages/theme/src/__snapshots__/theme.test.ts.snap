@@ -455,40 +455,40 @@ Object {
     "nav": Object {
       "border": Object {
         "bottom": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "left": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "right": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "top": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
       },
       "color": "background",
       "currentItem": Object {
         "border": Object {
           "bottom": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "solid",
+            "width": "tiny",
           },
           "left": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
           "right": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
           "top": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
         },
         "color": "primary",
@@ -3473,40 +3473,40 @@ Object {
     "nav": Object {
       "border": Object {
         "bottom": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "left": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "right": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
         "top": Object {
-          "style": "dotted",
-          "width": "small",
+          "style": "none",
+          "width": "none",
         },
       },
       "color": "background",
       "currentItem": Object {
         "border": Object {
           "bottom": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "solid",
+            "width": "tiny",
           },
           "left": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
           "right": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
           "top": Object {
-            "style": "dotted",
-            "width": "small",
+            "style": "none",
+            "width": "none",
           },
         },
         "color": "primary",

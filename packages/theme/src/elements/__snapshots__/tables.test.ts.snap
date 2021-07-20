@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeTables should use default values for incomplete inputs 1`] = `
+Object {
+  "border": Object {
+    "bottom": Object {
+      "style": "solid",
+      "width": "tiny",
+    },
+    "left": Object {
+      "style": "solid",
+      "width": "tiny",
+    },
+    "right": Object {
+      "style": "solid",
+      "width": "tiny",
+    },
+    "top": Object {
+      "style": "solid",
+      "width": "tiny",
+    },
+  },
+  "color": "tertiary",
+  "cursor": "default",
+  "font": "button",
+  "padding": Object {
+    "bottom": "xSmall",
+    "left": "xSmall",
+    "right": "xSmall",
+    "top": "xSmall",
+  },
+  "radius": Object {
+    "bottomLeft": "tiny",
+    "bottomRight": "tiny",
+    "topLeft": "tiny",
+    "topRight": "tiny",
+  },
+}
+`;

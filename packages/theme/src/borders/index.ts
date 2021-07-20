@@ -138,3 +138,39 @@ export const evalSideBordersConfig = (
     },
   }
 }
+
+export const evalSideBordersConfigs = (
+  defaults: SideBordersConfig,
+  ...values: Array<SideBordersConfig | undefined>
+): SideBorders => {
+  const defs = extract(defaults)
+  const defWidths = configToSides<Size>(defaultBorderWidths, defs.widths)
+  const defStyles = configToSides<BorderStyle>(defaultBorderStyles, defs.styles)
+  let widths = defWidths
+  let styles = defStyles
+  values.forEach((value) => {
+    if (value) {
+      const propsA = extract(value)
+      widths = configToSides<Size>(widths, propsA.widths)
+      styles = configToSides<BorderStyle>(styles, propsA.styles)
+    }
+  })
+  return {
+    top: {
+      width: widths.top,
+      style: styles.top,
+    },
+    bottom: {
+      width: widths.bottom,
+      style: styles.bottom,
+    },
+    left: {
+      width: widths.left,
+      style: styles.left,
+    },
+    right: {
+      width: widths.right,
+      style: styles.right,
+    },
+  }
+}

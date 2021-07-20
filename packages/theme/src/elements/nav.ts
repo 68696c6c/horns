@@ -1,35 +1,32 @@
-import { BorderStyle, evalSideBordersConfig, SideBorders } from '../borders'
+import {
+  BorderStyle,
+  evalSideBordersConfig,
+  evalSideBordersConfigs,
+} from '../borders'
 import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
-import {
-  CornerSizes,
-  evalCornerSizesConfig,
-  evalSideSizesConfig,
-  SideSizes,
-  Size,
-} from '../sizes'
+import { evalCornerSizesConfig, evalSideSizesConfig, Size } from '../sizes'
 import { Font } from '../typography'
 
 import { ElementConfig, ElementTheme } from './elements'
-import { mergeConfig } from '../utils'
 
 export interface NavConfig extends ElementConfig {
-  currentItem: ElementConfig
+  currentItem?: Partial<ElementConfig>
 }
 
 export interface NavTheme extends ElementTheme {
   currentItem: ElementTheme
 }
 
-export const defaultNav: NavConfig = {
-  color: Colorway.Background,
-  cursor: Cursor.Pointer,
+const defaultCurrentItem: ElementConfig = {
   border: {
-    all: {
-      width: Size.Small,
-      style: BorderStyle.Dotted,
+    bottom: {
+      width: Size.Tiny,
+      style: BorderStyle.Solid,
     },
   },
+  color: Colorway.Primary,
+  cursor: Cursor.Default,
   font: Font.Nav,
   padding: {
     x: Size.Medium,
@@ -38,24 +35,26 @@ export const defaultNav: NavConfig = {
   radius: {
     all: Size.None,
   },
-  currentItem: {
-    color: Colorway.Primary,
-    cursor: Cursor.Default,
-    border: {
-      bottom: {
-        width: Size.Tiny,
-        style: BorderStyle.Solid,
-      },
-    },
-    font: Font.Nav,
-    padding: {
-      x: Size.Medium,
-      y: Size.Small,
-    },
-    radius: {
-      all: Size.None,
+}
+
+export const defaultNav: NavConfig = {
+  border: {
+    all: {
+      width: Size.None,
+      style: BorderStyle.None,
     },
   },
+  color: Colorway.Background,
+  cursor: Cursor.Pointer,
+  font: Font.Nav,
+  padding: {
+    x: Size.Medium,
+    y: Size.Small,
+  },
+  radius: {
+    all: Size.None,
+  },
+  currentItem: defaultCurrentItem,
 }
 
 export const makeNav = (config?: Partial<NavConfig>): NavTheme => {
@@ -64,33 +63,28 @@ export const makeNav = (config?: Partial<NavConfig>): NavTheme => {
   const radius = evalCornerSizesConfig(defaultNav.radius, config?.radius)
 
   const item = config?.currentItem
-  const itemBorder = evalSideBordersConfig(
-    defaultNav.currentItem.border,
-    item?.border,
-  )
-  const itemPadding = evalSideSizesConfig(
-    defaultNav.currentItem.padding,
-    item?.padding,
-  )
-  const itemRadius = evalCornerSizesConfig(
-    defaultNav.currentItem.radius,
-    item?.radius,
-  )
+  const itemPadding = evalSideSizesConfig(padding, item?.padding)
+  const itemRadius = evalCornerSizesConfig(radius, item?.radius)
 
   return {
+    border,
     color: config?.color || defaultNav.color,
     cursor: config?.cursor || defaultNav.cursor,
-    border,
     font: config?.font || defaultNav.font,
     padding,
     radius,
     currentItem: {
-      color: item?.color || config?.color || defaultNav.currentItem.color,
-      cursor: item?.cursor || config?.cursor || defaultNav.currentItem.cursor,
-      border: mergeConfig<SideBorders>(itemBorder, border),
-      font: item?.font || config?.font || defaultNav.currentItem.font,
-      padding: mergeConfig<SideSizes>(itemPadding, padding),
-      radius: mergeConfig<CornerSizes>(itemRadius, radius),
+      border: evalSideBordersConfigs(
+        defaultNav.border,
+        defaultCurrentItem.border,
+        config?.border,
+        item?.border,
+      ),
+      color: item?.color || config?.color || defaultCurrentItem.color,
+      cursor: item?.cursor || config?.cursor || defaultCurrentItem.cursor,
+      font: item?.font || config?.font || defaultCurrentItem.font,
+      padding: evalSideSizesConfig(defaultCurrentItem.padding, itemPadding),
+      radius: evalCornerSizesConfig(defaultCurrentItem.radius, itemRadius),
     },
   }
 }

@@ -9,20 +9,20 @@ import {
 } from '../sizes'
 import { Font } from '../typography'
 
-export type ElementConfig = Required<{
+export interface ElementConfig {
   color: Colorway
   cursor: Cursor
   border: SideBordersConfig
   font: Font
   padding: SideSizesConfig
   radius: CornerSizesConfig
-}>
+}
 
-export type ElementTheme = Required<{
+export interface ElementTheme {
   color: Colorway
   cursor: Cursor
   border: SideBorders
   font: Font
   padding: SideSizes
   radius: CornerSizes
-}>
+}
