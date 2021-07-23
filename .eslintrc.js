@@ -12,6 +12,8 @@ module.exports = {
     'plugin:testing-library/react',
     'plugin:jest-dom/recommended',
     'plugin:react-hooks/recommended',
+    'next', // For the next-example site
+    'next/core-web-vitals', // For the next-example site
   ],
   plugins: ['@emotion', 'react-hooks', 'testing-library'],
   rules: {
