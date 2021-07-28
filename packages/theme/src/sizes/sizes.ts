@@ -61,16 +61,18 @@ const defaultSideSizes: SideSizes = {
 
 export type SideSizesConfig = SidesConfig<Size>
 
-export const evalSideSizesConfig = (
+export const evalSideSizesConfigs = (
   defaults: SideSizesConfig,
-  value?: SideSizesConfig | Size,
+  ...values: Array<SideSizesConfig | Size | undefined>
 ): SideSizes => {
-  const defs = configToSides<Size>(defaultSideSizes, defaults)
-  if (typeof value === 'undefined') {
-    return defs
-  }
-  const props: SideSizesConfig = isSize(value) ? { all: value } : value
-  return configToSides<Size>(defs, props)
+  let result: SideSizes = configToSides<Size>(defaultSideSizes, defaults)
+  values.forEach((value) => {
+    if (value) {
+      const props: SideSizesConfig = isSize(value) ? { all: value } : value
+      result = configToSides<Size>(result, props)
+    }
+  })
+  return result
 }
 
 export type CornerSizes = Corners<Size>
@@ -84,14 +86,16 @@ const defaultCornerSizes: CornerSizes = {
 
 export type CornerSizesConfig = CornersConfig<Size>
 
-export const evalCornerSizesConfig = (
+export const evalCornerSizesConfigs = (
   defaults: CornerSizesConfig,
-  value?: CornerSizesConfig | Size,
+  ...values: Array<CornerSizesConfig | Size | undefined>
 ): CornerSizes => {
-  const defs = configToCorners<Size>(defaultCornerSizes, defaults)
-  if (typeof value === 'undefined') {
-    return defs
-  }
-  const props: CornerSizesConfig = isSize(value) ? { all: value } : value
-  return configToCorners<Size>(defs, props)
+  let result: CornerSizes = configToCorners<Size>(defaultCornerSizes, defaults)
+  values.forEach((value) => {
+    if (value) {
+      const props: CornerSizesConfig = isSize(value) ? { all: value } : value
+      result = configToCorners<Size>(result, props)
+    }
+  })
+  return result
 }

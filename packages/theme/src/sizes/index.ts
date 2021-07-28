@@ -7,7 +7,7 @@ export {
   SideSizesConfig,
   CornerSizesConfig,
   SideSizes,
-  evalSideSizesConfig,
-  evalCornerSizesConfig,
+  evalSideSizesConfigs,
+  evalCornerSizesConfigs,
   CornerSizes,
 } from './sizes'

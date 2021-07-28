@@ -5,8 +5,8 @@ import {
   CornerSizes,
   CornerSizesConfig,
   SideSizesConfig,
-  evalSideSizesConfig,
-  evalCornerSizesConfig,
+  evalSideSizesConfigs,
+  evalCornerSizesConfigs,
 } from '.'
 
 describe('isSize', () => {
@@ -42,7 +42,7 @@ describe('isSize', () => {
   })
 })
 
-describe('evalSideSizesConfig', () => {
+describe('evalSideSizesConfigs', () => {
   let defaults: SideSizes
   beforeEach(() => {
     defaults = {
@@ -56,14 +56,14 @@ describe('evalSideSizesConfig', () => {
     const props: SideSizesConfig = {
       all: Size.Tiny,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Tiny)
     expect(result.bottom).toBe(Size.Tiny)
     expect(result.left).toBe(Size.Tiny)
     expect(result.right).toBe(Size.Tiny)
   })
   it('should handle a raw size value as an "all" value', () => {
-    const result = evalSideSizesConfig(defaults, Size.Tiny)
+    const result = evalSideSizesConfigs(defaults, Size.Tiny)
     expect(result.top).toBe(Size.Tiny)
     expect(result.bottom).toBe(Size.Tiny)
     expect(result.left).toBe(Size.Tiny)
@@ -73,7 +73,7 @@ describe('evalSideSizesConfig', () => {
     const props: SideSizesConfig = {
       x: Size.Tiny,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Small)
     expect(result.bottom).toBe(Size.Small)
     expect(result.left).toBe(Size.Tiny)
@@ -83,7 +83,7 @@ describe('evalSideSizesConfig', () => {
     const props: SideSizesConfig = {
       y: Size.Tiny,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Tiny)
     expect(result.bottom).toBe(Size.Tiny)
     expect(result.left).toBe(Size.Small)
@@ -93,7 +93,7 @@ describe('evalSideSizesConfig', () => {
     const props: SideSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Tiny)
     expect(result.bottom).toBe(Size.Small)
     expect(result.left).toBe(Size.Small)
@@ -105,7 +105,7 @@ describe('evalSideSizesConfig', () => {
       y: Size.Giant,
       left: Size.Large,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Giant)
     expect(result.bottom).toBe(Size.Giant)
     expect(result.left).toBe(Size.Large)
@@ -116,15 +116,30 @@ describe('evalSideSizesConfig', () => {
       y: Size.Giant,
       left: Size.Large,
     }
-    const result = evalSideSizesConfig(defaults, props)
+    const result = evalSideSizesConfigs(defaults, props)
     expect(result.top).toBe(Size.Giant)
     expect(result.bottom).toBe(Size.Giant)
     expect(result.left).toBe(Size.Large)
     expect(result.right).toBe(Size.Small)
   })
+  it('should merge multiple inputs', () => {
+    const input1: SideSizesConfig = {
+      y: Size.Giant,
+      left: Size.Large,
+    }
+    const input2: SideSizesConfig = {
+      x: Size.Tiny,
+      top: Size.XSmall,
+    }
+    const result = evalSideSizesConfigs(defaults, input1, input2)
+    expect(result.top).toBe(Size.XSmall)
+    expect(result.bottom).toBe(Size.Giant)
+    expect(result.left).toBe(Size.Tiny)
+    expect(result.right).toBe(Size.Tiny)
+  })
 })
 
-describe('evalCornerSizes', () => {
+describe('evalCornerSizesConfigs', () => {
   let defaults: CornerSizes
   beforeEach(() => {
     defaults = {
@@ -138,14 +153,14 @@ describe('evalCornerSizes', () => {
     const props: SideSizesConfig = {
       all: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Tiny)
     expect(result.topRight).toBe(Size.Tiny)
     expect(result.bottomLeft).toBe(Size.Tiny)
     expect(result.bottomRight).toBe(Size.Tiny)
   })
   it('should handle a raw size value as an "all" value', () => {
-    const result = evalCornerSizesConfig(defaults, Size.Tiny)
+    const result = evalCornerSizesConfigs(defaults, Size.Tiny)
     expect(result.topLeft).toBe(Size.Tiny)
     expect(result.topRight).toBe(Size.Tiny)
     expect(result.bottomLeft).toBe(Size.Tiny)
@@ -155,7 +170,7 @@ describe('evalCornerSizes', () => {
     const props: CornerSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Tiny)
     expect(result.topRight).toBe(Size.Tiny)
     expect(result.bottomLeft).toBe(Size.Small)
@@ -165,7 +180,7 @@ describe('evalCornerSizes', () => {
     const props: CornerSizesConfig = {
       bottom: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Small)
     expect(result.topRight).toBe(Size.Small)
     expect(result.bottomLeft).toBe(Size.Tiny)
@@ -175,7 +190,7 @@ describe('evalCornerSizes', () => {
     const props: CornerSizesConfig = {
       left: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Tiny)
     expect(result.topRight).toBe(Size.Small)
     expect(result.bottomLeft).toBe(Size.Tiny)
@@ -185,7 +200,7 @@ describe('evalCornerSizes', () => {
     const props: CornerSizesConfig = {
       right: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Small)
     expect(result.topRight).toBe(Size.Tiny)
     expect(result.bottomLeft).toBe(Size.Small)
@@ -195,7 +210,7 @@ describe('evalCornerSizes', () => {
     const props: CornerSizesConfig = {
       top: Size.Tiny,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Tiny)
     expect(result.topRight).toBe(Size.Tiny)
     expect(result.bottomLeft).toBe(Size.Small)
@@ -207,7 +222,7 @@ describe('evalCornerSizes', () => {
       top: Size.Giant,
       left: Size.Large,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Giant)
     expect(result.topRight).toBe(Size.Giant)
     expect(result.bottomLeft).toBe(Size.Large)
@@ -218,10 +233,24 @@ describe('evalCornerSizes', () => {
       bottom: Size.Giant,
       left: Size.Large,
     }
-    const result = evalCornerSizesConfig(defaults, props)
+    const result = evalCornerSizesConfigs(defaults, props)
     expect(result.topLeft).toBe(Size.Large)
     expect(result.topRight).toBe(Size.Small)
     expect(result.bottomLeft).toBe(Size.Giant)
     expect(result.bottomRight).toBe(Size.Giant)
+  })
+  it('should merge multiple inputs', () => {
+    const input1: CornerSizesConfig = {
+      bottom: Size.Giant,
+      left: Size.Large,
+    }
+    const input2: CornerSizesConfig = {
+      right: Size.XSmall,
+    }
+    const result = evalCornerSizesConfigs(defaults, input1, input2)
+    expect(result.topLeft).toBe(Size.Large)
+    expect(result.topRight).toBe(Size.XSmall)
+    expect(result.bottomLeft).toBe(Size.Giant)
+    expect(result.bottomRight).toBe(Size.XSmall)
   })
 })

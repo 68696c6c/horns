@@ -1,7 +1,7 @@
-import { BorderStyle, evalSideBordersConfig } from '../borders'
+import { BorderStyle, evalSideBordersConfigs } from '../borders'
 import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
-import { evalCornerSizesConfig, evalSideSizesConfig, Size } from '../sizes'
+import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
 
 import { ElementConfig, ElementTheme } from './elements'
@@ -28,8 +28,8 @@ export const defaultButtons: ElementConfig = {
 export const makeButtons = (config?: Partial<ElementConfig>): ElementTheme => ({
   color: config?.color || defaultButtons.color,
   cursor: config?.cursor || defaultButtons.cursor,
-  border: evalSideBordersConfig(defaultButtons.border, config?.border),
+  border: evalSideBordersConfigs(defaultButtons.border, config?.border),
   font: config?.font || defaultButtons.font,
-  padding: evalSideSizesConfig(defaultButtons.padding, config?.padding),
-  radius: evalCornerSizesConfig(defaultButtons.radius, config?.radius),
+  padding: evalSideSizesConfigs(defaultButtons.padding, config?.padding),
+  radius: evalCornerSizesConfigs(defaultButtons.radius, config?.radius),
 })

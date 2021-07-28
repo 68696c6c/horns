@@ -51,12 +51,6 @@ const defaultBorderStyles: SideBorderStyles = {
   left: BorderStyle.None,
   right: BorderStyle.None,
 }
-const defaultSideBorders: SideBorders = {
-  top: {},
-  bottom: {},
-  left: {},
-  right: {},
-}
 
 // i.e. SideSizesConfig
 export type SideBordersConfig = SidesConfig<BorderProperties>
@@ -105,43 +99,10 @@ const extract = (value: SideBordersConfig | BorderProperties): Extracted => {
   return { widths, styles }
 }
 
-// i.e. evalSideSizesConfig
-export const evalSideBordersConfig = (
-  defaults: SideBordersConfig,
-  value?: SideBordersConfig | BorderProperties,
-): SideBorders => {
-  if (typeof value === 'undefined') {
-    return configToSides<BorderProperties>(defaultSideBorders, defaults)
-  }
-  const defs = extract(defaults)
-  const defWidths = configToSides<Size>(defaultBorderWidths, defs.widths)
-  const defStyles = configToSides<BorderStyle>(defaultBorderStyles, defs.styles)
-  const props = extract(value)
-  const widths = configToSides<Size>(defWidths, props.widths)
-  const styles = configToSides<BorderStyle>(defStyles, props.styles)
-  return {
-    top: {
-      width: widths.top,
-      style: styles.top,
-    },
-    bottom: {
-      width: widths.bottom,
-      style: styles.bottom,
-    },
-    left: {
-      width: widths.left,
-      style: styles.left,
-    },
-    right: {
-      width: widths.right,
-      style: styles.right,
-    },
-  }
-}
-
+// i.e. evalSideSizesConfigs
 export const evalSideBordersConfigs = (
   defaults: SideBordersConfig,
-  ...values: Array<SideBordersConfig | undefined>
+  ...values: Array<SideBordersConfig | BorderProperties | undefined>
 ): SideBorders => {
   const defs = extract(defaults)
   const defWidths = configToSides<Size>(defaultBorderWidths, defs.widths)
@@ -150,9 +111,9 @@ export const evalSideBordersConfigs = (
   let styles = defStyles
   values.forEach((value) => {
     if (value) {
-      const propsA = extract(value)
-      widths = configToSides<Size>(widths, propsA.widths)
-      styles = configToSides<BorderStyle>(styles, propsA.styles)
+      const props = extract(value)
+      widths = configToSides<Size>(widths, props.widths)
+      styles = configToSides<BorderStyle>(styles, props.styles)
     }
   })
   return {

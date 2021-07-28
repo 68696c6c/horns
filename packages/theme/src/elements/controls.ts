@@ -1,7 +1,7 @@
-import { BorderStyle, evalSideBordersConfig } from '../borders'
+import { BorderStyle, evalSideBordersConfigs } from '../borders'
 import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
-import { evalCornerSizesConfig, evalSideSizesConfig, Size } from '../sizes'
+import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
 
 import { ElementConfig, ElementTheme } from './elements'
@@ -29,8 +29,8 @@ export const makeControls = (
 ): ElementTheme => ({
   color: config?.color || defaultControls.color,
   cursor: config?.cursor || defaultControls.cursor,
-  border: evalSideBordersConfig(defaultControls.border, config?.border),
+  border: evalSideBordersConfigs(defaultControls.border, config?.border),
   font: config?.font || defaultControls.font,
-  padding: evalSideSizesConfig(defaultControls.padding, config?.padding),
-  radius: evalCornerSizesConfig(defaultControls.radius, config?.radius),
+  padding: evalSideSizesConfigs(defaultControls.padding, config?.padding),
+  radius: evalCornerSizesConfigs(defaultControls.radius, config?.radius),
 })

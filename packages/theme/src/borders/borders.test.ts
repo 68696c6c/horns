@@ -3,7 +3,7 @@ import { Size } from '../sizes'
 import {
   BorderStyle,
   SideBordersConfig,
-  evalSideBordersConfig,
+  evalSideBordersConfigs,
   isBorderProperties,
   BorderProperties,
 } from '.'
@@ -45,7 +45,7 @@ describe('isBorderProperties', () => {
   })
 })
 
-describe('evalSideBordersConfig', () => {
+describe('evalSideBordersConfigs', () => {
   const defaults: SideBordersConfig = {
     top: {
       width: Size.Tiny,
@@ -71,7 +71,7 @@ describe('evalSideBordersConfig', () => {
         style: BorderStyle.Dotted,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.Giant,
       style: BorderStyle.Dotted,
@@ -94,7 +94,7 @@ describe('evalSideBordersConfig', () => {
       width: Size.Giant,
       style: BorderStyle.Dotted,
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.Giant,
       style: BorderStyle.Dotted,
@@ -119,7 +119,7 @@ describe('evalSideBordersConfig', () => {
         style: BorderStyle.Dotted,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.Tiny,
       style: BorderStyle.Solid,
@@ -144,7 +144,7 @@ describe('evalSideBordersConfig', () => {
         style: BorderStyle.Dotted,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.Giant,
       style: BorderStyle.Dotted,
@@ -168,7 +168,7 @@ describe('evalSideBordersConfig', () => {
         width: Size.Giant,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.Giant,
       style: BorderStyle.Solid,
@@ -201,7 +201,7 @@ describe('evalSideBordersConfig', () => {
         style: BorderStyle.Dashed,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.XSmall,
       style: BorderStyle.Double,
@@ -230,7 +230,7 @@ describe('evalSideBordersConfig', () => {
         style: BorderStyle.Dashed,
       },
     }
-    const result = evalSideBordersConfig(defaults, input)
+    const result = evalSideBordersConfigs(defaults, input)
     expect(result.top).toStrictEqual({
       width: Size.XSmall,
       style: BorderStyle.Double,
@@ -246,6 +246,36 @@ describe('evalSideBordersConfig', () => {
     expect(result.right).toStrictEqual({
       width: Size.Tiny,
       style: BorderStyle.Solid,
+    })
+  })
+  it('should merge multiple inputs', () => {
+    const input1: SideBordersConfig = {
+      left: {
+        width: Size.Large,
+        style: BorderStyle.Dashed,
+      },
+    }
+    const input2: SideBordersConfig = {
+      all: {
+        style: BorderStyle.Double,
+      },
+    }
+    const result = evalSideBordersConfigs(defaults, input1, input2)
+    expect(result.top).toStrictEqual({
+      width: Size.Tiny,
+      style: BorderStyle.Double,
+    })
+    expect(result.bottom).toStrictEqual({
+      width: Size.Tiny,
+      style: BorderStyle.Double,
+    })
+    expect(result.left).toStrictEqual({
+      width: Size.Large,
+      style: BorderStyle.Double,
+    })
+    expect(result.right).toStrictEqual({
+      width: Size.Tiny,
+      style: BorderStyle.Double,
     })
   })
 })
