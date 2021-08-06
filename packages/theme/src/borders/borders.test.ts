@@ -2,11 +2,11 @@ import { Size } from '../sizes'
 
 import {
   BorderStyle,
-  SideBordersConfig,
-  evalSideBordersConfigs,
-  isBorderProperties,
   BorderProperties,
-} from '.'
+  isBorderProperties,
+  evalSideBordersConfigs,
+  SideBordersConfig,
+} from './borders'
 
 describe('isBorderProperties', () => {
   it('should return false if no input is provided', () => {
