@@ -22,7 +22,7 @@ Object {
   },
   "color": "tertiary",
   "cursor": "default",
-  "font": "button",
+  "font": "compact",
   "padding": Object {
     "bottom": "xSmall",
     "left": "xSmall",

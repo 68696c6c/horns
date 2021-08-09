@@ -1,5 +1,5 @@
 import { hexPallet } from './pallet'
-import { Colorway, Mode } from './types'
+import { BaseColor, Color, Mode } from './types'
 
 interface MinMax {
   min: number
@@ -18,27 +18,20 @@ export interface Shaders {
 
 export interface Config {
   mode: Mode
-  prominent: Colorway
-  selected: Colorway
+  prominent: BaseColor
+  action: BaseColor
+  selected: BaseColor
   pallet: {
-    [Colorway.Primary]: string
-    [Colorway.Secondary]: string
-    [Colorway.Tertiary]: string
-    [Colorway.Dark]: string
-    [Colorway.Neutral]: string
-    [Colorway.Light]: string
-    [Colorway.Success]: string
-    [Colorway.Info]: string
-    [Colorway.Warning]: string
-    [Colorway.Danger]: string
+    [key in BaseColor]: string
   }
   shaders: Shaders
 }
 
 export const defaultConfig: Config = {
   mode: Mode.Light,
-  prominent: Colorway.Primary,
-  selected: Colorway.Primary,
+  prominent: Color.Primary,
+  action: Color.Primary,
+  selected: Color.Primary,
   pallet: {
     primary: hexPallet.tangerine,
     secondary: hexPallet.blue,

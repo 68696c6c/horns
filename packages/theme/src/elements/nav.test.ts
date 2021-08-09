@@ -1,5 +1,5 @@
 import { BorderStyle } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { Size } from '../sizes'
 import { Font } from '../typography'
@@ -16,8 +16,8 @@ describe('makeNav', () => {
 
   it('should use default values for incomplete inputs', () => {
     const input: Partial<NavConfig> = {
-      color: Colorway.Tertiary,
-      currentItem: { color: Colorway.Secondary },
+      color: Color.Tertiary,
+      currentItem: { color: Color.Secondary },
     }
     const result = makeNav(input)
     expect(result).toMatchSnapshot()
@@ -261,12 +261,12 @@ describe('makeNav', () => {
 
   it('should accept color values', () => {
     const input: Partial<NavConfig> = {
-      color: Colorway.Tertiary,
-      currentItem: { color: Colorway.Secondary },
+      color: Color.Tertiary,
+      currentItem: { color: Color.Secondary },
     }
     const result = makeNav(input)
-    expect(result.color).toBe(Colorway.Tertiary)
-    expect(result.currentItem.color).toBe(Colorway.Secondary)
+    expect(result.color).toBe(Color.Tertiary)
+    expect(result.currentItem.color).toBe(Color.Secondary)
   })
 
   it('should accept cursor values', () => {

@@ -1,5 +1,3 @@
-import { Colorway } from '../../colors'
-
 export enum TextDecorationLine {
   None = 'none',
   Underline = 'underline',
@@ -22,7 +20,6 @@ export enum TextDecorationStyle {
 export interface TextDecoration {
   line: TextDecorationLine
   style?: TextDecorationStyle
-  color?: Colorway
 }
 
 export enum Decoration {
@@ -34,7 +31,6 @@ export enum Decoration {
   UnderlineDouble = 'underlineDouble',
   UnderlineWave = 'underlineWave',
   StrikeThrough = 'strikeThrough',
-  Mistake = 'mistake',
 }
 
 export type Decorations = {
@@ -42,39 +38,34 @@ export type Decorations = {
 }
 
 export const defaultDecorations: Decorations = {
-  base: {
+  [Decoration.Base]: {
     line: TextDecorationLine.None,
   },
-  none: {
+  [Decoration.None]: {
     line: TextDecorationLine.None,
   },
-  overline: {
+  [Decoration.Overline]: {
     line: TextDecorationLine.Overline,
     style: TextDecorationStyle.Solid,
   },
-  underline: {
+  [Decoration.Underline]: {
     line: TextDecorationLine.Underline,
     style: TextDecorationStyle.Solid,
   },
-  underlineDotted: {
+  [Decoration.UnderlineDotted]: {
     line: TextDecorationLine.Underline,
     style: TextDecorationStyle.Dotted,
   },
-  underlineDouble: {
+  [Decoration.UnderlineDouble]: {
     line: TextDecorationLine.Underline,
     style: TextDecorationStyle.Double,
   },
-  underlineWave: {
+  [Decoration.UnderlineWave]: {
     line: TextDecorationLine.Underline,
     style: TextDecorationStyle.Wavy,
   },
-  strikeThrough: {
+  [Decoration.StrikeThrough]: {
     line: TextDecorationLine.LineThrough,
     style: TextDecorationStyle.Solid,
-  },
-  mistake: {
-    line: TextDecorationLine.Underline,
-    style: TextDecorationStyle.Dotted,
-    color: Colorway.Danger,
   },
 }

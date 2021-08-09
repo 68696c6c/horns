@@ -1,8 +1,7 @@
-import Color from 'color'
+import ColorObject from 'color'
 
 import { defaultConfig } from './config'
 import { makeColorShades, makeShades, Shades } from './shades'
-import { Colorway } from './types'
 
 const assertShadeContrast = (shades: Shades): void => {
   const { darker, dark, base, light, lighter } = shades
@@ -12,9 +11,9 @@ const assertShadeContrast = (shades: Shades): void => {
   expect(light.contrast(lighter)).toBeGreaterThan(1)
 }
 
-const assertSameColor = (color: Color, expected: string) => {
+const assertSameColor = (color: ColorObject, expected: string) => {
   const colorValue = color.rgb().string()
-  const expectedValue = Color(expected).rgb().string()
+  const expectedValue = new ColorObject(expected).rgb().string()
   expect(colorValue).toEqual(expectedValue)
 }
 
@@ -30,8 +29,6 @@ describe('makeColorShades', () => {
     assertSameColor(result.info.base, pallet.info)
     assertSameColor(result.warning.base, pallet.warning)
     assertSameColor(result.danger.base, pallet.danger)
-    assertSameColor(result.prominent.base, pallet.primary)
-    assertSameColor(result.selected.base, pallet.primary)
   })
 
   it('should return distinguishable dark shades', () => {
@@ -42,54 +39,6 @@ describe('makeColorShades', () => {
   it('should return distinguishable light shades', () => {
     const result = makeColorShades(defaultConfig)
     assertShadeContrast(result.light)
-  })
-
-  describe('prominent color', () => {
-    it('should default to the primary color', () => {
-      const { pallet } = defaultConfig
-      const result = makeColorShades(defaultConfig)
-      assertSameColor(result.prominent.base, pallet.primary)
-    })
-
-    it('should support the secondary color', () => {
-      const { pallet } = defaultConfig
-      const config = defaultConfig
-      config.prominent = Colorway.Secondary
-      const result = makeColorShades(config)
-      assertSameColor(result.prominent.base, pallet.secondary)
-    })
-
-    it('should support the tertiary color', () => {
-      const { pallet } = defaultConfig
-      const config = defaultConfig
-      config.prominent = Colorway.Tertiary
-      const result = makeColorShades(config)
-      assertSameColor(result.prominent.base, pallet.tertiary)
-    })
-  })
-
-  describe('selected color', () => {
-    it('should default to the primary color', () => {
-      const { pallet } = defaultConfig
-      const result = makeColorShades(defaultConfig)
-      assertSameColor(result.selected.base, pallet.primary)
-    })
-
-    it('should support the secondary color', () => {
-      const { pallet } = defaultConfig
-      const config = defaultConfig
-      config.selected = Colorway.Secondary
-      const result = makeColorShades(config)
-      assertSameColor(result.selected.base, pallet.secondary)
-    })
-
-    it('should support the tertiary color', () => {
-      const { pallet } = defaultConfig
-      const config = defaultConfig
-      config.selected = Colorway.Tertiary
-      const result = makeColorShades(config)
-      assertSameColor(result.selected.base, pallet.tertiary)
-    })
   })
 })
 

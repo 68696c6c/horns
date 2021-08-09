@@ -1,43 +1,72 @@
 import { mergeConfig } from '../utils'
 
-import { defaultConfig, Config } from './config'
 import {
   ColorwayStates,
-  makeColorStates,
-  makeDarkColorStates,
-  makeLightColorStates,
-  makeBackgroundColorStates,
-  makeBackgroundAltColorStates,
-  makeTypographyColorStates,
+  makeBgPrimaryColorway,
+  makeColorway,
+  makeDarkColorway,
+  makeLightColorway,
+  makeBgSecondaryColorway,
+  makeBgInverseColorway,
 } from './colorways'
+import { defaultConfig, Config } from './config'
 import { makeColorShades } from './shades'
-import { Colorway, Mode } from './types'
+import { BaseBrandColor, BaseColor, Color, Mode } from './types'
+import DeepPartial from '../utils/deep-partial'
+
+export type BrandColorways = {
+  [key in BaseBrandColor]: ColorwayStates
+}
+
+export const determineBrandColorway = (
+  input: BaseColor,
+  { primary, secondary, tertiary }: BrandColorways,
+): ColorwayStates => {
+  switch (input) {
+    default:
+      return primary
+    case Color.Secondary:
+      return secondary
+    case Color.Tertiary:
+      return tertiary
+  }
+}
 
 export type Colors = Required<
   {
-    [key in Colorway]: ColorwayStates
+    [key in Color]: ColorwayStates
   }
 >
 
-export const makeColors = (config?: Partial<Config>): Colors => {
+export const makeColors = (config?: DeepPartial<Config>): Colors => {
   const mergedConfig = mergeConfig<Config>(defaultConfig, config)
-  const colorShades = makeColorShades(mergedConfig)
+  const shades = makeColorShades(mergedConfig)
   const isDark = mergedConfig.mode === Mode.Dark
+  const brandColorways: BrandColorways = {
+    [Color.Primary]: makeColorway(shades.primary, isDark),
+    [Color.Secondary]: makeColorway(shades.secondary, isDark),
+    [Color.Tertiary]: makeColorway(shades.tertiary, isDark),
+  }
   return {
-    primary: makeColorStates(colorShades.primary, isDark),
-    secondary: makeColorStates(colorShades.secondary, isDark),
-    tertiary: makeColorStates(colorShades.tertiary, isDark),
-    dark: makeDarkColorStates(colorShades.dark),
-    neutral: makeColorStates(colorShades.neutral, isDark),
-    light: makeLightColorStates(colorShades.light),
-    success: makeColorStates(colorShades.success, isDark),
-    info: makeColorStates(colorShades.info, isDark),
-    warning: makeColorStates(colorShades.warning, isDark),
-    danger: makeColorStates(colorShades.danger, isDark),
-    prominent: makeColorStates(colorShades.prominent, isDark),
-    selected: makeColorStates(colorShades.selected, isDark),
-    background: makeBackgroundColorStates(colorShades, isDark),
-    backgroundAlt: makeBackgroundAltColorStates(colorShades, isDark),
-    typography: makeTypographyColorStates(colorShades, isDark),
+    ...brandColorways,
+    [Color.Action]: determineBrandColorway(mergedConfig.action, brandColorways),
+    [Color.Prominent]: determineBrandColorway(
+      mergedConfig.prominent,
+      brandColorways,
+    ),
+    [Color.Selected]: determineBrandColorway(
+      mergedConfig.selected,
+      brandColorways,
+    ),
+    [Color.Success]: makeColorway(shades.success, isDark),
+    [Color.Info]: makeColorway(shades.info, isDark),
+    [Color.Warning]: makeColorway(shades.warning, isDark),
+    [Color.Danger]: makeColorway(shades.danger, isDark),
+    [Color.Dark]: makeDarkColorway(shades.dark),
+    [Color.Neutral]: makeColorway(shades.neutral, isDark),
+    [Color.Light]: makeLightColorway(shades.light),
+    [Color.BgPrimary]: makeBgPrimaryColorway(shades, isDark),
+    [Color.BgSecondary]: makeBgSecondaryColorway(shades, isDark),
+    [Color.BgInverse]: makeBgInverseColorway(shades, isDark),
   }
 }

@@ -1,5 +1,5 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -7,14 +7,14 @@ import { Font } from '../typography'
 import { ElementConfig, ElementTheme } from './elements'
 
 export const defaultLinks: ElementConfig = {
-  color: Colorway.Background,
-  cursor: Cursor.Pointer,
   border: {
     all: {
       width: Size.None,
       style: BorderStyle.None,
     },
   },
+  color: Color.Action,
+  cursor: Cursor.Pointer,
   font: Font.Link,
   padding: {
     all: Size.None,

@@ -1,14 +1,13 @@
-import { Colorway } from '../colors'
-import { mergeConfig, UIState } from '../utils'
+import { mergeConfig } from '../utils'
 
 import { Config } from './config'
-import { FontConfig, FontStatesConfig } from './fonts'
+import { FontConfig } from './fonts'
 import { FontFamilyStyle, FontSize, HeadingLevel } from './types'
 
 const computeFontFamily = (style: FontFamilyStyle): string =>
   [style.base, style.fallback].join(', ')
 
-interface FontStyle {
+export interface FontStyle {
   family: string // font-family
   style: string // font-style
   weight: number // font-weight
@@ -18,7 +17,6 @@ interface FontStyle {
   decoration: {
     line: string
     style: string
-    color: Colorway
   } // text-decoration
   kerning: string // font-kerning
   spacing: string // margin; the space before and after typographic block-level elements
@@ -44,7 +42,6 @@ const makeFontStyle = (
     decoration: {
       line: fontDecoration.line,
       style: fontDecoration.style || '',
-      color: fontDecoration.color || Colorway.Typography,
     },
     kerning: font.kerning,
     spacing: spacing[font.spacing],
@@ -55,34 +52,18 @@ const makeFontStyle = (
 }
 
 export interface FontStateArgs {
-  fontStyle: FontStatesConfig
+  fontStyle: Partial<FontConfig>
   fontBase: Readonly<FontConfig>
   config: Readonly<Config>
   size?: HeadingLevel
 }
 
-export type FontStates = Required<
-  {
-    [key in UIState]: FontStyle
-  }
->
-
-export const makeFontStates = ({
+export const evalFontStyle = ({
   fontStyle,
   fontBase,
   config,
   size,
-}: FontStateArgs): FontStates => {
-  const { base: inputBase, hover, active, inactive } = fontStyle
-  const base = mergeConfig<FontConfig>(fontBase, inputBase)
-  return {
-    base: makeFontStyle(base, config, size),
-    hover: makeFontStyle(mergeConfig<FontConfig>(base, hover), config, size),
-    active: makeFontStyle(mergeConfig<FontConfig>(base, active), config, size),
-    inactive: makeFontStyle(
-      mergeConfig<FontConfig>(base, inactive),
-      config,
-      size,
-    ),
-  }
+}: FontStateArgs): FontStyle => {
+  const base = mergeConfig<FontConfig>(fontBase, fontStyle)
+  return makeFontStyle(base, config, size)
 }

@@ -1,46 +1,30 @@
-import Color from 'color'
-
-import { colorPallet } from './pallet'
-import { ColorShades, Shades } from './shades'
+import ColorObject from 'color'
 
 import { HoverState, UIState } from '../utils'
 
-enum BaseSwatch {
-  Base = 'base',
-  Border = 'border',
-}
-
-enum FinalSwatch {
-  Readable = 'readable',
-}
-
-type ColorwayStateSwatches = {
-  [BaseSwatch.Base]: string
-  [BaseSwatch.Border]: string
-  [FinalSwatch.Readable]: string
-}
+import { colorPallet } from './pallet'
+import { ColorShades, Shades } from './shades'
+import { Swatches } from './types'
 
 export type ColorwayStates = {
-  [key in UIState]: ColorwayStateSwatches
+  [key in HoverState | UIState.Inactive]: Swatches
 }
 
-const getColorValue = (c: Color): string => c.rgb().string()
+const getColorValue = (c: ColorObject): string => c.rgb().string()
 
-const makeColorwayStateSwatches = (
-  base: Color,
-  border: Color,
-): ColorwayStateSwatches => {
+const makeColorSwatches = (base: ColorObject, alt: ColorObject): Swatches => {
   const readable = base.isDark() ? colorPallet.white : colorPallet.black
   return {
     base: getColorValue(base),
     readable: getColorValue(readable),
-    border: getColorValue(border),
+    alt: getColorValue(alt),
   }
 }
 
 type BaseColorwayStates = {
-  [stateKey in HoverState]: {
-    [swatchKey in BaseSwatch]: Color
+  [key in HoverState]: {
+    base: ColorObject
+    alt: ColorObject
   }
 }
 
@@ -48,109 +32,109 @@ const makeColorwayStates = (baseStates: BaseColorwayStates): ColorwayStates => {
   const { base, hover, active } = baseStates
   const inactive = {
     base: base.base.mix(colorPallet.gray, 0.5),
-    border: base.base.mix(colorPallet.gray, 0.7),
+    alt: base.base.mix(colorPallet.gray, 0.7),
   }
   return {
-    base: makeColorwayStateSwatches(base.base, base.border),
-    hover: makeColorwayStateSwatches(hover.base, hover.border),
-    active: makeColorwayStateSwatches(active.base, active.border),
-    inactive: makeColorwayStateSwatches(inactive.base, inactive.border),
+    base: makeColorSwatches(base.base, base.alt),
+    hover: makeColorSwatches(hover.base, hover.alt),
+    active: makeColorSwatches(active.base, active.alt),
+    inactive: makeColorSwatches(inactive.base, inactive.alt),
   }
 }
 
-export const makeColorStates = (
+export const makeColorway = (
   shades: Shades,
   isDark: boolean,
 ): ColorwayStates => {
   const { base, dark, darker, light, lighter } = shades
-  if (isDark) {
-    return makeColorwayStates({
-      base: { base, border: light },
-      hover: { base: light, border: base },
-      active: { base: lighter, border: light },
-    })
-  }
-  return makeColorwayStates({
-    base: { base, border: dark },
-    hover: { base: dark, border: base },
-    active: { base: darker, border: dark },
-  })
+  const baseStates = isDark
+    ? {
+        base: { base, alt: light },
+        hover: { base: light, alt: base },
+        active: { base: lighter, alt: light },
+      }
+    : {
+        base: { base, alt: dark },
+        hover: { base: dark, alt: base },
+        active: { base: darker, alt: dark },
+      }
+  return makeColorwayStates(baseStates)
 }
 
-export const makeDarkColorStates = (shades: Shades): ColorwayStates => {
+export const makeDarkColorway = (shades: Shades): ColorwayStates => {
   const { base, light, lighter } = shades
   return makeColorwayStates({
-    base: { base, border: lighter },
-    hover: { base: light, border: lighter },
-    active: { base: lighter, border: light },
+    base: { base, alt: lighter },
+    hover: { base: light, alt: lighter },
+    active: { base: lighter, alt: light },
   })
 }
 
-export const makeLightColorStates = (shades: Shades): ColorwayStates => {
+export const makeLightColorway = (shades: Shades): ColorwayStates => {
   const { base, dark, darker } = shades
   return makeColorwayStates({
-    base: { base, border: darker },
-    hover: { base: dark, border: darker },
-    active: { base: darker, border: dark },
+    base: { base, alt: darker },
+    hover: { base: dark, alt: darker },
+    active: { base: darker, alt: dark },
   })
 }
 
-export const makeBackgroundColorStates = (
+export const makeBgPrimaryColorway = (
   colorShades: ColorShades,
   isDark: boolean,
 ): ColorwayStates => {
   if (isDark) {
     const { base, dark, darker, lighter } = colorShades.dark
     return makeColorwayStates({
-      base: { base: darker, border: lighter },
-      hover: { base: dark, border: lighter },
-      active: { base, border: lighter },
+      base: { base: darker, alt: lighter },
+      hover: { base: dark, alt: lighter },
+      active: { base, alt: lighter },
     })
   }
   const { base, darker, light, lighter } = colorShades.light
   return makeColorwayStates({
-    base: { base: lighter, border: darker },
-    hover: { base: light, border: darker },
-    active: { base, border: darker },
+    base: { base: lighter, alt: darker },
+    hover: { base: light, alt: darker },
+    active: { base, alt: darker },
   })
 }
 
-export const makeBackgroundAltColorStates = (
+export const makeBgSecondaryColorway = (
   colorShades: ColorShades,
   isDark: boolean,
 ): ColorwayStates => {
   if (isDark) {
     const { base, dark, light, lighter } = colorShades.dark
     return makeColorwayStates({
-      base: { base: dark, border: base },
-      hover: { base, border: light },
-      active: { base: light, border: lighter },
+      base: { base: dark, alt: base },
+      hover: { base, alt: light },
+      active: { base: light, alt: lighter },
     })
   }
   const { base, dark, darker, light } = colorShades.light
   return makeColorwayStates({
-    base: { base: light, border: base },
-    hover: { base, border: dark },
-    active: { base: dark, border: darker },
+    base: { base: light, alt: base },
+    hover: { base, alt: dark },
+    active: { base: dark, alt: darker },
   })
 }
 
-export const makeTypographyColorStates = (
+export const makeBgInverseColorway = (
   colorShades: ColorShades,
   isDark: boolean,
 ): ColorwayStates => {
   if (isDark) {
     const { lighter } = colorShades.light
     return makeColorwayStates({
-      base: { base: lighter, border: lighter },
-      hover: { base: lighter, border: lighter },
-      active: { base: lighter, border: lighter },
+      base: { base: lighter, alt: lighter },
+      hover: { base: lighter, alt: lighter },
+      active: { base: lighter, alt: lighter },
     })
   }
   const { darker } = colorShades.dark
   return makeColorwayStates({
-    base: { base: darker, border: darker },
-    hover: { base: darker, border: darker },
-    active: { base: darker, border: darker },
+    base: { base: darker, alt: darker },
+    hover: { base: darker, alt: darker },
+    active: { base: darker, alt: darker },
   })
 }

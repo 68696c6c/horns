@@ -1,5 +1,5 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -7,14 +7,14 @@ import { Font } from '../typography'
 import { ElementConfig, ElementTheme } from './elements'
 
 export const defaultControls: ElementConfig = {
-  color: Colorway.Background,
-  cursor: Cursor.Default,
   border: {
     all: {
       width: Size.Tiny,
       style: BorderStyle.Solid,
     },
   },
+  color: Color.BgPrimary,
+  cursor: Cursor.Default,
   font: Font.Control,
   padding: {
     all: Size.XSmall,

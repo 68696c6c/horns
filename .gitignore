@@ -4,6 +4,7 @@ dist
 node_modules
 .DS_Store
 notes.md
+_notes
 yarn-error.log
 
 # Gatsby files

@@ -1,5 +1,5 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -7,7 +7,7 @@ import { Font } from '../typography'
 import { ElementConfig, ElementTheme } from './elements'
 
 export const defaultTables: ElementConfig = {
-  color: Colorway.Background,
+  color: Color.BgPrimary,
   cursor: Cursor.Default,
   border: {
     all: {
@@ -15,7 +15,7 @@ export const defaultTables: ElementConfig = {
       style: BorderStyle.Solid,
     },
   },
-  font: Font.Button,
+  font: Font.Compact,
   padding: {
     all: Size.XSmall,
   },

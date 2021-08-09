@@ -10,9 +10,9 @@ module.exports = {
   sourceMaps: true,
   ignore,
   presets: [
-    '@babel/preset-typescript',
-    ['@babel/preset-env', { modules: false }],
-    '@babel/preset-react',
+    // '@babel/preset-typescript',
+    // ['@babel/preset-env', { modules: false }],
+    // '@babel/preset-react',
   ],
-  plugins: ['@emotion'],
+  // plugins: ['@emotion'],
 }

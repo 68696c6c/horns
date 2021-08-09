@@ -1,5 +1,5 @@
 import { SideBorders, SideBordersConfig } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import {
   CornerSizes,
@@ -10,7 +10,7 @@ import {
 import { Font } from '../typography'
 
 export interface ElementConfig {
-  color: Colorway
+  color: Color
   cursor: Cursor
   border: SideBordersConfig
   font: Font
@@ -19,7 +19,7 @@ export interface ElementConfig {
 }
 
 export interface ElementTheme {
-  color: Colorway
+  color: Color
   cursor: Cursor
   border: SideBorders
   font: Font

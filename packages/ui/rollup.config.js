@@ -7,12 +7,10 @@ import pkg from './package.json'
 
 const input = 'src/index.ts'
 
-const external = [
-  ...Object.keys(pkg.dependencies),
-  ...Object.keys(pkg.peerDependencies),
-]
+const external = [...Object.keys(pkg.peerDependencies)]
 
 const plugins = [
+  del({ targets: 'dist/*' }),
   typescript({
     // eslint-disable-next-line global-require
     typescript: require('typescript'),
@@ -33,17 +31,17 @@ export default [
       sourcemap: true,
     },
     plugins,
-    external: [del({ targets: 'dist/esm' }), ...external],
+    external,
   },
   {
     input,
     output: {
       file: pkg.main,
       format: 'umd',
-      // name: 'horns-ui',
+      name: 'horns-ui',
       sourcemap: true,
     },
     plugins,
-    external: [del({ targets: 'dist/umd' }), ...external],
+    external,
   },
 ]

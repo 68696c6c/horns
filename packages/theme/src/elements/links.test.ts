@@ -1,5 +1,5 @@
 import { BorderStyle } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { Size } from '../sizes'
 import { Font } from '../typography'
@@ -17,7 +17,7 @@ describe('makeLinks', () => {
 
   it('should use default values for incomplete inputs', () => {
     const input: Partial<ElementConfig> = {
-      color: Colorway.Tertiary,
+      color: Color.Tertiary,
     }
     const result = makeLinks(input)
     expect(result).toMatchSnapshot()
@@ -152,10 +152,10 @@ describe('makeLinks', () => {
 
   it('should accept color values', () => {
     const input: Partial<ElementConfig> = {
-      color: Colorway.Tertiary,
+      color: Color.Tertiary,
     }
     const result = makeLinks(input)
-    expect(result.color).toBe(Colorway.Tertiary)
+    expect(result.color).toBe(Color.Tertiary)
   })
 
   it('should accept cursor values', () => {

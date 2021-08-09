@@ -1,5 +1,12 @@
 import { makeTheme } from './theme'
-import { mergeConfig, Corner, HoverState, StatusState, Side } from './utils'
+import {
+  mergeConfig,
+  Corner,
+  HoverState,
+  StatusState,
+  Side,
+  UIState,
+} from './utils'
 
 describe('makeTheme', () => {
   it('should match snapshot', () => {
@@ -20,10 +27,10 @@ describe('mergeConfig', () => {
       statusState: StatusState
       side: Side
     }
-    const input = {
+    const input: Test = {
       corner: Corner.All,
-      uiState: HoverState.Hover,
-      statusState: StatusState.Inactive,
+      uiState: UIState.Hover,
+      statusState: UIState.Inactive,
       side: Side.Left,
     }
     const result = mergeConfig<Test>(input, {})

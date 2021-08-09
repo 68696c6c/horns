@@ -1,5 +1,5 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -7,15 +7,15 @@ import { Font } from '../typography'
 import { ElementConfig, ElementTheme } from './elements'
 
 export const defaultButtons: ElementConfig = {
-  color: Colorway.Background,
-  cursor: Cursor.Pointer,
   border: {
     all: {
       width: Size.Tiny,
       style: BorderStyle.Solid,
     },
   },
-  font: Font.Button,
+  color: Color.BgPrimary,
+  cursor: Cursor.Pointer,
+  font: Font.Control,
   padding: {
     x: Size.Medium,
     y: Size.Small,

@@ -1,5 +1,5 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -21,9 +21,9 @@ const defaultCurrentItem: ElementConfig = {
       style: BorderStyle.Solid,
     },
   },
-  color: Colorway.Primary,
+  color: Color.Selected,
   cursor: Cursor.Default,
-  font: Font.Nav,
+  font: Font.Compact,
   padding: {
     x: Size.Medium,
     y: Size.Small,
@@ -40,9 +40,9 @@ export const defaultNav: NavConfig = {
       style: BorderStyle.None,
     },
   },
-  color: Colorway.Background,
+  color: Color.BgPrimary,
   cursor: Cursor.Pointer,
-  font: Font.Nav,
+  font: Font.Compact,
   padding: {
     x: Size.Medium,
     y: Size.Small,
