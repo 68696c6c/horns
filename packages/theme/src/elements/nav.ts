@@ -23,7 +23,7 @@ const defaultCurrentItem: ElementConfig = {
   },
   color: Colorway.Primary,
   cursor: Cursor.Default,
-  font: Font.Nav,
+  font: Font.Compact,
   padding: {
     x: Size.Medium,
     y: Size.Small,
@@ -42,7 +42,7 @@ export const defaultNav: NavConfig = {
   },
   color: Colorway.Background,
   cursor: Cursor.Pointer,
-  font: Font.Nav,
+  font: Font.Compact,
   padding: {
     x: Size.Medium,
     y: Size.Small,

@@ -8,15 +8,22 @@ import {
   SideSizesConfig,
 } from '../sizes'
 import { Font } from '../typography'
+import { UIStates, UIStatesConfig } from '../utils'
+
+export type ElementConfigState = Partial<Omit<ElementConfig, 'states'>>
 
 export interface ElementConfig {
+  // TODO: "color" should be used to set a single, static color.  Colorway should be used to apply a pre-determined set of colors for different states etc.
   color: Colorway
   cursor: Cursor
   border: SideBordersConfig
   font: Font
   padding: SideSizesConfig
   radius: CornerSizesConfig
+  states?: UIStatesConfig<ElementConfigState>
 }
+
+export type ElementThemeState = Omit<ElementTheme, 'states'>
 
 export interface ElementTheme {
   color: Colorway
@@ -25,4 +32,5 @@ export interface ElementTheme {
   font: Font
   padding: SideSizes
   radius: CornerSizes
+  states?: UIStates<ElementThemeState>
 }

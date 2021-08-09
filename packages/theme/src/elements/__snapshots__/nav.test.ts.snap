@@ -42,7 +42,7 @@ Object {
     },
     "color": "secondary",
     "cursor": "default",
-    "font": "nav",
+    "font": "compact",
     "padding": Object {
       "bottom": "small",
       "left": "medium",
@@ -57,7 +57,7 @@ Object {
     },
   },
   "cursor": "pointer",
-  "font": "nav",
+  "font": "compact",
   "padding": Object {
     "bottom": "small",
     "left": "medium",

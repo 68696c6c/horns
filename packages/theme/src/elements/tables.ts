@@ -15,7 +15,7 @@ export const defaultTables: ElementConfig = {
       style: BorderStyle.Solid,
     },
   },
-  font: Font.Button,
+  font: Font.Compact,
   padding: {
     all: Size.XSmall,
   },

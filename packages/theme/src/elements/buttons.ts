@@ -15,7 +15,7 @@ export const defaultButtons: ElementConfig = {
       style: BorderStyle.Solid,
     },
   },
-  font: Font.Button,
+  font: Font.Control,
   padding: {
     x: Size.Medium,
     y: Size.Small,

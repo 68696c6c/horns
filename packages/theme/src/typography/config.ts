@@ -43,137 +43,178 @@ export const defaultConfig: Config = {
   spacing: defaultTextSpacings,
   letting: defaultLettings,
   styles: {
-    del: {
-      base: {
-        decoration: Decoration.StrikeThrough,
-      },
+    text: {},
+    compact: {
+      letting: Letting.Min,
     },
     heading: {
-      base: {
-        weight: FontWeight.Bold,
-        spacing: TextSpacing.Max,
-      },
-    },
-    kbd: {
-      base: {
-        family: FontFamily.Tertiary,
-      },
-    },
-    pre: {
-      base: {
-        family: FontFamily.Tertiary,
-      },
+      weight: FontWeight.Bold,
+      spacing: TextSpacing.Max,
     },
     paragraph: {
-      base: {
-        align: TextAlign.Justify,
-        spacing: TextSpacing.Max,
-      },
-    },
-    quote: {
-      base: {
-        style: FontStyleCss.Italic,
-      },
-    },
-    blockquote: {
-      base: {
-        style: FontStyleCss.Italic,
-      },
-    },
-    text: {},
-    s: {},
-    samp: {},
-    sub: {},
-    sup: {},
-    table: {
-      base: {
-        letting: Letting.Min,
-      },
-    },
-    nav: {
-      base: {
-        letting: Letting.Min,
-      },
+      align: TextAlign.Justify,
+      spacing: TextSpacing.Max,
     },
     control: {
-      base: {
-        letting: Letting.Min,
-      },
+      letting: Letting.Min,
     },
     label: {
-      base: {
-        weight: FontWeight.Bold,
-        letting: Letting.Min,
-      },
-    },
-    message: {
-      base: {
-        letting: Letting.Min,
-      },
-    },
-    button: {
-      base: {
-        weight: FontWeight.Bold,
-      },
-    },
-    link: {
-      base: {
-        decoration: Decoration.Underline,
-      },
-      hover: {
-        style: FontStyleCss.Italic,
-        decoration: Decoration.Underline,
-      },
-      active: {
-        style: FontStyleCss.Italic,
-        decoration: Decoration.UnderlineDouble,
-      },
-      inactive: {
-        decoration: Decoration.Underline,
-      },
-    },
-    caption: {
-      base: {
-        weight: FontWeight.Light,
-      },
+      weight: FontWeight.Bold,
+      letting: Letting.Min,
     },
     legal: {
-      base: {
-        family: FontFamily.Secondary,
-        style: FontStyleCss.Italic,
-        size: BaseFontSize.Small,
-      },
+      family: FontFamily.Secondary,
+      style: FontStyleCss.Italic,
+      size: BaseFontSize.Small,
     },
-    code: {
-      base: {
-        family: FontFamily.Tertiary,
-      },
+    link: {
+      decoration: Decoration.Underline,
     },
     emphasized: {
-      base: {
-        style: FontStyleCss.Italic,
-      },
+      style: FontStyleCss.Italic,
     },
     strong: {
-      base: {
-        weight: FontWeight.Light,
-      },
+      weight: FontWeight.Bold,
     },
-    variable: {
-      base: {
-        family: FontFamily.Tertiary,
-        style: FontStyleCss.Italic,
-      },
+    quote: {
+      style: FontStyleCss.Italic,
     },
-    mistake: {
-      base: {
-        decoration: Decoration.Mistake,
-      },
-    },
-    u: {
-      base: {
-        decoration: Decoration.Mistake,
-      },
+    code: {
+      family: FontFamily.Tertiary,
     },
   },
+  // styles: {
+  //   del: {
+  //     base: {
+  //       decoration: Decoration.StrikeThrough,
+  //     },
+  //   },
+  //   heading: {
+  //     base: {
+  //       weight: FontWeight.Bold,
+  //       spacing: TextSpacing.Max,
+  //     },
+  //   },
+  //   kbd: {
+  //     base: {
+  //       family: FontFamily.Tertiary,
+  //     },
+  //   },
+  //   pre: {
+  //     base: {
+  //       family: FontFamily.Tertiary,
+  //     },
+  //   },
+  //   paragraph: {
+  //     base: {
+  //       align: TextAlign.Justify,
+  //       spacing: TextSpacing.Max,
+  //     },
+  //   },
+  //   quote: {
+  //     base: {
+  //       style: FontStyleCss.Italic,
+  //     },
+  //   },
+  //   blockquote: {
+  //     base: {
+  //       style: FontStyleCss.Italic,
+  //     },
+  //   },
+  //   text: {},
+  //   s: {},
+  //   samp: {},
+  //   sub: {},
+  //   sup: {},
+  //   table: {
+  //     base: {
+  //       letting: Letting.Min,
+  //     },
+  //   },
+  //   nav: {
+  //     base: {
+  //       letting: Letting.Min,
+  //     },
+  //   },
+  //   control: {
+  //     base: {
+  //       letting: Letting.Min,
+  //     },
+  //   },
+  //   label: {
+  //     base: {
+  //       weight: FontWeight.Bold,
+  //       letting: Letting.Min,
+  //     },
+  //   },
+  //   message: {
+  //     base: {
+  //       letting: Letting.Min,
+  //     },
+  //   },
+  //   button: {
+  //     base: {
+  //       weight: FontWeight.Bold,
+  //     },
+  //   },
+  //   link: {
+  //     base: {
+  //       decoration: Decoration.Underline,
+  //     },
+  //     hover: {
+  //       style: FontStyleCss.Italic,
+  //       decoration: Decoration.Underline,
+  //     },
+  //     active: {
+  //       style: FontStyleCss.Italic,
+  //       decoration: Decoration.UnderlineDouble,
+  //     },
+  //     inactive: {
+  //       decoration: Decoration.Underline,
+  //     },
+  //   },
+  //   caption: {
+  //     base: {
+  //       weight: FontWeight.Light,
+  //     },
+  //   },
+  //   legal: {
+  //     base: {
+  //       family: FontFamily.Secondary,
+  //       style: FontStyleCss.Italic,
+  //       size: BaseFontSize.Small,
+  //     },
+  //   },
+  //   code: {
+  //     base: {
+  //       family: FontFamily.Tertiary,
+  //     },
+  //   },
+  //   emphasized: {
+  //     base: {
+  //       style: FontStyleCss.Italic,
+  //     },
+  //   },
+  //   strong: {
+  //     base: {
+  //       weight: FontWeight.Light,
+  //     },
+  //   },
+  //   variable: {
+  //     base: {
+  //       family: FontFamily.Tertiary,
+  //       style: FontStyleCss.Italic,
+  //     },
+  //   },
+  //   mistake: {
+  //     base: {
+  //       decoration: Decoration.Mistake,
+  //     },
+  //   },
+  //   u: {
+  //     base: {
+  //       decoration: Decoration.Mistake,
+  //     },
+  //   },
+  // },
 }

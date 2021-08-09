@@ -3,7 +3,7 @@ import Color from 'color'
 import { colorPallet } from './pallet'
 import { ColorShades, Shades } from './shades'
 
-import { HoverState, UIState } from '../utils'
+import { HoverState, StatusState } from '../utils'
 
 enum BaseSwatch {
   Base = 'base',
@@ -21,7 +21,7 @@ type ColorwayStateSwatches = {
 }
 
 export type ColorwayStates = {
-  [key in UIState]: ColorwayStateSwatches
+  [key in HoverState | StatusState.Inactive]: ColorwayStateSwatches
 }
 
 const getColorValue = (c: Color): string => c.rgb().string()

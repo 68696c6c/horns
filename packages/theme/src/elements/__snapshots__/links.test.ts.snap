@@ -35,5 +35,121 @@ Object {
     "topLeft": "none",
     "topRight": "none",
   },
+  "states": Object {
+    "active": Object {
+      "color": "secondary",
+    },
+    "base": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "color": "tertiary",
+      "cursor": "pointer",
+      "font": "link",
+      "padding": Object {
+        "bottom": "none",
+        "left": "none",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "hover": Object {
+      "color": "primary",
+    },
+    "inactive": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "color": "tertiary",
+      "cursor": "pointer",
+      "font": "link",
+      "padding": Object {
+        "bottom": "none",
+        "left": "none",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "selected": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "color": "tertiary",
+      "cursor": "pointer",
+      "font": "link",
+      "padding": Object {
+        "bottom": "none",
+        "left": "none",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+    },
+    "visited": Object {
+      "color": "secondary",
+    },
+  },
 }
 `;

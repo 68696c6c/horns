@@ -11,36 +11,19 @@ import {
   TextSpacing,
 } from './types'
 
-import { UIState } from '../utils'
-
 export enum Font {
+  Text = 'text',
+  Compact = 'compact',
   Heading = 'heading',
   Paragraph = 'paragraph',
-  Quote = 'quote',
-  Text = 'text',
-  Table = 'table',
-  Nav = 'nav',
   Control = 'control',
   Label = 'label',
-  Message = 'message',
-  Button = 'button',
-  Link = 'link',
-  Caption = 'caption',
   Legal = 'legal',
-  Code = 'code',
+  Link = 'link',
   Emphasized = 'emphasized',
   Strong = 'strong',
-  Variable = 'variable',
-  Mistake = 'mistake',
-  Blockquote = 'blockquote',
-  Del = 'del',
-  Kbd = 'kbd',
-  Pre = 'pre',
-  S = 's',
-  Samp = 'samp',
-  Sub = 'sub',
-  Sup = 'sup',
-  U = 'u',
+  Quote = 'quote',
+  Code = 'code',
 }
 
 // the comment indicates the specific css property the field controls
@@ -72,9 +55,5 @@ export interface FontConfig {
 }
 
 export type FontStylesConfig = {
-  [key in Font]: FontStatesConfig
-}
-
-export type FontStatesConfig = {
-  [key in UIState]?: Partial<FontConfig>
+  [key in Font]: Partial<FontConfig>
 }
