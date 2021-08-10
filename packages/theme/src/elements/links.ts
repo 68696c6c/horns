@@ -1,5 +1,4 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
@@ -16,6 +15,7 @@ import {
   ElementTheme,
   ElementThemeState,
 } from './elements'
+import { Color } from '../colors-2'
 
 export const defaultLinks: ElementConfig = {
   border: {
@@ -24,7 +24,7 @@ export const defaultLinks: ElementConfig = {
       style: BorderStyle.None,
     },
   },
-  color: Colorway.Typography,
+  color: Color.Typography,
   cursor: Cursor.Pointer,
   font: Font.Link,
   padding: {
@@ -35,13 +35,13 @@ export const defaultLinks: ElementConfig = {
   },
   states: {
     [HoverState.Hover]: {
-      color: Colorway.Primary,
+      color: Color.Primary,
     },
     [HoverState.Active]: {
-      color: Colorway.Secondary,
+      color: Color.Secondary,
     },
     [StatusState.Visited]: {
-      color: Colorway.Secondary,
+      color: Color.Secondary,
     },
   },
 }

@@ -1,10 +1,11 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
 
 import { ElementConfig, ElementTheme } from './elements'
+import { Color } from '../colors-2'
+import { HoverState, StatusState } from '../utils'
 
 export interface NavConfig extends ElementConfig {
   currentItem?: Partial<ElementConfig>
@@ -21,7 +22,7 @@ const defaultCurrentItem: ElementConfig = {
       style: BorderStyle.Solid,
     },
   },
-  color: Colorway.Primary,
+  color: Color.Primary,
   cursor: Cursor.Default,
   font: Font.Compact,
   padding: {
@@ -30,6 +31,14 @@ const defaultCurrentItem: ElementConfig = {
   },
   radius: {
     all: Size.None,
+  },
+  states: {
+    [HoverState.Hover]: {
+      color: Color.Primary,
+    },
+    [HoverState.Active]: {
+      color: Color.Secondary,
+    },
   },
 }
 
@@ -40,7 +49,7 @@ export const defaultNav: NavConfig = {
       style: BorderStyle.None,
     },
   },
-  color: Colorway.Background,
+  color: Color.BgPrimary,
   cursor: Cursor.Pointer,
   font: Font.Compact,
   padding: {
@@ -50,7 +59,24 @@ export const defaultNav: NavConfig = {
   radius: {
     all: Size.None,
   },
-  currentItem: defaultCurrentItem,
+  // currentItem: defaultCurrentItem,
+  states: {
+    [HoverState.Hover]: {
+      color: Color.Primary,
+    },
+    [HoverState.Active]: {
+      color: Color.Secondary,
+    },
+    [StatusState.Selected]: {
+      border: {
+        bottom: {
+          width: Size.Tiny,
+          style: BorderStyle.Solid,
+        },
+      },
+      color: Color.Secondary,
+    },
+  },
 }
 
 export const makeNav = (config?: Partial<NavConfig>): NavTheme => {

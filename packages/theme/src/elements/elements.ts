@@ -1,5 +1,5 @@
 import { SideBorders, SideBordersConfig } from '../borders'
-import { Colorway } from '../colors'
+import { Color } from '../colors-2'
 import { Cursor } from '../cursors'
 import {
   CornerSizes,
@@ -14,7 +14,7 @@ export type ElementConfigState = Partial<Omit<ElementConfig, 'states'>>
 
 export interface ElementConfig {
   // TODO: "color" should be used to set a single, static color.  Colorway should be used to apply a pre-determined set of colors for different states etc.
-  color: Colorway
+  color: Color
   cursor: Cursor
   border: SideBordersConfig
   font: Font
@@ -26,7 +26,7 @@ export interface ElementConfig {
 export type ElementThemeState = Omit<ElementTheme, 'states'>
 
 export interface ElementTheme {
-  color: Colorway
+  color: Color
   cursor: Cursor
   border: SideBorders
   font: Font

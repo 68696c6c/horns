@@ -1,13 +1,14 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Colorway } from '../colors'
 import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
 
 import { ElementConfig, ElementTheme } from './elements'
+import { Color } from '../colors-2'
+import { HoverState } from '../utils'
 
 export const defaultButtons: ElementConfig = {
-  color: Colorway.Background,
+  color: Color.BgPrimary,
   cursor: Cursor.Pointer,
   border: {
     all: {
@@ -22,6 +23,14 @@ export const defaultButtons: ElementConfig = {
   },
   radius: {
     all: Size.Tiny,
+  },
+  states: {
+    [HoverState.Hover]: {
+      color: Color.Primary,
+    },
+    [HoverState.Active]: {
+      color: Color.Secondary,
+    },
   },
 }
 
