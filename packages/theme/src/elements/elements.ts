@@ -1,6 +1,5 @@
 import { SideBorders, SideBordersConfig } from '../borders'
 import { Color } from '../colors'
-import { Cursor } from '../cursors'
 import {
   CornerSizes,
   CornerSizesConfig,
@@ -8,6 +7,7 @@ import {
   SideSizesConfig,
 } from '../sizes'
 import { Font } from '../typography'
+import { Cursor } from '../utils'
 
 export interface ElementConfig {
   color: Color

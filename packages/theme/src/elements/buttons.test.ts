@@ -1,8 +1,8 @@
 import { BorderStyle } from '../borders'
 import { Color } from '../colors'
-import { Cursor } from '../cursors'
 import { Size } from '../sizes'
 import { Font } from '../typography'
+import { Cursor } from '../utils'
 
 import { defaultButtons, makeButtons } from './buttons'
 import { ElementConfig } from './elements'

@@ -1,8 +1,8 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
 import { Color } from '../colors'
-import { Cursor } from '../cursors'
 import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
 import { Font } from '../typography'
+import { Cursor } from '../utils'
 
 import { ElementConfig, ElementTheme } from './elements'
 
