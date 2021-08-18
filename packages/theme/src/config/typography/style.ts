@@ -1,4 +1,4 @@
-import { mergeConfig } from '../utils'
+import { mergeConfig } from '../../utils'
 
 import { Config } from './config'
 import { FontConfig } from './fonts'

@@ -6,7 +6,7 @@ import {
   Sides,
   SidesConfig,
   Corners,
-} from '../utils'
+} from '../../utils'
 
 export enum Size {
   None = 'none',

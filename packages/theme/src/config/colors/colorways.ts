@@ -1,6 +1,6 @@
 import ColorObject from 'color'
 
-import { HoverState, UIState } from '../utils'
+import { HoverState, UIState } from '../../utils'
 
 import { colorPallet } from './pallet'
 import { ColorShades, Shades } from './shades'

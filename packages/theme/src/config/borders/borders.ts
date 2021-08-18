@@ -1,5 +1,5 @@
 import { SideSizes, SideSizesConfig, Size } from '../sizes'
-import { configToSides, Sides, SidesConfig } from '../utils'
+import { configToSides, Sides, SidesConfig } from '../../utils'
 
 export enum BorderStyle {
   None = 'none',

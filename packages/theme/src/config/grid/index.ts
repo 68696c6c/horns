@@ -1,5 +1,5 @@
 import { Size } from '../sizes'
-import { mergeConfig } from '../utils'
+import { mergeConfig } from '../../utils'
 
 export interface GridConfig {
   gap: Size

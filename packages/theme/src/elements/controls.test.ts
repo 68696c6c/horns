@@ -1,8 +1,4 @@
-import { BorderStyle } from '../borders'
-import { Color } from '../colors'
-import { ShadowType } from '../shadows'
-import { Size } from '../sizes'
-import { Font } from '../typography'
+import { BorderStyle, Color, ShadowType, Size, Font } from '../config'
 import { Cursor } from '../utils'
 
 import { defaultControls, makeControls } from './controls'

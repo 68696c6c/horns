@@ -1,8 +1,23 @@
-import { BreakpointsConfig, Breakpoints, makeBreakpoints } from './breakpoints'
-import { ColorsConfig, Colors, makeColors } from './colors'
-import { ShadowsConfig, Shadows, makeShadows } from './shadows'
-import { SizesConfig, Sizes, makeSizes } from './sizes'
-import { TypographyConfig, Typography, makeTypography } from './typography'
+import {
+  BreakpointsConfig,
+  Breakpoints,
+  makeBreakpoints,
+  ColorsConfig,
+  Colors,
+  makeColors,
+  GridConfig,
+  Grid,
+  makeGrid,
+  ShadowsConfig,
+  Shadows,
+  makeShadows,
+  SizesConfig,
+  Sizes,
+  makeSizes,
+  TypographyConfig,
+  Typography,
+  makeTypography,
+} from './config'
 import {
   ThemeElement,
   ElementProps,
@@ -14,7 +29,6 @@ import {
   makeNav,
   makeTables,
 } from './elements'
-import { GridConfig, Grid, makeGrid } from './grid'
 
 export interface Config {
   name?: string

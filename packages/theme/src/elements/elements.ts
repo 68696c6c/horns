@@ -1,13 +1,14 @@
-import { SideBorders, SideBordersConfig } from '../borders'
-import { Color } from '../colors'
-import { ShadowType } from '../shadows'
 import {
+  SideBorders,
+  SideBordersConfig,
+  Color,
+  ShadowType,
   CornerSizes,
   CornerSizesConfig,
   SideSizes,
   SideSizesConfig,
-} from '../sizes'
-import { Font } from '../typography'
+  Font,
+} from '../config'
 import { Cursor, DeepPartial } from '../utils'
 
 export interface ElementConfig {

@@ -1,4 +1,4 @@
-import { mergeConfig } from '../utils'
+import { mergeConfig } from '../../utils'
 
 export enum Breakpoint {
   Mobile = 'mobile',

@@ -1,4 +1,4 @@
-import { DeepPartial, mergeConfig } from '../utils'
+import { DeepPartial, mergeConfig } from '../../utils'
 
 export interface BaseShadowConfig {
   x?: number

@@ -1,8 +1,13 @@
-import { BorderStyle, evalSideBordersConfigs } from '../borders'
-import { Color } from '../colors'
-import { ShadowType } from '../shadows'
-import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
-import { Font } from '../typography'
+import {
+  BorderStyle,
+  evalSideBordersConfigs,
+  Color,
+  ShadowType,
+  Size,
+  evalCornerSizesConfigs,
+  evalSideSizesConfigs,
+  Font,
+} from '../config'
 import { Cursor } from '../utils'
 
 import {
