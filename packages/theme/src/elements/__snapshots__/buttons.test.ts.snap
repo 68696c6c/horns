@@ -23,6 +23,7 @@ Object {
   "color": "tertiary",
   "cursor": "pointer",
   "font": "control",
+  "outlined": false,
   "padding": Object {
     "bottom": "small",
     "left": "medium",
@@ -35,5 +36,7 @@ Object {
     "topLeft": "tiny",
     "topRight": "tiny",
   },
+  "shadow": "none",
+  "typographic": false,
 }
 `;

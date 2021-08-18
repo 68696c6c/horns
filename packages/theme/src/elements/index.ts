@@ -1,6 +1,6 @@
-export { ElementConfig, ElementTheme } from './elements'
+export { ElementConfig, ElementProps, ThemeElement } from './elements'
 export { makeButtons } from './buttons'
 export { makeControls } from './controls'
 export { makeLinks } from './links'
-export { NavConfig, NavTheme, makeNav } from './nav'
+export { NavConfig, NavProps, NavTheme, makeNav } from './nav'
 export { makeTables } from './tables'

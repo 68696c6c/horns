@@ -1,11 +1,13 @@
 import { BorderStyle } from '../borders'
 import { Color } from '../colors'
+import { ShadowType } from '../shadows'
 import { Size } from '../sizes'
 import { Font } from '../typography'
 import { Cursor } from '../utils'
 
 import { defaultControls, makeControls } from './controls'
-import { ElementConfig } from './elements'
+import { ElementProps } from './elements'
+import { defaultButtons, makeButtons } from './buttons'
 
 describe('makeControls', () => {
   const expected = makeControls(defaultControls)
@@ -16,7 +18,7 @@ describe('makeControls', () => {
   })
 
   it('should use default values for incomplete inputs', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       color: Color.Tertiary,
     }
     const result = makeControls(input)
@@ -29,7 +31,7 @@ describe('makeControls', () => {
         style: BorderStyle.Groove,
         width: Size.Giant,
       }
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           all: inputBorder,
         },
@@ -44,7 +46,7 @@ describe('makeControls', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           x: {
             style: BorderStyle.Groove,
@@ -78,7 +80,7 @@ describe('makeControls', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           top: {
             style: BorderStyle.Double,
@@ -118,40 +120,10 @@ describe('makeControls', () => {
         },
       })
     })
-
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        border: {
-          all: {
-            style: BorderStyle.Double,
-            width: Size.Giant,
-          },
-        },
-      }
-      const result = makeControls(input)
-      expect(result.border).toStrictEqual({
-        top: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        bottom: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        left: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        right: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-      })
-    })
   })
 
   it('should accept color values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       color: Color.Tertiary,
     }
     const result = makeControls(input)
@@ -159,7 +131,7 @@ describe('makeControls', () => {
   })
 
   it('should accept cursor values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       cursor: Cursor.Pointer,
     }
     const result = makeControls(input)
@@ -167,16 +139,40 @@ describe('makeControls', () => {
   })
 
   it('should accept font values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       font: Font.Control,
     }
     const result = makeControls(input)
     expect(result.font).toBe(Font.Control)
   })
 
+  describe('outlined', () => {
+    it('should use the default value if no value is specified', () => {
+      const input: ElementProps = {}
+      const result = makeButtons(input)
+      expect(result.outlined).toBe(defaultButtons.outlined)
+    })
+
+    it('should accept true', () => {
+      const input: ElementProps = {
+        outlined: true,
+      }
+      const result = makeButtons(input)
+      expect(result.outlined).toBe(true)
+    })
+
+    it('should accept false', () => {
+      const input: ElementProps = {
+        outlined: false,
+      }
+      const result = makeButtons(input)
+      expect(result.outlined).toBe(false)
+    })
+  })
+
   describe('padding', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: { all: Size.Giant },
       }
       const result = makeControls(input)
@@ -189,7 +185,7 @@ describe('makeControls', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: {
           x: Size.Giant,
           y: Size.Large,
@@ -205,7 +201,7 @@ describe('makeControls', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: {
           top: Size.Giant,
           bottom: Size.Large,
@@ -221,24 +217,11 @@ describe('makeControls', () => {
         right: Size.Small,
       })
     })
-
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        padding: { all: Size.Giant },
-      }
-      const result = makeControls(input)
-      expect(result.padding).toStrictEqual({
-        top: Size.Giant,
-        bottom: Size.Giant,
-        left: Size.Giant,
-        right: Size.Giant,
-      })
-    })
   })
 
   describe('radius', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: { all: Size.Giant },
       }
       const result = makeControls(input)
@@ -251,7 +234,7 @@ describe('makeControls', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: {
           left: Size.Giant,
           right: Size.Large,
@@ -267,7 +250,7 @@ describe('makeControls', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: {
           topRight: Size.Giant,
           bottomRight: Size.Large,
@@ -283,18 +266,23 @@ describe('makeControls', () => {
         bottomLeft: Size.Small,
       })
     })
+  })
 
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        radius: { all: Size.Giant },
+  describe('shadow', () => {
+    it('should use the configured shadow type if "shadowed" is true', () => {
+      const input: ElementProps = {
+        shadowed: true,
       }
       const result = makeControls(input)
-      expect(result.radius).toStrictEqual({
-        topRight: Size.Giant,
-        bottomRight: Size.Giant,
-        topLeft: Size.Giant,
-        bottomLeft: Size.Giant,
-      })
+      expect(result.shadow).toBe(defaultControls.shadowType)
+    })
+
+    it('should use the "none" shadow type if "shadowed" is false', () => {
+      const input: ElementProps = {
+        shadowed: false,
+      }
+      const result = makeControls(input)
+      expect(result.shadow).toBe(ShadowType.None)
     })
   })
 })

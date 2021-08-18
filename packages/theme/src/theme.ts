@@ -1,12 +1,13 @@
 import { BreakpointsConfig, Breakpoints, makeBreakpoints } from './breakpoints'
 import { ColorsConfig, Colors, makeColors } from './colors'
+import { ShadowsConfig, Shadows, makeShadows } from './shadows'
 import { SizesConfig, Sizes, makeSizes } from './sizes'
 import { TypographyConfig, Typography, makeTypography } from './typography'
 import {
-  ElementTheme,
-  ElementConfig,
+  ThemeElement,
+  ElementProps,
   NavTheme,
-  NavConfig,
+  NavProps,
   makeButtons,
   makeControls,
   makeLinks,
@@ -17,25 +18,26 @@ import { GridConfig, Grid, makeGrid } from './grid'
 
 export interface Config {
   name?: string
-  buttons?: Partial<ElementConfig>
+  buttons?: ElementProps
   breakpoints?: Partial<BreakpointsConfig>
   colors?: Partial<ColorsConfig>
-  controls?: Partial<ElementConfig>
-  links?: Partial<ElementConfig>
+  controls?: ElementProps
   grid?: Partial<GridConfig>
+  links?: ElementProps
+  nav?: NavProps
+  shadows?: ShadowsConfig
   sizes?: Partial<SizesConfig>
-  nav?: Partial<NavConfig>
-  tables?: Partial<ElementConfig>
+  tables?: ElementProps
   typography?: Partial<TypographyConfig>
 }
 
 interface Elements {
-  readonly buttons: ElementTheme
-  readonly controls: ElementTheme
+  readonly buttons: ThemeElement
+  readonly controls: ThemeElement
   readonly grid: Grid
-  readonly links: ElementTheme
+  readonly links: ThemeElement
   readonly nav: NavTheme
-  readonly tables: ElementTheme
+  readonly tables: ThemeElement
 }
 
 export interface Theme {
@@ -43,6 +45,7 @@ export interface Theme {
   readonly breakpoints: Breakpoints
   readonly colors: Colors
   readonly elements: Elements
+  readonly shadows: Shadows
   readonly sizes: Sizes
   readonly typography: Typography
 }
@@ -53,6 +56,7 @@ export const makeTheme = (themeConfig?: Config): Theme => {
     name: typeof config.name === 'string' ? config.name : 'horns-theme',
     breakpoints: makeBreakpoints(config.breakpoints),
     colors: makeColors(config.colors),
+    shadows: makeShadows(config.shadows),
     sizes: makeSizes(config.sizes),
     typography: makeTypography(config.typography),
     elements: {

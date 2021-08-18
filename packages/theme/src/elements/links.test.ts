@@ -1,11 +1,12 @@
 import { BorderStyle } from '../borders'
 import { Color } from '../colors'
+import { ShadowType } from '../shadows'
 import { Size } from '../sizes'
 import { Font } from '../typography'
 import { Cursor } from '../utils'
 
 import { defaultLinks, makeLinks } from './links'
-import { ElementConfig } from './elements'
+import { ElementProps } from './elements'
 
 describe('makeLinks', () => {
   const expected = makeLinks(defaultLinks)
@@ -16,7 +17,7 @@ describe('makeLinks', () => {
   })
 
   it('should use default values for incomplete inputs', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       color: Color.Tertiary,
     }
     const result = makeLinks(input)
@@ -29,7 +30,7 @@ describe('makeLinks', () => {
         style: BorderStyle.Groove,
         width: Size.Giant,
       }
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           all: inputBorder,
         },
@@ -44,7 +45,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           x: {
             style: BorderStyle.Groove,
@@ -78,7 +79,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         border: {
           top: {
             style: BorderStyle.Double,
@@ -118,40 +119,10 @@ describe('makeLinks', () => {
         },
       })
     })
-
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        border: {
-          all: {
-            style: BorderStyle.Double,
-            width: Size.Giant,
-          },
-        },
-      }
-      const result = makeLinks(input)
-      expect(result.border).toStrictEqual({
-        top: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        bottom: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        left: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-        right: {
-          style: BorderStyle.Double,
-          width: Size.Giant,
-        },
-      })
-    })
   })
 
   it('should accept color values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       color: Color.Tertiary,
     }
     const result = makeLinks(input)
@@ -159,7 +130,7 @@ describe('makeLinks', () => {
   })
 
   it('should accept cursor values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       cursor: Cursor.Pointer,
     }
     const result = makeLinks(input)
@@ -167,16 +138,40 @@ describe('makeLinks', () => {
   })
 
   it('should accept font values', () => {
-    const input: Partial<ElementConfig> = {
+    const input: ElementProps = {
       font: Font.Control,
     }
     const result = makeLinks(input)
     expect(result.font).toBe(Font.Control)
   })
 
+  describe('outlined', () => {
+    it('should use the default value if no value is specified', () => {
+      const input: ElementProps = {}
+      const result = makeLinks(input)
+      expect(result.outlined).toBe(defaultLinks.outlined)
+    })
+
+    it('should accept true', () => {
+      const input: ElementProps = {
+        outlined: true,
+      }
+      const result = makeLinks(input)
+      expect(result.outlined).toBe(true)
+    })
+
+    it('should accept false', () => {
+      const input: ElementProps = {
+        outlined: false,
+      }
+      const result = makeLinks(input)
+      expect(result.outlined).toBe(false)
+    })
+  })
+
   describe('padding', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: { all: Size.Giant },
       }
       const result = makeLinks(input)
@@ -189,7 +184,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: {
           x: Size.Giant,
           y: Size.Large,
@@ -205,7 +200,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         padding: {
           top: Size.Giant,
           bottom: Size.Large,
@@ -221,24 +216,11 @@ describe('makeLinks', () => {
         right: Size.Small,
       })
     })
-
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        padding: { all: Size.Giant },
-      }
-      const result = makeLinks(input)
-      expect(result.padding).toStrictEqual({
-        top: Size.Giant,
-        bottom: Size.Giant,
-        left: Size.Giant,
-        right: Size.Giant,
-      })
-    })
   })
 
   describe('radius', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: { all: Size.Giant },
       }
       const result = makeLinks(input)
@@ -251,7 +233,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: {
           left: Size.Giant,
           right: Size.Large,
@@ -267,7 +249,7 @@ describe('makeLinks', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<ElementConfig> = {
+      const input: ElementProps = {
         radius: {
           topRight: Size.Giant,
           bottomRight: Size.Large,
@@ -283,18 +265,23 @@ describe('makeLinks', () => {
         bottomLeft: Size.Small,
       })
     })
+  })
 
-    it('should merge nav and item inputs', () => {
-      const input: Partial<ElementConfig> = {
-        radius: { all: Size.Giant },
+  describe('shadow', () => {
+    it('should use the configured shadow type if "shadowed" is true', () => {
+      const input: ElementProps = {
+        shadowed: true,
       }
       const result = makeLinks(input)
-      expect(result.radius).toStrictEqual({
-        topRight: Size.Giant,
-        bottomRight: Size.Giant,
-        topLeft: Size.Giant,
-        bottomLeft: Size.Giant,
-      })
+      expect(result.shadow).toBe(defaultLinks.shadowType)
+    })
+
+    it('should use the "none" shadow type if "shadowed" is false', () => {
+      const input: ElementProps = {
+        shadowed: false,
+      }
+      const result = makeLinks(input)
+      expect(result.shadow).toBe(ShadowType.None)
     })
   })
 })

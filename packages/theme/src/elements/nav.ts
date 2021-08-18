@@ -1,20 +1,35 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
 import { Color } from '../colors'
-import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
+import { ShadowType } from '../shadows'
+import { Size, evalCornerSizesConfigs, evalSideSizesConfigs } from '../sizes'
 import { Font } from '../typography'
 import { Cursor } from '../utils'
 
-import { ElementConfig, ElementTheme } from './elements'
+import {
+  ElementConfig,
+  ElementProps,
+  ThemeElement,
+  evalBooleanProp,
+} from './elements'
+
+type NavItemConfig = Omit<
+  ElementConfig,
+  'outlined' | 'shadowed' | 'shadowType' | 'typographic'
+>
 
 export interface NavConfig extends ElementConfig {
-  currentItem?: Partial<ElementConfig>
+  currentItem?: NavItemConfig
 }
 
-export interface NavTheme extends ElementTheme {
-  currentItem: ElementTheme
+export interface NavProps extends ElementProps {
+  currentItem?: ElementProps
 }
 
-const defaultCurrentItem: ElementConfig = {
+export interface NavTheme extends ThemeElement {
+  currentItem: ThemeElement
+}
+
+const defaultCurrentItem: NavItemConfig = {
   border: {
     bottom: {
       width: Size.Tiny,
@@ -43,6 +58,7 @@ export const defaultNav: NavConfig = {
   color: Color.BgPrimary,
   cursor: Cursor.Pointer,
   font: Font.Compact,
+  outlined: false,
   padding: {
     x: Size.Medium,
     y: Size.Small,
@@ -50,37 +66,49 @@ export const defaultNav: NavConfig = {
   radius: {
     all: Size.None,
   },
+  shadowed: false,
+  shadowType: ShadowType.Box,
+  typographic: false,
   currentItem: defaultCurrentItem,
 }
 
-export const makeNav = (config?: Partial<NavConfig>): NavTheme => {
-  const border = evalSideBordersConfigs(defaultNav.border, config?.border)
-  const padding = evalSideSizesConfigs(defaultNav.padding, config?.padding)
-  const radius = evalCornerSizesConfigs(defaultNav.radius, config?.radius)
+export const makeNav = (input?: NavProps): NavTheme => {
+  const border = evalSideBordersConfigs(defaultNav.border, input?.border)
+  const outlined = evalBooleanProp(defaultNav.outlined, 'outlined', input)
+  const padding = evalSideSizesConfigs(defaultNav.padding, input?.padding)
+  const radius = evalCornerSizesConfigs(defaultNav.radius, input?.radius)
+  const shadow = input?.shadowed ? defaultNav.shadowType : ShadowType.None
+  const { typographic } = defaultNav
 
-  const item = config?.currentItem
+  const item = input?.currentItem
   const itemPadding = evalSideSizesConfigs(padding, item?.padding)
   const itemRadius = evalCornerSizesConfigs(radius, item?.radius)
 
   return {
     border,
-    color: config?.color || defaultNav.color,
-    cursor: config?.cursor || defaultNav.cursor,
-    font: config?.font || defaultNav.font,
+    color: input?.color || defaultNav.color,
+    cursor: input?.cursor || defaultNav.cursor,
+    font: input?.font || defaultNav.font,
+    outlined,
     padding,
+    shadow,
     radius,
+    typographic,
     currentItem: {
       border: evalSideBordersConfigs(
         defaultNav.border,
         defaultCurrentItem.border,
-        config?.border,
+        input?.border,
         item?.border,
       ),
-      color: item?.color || config?.color || defaultCurrentItem.color,
-      cursor: item?.cursor || config?.cursor || defaultCurrentItem.cursor,
-      font: item?.font || config?.font || defaultCurrentItem.font,
+      color: item?.color || input?.color || defaultCurrentItem.color,
+      cursor: item?.cursor || input?.cursor || defaultCurrentItem.cursor,
+      font: item?.font || input?.font || defaultCurrentItem.font,
+      outlined,
       padding: evalSideSizesConfigs(defaultCurrentItem.padding, itemPadding),
+      shadow,
       radius: evalCornerSizesConfigs(defaultCurrentItem.radius, itemRadius),
+      typographic,
     },
   }
 }

@@ -7,7 +7,6 @@ interface MinMax {
 }
 
 export interface Shaders {
-  alpha: number
   darkest: number
   lightest: number
   darker: MinMax
@@ -45,7 +44,6 @@ export const defaultConfig: Config = {
     danger: hexPallet.red,
   },
   shaders: {
-    alpha: 0.3,
     darkest: 88,
     lightest: 20,
     darker: {

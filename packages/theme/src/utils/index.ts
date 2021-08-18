@@ -1,5 +1,6 @@
 export { CornersConfig, Corners, Corner, configToCorners } from './corners'
 export { Cursor } from './cursors'
+export { default as DeepPartial } from './deep-partial'
 export { HoverState, StatusState, UIState } from './ui-states'
 export { mergeConfig } from './merge'
 export { SidesConfig, Sides, Side, configToSides } from './sides'

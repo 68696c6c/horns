@@ -1,10 +1,16 @@
 import { BorderStyle, evalSideBordersConfigs } from '../borders'
 import { Color } from '../colors'
-import { evalCornerSizesConfigs, evalSideSizesConfigs, Size } from '../sizes'
+import { ShadowType } from '../shadows'
+import { Size, evalCornerSizesConfigs, evalSideSizesConfigs } from '../sizes'
 import { Font } from '../typography'
 import { Cursor } from '../utils'
 
-import { ElementConfig, ElementTheme } from './elements'
+import {
+  ElementConfig,
+  ElementProps,
+  ThemeElement,
+  evalBooleanProp,
+} from './elements'
 
 export const defaultButtons: ElementConfig = {
   border: {
@@ -16,6 +22,7 @@ export const defaultButtons: ElementConfig = {
   color: Color.BgPrimary,
   cursor: Cursor.Pointer,
   font: Font.Control,
+  outlined: false,
   padding: {
     x: Size.Medium,
     y: Size.Small,
@@ -23,13 +30,19 @@ export const defaultButtons: ElementConfig = {
   radius: {
     all: Size.Tiny,
   },
+  shadowed: false,
+  shadowType: ShadowType.Box,
+  typographic: false,
 }
 
-export const makeButtons = (config?: Partial<ElementConfig>): ElementTheme => ({
-  color: config?.color || defaultButtons.color,
-  cursor: config?.cursor || defaultButtons.cursor,
-  border: evalSideBordersConfigs(defaultButtons.border, config?.border),
-  font: config?.font || defaultButtons.font,
-  padding: evalSideSizesConfigs(defaultButtons.padding, config?.padding),
-  radius: evalCornerSizesConfigs(defaultButtons.radius, config?.radius),
+export const makeButtons = (input?: ElementProps): ThemeElement => ({
+  color: input?.color || defaultButtons.color,
+  cursor: input?.cursor || defaultButtons.cursor,
+  border: evalSideBordersConfigs(defaultButtons.border, input?.border),
+  font: input?.font || defaultButtons.font,
+  outlined: evalBooleanProp(defaultButtons.outlined, 'outlined', input),
+  padding: evalSideSizesConfigs(defaultButtons.padding, input?.padding),
+  shadow: input?.shadowed ? defaultButtons.shadowType : ShadowType.None,
+  radius: evalCornerSizesConfigs(defaultButtons.radius, input?.radius),
+  typographic: defaultButtons.typographic,
 })

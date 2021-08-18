@@ -1,10 +1,11 @@
 import { BorderStyle } from '../borders'
 import { Color } from '../colors'
+import { ShadowType } from '../shadows'
 import { Size } from '../sizes'
 import { Font } from '../typography'
 import { Cursor } from '../utils'
 
-import { defaultNav, makeNav, NavConfig } from './nav'
+import { defaultNav, makeNav, NavProps } from './nav'
 
 describe('makeNav', () => {
   const expected = makeNav(defaultNav)
@@ -15,7 +16,7 @@ describe('makeNav', () => {
   })
 
   it('should use default values for incomplete inputs', () => {
-    const input: Partial<NavConfig> = {
+    const input: NavProps = {
       color: Color.Tertiary,
       currentItem: { color: Color.Secondary },
     }
@@ -33,7 +34,7 @@ describe('makeNav', () => {
         style: BorderStyle.Double,
         width: Size.Medium,
       }
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         border: {
           all: navBorder,
         },
@@ -59,7 +60,7 @@ describe('makeNav', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         border: {
           x: {
             style: BorderStyle.Groove,
@@ -123,7 +124,7 @@ describe('makeNav', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         border: {
           top: {
             style: BorderStyle.Double,
@@ -203,7 +204,7 @@ describe('makeNav', () => {
     })
 
     it('should merge nav and item inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         border: {
           all: {
             style: BorderStyle.Double,
@@ -260,7 +261,7 @@ describe('makeNav', () => {
   })
 
   it('should accept color values', () => {
-    const input: Partial<NavConfig> = {
+    const input: NavProps = {
       color: Color.Tertiary,
       currentItem: { color: Color.Secondary },
     }
@@ -270,7 +271,7 @@ describe('makeNav', () => {
   })
 
   it('should accept cursor values', () => {
-    const input: Partial<NavConfig> = {
+    const input: NavProps = {
       cursor: Cursor.Pointer,
       currentItem: { cursor: Cursor.Progress },
     }
@@ -280,7 +281,7 @@ describe('makeNav', () => {
   })
 
   it('should accept font values', () => {
-    const input: Partial<NavConfig> = {
+    const input: NavProps = {
       font: Font.Control,
       currentItem: { font: Font.Control },
     }
@@ -289,9 +290,33 @@ describe('makeNav', () => {
     expect(result.currentItem.font).toBe(Font.Control)
   })
 
+  describe('outlined', () => {
+    it('should use the default value if no value is specified', () => {
+      const input: NavProps = {}
+      const result = makeNav(input)
+      expect(result.outlined).toBe(defaultNav.outlined)
+    })
+
+    it('should accept true', () => {
+      const input: NavProps = {
+        outlined: true,
+      }
+      const result = makeNav(input)
+      expect(result.outlined).toBe(true)
+    })
+
+    it('should accept false', () => {
+      const input: NavProps = {
+        outlined: false,
+      }
+      const result = makeNav(input)
+      expect(result.outlined).toBe(false)
+    })
+  })
+
   describe('padding', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         padding: { all: Size.Giant },
         currentItem: {
           padding: { all: Size.Medium },
@@ -313,7 +338,7 @@ describe('makeNav', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         padding: {
           x: Size.Giant,
           y: Size.Large,
@@ -341,7 +366,7 @@ describe('makeNav', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         padding: {
           top: Size.Giant,
           bottom: Size.Large,
@@ -373,7 +398,7 @@ describe('makeNav', () => {
     })
 
     it('should merge nav and item inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         padding: { all: Size.Giant },
         currentItem: {
           padding: { top: Size.XXSmall },
@@ -397,7 +422,7 @@ describe('makeNav', () => {
 
   describe('radius', () => {
     it('should accept "all" inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         radius: { all: Size.Giant },
         currentItem: {
           radius: { all: Size.Medium },
@@ -419,7 +444,7 @@ describe('makeNav', () => {
     })
 
     it('should accept dimensional inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         radius: {
           left: Size.Giant,
           right: Size.Large,
@@ -447,7 +472,7 @@ describe('makeNav', () => {
     })
 
     it('should accept complete inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         radius: {
           topRight: Size.Giant,
           bottomRight: Size.Large,
@@ -479,7 +504,7 @@ describe('makeNav', () => {
     })
 
     it('should merge nav and item inputs', () => {
-      const input: Partial<NavConfig> = {
+      const input: NavProps = {
         radius: { all: Size.Giant },
         currentItem: {
           radius: { topLeft: Size.XXSmall },
@@ -498,6 +523,24 @@ describe('makeNav', () => {
         topLeft: Size.XXSmall,
         bottomLeft: Size.Giant,
       })
+    })
+  })
+
+  describe('shadow', () => {
+    it('should use the configured shadow type if "shadowed" is true', () => {
+      const input: NavProps = {
+        shadowed: true,
+      }
+      const result = makeNav(input)
+      expect(result.shadow).toBe(defaultNav.shadowType)
+    })
+
+    it('should use the "none" shadow type if "shadowed" is false', () => {
+      const input: NavProps = {
+        shadowed: false,
+      }
+      const result = makeNav(input)
+      expect(result.shadow).toBe(ShadowType.None)
     })
   })
 })

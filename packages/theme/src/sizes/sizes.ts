@@ -26,8 +26,6 @@ export const isSize = (
 ): tbd is Size =>
   typeof tbd !== 'undefined' && typeof (tbd as Size) === 'string'
 
-// export const getSizeValue = (input?: Size): Size => input || Size.None
-
 export type Config = {
   [key in Size]: string
 }

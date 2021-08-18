@@ -43,6 +43,7 @@ Object {
     "color": "secondary",
     "cursor": "default",
     "font": "compact",
+    "outlined": false,
     "padding": Object {
       "bottom": "small",
       "left": "medium",
@@ -55,9 +56,12 @@ Object {
       "topLeft": "none",
       "topRight": "none",
     },
+    "shadow": "none",
+    "typographic": false,
   },
   "cursor": "pointer",
   "font": "compact",
+  "outlined": false,
   "padding": Object {
     "bottom": "small",
     "left": "medium",
@@ -70,5 +74,7 @@ Object {
     "topLeft": "none",
     "topRight": "none",
   },
+  "shadow": "none",
+  "typographic": false,
 }
 `;

@@ -1,4 +1,4 @@
-import { mergeConfig } from '../utils'
+import { DeepPartial, mergeConfig } from '../utils'
 
 import {
   ColorwayStates,
@@ -12,7 +12,6 @@ import {
 import { defaultConfig, Config } from './config'
 import { makeColorShades } from './shades'
 import { BaseBrandColor, BaseColor, Color, Mode } from './types'
-import DeepPartial from '../utils/deep-partial'
 
 export type BrandColorways = {
   [key in BaseBrandColor]: ColorwayStates
