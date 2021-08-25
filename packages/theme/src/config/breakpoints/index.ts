@@ -1,7 +1,7 @@
-/* istanbul ignore file */
 export {
-  Config as BreakpointsConfig,
-  Breakpoints,
-  makeBreakpoints,
+  Config,
+  Breakpoints as Theme,
+  makeBreakpoints as make,
   Breakpoint,
+  defaultConfig,
 } from './breakpoints'

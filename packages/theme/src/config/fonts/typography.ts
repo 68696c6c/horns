@@ -1,4 +1,4 @@
-import { mergeConfig } from '../../utils'
+import { DeepPartial, mergeConfig } from '../../utils'
 
 import { Config, defaultConfig } from './config'
 import { Font, FontConfig } from './fonts'
@@ -38,7 +38,7 @@ export type Typography = Required<
   }
 >
 
-export const makeTypography = (input?: Partial<Config>): Typography => {
+export const makeTypography = (input?: DeepPartial<Config>): Typography => {
   const config = mergeConfig<Config>(defaultConfig, input)
   const fontBase = makeDefaultFontConfig(config)
 

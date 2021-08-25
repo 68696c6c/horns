@@ -1,12 +1,12 @@
-import { makeTheme } from './theme'
+import * as Theme from './theme'
 
-describe('makeTheme', () => {
+describe('Theme.make', () => {
   it('should match snapshot', () => {
-    const result = makeTheme()
+    const result = Theme.make()
     expect(result).toMatchSnapshot()
   })
   it('should accept a theme name', () => {
-    const result = makeTheme({ name: 'example-theme' })
+    const result = Theme.make({ name: 'example-theme' })
     expect(result).toMatchSnapshot()
   })
 })

@@ -1,1 +1,1 @@
-export { makeTheme, Theme, Config } from './theme'
+export { make, Theme, Config } from './theme'

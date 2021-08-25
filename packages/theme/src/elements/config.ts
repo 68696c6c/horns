@@ -1,3 +1,5 @@
+import { DeepPartial, mergeConfig } from '../utils'
+
 import * as Blocks from './blocks'
 import * as Clickables from './clickables'
 import * as Controls from './controls'
@@ -7,7 +9,6 @@ import * as Navs from './navs'
 import * as Notifications from './notifications'
 import * as Surfaces from './surfaces'
 import * as Tables from './tables'
-import { DeepPartial, mergeConfig } from '../utils'
 
 export interface Config {
   blocks: Blocks.Config
@@ -49,7 +50,7 @@ export const defaultConfig: Config = {
 }
 
 export const make = (input?: DeepPartial<Config>): Theme => {
-  const config = mergeConfig(defaultConfig, input)
+  const config = mergeConfig<Config>(defaultConfig, input)
   return {
     blocks: Blocks.make(config.blocks),
     buttons: Clickables.makeButtons(config.buttons),

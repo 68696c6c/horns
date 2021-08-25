@@ -1,7 +1,8 @@
 export {
-  Config as ShadowsConfig,
+  Config,
+  defaultConfig,
   ShadowType,
-  Shadows,
-  makeShadows,
+  Shadows as Theme,
+  makeShadows as make,
   evalShadows,
 } from './shadows'

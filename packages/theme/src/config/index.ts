@@ -1,35 +1,15 @@
+export { Config, Theme, make } from './config'
 export {
   SideBorders,
   SideBordersConfig,
   BorderStyle,
   evalSideBordersConfigs,
 } from './borders'
+export { Breakpoint } from './breakpoints'
+export { Color, ControlColor, NotificationColor, SurfaceColor } from './colors'
+export { Font } from './fonts'
+export { ShadowType, evalShadows } from './shadows'
 export {
-  BreakpointsConfig,
-  Breakpoints,
-  makeBreakpoints,
-  Breakpoint,
-} from './breakpoints'
-export {
-  ColorsConfig,
-  Colors,
-  makeColors,
-  Color,
-  ControlColor,
-  NotificationColor,
-  SurfaceColor,
-} from './colors'
-export {
-  ShadowsConfig,
-  Shadows,
-  makeShadows,
-  ShadowType,
-  evalShadows,
-} from './shadows'
-export {
-  SizesConfig,
-  Sizes,
-  makeSizes,
   CornerSizes,
   CornerSizesConfig,
   SideSizes,
@@ -38,9 +18,3 @@ export {
   evalCornerSizesConfigs,
   evalSideSizesConfigs,
 } from './sizes'
-export {
-  TypographyConfig,
-  Typography,
-  makeTypography,
-  Font,
-} from './typography'

@@ -4,6 +4,7 @@ export {
   FontFamilies,
   FontFamily,
   FontFamilyStyle,
+  FontFamilyFallback,
 } from './families'
 export { defaultLettings, Lettings, Letting } from './lettings'
 export {

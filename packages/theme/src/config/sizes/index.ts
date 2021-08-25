@@ -1,8 +1,9 @@
 export {
-  Config as SizesConfig,
-  Sizes,
+  Config,
+  defaultConfig,
+  Sizes as Theme,
   isSize,
-  makeSizes,
+  makeSizes as make,
   Size,
   SideSizesConfig,
   CornerSizesConfig,

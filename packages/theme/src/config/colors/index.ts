@@ -1,3 +1,3 @@
-export { Colors, makeColors } from './colors'
-export { Config as ColorsConfig } from './config'
+export { Colors as Theme, makeColors as make } from './colors'
+export { Config, defaultConfig } from './config'
 export { Color, ControlColor, NotificationColor, SurfaceColor } from './types'

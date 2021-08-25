@@ -31,7 +31,7 @@ export type Shadows = {
 
 export type Config = DeepPartial<Shadows>
 
-const defaultConfig: Shadows = {
+export const defaultConfig: Shadows = {
   [ShadowType.Box]: {
     x: 1,
     y: 1,

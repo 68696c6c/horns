@@ -30,7 +30,7 @@ export type Config = {
   [key in Size]: string
 }
 
-const defaultConfig: Config = {
+export const defaultConfig: Config = {
   none: '0px',
   tiny: '2px',
   xxSmall: '4px',
