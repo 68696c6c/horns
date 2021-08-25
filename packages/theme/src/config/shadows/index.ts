@@ -3,4 +3,5 @@ export {
   ShadowType,
   Shadows,
   makeShadows,
+  evalShadows,
 } from './shadows'

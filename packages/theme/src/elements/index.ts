@@ -1,6 +1,1 @@
-export { ElementConfig, ElementProps, ThemeElement } from './elements'
-export { makeButtons } from './buttons'
-export { makeControls } from './controls'
-export { makeLinks } from './links'
-export { NavConfig, NavProps, NavTheme, makeNav } from './nav'
-export { makeTables } from './tables'
+export { Config, Theme, make } from './config'

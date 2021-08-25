@@ -4,10 +4,28 @@ export {
   BorderStyle,
   evalSideBordersConfigs,
 } from './borders'
-export { BreakpointsConfig, Breakpoints, makeBreakpoints } from './breakpoints'
-export { ColorsConfig, Colors, makeColors, Color } from './colors'
-export { GridConfig, Grid, makeGrid } from './grid'
-export { ShadowsConfig, Shadows, makeShadows, ShadowType } from './shadows'
+export {
+  BreakpointsConfig,
+  Breakpoints,
+  makeBreakpoints,
+  Breakpoint,
+} from './breakpoints'
+export {
+  ColorsConfig,
+  Colors,
+  makeColors,
+  Color,
+  ControlColor,
+  NotificationColor,
+  SurfaceColor,
+} from './colors'
+export {
+  ShadowsConfig,
+  Shadows,
+  makeShadows,
+  ShadowType,
+  evalShadows,
+} from './shadows'
 export {
   SizesConfig,
   Sizes,

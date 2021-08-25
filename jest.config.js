@@ -6,4 +6,5 @@ module.exports = {
   moduleNameMapper: {
     '@horns/theme': '<rootDir>/packages/theme/src',
   },
+  modulePathIgnorePatterns: ['<rootDir>/_notes/'],
 }

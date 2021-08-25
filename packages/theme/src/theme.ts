@@ -5,9 +5,6 @@ import {
   ColorsConfig,
   Colors,
   makeColors,
-  GridConfig,
-  Grid,
-  makeGrid,
   ShadowsConfig,
   Shadows,
   makeShadows,
@@ -18,50 +15,26 @@ import {
   Typography,
   makeTypography,
 } from './config'
-import {
-  ThemeElement,
-  ElementProps,
-  NavTheme,
-  NavProps,
-  makeButtons,
-  makeControls,
-  makeLinks,
-  makeNav,
-  makeTables,
-} from './elements'
+import * as Elements from './elements'
 
 export interface Config {
   name?: string
-  buttons?: ElementProps
   breakpoints?: Partial<BreakpointsConfig>
   colors?: Partial<ColorsConfig>
-  controls?: ElementProps
-  grid?: Partial<GridConfig>
-  links?: ElementProps
-  nav?: NavProps
   shadows?: ShadowsConfig
   sizes?: Partial<SizesConfig>
-  tables?: ElementProps
   typography?: Partial<TypographyConfig>
-}
-
-interface Elements {
-  readonly buttons: ThemeElement
-  readonly controls: ThemeElement
-  readonly grid: Grid
-  readonly links: ThemeElement
-  readonly nav: NavTheme
-  readonly tables: ThemeElement
+  elements?: Elements.Config
 }
 
 export interface Theme {
   readonly name: string
   readonly breakpoints: Breakpoints
   readonly colors: Colors
-  readonly elements: Elements
   readonly shadows: Shadows
   readonly sizes: Sizes
   readonly typography: Typography
+  readonly elements: Elements.Theme
 }
 
 export const makeTheme = (themeConfig?: Config): Theme => {
@@ -73,13 +46,6 @@ export const makeTheme = (themeConfig?: Config): Theme => {
     shadows: makeShadows(config.shadows),
     sizes: makeSizes(config.sizes),
     typography: makeTypography(config.typography),
-    elements: {
-      buttons: makeButtons(config.buttons),
-      controls: makeControls(config.controls),
-      grid: makeGrid(config.grid),
-      links: makeLinks(config.links),
-      nav: makeNav(config.nav),
-      tables: makeTables(config.tables),
-    },
+    elements: Elements.make(config.elements),
   }
 }

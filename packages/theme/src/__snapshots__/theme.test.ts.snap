@@ -365,6 +365,44 @@ Object {
     },
   },
   "elements": Object {
+    "blocks": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "contained": false,
+      "cursor": "default",
+      "font": "text",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
+    },
     "buttons": Object {
       "border": Object {
         "bottom": Object {
@@ -402,6 +440,7 @@ Object {
       },
       "shadow": "none",
       "typographic": false,
+      "variant": "button",
     },
     "controls": Object {
       "border": Object {
@@ -441,9 +480,44 @@ Object {
       "shadow": "none",
       "typographic": false,
     },
-    "grid": Object {
-      "columnMin": "280px",
+    "layouts": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "cursor": "default",
+      "font": "text",
       "gap": "small",
+      "gapped": true,
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
     },
     "links": Object {
       "border": Object {
@@ -482,8 +556,9 @@ Object {
       },
       "shadow": "none",
       "typographic": true,
+      "variant": "link",
     },
-    "nav": Object {
+    "lists": Object {
       "border": Object {
         "bottom": Object {
           "style": "none",
@@ -502,6 +577,85 @@ Object {
           "width": "none",
         },
       },
+      "color": "bgInverse",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "left": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "right": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "top": Object {
+            "style": "none",
+            "width": "none",
+          },
+        },
+        "color": "bgInverse",
+        "cursor": "text",
+        "font": "text",
+        "marker": Object {},
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": true,
+      },
+      "cursor": "text",
+      "font": "text",
+      "marker": Object {},
+      "outlined": false,
+      "padding": Object {
+        "bottom": "none",
+        "left": "xSmall",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
+      "typographic": true,
+    },
+    "navs": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
       "color": "bgPrimary",
       "currentItem": Object {
         "border": Object {
@@ -559,7 +713,45 @@ Object {
       "shadow": "none",
       "typographic": false,
     },
-    "tables": Object {
+    "notifications": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "info",
+      "cursor": "default",
+      "font": "text",
+      "outlined": false,
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
+      "shadow": "none",
+      "typographic": false,
+    },
+    "surfaces": Object {
       "border": Object {
         "bottom": Object {
           "style": "solid",
@@ -580,8 +772,7 @@ Object {
       },
       "color": "bgPrimary",
       "cursor": "default",
-      "font": "compact",
-      "outlined": false,
+      "font": "text",
       "padding": Object {
         "bottom": "xSmall",
         "left": "xSmall",
@@ -593,6 +784,120 @@ Object {
         "bottomRight": "tiny",
         "topLeft": "tiny",
         "topRight": "tiny",
+      },
+      "shadow": "box",
+    },
+    "tables": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "left": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "right": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "top": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+        },
+        "color": "bgSecondary",
+        "cursor": "text",
+        "font": "text",
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": false,
+      },
+      "cursor": "text",
+      "font": "text",
+      "headerItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "left": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "right": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "top": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+        },
+        "color": "bgPrimary",
+        "cursor": "text",
+        "font": "strong",
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": false,
+      },
+      "outlined": false,
+      "padding": Object {
+        "bottom": "none",
+        "left": "xSmall",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
       },
       "shadow": "none",
       "typographic": false,
@@ -1318,6 +1623,44 @@ Object {
     },
   },
   "elements": Object {
+    "blocks": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "contained": false,
+      "cursor": "default",
+      "font": "text",
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
+    },
     "buttons": Object {
       "border": Object {
         "bottom": Object {
@@ -1355,6 +1698,7 @@ Object {
       },
       "shadow": "none",
       "typographic": false,
+      "variant": "button",
     },
     "controls": Object {
       "border": Object {
@@ -1394,9 +1738,44 @@ Object {
       "shadow": "none",
       "typographic": false,
     },
-    "grid": Object {
-      "columnMin": "280px",
+    "layouts": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "cursor": "default",
+      "font": "text",
       "gap": "small",
+      "gapped": true,
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
     },
     "links": Object {
       "border": Object {
@@ -1435,8 +1814,9 @@ Object {
       },
       "shadow": "none",
       "typographic": true,
+      "variant": "link",
     },
-    "nav": Object {
+    "lists": Object {
       "border": Object {
         "bottom": Object {
           "style": "none",
@@ -1455,6 +1835,85 @@ Object {
           "width": "none",
         },
       },
+      "color": "bgInverse",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "left": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "right": Object {
+            "style": "none",
+            "width": "none",
+          },
+          "top": Object {
+            "style": "none",
+            "width": "none",
+          },
+        },
+        "color": "bgInverse",
+        "cursor": "text",
+        "font": "text",
+        "marker": Object {},
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": true,
+      },
+      "cursor": "text",
+      "font": "text",
+      "marker": Object {},
+      "outlined": false,
+      "padding": Object {
+        "bottom": "none",
+        "left": "xSmall",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
+      },
+      "shadow": "none",
+      "typographic": true,
+    },
+    "navs": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "left": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "right": Object {
+          "style": "none",
+          "width": "none",
+        },
+        "top": Object {
+          "style": "none",
+          "width": "none",
+        },
+      },
+      "breakpoint": "mobile",
       "color": "bgPrimary",
       "currentItem": Object {
         "border": Object {
@@ -1512,7 +1971,45 @@ Object {
       "shadow": "none",
       "typographic": false,
     },
-    "tables": Object {
+    "notifications": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "color": "info",
+      "cursor": "default",
+      "font": "text",
+      "outlined": false,
+      "padding": Object {
+        "bottom": "xSmall",
+        "left": "xSmall",
+        "right": "xSmall",
+        "top": "xSmall",
+      },
+      "radius": Object {
+        "bottomLeft": "tiny",
+        "bottomRight": "tiny",
+        "topLeft": "tiny",
+        "topRight": "tiny",
+      },
+      "shadow": "none",
+      "typographic": false,
+    },
+    "surfaces": Object {
       "border": Object {
         "bottom": Object {
           "style": "solid",
@@ -1533,8 +2030,7 @@ Object {
       },
       "color": "bgPrimary",
       "cursor": "default",
-      "font": "compact",
-      "outlined": false,
+      "font": "text",
       "padding": Object {
         "bottom": "xSmall",
         "left": "xSmall",
@@ -1546,6 +2042,120 @@ Object {
         "bottomRight": "tiny",
         "topLeft": "tiny",
         "topRight": "tiny",
+      },
+      "shadow": "box",
+    },
+    "tables": Object {
+      "border": Object {
+        "bottom": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "left": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "right": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+        "top": Object {
+          "style": "solid",
+          "width": "tiny",
+        },
+      },
+      "breakpoint": "mobile",
+      "color": "bgPrimary",
+      "currentItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "left": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "right": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "top": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+        },
+        "color": "bgSecondary",
+        "cursor": "text",
+        "font": "text",
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": false,
+      },
+      "cursor": "text",
+      "font": "text",
+      "headerItem": Object {
+        "border": Object {
+          "bottom": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "left": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "right": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+          "top": Object {
+            "style": "solid",
+            "width": "tiny",
+          },
+        },
+        "color": "bgPrimary",
+        "cursor": "text",
+        "font": "strong",
+        "outlined": false,
+        "padding": Object {
+          "bottom": "none",
+          "left": "xSmall",
+          "right": "none",
+          "top": "none",
+        },
+        "radius": Object {
+          "bottomLeft": "none",
+          "bottomRight": "none",
+          "topLeft": "none",
+          "topRight": "none",
+        },
+        "shadow": "none",
+        "typographic": false,
+      },
+      "outlined": false,
+      "padding": Object {
+        "bottom": "none",
+        "left": "xSmall",
+        "right": "none",
+        "top": "none",
+      },
+      "radius": Object {
+        "bottomLeft": "none",
+        "bottomRight": "none",
+        "topLeft": "none",
+        "topRight": "none",
       },
       "shadow": "none",
       "typographic": false,

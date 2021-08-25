@@ -1,4 +1,4 @@
-import { DeepPartial, mergeConfig } from '../../utils'
+import { DeepPartial, evalConfigBooleans, mergeConfig } from '../../utils'
 
 export interface BaseShadowConfig {
   x?: number
@@ -65,3 +65,12 @@ const defaultConfig: Shadows = {
 
 export const makeShadows = (config?: Config): Shadows =>
   mergeConfig<Config>(defaultConfig, config)
+
+export const evalShadows = <T extends Record<string, any>>(
+  shadowType: ShadowType,
+  defaultValue: boolean,
+  ...configs: Array<T | undefined>
+) =>
+  evalConfigBooleans(defaultValue, 'shadowed', ...configs)
+    ? shadowType
+    : ShadowType.None

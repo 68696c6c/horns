@@ -42,14 +42,14 @@ export type BaseColor =
   | Color.Light
 
 export type BrandColor =
-  | Color.Primary
-  | Color.Secondary
-  | Color.Tertiary
+  | BaseBrandColor
   | Color.Action
   | Color.Prominent
   | Color.Selected
 
 export type SurfaceColor = Color.BgPrimary | Color.BgSecondary
+
+export type ControlColor = SurfaceColor | NotificationColor
 
 export enum Swatch {
   Base = 'base',
