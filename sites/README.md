@@ -1,1 +1,0 @@
-Example sites for Horns.
