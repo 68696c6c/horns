@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@horns/eslint-config": "workspace:*",
-    "@horns/theme": "workspace:*",
+    "@horns/rnd": "workspace:*",
     "@linaria/vite": "^4.2.11",
     "@rollup/plugin-typescript": "^11.1.1",
     "@storybook/addon-a11y": "^7.0.17",

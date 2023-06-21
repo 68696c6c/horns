@@ -7,9 +7,9 @@ importers:
       '@horns/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
-      '@horns/theme':
+      '@horns/rnd':
         specifier: workspace:*
-        version: link:packages/theme
+        version: link:packages/rnd
       '@linaria/vite':
         specifier: ^4.2.11
         version: 4.2.11(vite@4.3.8)
@@ -171,7 +171,7 @@ importers:
         specifier: ^5.11.0
         version: 5.11.0(eslint@7.32.0)(typescript@4.9.5)
 
-  packages/theme:
+  packages/rnd:
     dependencies:
       '@linaria/babel-preset':
         specifier: ^4.4.5
@@ -296,9 +296,9 @@ importers:
       '@horns/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@horns/theme':
+      '@horns/rnd':
         specifier: workspace:*
-        version: link:../theme
+        version: link:../rnd
       '@horns/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

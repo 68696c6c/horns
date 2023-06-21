@@ -1,4 +1,4 @@
-import { ButtonProps as BaseButtonProps } from "@horns/theme"
+import { ButtonProps as BaseButtonProps } from "@horns/rnd"
 
 export type ButtonProps = BaseButtonProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {

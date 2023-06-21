@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@horns/eslint-config": "workspace:*",
-    "@horns/theme": "workspace:*",
+    "@horns/rnd": "workspace:*",
     "@horns/tsconfig": "workspace:*",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
