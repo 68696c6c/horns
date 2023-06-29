@@ -38,6 +38,9 @@ yarn-error.log*
 # IDE
 .idea
 
+# builds
+dist
+
 # other
 notes.md
 todo.md

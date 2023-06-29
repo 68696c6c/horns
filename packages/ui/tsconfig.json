@@ -1,5 +1,10 @@
 {
   "extends": "@horns/tsconfig/react-library.json",
   "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "resolveJsonModule": true
+  }
 }

@@ -5,21 +5,26 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "theme": "node node_modules/@horns/cli/dist/index.js ./theme/config.ts ./theme/theme.json",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@horns/theme": "workspace:*",
     "@horns/ui": "workspace:*",
+    "@vanilla-extract/css": "^1.11.0",
     "next": "^13.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@horns/cli": "workspace:*",
     "@horns/eslint-config": "workspace:*",
     "@horns/tsconfig": "workspace:*",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@vanilla-extract/next-plugin": "^2.1.2",
     "typescript": "^4.5.3"
   }
 }
