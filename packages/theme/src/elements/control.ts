@@ -25,7 +25,7 @@ export type Config = Control<
   Outline.Variant,
   Colorway.ElementConfig,
   ControlVariants<Colorway.ElementConfig> &
-    ScaleVariants<Gap.ConfigTokens & Padding.ConfigTokens>
+    ScaleVariants<Gap.ElementConfig & Padding.ElementConfig>
 >
 
 type ControlVariants<T = Colorway.Tokens> = {
@@ -60,18 +60,18 @@ export const makeElement = (f: Foundations, c: Config): Element => ({
     error: Colorway.makeTokens(f.colorway, c.variants.error),
     selected: Colorway.makeTokens(f.colorway, c.variants.selected),
     sm: {
-      ...Gap.makeTokens(f.spacing, c.variants.sm),
-      ...Padding.makeTokens(f.spacing, c.variants.sm),
+      ...Gap.makeTokens2(f.scale, c.variants.sm),
+      ...Padding.makeTokens2(f.scale, c.variants.sm),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "sm"),
     },
     md: {
-      ...Gap.makeTokens(f.spacing, c.variants.md),
-      ...Padding.makeTokens(f.spacing, c.variants.md),
+      ...Gap.makeTokens2(f.scale, c.variants.md),
+      ...Padding.makeTokens2(f.scale, c.variants.md),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "md"),
     },
     lg: {
-      ...Gap.makeTokens(f.spacing, c.variants.lg),
-      ...Padding.makeTokens(f.spacing, c.variants.lg),
+      ...Gap.makeTokens2(f.scale, c.variants.lg),
+      ...Padding.makeTokens2(f.scale, c.variants.lg),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "lg"),
     },
   },
@@ -113,25 +113,28 @@ export const defaultConfig: Config = {
       colorway: "selected.base",
     },
     sm: {
-      gap: "01",
-      paddingTop: "01",
-      paddingBottom: "01",
-      paddingLeft: "02",
-      paddingRight: "02",
+      gap: "sm",
+      padding: "sm",
+      // paddingTop: "01",
+      // paddingBottom: "01",
+      // paddingLeft: "02",
+      // paddingRight: "02",
     },
     md: {
-      gap: "02",
-      paddingTop: "02",
-      paddingBottom: "02",
-      paddingLeft: "03",
-      paddingRight: "03",
+      gap: "md",
+      padding: "md",
+      // paddingTop: "02",
+      // paddingBottom: "02",
+      // paddingLeft: "03",
+      // paddingRight: "03",
     },
     lg: {
-      gap: "03",
-      paddingTop: "03",
-      paddingBottom: "03",
-      paddingLeft: "04",
-      paddingRight: "04",
+      gap: "lg",
+      padding: "lg",
+      // paddingTop: "03",
+      // paddingBottom: "03",
+      // paddingLeft: "04",
+      // paddingRight: "04",
     },
   },
 }

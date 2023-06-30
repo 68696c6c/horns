@@ -61,12 +61,37 @@ globalStyle("sub, sup", {
   lineHeight: "0",
   verticalAlign: "baseline",
 })
+globalStyle("small", {
+  fontSize: t.text.variants.small.fontSize,
+  lineHeight: t.text.variants.small.lineHeight,
+})
 globalStyle("sub", {
   bottom: "-0.25em",
 })
 globalStyle("sup", {
   top: "-0.5em",
 })
+
+const sizeBody1Sm = t.surface.variants.sm.lineHeight
+globalStyle(".sm svg", { height: sizeBody1Sm, width: sizeBody1Sm })
+const sizeBody1Md = t.surface.variants.md.lineHeight
+globalStyle(".md svg", { height: sizeBody1Md, width: sizeBody1Md })
+const sizeBody1Lg = t.surface.variants.lg.lineHeight
+globalStyle(".lg svg", { height: sizeBody1Lg, width: sizeBody1Lg })
+
+// const sizeBody2Sm = t.text.variants.body2.sizes.sm.lineHeight
+// globalStyle(".body2.sm svg", { height: sizeBody2Sm, width: sizeBody2Sm })
+// const sizeBody2Md = t.text.variants.body2.sizes.md.lineHeight
+// globalStyle(".body2.md svg", { height: sizeBody2Md, width: sizeBody2Md })
+// const sizeBody2Lg = t.text.variants.body2.sizes.lg.lineHeight
+// globalStyle(".body2.lg svg", { height: sizeBody2Lg, width: sizeBody2Lg })
+//
+// const sizeBody3Sm = t.text.variants.body3.sizes.sm.lineHeight
+// globalStyle(".body3.sm svg", { height: sizeBody3Sm, width: sizeBody3Sm })
+// const sizeBody3Md = t.text.variants.body3.sizes.md.lineHeight
+// globalStyle(".body3.md svg", { height: sizeBody3Md, width: sizeBody3Md })
+// const sizeBody3Lg = t.text.variants.body3.sizes.lg.lineHeight
+// globalStyle(".body3.lg svg", { height: sizeBody3Lg, width: sizeBody3Lg })
 
 export const anchor = style({
   ...t.anchor.element,
@@ -137,12 +162,28 @@ export const card = style({
     "&.neutralAlt": t.surface.variants.neutral.alt,
     "&.inverse": t.surface.variants.inverse.base,
     "&.inverseAlt": t.surface.variants.inverse.alt,
-    "&.sm": t.surface.variants.sm,
-    "&.md": t.surface.variants.md,
-    "&.lg": t.surface.variants.lg,
+    "&.sm": {
+      paddingTop: t.surface.variants.sm.paddingTop,
+      paddingBottom: t.surface.variants.sm.paddingBottom,
+      paddingLeft: t.surface.variants.sm.paddingLeft,
+      paddingRight: t.surface.variants.sm.paddingRight,
+    },
+    "&.md": {
+      paddingTop: t.surface.variants.md.paddingTop,
+      paddingBottom: t.surface.variants.md.paddingBottom,
+      paddingLeft: t.surface.variants.md.paddingLeft,
+      paddingRight: t.surface.variants.md.paddingRight,
+    },
+    "&.lg": {
+      paddingTop: t.surface.variants.lg.paddingTop,
+      paddingBottom: t.surface.variants.lg.paddingBottom,
+      paddingLeft: t.surface.variants.lg.paddingLeft,
+      paddingRight: t.surface.variants.lg.paddingRight,
+    },
   },
 })
 
+// TODO: reconcile these values with the theme scaling
 export const controlHeightSm = "44px"
 export const controlHeightMd = "54px"
 export const controlHeightLg = "64px"
@@ -337,6 +378,7 @@ export const toggleInput = style({
     "&[type=radio]": {
       borderRadius: "50%",
     },
+    // TODO: come up with a better solution for these icons?
     "&[type=radio]:checked": {
       background: `url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%0A%20%20%3Cpath%0A%20%20%20%20fill%3D%22%23303236%22%0A%20%20%20%20d%3D%22M12%206.236c-3.182%200-5.764%202.582-5.764%205.764s2.582%205.764%205.764%205.764%205.764-2.582%205.764-5.764-2.582-5.764-5.764-5.764zm0-5.764C5.636.472%20.472%205.636.472%2012s5.165%2011.528%2011.528%2011.528%2011.528-5.165%2011.528-11.528S18.364.472%2012%20.472zm0%2020.751c-5.095%200-9.222-4.127-9.222-9.222s4.127-9.222%209.222-9.222%209.222%204.127%209.222%209.222-4.127%209.222-9.222%209.222z%22%0A%20%20%2F%3E%0A%3C%2Fsvg%3E%0A")`,
     },
@@ -382,7 +424,7 @@ export const icon = style({
   },
 })
 
-// TODO: CHECKPOINT: nav styles from the theme!!
+// TODO: nav styles from the theme!!
 export const nav = style({
   display: "inline-flex",
   selectors: {
@@ -439,9 +481,27 @@ export const notification = style({
     "&.success": t.message.variants.success.base,
     "&.warning": t.message.variants.warning.base,
     "&.danger": t.message.variants.danger.base,
-    "&.sm": t.message.variants.sm,
-    "&.md": t.message.variants.md,
-    "&.lg": t.message.variants.lg,
+    "&.sm": {
+      gap: t.message.variants.sm.gap,
+      paddingTop: t.surface.variants.sm.paddingTop,
+      paddingBottom: t.surface.variants.sm.paddingBottom,
+      paddingLeft: t.surface.variants.sm.paddingLeft,
+      paddingRight: t.surface.variants.sm.paddingRight,
+    },
+    "&.md": {
+      gap: t.message.variants.md.gap,
+      paddingTop: t.surface.variants.md.paddingTop,
+      paddingBottom: t.surface.variants.md.paddingBottom,
+      paddingLeft: t.surface.variants.md.paddingLeft,
+      paddingRight: t.surface.variants.md.paddingRight,
+    },
+    "&.lg": {
+      gap: t.message.variants.lg.gap,
+      paddingTop: t.surface.variants.lg.paddingTop,
+      paddingBottom: t.surface.variants.lg.paddingBottom,
+      paddingLeft: t.surface.variants.lg.paddingLeft,
+      paddingRight: t.surface.variants.lg.paddingRight,
+    },
   },
 })
 
@@ -504,9 +564,24 @@ export const panelHeader = style({
     "&.inverseAlt": t.surface.variants.inverse.alt,
     "&.prominent": t.surface.variants.prominent.base,
     "&.prominentAlt": t.surface.variants.prominent.alt,
-    "&.sm": t.surface.variants.sm,
-    "&.md": t.surface.variants.md,
-    "&.lg": t.surface.variants.lg,
+    "&.sm": {
+      paddingTop: t.surface.variants.sm.paddingTop,
+      paddingBottom: t.surface.variants.sm.paddingBottom,
+      paddingLeft: t.surface.variants.sm.paddingLeft,
+      paddingRight: t.surface.variants.sm.paddingRight,
+    },
+    "&.md": {
+      paddingTop: t.surface.variants.md.paddingTop,
+      paddingBottom: t.surface.variants.md.paddingBottom,
+      paddingLeft: t.surface.variants.md.paddingLeft,
+      paddingRight: t.surface.variants.md.paddingRight,
+    },
+    "&.lg": {
+      paddingTop: t.surface.variants.lg.paddingTop,
+      paddingBottom: t.surface.variants.lg.paddingBottom,
+      paddingLeft: t.surface.variants.lg.paddingLeft,
+      paddingRight: t.surface.variants.lg.paddingRight,
+    },
   },
 })
 
@@ -519,9 +594,24 @@ export const panelBody = style({
     "&.neutralAlt": t.surface.variants.neutral.alt,
     "&.inverse": t.surface.variants.inverse.base,
     "&.inverseAlt": t.surface.variants.inverse.alt,
-    "&.sm": t.surface.variants.sm,
-    "&.md": t.surface.variants.md,
-    "&.lg": t.surface.variants.lg,
+    "&.sm": {
+      paddingTop: t.surface.variants.sm.paddingTop,
+      paddingBottom: t.surface.variants.sm.paddingBottom,
+      paddingLeft: t.surface.variants.sm.paddingLeft,
+      paddingRight: t.surface.variants.sm.paddingRight,
+    },
+    "&.md": {
+      paddingTop: t.surface.variants.md.paddingTop,
+      paddingBottom: t.surface.variants.md.paddingBottom,
+      paddingLeft: t.surface.variants.md.paddingLeft,
+      paddingRight: t.surface.variants.md.paddingRight,
+    },
+    "&.lg": {
+      paddingTop: t.surface.variants.lg.paddingTop,
+      paddingBottom: t.surface.variants.lg.paddingBottom,
+      paddingLeft: t.surface.variants.lg.paddingLeft,
+      paddingRight: t.surface.variants.lg.paddingRight,
+    },
   },
 })
 

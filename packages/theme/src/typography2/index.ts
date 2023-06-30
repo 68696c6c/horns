@@ -43,6 +43,7 @@ export type Fonts<T> = {
   heading: T
   label: T
   legal: T
+  small: T
   strong: T
   title: T
 }

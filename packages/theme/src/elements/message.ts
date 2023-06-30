@@ -1,12 +1,11 @@
 import * as Border from "../border"
 import * as Colorway from "../colorway"
 import * as Radius from "../radius"
+import * as Scale from "../scale"
 import * as Typography from "../typography"
 
 import { ControlStateVariants, ScaleVariants } from "../types"
 import { Foundations } from "../foundations"
-import * as Gap from "../tokens/gap"
-import * as Padding from "../tokens/padding"
 
 type Message<E, T, S> = {
   element: E
@@ -20,7 +19,7 @@ export type Variant = Colorway.MessageColor
 export type Element = Message<
   Colorway.Tokens & Border.Tokens & Radius.Tokens,
   Colorway.Tokens,
-  Typography.ScaleTokens & Gap.Tokens & Padding.Tokens
+  Scale.SurfaceTokens
 >
 
 export type Config = Message<
@@ -29,7 +28,7 @@ export type Config = Message<
     Border.ElementConfig &
     Radius.ElementConfig,
   Colorway.ElementConfig,
-  Gap.ConfigTokens & Padding.ConfigTokens
+  Scale.SurfaceElementConfig
 >
 
 export const makeElement = (f: Foundations, c: Config): Element => ({
@@ -61,19 +60,25 @@ export const makeElement = (f: Foundations, c: Config): Element => ({
       active: Colorway.makeTokens(f.colorway, c.variants.danger.active),
     },
     sm: {
-      ...Gap.makeTokens(f.spacing, c.variants.sm),
-      ...Padding.makeTokens(f.spacing, c.variants.sm),
-      ...Typography.makeScaleTokens(f.typography, c.element.font, "sm"),
+      ...Scale.makeSpaceTokens(f.scale, c.variants.sm),
+      ...Scale.makeTextTokens(f.scale, c.variants.sm),
+      // ...Gap.makeTokens(f.spacing, c.variants.sm),
+      // ...Padding.makeTokens(f.spacing, c.variants.sm),
+      // ...Typography.makeScaleTokens(f.typography, c.element.font, "sm"),
     },
     md: {
-      ...Gap.makeTokens(f.spacing, c.variants.md),
-      ...Padding.makeTokens(f.spacing, c.variants.md),
-      ...Typography.makeScaleTokens(f.typography, c.element.font, "md"),
+      ...Scale.makeSpaceTokens(f.scale, c.variants.md),
+      ...Scale.makeTextTokens(f.scale, c.variants.md),
+      // ...Gap.makeTokens(f.spacing, c.variants.md),
+      // ...Padding.makeTokens(f.spacing, c.variants.md),
+      // ...Typography.makeScaleTokens(f.typography, c.element.font, "md"),
     },
     lg: {
-      ...Gap.makeTokens(f.spacing, c.variants.lg),
-      ...Padding.makeTokens(f.spacing, c.variants.lg),
-      ...Typography.makeScaleTokens(f.typography, c.element.font, "lg"),
+      ...Scale.makeSpaceTokens(f.scale, c.variants.lg),
+      ...Scale.makeTextTokens(f.scale, c.variants.lg),
+      // ...Gap.makeTokens(f.spacing, c.variants.lg),
+      // ...Padding.makeTokens(f.spacing, c.variants.lg),
+      // ...Typography.makeScaleTokens(f.typography, c.element.font, "lg"),
     },
   },
 })
@@ -131,25 +136,31 @@ export const defaultConfig: Config = {
       },
     },
     sm: {
-      gap: "03",
-      paddingTop: "03",
-      paddingBottom: "03",
-      paddingLeft: "03",
-      paddingRight: "03",
+      space: "sm",
+      scale: "00",
+      // gap: "03",
+      // paddingTop: "03",
+      // paddingBottom: "03",
+      // paddingLeft: "03",
+      // paddingRight: "03",
     },
     md: {
-      gap: "05",
-      paddingTop: "05",
-      paddingBottom: "05",
-      paddingLeft: "05",
-      paddingRight: "05",
+      space: "md",
+      scale: "01",
+      // gap: "05",
+      // paddingTop: "05",
+      // paddingBottom: "05",
+      // paddingLeft: "05",
+      // paddingRight: "05",
     },
     lg: {
-      gap: "06",
-      paddingTop: "06",
-      paddingBottom: "06",
-      paddingLeft: "06",
-      paddingRight: "06",
+      space: "lg",
+      scale: "03",
+      // gap: "06",
+      // paddingTop: "06",
+      // paddingBottom: "06",
+      // paddingLeft: "06",
+      // paddingRight: "06",
     },
   },
 }

@@ -32,7 +32,7 @@ export type Config = Anchor<
   Outline.Variant,
   VariantConfigTokens,
   OrdinalVariants<AnchorStateVariants<Colorway.ElementConfig>> &
-    ScaleVariants<Gap.ConfigTokens>
+    ScaleVariants<Gap.ElementConfig>
 >
 
 export const makeElement = (f: Foundations, c: Config): Element => ({
@@ -81,15 +81,15 @@ export const makeElement = (f: Foundations, c: Config): Element => ({
       visited: Colorway.makeTokens(f.colorway, c.variants.tertiary.visited),
     },
     sm: {
-      ...Gap.makeTokens(f.spacing, c.variants.sm),
+      ...Gap.makeTokens2(f.scale, c.variants.sm),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "sm"),
     },
     md: {
-      ...Gap.makeTokens(f.spacing, c.variants.md),
+      ...Gap.makeTokens2(f.scale, c.variants.md),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "md"),
     },
     lg: {
-      ...Gap.makeTokens(f.spacing, c.variants.lg),
+      ...Gap.makeTokens2(f.scale, c.variants.lg),
       ...Typography.makeScaleTokens(f.typography, c.element.font, "lg"),
     },
   },
@@ -232,13 +232,16 @@ export const defaultConfig: Config = {
       },
     },
     sm: {
-      gap: "01",
+      // gap: "01",
+      gap: "sm",
     },
     md: {
-      gap: "02",
+      // gap: "02",
+      gap: "md",
     },
     lg: {
-      gap: "03",
+      // gap: "03",
+      gap: "lg",
     },
   },
 }

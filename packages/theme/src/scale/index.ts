@@ -7,6 +7,9 @@ import {
   ScaleVariants,
   TokenKey,
 } from "../types"
+import * as Dimension from "../tokens/dimension"
+import * as Gap from "../tokens/gap"
+import * as Padding from "../tokens/padding"
 
 export type TextSpaceTokens<
   T = CSSVal<CSS.Property.MarginTop>,
@@ -56,7 +59,7 @@ export type DimensionTokens<
   width: W
 }
 
-export type SpaceTokens = GapTokens & PaddingTokens & DimensionTokens
+// export type SpaceTokens = GapTokens & PaddingTokens & DimensionTokens
 
 // export type Config = {
 //   root: StackConfig
@@ -80,19 +83,33 @@ export type StackLevel<T> = {
   autoLineHeight: T
 }
 
+type SpaceFoundations = {
+  // these are pre-defined padding values that can/should be used by buttons, cards, panels, etc
+  // the dimension values are used by controls and icons
+  // they should be set in ems so that they scale relative to the surrounding font
+  min: SurfaceTokens
+} & ScaleVariants<SurfaceTokens>
+export type Level = keyof SpaceFoundations
+
 export type Foundations<T = string> = {
   sizes: FoundationTokens<StackLevel<T>>
   root: {
     fontSize: string
     lineHeight: string
   }
+  space: SpaceFoundations
 }
+
+export type SurfaceTokens = Gap.Tokens & Padding.Tokens & Dimension.Tokens
 
 export type TextElementConfig = {
   scale: keyof Foundations["sizes"]
   indent?: "none" | "single" | "double"
   spaceTop?: "none" | "single" | "double"
   spaceBottom?: "none" | "single" | "double"
+}
+export type SurfaceElementConfig = TextElementConfig & {
+  space: Level
 }
 
 export const makeTextTokens = (
@@ -138,10 +155,13 @@ const makeInitialStackLevel = (
   level: number
 ): StackLevel<number> => {
   const computedFontSize = Math.round(c.fontSize * c.scaleFactor ** level)
-  const autoLineCount = Math.ceil(computedFontSize / c.lineHeight)
+  const fontSize = computedFontSize < 1 ? 1 : computedFontSize
+  // const autoLineCount = Math.ceil(computedFontSize / c.lineHeight)
+  const autoLineCount = Math.ceil(fontSize / c.lineHeight)
   const autoLineHeight = c.lineHeight * autoLineCount
   return {
-    fontSize: computedFontSize,
+    // fontSize: computedFontSize,
+    fontSize,
     line: c.lineHeight,
     doubleLine: c.lineHeight * 2,
     autoLineCount,
@@ -190,25 +210,37 @@ const makeFinalLevel = (input: StackLevel<number>): StackLevel<string> => ({
 export const makeFoundations = (c: Config): Foundations => {
   // const baseFontSize = c.fontSize
   // const baseLineHeight = Math.round(c.lineHeight * baseFontSize)
+  const baseLineHeight = Math.round(c.lineHeight * c.fontSize)
 
   const levelConfig: Config = {
     ...c,
-    lineHeight: Math.round(c.lineHeight * c.fontSize),
+    lineHeight: baseLineHeight,
   }
 
+  // TODO: INPROGRESS: refactoring this so that the current 00 value is in the middle(05) and then use 00-04 for the current spacing concerns (border and outline width etc)
+  //  -> CHECKPOINT: do control scaling, outline spacing
   const stack: InitialStack = {
-    "00": makeInitialStackLevel(levelConfig, 0),
-    "01": makeInitialStackLevel(levelConfig, 1),
-    "02": makeInitialStackLevel(levelConfig, 2),
-    "03": makeInitialStackLevel(levelConfig, 3),
-    "04": makeInitialStackLevel(levelConfig, 4),
-    "05": makeInitialStackLevel(levelConfig, 5),
-    "06": makeInitialStackLevel(levelConfig, 6),
-    "07": makeInitialStackLevel(levelConfig, 7),
-    "08": makeInitialStackLevel(levelConfig, 8),
-    "09": makeInitialStackLevel(levelConfig, 9),
-    "10": makeInitialStackLevel(levelConfig, 10),
+    // "00": makeInitialStackLevel(levelConfig, -1),
+    // "01": makeInitialStackLevel(levelConfig, -8),
+    "00": {
+      fontSize: 0,
+      line: 0,
+      doubleLine: 0,
+      autoLineCount: 0,
+      autoLineHeight: 0,
+    },
+    "01": makeInitialStackLevel(levelConfig, -8),
+    "02": makeInitialStackLevel(levelConfig, -4),
+    "03": makeInitialStackLevel(levelConfig, -1.5),
+    "04": makeInitialStackLevel(levelConfig, -0.25),
+    "05": makeInitialStackLevel(levelConfig, 0),
+    "06": makeInitialStackLevel(levelConfig, 1),
+    "07": makeInitialStackLevel(levelConfig, 2),
+    "08": makeInitialStackLevel(levelConfig, 3),
+    "09": makeInitialStackLevel(levelConfig, 4),
+    "10": makeInitialStackLevel(levelConfig, 5),
   }
+  console.log("stack: ", JSON.stringify(stack))
   // Convert values to ems by finding factors which will result in the exact pixel values calculated above
   // Assumes document root font-size is set to 'base.fontSize' in the output css, so em values will always be based on that context. If html does not have this font-size, calculations will be off.
   const rootFontSize = c.fontSize
@@ -236,10 +268,13 @@ export const makeFoundations = (c: Config): Foundations => {
   }
 
   // Add units
+  const smSpace = baseLineHeight / 3
+  const mdSpace = baseLineHeight / 2
+  const lgSpace = (baseLineHeight / 3) * 2
   return {
     root: {
       fontSize: `${c.fontSize}px`,
-      lineHeight: `${c.lineHeight}px`,
+      lineHeight: `${baseLineHeight}px`,
     },
     sizes: {
       "00": makeFinalLevel(tempStack["00"]),
@@ -254,13 +289,64 @@ export const makeFoundations = (c: Config): Foundations => {
       "09": makeFinalLevel(tempStack["09"]),
       "10": makeFinalLevel(tempStack["10"]),
     },
+    space: {
+      min: {
+        gap: "0px",
+        paddingTop: "0px",
+        paddingBottom: "0px",
+        paddingLeft: "0px",
+        paddingRight: "0px",
+        height: "0px",
+        width: "0px",
+      },
+      sm: {
+        gap: `${smSpace}px`,
+        paddingTop: `${smSpace}px`,
+        paddingBottom: `${smSpace}px`,
+        paddingLeft: `${smSpace}px`,
+        paddingRight: `${smSpace}px`,
+        height: `${smSpace}px`,
+        width: `${smSpace}px`,
+      },
+      md: {
+        gap: `${mdSpace}px`,
+        paddingTop: `${mdSpace}px`,
+        paddingBottom: `${mdSpace}px`,
+        paddingLeft: `${mdSpace}px`,
+        paddingRight: `${mdSpace}px`,
+        height: `${mdSpace}px`,
+        width: `${mdSpace}px`,
+      },
+      lg: {
+        gap: `${lgSpace}px`,
+        paddingTop: `${lgSpace}px`,
+        paddingBottom: `${lgSpace}px`,
+        paddingLeft: `${lgSpace}px`,
+        paddingRight: `${lgSpace}px`,
+        height: `${lgSpace}px`,
+        width: `${lgSpace}px`,
+      },
+    },
   }
 }
 
+export const makeSpaceTokens = (
+  f: Foundations,
+  c: SurfaceElementConfig
+): SurfaceTokens => ({
+  gap: f.space[c.space].gap,
+  paddingTop: f.space[c.space].paddingTop,
+  paddingBottom: f.space[c.space].paddingBottom,
+  paddingLeft: f.space[c.space].paddingLeft,
+  paddingRight: f.space[c.space].paddingRight,
+  height: f.space[c.space].height,
+  width: f.space[c.space].width,
+})
+
 export const defaultConfig: Config = {
   // root: {
-  fontSize: 9,
-  lineHeight: 1.3,
+  fontSize: 16,
+  lineHeight: 1.25,
   scaleFactor: 1.618,
   // },
   // heading: {

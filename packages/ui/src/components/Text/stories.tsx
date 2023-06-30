@@ -108,6 +108,13 @@ export const NativeDemo: StoryObj<typeof Text> = {
           <sup>superscript</sup> examples.
         </section>
         <section>
+          <h4>Scaled phrases</h4>
+          Here&apos;s some example <small>small text</small>. Here&apos;s more
+          example text using the <span className="sm">small</span>and{" "}
+          <span className="lg">large</span> scales.
+          <p className="legal">This text is a boring legal disclaimer.</p>
+        </section>
+        <section>
           <h4>Lists</h4>
           <p>
             Rich in mystery consciousness citizens of distant epochs venture
@@ -119,7 +126,7 @@ export const NativeDemo: StoryObj<typeof Text> = {
             <li>two</li>
             <li>three</li>
             <li>
-              <h6>Nested list</h6>
+              <strong className="title">Nested list</strong>
               <ul>
                 <li>one</li>
                 <li>two</li>
@@ -133,7 +140,7 @@ export const NativeDemo: StoryObj<typeof Text> = {
             <li>two</li>
             <li>three</li>
             <li>
-              <h6>Nested list</h6>
+              <strong className="title">Nested list</strong>
               <ol>
                 <li>one</li>
                 <li>two</li>

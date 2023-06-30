@@ -50,40 +50,65 @@ export const Default: StoryObj<typeof Anchor> = {
 }
 
 export const Primary: StoryObj<typeof Anchor> = {
-  render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} variant="primary">
+  render: ({ Icon1, Icon2, ...props }) => (
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      variant="primary"
+    >
       Hello World
     </Anchor>
   ),
 }
 
 export const Secondary: StoryObj<typeof Anchor> = {
-  render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} variant="secondary">
+  render: ({ Icon1, Icon2, ...props }) => (
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      variant="secondary"
+    >
       Hello World
     </Anchor>
   ),
 }
 
 export const Tertiary: StoryObj<typeof Anchor> = {
-  render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} variant="tertiary">
+  render: ({ Icon1, Icon2, ...props }) => (
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      variant="tertiary"
+    >
       Hello World
     </Anchor>
   ),
 }
 
 export const Small: StoryObj<typeof Anchor> = {
-  render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} scale="sm">
+  render: ({ Icon1, Icon2, ...props }) => (
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      scale="sm"
+    >
       Hello World
     </Anchor>
   ),
 }
 
 export const Medium: StoryObj<typeof Anchor> = {
-  render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} scale="md">
+  render: ({ Icon1, Icon2, ...props }) => (
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      scale="md"
+    >
       Hello World
     </Anchor>
   ),
@@ -91,7 +116,12 @@ export const Medium: StoryObj<typeof Anchor> = {
 
 export const Large: StoryObj<typeof Anchor> = {
   render: () => (
-    <Anchor Icon1={MdAccountBox} Icon2={RxEnvelopeClosed} scale="lg">
+    <Anchor
+      {...props}
+      Icon1={Icon1 && MdAccountBox}
+      Icon2={Icon2 && RxEnvelopeClosed}
+      scale="lg"
+    >
       Hello World
     </Anchor>
   ),
